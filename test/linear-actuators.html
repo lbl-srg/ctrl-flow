@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Linear Actuators Models | Notes</title>
+  <meta name="description" content="Linear Actuators Models | Notes">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Linear Actuators Models | Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AntoineGautier/Notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Linear Actuators Models | Notes" />
+  
+  
+  
+
+<meta name="author" content="Antoine Gautier">
+
+
+<meta name="date" content="2019-03-03">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="actuators.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Index</a></li>
+<li class="part"><span><b>Modelica</b></span></li>
+<li class="chapter" data-level="" data-path="actuators.html"><a href="actuators.html"><i class="fa fa-check"></i>Actuators</a><ul>
+<li class="chapter" data-level="" data-path="linear-actuators.html"><a href="linear-actuators.html"><i class="fa fa-check"></i>Linear Actuators Models</a><ul>
+<li class="chapter" data-level="" data-path="linear-actuators.html"><a href="linear-actuators.html#linear-characteristic"><i class="fa fa-check"></i>Linearization of Flow Characteristic</a></li>
+<li class="chapter" data-level="" data-path="linear-actuators.html"><a href="linear-actuators.html#pressure-independent"><i class="fa fa-check"></i>Pressure Independent VAV Box</a></li>
+<li class="chapter" data-level="" data-path="linear-actuators.html"><a href="linear-actuators.html#proposal"><i class="fa fa-check"></i>Proposal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/AntoineGautier/Notes" target="blank">View on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-actuators" class="section level2">
+<h2>Linear Actuators Models</h2>
+<p>Related to <a href="https://github.com/lbl-srg/modelica-buildings/issues/1298">issue #1298</a>.</p>
+<div id="linear-characteristic" class="section level3">
+<h3>Linearization of Flow Characteristic</h3>
+<p>The relationship between the lumped flow coefficient (for both damper and fixed flow resistance) <span class="math inline">\(k=\dot{m}/\sqrt{\Delta p}\)</span> varies linearly with the filtered control input signal between <span class="math inline">\(k_{min}\)</span> (damper fully closed: leakage) and <span class="math inline">\(k_{max}\)</span> (damper fully open).</p>
+<pre class="sourceCode c"><code class="sourceCode c">partial model PartialDamperExponential
+...
+  y_char_linear = <span class="cf">if</span> linearized then sqrt(y_actual) <span class="cf">else</span> y_actual;
+  <span class="cf">if</span> char_linear_pro then
+    k = y_char_linear * (k_max - k_min) + k_min;
+    kDam = <span class="cf">if</span> (kFixed &gt; Modelica.Constants.eps) then
+      sqrt(<span class="dv">1</span> / (<span class="dv">1</span> / k^<span class="dv">2</span> - <span class="dv">1</span> / kFixed^<span class="dv">2</span>)) <span class="cf">else</span> k;
+  <span class="cf">else</span>
+    kDam=sqrt(<span class="dv">2</span>*rho)*A/Buildings.Fluid.Actuators.BaseClasses.exponentialDamper(
+      y=y_actual, a=a, b=b, cL=cL, cU=cU, yL=yL, yU=yU);
+    k = <span class="cf">if</span> (kFixed&gt;Modelica.Constants.eps) then sqrt(<span class="dv">1</span>/(<span class="dv">1</span>/kFixed^<span class="dv">2</span> + <span class="dv">1</span>/kDam^<span class="dv">2</span>)) <span class="cf">else</span> kDam;
+  end <span class="cf">if</span>;</code></pre>
+<p>Yields a linear relationship between <span class="math inline">\(\dot{m}\)</span> and <span class="math inline">\(y_{actual}\)</span> when the model is exposed to constant pressure boundary conditions.</p>
+<p>In case of time varying pressure boundary conditions, the model behaves as in the example below where it is used to model a mixing box with constant supply and return fan speed.</p>
+<p><img src="img/issue1298_linearActuators/TestEconomizer.svg" /></p>
+<p>In this example the control input signal varies from 0 to 1 in 5 s starting from time = 1 s. The following parameters’ sensitivity study is performed:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><code>char_linear</code></th>
+<th align="center"><code>linearized</code></th>
+<th align="center"><code>from_dp</code></th>
+<th align="center">NL sys. eq.</th>
+<th align="center">After manip.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>false</code></td>
+<td align="center"><code>false</code></td>
+<td align="center"><code>false</code></td>
+<td align="center">{18}</td>
+<td align="center">{3}</td>
+</tr>
+<tr class="even">
+<td align="center"><code>true</code></td>
+<td align="center"><code>false</code></td>
+<td align="center"><code>false</code></td>
+<td align="center">{18}</td>
+<td align="center">{3}</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>true</code></td>
+<td align="center"><code>true</code></td>
+<td align="center"><code>false</code></td>
+<td align="center">{18}</td>
+<td align="center">{<strong>2</strong>}</td>
+</tr>
+<tr class="even">
+<td align="center"><code>true</code></td>
+<td align="center"><code>true</code></td>
+<td align="center"><code>true</code></td>
+<td align="center">{18}</td>
+<td align="center">{3}</td>
+</tr>
+</tbody>
+</table>
+<iframe src="img/issue1298_linearActuators/CPUtime.html" height="600" width="100%" scrolling="no" seamless="seamless" frameBorder="0">
+</iframe>
+<iframe src="img/issue1298_linearActuators/OA_rate.html" height="600" width="100%" scrolling="no" seamless="seamless" frameBorder="0">
+</iframe>
+<iframe src="img/issue1298_linearActuators/damOA.dp.html" height="600" width="100%" scrolling="no" seamless="seamless" frameBorder="0">
+</iframe>
+</div>
+<div id="pressure-independent" class="section level3">
+<h3>Pressure Independent VAV Box</h3>
+<p>Existing model <code>PressureIndependent</code> is sensitive to pressure boundary conditions see <a href="https://github.com/lbl-srg/modelica-buildings/issues/1298#issuecomment-459130516">issue #1298</a>.
+It raises some questions whereas more constraining default values for advanced parameters (<code>l2</code> and <code>delta_x</code>) are likely to:</p>
+<ol style="list-style-type: decimal">
+<li>ensure that <code>m_flow = m_flow_set</code> for all operating conditions which provide sufficient pressure drop at damper boundaries;</li>
+<li>avoid numerical instabilities (as the new default values are close to typically selected solver tolerance: 1E-6).</li>
+</ol>
+<p>An alternative model has been formulated:</p>
+<ul>
+<li>It mainly relies on the equation <span class="math inline">\(\dot{m}=y_{actual}*\dot{m}_{nominal}\)</span> representing the damper ideally controlling
+the air flow rate.</li>
+<li>Two other flow regimes must however be taken into account:
+<ol style="list-style-type: decimal">
+<li>Low flow<br />
+When the pressure drop is smaller than the one corresponding to the expected flow rate with the damper fully open: then the flow rate is computed based on the fully open damper’s characteric.</li>
+<li>Leakage<br />
+When the pressure drop is higher than the one corresponding to the expected flow rate with the damper fully closed: then the flow rate is computed based on the fully closed damper’s characteric.</li>
+</ol></li>
+<li>The <code>quinticHermite</code> function performs a spline interpolation between these three regimes, ensuring a continuous second derivative during the transitions.</li>
+</ul>
+<pre class="sourceCode c"><code class="sourceCode c">model PressureIndependentTest
+...
+  m_flow_lin = y_actual * m_flow_nominal;
+  dp_0 = Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_m_flow(
+    m_flow=m_flow_lin,
+    k=k_0,
+    m_flow_turbulent=m_flow_turbulent
+  );
+  dp_1 = Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_m_flow(
+    m_flow=m_flow_lin,
+    k=k_1,
+    m_flow_turbulent=m_flow_turbulent
+  );
+  m_flow = noEvent(
+    <span class="cf">if</span> dp &lt; dp_1 - dp_small then  <span class="co">// damper fully open (covers also dp &lt; 0 i.e. flow reversal)</span>
+    Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp(
+      dp=dp,
+      k=k_1,
+      m_flow_turbulent=m_flow_turbulent
+    ) elseif dp &lt;= dp_1 then  <span class="co">// transition towards m_flow_lin</span>
+    Buildings.Utilities.Math.Functions.quinticHermite(
+      x=dp,
+      x1=dp_1 - dp_small,
+      x2=dp_1,
+      y1=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp(
+        dp=dp_1 - dp_small,
+        k=k_1,
+        m_flow_turbulent=m_flow_turbulent
+      ),
+      y2=m_flow_lin,
+      y1d=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp_der(
+        dp=dp_1 - dp_small,
+        k=k_1,
+        m_flow_turbulent=m_flow_turbulent,
+        dp_der=<span class="dv">1</span>
+      ),
+      y2d=<span class="dv">0</span>,
+      y1dd=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp_der2(
+        dp=dp_1,
+        k=k_1,
+        m_flow_turbulent=m_flow_turbulent,
+        dp_der=<span class="dv">1</span>,
+        dp_der2=<span class="dv">0</span>
+      ),
+      y2dd=<span class="dv">0</span>
+    ) elseif dp &lt; dp_0 - dp_small then m_flow_lin  <span class="co">// damper controlling flow rate</span>
+    elseif dp &lt;= dp_0 then  <span class="co">// transition towards leakage (damper fully closed)</span>
+    Buildings.Utilities.Math.Functions.quinticHermite(
+      x=dp,
+      x1=dp_0 - dp_small,
+      x2=dp_0,
+      y1=m_flow_lin,
+      y2=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp(
+        dp=dp_0,
+        k=k_0,
+        m_flow_turbulent=m_flow_turbulent
+      ),
+      y1d=<span class="dv">0</span>,
+      y2d=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp_der(
+        dp=dp_0,
+        k=k_0,
+        m_flow_turbulent=m_flow_turbulent,
+        dp_der=<span class="dv">1</span>
+      ),
+      y1dd=<span class="dv">0</span>,
+      y2dd=Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp_der2(
+        dp=dp_0,
+        k=k_0,
+        m_flow_turbulent=m_flow_turbulent,
+        dp_der=<span class="dv">1</span>,
+        dp_der2=<span class="dv">0</span>
+      )
+    ) <span class="cf">else</span>  <span class="co">// leakage (damper fully closed)</span>
+    Buildings.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp(
+      dp=dp,
+      k=k_0,
+      m_flow_turbulent=m_flow_turbulent
+    )
+  );</code></pre>
+<p>There is no <code>from_dp = false</code> solving option for this model.
+However no significant overhead is expected as the model is intended to represent terminal systems
+and thus flow resistances in parallel rather than in series.
+This is verified on two test cases modeling a VAV system with terminal reheat for five thermal zones.</p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="30%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Test Case</th>
+<th align="center">Damper Model</th>
+<th align="center"><code>from_dp</code></th>
+<th align="center">NL sys. eq.</th>
+<th align="center">After manip.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>VAVReheat.ASHRAE2006</code></td>
+<td align="center"><code>PressureIndependent</code></td>
+<td align="center"><code>false</code></td>
+<td align="center">{3, 32, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, <strong>5</strong>, 0, 0, 0, 0, 3}</td>
+</tr>
+<tr class="even">
+<td align="center"><code>VAVReheat.ASHRAE2006</code></td>
+<td align="center"><code>PressureIndependent</code></td>
+<td align="center"><code>true</code></td>
+<td align="center">{3, 32, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, 1, 0, 0, 0, 0, 3}</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>VAVReheat.ASHRAE2006</code></td>
+<td align="center"><code>PreIndTest</code></td>
+<td align="center"><code>true</code></td>
+<td align="center">{3, <strong>17</strong>, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, 1, 0, 0, 0, 0, 3}</td>
+</tr>
+<tr class="even">
+<td align="center"><code>VAVReheat.Guideline36</code></td>
+<td align="center"><code>PressureIndependent</code></td>
+<td align="center"><code>false</code></td>
+<td align="center">{3, 32, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, <strong>5</strong>, 0, 0, 0, 0, 3}</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>VAVReheat.Guideline36</code></td>
+<td align="center"><code>PressureIndependent</code></td>
+<td align="center"><code>true</code></td>
+<td align="center">{3, 32, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, 1, 0, 0, 0, 0, 3}</td>
+</tr>
+<tr class="even">
+<td align="center"><code>VAVReheat.Guideline36</code></td>
+<td align="center"><code>PreIndTest</code></td>
+<td align="center"><code>true</code></td>
+<td align="center">{3, <strong>17</strong>, 1, 1, 1, 1, 11}</td>
+<td align="center">{1, 1, 0, 0, 0, 0, 3}</td>
+</tr>
+</tbody>
+</table>
+<iframe src="img/issue1298_linearActuators/CPUtime_vav.html" height="600" width="100%" scrolling="no" seamless="seamless" frameBorder="0">
+</iframe>
+</div>
+<div id="proposal" class="section level3">
+<h3>Proposal</h3>
+<ul>
+<li><p>Modify the partial class <code>PartialDamperExponential</code> to include the linearizing option cf. § <a href="linear-actuators.html#linear-characteristic">above</a>.
+The new class is backward compatible: the default value of protected parameter <code>char_linear_pro</code> is <code>false</code> which reproduces
+the same behavior as the previous version (exponential relationship between loss coefficient and opening angle).</p></li>
+<li><p>The damper models <code>VAVBoxExponential</code> and <code>Exponential</code> are similar except that the former allows for the definition of a
+fixed flow resistance in series.</p>
+<ul>
+<li><p>However this is not straightforward when you look at the code: <code>Exponential</code> uses <code>exponentialDamper(y=1,...)</code> to compute
+the loss coefficient for the fully open damper whereas <code>VAVBoxExponential</code> uses parameter <code>k1</code> directly (which is the result
+of the previous function call due to the way <code>cU[i]</code> coefficients are computed in <code>PartialDamperExponential</code>).</p></li>
+<li><p><code>VAVBoxExponential</code> is used in a larger set of configurations than the ones its name would imply e.g. in <code>MixingBox</code> model.</p></li>
+<li><p>Thus it is proposed to merge them and name the resulting model <code>Exponential</code>.</p></li>
+<li><p>Eventually I propose to implement an option to let the user specify the damper nominal pressure drop instead of loss
+coefficient. This would make the setting of parameters similar to the one of the valve models e.g. <code>TwoWayEqualPercentage</code> and
+provide the user with a clearer knowledge of the damper’s authority.</p></li>
+</ul></li>
+<li>If the new implementation proposed for the pressure independent model (cf. § <a href="linear-actuators.html#pressure-independent">above</a>) is suitable
+regarding the numerical aspects:
+<ul>
+<li>I propose to use it for <code>PressureIndependent</code> model in place of the current one relying on
+computational parameters (<code>l2</code> and <code>delta_x</code>) for which the default values need to be backed up by additional parametric studies.</li>
+<li>Furthermore the new implementation is more “revealing of the underlying physics”: three flow regimes are represented and the
+spline interpolation is used to handle the transitions.</li>
+</ul></li>
+</ul>
+<p><strong>Remark</strong></p>
+<p>For retiring <code>VAVBoxExponential</code>:</p>
+<ol style="list-style-type: decimal">
+<li>We could either delete the model if a conversion script can update models that use it to use the new version.</li>
+<li>If this does not work, we can move <code>VAVBoxExponential</code> to <code>IBPSA.Obsolete</code>, provide a conversion script so that the obsolete
+model is used, and write an assertion in this model (as a warning) to tell users that this model is obsolete.</li>
+</ol>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="actuators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
