@@ -60,10 +60,6 @@ linkcheck:
 
 push:
 	git add -A && git commit -m 'rebuild pages'
-	PWDBCK=$(PWD)
 	cd $(HOME)/github/linkage.js && git subtree push --prefix specification/build/html origin gh-pages
-	@echo $(PWD)
-	cd $(PWDBCK)
-	unset PWDBCK
 
 dist: html, latex, linkcheck
