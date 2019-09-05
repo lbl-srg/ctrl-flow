@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. Preamble &#8212; Control Description Language</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Conventions" href="conventions.html" />
+    <link rel="prev" title="OpenBuildingControl (Working Draft)" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/cdl-logo.png">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://obc.lbl.gov">Home</a></li>
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">6. Software Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#controls-design-tool">6.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#functional-verification-tool">6.2. Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html">9. Verification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#scope-of-the-verification">9.1. Scope of the verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#methodology">9.2. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#example">9.4. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">10. Example Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example.html#methodology">10.1. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#performance-comparison">10.2. Performance comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">1. Preamble</a><ul>
+<li><a class="reference internal" href="#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: OpenBuildingControl (Working Draft)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; OpenBuildingC...</span>
+    </a>
+  </li>
+  <li>
+    <a href="conventions.html" title="Next Chapter: 2. Conventions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Conventions &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="preamble">
+<h1>1. Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose-of-the-document">
+<h2>1.1. Purpose of the Document<a class="headerlink" href="#purpose-of-the-document" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the process workflow,
+use cases, requirements and
+specification of the Control Description Language (CDL).
+It also describes a case study that illustrates the use of CDL for
+performance comparison of a control sequence during design.</p>
+<p>The document is a working document that is used as a discussion basis
+and will evolve as the development progresses. The proposed design
+should not be considered finalized.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright (c) All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

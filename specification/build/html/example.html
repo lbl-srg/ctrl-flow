@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10. Example Application &#8212; Control Description Language</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Glossary" href="glossary.html" />
+    <link rel="prev" title="9. Verification" href="verification.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/cdl-logo.png">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://obc.lbl.gov">Home</a></li>
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preample.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preample.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">6. Software Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#controls-design-tool">6.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#functional-verification-tool">6.2. Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html">9. Verification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#scope-of-the-verification">9.1. Scope of the verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#methodology">9.2. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verification.html#example">9.4. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Example Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methodology">10.1. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-comparison">10.2. Performance comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">10. Example Application</a><ul>
+<li><a class="reference internal" href="#methodology">10.1. Methodology</a><ul>
+<li><a class="reference internal" href="#hvac-model">10.1.1. HVAC model</a></li>
+<li><a class="reference internal" href="#envelope-heat-transfer">10.1.2. Envelope heat transfer</a></li>
+<li><a class="reference internal" href="#internal-loads">10.1.3. Internal loads</a></li>
+<li><a class="reference internal" href="#multi-zone-air-exchange">10.1.4. Multi-zone air exchange</a></li>
+<li><a class="reference internal" href="#control-sequences">10.1.5. Control sequences</a></li>
+<li><a class="reference internal" href="#site-electricity-use">10.1.6. Site electricity use</a></li>
+<li><a class="reference internal" href="#simulations">10.1.7. Simulations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performance-comparison">10.2. Performance comparison</a></li>
+<li><a class="reference internal" href="#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a><ul>
+<li><a class="reference internal" href="#freeze-protection-for-mixed-air-temperature">10.3.1. Freeze protection for mixed air temperature</a></li>
+<li><a class="reference internal" href="#deadbands-for-hard-switches">10.3.2. Deadbands for hard switches</a></li>
+<li><a class="reference internal" href="#averaging-air-flow-measurements">10.3.3. Averaging air flow measurements</a></li>
+<li><a class="reference internal" href="#minor-editorial-revision">10.3.4. Minor editorial revision</a></li>
+<li><a class="reference internal" href="#cross-referencing-and-modularization">10.3.5. Cross-referencing and modularization</a></li>
+<li><a class="reference internal" href="#lessons-learned-regarding-the-simulations">10.3.6. Lessons learned regarding the simulations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="verification.html" title="Previous Chapter: 9. Verification"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 9. Verification</span>
+    </a>
+  </li>
+  <li>
+    <a href="glossary.html" title="Next Chapter: 11. Glossary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">11. Glossary &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="example-application">
+<span id="sec-example"></span><h1>10. Example Application<a class="headerlink" href="#example-application" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we compare the performance of two different
+control sequences, applied to a floor of a prototypical office building.
+The objectives are
+to demonstrate the setup for closed loop performance assessment,
+to demonstrate how to compare the control performance, and
+to assess the difference in annual energy consumption.
+For the basecase, we implemented a control sequence published in
+ASHRAE’s Sequences of Operation for
+Common HVAC Systems <a class="reference internal" href="bibliography.html#ashraeseq2006-1" id="id1">[ASH06]</a>.
+For the other case, we implemented the control sequence
+published in ASHRAE Guideline 36 <a class="reference internal" href="bibliography.html#ashrae2016" id="id2">[ASHRAE16]</a>.
+The main conceptual differences between the two control sequences,
+which are described in more detail in <a class="reference internal" href="#sec-con-seq-des"><span class="std std-numref">Section 10.1.5</span></a>,
+are as follows:</p>
+<ul class="simple">
+<li>The base case uses constant supply air temperature setpoints
+for heating and cooling during occupied hours,
+whereas the guideline 36 uses one supply air
+temperature setpoint, which is reset based on outdoor air temperature
+and zone cooling requests, as obtained from the VAV terminal unit controllers.
+The reset is dynamic using the trim and respond logic.</li>
+<li>The base case resets the supply fan static pressure setpoint based
+on the VAV damper position, which is only modulated during cooling,
+whereas the guideline 36 resets the fan static pressure setpoint based
+on zone pressure requests from the VAV terminal controllers.
+The reset is dynamic using the trim and respond logic.</li>
+<li>The base case controls the economizer to track a mixed air
+temperature setpoint, whereas guideline 36 controls the economizer
+based on supply air temperature control loop signal.</li>
+<li>The base case controls the VAV dampers based on the zone’s cooling
+temperature setpoint, whereas guideline 36 uses the heating and cooling
+loop signal to control the VAV dampers.</li>
+</ul>
+<p>The next sections are as follows:
+In <a class="reference internal" href="#sec-met-cas1"><span class="std std-numref">Section 10.1</span></a> we describe the methodology,
+the models and the performance metrics,
+in <a class="reference internal" href="#sec-per-com-cas1"><span class="std std-numref">Section 10.2</span></a> we compare the performance,
+in <a class="reference internal" href="#sec-imp-spe-cas1"><span class="std std-numref">Section 10.3</span></a> we recommend improvements to the
+guideline 36 and
+in <a class="reference internal" href="#sec-dis-con-cas1"><span class="std std-numref">Section 10.4</span></a> we discuss the main findings and present
+concluding remarks.</p>
+<div class="section" id="methodology">
+<span id="sec-met-cas1"></span><h2>10.1. Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
+<p>All models are implemented in Modelica, using models from
+the Buildings library <a class="reference internal" href="bibliography.html#wetterzuonouiduipang2014" id="id3">[WZNP14]</a>.</p>
+<p>The models are available from
+<a class="reference external" href="https://github.com/lbl-srg/modelica-buildings/releases/tag/v5.0.0">https://github.com/lbl-srg/modelica-buildings/releases/tag/v5.0.0</a></p>
+<p>As a test case, we used a simulation model that consists
+of five thermal zones that are representative of one floor of the
+new construction medium office building for Chicago, IL,
+as described in the set of DOE Commercial Building Benchmarks
+<a class="reference internal" href="bibliography.html#deruetal2011-1" id="id4">[DFS+11]</a>.
+There are four perimeter zones and one core zone.
+The envelope thermal properties meet ASHRAE Standard 90.1-2004.
+The system model consist of an HVAC system, a building envelope model
+and a model for air flow through building leakage
+and through open doors based on wind pressure and
+flow imbalance of the HVAC system.</p>
+<div class="section" id="hvac-model">
+<h3>10.1.1. HVAC model<a class="headerlink" href="#hvac-model" title="Permalink to this headline">¶</a></h3>
+<p>The HVAC system is a variable air volume (VAV) flow system
+with economizer and a heating and cooling coil in the air handler unit.
+There is also a reheat coil and an air damper in each of the five zone
+inlet branches.</p>
+<p><a class="reference internal" href="#fig-vav-schematics"><span class="std std-numref">Fig. 10.1</span></a> shows the schematic diagram of the HVAC system.</p>
+<div class="figure" id="id15">
+<span id="fig-vav-schematics"></span><img alt="_images/vavSchematics.svg" src="_images/vavSchematics.svg" /><p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Schematic diagram of the HVAC system.</span></p>
+</div>
+<p>In the VAV model, all air flows are computed based on the
+duct static pressure distribution and the performance curves of the fans.
+The fans are modeled as described in <a class="reference internal" href="bibliography.html#wetter2013-1" id="id5">[Wet13]</a>.</p>
+</div>
+<div class="section" id="envelope-heat-transfer">
+<h3>10.1.2. Envelope heat transfer<a class="headerlink" href="#envelope-heat-transfer" title="Permalink to this headline">¶</a></h3>
+<p>The thermal room model computes transient heat conduction through
+walls, floors and ceilings and long-wave radiative heat exchange between
+surfaces. The convective heat transfer coefficient is computed based
+on the temperature difference between the surface and the room air.
+There is also a layer-by-layer short-wave radiation,
+long-wave radiation, convection and conduction heat transfer model for the
+windows. The model is similar to the
+Window 5 model.
+The physics implemented in the building model is further described in
+<a class="reference internal" href="bibliography.html#wetterzuonouidui2011-2" id="id6">[WZN11]</a>.</p>
+<p>There is no moisture buffering in the envelope, but the room volume
+has a dynamic equation for the moisture content.</p>
+</div>
+<div class="section" id="internal-loads">
+<span id="sec-int-gai"></span><h3>10.1.3. Internal loads<a class="headerlink" href="#internal-loads" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id16">
+<span id="fig-internal-loads"></span><a class="reference internal image-reference" href="_images/internal_loads.png"><img alt="_images/internal_loads.png" src="_images/internal_loads.png" style="width: 1560.0px; height: 600.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Internal load schedule.</span></p>
+</div>
+<p>We use an internal load schedule as shown in
+<a class="reference internal" href="#fig-internal-loads"><span class="std std-numref">Fig. 10.2</span></a>, of which
+<span class="math notranslate nohighlight">\(20\%\)</span> is radiant,
+<span class="math notranslate nohighlight">\(40\%\)</span> is convective sensible and
+<span class="math notranslate nohighlight">\(40\%\)</span> is latent.
+Each zone has the same internal load per floor area.</p>
+</div>
+<div class="section" id="multi-zone-air-exchange">
+<h3>10.1.4. Multi-zone air exchange<a class="headerlink" href="#multi-zone-air-exchange" title="Permalink to this headline">¶</a></h3>
+<p>Each thermal zone has air flow from the HVAC system,
+through leakages of the building envelope (except for the core zone)
+and through bi-directional air exchange through open doors that connect adjacent zones.
+The bi-directional air exchange is modeled based on the differences
+in static pressure between adjacent rooms at a reference height
+plus the difference in static pressure across the door height
+as a function of the difference in air density.
+Air infiltration is a function of the
+flow imbalance of the HVAC system.
+The multizone airflow models are further described in
+<a class="reference internal" href="bibliography.html#wetter2006-2" id="id7">[Wet06]</a>.</p>
+</div>
+<div class="section" id="control-sequences">
+<span id="sec-con-seq-des"></span><h3>10.1.5. Control sequences<a class="headerlink" href="#control-sequences" title="Permalink to this headline">¶</a></h3>
+<p>For the above models, we implemented two different control sequences, which
+are described below. The control sequences are the only difference between
+the two cases.</p>
+<p>For the base case, we implemented the control sequence
+<em>VAV 2A2-21232</em> of the Sequences of Operation for
+Common HVAC Systems <a class="reference internal" href="bibliography.html#ashraeseq2006-1" id="id8">[ASH06]</a>.
+In this control sequence, the
+supply fan speed is regulated based on the duct static pressure.
+The duct static pressure is adjusted
+so that at least one VAV damper is 90% open.
+The economizer dampers
+are modulated to track the setpoint for the mixed air dry bulb temperature.
+The supply air temperature setpoints for heating and cooling are constant
+during occupied hours, which may not comply with some energy codes.
+Priority is given to maintain a minimum outside air volume flow rate.
+In each zone, the VAV damper is adjusted to meet the room temperature
+setpoint for cooling, or fully opened during heating.
+The room temperature setpoint for heating is tracked by varying
+the water flow rate through the reheat coil. There is also a
+finite state machine that transitions the mode of operation of
+the HVAC system between the modes
+<em>occupied</em>, <em>unoccupied off</em>, <em>unoccupied night set back</em>,
+<em>unoccupied warm-up</em> and <em>unoccupied pre-cool</em>.
+Local loop control is implemented using proportional and proportional-integral
+controllers, while the supervisory control is implemented
+using a finite state machine.</p>
+<p>For the detailed implementation of the control logic,
+see the model <a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/v5.0.0/help/Buildings_Examples_VAVReheat.html#Buildings.Examples.VAVReheat.ASHRAE2006">Buildings.Examples.VAVReheat.ASHRAE2006</a>,
+which is also shown in <a class="reference internal" href="#fig-model-top-base"><span class="std std-numref">Fig. 10.6</span></a>.</p>
+<p>Our implementation differs from VAV 2A2-21232 in the following points:</p>
+<ul class="simple">
+<li>We removed the return air fan as the building static pressure is sufficiently
+large. With the return fan, building static pressure was not adequate.</li>
+<li>In order to have the identical mechanical system as for guideline 36,
+we do not have a minimum outdoor air damper, but rather controlled
+the outdoor air damper to allow sufficient outdoor air
+if the mixed air temperature control loop would yield too little outdoor
+air.</li>
+</ul>
+<p>For the guideline 36 case, we implemented the multi-zone VAV control sequence
+based on <a class="reference internal" href="bibliography.html#ashrae2016" id="id9">[ASHRAE16]</a>.
+<a class="reference internal" href="#fig-vav-con-sch"><span class="std std-numref">Fig. 10.3</span></a> shows the sequence diagram, and the detailed implementation
+is available in the model <a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/v5.0.0/help/Buildings_Examples_VAVReheat.html#Buildings.Examples.VAVReheat.Guideline36">Buildings.Examples.VAVReheat.Guideline36</a>.</p>
+<p>In the guideline 36 sequence, the duct static pressure is reset using trim and respond
+logic based on zone pressure reset requests, which are issued from the terminal box
+controller based on whether the measured flow rate tracks the set point.
+The implementation of the controller that issues these system requests
+is shown in <a class="reference internal" href="#fig-sys-req"><span class="std std-numref">Fig. 10.4</span></a>.
+The economizer dampers are modulated based on a control signal for the supply
+air temperature set point, which is also used to control the heating and cooling coil valve
+in the air handler unit.
+Priority is given to maintain a minimum outside air volume flow rate.
+The supply air temperature setpoints for heating and cooling at the air handler unit
+are reset based on outdoor air temperature, zone temperature reset requests from
+the terminal boxes and operation mode.</p>
+<p>In each zone, the VAV damper and the reheat coil is controlled using the
+sequence shown in <a class="reference internal" href="#fig-dam-val-reh"><span class="std std-numref">Fig. 10.5</span></a>, where
+<code class="docutils literal notranslate"><span class="pre">THeaSet</span></code> is the set point temperature for heating,
+<code class="docutils literal notranslate"><span class="pre">dTDisMax</span></code> is the maximum temperature difference for the discharge temperature above <code class="docutils literal notranslate"><span class="pre">THeaSet</span></code>,
+<code class="docutils literal notranslate"><span class="pre">TSup</span></code> is the supply air temperature,
+<code class="docutils literal notranslate"><span class="pre">VAct*</span></code> are the active airflow rates for heating (<code class="docutils literal notranslate"><span class="pre">Hea</span></code>) and cooling (<code class="docutils literal notranslate"><span class="pre">Coo</span></code>),
+with their minimum and maximum values denoted by <code class="docutils literal notranslate"><span class="pre">Min</span></code> and <code class="docutils literal notranslate"><span class="pre">Max</span></code>.</p>
+<div class="figure" id="id17">
+<span id="fig-vav-con-sch"></span><img alt="_images/vavControlSchematics.svg" src="_images/vavControlSchematics.svg" /><p class="caption"><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Control schematics of guideline 36 case.</span></p>
+</div>
+<div class="figure" id="id18">
+<span id="fig-sys-req"></span><a class="reference internal image-reference" href="_images/SystemRequests.svg"><img alt="_images/SystemRequests.svg" src="_images/SystemRequests.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.4 </span><span class="caption-text">Composite block that implements the sequence for the VAV terminal units that output the system requests.
+(<a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/v5.0.0/help/Buildings_Controls_OBC_ASHRAE_G36_PR1_TerminalUnits_Reheat.html#Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Reheat.SystemRequests">Browsable version</a>.)</span></p>
+</div>
+<div class="figure" id="id19">
+<span id="fig-dam-val-reh"></span><a class="reference internal image-reference" href="_images/DamperValve.svg"><img alt="_images/DamperValve.svg" src="_images/DamperValve.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Control sequence for VAV terminal unit.</span></p>
+</div>
+<p>Our implementation differs from guideline 36 in the following points:</p>
+<ul>
+<li><p class="first">Guideline 36 prescribes “To avoid abrupt changes in equipment operation,
+the output of every control loop shall be capable of being limited
+by a user adjustable maximum rate of change, with
+a default of 25% per minute.”</p>
+<p>We did not implement this limitation of the output as it leads to delays
+which can make control loop tuning more difficult if the output limitation
+is slower than the dynamics of the controlled process.
+We did however add a first order hold at the trim and response logic
+that outputs the duct static pressure setpoint for the fan speed.</p>
+</li>
+<li><p class="first">Not all alarms are included.</p>
+</li>
+<li><p class="first">Where guideline 36 prescribes that equipment is enabled if a controlled quantity
+is above or below a setpoint, we added a hysteresis. In real systems, this
+avoids short-cycling due to measurement noise, in simulation, this is needed
+to guard against numerical noise that may be introduced by a solver.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="site-electricity-use">
+<h3>10.1.6. Site electricity use<a class="headerlink" href="#site-electricity-use" title="Permalink to this headline">¶</a></h3>
+<p>To convert cooling and heating energy as transferred by the coil to site electricity
+use, we apply the conversion factors from EnergyStar <a class="reference internal" href="bibliography.html#energystar2013" id="id10">[Ene13]</a>.
+Therefore, for an electric chiller, we assume an average coefficient of performance (COP) of
+<span class="math notranslate nohighlight">\(3.2\)</span> and for a geothermal heat pump, we assume a COP of <span class="math notranslate nohighlight">\(4.0\)</span>.</p>
+</div>
+<div class="section" id="simulations">
+<h3>10.1.7. Simulations<a class="headerlink" href="#simulations" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#fig-model-top-base"><span class="std std-numref">Fig. 10.6</span></a> shows the top-level of the system model of the base case, and
+<a class="reference internal" href="#fig-model-top-guideline"><span class="std std-numref">Fig. 10.7</span></a> shows the same view for the guideline 36 model.</p>
+<div class="figure" id="id20">
+<span id="fig-model-top-base"></span><img alt="_images/ASHRAE2006.svg" src="_images/ASHRAE2006.svg" /><p class="caption"><span class="caption-number">Fig. 10.6 </span><span class="caption-text">Top level view of Modelica model for the base case.</span></p>
+</div>
+<div class="figure" id="id21">
+<span id="fig-model-top-guideline"></span><img alt="_images/Guideline36.svg" src="_images/Guideline36.svg" /><p class="caption"><span class="caption-number">Fig. 10.7 </span><span class="caption-text">Top level view of Modelica model for the guideline 36 case.</span></p>
+</div>
+<p>The complexity of the control implementation is visible
+in <a class="reference internal" href="#fig-sys-req"><span class="std std-numref">Fig. 10.4</span></a> which computes the temperature and pressure
+requests of each terminal box that is sent to the air handler unit control.</p>
+<p>All simulations were done with Dymola 2018 FD01 beta3 using Ubuntu 16.04 64 bit.
+We used the Radau solver with a tolerance of <span class="math notranslate nohighlight">\(10^{-6}\)</span>.
+This solver adaptively changes the time step to control the integration error.
+Also, the time step is adapted to properly simulate <a class="reference internal" href="glossary.html#term-time-event"><span class="xref std std-term">time events</span></a>
+and <a class="reference internal" href="glossary.html#term-state-event"><span class="xref std std-term">state events</span></a>.</p>
+<p>The base case and the guideline 36 case use the same HVAC and building model,
+which is implemented in the base class
+<code class="docutils literal notranslate"><span class="pre">Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop</span></code>.
+The two cases differ in their implementation of the control sequence only,
+which is implemented in the models
+<code class="docutils literal notranslate"><span class="pre">Buildings.Examples.VAVReheat.BaseClasses.ASHRAE2006</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Buildings.Examples.VAVReheat.BaseClasses.Guideline36</span></code>.</p>
+<p><a class="reference internal" href="#tab-mod-sta"><span class="std std-numref">Table 10.1</span></a> shows an overview of the model and simulation statistics.
+The differences in the number of variables and in the number of time varying
+variables reflect that the guideline 36 control is significantly more
+detailed than what may otherwise be used for simulation of what the authors
+believe represents a realistic implementation of a feedback control sequence.
+The entry approximate number of control I/O connections
+counts the number of input and output connections among the
+control blocks of the two implementations. For example,
+If a P controller receives one set point, one measured quantity
+and sends it signal to a limiter and the limiter output is
+connected to a valve, then this would count as four connections.
+Any connections inside the PI controller would not be counted,
+as the PI controller is an elementary building block
+(see <a class="reference internal" href="cdl.html#sec-ele-bui-blo"><span class="std std-numref">Section 7.4</span></a>) of CDL.</p>
+<span id="tab-mod-sta"></span><table border="1" class="docutils" id="id22">
+<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">Model and simulation statistics.</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="66%" />
+<col width="16%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Quantity</th>
+<th class="head">Base case</th>
+<th class="head">Guideline 36</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Number of components</td>
+<td>2826</td>
+<td>4400</td>
+</tr>
+<tr class="row-odd"><td>Number of variables (prior to translation)</td>
+<td>33,700</td>
+<td>40,400</td>
+</tr>
+<tr class="row-even"><td>Number of continuous states</td>
+<td>178</td>
+<td>190</td>
+</tr>
+<tr class="row-odd"><td>Number of time-varying variables</td>
+<td>3400</td>
+<td>4800</td>
+</tr>
+<tr class="row-even"><td>Time for annual simulation in minutes</td>
+<td>70</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="performance-comparison">
+<span id="sec-per-com-cas1"></span><h2>10.2. Performance comparison<a class="headerlink" href="#performance-comparison" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id23">
+<span id="fig-cas-stu1-energy"></span><img alt="_images/energy_all.png" src="_images/energy_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.8 </span><span class="caption-text">Comparison of energy use. For the cases labeled <span class="math notranslate nohighlight">\(\pm 50\%\)</span>, the internal gains
+have been increased and decreased as described in <a class="reference internal" href="#sec-int-gai"><span class="std std-numref">Section 10.1.3</span></a>.</span></p>
+</div>
+<span id="tab-site-energy"></span><table border="1" class="docutils" id="id24">
+<caption><span class="caption-number">Table 10.2 </span><span class="caption-text">Heating, cooling, fan and total site energy, and savings of guideline 36 case versus base case.</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="24%" />
+<col width="24%" />
+<col width="25%" />
+<col width="25%" />
+<col width="3%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="math notranslate nohighlight">\(E_{h} \quad [kWh/(m^2\,a)]\)</span></th>
+<th class="head"><span class="math notranslate nohighlight">\(E_{c} \quad [kWh/(m^2\,a)]\)</span></th>
+<th class="head"><span class="math notranslate nohighlight">\(E_{f} \quad [kWh/(m^2\,a)]\)</span></th>
+<th class="head"><span class="math notranslate nohighlight">\(E_{tot} \quad [kWh/(m^2\,a)]\)</span></th>
+<th class="head">[%]</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>6.419</td>
+<td>18.98</td>
+<td>3.572</td>
+<td>28.97</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2.912</td>
+<td>14.29</td>
+<td>1.74</td>
+<td>18.94</td>
+<td>34.6</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#fig-cas-stu1-energy"><span class="std std-numref">Fig. 10.8</span></a> and
+<a class="reference internal" href="#tab-site-energy"><span class="std std-numref">Table 10.2</span></a> compare the annual
+site electricity use between
+the annual simulations with the base case control
+and the guideline 36 control.
+The bars labeled <span class="math notranslate nohighlight">\(\pm 50\%\)</span> were obtained with simulations in which we
+changed the diversity of the internal loads.
+Specifically, we reduced the internal loads for the north zone by <span class="math notranslate nohighlight">\(50\%\)</span>
+and increased them for the south zone by the same amount.</p>
+<p>The guideline 36 control saves around <span class="math notranslate nohighlight">\(30\%\)</span>
+site electrical energy. These are significant savings
+that can be achieved through software only, without the need
+for additional hardware or equipment.
+Our experience, however, was that it is rather challenging to
+program guideline 36 sequence due to their complex logic
+that contains various mode changes, interlocks and timers.
+Various programming errors and misinterpretations or ambiguities
+of the guideline were only discovered in closed loop simulations.
+We therefore believe it is important to provide robust, validated
+implementations of guideline 36 that encapsulates the complexity for the
+energy modeler and the control provider.</p>
+<div class="figure" id="id25">
+<span id="fig-outside"></span><img alt="_images/outside.png" src="_images/outside.png" />
+<p class="caption"><span class="caption-number">Fig. 10.9 </span><span class="caption-text">Outside air temperature and global horizontal irradiation for the
+three periods that will be further used in the analysis.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-outside"><span class="std std-numref">Fig. 10.9</span></a>
+shows the outside air temperature temperature <span class="math notranslate nohighlight">\(T_{out}\)</span> and
+the global horizontal irradiation <span class="math notranslate nohighlight">\(H_{glo,hor}\)</span> for
+a period in winter, spring and summer. These days will
+be used to compare the trajectories of various quantities of the baseline
+and of guideline 36.</p>
+<div class="figure" id="id26">
+<span id="fig-troom-all"></span><img alt="_images/TRoom_all.png" src="_images/TRoom_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.10 </span><span class="caption-text">Room air temperatures. The white area indicates the region between the heating and cooling setpoint temperatures.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-troom-all"><span class="std std-numref">Fig. 10.10</span></a>
+compares the time trajectories of the room air temperatures.
+The figures show that the room air temperatures are controlled
+within the setpoints for both cases. Small set point violations
+have been observed due to the dynamic nature of the control sequence
+and the controlled process.</p>
+<div class="figure" id="id27">
+<span id="fig-vav-all"></span><img alt="_images/vav_all.png" src="_images/vav_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.11 </span><span class="caption-text">VAV control signals for the north and south zones.
+The white areas indicate the day-time operation.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-vav-all"><span class="std std-numref">Fig. 10.11</span></a> shows the control signals of the reheat coils <span class="math notranslate nohighlight">\(y_{hea}\)</span>
+and the VAV damper <span class="math notranslate nohighlight">\(y_{vav}\)</span>
+for the north and south zones.</p>
+<div class="figure" id="id28">
+<span id="fig-tahu-all"></span><img alt="_images/TAHU_all.png" src="_images/TAHU_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.12 </span><span class="caption-text">AHU temperatures.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-tahu-all"><span class="std std-numref">Fig. 10.12</span></a> shows the temperatures of the air handler unit.
+The figure shows
+the supply air temperature after the fan <span class="math notranslate nohighlight">\(T_{sup}\)</span>,
+its control error relative to its set point <span class="math notranslate nohighlight">\(T_{set,sup}\)</span>,
+the mixed air temperature after the economizer <span class="math notranslate nohighlight">\(T_{mix}\)</span>
+and the return air temperature from the building <span class="math notranslate nohighlight">\(T_{ret}\)</span>.
+A notable difference is that guideline 36 resets
+the supply air temperature, whereas the base case is controlled
+for a supply air temperature of <span class="math notranslate nohighlight">\(10^\circ \mathrm C\)</span>
+for heating and <span class="math notranslate nohighlight">\(12^\circ \mathrm C\)</span> for cooling.</p>
+<div class="figure" id="id29">
+<span id="fig-flow-signals-all"></span><img alt="_images/flow_signals_all.png" src="_images/flow_signals_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.13 </span><span class="caption-text">Control signals for the supply fan, outside air damper and return air damper.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-flow-signals-all"><span class="std std-numref">Fig. 10.13</span></a> show reasonable fan speeds and economizer operation.
+Note that during the winter days 5, 6 and 7, the outdoor air damper opens. However,
+this is only to track the setpoint for the minimum outside air flow rate as the fan
+speed is at its minimum.</p>
+<div class="figure" id="id30">
+<span id="fig-normalized-flow-all"></span><img alt="_images/normalized_flow_all.png" src="_images/normalized_flow_all.png" />
+<p class="caption"><span class="caption-number">Fig. 10.14 </span><span class="caption-text">Fan and outside air volume flow rates, normalized by the room air volume.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-normalized-flow-all"><span class="std std-numref">Fig. 10.14</span></a> shows the volume flow rate of the fan
+<span class="math notranslate nohighlight">\(\dot V_{fan,sup}/V_{bui}\)</span>, where <span class="math notranslate nohighlight">\(V_{bui}\)</span> is the volume of the building,
+and of the outside air intake of the economizer <span class="math notranslate nohighlight">\(\dot V_{eco,out}/V_{bui}\)</span>, expressed in air changes per hour.
+Note that guideline 36 has smaller outside air flow rates in cold winter and hot summer days.
+The system has relatively low air changes per hour. As fan
+energy is low for this building, it may be more efficient to increase
+flow rates and use higher cooling and lower heating temperatures,
+in particular if heating and cooling is provided by a heat pump and chiller.
+We have however not further analyzed this trade-off.</p>
+<div class="figure" id="id31">
+<span id="fig-troom-load-diversity"></span><img alt="_images/TRoom_with_without_div_IHG.png" src="_images/TRoom_with_without_div_IHG.png" />
+<p class="caption"><span class="caption-number">Fig. 10.15 </span><span class="caption-text">Outdoor air and room air temperatures for the north and south zone with
+equal internal loads, and with diversity added to the internal loads.
+The white area indicates the region between the heating and cooling setpoint temperatures.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-troom-load-diversity"><span class="std std-numref">Fig. 10.15</span></a> compares the room air temperatures for the
+north and south zone for the standard internal loads, and the case where we
+reduced the internal loads in the north zone by <span class="math notranslate nohighlight">\(50\%\)</span> and increased it
+by the same amount in the south zone.
+The trajectories with subscript <span class="math notranslate nohighlight">\(\pm 50\%\)</span> are the simulations with
+the internal heat gains reduced or increased by <span class="math notranslate nohighlight">\(50\%\)</span>.
+The room air temperature trajectories
+are practically on top of each other for winter and spring, but
+the guideline 36 sequence shows somewhat better setpoint tracking
+during summer.
+Both control sequences are comparable in terms of compensating for this
+diversity, and as we saw in <a class="reference internal" href="#fig-cas-stu1-energy"><span class="std std-numref">Fig. 10.8</span></a>,
+their energy consumption is not noticeably affected.</p>
+</div>
+<div class="section" id="improvement-to-guideline-36-specification">
+<span id="sec-imp-spe-cas1"></span><h2>10.3. Improvement to guideline 36 specification<a class="headerlink" href="#improvement-to-guideline-36-specification" title="Permalink to this headline">¶</a></h2>
+<p>This section describes improvements that we recommend for the guideline 36
+specification, based on the first public review draft <a class="reference internal" href="bibliography.html#ashrae2016" id="id11">[ASHRAE16]</a>.</p>
+<div class="section" id="freeze-protection-for-mixed-air-temperature">
+<span id="sec-fre-pro"></span><h3>10.3.1. Freeze protection for mixed air temperature<a class="headerlink" href="#freeze-protection-for-mixed-air-temperature" title="Permalink to this headline">¶</a></h3>
+<p>The sequences have no freeze protection for the mixed air temperature.</p>
+<p>The guideline states (emphasis added):</p>
+<blockquote>
+<div>If the supply air temperature drops below <span class="math notranslate nohighlight">\(4.4^\circ \mathrm C\)</span> (<span class="math notranslate nohighlight">\(40^\circ \mathrm F\)</span>) for <span class="math notranslate nohighlight">\(5\)</span> minutes, send two
+(or more, as required to ensure that heating plant is active) Boiler Plant
+Requests, override the outdoor air damper to the minimum position, and
+<em>modulate the heating coil to maintain a supply air temperature</em> of at least <span class="math notranslate nohighlight">\(5.6^\circ\)</span> C
+(<span class="math notranslate nohighlight">\(42^\circ \mathrm F\)</span>). Disable this function when supply air temperature rises above <span class="math notranslate nohighlight">\(7.2^\circ \mathrm C\)</span>
+(<span class="math notranslate nohighlight">\(45^\circ \mathrm F\)</span>) for 5 minutes.</div></blockquote>
+<p>Depending on the outdoor air requirements, the mixed air temperature <span class="math notranslate nohighlight">\(T_{mix}\)</span> may be below freezing,
+which could freeze the heating coil if it has low water flow rate.
+Note that guideline 36 controls based on the supply air temperature and not the mixed air temperature.
+Hence, this control would not have been active.</p>
+<p><a class="reference internal" href="#fig-fre-pro"><span class="std std-numref">Fig. 10.16</span></a> shows the mixed air temperature and the economizer control
+signal for cold climate.
+The trajectories whose subscripts end in <em>no</em> are without freeze protection control based
+on the mixed air temperture, as is the case for guideline 36,
+whereas for the trajectories that end in <em>with</em>, we added freeze
+protection that adjusts the economizer to limit the mixed air temperature.
+For these simulations, we reduced the outdoor air temperture by
+<span class="math notranslate nohighlight">\(10\)</span> Kelvin (<span class="math notranslate nohighlight">\(18\)</span> Fahrenheit) below the values obtained from the TMY3 weather data.
+This caused in day 6 and 7 in <a class="reference internal" href="#fig-fre-pro"><span class="std std-numref">Fig. 10.16</span></a> sub-freezing mixed air temperatures
+during day-time, as the outdoor air damper was open to provide sufficient fresh air.
+We also observed that outside air is infiltrated through the AHU when the fan
+is switched off.
+This is because
+the wind pressure on the building causes the building to be slightly below
+the ambient pressure, thereby infiltrating air through the economizers closed
+air dampers (that have some leakage).
+This causes a mixed air temperatures below freezing at night when the fan is off.
+Note that these temperatures are qualitative rather than quantitative results
+as the model is quite simplified at these small flow rates, which are about
+<span class="math notranslate nohighlight">\(0.01\%\)</span> of the air flow rate that the model has when the fan is operating.</p>
+<div class="figure" id="id32">
+<span id="fig-fre-pro"></span><img alt="_images/TMixFre.png" src="_images/TMixFre.png" />
+<p class="caption"><span class="caption-number">Fig. 10.16 </span><span class="caption-text">Mixed air temperature and economizer control signal for guideline 36 case with
+and without freeze protection.</span></p>
+</div>
+<p>We therefore recommend adding either of the following wording to guideline 36,
+which is translated from <a class="reference internal" href="bibliography.html#steuernregeln1986" id="id12">[Bun86]</a>:
+Use a capillary sensor installed after the heating coil. If the temperature after the heating coil is below
+<span class="math notranslate nohighlight">\(4^\circ C\)</span>,</p>
+<ol class="arabic simple">
+<li>enable frost protection by opening the heating coil valve,</li>
+<li>send frost alarm,</li>
+<li>switch on pump of the heating coil.</li>
+</ol>
+<p>The frost alarm requires manual confirmation.</p>
+<p>If the temperature at the capillary sensor exceeds <span class="math notranslate nohighlight">\(6^\circ C\)</span>,
+close the valve but keep the pump running until the frost alarm is manually reset.
+(Closing the valve avoids overheating).</p>
+<p>Recknagel <a class="reference internal" href="bibliography.html#recknagel2005" id="id13">[RSS05]</a> adds further:</p>
+<ol class="arabic simple">
+<li>Add bypass at valve to ensure <span class="math notranslate nohighlight">\(5\%\)</span> water flow.</li>
+<li>In winter, keep bypass always open, possibly with thermostatically actuated valve.</li>
+<li>If the HVAC system is off, keep the heating coil valve open to allow water flow
+if there is a risk of frost in the AHU room.</li>
+<li>If the heating coil is closed,
+open the outdoor air damper with a time delay when fan switches on to allow heating coil valve to open.</li>
+<li>For pre-heat coil, install a circulation pump to ensure full water flow rate through the coil.</li>
+</ol>
+</div>
+<div class="section" id="deadbands-for-hard-switches">
+<span id="sec-dea-har-swi"></span><h3>10.3.2. Deadbands for hard switches<a class="headerlink" href="#deadbands-for-hard-switches" title="Permalink to this headline">¶</a></h3>
+<p>There are various sequences in which the set point changes as a step function of
+the control signal, such as shown in <a class="reference internal" href="#fig-dam-val-reh"><span class="std std-numref">Fig. 10.5</span></a>.
+In our simulations of the VAV terminal boxes, the switch in air flow rate caused
+chattering. We circumvented the problem by checking if the heating control signal
+remains bigger than <span class="math notranslate nohighlight">\(0.05\)</span> for <span class="math notranslate nohighlight">\(5\)</span> minutes. If it falls below <span class="math notranslate nohighlight">\(0.01\)</span>,
+the timer was switched off. This avoids chattering.
+We therefore recommend to be more explicit for
+where to add hysteresis or time delays.</p>
+</div>
+<div class="section" id="averaging-air-flow-measurements">
+<h3>10.3.3. Averaging air flow measurements<a class="headerlink" href="#averaging-air-flow-measurements" title="Permalink to this headline">¶</a></h3>
+<p>The guideline 36 does not seem to prescribe that outdoor airflow rate
+measurements need to be time averaged. As such measurements can
+fluctuate due to turbulence, we recommend to consider averaging
+this measurement. In the simulations, we averaged the outdoor airflow
+measurement over a <span class="math notranslate nohighlight">\(5\)</span> second moving window (in the simulation,
+this was done to avoid an algebraic system of equations,
+but in practice, this would filter measurement noise).</p>
+</div>
+<div class="section" id="minor-editorial-revision">
+<h3>10.3.4. Minor editorial revision<a class="headerlink" href="#minor-editorial-revision" title="Permalink to this headline">¶</a></h3>
+<p>The guideline states:</p>
+<blockquote>
+<div>When a control loop is enabled or re-enabled, it and all its constituents (such as the
+proportional and integral terms) shall be set initially to a Neutral value.</div></blockquote>
+<p>This should be changed to “…such as the integral terms…” because the
+proportional term cannot be reset.</p>
+</div>
+<div class="section" id="cross-referencing-and-modularization">
+<h3>10.3.5. Cross-referencing and modularization<a class="headerlink" href="#cross-referencing-and-modularization" title="Permalink to this headline">¶</a></h3>
+<p>For citing individual sections or blocks of the guideline,
+it would be helpful if the guideline where available at a permanent web site
+as html, with a unique url and anchor to each section.
+This would allow cross-referencing the guideline from a particular implementation
+in a way that allows the user to quickly see the original specification.</p>
+<p>As part of such a restructuring, it would be helpful for the reader
+to clearly state what are the input signals, what are configurable parameters,
+such as the control gain, and what are the output signals.
+This in turn would structure the guideline into distinct modules,
+for which one could also provide a reference implementation
+in software.</p>
+</div>
+<div class="section" id="lessons-learned-regarding-the-simulations">
+<h3>10.3.6. Lessons learned regarding the simulations<a class="headerlink" href="#lessons-learned-regarding-the-simulations" title="Permalink to this headline">¶</a></h3>
+<p>This is probably the most detailed building control simulation that
+has been done with the Modelica Buildings library. A few lessons
+have been learned and are reported here. Note that related best-practices
+are also available at <a class="reference external" href="http://simulationresearch.lbl.gov/modelica/userGuide/bestPractice.html">http://simulationresearch.lbl.gov/modelica/userGuide/bestPractice.html</a></p>
+<ul class="simple">
+<li><em>Fan with prescribed mass flow rate:</em> In earlier implementations, we
+converted the control signal for the fan to a mass flow rate, and used a fan
+model whose mass flow rate is equal to its control input, regardless of the pressure head.
+During start of the system, this caused a unrealistic large fan head
+of <span class="math notranslate nohighlight">\(4000\)</span> Pa (<span class="math notranslate nohighlight">\(16\)</span> inch of water) because
+VAV dampers opened slowly.
+The large pressure drop also lead to large power consumption and hence unrealistic
+temperature increase across the fan.</li>
+<li><em>Fan with prescribed presssure head:</em> We also tried to use a fan with prescribed pressure head.
+Similarly as above, the fan maintains the presssure head as obtained from its
+control signal, regardless of the volume flow rate.
+This caused unrealistic large flow rates in the return duct
+which has very small pressure drops. (Subsequently, we removed the return fan
+as it is not needed for this system.)</li>
+<li><em>Time sampling certain physical calculations:</em> Dymola 2018FD01 uses the same
+time step for all continuous-time equations. Depending on the dynamics, this
+can be smaller than a second. Since some of the control samples every
+<span class="math notranslate nohighlight">\(2\)</span> minutes, it has shown to be favorable to also time sample the long-wave
+radiation network, whose solution is time consuming.
+We expect further speed up can be achieved by time
+sampling other slow physical processes.</li>
+<li><em>Non-convergence:</em> In earlier simulations, sometimes the solver failed to converge.
+This was due to errors in the control implementation that caused event iterations
+for discrete equations that seemed to have no solution.
+In another case, division by zero in the control implementation caused a problem.
+The solver found a way to work around this division by zero
+(using heuristics) but then failed to converge.
+Since we corrected these issues, the simulations are stable.</li>
+<li><em>Too fast dynamics of coil:</em> The cooling coil is implemented using a finite volume model.
+Heat conduction across the water and air flow used to be neglected as the
+mode of heat transfer is dominated by forced convection if the fan and pump are operating.
+However, during night when the system is off, the small infiltration due to wind pressure caused in
+earlier simulations the water in the coil to freeze. Adding diffusion
+circumvented this problem, and the coil model in the library includes now by default
+a small diffusive term.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="discussion-and-conclusions">
+<span id="sec-dis-con-cas1"></span><h2>10.4. Discussion and conclusions<a class="headerlink" href="#discussion-and-conclusions" title="Permalink to this headline">¶</a></h2>
+<p>The guideline 36 sequence reduced annual site energy by <span class="math notranslate nohighlight">\(30\%\)</span>
+compared to the baseline implementation, by comparable thermal comfort.
+Such savings are significant, and have been achieved by software only
+that can relatively easy be deployed to buildings.</p>
+<p>Implementing the sequence was however rather challenging due to its
+complexity caused by the various mode changes, interlocks, timers and cascading control loops.
+These mode changes, interlocks and dynamic dependencies
+made verification of the correctness through inspection of the control signals difficult.
+As a consequence, various programming errors and misinterpretations or ambiguities
+of the guideline were only discovered in closed loop simulations,
+despite of having implemented open-loop test cases for each block of the sequence.
+We therefore believe it is important to provide robust, validated
+implementations of the sequences published in guideline 36.
+Such implementations would encapsulate the complexity and provide
+assurances that energy modeler and control providers have correct implementations.
+With the implementation in
+the Modelica package <cite>Buildings.Controls.OBC.ASHRAE.G36_PR1</cite>, we made a start
+for such an implementation and laid out the structure and conventions,
+but have not covered all of the guideline yet.
+Furthermore, conducting field validations would be useful too.</p>
+<p>A key short-coming from an implementer point of view was that the
+sequence was only available in English language, and as an implementation
+in ALC EIKON of sequences that are “close to the currently used version of the
+guideline”. Neither allowed a validation of the CDL implementation
+because the English language version leaves room for interpretation (and cannot
+be executed) and because EIKON has quite limited simulation support
+that is cumbersome to use for testing the dynamic response of
+control sequences for different input
+trajectories. Therefore, a benefit of the Modelica implementation is that
+such reference trajectories can now easily be generated to validate alternate
+implementations.</p>
+<p>A benefit of the simulation based assessment was that it allowed
+detecting potential issues such as a mixed air temperature below the
+freezing point (<a class="reference internal" href="#sec-fre-pro"><span class="std std-numref">Section 10.3.1</span></a>) and chattering due to hard switches
+(<a class="reference internal" href="#sec-dea-har-swi"><span class="std std-numref">Section 10.3.2</span></a>).
+Having a simulation model of the controlled process also allowed
+verification of work-arounds for these issues.</p>
+<p>One can, correctly, argue that the magnitude of the energy savings
+are higher the worse the baseline control is. However, the baseline control was
+carefully implemented, following the author’s interpretation of
+ASHRAE’s Sequences of Operation for
+Common HVAC Systems <a class="reference internal" href="bibliography.html#ashraeseq2006-1" id="id14">[ASH06]</a>. While higher efficiency
+of the baseline may be achieved through supply air temperature reset
+or different economizer control, such potential improvements were only
+recognized after seeing the results of the guideline 36 sequence.
+Thus, regardless of whether a building is using guideline 36,
+having a baseline control against which alternative implementations
+can be compared and benchmarked is an immensely valuable feature
+enabled by a library of standardized control sequences. Without a benchmark,
+one can easily claim to have a good control, while not recognizing what
+potential savings one may miss.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright (c) All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

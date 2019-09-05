@@ -1,0 +1,251 @@
+<h1 id="linkagejs-specifications-development">LinkageJS Specifications Development</h1>
+<h2 id="data-model-for-modeltemplate-generation">Data model for model/template generation</h2>
+<h3 id="gui">GUI</h3>
+<h4 id="left-panel">Left Panel</h4>
+<h4 id="central-panel">Central Panel</h4>
+<p>Diagram view</p>
+<h4 id="right-panel">Right Panel</h4>
+<ul>
+<li>Configuration</li>
+<li>Connection</li>
+<li>Parameters</li>
+</ul>
+<h3 id="generating-connection-lines">Generating Connection Lines</h3>
+<h4 id="manually">Manually</h4>
+<p>When drawing a connection line between two connector icons:</p>
+<ul>
+<li><p>a <code>connect</code> equation with the references to the two connectors is created,</p></li>
+<li><p>with a graphical annotation defining the connection path as an array of points and providing an optional smoothing function e.g. Bezier.</p>
+<ul>
+<li><p>When no smoothing function is specified the connection path must be rendered graphically as a set of segments.</p></li>
+<li><p>The array of points is either:</p>
+<ul>
+<li><p>created fully automatically when the next user’s click after having started a connection is made on a connector icon. The function call <code>create_new_path(connector1, connector2)</code> creates the minimum number of <em>vertical or horizontal</em> segments to link the two connector icons with the constraint of avoiding overlaying any instantiated object,</p></li>
+<li><p>created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call <code>create_new_path(point[i], point[i+1])</code> is called to generate the path linking each pair of points together.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="automatically">Automatically</h4>
+<h4 id="fluid-connectors">Fluid Connectors</h4>
+<p>Natural mapping for a model with two fluid ports (most common case):</p>
+<ul>
+<li><code>Modelica.Fluid.Interfaces.FluidPort_a</code>: inlet</li>
+<li><code>Modelica.Fluid.Interfaces.FluidPort_b</code>: outlet</li>
+</ul>
+<p>For more than two fluid ports e.g. coil we could use the variable name:</p>
+<ul>
+<li><code>Modelica.Fluid.Interfaces.FluidPort_a port_a1</code>: primary fluid (liquid) inlet</li>
+<li><code>Modelica.Fluid.Interfaces.FluidPort_a port_a2</code>: secondary fluid (air) inlet</li>
+</ul>
+<p>However that logic fails when the ports correspond to the same medium:</p>
+<ul>
+<li><code>Buildings.Fluid.Actuators.Dampers.MixingBox</code>: <code>port_Out, port_Exh, port_Ret, port_Sup</code></li>
+<li><code>Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear</code>: <code>port_1, port_2, port_3</code> where <code>port_3</code> is neither inlet nor outlet but rather a fluid junction</li>
+<li><code>Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU</code>: <code>port_a1, port_a2, port_b1, port_b2</code></li>
+</ul>
+<p>For the configuration script:</p>
+<ul>
+<li><p>By default <code>port_a</code> and <code>port_b</code> will be tagged as <code>inlet</code> and <code>outlet</code> respectively.</p></li>
+<li><p>An optional tag is provided at the instance level to specify the main fluid stream e.g. <code>air_supply</code> or <code>air_return</code>.</p></li>
+<li><p>All fluid connectors are then tagged by concatenating the previous tags e.g. <code>air_supply_inlet</code> or <code>air_return_outlet</code>.</p></li>
+</ul>
+<p>We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve (see <a href="#connect_3wv">figure</a>), the bypass port should be on a different fluid stream than the inlet and outlet ports. Indeed, to model a valve mounted on the return pipe, the bypass port should be connected to the liquid inlet port of the coil (inside connector) and the liquid supply port (outside connector). Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.</p>
+<pre><code>{&quot;port_1&quot;: &quot;hotwater_return_inlet&quot;, &quot;port_2&quot;: &quot;hotwater_return_outlet&quot;, &quot;port_3&quot;: &quot;hotwater_supply_junction&quot;}</code></pre>
+<p>The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no mapping dictionary provided.</p>
+<p>If the tagging is resolved for all fluid connectors of the instantiated objects the connector tags are stored in a hierarchical vendor annotation at the model level e.g. <code>__Linkage_connect(Tags(object_name1={connector_name1=air_supply_inlet, connector_name2=air_supply_outlet, ...}, ...))</code>. This is done when updating the model.</p>
+<p>All object names in <code>__Linkage_tags(Tags())</code> annotation reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, two additional inputs are needed:</p>
+<ol type="1">
+<li><p>The names of the start port and the end port for each fluid stream. Note that those ports may be part of a different fluid stream see figure.</p></li>
+<li><p>The direction (horizontal or vertical) of the connection path.</p></li>
+</ol>
+<p>Those are stored in <code>__Linkage_connect(Direction(fluid_stream1={start_connector_name, end_connector_name, horizontal_or_vertical}))</code>.</p>
+<p>The connection logic is then as follows:</p>
+<ul>
+<li><p>List all the different fluid streams in <code>__Linkage_connect(Tags())</code> corresponding to each tuple <code>{fluid}_{stream}</code> in all the connector tags <code>{fluid}_{stream}_{port}</code>.</p></li>
+<li><p>For each fluid stream:</p>
+<ul>
+<li><p>Find the position of the objects corresponding to the start and end ports specified in <code>__Linkage_connect(Direction(fluid_stream1={start_connector_name, end_connector_name}))</code>. Those are further referred to as start and end position.</p></li>
+<li><p>Find the orientation (up, down, right, left) of the direction (horizontal, vertical) of the connection path by comparing the <code>x</code> (resp. <code>y</code>) coordinate values of the start and end position if the direction is horizontal (resp. vertical). Throw an exception if the orientation cannot be resolved due to identical coordinate values.</p></li>
+<li><p>Order all the connectors belonging to that fluid stream based on the position of the corresponding objects, the orientation defined here above and <code>inlet</code> being listed before <code>outlet</code> and <code>junction</code>. Throw an exception if the coordinate values are not strictly increasing.</p></li>
+<li><p>Generate the <code>connect</code> equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>connect(start_connector_name, ordered_connector[<span class="dv">1</span>])</span>
+<span id="cb2-2"><a href="#cb2-2"></a>annotation(Line(points=create_new_path(start_connector_name, ordered_connector[<span class="dv">1</span>])))</span>
+<span id="cb2-3"><a href="#cb2-3"></a>i = <span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>i_end = i + <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="cf">while</span> i_end &lt;= n</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">if</span> type(ordered_connector[i]) != <span class="st">&quot;junction&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>        i_start = i+<span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>        i_end = i_start + <span class="dv">1</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>        i = i_end + <span class="dv">1</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">else</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        i_start = i</span>
+<span id="cb2-12"><a href="#cb2-12"></a>        i_end = i_start + <span class="dv">1</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>        i = i_end</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    connect(ordered_connector[i_start], ordered_connector[i_end])</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    annotation(Line(points=create_new_path(ordered_connector[i_start], ordered_connector[i_end])))</span>
+<span id="cb2-16"><a href="#cb2-16"></a>connect(ordered_connector[n], end_connector_name)</span></code></pre></div>
+<p>Note: The logic could be simplified by using <code>Buildings.Fluid.FixedResistances.Junction</code> to explictly model each fluid junction and restricting the connector types to <code>inlet</code> and <code>outlet</code>. However that would make the initial template definition more complex see <a href="#connect_3wv">figure</a>.</p></li>
+<li><p>Generate the connection path and the corresponding graphical annotation by the function call <code>create_new_path(connector1, connector2)</code>.</p></li>
+</ul></li>
+</ul>
+<p><img src="img/connect_3wv.svg" alt="Generating connections with a fluid junction not modeled explicitly (typically a three way valve)" /> <em>Generating connections with a fluid junction not modeled explicitly (typically a three way valve)</em></p>
+<p><img src="img/connect_3wv_junction.svg" alt="Generating connections with a fluid junction not modeled explicitly (typically a three way valve)" /> <em>Generating connections with a fluid junction modeled explicitly (typically a three way valve)</em></p>
+<p>The implications of that logic are the following:</p>
+<ul>
+<li><p>Within the same fluid stream objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid streams must be defined, typically <code>supply</code> and <code>return</code>.</p></li>
+<li><p>A same fluid stream does not necessarily implies a uniform flow rate nor temperature.</p></li>
+</ul>
+<h4 id="signal-connectors">Signal Connectors</h4>
+<h2 id="test-data-model">Test data model</h2>
+<p>Exemple of AHU (VAV or DOA)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="dt">&quot;script&quot;</span><span class="fu">:</span> <span class="st">&quot;path of script.js&quot;</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="dt">&quot;system&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;System type&quot;</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>            <span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;AHU&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="fu">},</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="dt">&quot;icon&quot;</span><span class="fu">:</span> <span class="st">&quot;path of icon.mo&quot;</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="dt">&quot;diagram&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="dt">&quot;configuration&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="dt">&quot;modelica&quot;</span><span class="fu">:</span> <span class="ot">[[</span><span class="dv">-120</span><span class="ot">,</span><span class="dv">-200</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">120</span><span class="ot">,</span><span class="dv">120</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Model name&quot;</span><span class="fu">,</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Text&quot;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">see</span> <span class="er">https</span><span class="fu">:</span><span class="er">//ipywidgets.readthedocs.io/en/latest/examples/Widget%</span><span class="dv">20</span><span class="er">List.html</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>            <span class="st">&quot;value&quot;</span><span class="er">:</span> <span class="st">&quot;AHU_#i&quot;</span> <span class="er">//</span> <span class="er">#i</span> <span class="er">minimum</span> <span class="er">available</span> <span class="er">positive</span> <span class="er">integer</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>    <span class="fu">},</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Type of AHU&quot;</span><span class="fu">,</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Dropdown&quot;</span><span class="fu">,</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>            <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;VAV&quot;</span><span class="ot">,</span> <span class="st">&quot;DOA&quot;</span><span class="ot">]</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>    <span class="fu">},</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a></span>
+<span id="cb3-28"><a href="#cb3-28"></a>    <span class="dt">&quot;equipment&quot;</span><span class="fu">:</span> <span class="ot">[</span>  <span class="er">//</span> <span class="er">Brick</span> <span class="er">relationship:</span> <span class="er">hasPart</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>        <span class="fu">{</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;heat_recovery&quot;</span><span class="fu">,</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Heat recovery&quot;</span><span class="fu">,</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Dropdown&quot;</span><span class="fu">,</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>            <span class="dt">&quot;condition&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">//</span> <span class="er">array</span> <span class="er">of</span> <span class="er">conditions</span> <span class="er">for</span> <span class="er">enabling/displaying</span> <span class="er">this</span> <span class="er">object</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>                <span class="fu">{</span><span class="dt">&quot;#type&quot;</span><span class="fu">:</span> <span class="st">&quot;DOA&quot;</span><span class="fu">}</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a>            <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;None&quot;</span><span class="ot">,</span> <span class="st">&quot;Coils&quot;</span><span class="ot">,</span> <span class="st">&quot;Fixed plate&quot;</span><span class="ot">,</span> <span class="st">&quot;Enthalpy wheel&quot;</span><span class="ot">,</span> <span class="st">&quot;Sensible wheel&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a>            <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>                <span class="st">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="ot">,</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>            <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;heaRec&quot;</span><span class="fu">,</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>            <span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;None&quot;</span><span class="fu">,</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>            <span class="dt">&quot;icon_transformation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a>            <span class="dt">&quot;placement&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">12</span><span class="ot">,</span> <span class="dv">9</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>        <span class="fu">{</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a>            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;economizer&quot;</span><span class="fu">,</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Economizer&quot;</span><span class="fu">,</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Checkbox&quot;</span><span class="fu">,</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a>            <span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;False&quot;</span><span class="fu">,</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a>            <span class="dt">&quot;condition&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">//</span> <span class="er">array</span> <span class="er">of</span> <span class="er">conditions</span> <span class="er">for</span> <span class="er">enabling/displaying</span> <span class="er">this</span> <span class="er">object</span></span>
+<span id="cb3-51"><a href="#cb3-51"></a>                <span class="fu">{</span><span class="dt">&quot;#type&quot;</span><span class="fu">:</span> <span class="st">&quot;VAV&quot;</span><span class="fu">}</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a>            <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span><span class="fu">,</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a>            <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;eco&quot;</span><span class="fu">,</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a>            <span class="dt">&quot;icon_transformation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a>            <span class="dt">&quot;placement&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">12</span><span class="ot">,</span> <span class="dv">6</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-58"><a href="#cb3-58"></a>        <span class="fu">{</span></span>
+<span id="cb3-59"><a href="#cb3-59"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Supply fan&quot;</span><span class="fu">,</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Dropdown&quot;</span><span class="fu">,</span></span>
+<span id="cb3-61"><a href="#cb3-61"></a>            <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;None&quot;</span><span class="ot">,</span> <span class="st">&quot;Draw through&quot;</span><span class="ot">,</span> <span class="st">&quot;Blow through&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a>            <span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;Draw through&quot;</span><span class="fu">,</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a>            <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">array</span> <span class="er">or</span> <span class="er">array</span> <span class="er">of</span> <span class="er">arrays</span></span>
+<span id="cb3-64"><a href="#cb3-64"></a>            <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;supFan&quot;</span><span class="fu">,</span></span>
+<span id="cb3-65"><a href="#cb3-65"></a>            <span class="dt">&quot;icon_transformation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a>            <span class="dt">&quot;placement&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="kw">null</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">16</span><span class="ot">,</span> <span class="dv">11</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">16</span><span class="ot">,</span> <span class="dv">18</span><span class="ot">]]</span><span class="fu">,</span> <span class="er">//</span> <span class="er">single</span> <span class="er">coordinate</span> <span class="er">array</span> <span class="er">or</span> <span class="er">array</span> <span class="er">of</span> <span class="er">coordinates</span> <span class="er">arrays</span> <span class="er">with</span> <span class="er">size</span> <span class="er">len(options)</span><span class="fu">,</span></span>
+<span id="cb3-67"><a href="#cb3-67"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a>        <span class="fu">{</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Return/Relief fan&quot;</span><span class="fu">,</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Dropdown&quot;</span><span class="fu">,</span></span>
+<span id="cb3-71"><a href="#cb3-71"></a>            <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;None&quot;</span><span class="ot">,</span> <span class="st">&quot;Return&quot;</span><span class="ot">,</span> <span class="st">&quot;Relief&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-72"><a href="#cb3-72"></a>            <span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;Relief&quot;</span><span class="fu">,</span></span>
+<span id="cb3-73"><a href="#cb3-73"></a>            <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">array</span> <span class="er">or</span> <span class="er">array</span> <span class="er">of</span> <span class="er">arrays</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a>            <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;retFan&quot;</span><span class="fu">,</span></span>
+<span id="cb3-75"><a href="#cb3-75"></a>            <span class="dt">&quot;icon_transformation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-76"><a href="#cb3-76"></a>            <span class="dt">&quot;placement&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="kw">null</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">16</span><span class="ot">,</span> <span class="dv">11</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">16</span><span class="ot">,</span> <span class="dv">18</span><span class="ot">]]</span><span class="fu">,</span> <span class="er">//</span> <span class="er">single</span> <span class="er">coordinate</span> <span class="er">array</span> <span class="er">or</span> <span class="er">array</span> <span class="er">of</span> <span class="er">coordinates</span> <span class="er">arrays</span> <span class="er">with</span> <span class="er">size</span> <span class="er">len(options)</span><span class="fu">,</span></span>
+<span id="cb3-77"><a href="#cb3-77"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-78"><a href="#cb3-78"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-79"><a href="#cb3-79"></a></span>
+<span id="cb3-80"><a href="#cb3-80"></a>    <span class="dt">&quot;controls&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-81"><a href="#cb3-81"></a>        <span class="fu">{</span></span>
+<span id="cb3-82"><a href="#cb3-82"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Economizer&quot;</span><span class="fu">,</span></span>
+<span id="cb3-83"><a href="#cb3-83"></a>            <span class="dt">&quot;widget&quot;</span><span class="fu">:</span> <span class="st">&quot;Dropdown&quot;</span><span class="fu">,</span></span>
+<span id="cb3-84"><a href="#cb3-84"></a>            <span class="dt">&quot;condition&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">//</span> <span class="er">array</span> <span class="er">of</span> <span class="er">conditions</span> <span class="er">for</span> <span class="er">enabling/displaying</span> <span class="er">this</span> <span class="er">object</span></span>
+<span id="cb3-85"><a href="#cb3-85"></a>                <span class="fu">{</span><span class="dt">&quot;#equipmen[id=economizer].value&quot;</span><span class="fu">:</span> <span class="st">&quot;True&quot;</span><span class="fu">}</span></span>
+<span id="cb3-86"><a href="#cb3-86"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-87"><a href="#cb3-87"></a>            <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ASHRAE 2006&quot;</span><span class="ot">,</span> <span class="st">&quot;ASHRAE G36&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-88"><a href="#cb3-88"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-89"><a href="#cb3-89"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-90"><a href="#cb3-90"></a></span>
+<span id="cb3-91"><a href="#cb3-91"></a>    <span class="dt">&quot;parameters&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-92"><a href="#cb3-92"></a>        <span class="fu">{</span></span>
+<span id="cb3-93"><a href="#cb3-93"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;v_flowSup_nominal&quot;</span><span class="fu">,</span></span>
+<span id="cb3-94"><a href="#cb3-94"></a>            <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="fu">,</span></span>
+<span id="cb3-95"><a href="#cb3-95"></a>        <span class="fu">}</span></span>
+<span id="cb3-96"><a href="#cb3-96"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-97"><a href="#cb3-97"></a></span>
+<span id="cb3-98"><a href="#cb3-98"></a><span class="fu">}</span></span></code></pre></div>
+<p>Issues:</p>
+<ul>
+<li><p>We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:</p>
+<ul>
+<li><p>identify which object and <code>connect</code> statement can be modified with the template script: declaration/statement annotation <code>__linkage_modify=true</code></p></li>
+<li><p>generate the JSON configuration file:</p>
+<ul>
+<li><p>automatically from the model structure? Non working examples:</p>
+<ul>
+<li>Supply fan/Draw through: if the user has modified the <code>Placement</code> we have no one-to-one correspondance with JSON file. Also relying on the <code>connect</code> statements involving the object seems to complex.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Icon for schematics can be specified as annotation in Modelica model (the icon transformation should be similar between Modelica and svg)</li>
+</ul>
+<p>Divers:</p>
+<ul>
+<li>Tooltip for every GUI item</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li>Validation upon submit (export/generate) VS real-time</li>
+<li>Routine to add sensors for control sequences</li>
+<li>Routine to add fluid ports: part of data model?</li>
+</ul>
+<h2 id="questions">Questions</h2>
+<p>Choice of units: SI / IP</p>
+<p>Text editor</p>
+<p>Launch simulation integrated</p>
+<ul>
+<li>At least compilation required to validate the model?</li>
+<li>For control sequence configuration the model may not need to be fully specified.</li>
+</ul>
+<p>Visualize results: variable browser (with Brick/Haystack option similar as <code>re</code> option)</p>
+<p>No icon layer: just diagram layer showing graphical objects, component icons, connectors and connection lines</p>
+<p>Automatic medium propagation between connected components</p>
+<ul>
+<li>Expected as a future enhancement of Modelica standard: should we anticipate or wait and see?</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>Modelica standard graphical annotations part of specifications</p>
+<hr />
+<h2 id="notes">Notes</h2>
+<h3 id="brick-and-tagging">Brick and tagging</h3>
+<p>Set up parameters values like OS measures enable cf. electrical loads…</p>
+<h3 id="various">Various</h3>
+<p>From Taylor Eng.</p>
+<blockquote>
+<p>For standard systems, it might be possible to simply include in their specifications a table of ASHRAE Guideline 36 sequences with check boxes for the paragraph numbers that are applicable to their project.</p>
+</blockquote>

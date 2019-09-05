@@ -1,0 +1,2195 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.5)  6 FEB 2019 17:12
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**obc_report.tex
+(./obc_report.tex
+LaTeX2e <2018-12-01>
+(./sphinxmanual.cls
+Document Class: sphinxmanual 2018/12/22 v1.8.3 Document class (Sphinx manual)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+)
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+2500 (decimal 9472)
+   defining Unicode char U+2502 (decimal 9474)
+   defining Unicode char U+2514 (decimal 9492)
+   defining Unicode char U+251C (decimal 9500)
+   defining Unicode char U+2572 (decimal 9586)
+
+(/home/agautier/texmf/tex/latex/cmap/cmap.sty
+Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)<<t1.cmap>>)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen103
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks17
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/11/13 3.27 The Babel package
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/11/13 3.27 Babel switching mechanism
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/11/13 3.27 Babel common definitions
+\babel@savecnt=\count101
+\U@D=\dimen112
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count102
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/home/agautier/texmf/tex/latex/fncychap/fncychap.sty
+Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
+\RW=\skip46
+\mylen=\skip47
+\myhi=\skip48
+\px=\skip49
+\py=\skip50
+\pyy=\skip51
+\pxx=\skip52
+\c@AlphaCnt=\count103
+\c@AlphaDecCnt=\count104
+) (./sphinx.sty
+Package: sphinx 2019/01/12 v1.8.4 LaTeX package (Sphinx markup)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip53
+\f@nch@O@elh=\skip54
+\f@nch@O@erh=\skip55
+\f@nch@O@olh=\skip56
+\f@nch@O@orh=\skip57
+\f@nch@O@elf=\skip58
+\f@nch@O@erf=\skip59
+\f@nch@O@olf=\skip60
+\f@nch@O@orf=\skip61
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+(/home/agautier/texmf/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box29
+\beforetitleunit=\skip62
+\aftertitleunit=\skip63
+\ttl@plus=\dimen115
+\ttl@minus=\dimen116
+\ttl@toksa=\toks22
+\titlewidth=\dimen117
+\titlewidthlast=\dimen118
+\titlewidthfirst=\dimen119
+)
+(/home/agautier/texmf/tex/latex/tabulary/tabulary.sty
+Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen120
+\ar@mcellbox=\box30
+\extrarowheight=\dimen121
+\NC@list=\toks23
+\extratabsurround=\skip64
+\backup@length=\skip65
+\ar@cellbox=\box31
+)
+\TY@count=\count105
+\TY@linewidth=\dimen122
+\tymin=\dimen123
+\tymax=\dimen124
+\TY@tablewidth=\dimen125
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
+\LTleft=\skip66
+\LTright=\skip67
+\LTpre=\skip68
+\LTpost=\skip69
+\LTchunksize=\count106
+\LTcapwidth=\dimen126
+\LT@head=\box32
+\LT@firsthead=\box33
+\LT@foot=\box34
+\LT@lastfoot=\box35
+\LT@cols=\count107
+\LT@rows=\count108
+\c@LT@tables=\count109
+\c@LT@chunks=\count110
+\LT@p@ftn=\toks24
+)
+(/home/agautier/texmf/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box36
+\sift@deathcycles=\count111
+\@vwid@loff=\dimen127
+\@vwid@roff=\dimen128
+) (./sphinxmulticell.sty
+Package: sphinxmulticell 2017/02/23 v1.6 better span rows and columns of a tabl
+e (Sphinx team)
+\sphinx@TY@tablewidth=\dimen129
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/home/agautier/texmf/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip70
+\fb@frw=\dimen130
+\fb@frh=\dimen131
+\FrameRule=\dimen132
+\FrameSep=\dimen133
+)
+(/home/agautier/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/home/agautier/texmf/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count112
+\FV@InFile=\read1
+\FV@TabBox=\box37
+\c@FancyVerbLine=\count113
+\FV@StepNumber=\count114
+\FV@OutFile=\write3
+) (./footnotehyper-sphinx.sty
+Package: footnotehyper-sphinx 2017/10/27 v1.7 hyperref aware footnote.sty for s
+phinx (JFB)
+\FNH@notes=\box38
+\FNH@width=\dimen134
+)
+(/home/agautier/texmf/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count115
+\float@exts=\toks25
+\float@box=\box39
+\@float@everytoks=\toks26
+\@floatcapt=\box40
+)
+(/home/agautier/texmf/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen135
+\WF@size=\dimen136
+\c@WF@wrappedlines=\count116
+\WF@box=\box41
+\WF@everypar=\toks27
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/home/agautier/texmf/tex/latex/parskip/parskip.sty
+Package: parskip 2001/04/09 non-zero parskip adjustments
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/home/agautier/texmf/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(/home/agautier/texmf/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
+(/home/agautier/texmf/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+) (./sphinxhighlight.sty
+Package: sphinxhighlight 2016/05/29 stylesheet for highlighting with pygments
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+\sphinxverbatimsep=\dimen137
+\sphinxverbatimborder=\dimen138
+\sphinxshadowsep=\dimen139
+\sphinxshadowsize=\dimen140
+\sphinxshadowrule=\dimen141
+\spx@notice@border=\dimen142
+\spx@image@box=\box42
+\spx@image@maxheight=\dimen143
+\c@literalblock=\count117
+\sphinxcontinuationbox=\box43
+\sphinxvisiblespacebox=\box44
+\sphinxVerbatim@TitleBox=\box45
+\py@argswidth=\skip71
+\lineblockindentation=\skip72
+\DUlineblockindent=\skip73
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen144
+\Hy@linkcounter=\count118
+\Hy@pagecounter=\count119
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count120
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4393.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4393.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4393.
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count121
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen145
+\Fld@menulength=\count122
+\Field@Width=\dimen146
+\Fld@charsize=\dimen147
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring ON on input line 6398.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count123
+\c@Item=\count124
+\c@Hfootnote=\count125
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count126
+\c@bookmark@seq@number=\count127
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip74
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/hypcap.sty
+Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/home/agautier/texmf/tex/latex/sfmath/sfmath.sty
+Package: sfmath 2007/08/27 v0.8 sans serif maths
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/phv/m/n on input line 329.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 330.
+\symSFMath=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `SFMath' in version `normal'
+(Font)                  OT1/phv/m/sl --> OT1/phv/m/sl on input line 343.
+LaTeX Font Info:    Overwriting symbol font `SFMath' in version `bold'
+(Font)                  OT1/phv/m/sl --> OT1/phv/bx/sl on input line 344.
+LaTeX Font Info:    Redeclaring math symbol \imath on input line 398.
+LaTeX Font Info:    Redeclaring math symbol \jmath on input line 399.
+\symSFMathUp=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `SFMathUp' in version `normal'
+(Font)                  OT1/phv/m/n --> OT1/phv/m/n on input line 406.
+LaTeX Font Info:    Overwriting symbol font `SFMathUp' in version `bold'
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 407.
+LaTeX Font Info:    Redeclaring math symbol \ldotp on input line 410.
+\symSFMathGreek=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `SFMathGreek' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 419.
+LaTeX Font Info:    Overwriting symbol font `SFMathGreek' in version `bold'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 420.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 422.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 423.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 424.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 425.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 426.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 427.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 428.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 429.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 430.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 431.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 432.
+\symSFMathUpGreek=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `SFMathUpGreek' in version `normal'
+
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 436.
+LaTeX Font Info:    Overwriting symbol font `SFMathUpGreek' in version `bold'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 437.
+LaTeX Font Info:    Overwriting math alphabet `\mathnormal' in version `normal'
+
+(Font)                  OML/cmm/m/it --> OT1/phv/m/sl on input line 446.
+LaTeX Font Info:    Overwriting math alphabet `\mathnormal' in version `bold'
+(Font)                  OML/cmm/b/it --> OT1/phv/bx/sl on input line 447.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/phv/m/n --> OT1/phv/m/n on input line 449.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 450.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 452.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 453.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/phv/m/sl on input line 455.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/phv/bx/sl on input line 456.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 458.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/phv/bx/n on input line 459.
+LaTeX Font Info:    Overwriting math alphabet `\mathsl' in version `bold'
+(Font)                  OT1/phv/m/sl --> OT1/phv/bx/sl on input line 466.
+)
+(/home/agautier/texmf/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+)
+(/home/agautier/texmf/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip75
+\enit@outerparindent=\dimen148
+\enit@toks=\toks28
+\enit@inbox=\box46
+\enitdp@description=\count128
+)
+(/home/agautier/texmf/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count129
+)
+(/home/agautier/texmf/tex/latex/listings/listings.sty
+\lst@mode=\count130
+\lst@gtempboxa=\box47
+\lst@token=\toks29
+\lst@length=\count131
+\lst@currlwidth=\dimen149
+\lst@column=\count132
+\lst@pos=\count133
+\lst@lostspace=\dimen150
+\lst@width=\dimen151
+\lst@newlines=\count134
+\lst@lineno=\count135
+\lst@maxwidth=\dimen152
+
+(/home/agautier/texmf/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count136
+\lst@skipnumbers=\count137
+\lst@framebox=\box48
+)
+(/home/agautier/texmf/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+\Gm@cnth=\count138
+\Gm@cntv=\count139
+\c@Gm@tempcnt=\count140
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
+\Gm@dimlist=\toks30
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/tocstyle.sty
+Package: tocstyle 2017/02/23 v0.2i-alpha KOMA-Script package (versatile toc sty
+les)
+
+
+Package tocstyle Warning: THIS IS AN ALPHA VERSION!
+(tocstyle)                USAGE OF THIS VERSION IS ON YOUR OWN RISK!
+(tocstyle)                EVERYTHING MAY HAPPEN!
+(tocstyle)                EVERYTHING MAY CHANGE IN FUTURE!
+(tocstyle)                THERE IS NO SUPPORT, IF YOU USE THIS PACKAGE!
+(tocstyle)                Maybe it would be better, not to load this package.
+
+\tocstyle@indentstyle=\count141
+Package tocstyle Info: no tocstyle.cfg found on input line 942.
+)
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: leaders
+exclude: 
+exclude: 
+exclude: 
+(/home/agautier/texmf/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count142
+\calc@Bcount=\count143
+\calc@Adimen=\dimen161
+\calc@Bdimen=\dimen162
+\calc@Askip=\skip76
+\calc@Bskip=\skip77
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count144
+\calc@Cskip=\skip78
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+)
+\AM@pagewidth=\dimen163
+\AM@pageheight=\dimen164
+
+(/home/agautier/texmf/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box49
+\AM@global@opts=\toks31
+\AM@toc@title=\toks32
+\c@AM@survey=\count145
+\AM@templatesizebox=\box50
+)
+(/home/agautier/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/home/agautier/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/home/agautier/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks33
+\pgfutil@tempdima=\dimen165
+\pgfutil@tempdimb=\dimen166
+
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box51
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/home/agautier/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/home/agautier/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
+
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks36
+))
+\pgf@x=\dimen167
+\pgf@y=\dimen168
+\pgf@xa=\dimen169
+\pgf@ya=\dimen170
+\pgf@xb=\dimen171
+\pgf@yb=\dimen172
+\pgf@xc=\dimen173
+\pgf@yc=\dimen174
+\w@pgf@writea=\write4
+\r@pgf@reada=\read2
+\c@pgf@counta=\count146
+\c@pgf@countb=\count147
+\c@pgf@countc=\count148
+\c@pgf@countd=\count149
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count150
+\pgfsyssoftpath@bigbuffer@items=\count151
+)
+(/home/agautier/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count152
+\pgfmath@box=\box52
+\pgfmath@toks=\toks40
+\pgfmath@stack@operand=\toks41
+\pgfmath@stack@operation=\toks42
+)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.
+tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+) (/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.
+code.tex))) (/home/agautier/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count153
+))
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen176
+\pgf@picmaxx=\dimen177
+\pgf@picminy=\dimen178
+\pgf@picmaxy=\dimen179
+\pgf@pathminx=\dimen180
+\pgf@pathmaxx=\dimen181
+\pgf@pathminy=\dimen182
+\pgf@pathmaxy=\dimen183
+\pgf@xx=\dimen184
+\pgf@xy=\dimen185
+\pgf@yx=\dimen186
+\pgf@yy=\dimen187
+\pgf@zx=\dimen188
+\pgf@zy=\dimen189
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen190
+\pgf@path@lasty=\dimen191
+) (/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen192
+\pgf@shorten@start@additional=\dimen193
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box53
+\pgf@hbox=\box54
+\pgf@layerbox@main=\box55
+\pgf@picture@serial@count=\count154
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen194
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.te
+x
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen195
+\pgf@pt@y=\dimen196
+\pgf@pt@temp=\dimen197
+) (/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+) (/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen198
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen199
+\pgf@sys@shading@range@num=\count155
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box56
+))
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/home/agautier/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/home/agautier/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box57
+)
+(/home/agautier/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/home/agautier/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen256
+\pgf@nodesepend=\dimen257
+)
+(/home/agautier/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+(/home/agautier/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/home/agautier/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/home/agautier/texmf/tex/latex/pgf/math/pgfmath.sty
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmath.code.tex))
+(/home/agautier/texmf/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/home/agautier/texmf/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen258
+\pgffor@skip=\dimen259
+\pgffor@stack=\toks43
+\pgffor@toks=\toks44
+))
+(/home/agautier/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/home/agautier/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count156
+\pgfplotmarksize=\dimen260
+)
+\tikz@lastx=\dimen261
+\tikz@lasty=\dimen262
+\tikz@lastxsaved=\dimen263
+\tikz@lastysaved=\dimen264
+\tikzleveldistance=\dimen265
+\tikzsiblingdistance=\dimen266
+\tikz@figbox=\box58
+\tikz@figbox@bg=\box59
+\tikz@tempbox=\box60
+\tikz@tempbox@bg=\box61
+\tikztreelevel=\count157
+\tikznumberofchildren=\count158
+\tikznumberofcurrentchild=\count159
+\tikz@fig@count=\count160
+ (/home/agautier/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count161
+\pgfmatrixcurrentcolumn=\count162
+\pgf@matrix@numberofcolumns=\count163
+)
+\tikz@expandcount=\count164
+
+(/home/agautier/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryt
+opaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+(/home/agautier/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryc
+alc.code.tex
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+\@indexfile=\write5
+\openout5 = `obc_report.idx'.
+
+
+Writing index file obc_report.idx
+(./obc_report.aux)
+\openout1 = `obc_report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 243.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 243.
+
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 243.
+LaTeX Font Info:    ... okay on input line 243.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 243.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 243.
+
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count165
+\scratchdimen=\dimen267
+\scratchbox=\box62
+\nofMPsegments=\count166
+\nofMParguments=\count167
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count168
+\MPscratchDim=\dimen268
+\MPnumerator=\count169
+\makeMPintoPDFobject=\count170
+\everyMPtoPDFconversion=\toks46
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box63
+Package hyperref Info: Link coloring ON on input line 243.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count171
+)
+LaTeX Info: Redefining \ref on input line 243.
+LaTeX Info: Redefining \pageref on input line 243.
+LaTeX Info: Redefining \nameref on input line 243.
+
+(./obc_report.out) (./obc_report.out)
+\@outlinefile=\write6
+\openout6 = `obc_report.out'.
+
+\c@lstlisting=\count172
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* hratio: 1:1
+* vratio: 1:1
+* modes: includehead includefoot twoside 
+* h-part:(L,W,R)=(54.2025pt, 505.89pt, 54.2025pt)
+* v-part:(T,H,B)=(54.2025pt, 686.56499pt, 54.2025pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=505.89pt
+* \textheight=619.56499pt
+* \oddsidemargin=-18.06749pt
+* \evensidemargin=-18.06749pt
+* \topmargin=-18.06749pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=36.135pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 243.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 243.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 243.
+Package tocstyle Info: prepare \l@part for redefinition on input line 243.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 243.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 9.49997pt on input line 243.
+Package tocstyle Info: prepare \l@chapter for redefinition on input line 243.
+Package tocstyle Info: prepare \l@section for redefinition on input line 243.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 243.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 243.
+<<ot1.cmap>>
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 6.64998pt on input line 243.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 4.74998pt on input line 243.
+LaTeX Font Info:    Try loading font information for U+msa on input line 243.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 243.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 243.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 6.64998pt on input line 243.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 4.74998pt on input line 243.
+Package tocstyle Info: prepare \l@subsection for redefinition on input line 243
+.
+Package tocstyle Info: prepare \l@table for redefinition on input line 243.
+Package tocstyle Info: prepare \l@figure for redefinition on input line 243.
+
+
+Package tocstyle Warning: unexpected \@dottedtocline definition!
+(tocstyle)                You are either using an unknown LaTeX kernel
+(tocstyle)                version, an unknown class or package, that redefines
+(tocstyle)                \@dottedtocline, or a \@dottedtocline redefinition
+(tocstyle)                at the document preamble.
+(tocstyle)                Because of this you may get unexpected results!
+(tocstyle)                Maybe it would be better not to use package tocstyle.
+
+
+Package tocstyle Info: Unexpected definition is:
+(tocstyle)             macro:#1#2#3#4#5->\ifnum #1>\c@tocdepth \else \vskip \z@
+ \@plus .2\p@ {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightski
+p \parindent #2\relax \@afterindenttrue \interlinepenalty \@M \leavevmode \@tem
+pdima #3\relax \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip {
+#4}\nobreak \leaders \hbox {$\m@th \mkern \@dotsep mu\hbox {.}\mkern \@dotsep m
+u$}\hfill \nobreak \hb@xt@ \@pnumwidth {\hfil \normalfont \normalcolor #5\kern 
+-\p@ \kern \p@ }\par }\fi  on input line 243.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+ABD: EveryShipout initializing macros
+Package hyperref Info: Option `pageanchor' set `false' on input line 246.
+<cdl-logo.png, id=333, 618.31pt x 65.24374pt>
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 246.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+File: cdl-logo.png Graphic file (type png)
+<use cdl-logo.png>
+Package pdftex.def Info: cdl-logo.png  used on input line 246.
+(pdftex.def)             Requested size: 505.89pt x 53.38274pt.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 23.63593pt on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
+(Font)              scaled to size 9.49997pt on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
+(Font)              scaled to size 16.41594pt on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 246.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 16.41594pt on input line 246.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 16.41594pt on input line 246.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 246.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 16.41594pt on input line 246.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 11.39996pt on input line 246.
+ [1
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./cdl-l
+ogo.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 23.63593pt on input line 248.
+
+(./obc_report.toc
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+[1
+
+
+
+]
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 2):  38.94992pt
+text indent by \l@... (toc, 2):  33.2499pt
+number indent by parent (toc, 2):  38.55048pt
+text indent calculated (toc, 2): 31.15947pt
+number indent calculated (toc, 2): 38.55048pt
+number indent by \l@... (toc, 1):  14.24995pt
+text indent by \l@... (toc, 1):  24.69997pt
+number indent by parent (toc, 1):  15.31383pt
+text indent calculated (toc, 1): 23.23665pt
+number indent calculated (toc, 1): 15.31383pt
+[2]
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  14.24995pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 15.31383pt
+number indent calculated (toc, 0): 0.0pt
+)
+\tf@toc=\write7
+\openout7 = `obc_report.toc'.
+
+ [3]
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 19.70294pt on input line 256.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 256.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 19.70294pt on input line 256.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 259.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 259.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 259.
+[1
+
+
+]
+Chapter 2.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 278.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 278.
+[2
+
+]
+Chapter 3.
+<ControlsDesignVerficationFlow.pdf, id=459, 876.47452pt x 832.43498pt>
+File: ControlsDesignVerficationFlow.pdf Graphic file (type pdf)
+<use ControlsDesignVerficationFlow.pdf>
+Package pdftex.def Info: ControlsDesignVerficationFlow.pdf  used on input line 
+331.
+(pdftex.def)             Requested size: 451.68457pt x 428.9819pt.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.54997pt on input line 333.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 333.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.54997pt on input line 333.
+[3
+
+] [4 <./ControlsDesignVerficationFlow.pdf>]
+Chapter 4.
+LaTeX Font Info:    Try loading font information for TS1+phv on input line 340.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 340.
+ [5
+
+] [6]
+<plantuml-16203daf01ec3a0cf0c3ed0f3604fe4c15eaab95.pdf, id=489, 797.98125pt x 5
+15.9275pt>
+File: plantuml-16203daf01ec3a0cf0c3ed0f3604fe4c15eaab95.pdf Graphic file (type 
+pdf)
+<use plantuml-16203daf01ec3a0cf0c3ed0f3604fe4c15eaab95.pdf>
+Package pdftex.def Info: plantuml-16203daf01ec3a0cf0c3ed0f3604fe4c15eaab95.pdf 
+ used on input line 653.
+(pdftex.def)             Requested size: 505.89pt x 327.08287pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 708--709
+[]\T1/phv/m/n/10 Preconfigured con-trol se-quence, stored in an
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 793--797
+[]|\T1/phv/m/n/10 The user ini-ti-ates the sav-ing of the com-pos-ite
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 893--896
+[]\T1/phv/m/n/10 Preconfigured con-trol se-quence, stored in an
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1004
+[]|\T1/phv/m/n/10 The user ini-ti-ates the sav-ing of the com-pos-ite
+ []
+
+[9] [10] [11] [12] [13 <./plantuml-16203daf01ec3a0cf0c3ed0f3604fe4c15eaab95.pdf
+>] [14] [15] [16] [17]
+Chapter 5.
+[18
+
+] [19] [20]
+Chapter 6.
+<plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.pdf, id=614, 749.80125pt x 3
+58.33875pt>
+File: plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.pdf Graphic file (type 
+pdf)
+<use plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.pdf>
+Package pdftex.def Info: plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.pdf 
+ used on input line 1929.
+(pdftex.def)             Requested size: 338.76343pt x 161.90161pt.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.64998pt on input line 1939.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 1939.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 1939.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 5.69998pt on input line 1939.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 7.59998pt on input line 1939.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 5.69998pt on input line 1939.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 5.69998pt on input line 1939.
+[21
+
+ <./plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.pdf>]
+<plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.pdf, id=635, 795.97375pt x 8
+53.1875pt>
+File: plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.pdf Graphic file (type 
+pdf)
+<use plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.pdf>
+Package pdftex.def Info: plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.pdf 
+ used on input line 1965.
+(pdftex.def)             Requested size: 338.76343pt x 363.11412pt.
+ [22 <./plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.pdf>]
+<plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.pdf, id=649, 766.865pt x 402
+.50375pt>
+File: plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.pdf Graphic file (type 
+pdf)
+<use plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.pdf>
+Package pdftex.def Info: plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.pdf 
+ used on input line 2015.
+(pdftex.def)             Requested size: 338.76343pt x 177.80849pt.
+ [23 <./plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.pdf>]
+Chapter 7.
+[24
+
+]
+<cdl_screen_shot.png, id=671, 608.2725pt x 803.0pt>
+File: cdl_screen_shot.png Graphic file (type png)
+<use cdl_screen_shot.png>
+Package pdftex.def Info: cdl_screen_shot.png  used on input line 2213.
+(pdftex.def)             Requested size: 169.38171pt x 223.60094pt.
+ [25]
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 2263.
+ [26 <./cdl_screen_shot.png>] [27] [28]
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 2431.
+
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 2450.
+ [29]
+<CustomPWithLimiter.pdf, id=727, 839.40279pt x 453.00484pt>
+File: CustomPWithLimiter.pdf Graphic file (type pdf)
+<use CustomPWithLimiter.pdf>
+Package pdftex.def Info: CustomPWithLimiter.pdf  used on input line 2493.
+(pdftex.def)             Requested size: 282.30286pt x 152.35374pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 8.54997pt on input line 2495.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 8.54997pt on input line 2495.
+ [30 <./CustomPWithLimiter.pdf>] [31] [32] [33] [34]
+Chapter 8.
+[35
+
+]
+<codeExport.pdf, id=794, 660.2181pt x 563.05646pt>
+File: codeExport.pdf Graphic file (type pdf)
+<use codeExport.pdf>
+Package pdftex.def Info: codeExport.pdf  used on input line 2866.
+(pdftex.def)             Requested size: 395.224pt x 337.07184pt.
+ [36 <./codeExport.pdf>] [37]
+<CustomPWithLimiter1.pdf, id=876, 839.40279pt x 453.00484pt>
+File: CustomPWithLimiter1.pdf Graphic file (type pdf)
+<use CustomPWithLimiter1.pdf>
+Package pdftex.def Info: CustomPWithLimiter1.pdf  used on input line 3033.
+(pdftex.def)             Requested size: 282.30286pt x 152.35374pt.
+ [38 <./CustomPWithLimiter1.pdf>] [39]
+Underfull \vbox (badness 10000) detected at line 3181
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3181
+ []
+
+[40]
+<plantuml-fe4b117a8045a59d5f331a97e0858a2e2523131c.pdf, id=911, 621.32124pt x 1
+99.74625pt>
+File: plantuml-fe4b117a8045a59d5f331a97e0858a2e2523131c.pdf Graphic file (type 
+pdf)
+<use plantuml-fe4b117a8045a59d5f331a97e0858a2e2523131c.pdf>
+Package pdftex.def Info: plantuml-fe4b117a8045a59d5f331a97e0858a2e2523131c.pdf 
+ used on input line 3220.
+(pdftex.def)             Requested size: 310.53314pt x 99.83325pt.
+ [41] [42 <./plantuml-fe4b117a8045a59d5f331a97e0858a2e2523131c.pdf>]
+[43]
+Chapter 9.
+[44
+
+]
+<overviewBlockDiagram.pdf, id=953, 844.6658pt x 322.99161pt>
+File: overviewBlockDiagram.pdf Graphic file (type pdf)
+<use overviewBlockDiagram.pdf>
+Package pdftex.def Info: overviewBlockDiagram.pdf  used on input line 3411.
+(pdftex.def)             Requested size: 395.224pt x 151.13087pt.
+ [45 <./overviewBlockDiagram.pdf>] [46]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 3525
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+<funnel_example.pdf, id=985, 530.98375pt x 380.42125pt>
+File: funnel_example.pdf Graphic file (type pdf)
+<use funnel_example.pdf>
+Package pdftex.def Info: funnel_example.pdf  used on input line 3553.
+(pdftex.def)             Requested size: 451.68457pt x 323.61497pt.
+<SingleZoneVAVSupply_u.pdf, id=990, 900.54271pt x 735.9832pt>
+File: SingleZoneVAVSupply_u.pdf Graphic file (type pdf)
+<use SingleZoneVAVSupply_u.pdf>
+Package pdftex.def Info: SingleZoneVAVSupply_u.pdf  used on input line 3572.
+(pdftex.def)             Requested size: 282.30286pt x 230.71292pt.
+<VAVSingleZoneTSupSet.pdf, id=991, 255.10272pt x 190.7207pt>
+File: VAVSingleZoneTSupSet.pdf Graphic file (type pdf)
+<use VAVSingleZoneTSupSet.pdf>
+Package pdftex.def Info: VAVSingleZoneTSupSet.pdf  used on input line 3588.
+(pdftex.def)             Requested size: 282.30286pt x 211.06224pt.
+<vavSingleZoneSeq.pdf, id=996, 702.625pt x 451.6875pt>
+File: vavSingleZoneSeq.pdf Graphic file (type pdf)
+<use vavSingleZoneSeq.pdf>
+Package pdftex.def Info: vavSingleZoneSeq.pdf  used on input line 3599.
+(pdftex.def)             Requested size: 282.30286pt x 181.48506pt.
+ [47] [48 <./funnel_example.pdf
+
+pdfTeX warning: pdflatex (file ./funnel_example.pdf): PDF inclusion: invalid ot
+her resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] [49 <./SingleZoneVAVSupply_u.pdf> <./VAVSingleZoneTSupSet.pdf
+
+pdfTeX warning: pdflatex (file ./VAVSingleZoneTSupSet.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>]
+<AlcEikon_CoolingControl_CHWValvePositionAndEnable.pdf, id=1040, 1862.1953pt x 
+952.12856pt>
+File: AlcEikon_CoolingControl_CHWValvePositionAndEnable.pdf Graphic file (type 
+pdf)
+<use AlcEikon_CoolingControl_CHWValvePositionAndEnable.pdf>
+Package pdftex.def Info: AlcEikon_CoolingControl_CHWValvePositionAndEnable.pdf 
+ used on input line 3617.
+(pdftex.def)             Requested size: 451.68457pt x 230.94174pt.
+<CoolingCoilValve.pdf, id=1041, 1099.85907pt x 895.84688pt>
+File: CoolingCoilValve.pdf Graphic file (type pdf)
+<use CoolingCoilValve.pdf>
+Package pdftex.def Info: CoolingCoilValve.pdf  used on input line 3624.
+(pdftex.def)             Requested size: 451.68457pt x 367.90106pt.
+<AlcEikon_OATHysteresis.pdf, id=1048, 241.65282pt x 115.18031pt>
+File: AlcEikon_OATHysteresis.pdf Graphic file (type pdf)
+<use AlcEikon_OATHysteresis.pdf>
+Package pdftex.def Info: AlcEikon_OATHysteresis.pdf  used on input line 3662.
+(pdftex.def)             Requested size: 169.38171pt x 80.73637pt.
+<AlcEikon_PIParameters.pdf, id=1049, 454.69875pt x 323.70941pt>
+File: AlcEikon_PIParameters.pdf Graphic file (type pdf)
+<use AlcEikon_PIParameters.pdf>
+Package pdftex.def Info: AlcEikon_PIParameters.pdf  used on input line 3669.
+(pdftex.def)             Requested size: 282.30286pt x 200.9793pt.
+ [50 <./vavSingleZoneSeq.pdf>]
+<CoolingCoilValve_Trends.pdf, id=1071, 1075.76906pt x 717.43031pt>
+File: CoolingCoilValve_Trends.pdf Graphic file (type pdf)
+<use CoolingCoilValve_Trends.pdf>
+Package pdftex.def Info: CoolingCoilValve_Trends.pdf  used on input line 3707.
+(pdftex.def)             Requested size: 451.68457pt x 301.2311pt.
+<cooling_valve.pdf, id=1074, 614.295pt x 794.97pt>
+File: cooling_valve.pdf Graphic file (type pdf)
+<use cooling_valve.pdf>
+Package pdftex.def Info: cooling_valve.pdf  used on input line 3723.
+(pdftex.def)             Requested size: 451.68457pt x 584.54462pt.
+<funnel_valve_control.pdf, id=1075, 530.98375pt x 380.42125pt>
+File: funnel_valve_control.pdf Graphic file (type pdf)
+<use funnel_valve_control.pdf>
+Package pdftex.def Info: funnel_valve_control.pdf  used on input line 3744.
+(pdftex.def)             Requested size: 451.68457pt x 323.61497pt.
+ [51 <./AlcEikon_CoolingControl_CHWValvePositionAndEnable.pdf>] [52 <./CoolingC
+oilValve.pdf> <./AlcEikon_OATHysteresis.pdf
+
+pdfTeX warning: pdflatex (file ./AlcEikon_OATHysteresis.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>] [53 <./AlcEikon_PIParameters.pdf> <./CoolingCoilValve_Trends.pdf
+
+pdfTeX warning: pdflatex (file ./CoolingCoilValve_Trends.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>] [54 <./cooling_valve.pdf>] [55 <./funnel_valve_control.pdf
+
+pdfTeX warning: pdflatex (file ./funnel_valve_control.pdf): PDF inclusion: inva
+lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>]
+Chapter 10.
+[56
+
+]
+<vavSchematics.pdf, id=1179, 578.69882pt x 185.48296pt>
+File: vavSchematics.pdf Graphic file (type pdf)
+<use vavSchematics.pdf>
+Package pdftex.def Info: vavSchematics.pdf  used on input line 3842.
+(pdftex.def)             Requested size: 505.89pt x 162.14716pt.
+<internal_loads.pdf, id=1182, 469.755pt x 180.675pt>
+File: internal_loads.pdf Graphic file (type pdf)
+<use internal_loads.pdf>
+Package pdftex.def Info: internal_loads.pdf  used on input line 3873.
+(pdftex.def)             Requested size: 375.80452pt x 144.54018pt.
+ [57 <./vavSchematics.pdf>] [58 <./internal_loads.pdf>]
+<vavControlSchematics.pdf, id=1262, 939.51pt x 627.3919pt>
+File: vavControlSchematics.pdf Graphic file (type pdf)
+<use vavControlSchematics.pdf>
+Package pdftex.def Info: vavControlSchematics.pdf  used on input line 3978.
+(pdftex.def)             Requested size: 505.89pt x 337.81969pt.
+<SystemRequests.pdf, id=1263, 635.77563pt x 1406.0599pt>
+File: SystemRequests.pdf Graphic file (type pdf)
+<use SystemRequests.pdf>
+Package pdftex.def Info: SystemRequests.pdf  used on input line 3985.
+(pdftex.def)             Requested size: 190.73416pt x 421.82123pt.
+<DamperValve.pdf, id=1266, 551.47412pt x 244.50473pt>
+File: DamperValve.pdf Graphic file (type pdf)
+<use DamperValve.pdf>
+Package pdftex.def Info: DamperValve.pdf  used on input line 3993.
+(pdftex.def)             Requested size: 275.73637pt x 122.25206pt.
+<ASHRAE2006.pdf, id=1272, 1372.6046pt x 748.85307pt>
+File: ASHRAE2006.pdf Graphic file (type pdf)
+<use ASHRAE2006.pdf>
+Package pdftex.def Info: ASHRAE2006.pdf  used on input line 4039.
+(pdftex.def)             Requested size: 505.89pt x 275.9972pt.
+<Guideline36.pdf, id=1273, 1327.44246pt x 695.0682pt>
+File: Guideline36.pdf Graphic file (type pdf)
+<use Guideline36.pdf>
+Package pdftex.def Info: Guideline36.pdf  used on input line 4046.
+(pdftex.def)             Requested size: 505.89pt x 264.88168pt.
+ [59] [60 <./vavControlSchematics.pdf>] [61 <./SystemRequests.pdf>] [62 <./Damp
+erValve.pdf> <./ASHRAE2006.pdf
+
+pdfTeX warning: pdflatex (file ./ASHRAE2006.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+>] [63 <./Guideline36.pdf>]
+<energy_all.pdf, id=1493, 361.35pt x 216.81pt>
+File: energy_all.pdf Graphic file (type pdf)
+<use energy_all.pdf>
+Package pdftex.def Info: energy_all.pdf  used on input line 4145.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+ [64 <./energy_all.pdf>]
+<outside.pdf, id=1557, 469.755pt x 578.16pt>
+File: outside.pdf Graphic file (type pdf)
+<use outside.pdf>
+Package pdftex.def Info: outside.pdf  used on input line 4221.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<TRoom_all.pdf, id=1560, 469.755pt x 578.16pt>
+File: TRoom_all.pdf Graphic file (type pdf)
+<use TRoom_all.pdf>
+Package pdftex.def Info: TRoom_all.pdf  used on input line 4236.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<vav_all.pdf, id=1563, 469.755pt x 578.16pt>
+File: vav_all.pdf Graphic file (type pdf)
+<use vav_all.pdf>
+Package pdftex.def Info: vav_all.pdf  used on input line 4250.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<TAHU_all.pdf, id=1566, 469.755pt x 578.16pt>
+File: TAHU_all.pdf Graphic file (type pdf)
+<use TAHU_all.pdf>
+Package pdftex.def Info: TAHU_all.pdf  used on input line 4262.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<flow_signals_all.pdf, id=1569, 469.755pt x 578.16pt>
+File: flow_signals_all.pdf Graphic file (type pdf)
+<use flow_signals_all.pdf>
+Package pdftex.def Info: flow_signals_all.pdf  used on input line 4280.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<normalized_flow_all.pdf, id=1572, 469.755pt x 578.16pt>
+File: normalized_flow_all.pdf Graphic file (type pdf)
+<use normalized_flow_all.pdf>
+Package pdftex.def Info: normalized_flow_all.pdf  used on input line 4292.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+<TRoom_with_without_div_IHG.pdf, id=1575, 469.755pt x 578.16pt>
+File: TRoom_with_without_div_IHG.pdf Graphic file (type pdf)
+<use TRoom_with_without_div_IHG.pdf>
+Package pdftex.def Info: TRoom_with_without_div_IHG.pdf  used on input line 430
+9.
+(pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
+ [65] [66 <./outside.pdf>]
+[67 <./TRoom_all.pdf>] [68 <./vav_all.pdf>] [69 <./TAHU_all.pdf>] [70 <./flow_s
+ignals_all.pdf>] [71 <./normalized_flow_all.pdf>] [72 <./TRoom_with_without_div
+_IHG.pdf>]
+<TMixFre.pdf, id=2072, 469.755pt x 289.08pt>
+File: TMixFre.pdf Graphic file (type pdf)
+<use TMixFre.pdf>
+Package pdftex.def Info: TMixFre.pdf  used on input line 4382.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+ [73
+
+] [74 <./TMixFre.pdf>] [75] [76] [77]
+Chapter 11.
+[78
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 4.74998pt on input line 4751.
+ [79]
+Chapter 12.
+[80
+
+]
+Chapter 13.
+[81
+
+]
+Underfull \hbox (badness 7667) in paragraph at lines 4807--4808
+[]\T1/phv/m/n/10 Daniel A. Veron-ica. Au-to-mat-i-cally de-tect-ing faulty reg-
+u-la-tion in hvac con-trols. \T1/phv/m/sl/10 HVAC&R Re-
+ []
+
+(./obc_report.ind [82
+
+] [83
+
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4822.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4822.
+ (./obc_report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4822.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4822.
+
+Package rerunfilecheck Info: File `obc_report.out' has not changed.
+(rerunfilecheck)             Checksum: 21E9EF104D25F97F550D0201CAF5477F;16993.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4822.
+ ) 
+Here is how much of TeX's memory you used:
+ 26666 strings out of 493733
+ 455156 string characters out of 6150913
+ 684502 words of memory out of 5000000
+ 29444 multiletter control sequences out of 15000+600000
+ 84285 words of font info for 121 fonts, out of 8000000 for 9000
+ 431 hyphenation exceptions out of 8191
+ 55i,23n,54p,952b,567s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/urw/courier/ucrro8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/h
+elvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic
+/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8
+a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on obc_report.pdf (87 pages, 5443315 bytes).
+PDF statistics:
+ 2398 PDF objects out of 2487 (max. 8388607)
+ 1665 compressed objects within 17 object streams
+ 333 named destinations out of 1000 (max. 500000)
+ 864 words of extra memory for PDF output out of 10000 (max. 10000000)
+

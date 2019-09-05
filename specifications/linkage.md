@@ -53,78 +53,65 @@ For more than two fluid ports e.g. coil we could use the variable name:
 However that logic fails when the ports correspond to the same medium:
 
 * `Buildings.Fluid.Actuators.Dampers.MixingBox`: `port_Out, port_Exh, port_Ret, port_Sup`
-* `Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear`: `port_1, port_2, port_3` where `port_3` is neither inlet nor outlet but rather a fluid junction
+* `Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear`: `port_1, port_2, port_3`
 * `Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU`: `port_a1, port_a2, port_b1, port_b2`
 
 For the configuration script:
 
 * By default `port_a` and `port_b` will be tagged as `inlet` and `outlet` respectively.
 
-* An optional tag is provided at the instance level to specify the main fluid stream e.g. `air_supply` or `air_return`.
+* An optional tag is provided at the instance level to specify the fluid path e.g. `air_supply` or `air_return`.
 
 * All fluid connectors are then tagged by concatenating the previous tags e.g. `air_supply_inlet` or `air_return_outlet`.
 
-We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid stream than the inlet and outlet ports. Indeed, to model a valve mounted on the return pipe, the bypass port should be connected to the liquid inlet port of the coil (inside connector) and the liquid supply port (outside connector). Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve (see [figure](#connect_3wv)), the bypass port should be on a different fluid path than the inlet and outlet ports see figure. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+Furthermore a fluid connector can be connected to more than one other fluid connector. To support that feature another connector tag value is possible: `junction`.
+For a three way valve without any flow splitter to explicitly model the fluid junction the mapping dictionary could be:
 
-```
-{
-    "hotwater_return_inlet": ["port_1"],
-    "hotwater_return_outlet": ["port_2"],
-    "hotwater_supply_junction": ["port_3"],
-}
-```
+`{"port_1": "hotwater_return_inlet", "port_2": "hotwater_return_outlet", "port_3": "hotwater_supply_junction"}`
 
-The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no mapping dictionary provided.
+The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.
 
 If the tagging is resolved for all fluid connectors of the instantiated objects the connector tags are stored in a hierarchical vendor annotation at the model level e.g. `__Linkage_connect(Tags(object_name1={connector_name1=air_supply_inlet, connector_name2=air_supply_outlet, ...}, ...))`. This is done when updating the model.
 
 All object names in `__Linkage_tags(Tags())` annotation reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, two additional inputs are needed:
 
-1. The names of the start port and the end port for each fluid stream. Note that those ports may be part of a different fluid stream see figure.
+1. The names of the start port and the end port for each fluid path. Note that those ports may be part of a different fluid path see figure.
 
 2. The direction (horizontal or vertical) of the connection path.
 
-Those are stored in `__Linkage_connect(Direction(fluid_stream1={start_connector_name, end_connector_name, horizontal_or_vertical}))`.
+Those are stored in `__Linkage_connect(Direction(fluid_path1={start_connector_name, end_connector_name, horizontal_or_vertical}))`.
 
 The connection logic is then as follows:
 
-* List all the different fluid streams in `__Linkage_connect(Tags())` corresponding to each tuple `{fluid}_{stream}` in all the connector tags `{fluid}_{stream}_{port}`.
+* List all the different fluid paths in `__Linkage_connect(Tags())` corresponding to each tuple `{fluid}_{path}` in all the connector tags `{fluid}_{path}_{port}`.
 
-* For each fluid stream:
+* For each fluid path:
 
-    * Find the position of the objects corresponding to the start and end ports specified in `__Linkage_connect(Direction(fluid_stream1={start_connector_name, end_connector_name}))`. Those are further referred to as start and end position.
+    * Find the position of the objects corresponding to the start and end ports specified in `__Linkage_connect(Direction(fluid_path1={start_connector_name, end_connector_name}))`. Those are further referred to as start and end position.
 
     * Find the orientation (up, down, right, left) of the direction (horizontal, vertical) of the connection path by comparing the `x` (resp. `y`) coordinate values of the start and end position if the direction is horizontal (resp. vertical).
     Throw an exception if the orientation cannot be resolved due to identical coordinate values.
 
-    * Order all the connectors belonging to that fluid stream based on the position of the corresponding objects, the orientation defined here above and `inlet` being listed before `outlet` and `junction`.
-    Throw an exception if the coordinate values are not strictly increasing.
+    * Order all the connectors belonging to that fluid path according to the orientation defined here above and based on the position of the corresponding objects with the constraint that for each object `inlet` has to be listed first and `outlet` last. Prepend / append that list with the start and end connectors.
 
     * Generate the `connect` equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation :
 
-        ```C
-        connect(start_connector_name, ordered_connector[1])
-        annotation(Line(points=create_new_path(start_connector_name, ordered_connector[1])))
+        ```c
         i = 1
-        i_end = i + 1
-        while i_end <= n
-            if type(ordered_connector[i]) != "junction"
-                i_start = i+1
-                i_end = i_start + 1
-                i = i_end + 1
+        while i < n
+            j = i + 1
+            if type(ordered_connector[i]) == "junction"  // connect all junction connectors before iterating
+                while type(ordered_connector[j]) == "junction"
+                    connect(ordered_connector[i], ordered_connector[j])
+                    annotation(Line(points=create_new_path(ordered_connector[i], ordered_connector[j])))
+                    j = j + 1
+                i = j
             else
-                i_start = i
-                i_end = i_start + 1
-                i = i_end
-            connect(ordered_connector[i_start], ordered_connector[i_end])
-            annotation(Line(points=create_new_path(ordered_connector[i_start], ordered_connector[i_end])))
-        connect(ordered_connector[n], end_connector_name)
+                connect(ordered_connector[i], ordered_connector[j])
+                annotation(Line(points=create_new_path(ordered_connector[i], ordered_connector[j])))
+                i = j + 1
         ```
-
-        Note: The logic could be simplified by using `Buildings.Fluid.FixedResistances.Junction` to explictly model each fluid junction and restricting the connector types to `inlet` and `outlet`. However that would make the initial template definition more complex see [figure](#connect_3wv).
-
-    * Generate the connection path and the corresponding graphical annotation by the function call `create_new_path(connector1, connector2)`.
-
 
 [connect_3wv]: img/connect_3wv.svg
 ![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv]
@@ -136,9 +123,9 @@ The connection logic is then as follows:
 
 The implications of that logic are the following:
 
-* Within the same fluid stream objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid streams must be defined, typically `supply` and `return`.
+* Within the same fluid path objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically `supply` and `return`.
 
-* A same fluid stream does not necessarily implies a uniform flow rate nor temperature.
+* A same fluid path does not necessarily imply a uniform flow rate.
 
 #### Signal Connectors
 
@@ -160,8 +147,9 @@ Exemple of AHU (VAV or DOA)
     "icon": "path of icon.mo",
 
     "diagram": {
-        "configuration": [],
+        "configuration": [20, 20],
         "modelica": [[-120,-200], [120,120]],
+    },
 
     "name": {
             "description": "Model name",
@@ -175,55 +163,74 @@ Exemple of AHU (VAV or DOA)
             "options": ["VAV", "DOA"]
     },
 
+    "medium": {
+            "air": "Buildings.Media.Air",
+            "hotWater": "Buildings.Media.Water",
+            "chilledWater": "Buildings.Media.Water",
+    },
+
     "equipment": [  // Brick relationship: hasPart
         {
-            "id": "heat_recovery",
+            "name": "heaRec",
             "description": "Heat recovery",
             "widget": "Dropdown",
             "condition": [ // array of conditions for enabling/displaying this object
                 {"#type": "DOA"}
             ],
-            "options": ["None", "Coils", "Fixed plate", "Enthalpy wheel", "Sensible wheel"],
-            "model": [
-                "Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU",
-            ],
-            "tag": "heaRec",
+            "options": ["None", "Fixed plate", "Enthalpy wheel", "Sensible wheel"],
             "value": "None",
-            "icon_transformation": null,
+            "model": [
+                null,
+                "Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU",
+                "Buildings.Fluid.HeatExchangers.EnthalpyWheel",
+                "Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)",
+            ],
+            "icon_transformation": flipHorizontal,
             "placement": [12, 9],
+            "connect_tags": {"connectors": {
+                "port_a1": "air_return_inlet", "port_a2": "air_supply_inlet", "port_b1": "air_return_outlet", "port_b2": "air_supply_outlet"}},
         },
         {
-            "id": "economizer",
+            "name": "eco",
             "description": "Economizer",
-            "widget": "Checkbox",
-            "value": "False",
+            "widget": "Dropdown",
+            "options": ["None", "Separate dedicated OA dampers", "Single common OA damper"],
             "condition": [ // array of conditions for enabling/displaying this object
                 {"#type": "VAV"}
             ],
-            "model": "Buildings.Fluid.Actuators.Dampers.MixingBox",
-            "tag": "eco",
-            "icon_transformation": null,
+            "model": [
+                null,
+                "Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow",
+                "Buildings.Fluid.Actuators.Dampers.MixingBox",
+            ],
+            "icon_transformation": flipVertical,
             "placement": [12, 6],
+            "connect_tags": {"connectors": {
+                "port_Out": "air_supply_junction", "port_OutMin": "air_supply_junction", "port_Sup": "air_supply_outlet",
+                "port_Exh": "air_return_outlet", "port_Ret": "air_return_inlet"
+            }}
         },
         {
+            "name": "supFan",
             "description": "Supply fan",
             "widget": "Dropdown",
             "options": ["None", "Draw through", "Blow through"],
             "value": "Draw through",
             "model": "Buildings.Fluid.Movers.SpeedControlled_y", // array or array of arrays
-            "tag": "supFan",
             "icon_transformation": null,
             "placement": [null, [16, 11], [16, 18]], // single coordinate array or array of coordinates arrays with size len(options),
+            "connect_tags": {"fluid_path": "air_supply"}
         },
         {
+            "name": "retFan",
             "description": "Return/Relief fan",
             "widget": "Dropdown",
             "options": ["None", "Return", "Relief"],
             "value": "Relief",
             "model": "Buildings.Fluid.Movers.SpeedControlled_y", // array or array of arrays
-            "tag": "retFan",
-            "icon_transformation": null,
+            "icon_transformation": flipHorizontal,
             "placement": [null, [16, 11], [16, 18]], // single coordinate array or array of coordinates arrays with size len(options),
+            "connect_tags": {"fluid_path": "air_return"}
         },
     ],
 
@@ -242,7 +249,15 @@ Exemple of AHU (VAV or DOA)
         {
             "name": "v_flowSup_nominal",
             "description": "Nominal supply air volumetric flow rate",
-        }
+            "value": 0,
+            "unit": "m3/h",
+        },
+        {
+            "name": "v_flowRet_nominal",
+            "description": "Nominal return air volumetric flow rate",
+            "value": 0,
+            "unit": "m3/h",
+        },
     ],
 
 }
@@ -252,7 +267,7 @@ Issues:
 
 * We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:
 
-  * identify which object and `connect` statement can be modified with the template script: declaration/statement annotation `__linkage_modify=true`
+  * identify which object and `connect` statement can be modified with the template script: declaration/statement annotation `__Linkage_modify=true`
   * generate the JSON configuration file:
 
     * automatically from the model structure? Non working examples:

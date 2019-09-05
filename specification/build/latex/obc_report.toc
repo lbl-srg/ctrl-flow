@@ -1,0 +1,82 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Preamble}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Purpose of the Document}{1}{section.1.1}% 
+\contentsline {chapter}{\numberline {2}Conventions}{2}{chapter.2}% 
+\contentsline {chapter}{\numberline {3}Process Workflow}{3}{chapter.3}% 
+\contentsline {chapter}{\numberline {4}Use Cases}{5}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Controls Design}{5}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Loading a standard sequence from a library}{5}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Customizing a control sequence for an HVAC system}{6}{subsection.4.1.2}% 
+\contentsline {subsection}{\numberline {4.1.3}Customizing and configuring a control sequence for a single-zone VAV system}{7}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}Customizing and configuring a control sequence for a multizone VAV system}{9}{subsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.1.5}Performance assessment of a control sequence}{11}{subsection.4.1.5}% 
+\contentsline {subsection}{\numberline {4.1.6}Defining integration with non-HVAC systems such as lighting, fa\IeC {\c c}ade and presence detection}{12}{subsection.4.1.6}% 
+\contentsline {section}{\numberline {4.2}Bidding and BAS Implementation}{14}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Generate control point schedule from sequences}{14}{subsection.4.2.1}% 
+\contentsline {section}{\numberline {4.3}Commissioning, Operation, and Maintenance}{15}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Conducting verification test of a VAV Cooling-Only Terminal Unit}{15}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}As-Built Sequence Generator}{16}{subsection.4.3.2}% 
+\contentsline {chapter}{\numberline {5}Requirements}{18}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Controls Design Tool}{18}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}CDL}{19}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Commissioning and Functional Verification Tool}{20}{section.5.3}% 
+\contentsline {chapter}{\numberline {6}Software Architecture}{21}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Controls Design Tool}{22}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Functional Verification Tool}{23}{section.6.2}% 
+\contentsline {chapter}{\numberline {7}Control Description Language}{24}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Syntax}{24}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Permissible Data Types}{25}{section.7.2}% 
+\contentsline {section}{\numberline {7.3}Encapsulation of Functionality}{25}{section.7.3}% 
+\contentsline {section}{\numberline {7.4}Elementary Building Blocks}{25}{section.7.4}% 
+\contentsline {section}{\numberline {7.5}Instantiation}{27}{section.7.5}% 
+\contentsline {section}{\numberline {7.6}Connectors}{28}{section.7.6}% 
+\contentsline {section}{\numberline {7.7}Equations}{28}{section.7.7}% 
+\contentsline {section}{\numberline {7.8}Connections}{28}{section.7.8}% 
+\contentsline {section}{\numberline {7.9}Annotations}{29}{section.7.9}% 
+\contentsline {section}{\numberline {7.10}Composite Blocks}{30}{section.7.10}% 
+\contentsline {section}{\numberline {7.11}Model of Computation}{31}{section.7.11}% 
+\contentsline {section}{\numberline {7.12}Tags}{32}{section.7.12}% 
+\contentsline {subsection}{\numberline {7.12.1}Inferred Properties}{32}{subsection.7.12.1}% 
+\contentsline {subsection}{\numberline {7.12.2}Tagged Properties}{32}{subsection.7.12.2}% 
+\contentsline {chapter}{\numberline {8}Code Generation}{35}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Challenges and Implications for Translation of Control Sequences}{35}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}Use of Control Sequences or Verification Tests in Realtime Applications}{36}{section.8.2}% 
+\contentsline {subsection}{\numberline {8.2.1}Export of a Control Sequence or a Verification Test using the FMI Standard}{37}{subsection.8.2.1}% 
+\contentsline {subsection}{\numberline {8.2.2}Translation of a Control Sequence using a JSON Intermediate Format}{38}{subsection.8.2.2}% 
+\contentsline {subsection}{\numberline {8.2.3}Modular Export of a Control Sequence using the FMI Standard for Control Blocks and using the SSP Standard for the Run-time Environment}{41}{subsection.8.2.3}% 
+\contentsline {section}{\numberline {8.3}Replacement of Elementary CDL Blocks during Translation}{42}{section.8.3}% 
+\contentsline {subsection}{\numberline {8.3.1}Substitutions that Give Identical Control Response}{42}{subsection.8.3.1}% 
+\contentsline {subsection}{\numberline {8.3.2}Substitutions that Change the Control Response}{42}{subsection.8.3.2}% 
+\contentsline {subsection}{\numberline {8.3.3}Adding Blocks that are not in the CDL Library}{43}{subsection.8.3.3}% 
+\contentsline {chapter}{\numberline {9}Verification}{44}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}Scope of the verification}{44}{section.9.1}% 
+\contentsline {section}{\numberline {9.2}Methodology}{44}{section.9.2}% 
+\contentsline {section}{\numberline {9.3}Modules of the verification test}{46}{section.9.3}% 
+\contentsline {subsection}{\numberline {9.3.1}CSV file reader}{46}{subsection.9.3.1}% 
+\contentsline {subsection}{\numberline {9.3.2}Unit conversion}{46}{subsection.9.3.2}% 
+\contentsline {subsection}{\numberline {9.3.3}Comparison of time series data}{46}{subsection.9.3.3}% 
+\contentsline {subsection}{\numberline {9.3.4}Verification of sequence diagrams}{47}{subsection.9.3.4}% 
+\contentsline {section}{\numberline {9.4}Example}{50}{section.9.4}% 
+\contentsline {chapter}{\numberline {10}Example Application}{56}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Methodology}{56}{section.10.1}% 
+\contentsline {subsection}{\numberline {10.1.1}HVAC model}{57}{subsection.10.1.1}% 
+\contentsline {subsection}{\numberline {10.1.2}Envelope heat transfer}{57}{subsection.10.1.2}% 
+\contentsline {subsection}{\numberline {10.1.3}Internal loads}{57}{subsection.10.1.3}% 
+\contentsline {subsection}{\numberline {10.1.4}Multi-zone air exchange}{58}{subsection.10.1.4}% 
+\contentsline {subsection}{\numberline {10.1.5}Control sequences}{58}{subsection.10.1.5}% 
+\contentsline {subsection}{\numberline {10.1.6}Site electricity use}{59}{subsection.10.1.6}% 
+\contentsline {subsection}{\numberline {10.1.7}Simulations}{59}{subsection.10.1.7}% 
+\contentsline {section}{\numberline {10.2}Performance comparison}{64}{section.10.2}% 
+\contentsline {section}{\numberline {10.3}Improvement to guideline 36 specification}{73}{section.10.3}% 
+\contentsline {subsection}{\numberline {10.3.1}Freeze protection for mixed air temperature}{73}{subsection.10.3.1}% 
+\contentsline {subsection}{\numberline {10.3.2}Deadbands for hard switches}{75}{subsection.10.3.2}% 
+\contentsline {subsection}{\numberline {10.3.3}Averaging air flow measurements}{75}{subsection.10.3.3}% 
+\contentsline {subsection}{\numberline {10.3.4}Minor editorial revision}{75}{subsection.10.3.4}% 
+\contentsline {subsection}{\numberline {10.3.5}Cross-referencing and modularization}{75}{subsection.10.3.5}% 
+\contentsline {subsection}{\numberline {10.3.6}Lessons learned regarding the simulations}{75}{subsection.10.3.6}% 
+\contentsline {section}{\numberline {10.4}Discussion and conclusions}{76}{section.10.4}% 
+\contentsline {chapter}{\numberline {11}Glossary}{78}{chapter.11}% 
+\contentsline {chapter}{\numberline {12}Acknowledgments}{80}{chapter.12}% 
+\contentsline {chapter}{\numberline {13}References}{81}{chapter.13}% 
+\contentsline {chapter}{Bibliography}{82}{chapter.13}% 
+\contentsline {chapter}{Index}{83}{section*.29}% 

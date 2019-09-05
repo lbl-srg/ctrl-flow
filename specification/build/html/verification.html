@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9. Verification &#8212; Control Description Language</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. Example Application" href="example.html" />
+    <link rel="prev" title="8. Code Generation" href="codeGeneration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/cdl-logo.png">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://obc.lbl.gov">Home</a></li>
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preample.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preample.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">6. Software Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#controls-design-tool">6.1. Controls Design Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#functional-verification-tool">6.2. Functional Verification Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Verification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scope-of-the-verification">9.1. Scope of the verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methodology">9.2. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">9.4. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">10. Example Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example.html#methodology">10.1. Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#performance-comparison">10.2. Performance comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">9. Verification</a><ul>
+<li><a class="reference internal" href="#scope-of-the-verification">9.1. Scope of the verification</a></li>
+<li><a class="reference internal" href="#methodology">9.2. Methodology</a></li>
+<li><a class="reference internal" href="#modules-of-the-verification-test">9.3. Modules of the verification test</a><ul>
+<li><a class="reference internal" href="#csv-file-reader">9.3.1. CSV file reader</a></li>
+<li><a class="reference internal" href="#unit-conversion">9.3.2. Unit conversion</a></li>
+<li><a class="reference internal" href="#comparison-of-time-series-data">9.3.3. Comparison of time series data</a></li>
+<li><a class="reference internal" href="#verification-of-sequence-diagrams">9.3.4. Verification of sequence diagrams</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example">9.4. Example</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="codeGeneration.html" title="Previous Chapter: 8. Code Generation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 8. Code Generation</span>
+    </a>
+  </li>
+  <li>
+    <a href="example.html" title="Next Chapter: 10. Example Application"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">10. Example A... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="verification">
+<span id="sec-verification"></span><h1>9. Verification<a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to formally verify whether
+the control sequence is implemented according to specification.
+This process would be done as part
+of the commissioning, as indicated in step 9 in the process diagram
+<a class="reference internal" href="process.html#fig-process"><span class="std std-numref">Fig. 3.1</span></a>.
+For the requirements, see <a class="reference internal" href="requirements.html#sec-requirements-verification-tool"><span class="std std-numref">Section 5.3</span></a>.</p>
+<p>For clarity, we remind that <em>verification</em> tests whether the implementation
+of the control sequence conforms with its specification. In contrast,
+<em>validation</em> would test whether the control sequence,
+together with the building system,
+is such that it meets the building owner’s need. Hence,
+validation would be done in step 2 in <a class="reference internal" href="process.html#fig-process"><span class="std std-numref">Fig. 3.1</span></a>.</p>
+<p>As this step only verifies that the control logic is implemented correctly,
+it should be conducted in addition to other functional tests,
+such as tests that verify that sensor and actuators are connected to the
+correct inputs and outputs, that sensors are installed properly and
+that the installed mechanical system meets the specification.</p>
+<div class="section" id="scope-of-the-verification">
+<h2>9.1. Scope of the verification<a class="headerlink" href="#scope-of-the-verification" title="Permalink to this headline">¶</a></h2>
+<p>For OpenBuildingControl, we currently only verify the implementation of the control
+sequence. Outside the scope of our verification are tests
+that verify whether the I/O points are connected properly,
+whether the mechanical equipment is installed and functions correctly,
+and whether the building envelop is meeting its specification.
+Therefore, with our tests, we aim to verify that the control provider
+implemented the sequence as specified, and that it executes correctly.</p>
+</div>
+<div class="section" id="methodology">
+<h2>9.2. Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
+<p>A typical usage would be as follows:
+A commissioning agent exports trended control inputs and outputs
+and stores them in a CSV file. The commissioning agent then executes the CDL specification
+for the trended inputs, and compares the following:</p>
+<ol class="arabic simple">
+<li>Whether the trended outputs and the outputs computed by the CDL specification
+are close to each other.</li>
+<li>Whether the trended inputs and outputs lead to the right sequence diagrams,
+for example, whether an airhandler’s economizer outdoor air damper is fully open when
+the system is in free cooling mode.</li>
+</ol>
+<p>Technically, step 2 is not needed if step 1 succeeds. However,
+feedback from mechanical designers indicate the desire to
+confirm during commissioning
+that the sequence diagrams are indeed correct
+(and hence the original control specification is correct for the given system).</p>
+<p><a class="reference internal" href="#fig-con-seq-ver"><span class="std std-numref">Fig. 9.1</span></a> shows the flow diagram for the verification.
+Rather than using real-time data through BACnet or other protocols,
+set points, inputs and outputs of the actual controller
+are stored in an archive, here a CSV file.
+This allows to reproduce the verification tests, and it does
+not require the verification tool to have access to the actual building
+control system.
+During the verification, the archived data are read into a Modelica
+model that conducts the verification.
+The verification will use three blocks.
+The block labeled <em>input file reader</em> reads the archived data,
+which may typically be in CSV format. As this data may be directly written
+by a building automation system, its units will differ from the units
+used in CDL. Therefore, the block called <em>unit conversion</em> converts
+the data to the units used in the CDL control specification.
+Next, the block labeled <em>control specification</em>
+is the control sequence specification in CDL format.
+This is the specification that was exported during design and sent
+to the control provider.
+Given the set points and measurement signals, it outputs the control signals
+according to the specification.
+The block labeled <em>time series verification</em> compares this output with
+trended control signals, and indicates where the signals differ by more than
+a prescribed tolerance in time and in signal value.
+The block labeled <em>sequence chart</em> creates x-y or scatter plots. These
+can be used to verify for example that an economizer outdoor air damper
+has the expected position as a function of the outside air temperature.</p>
+<p>Below, we will further describe the blocks in the box labeled <em>verification</em>.</p>
+<div class="figure" id="id2">
+<span id="fig-con-seq-ver"></span><a class="reference internal image-reference" href="_images/overviewBlockDiagram.svg"><img alt="_images/overviewBlockDiagram.svg" src="_images/overviewBlockDiagram.svg" width="700px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Overview of the verification that tests whether the installed
+control sequence meets the specification.</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>We also considered testing for criteria such as “whether room temperatures
+are satisfactory” or “a damper control signal is not oscillating”. However,
+discussions with design engineers and commissioning providers showed that
+there is currently no accepted method for turning such questions into
+hard requirements. We implemented software that tests
+criteria such as
+“Room air temperature shall be within the setpoint <span class="math notranslate nohighlight">\(\pm 0.5\)</span> Kelvin
+for at least 45 min within each <span class="math notranslate nohighlight">\(60\)</span> minute window.” and
+“Damper signal shall not oscillate more than <span class="math notranslate nohighlight">\(4\)</span> times per hour
+between a change of <span class="math notranslate nohighlight">\(\pm 0.025\)</span> (for a <span class="math notranslate nohighlight">\(2\)</span> minute sample period)”.
+Software implementations of such tests are available on
+the Modelica Buildings Library github repository, commit
+<a class="reference external" href="https://github.com/lbl-srg/modelica-buildings/commit/454cc7521c0303d0a3f903acdda2132cc53fe45f">454cc75</a>.</p>
+<p class="last">Besides these tests, we also considered automatic fault detection and diagnostics methods
+that were proposed for inclusion in ASHRAE RP-1455 and Guideline 36,
+and we considered using methods such as in <a class="reference internal" href="bibliography.html#veronica2013" id="id1">[Ver13]</a>
+that automatically detect
+faulty regulation, including excessively oscillatory behavior.
+However, as it is not yet clear how sensitive these methods
+are to site-specific tuning, and because field tests are ongoing in a NIST project,
+we did not implement them.</p>
+</div>
+</div>
+<div class="section" id="modules-of-the-verification-test">
+<h2>9.3. Modules of the verification test<a class="headerlink" href="#modules-of-the-verification-test" title="Permalink to this headline">¶</a></h2>
+<p>To conduct the verification, the following models and
+tools are used.</p>
+<div class="section" id="csv-file-reader">
+<h3>9.3.1. CSV file reader<a class="headerlink" href="#csv-file-reader" title="Permalink to this headline">¶</a></h3>
+<p>To read CSV files, the data reader <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Sources.CombiTimeTable</span></code>
+from the Modelica Standard Library
+can be used. It requires the CSV file to have the following structure:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#1</span>
+<span class="cp"># comment line</span>
+<span class="kt">double</span> <span class="n">tab1</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="cp"># time in seconds, column 1</span>
+  <span class="mi">0</span>   <span class="mi">0</span>
+  <span class="mi">1</span>   <span class="mi">0</span>
+  <span class="mi">1</span>   <span class="mi">1</span>
+  <span class="mi">2</span>   <span class="mi">4</span>
+  <span class="mi">3</span>   <span class="mi">9</span>
+  <span class="mi">4</span>  <span class="mi">16</span>
+</pre></div>
+</div>
+<p>Note, that the first two characters in the file need to be <code class="docutils literal notranslate"><span class="pre">#1</span></code>
+(a line comment defining the version number of the file format).
+Afterwards, the corresponding matrix has to be declared with type
+<code class="docutils literal notranslate"><span class="pre">double</span></code>, name and dimensions.
+Finally, in successive rows of the file, the elements
+of the matrix have to be given.
+The elements have to be provided as a sequence of numbers
+in row-wise order (therefore a matrix row can span several
+lines in the file and need not start at the beginning of a line).
+Numbers have to be given according to C syntax
+(such as 2.3, -2, +2.e4). Number separators are spaces,
+tab, comma, or semicolon.
+Line comments start with the hash symbol (#) and can appear everywhere.</p>
+</div>
+<div class="section" id="unit-conversion">
+<h3>9.3.2. Unit conversion<a class="headerlink" href="#unit-conversion" title="Permalink to this headline">¶</a></h3>
+<p>Building automation systems store physical quantities in various units.
+To convert them to the units used by Modelica and hence also by CDL,
+we developed the package <code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.UnitConversions</span></code>.
+This package provides blocks that convert between SI units
+and units that are commonly used in the HVAC industry.</p>
+</div>
+<div class="section" id="comparison-of-time-series-data">
+<h3>9.3.3. Comparison of time series data<a class="headerlink" href="#comparison-of-time-series-data" title="Permalink to this headline">¶</a></h3>
+<p>We have been developing a tool called <em>funnel</em> to conduct time series comparison.
+The tool imports two CSV files, one containing the reference data set and
+the other the test data set.
+Both CSV files contain time series that need to be compared against each other.
+The comparison is conducted by computing a funnel around the
+reference curve. For this funnel, users can specify the tolerances with respect
+to time and with respect to the trended quantity. The tool then
+checks whether the time series of the test data set is within the funnel and
+computes the corresponding exceeding error curve.</p>
+<p>The tool is available from
+<a class="reference external" href="https://github.com/lbl-srg/funnel">https://github.com/lbl-srg/funnel</a>.</p>
+<p>It is primarily intended to be used by means of a Python binding:</p>
+<ul class="simple">
+<li>either by importing the module <code class="docutils literal notranslate"><span class="pre">pyfunnel</span></code> and using <code class="docutils literal notranslate"><span class="pre">compareAndReport</span></code>
+and <code class="docutils literal notranslate"><span class="pre">plot_funnel</span></code> functions: see <a class="reference internal" href="#fig-funnel-example"><span class="std std-numref">Fig. 9.2</span></a> for typical
+plot output;</li>
+<li>or by running directly the Python script from terminal: see usage information
+by running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">{path</span> <span class="pre">to</span> <span class="pre">pyfunnel.py}</span> <span class="pre">--help</span></code>. This produces the following:</li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: pyfunnel.py [-h] --reference REFERENCE --test TEST [--output OUTPUT]
+                  [--atolx ATOLX] [--atoly ATOLY] [--rtolx RTOLX]
+                  [--rtoly RTOLY]
+
+Run funnel binary from terminal.
+
+Output `errors.csv`, `lowerBound.csv`, `upperBound.csv`, `reference.csv`, `test.csv` into the output directory (`./results` by default).
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path of directory to store output data
+  --atolx ATOLX         Absolute tolerance along x axis
+  --atoly ATOLY         Absolute tolerance along y axis
+  --rtolx RTOLX         Relative tolerance along x axis
+  --rtoly RTOLY         Relative tolerance along y axis
+
+required named arguments:
+  --reference REFERENCE
+                        Path of CSV file with reference data
+  --test TEST           Path of CSV file with test data
+
+Note: At least one of the two possible tolerance parameters (atol or rtol) must be defined for each axis.
+Relative tolerance is relative to the range of x or y values.
+
+Typical use from terminal:
+$ python {path to pyfunnel.py} --reference trended.csv --test simulated.csv --atolx 0.002 --atoly 0.002 --output results
+
+Full documentation at https://github.com/lbl-srg/funnel
+</pre></div>
+</div>
+<div class="figure" id="id3">
+<span id="fig-funnel-example"></span><a class="reference internal image-reference" href="_images/funnel_example.svg"><img alt="_images/funnel_example.svg" src="_images/funnel_example.svg" width="800px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Typical plot generated by <code class="docutils literal notranslate"><span class="pre">pyfunnel.plot_funnel</span></code> for comparing test and reference time series.</span></p>
+</div>
+</div>
+<div class="section" id="verification-of-sequence-diagrams">
+<h3>9.3.4. Verification of sequence diagrams<a class="headerlink" href="#verification-of-sequence-diagrams" title="Permalink to this headline">¶</a></h3>
+<p>To verify sequence diagrams we developed the Modelica package
+<code class="docutils literal notranslate"><span class="pre">Buildings.Utilities.IO.Plotters</span></code>.
+<a class="reference internal" href="#fig-vav-sin-mod-ver"><span class="std std-numref">Fig. 9.3</span></a> shows an example in which this block is used to produce the sequence
+diagram shown in <a class="reference internal" href="#fig-vav-sin-plo-dia-ver"><span class="std std-numref">Fig. 9.4</span></a>. While in this example, we used the control
+output of the CDL implementation, during commissioning,
+one would use the control signal from the building automation system.
+The model is available from the Modelica Buildings Library, see the model
+<code class="docutils literal notranslate"><span class="pre">Buildings.Utilities.Plotters.Examples.SingleZoneVAVSupply_u</span></code>.</p>
+<div class="figure" id="id4">
+<span id="fig-vav-sin-mod-ver"></span><a class="reference internal image-reference" href="_images/SingleZoneVAVSupply_u.svg"><img alt="_images/SingleZoneVAVSupply_u.svg" src="_images/SingleZoneVAVSupply_u.svg" width="500px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Modelica model that verifies the sequence diagram.
+On the left are the blocks that generate the control input.
+In a real verification, these would be replaced with a file reader that
+reads data that have been archived by the building automation system.
+In the center is the control sequence implementation.
+Some of its output is converted to degree Celsius, and then fed to the
+plotters on the right that generate a scatter plot for the temperatures
+and a scatter plot for the fan control signal.
+The block labeled <code class="docutils literal notranslate"><span class="pre">plotConfiguration</span></code> configures
+the file name for the plots and the sampling interval.</span></p>
+</div>
+<div class="figure" id="id5">
+<span id="fig-vav-sin-plo-dia-ver"></span><a class="reference internal image-reference" href="_images/VAVSingleZoneTSupSet.svg"><img alt="_images/VAVSingleZoneTSupSet.svg" src="_images/VAVSingleZoneTSupSet.svg" width="500px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Control sequence diagram for the VAV single zone control sequence
+from ASHRAE Guideline 36.</span></p>
+</div>
+<p>Simulating the model shown in <a class="reference internal" href="#fig-vav-sin-mod-ver"><span class="std std-numref">Fig. 9.3</span></a>
+generates an html file that contains the scatter plots shown in <a class="reference internal" href="#fig-vav-sin-ger-ver"><span class="std std-numref">Fig. 9.5</span></a>.</p>
+<div class="figure" id="id6">
+<span id="fig-vav-sin-ger-ver"></span><a class="reference internal image-reference" href="_images/vavSingleZoneSeq.png"><img alt="_images/vavSingleZoneSeq.png" src="_images/vavSingleZoneSeq.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Scatter plots that show the control sequence diagram generated from
+the simulated sequence.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>9.4. Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>In this example we validated a trended output of a control sequence that defines the cooling
+coil valve position. The cooling coil valve sequence is a part of the ALC EIKON control logic
+implemented in building 33 on the main LBNL campus in Berkeley, CA.
+The subsequence is shown in <a class="reference internal" href="#fig-alc-coo-seq"><span class="std std-numref">Fig. 9.6</span></a>. It comprises a PI controller
+that tracks the supply air temperature, an upstream subsequence that enables the
+controller and a downstream output limiter that is active in case of low supply air temperatures.</p>
+<div class="figure" id="id7">
+<span id="fig-alc-coo-seq"></span><a class="reference internal image-reference" href="_images/AlcEikon_CoolingControl_CHWValvePositionAndEnable.png"><img alt="_images/AlcEikon_CoolingControl_CHWValvePositionAndEnable.png" src="_images/AlcEikon_CoolingControl_CHWValvePositionAndEnable.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.6 </span><span class="caption-text">ALC EIKON specification of the cooling coil valve position control sequence.</span></p>
+</div>
+<div class="figure" id="id8">
+<span id="fig-coo-coi-val-seq"></span><a class="reference internal image-reference" href="_images/CoolingCoilValve.svg"><img alt="_images/CoolingCoilValve.svg" src="_images/CoolingCoilValve.svg" width="800px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.7 </span><span class="caption-text">CDL specification of the cooling coil valve position control sequence.</span></p>
+</div>
+<p>We created a CDL specification of the same cooling coil valve position control sequence,
+see <a class="reference internal" href="#fig-coo-coi-val-seq"><span class="std std-numref">Fig. 9.7</span></a>, to validate the recorded output.
+We recorded trend data in 5 second intervals for</p>
+<ul class="simple">
+<li>Supply air temperature in [F]</li>
+<li>Supply air temperature setpoint in [F]</li>
+<li>Outdoor air temperature in [F]</li>
+<li>VFD fan enable status in [0/1]</li>
+<li>VFD fan feedback in [%]</li>
+<li>Cooling coil valve position, which is the output of the controller, in [%].</li>
+</ul>
+<p>The input and output trends were processed with a script that converts them to the
+format required by the data readers. The data used in the example begins at
+midnight on June 7 2018.
+In addition to the input and output trends, we recorded all parameters, such as the
+hysteresis offset (see <a class="reference internal" href="#fig-alc-hys-par"><span class="std std-numref">Fig. 9.8</span></a>) and the controller gains
+(see <a class="reference internal" href="#fig-alc-con-par"><span class="std std-numref">Fig. 9.9</span></a>), to use them in the CDL implementation.</p>
+<div class="figure" id="id9">
+<span id="fig-alc-hys-par"></span><a class="reference internal image-reference" href="_images/AlcEikon_OATHysteresis.png"><img alt="_images/AlcEikon_OATHysteresis.png" src="_images/AlcEikon_OATHysteresis.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.8 </span><span class="caption-text">ALC EIKON outdoor air temperature hysteresis to enable/disable the controller</span></p>
+</div>
+<div class="figure" id="id10">
+<span id="fig-alc-con-par"></span><a class="reference internal image-reference" href="_images/AlcEikon_PIParameters.png"><img alt="_images/AlcEikon_PIParameters.png" src="_images/AlcEikon_PIParameters.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.9 </span><span class="caption-text">ALC EIKON PI controller parameters</span></p>
+</div>
+<p>We configured the CDL PID controller parameters such that they correspond to the parameters of the
+ALC PI controller. The ALC PID controller implementation is described
+in the ALC EIKON software help section, while the CDL PID
+controller is described in the info section of the model
+<a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/latest/help/Buildings_Controls_OBC_CDL_Continuous.html#Buildings.Controls.OBC.CDL.Continuous.LimPID">Buildings.Controls.OBC.CDL.Continuous.LimPID</a>.
+The ALC controller tracks the temperature in
+degree Fahrenheit, while CDL uses SI units.
+An additional implementation difference is that for cooling applications, the ALC
+controller uses direct control action, whereas the CDL controller needs to be configured to use
+reverse control action, which can be done by setting its parameter <cite>reverseAction=true</cite>.
+Furthermore, the ALC controller outputs the control action in percentages, while the CDL controller outputs
+a signal between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.
+To reconcile the differences, the ALC controller gains were
+converted for CDL as follows:
+The proportional gain <span class="math notranslate nohighlight">\(k_{p,cdl}\)</span> was set to
+<span class="math notranslate nohighlight">\(k_{p,cdl} = u \, k_{p,alc}\)</span>, where <span class="math notranslate nohighlight">\(u=9/5\)</span> is a ratio of one degree Celsius
+(or Kelvin) to one degree Fahrenheit of temperature difference.
+The integrator time constant was converted
+as
+<span class="math notranslate nohighlight">\(T_{i,cdl} = k_{p,cdl} \, I_{alc}/(u \, k_{i,alc})\)</span>.
+Both controllers were enabled throughout the whole validation time.</p>
+<p><a class="reference internal" href="#fig-coo-coi-val-tre"><span class="std std-numref">Fig. 9.10</span></a> shows the
+Modelica model that was used to conduct the verification. On the left hand side
+are the data readers that read the input and output
+trends from files. Next are unit converters, and a conversion for the fan status
+between a real value and a boolean value. These data are fed into the instance labeled
+<code class="docutils literal notranslate"><span class="pre">cooValSta</span></code>, which contains the control sequence
+as shown in <a class="reference internal" href="#fig-coo-coi-val-seq"><span class="std std-numref">Fig. 9.7</span></a>. The plotters on the right hand side then
+compare the simulated cooling coil valve position with the recorded data.</p>
+<div class="figure" id="id11">
+<span id="fig-coo-coi-val-tre"></span><a class="reference internal image-reference" href="_images/CoolingCoilValve_Trends.svg"><img alt="_images/CoolingCoilValve_Trends.svg" src="_images/CoolingCoilValve_Trends.svg" width="800px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Modelica model that conducts the verification.</span></p>
+</div>
+<p><a class="reference internal" href="#fig-coo-coi"><span class="std std-numref">Fig. 9.11</span></a>,
+which was produced by the Modelica model using blocks from the
+<code class="docutils literal notranslate"><span class="pre">Buildings.Utilities.Plotters</span></code> package,
+shows the trended input temperatures for the
+control sequence, the trended and simulated cooling valve control signal
+for the same time period, which are practically on top of each other,
+and a correlation error between the
+trended and simulated cooling valve control signal.</p>
+<div class="figure" id="id12">
+<span id="fig-coo-coi"></span><a class="reference internal image-reference" href="_images/cooling_valve.png"><img alt="_images/cooling_valve.png" src="_images/cooling_valve.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Verification of the cooling valve control signal between ALC EIKON computed
+signal and simulated signal.</span></p>
+</div>
+<p>The difference in modeled vs. trended results is due to the following factors:</p>
+<ul class="simple">
+<li>ALC EIKON uses a discrete time step for the time integration with a user-defined
+time step length, whereas CDL uses a continuous time integrator that adjusts the time step
+based on the integration error.</li>
+<li>ALC EIKON uses a proprietary algorithm for the anti-windup, which differs from
+the one used in the CDL implementation.</li>
+</ul>
+<div class="figure" id="id13">
+<span id="fig-coo-coi-val-fun"></span><a class="reference internal image-reference" href="_images/funnel_valve_control.svg"><img alt="_images/funnel_valve_control.svg" src="_images/funnel_valve_control.svg" width="800px" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Verification of the cooling valve control signal with the funnel software (error computed
+with an absolute tolerance in time of 1 s and a relative tolerance in <em>y</em> of 1%).</span></p>
+</div>
+<p>Despite these differences, the computed and the simulated control signals
+show good agreement, which is also demonstrated
+by verifying the time series with the
+funnel software, whose output is shown in <a class="reference internal" href="#fig-coo-coi-val-fun"><span class="std std-numref">Fig. 9.12</span></a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright (c) All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
