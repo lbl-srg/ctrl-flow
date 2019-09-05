@@ -60,8 +60,8 @@ linkcheck:
 
 push:
 	git add -A && git commit -m 'rebuild pages'
-	(TMP=$PWD; cd ~/github/linkage.js)
-	@echo $PWD
+	(TMP=$(PWD); cd ~/github/linkage.js)
+	@echo $(PWD)
 	git subtree push --prefix specification/build/html origin gh-pages
 	(cd TMP; unset TMP)
 
