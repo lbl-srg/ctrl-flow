@@ -63,6 +63,7 @@ push:
 	PWDBCK=$(PWD)
 	cd $(HOME)/github/linkage.js && git subtree push --prefix specification/build/html origin gh-pages
 	@echo $(PWD)
-	cd $(PWDBCK) && unset PWDBCK
+	cd $(PWDBCK)
+	unset PWDBCK
 
 dist: html, latex, linkcheck
