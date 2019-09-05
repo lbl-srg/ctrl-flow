@@ -4,8 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>3. Process Workflow &#8212; Control Description Language</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -21,7 +20,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -29,7 +27,7 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Use Cases" href="useCases.html" />
+    <link rel="next" title="4. Requirements" href="requirements.html" />
     <link rel="prev" title="2. Conventions" href="conventions.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -55,7 +53,6 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="http://obc.lbl.gov">Home</a></li>
                 <li><a href="index.html">Table of Contents</a></li>
             
             
@@ -68,67 +65,17 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preample.html">1. Preamble</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preample.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Process Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">6. Software Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#controls-design-tool">6.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#functional-verification-tool">6.2. Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="verification.html">9. Verification</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#scope-of-the-verification">9.1. Scope of the verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#methodology">9.2. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#example">9.4. Example</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="example.html">10. Example Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="example.html#methodology">10.1. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#performance-comparison">10.2. Performance comparison</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">4. Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">5. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">6. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">7. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. References</a></li>
 </ul>
 </ul>
 </li>
@@ -156,7 +103,7 @@
     </a>
   </li>
   <li>
-    <a href="useCases.html" title="Next Chapter: 4. Use Cases"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Use Cases &raquo;</span>
+    <a href="requirements.html" title="Next Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Requirements &raquo;</span>
     </a>
   </li>
               
@@ -184,14 +131,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">3. Process Workflow</a></li>
+</ul>
+
+  <li>
+    <a href="conventions.html" title="Previous Chapter: 2. Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Conventions</span>
+    </a>
+  </li>
+  <li>
+    <a href="requirements.html" title="Next Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Requirements &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="process-workflow">
 <span id="sec-process"></span><h1>3. Process Workflow<a class="headerlink" href="#process-workflow" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#fig-process"><span class="std std-numref">Fig. 3.1</span></a> shows the process of selecting, deploying and verifying a control sequence
-that we follow in OpenBuildingControl.
-First, given regulations and efficiency targets, labeled as (1) in <a class="reference internal" href="#fig-process"><span class="std std-numref">Fig. 3.1</span></a>,
-a design engineer selects, configures, tests and evaluates the performance of a control sequence
+<p>a design engineer selects, configures, tests and evaluates the performance of a control sequence
 using building energy simulation (2),
 starting from a control sequence library that contains ASHRAE GPC 36 sequences,
 as well as user-added sequences (3),
@@ -200,28 +166,7 @@ If the sequences meet closed-loop performance requirements,
 the designer exports a control specification,
 including the sequences and functional verification tests expressed in
 the Controls Description Language CDL (5).
-Optionally, for reuse in similar projects,
-the sequences can be added to a user-library (6).
-This specification is used by the control vendor to bid on the project (7)
-and to implement the sequence (8) in product-specific code.
-Prior to operation, a commissioning provider verifies
-the correct functionality of these implemented sequences
-by running functional tests against the electronic, executable specification
-in the Commissioning and Functional Verification Tool (9).
-If the verification tests fail, the implementation needs to be corrected.</p>
-<p>For closed-loop performance assessment,
-<a class="reference external" href="http://simulationresearch.lbl.gov/modelica/">Modelica models</a>
-of the HVAC systems and controls will be linked to
-a Modelica envelope model or to
-an EnergyPlus envelope model. This can currently be done through the
-<a class="reference external" href="http://simulationresearch.lbl.gov/fmu/EnergyPlus/export/index.html">External Interface</a>,
-and a more direct coupling is in development through the
-<a class="reference external" href="https://www.energy.gov/eere/buildings/downloads/spawn-energyplus-spawn">Spawn of EnergyPlus</a> project.</p>
-<div class="figure" id="id1">
-<span id="fig-process"></span><a class="reference internal image-reference" href="_images/ControlsDesignVerficationFlow.svg"><img alt="_images/ControlsDesignVerficationFlow.svg" src="_images/ControlsDesignVerficationFlow.svg" width="800px" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Process workflow for controls design, specification and
-functional verification.</span></p>
-</div>
+Optionally, for reuse in similar projects,</p>
 </div>
 
 
@@ -241,7 +186,7 @@ functional verification.</span></p>
     </p>
     <p>
         &copy; Copyright (c) All rights reserved.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

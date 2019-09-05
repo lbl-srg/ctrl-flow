@@ -20,17 +20,15 @@ sys.path.append(os.path.abspath('.'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 #extensions = ['sphinx.ext.autodoc', 'sphinx.ext.pngmath']
-extensions = ['sphinxcontrib.bibtex', \
-              'sphinx.ext.autodoc', \
-              'sphinx.ext.mathjax', \
-              'sphinxcontrib.plantuml', 'sphinx.ext.todo']
+extensions = [
+  'sphinxcontrib.bibtex',
+  'sphinx.ext.autodoc',
+  'sphinx.ext.mathjax',
+  'sphinx.ext.todo',
+]
 
 # mathjax_path is based on http://www.mathjax.org/docs/2.0/start.html
 mathjax_path = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-
-plantuml = 'java -jar plantuml.jar'
-plantuml_output_format = 'svg'
-plantuml_latex_output_format = 'pdf'
 
 todo_include_todos = True
 
@@ -45,13 +43,13 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The encoding of source files.
-#source_encoding = 'utf-8'
+source_encoding = 'utf-8'
 
 # The master toctree document.
 master_doc = 'index'
 
 # General information about the project.
-project = u'Open Building Control'
+project = u'LinkageJS'
 copyright = u'(c) All rights reserved'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -111,7 +109,6 @@ import sphinx_bootstrap_theme
 # Activate the theme.
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-print "*********** {}".format(html_theme_path)
 html_logo = '_static/cdl-logo.png'
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.
@@ -130,7 +127,7 @@ html_theme_options = {
     # Note the "1" or "True" value above as the third argument to indicate
     # an arbitrary url.
     'navbar_links': [
-        ("Home", "http://obc.lbl.gov", True),
+#        ("Home", "http://obc.lbl.gov", True),
         ("Table of Contents", "index"),
 #        ("Download", "download"),
 #        ("Python", "http://simulationresearch.lbl.gov/modelica/buildingspy", True),
@@ -274,8 +271,8 @@ latex_additional_files = ['_static/latex-note.png', '_static/latex-warning.png']
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index',
-   'obc_report.tex',
-   u'Control Description Language',
+   'LinkageSpec.tex',
+   'LinkageJS Specification',
    '', 'manual'),
 ]
 
@@ -286,9 +283,11 @@ latex_documents = [
 #'babel': '\\usepackage[english]{babel}'           : suppress error message caused by undefined language.
 #'maketitle': '\\pagenumbering{gobble}\\maketitle' : switch off the page numbering in the tile and the index.
 release = ''
-latex_elements = {'classoptions': ', openany',         # remove blank pages in PDF.
-                   'releasename': '',
-                  'babel': '\\usepackage[english]{babel}'}
+latex_elements = {
+  'classoptions': ', openany',         # remove blank pages in PDF.
+  'releasename': '',
+  'babel': '\\usepackage[english]{babel}',
+}
 
 
 

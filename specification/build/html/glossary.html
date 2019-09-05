@@ -4,9 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>11. Glossary &#8212; Control Description Language</title>
+    <meta charset="utf-8" />
+    <title>6. Glossary &#8212; Control Description Language</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -21,7 +20,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -29,8 +27,8 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="12. Acknowledgments" href="acknowledgments.html" />
-    <link rel="prev" title="10. Example Application" href="example.html" />
+    <link rel="next" title="7. Acknowledgments" href="acknowledgments.html" />
+    <link rel="prev" title="5. Software Architecture" href="softwareArchitecture.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +53,6 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="http://obc.lbl.gov">Home</a></li>
                 <li><a href="index.html">Table of Contents</a></li>
             
             
@@ -68,67 +65,17 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preample.html">1. Preamble</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preample.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">6. Software Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#controls-design-tool">6.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="softwareArchitecture.html#functional-verification-tool">6.2. Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="verification.html">9. Verification</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#scope-of-the-verification">9.1. Scope of the verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#methodology">9.2. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#example">9.4. Example</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="example.html">10. Example Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="example.html#methodology">10.1. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#performance-comparison">10.2. Performance comparison</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">4. Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">5. Software Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">7. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. References</a></li>
 </ul>
 </ul>
 </li>
@@ -142,7 +89,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">11. Glossary</a></li>
+<li><a class="reference internal" href="#">6. Glossary</a></li>
 </ul>
 </ul>
 </li>
@@ -152,11 +99,11 @@
               
                 
   <li>
-    <a href="example.html" title="Previous Chapter: 10. Example Application"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 10. Example A...</span>
+    <a href="softwareArchitecture.html" title="Previous Chapter: 5. Software Architecture"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. Software A...</span>
     </a>
   </li>
   <li>
-    <a href="acknowledgments.html" title="Next Chapter: 12. Acknowledgments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">12. Acknowledgments &raquo;</span>
+    <a href="acknowledgments.html" title="Next Chapter: 7. Acknowledgments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">7. Acknowledgments &raquo;</span>
     </a>
   </li>
               
@@ -184,139 +131,49 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">6. Glossary</a></li>
+</ul>
+
+  <li>
+    <a href="softwareArchitecture.html" title="Previous Chapter: 5. Software Architecture"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. Software A...</span>
+    </a>
+  </li>
+  <li>
+    <a href="acknowledgments.html" title="Next Chapter: 7. Acknowledgments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">7. Acknowledgments &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="glossary">
-<span id="sec-glossary"></span><h1>11. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<span id="sec-glossary"></span><h1>6. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
 <p>This section provides definitions for abbreviations and terms introduced in
 the Open Building Controls project.</p>
-<dl class="glossary docutils">
-<dt id="term-analog-value">Analog Value</dt>
-<dd>In CDL, we say a value is analog if it represents a continuous
+<dl class="glossary simple">
+<dt id="term-analog-value">Analog Value</dt><dd><p>In CDL, we say a value is analog if it represents a continuous
 number. The value may be presented by an analog signal such as
-voltage, or by a digital signal.</dd>
-<dt id="term-binary-value">Binary Value</dt>
-<dd>In CDL, we say a value is binary if it can take on the values
+voltage, or by a digital signal.</p>
+</dd>
+<dt id="term-binary-value">Binary Value</dt><dd><p>In CDL, we say a value is binary if it can take on the values
 0 and 1. The value may however be presented by an analog signal
 that can take on two values (within some tolerance) in order
-to communicate the binary value.</dd>
-<dt id="term-building-model">Building Model</dt>
-<dd>Digital model of the physical behavior of a given building over time,
+to communicate the binary value.</p>
+</dd>
+<dt id="term-building-model">Building Model</dt><dd><p>Digital model of the physical behavior of a given building over time,
 which accounts for any elements of the building envelope and includes a
 representation of internal gains and occupancy. Building model has connectors
 to be coupled with an environment model and any HVAC and non-HVAC system models
-pertaining to the building.</dd>
-<dt id="term-cdl">CDL</dt>
-<dd>See <a class="reference internal" href="#term-controls-description-language"><span class="xref std std-term">Controls Description Language</span></a>.</dd>
-<dt id="term-controls-description-language">Controls Description Language</dt>
-<dd>The Control Description Language (CDL) is the language
-that is used to express control sequences and requirements.
-It is a declarative language based on a subset of the
-Modelica language and specified in <a class="reference internal" href="cdl.html#sec-cdl"><span class="std std-numref">Section 7</span></a>.</dd>
-<dt id="term-controls-design-tool">Controls Design Tool</dt>
-<dd><p class="first">The Controls Design Tool is a software that can be used to</p>
-<ul class="last simple">
-<li>design control sequences,</li>
-<li>declare formal, executable requirements,</li>
-<li>test the control sequences and the requirements with a model
-of the HVAC system and the building in the loop, and</li>
-<li>export the control sequence and the verification test
-in the <a class="reference internal" href="#term-controls-description-language"><span class="xref std std-term">Controls Description Language</span></a>.</li>
-</ul>
-</dd>
-<dt id="term-control-sequence-requirement">Control Sequence Requirement</dt>
-<dd>A requirement is a condition that is tested and either passes, fails,
-or is untested. For example, a requirement would be that the actual
-actuation signal is within 2% of the signal computed using the CDL
-representation of a sequence, provided that they both receive the same
-input data.</dd>
-<dt id="term-control-system">Control System</dt>
-<dd>Any software and hardware required to perform the control function for a plant.</dd>
-<dt id="term-controller">Controller</dt>
-<dd>A controller is a device that computes control signals for a plant.</dd>
-<dt id="term-co-simulation">Co-simulation</dt>
-<dd>Co-simulation refers to a simulation in which different simulation programs
-exchange run-time data at certain synchronization time points.
-A master algorithm sets the current time, input and states,
-and request the simulator to advance time, after which the
-master will retrieve the new values for the state.
-Each simulator is responsible for integrating in time its
-differential equation. See also <a class="reference internal" href="#term-model-exchange"><span class="xref std std-term">model-exchange</span></a>.</dd>
-<dt id="term-events">Events</dt>
-<dd>An event is either a <a class="reference internal" href="#term-time-event"><span class="xref std std-term">time event</span></a> if time triggers the change,
-or a <a class="reference internal" href="#term-state-event"><span class="xref std std-term">state event</span></a> if a test on the state triggers the change.</dd>
-<dt id="term-functional-mockup-interface">Functional Mockup Interface</dt>
-<dd>The Functional Mockup Interface (FMI) standard defines an open interface
-to be implemented by an executable called <a class="reference internal" href="#term-functional-mockup-unit"><span class="xref std std-term">Functional Mockup Unit</span></a> (FMU).
-The FMI functions are called by a simulator to create one or more instances of the FMU,
-called models, and to run these models, typically together with other models.
-An FMU may either be self-integrating (<a class="reference internal" href="#term-co-simulation"><span class="xref std std-term">co-simulation</span></a>) or require the simulator
-to perform the numerical integration (<a class="reference internal" href="#term-model-exchange"><span class="xref std std-term">model-exchange</span></a>).
-The first are sometimes called FMU-CS, while the second are called FMU-ME.
-See further <a class="reference external" href="http://fmi-standard.org/">http://fmi-standard.org/</a>.</dd>
-<dt id="term-functional-mockup-unit">Functional Mockup Unit</dt>
-<dd>Compiled code or source code that can be executed using the
-application programming interface defined in the <a class="reference internal" href="#term-functional-mockup-interface"><span class="xref std std-term">Functional Mockup Interface</span></a> standard.</dd>
-<dt id="term-functional-verification-tool">Functional Verification Tool</dt>
-<dd>The Functional Verification Tool is a software that takes
-as an input the control sequence in CDL, requirements expressed in CDL,
-a list of I/O connections, and a configuration file,
-and then tests whether the measured control signals
-satisfy the requirements, violate them, or
-whether some requirements remain untested.</dd>
-<dt id="term-g36-sequence">G36 Sequence</dt>
-<dd>A control sequence specified by ASHRAE Guideline 36. See also control sequence.</dd>
-<dt id="term-hvac-system">HVAC System</dt>
-<dd>Any HVAC plant coupled with the control system.</dd>
-<dt id="term-hvac-system-model">HVAC System Model</dt>
-<dd>Consists of all components and connections used to model the behavior of an HVAC System.</dd>
-<dt id="term-open-building-controls">Open Building Controls</dt>
-<dd>Open Building Controls (OBC) is the name of project that develops
-open source software for building control sequences and for testing
-of requirements.</dd>
-<dt id="term-obc">OBC</dt>
-<dd>See <a class="reference internal" href="#term-open-building-controls"><span class="xref std std-term">Open Building Controls</span></a>.</dd>
-<dt id="term-mode">Mode</dt>
-<dd>In CDL, by mode we mean a signal that can take on multiple distinct
-values, such as <code class="docutils literal notranslate"><span class="pre">On</span></code>, <code class="docutils literal notranslate"><span class="pre">Off</span></code>, <code class="docutils literal notranslate"><span class="pre">PreCool</span></code>.</dd>
-<dt id="term-model-exchange">Model-exchange</dt>
-<dd>Model-exchange refers to a simulation in which different simulation programs
-exchange run-time data.
-A master algorithm sets time, inputs and states, and requests
-from the simulator the time derivative. The master algorithm
-integrates the differential equations in time.
-See also <a class="reference internal" href="#term-co-simulation"><span class="xref std std-term">co-simulation</span></a>.</dd>
-<dt id="term-non-hvac-system">Non-HVAC System</dt>
-<dd>Any non-HVAC plant coupled with the control system.</dd>
-<dt id="term-plant">Plant</dt>
-<dd>A plant is the physical system that is being controlled by a <a class="reference internal" href="#term-controller"><span class="xref std std-term">controller</span></a>.
-In our context, plant is not only used for example a chiller plant, but also
-for an HVAC system or an actuated shade.</dd>
-<dt id="term-standard-control-sequence">Standard control sequence</dt>
-<dd>A control sequence defined in the CDL control sequence library based on a standard or
-any other document which contains a full English language description of the
-implemented sequence.</dd>
-<dt id="term-state-event">State event</dt>
-<dd><p class="first">We say that a simulation has a state event if its model changes based on a test
-that depends on a state variable. For example, for some initial condition <span class="math notranslate nohighlight">\(x(0)=x_0\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\frac{dx}{dt} =
-\begin{cases}
-  1,  &amp; \text{if } x &lt; 1, \\
-  0,  &amp; \text{otherwise,}
-\end{cases}\end{split}\]</div>
-<p class="last">has a state event when <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
-</dd>
-<dt id="term-time-event">Time event</dt>
-<dd><p class="first">We say that a simulation has a time event if its model changes based on a test
-that only depends on time. For example,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}y =
-\begin{cases}
-  0, &amp; \text{if } t &lt; 1, \\
-  1, &amp; \text{otherwise,}
- \end{cases}\end{split}\]</div>
-<p class="last">has a time event at <span class="math notranslate nohighlight">\(t=1\)</span>.</p>
+pertaining to the building.</p>
 </dd>
 </dl>
 </div>
@@ -338,7 +195,7 @@ that only depends on time. For example,</p>
     </p>
     <p>
         &copy; Copyright (c) All rights reserved.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

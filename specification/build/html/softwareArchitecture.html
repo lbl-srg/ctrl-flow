@@ -4,9 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>6. Software Architecture &#8212; Control Description Language</title>
+    <meta charset="utf-8" />
+    <title>5. Software Architecture &#8212; Control Description Language</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -21,7 +20,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -29,8 +27,8 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Control Description Language" href="cdl.html" />
-    <link rel="prev" title="5. Requirements" href="requirements.html" />
+    <link rel="next" title="6. Glossary" href="glossary.html" />
+    <link rel="prev" title="4. Requirements" href="requirements.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +53,6 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="http://obc.lbl.gov">Home</a></li>
                 <li><a href="index.html">Table of Contents</a></li>
             
             
@@ -68,67 +65,17 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preample.html">1. Preamble</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preample.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="useCases.html">4. Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#controls-design">4.1. Controls Design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#bidding-and-bas-implementation">4.2. Bidding and BAS Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="useCases.html#commissioning-operation-and-maintenance">4.3. Commissioning, Operation, and Maintenance</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">5. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#controls-design-tool">5.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#cdl">5.2. CDL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#commissioning-and-functional-verification-tool">5.3. Commissioning and Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Software Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#controls-design-tool">6.1. Controls Design Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#functional-verification-tool">6.2. Functional Verification Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cdl.html">7. Control Description Language</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#syntax">7.1. Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#permissible-data-types">7.2. Permissible Data Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#encapsulation-of-functionality">7.3. Encapsulation of Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#elementary-building-blocks">7.4. Elementary Building Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#instantiation">7.5. Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connectors">7.6. Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#equations">7.7. Equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#connections">7.8. Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#annotations">7.9. Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#composite-blocks">7.10. Composite Blocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#model-of-computation">7.11. Model of Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cdl.html#tags">7.12. Tags</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="codeGeneration.html">8. Code Generation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#challenges-and-implications-for-translation-of-control-sequences">8.1. Challenges and Implications for Translation of Control Sequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#use-of-control-sequences-or-verification-tests-in-realtime-applications">8.2. Use of Control Sequences or Verification Tests in Realtime Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="codeGeneration.html#replacement-of-elementary-cdl-blocks-during-translation">8.3. Replacement of Elementary CDL Blocks during Translation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="verification.html">9. Verification</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#scope-of-the-verification">9.1. Scope of the verification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#methodology">9.2. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#modules-of-the-verification-test">9.3. Modules of the verification test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verification.html#example">9.4. Example</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="example.html">10. Example Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="example.html#methodology">10.1. Methodology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#performance-comparison">10.2. Performance comparison</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#improvement-to-guideline-36-specification">10.3. Improvement to guideline 36 specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example.html#discussion-and-conclusions">10.4. Discussion and conclusions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">12. Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">13. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">4. Requirements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">6. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">7. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. References</a></li>
 </ul>
 </ul>
 </li>
@@ -142,11 +89,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">6. Software Architecture</a><ul>
-<li><a class="reference internal" href="#controls-design-tool">6.1. Controls Design Tool</a></li>
-<li><a class="reference internal" href="#functional-verification-tool">6.2. Functional Verification Tool</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">5. Software Architecture</a></li>
 </ul>
 </ul>
 </li>
@@ -156,11 +99,11 @@
               
                 
   <li>
-    <a href="requirements.html" title="Previous Chapter: 5. Requirements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. Requirements</span>
+    <a href="requirements.html" title="Previous Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4. Requirements</span>
     </a>
   </li>
   <li>
-    <a href="cdl.html" title="Next Chapter: 7. Control Description Language"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">7. Control De... &raquo;</span>
+    <a href="glossary.html" title="Next Chapter: 6. Glossary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. Glossary &raquo;</span>
     </a>
   </li>
               
@@ -188,12 +131,34 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">5. Software Architecture</a></li>
+</ul>
+
+  <li>
+    <a href="requirements.html" title="Previous Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4. Requirements</span>
+    </a>
+  </li>
+  <li>
+    <a href="glossary.html" title="Next Chapter: 6. Glossary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. Glossary &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="software-architecture">
-<span id="sec-soft-arch"></span><h1>6. Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h1>
+<span id="sec-soft-arch"></span><h1>5. Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the software architecture
-of the controls design tool and the functional verification tool.
+of the LinkageJS tool and the functional verification tool.
 In the text below, we mean by <em>plant</em> the HVAC and building system,
 and by <em>control</em> the controls other than product integrated controllers
 (PIC).
@@ -201,210 +166,6 @@ Thus, the HVAC or building system model may, and likely will,
 contain product integrated controllers, which will be out
 of scope for CDL apart from reading measured values from PICs and
 sending setpoints to PICs.</p>
-<div class="figure" id="id2">
-<span id="fig-architecture-overall-obc"></span><p class="plantuml">
-<object data="_images/plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.svg" type="image/svg+xml" style="width:763px;height:363px;">
-<a href="_images/plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.png"><img src="_images/plantuml-cf3ac1a1f67ccaad21c3f76c46156efb99517025.png" alt="skinparam componentStyle uml2
-
-  package &quot;Controls Design Tool&quot; as ctl_des {
-    [Sequence Generator]
-    [CDL Exporter]
-  }
-  package &quot;Functional Verification Tool&quot; as vt{
-    [I/O\nConfiguration]
-    [Engine]
-  }
-  [CDL Parser]
-  [CDL-compliant Control Sequence]
-  [CDL Library]
-
-ctl_des -d-&gt; [CDL Parser]: uses
-vt -d-&gt; [CDL Parser]: uses
-[CDL Parser] -d-&gt; [CDL-compliant Control Sequence]: reads
-[CDL Parser] -d-&gt; [CDL Library]: reads" style="width: 600px"/></a>
-
-</object></p>
-<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Overall software architecture.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<p><a class="reference internal" href="#fig-architecture-overall-obc"><span class="std std-numref">Fig. 6.1</span></a> shows the overall
-system with the <cite>Controls Design Tool</cite> and the
-<cite>Functional Verification Tool</cite>. Both use
-a <cite>CDL Parser</cite> which parses the CDL language.
-This parser is currently in development at <a class="reference external" href="https://github.com/lbl-srg/modelica-json">https://github.com/lbl-srg/modelica-json</a>. <a class="footnote-reference" href="#parser" id="id1">[1]</a>
-The CDL parser reads a <cite>CDL-compliant Control Sequence</cite>,
-which may be provided by the user or taken from
-<a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/v5.0.1/help/Buildings_Controls_OBC_ASHRAE.html">http://simulationresearch.lbl.gov/modelica/releases/v5.0.1/help/Buildings_Controls_OBC_ASHRAE.html</a>
-and the <cite>CDL Library</cite>, see <a class="reference external" href="http://simulationresearch.lbl.gov/modelica/releases/v5.0.1/help/Buildings_Controls_OBC_CDL.html">http://simulationresearch.lbl.gov/modelica/releases/v5.0.1/help/Buildings_Controls_OBC_CDL.html</a>
-All these components will be made available through OpenStudio.
-This allows using the OpenStudio model authoring
-and simulation capability that is being developed
-for the Spawn of EnergyPlus (SOEP).
-See also
-<a class="reference external" href="https://www.energy.gov/eere/buildings/downloads/spawn-energyplus-soep">https://www.energy.gov/eere/buildings/downloads/spawn-energyplus-soep</a> and
-its development site
-<a class="reference external" href="https://lbl-srg.github.io/soep/softwareArchitecture.html">https://lbl-srg.github.io/soep/softwareArchitecture.html</a>.</p>
-<div class="section" id="controls-design-tool">
-<h2>6.1. Controls Design Tool<a class="headerlink" href="#controls-design-tool" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id3">
-<span id="fig-architecture-overall-ctrl-design"></span><p class="plantuml">
-<object data="_images/plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.svg" type="image/svg+xml" style="width:811px;height:858px;">
-<a href="_images/plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.png"><img src="_images/plantuml-41247b1148244ba806cf8de912691ba4eeed6f61.png" alt="skinparam componentStyle uml2
-
-
-package OpenStudio {
-}
-
-package &quot;HVAC/controls tool&quot; as edi {
-  [Web-based GUI]
-}
-
-interface json as mod_jso_par
-
-database &quot;Modelica libraries&quot; as mod_lib
-
-edi &lt;-&gt; mod_jso_par : reads/writes json
-
-mod_jso_par &lt;-&gt; mod_lib
-
-package JModelica {
-}
-
-OpenStudio -d-&gt; edi : invokes
-OpenStudio -d-&gt; JModelica : invokes
-
-JModelica -u-&gt; mod_lib: loads
-
-interface FMUs
-
-JModelica -d-&gt; FMUs : generates
-
-package &quot;Buildings Operating System&quot; as BOS {
-  database &quot;I/O drivers&quot; as dri2
-  database &quot;runtime environment&quot; as rte2
-  database &quot;operator interface&quot; as opi2
-}
-
-package &quot;Buildings Automation System&quot; as BAS {
-  database &quot;I/O drivers&quot; as dri1
-  database &quot;runtime environment&quot; as rte1
-  database &quot;operator interface&quot; as opi1
-}
-
-BAS -u-&gt; mod_jso_par : converts
-
-BOS -u-&gt; FMUs : imports
-
-interface Hardware
-
-BOS -d-&gt; Hardware : I/O
-BAS -d-&gt; Hardware : I/O" style="width: 600px"/></a>
-
-</object></p>
-<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Overall software architecture of the Controls Design Tool.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<p><a class="reference internal" href="#fig-architecture-overall-ctrl-design"><span class="std std-numref">Fig. 6.2</span></a>
-shows the overall
-software architecture of the controls design tool.
-The <cite>OpenStudio</cite> invokes a Modelica to json parser which
-parses the Modelica libraries to <cite>json</cite>, and it invokes the <cite>HVAC/controls tool</cite>.
-The <cite>HVAC/controls tool</cite> reads the json representation of the
-Modelica libraries that are used.
-The <cite>HVAC/controls tool</cite> updates the json reprensentation of the model,
-and these changes will be merged into the Modelica model or Modelica package
-that has been edited.
-For exporting the sequence for simulation or for operation, <cite>OpenStudio</cite>
-invokes <cite>JModelica</cite> which generates an FMU of the sequence, or multiple FMUs
-if the sequence is to be distributed to different field devices.
-The <cite>Building Operating System</cite> then imports these FMUs.</p>
-<p>If a <cite>Building Automation System</cite> prefers not to run FMUs to compute the control
-signals, then it could convert the json format to a native implementation
-of the control sequence.</p>
-<p>Optionally, to aid the user in customizing sequences, a <cite>Sequence Generator</cite>
-could be generated. This is currently not shown in
-<a class="reference internal" href="#fig-architecture-overall-ctrl-design"><span class="std std-numref">Fig. 6.2</span></a>.
-The <cite>Sequence Generator</cite> will guide the user
-through a series of questions about the plant and control,
-and then generates a <cite>Control Model</cite> that contains
-the open-loop control sequence. This <cite>Control Model</cite> uses the CDL
-language, and can be stored in the <cite>Custom or Manufacturer Modelica Library</cite>.
-Using the <cite>HVAC/controls tool</cite>, the user will then connect
-it to a plant model (which consist of the HVAC and building model
-with exposed control inputs and sensor outputs).
-This connection will allow testing
-and modification of the <cite>Control Model</cite> as needed. Hence,
-using the <cite>Schematic editor</cite>, the user can manipulate
-the sequence to adapt it to the actual project.</p>
-<p>How sequences can be exported to control systems is described
-in <a class="reference internal" href="codeGeneration.html#sec-code-gen"><span class="std std-numref">Section 8</span></a>.</p>
-</div>
-<div class="section" id="functional-verification-tool">
-<h2>6.2. Functional Verification Tool<a class="headerlink" href="#functional-verification-tool" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id4">
-<span id="fig-architecture-overall-verification"></span><p class="plantuml">
-<object data="_images/plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.svg" type="image/svg+xml" style="width:776px;height:412px;">
-<a href="_images/plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.png"><img src="_images/plantuml-92ecfc75affb13e040647d34cbaf0cefcea99bf4.png" alt="skinparam componentStyle uml2
-
-package &quot;Functional Verification Tool&quot; as vt{
-    [I/O\nConfiguration]
-    [Engine]
-    [Viewer]
-}
-[CDL Parser]
-[JModelica]
-database &quot;Modelica\nControl\nModel&quot; as mod_ctl
-[FMU-ME]
-[Reports] &lt;&lt;htlm, json&gt;&gt;
-[HIL Module]
-
-vt -d-&gt; [CDL Parser]: uses
-[I/O\nConfiguration] -d-&gt; mod_ctl : updates point list
-[Engine] -&gt; [FMU-ME] : inserts point list
-[Engine] -d-&gt; [JModelica] : invokes FMU-ME export
-[JModelica] -d-&gt; mod_ctl: imports
-[Engine] -l-&gt; [HIL Module]: connects
-[JModelica] -&gt; [FMU-ME] : exports
-[Engine] -d-&gt; [Reports]: writes
-[Viewer] -&gt; [Reports]: imports" style="width: 600px"/></a>
-
-</object></p>
-<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Overall software architecture of the Functional Verification Tool.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<p>The <cite>Functional Verification Tool</cite> consists of three modules:</p>
-<blockquote>
-<div><ul class="simple">
-<li>An <cite>I/O Configuration</cite> module that adds I/O information to the
-point list,</li>
-<li>a <cite>Engine</cite> that is used to conduct the actual verification, and</li>
-<li>a <cite>Viewer</cite> that displays the results of the verification.</li>
-</ul>
-</div></blockquote>
-<p>The <cite>Functional Verification Tool</cite> uses that same <cite>CDL Parser</cite> as is used
-for the <cite>Controls Design Tool</cite>.
-The <cite>I/O Configuration</cite> module will allow users (such as a
-commissioning agent) to update the point list.
-This is needed as not all
-point mappings may be known during the design phase.
-The <cite>Engine</cite> invokes <cite>JModelica</cite> to export an FMU-ME of the control
-blocks. As <cite>JModelica</cite> does not parse CDL information
-that is stored in vendor annotations (such as the point mapping),
-the <cite>Engine</cite> will insert point lists into the <code class="docutils literal notranslate"><span class="pre">Resources</span></code> directory
-of the <cite>FMU-ME</cite>.
-To conduct the verification, the <cite>Engine</cite> will connect to a
-<cite>HIL Module</cite>, such as Volttron or the BCVTB, and set up a
-closed loop model, using the point list from the FMU’s <code class="docutils literal notranslate"><span class="pre">Resources</span></code>
-directory.
-During the verification, the <cite>Engine</cite> will write reports
-that are displayed by the <cite>Viewer</cite>.</p>
-<p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="parser" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Using a parser that only requires Java has the advantage
-that it can be used in other applications that may not have
-access to a JModelica installation.</td></tr>
-</tbody>
-</table>
-</div>
 </div>
 
 
@@ -424,7 +185,7 @@ access to a JModelica installation.</td></tr>
     </p>
     <p>
         &copy; Copyright (c) All rights reserved.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

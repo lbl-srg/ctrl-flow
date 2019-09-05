@@ -23,16 +23,11 @@ OpenBuildingControl (Working Draft)
    :numbered:
    :maxdepth: 3
 
-   preample
+   preamble
    conventions
    process
-   useCases
    requirements
    softwareArchitecture
-   cdl
-   codeGeneration
-   verification
-   example
    glossary
    acknowledgments
    bibliography

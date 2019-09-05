@@ -12,8 +12,6 @@ BITUSR        = $(USER)
 
 TEMPDIR := $(shell mktemp -d)
 
-found=${shell java -jar source/plantuml.jar -testdot | grep -c 'Installation seems OK. File generation OK'}
-
 #PYTHONPATH=`pwd`/..
 
 # Internal variables.
@@ -36,40 +34,16 @@ help:
 	@echo "  linkcheck to check all external links for integrity"
 	@echo "  doctest   to run all doctests embedded in the documentation (if enabled)"
 
-cleanModels:
-	-rm -f source/models/*.fmu
-	-rm -f source/models/*.mat
-	-rm -f source/models/*.h
-	-rm -f source/models/*.c
-	-rm -f source/models/*.o
-	-rm -f source/models/*.txt
-	-rm -f source/models/modelDescription.xml
-	-rm -f source/models/dymosim
-	-rm -f source/models/fmu.map
-	-rm -f source/models/request.
-	-rm -f source/models/status.
-	-rm -f source/models/success.
-	-rm -rf source/models/Resources
-	-rm -rf source/models/binaries
 clean:
 	-rm -rf $(BUILDDIR)/*
 
-generate_cdl_from_modelica:
-	./generate_cdl_from_modelica.py
-#	rm -r $(TEMPDIR)
-
-copy_case_study1_results:
-	cp ../examples/case_study_1/img/* source/img/case_study1/results/
-
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	./fixHtml.py
+	touch $(BUILDDIR)/html/.nojekyll
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html"
 
-
-
-latex:	test_installation
+latex:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
@@ -78,34 +52,17 @@ latex:	test_installation
 	./fixLatex.py
 	(cd $(BUILDDIR)/latex; make all-pdf)
 
-test_installation:
-ifneq "$(found)" "1"
-	@echo "*** Error: plantuml does not pass configuration test. Run 'java -jar source/plantuml.jar -testdot'"
-	exit 1
-endif
-
 linkcheck:
 	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
 	      "or in $(BUILDDIR)/linkcheck/output.txt."
 
-copytowww:
-	ls build/latex/obc_report.pdf
-	(cd build && \
-	rsync --delete --links --archive \
-		--recursive --backup --update \
-		--rsh=ssh --compress --times --checksum --verbose \
-		--exclude ".DS_Store" \
-		--exclude "*~" \
-	    html/* \
-	    mwetter@simulationresearch.lbl.gov:/usr/local/www/obc/specification/ \
-	)
-	(cd build && \
-	rsync --checksum --verbose \
-	    latex/obc_report.pdf \
-	    mwetter@simulationresearch.lbl.gov:/usr/local/www/obc/download/obc_report.pdf \
-	)
+push:
+	git add -A && git commit -m 'rebuild pages'
+	TMP=$PWD
+	cd ~/github/linkage.js
+	git subtree push --prefix specification/build/html origin gh-pages
+	cd TMP && unset TMP
 
-
-dist:	html, latex, linkcheck
+dist: html, latex, linkcheck
