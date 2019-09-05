@@ -63,6 +63,6 @@ push:
 	TMP=$(PWD)
 	cd $(HOME)/github/linkage.js && git subtree push --prefix specification/build/html origin gh-pages
 	@echo $(PWD)
-	cd TMP; unset TMP
+	cd $(TMP) && unset TMP
 
 dist: html, latex, linkcheck
