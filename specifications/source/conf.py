@@ -109,12 +109,12 @@ import sphinx_bootstrap_theme
 # Activate the theme.
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-html_logo = '_static/cdl-logo.png'
+# html_logo = '_static/logo.png'
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': " ", # Leave an empty space to avoid title under image.
+    'navbar_title': "LinkageJS", # Leave an empty space to avoid title under image.
 
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Site",

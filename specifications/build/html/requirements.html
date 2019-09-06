@@ -45,8 +45,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><img src="_static/cdl-logo.png">
-           </a>
+        <a class="navbar-brand" href="index.html">
+          LinkageJS</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -72,7 +72,8 @@
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#generating-connections">4.1. Generating Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-description">4.1. General description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">5. Software Architecture</a></li>
@@ -93,10 +94,16 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">4. Requirements</a><ul>
-<li><a class="reference internal" href="#generating-connections">4.1. Generating Connections</a><ul>
-<li><a class="reference internal" href="#manually">4.1.1. Manually</a></li>
-<li><a class="reference internal" href="#automatically">4.1.2. Automatically</a><ul>
-<li><a class="reference internal" href="#fluid-connectors">4.1.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#general-description">4.1. General description</a><ul>
+<li><a class="reference internal" href="#environment">4.1.1. Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a><ul>
+<li><a class="reference internal" href="#manually">4.2.1. Manually</a></li>
+<li><a class="reference internal" href="#automatically">4.2.2. Automatically</a><ul>
+<li><a class="reference internal" href="#fluid-connectors">4.2.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">4.2.2.2. Signal Connectors</a></li>
+<li><a class="reference internal" href="#data-model-example">4.2.2.3. Data Model Example</a></li>
 </ul>
 </li>
 </ul>
@@ -147,10 +154,16 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">4. Requirements</a><ul>
-<li><a class="reference internal" href="#generating-connections">4.1. Generating Connections</a><ul>
-<li><a class="reference internal" href="#manually">4.1.1. Manually</a></li>
-<li><a class="reference internal" href="#automatically">4.1.2. Automatically</a><ul>
-<li><a class="reference internal" href="#fluid-connectors">4.1.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#general-description">4.1. General description</a><ul>
+<li><a class="reference internal" href="#environment">4.1.1. Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a><ul>
+<li><a class="reference internal" href="#manually">4.2.1. Manually</a></li>
+<li><a class="reference internal" href="#automatically">4.2.2. Automatically</a><ul>
+<li><a class="reference internal" href="#fluid-connectors">4.2.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">4.2.2.2. Signal Connectors</a></li>
+<li><a class="reference internal" href="#data-model-example">4.2.2.3. Data Model Example</a></li>
 </ul>
 </li>
 </ul>
@@ -181,10 +194,40 @@
   <div class="section" id="requirements">
 <span id="sec-requirements"></span><h1>4. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the functional, mathematical and software requirements.</p>
+<div class="section" id="general-description">
+<h2>4.1. General description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="bibliography.html#modelica2017" id="id1">[Mod17]</a></p>
+<div class="section" id="environment">
+<h3>4.1.1. Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h3>
+<span id="tab-environment"></span><table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Environment</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Platform (minimum version)</p></td>
+<td><p>Windows (10), Linux Ubuntu (16.04), OS X (10.10)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web browser</p></td>
+<td><p>Chrome, Firefox, Safari</p></td>
+</tr>
+<tr class="row-even"><td><p>Offline version</p></td>
+<td><p>Running on local server with access to resources hosted on the file system</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="generating-connections">
-<h2>4.1. Generating Connections<a class="headerlink" href="#generating-connections" title="Permalink to this headline">¶</a></h2>
+<h2>4.2. Generating Connections<a class="headerlink" href="#generating-connections" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="manually">
-<h3>4.1.1. Manually<a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.1. Manually<a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
 <p>When drawing a connection line between two connector icons:</p>
 <ul>
 <li><p>a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation with the references to the two connectors is created,</p></li>
@@ -206,9 +249,9 @@
 </ul>
 </div>
 <div class="section" id="automatically">
-<h3>4.1.2. Automatically<a class="headerlink" href="#automatically" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.2. Automatically<a class="headerlink" href="#automatically" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="fluid-connectors">
-<h4>4.1.2.1. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h4>
+<h4>4.2.2.1. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h4>
 <p>Natural mapping for a model with two fluid ports (most common case):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span></code>: inlet</p></li>
@@ -258,11 +301,13 @@ For a three way valve without any flow splitter to explicitly model the fluid ju
 </div>
 </li>
 <li><p>Order all the connectors belonging to that fluid path according to the orientation defined here above and based on the position of the corresponding objects with the constraint that for each object <code class="docutils literal notranslate"><span class="pre">inlet</span></code> has to be listed first and <code class="docutils literal notranslate"><span class="pre">outlet</span></code> last. Prepend / append that list with the start and end connectors.</p></li>
-<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation:</p></li>
+<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation see listing <a class="reference internal" href="#code-connect-fluid"><span class="std std-ref">Pseudo code illustrating the generation of connections between fluid ports</span></a>.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
+<div class="literal-block-wrapper docutils container" id="code-connect-fluid">
+<div class="code-block-caption"><span class="caption-number">Listing 4.1 </span><span class="caption-text">Pseudo code illustrating the generation of connections between fluid ports</span><a class="headerlink" href="#code-connect-fluid" title="Permalink to this code">¶</a></div>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="kr">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span>
 <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
@@ -278,6 +323,7 @@ For a three way valve without any flow splitter to explicitly model the fluid ju
       <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
+</div>
 <p>[connect_3wv]: img/connect_3wv.svg
 ![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv]
 <em>Generating connections with a fluid junction not modeled explicitly (typically a three way valve)</em></p>
@@ -289,135 +335,143 @@ For a three way valve without any flow splitter to explicitly model the fluid ju
 <li><p>Within the same fluid path objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically <code class="docutils literal notranslate"><span class="pre">supply</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p></li>
 <li><p>A same fluid path does not necessarily imply a uniform flow rate.</p></li>
 </ul>
-<p>#### Signal Connectors</p>
-<p>## Test data model</p>
-<p>Exemple of AHU (VAV or DOA)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;path of script.js&quot;</span><span class="p">,</span>
+</div>
+<div class="section" id="signal-connectors">
+<h4>4.2.2.2. Signal Connectors<a class="headerlink" href="#signal-connectors" title="Permalink to this headline">¶</a></h4>
+<p>To be updated</p>
+</div>
+<div class="section" id="data-model-example">
+<h4>4.2.2.3. Data Model Example<a class="headerlink" href="#data-model-example" title="Permalink to this headline">¶</a></h4>
+<p>See <a class="reference internal" href="#code-ahu"><span class="std std-ref">Example of the configuration data model for an air handling unit</span></a></p>
+<div class="literal-block-wrapper docutils container" id="code-ahu">
+<div class="code-block-caption"><span class="caption-number">Listing 4.2 </span><span class="caption-text">Example of the configuration data model for an air handling unit</span><a class="headerlink" href="#code-ahu" title="Permalink to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;script&quot;</span><span class="o">:</span> <span class="s2">&quot;path of script.js&quot;</span><span class="p">,</span>
 
-<span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+<span class="s2">&quot;system&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;AHU&quot;</span>
 <span class="p">},</span>
 
-<span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+<span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
 
-<span class="s2">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
-      <span class="s2">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="o">-</span><span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]],</span>
+<span class="s2">&quot;diagram&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;configuration&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+      <span class="s2">&quot;modelica&quot;</span><span class="o">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="o">-</span><span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
 <span class="p">},</span>
 
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">see</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ipywidgets</span><span class="o">.</span><span class="n">readthedocs</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Widget</span><span class="o">%</span><span class="il">20L</span><span class="n">ist</span><span class="o">.</span><span class="n">html</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU_#i&quot;</span> <span class="o">//</span> <span class="c1">#i minimum available positive integer</span>
+<span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="c1">// see https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20List.html</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;AHU_#i&quot;</span> <span class="c1">// #i minimum available positive integer</span>
 <span class="p">},</span>
 
-<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">]</span>
+<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">]</span>
 <span class="p">},</span>
 
-<span class="s2">&quot;medium&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;hotWater&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;chilledWater&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
+<span class="s2">&quot;medium&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;air&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hotWater&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;chilledWater&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
 <span class="p">},</span>
 
-<span class="s2">&quot;equipment&quot;</span><span class="p">:</span> <span class="p">[</span>  <span class="o">//</span> <span class="n">Brick</span> <span class="n">relationship</span><span class="p">:</span> <span class="n">hasPart</span>
+<span class="s2">&quot;equipment&quot;</span><span class="o">:</span> <span class="p">[</span>  <span class="c1">// Brick relationship: hasPart</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;heaRec&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">conditions</span> <span class="k">for</span> <span class="n">enabling</span><span class="o">/</span><span class="n">displaying</span> <span class="n">this</span> <span class="nb">object</span>
-            <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="p">:</span> <span class="s2">&quot;DOA&quot;</span><span class="p">}</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;heaRec&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+            <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="o">:</span> <span class="s2">&quot;DOA&quot;</span><span class="p">}</span>
             <span class="p">],</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="kc">null</span><span class="p">,</span>
             <span class="s2">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)&quot;</span><span class="p">,</span>
             <span class="p">],</span>
-            <span class="s2">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="n">flipHorizontal</span><span class="p">,</span>
-            <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
-            <span class="s2">&quot;connect_tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;port_a1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_a2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">}},</span>
+            <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipHorizontal</span><span class="p">,</span>
+            <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+            <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;port_a1&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_a2&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b1&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b2&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">}},</span>
       <span class="p">},</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eco&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Separate dedicated OA dampers&quot;</span><span class="p">,</span> <span class="s2">&quot;Single common OA damper&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">conditions</span> <span class="k">for</span> <span class="n">enabling</span><span class="o">/</span><span class="n">displaying</span> <span class="n">this</span> <span class="nb">object</span>
-            <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span><span class="p">}</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;eco&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Separate dedicated OA dampers&quot;</span><span class="p">,</span> <span class="s2">&quot;Single common OA damper&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+            <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="o">:</span> <span class="s2">&quot;VAV&quot;</span><span class="p">}</span>
             <span class="p">],</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="kc">null</span><span class="p">,</span>
             <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span><span class="p">,</span>
             <span class="p">],</span>
-            <span class="s2">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="n">flipVertical</span><span class="p">,</span>
-            <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-            <span class="s2">&quot;connect_tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;port_Out&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_OutMin&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Sup&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;port_Exh&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Ret&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
+            <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipVertical</span><span class="p">,</span>
+            <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+            <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;port_Out&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_OutMin&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Sup&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;port_Exh&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Ret&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
             <span class="p">}}</span>
       <span class="p">},</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;supFan&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">array</span> <span class="ow">or</span> <span class="n">array</span> <span class="n">of</span> <span class="n">arrays</span>
-            <span class="s2">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-            <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="o">//</span> <span class="n">single</span> <span class="n">coordinate</span> <span class="n">array</span> <span class="ow">or</span> <span class="n">array</span> <span class="n">of</span> <span class="n">coordinates</span> <span class="n">arrays</span> <span class="k">with</span> <span class="n">size</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">),</span>
-            <span class="s2">&quot;connect_tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span><span class="p">}</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;supFan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="c1">// array or array of arrays</span>
+            <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="c1">// single coordinate array or array of coordinates arrays with size len(options),</span>
+            <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply&quot;</span><span class="p">}</span>
       <span class="p">},</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;retFan&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">array</span> <span class="ow">or</span> <span class="n">array</span> <span class="n">of</span> <span class="n">arrays</span>
-            <span class="s2">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="n">flipHorizontal</span><span class="p">,</span>
-            <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="o">//</span> <span class="n">single</span> <span class="n">coordinate</span> <span class="n">array</span> <span class="ow">or</span> <span class="n">array</span> <span class="n">of</span> <span class="n">coordinates</span> <span class="n">arrays</span> <span class="k">with</span> <span class="n">size</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">),</span>
-            <span class="s2">&quot;connect_tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return&quot;</span><span class="p">}</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;retFan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="c1">// array or array of arrays</span>
+            <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipHorizontal</span><span class="p">,</span>
+            <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="c1">// single coordinate array or array of coordinates arrays with size len(options),</span>
+            <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return&quot;</span><span class="p">}</span>
       <span class="p">},</span>
 <span class="p">],</span>
 
-<span class="s2">&quot;controls&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="s2">&quot;controls&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">conditions</span> <span class="k">for</span> <span class="n">enabling</span><span class="o">/</span><span class="n">displaying</span> <span class="n">this</span> <span class="nb">object</span>
-            <span class="p">{</span><span class="s2">&quot;#equipmen[id=economizer].value&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">}</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+            <span class="p">{</span><span class="s2">&quot;#equipmen[id=economizer].value&quot;</span><span class="o">:</span> <span class="s2">&quot;True&quot;</span><span class="p">}</span>
             <span class="p">],</span>
-            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
       <span class="p">},</span>
 <span class="p">],</span>
 
-<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="s2">&quot;parameters&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;v_flowSup_nominal&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;v_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
       <span class="p">},</span>
       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;v_flowRet_nominal&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air volumetric flow rate&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;v_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Nominal return air volumetric flow rate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
       <span class="p">},</span>
 <span class="p">],</span>
 
 <span class="p">}</span>
 </pre></div>
+</div>
 </div>
 <p>Issues:</p>
 <ul class="simple">

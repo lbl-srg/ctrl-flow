@@ -5,6 +5,27 @@ Requirements
 
 This section describes the functional, mathematical and software requirements.
 
+General description
+-------------------
+
+:cite:`Modelica2017`
+
+Environment
+***********
+
+.. _tab_environment:
+
+.. table:: Environment
+
+   ============================================== ============================================================================================
+   Feature                                        Support
+   ============================================== ============================================================================================
+   Platform (minimum version)                      Windows (10), Linux Ubuntu (16.04), OS X (10.10)
+   Web browser                                     Chrome, Firefox, Safari
+   Offline version                                 Running on local server with access to resources hosted on the file system
+   ============================================== ============================================================================================
+
+
 Generating Connections
 ----------------------
 
@@ -87,9 +108,11 @@ The connection logic is then as follows:
 
       * Order all the connectors belonging to that fluid path according to the orientation defined here above and based on the position of the corresponding objects with the constraint that for each object ``inlet`` has to be listed first and ``outlet`` last. Prepend / append that list with the start and end connectors.
 
-      * Generate the ``connect`` equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation:
+      * Generate the ``connect`` equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation see listing :ref:`code_connect_fluid`.
 
 .. code-block:: modelica
+      :caption: Pseudo code illustrating the generation of connections between fluid ports
+      :name: code_connect_fluid
 
       i = 1
       while i < n
@@ -119,14 +142,19 @@ The implications of that logic are the following:
 
 * A same fluid path does not necessarily imply a uniform flow rate.
 
-#### Signal Connectors
+Signal Connectors
+.................
 
+To be updated
 
-## Test data model
+Data Model Example
+..................
 
-Exemple of AHU (VAV or DOA)
+See :ref:`code_ahu`
 
-.. code-block:: python
+.. code-block:: js
+      :caption: Example of the configuration data model for an air handling unit
+      :name: code_ahu
 
       {
       "script": "path of script.js",
@@ -140,7 +168,7 @@ Exemple of AHU (VAV or DOA)
 
       "diagram": {
             "configuration": [20, 20],
-            "modelica": [[-120,-200], [120,120]],
+            "modelica": [[-120,-200], [120,120]]
       },
 
       "name": {
