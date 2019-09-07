@@ -1,0 +1,559 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4. Requirements &#8212; LinkageJS Requirements Specification</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Software Architecture" href="softwareArchitecture.html" />
+    <link rel="prev" title="3. Process Workflow" href="process.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          LinkageJS</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-description">4.1. General description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">5. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">6. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">7. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">4. Requirements</a><ul>
+<li><a class="reference internal" href="#general-description">4.1. General description</a><ul>
+<li><a class="reference internal" href="#environment">4.1.1. Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a><ul>
+<li><a class="reference internal" href="#manually">4.2.1. Manually</a></li>
+<li><a class="reference internal" href="#automatically">4.2.2. Automatically</a><ul>
+<li><a class="reference internal" href="#fluid-connectors">4.2.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">4.2.2.2. Signal Connectors</a></li>
+<li><a class="reference internal" href="#data-model-example">4.2.2.3. Data Model Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="process.html" title="Previous Chapter: 3. Process Workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. Process Workflow</span>
+    </a>
+  </li>
+  <li>
+    <a href="softwareArchitecture.html" title="Next Chapter: 5. Software Architecture"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Software A... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">4. Requirements</a><ul>
+<li><a class="reference internal" href="#general-description">4.1. General description</a><ul>
+<li><a class="reference internal" href="#environment">4.1.1. Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-connections">4.2. Generating Connections</a><ul>
+<li><a class="reference internal" href="#manually">4.2.1. Manually</a></li>
+<li><a class="reference internal" href="#automatically">4.2.2. Automatically</a><ul>
+<li><a class="reference internal" href="#fluid-connectors">4.2.2.1. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">4.2.2.2. Signal Connectors</a></li>
+<li><a class="reference internal" href="#data-model-example">4.2.2.3. Data Model Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="process.html" title="Previous Chapter: 3. Process Workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. Process Workflow</span>
+    </a>
+  </li>
+  <li>
+    <a href="softwareArchitecture.html" title="Next Chapter: 5. Software Architecture"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Software A... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="requirements">
+<span id="sec-requirements"></span><h1>4. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the functional, mathematical and software requirements.</p>
+<div class="section" id="general-description">
+<h2>4.1. General description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="bibliography.html#modelica2017" id="id1">[Mod17]</a></p>
+<div class="section" id="environment">
+<h3>4.1.1. Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h3>
+<span id="tab-environment"></span><table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Environment</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Platform (minimum version)</p></td>
+<td><p>Windows (10), Linux Ubuntu (16.04), OS X (10.10)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web browser</p></td>
+<td><p>Chrome, Firefox, Safari</p></td>
+</tr>
+<tr class="row-even"><td><p>Offline version</p></td>
+<td><p>Running on local server with access to resources hosted on the file system</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="generating-connections">
+<h2>4.2. Generating Connections<a class="headerlink" href="#generating-connections" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="manually">
+<h3>4.2.1. Manually<a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
+<p>When drawing a connection line between two connector icons:</p>
+<ul>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation with the references to the two connectors is created,</p></li>
+<li><p>with a graphical annotation defining the connection path as an array of points and providing an optional smoothing function e.g. Bezier.</p>
+<blockquote>
+<div><ul>
+<li><p>When no smoothing function is specified the connection path must be rendered graphically as a set of segments.</p></li>
+<li><p>The array of points is either:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>created fully automatically when the next user’s click after having started a connection is made on a connector icon. The function call <code class="docutils literal notranslate"><span class="pre">create_new_path(connector1,</span> <span class="pre">connector2)</span></code> creates the minimum number of <em>vertical or horizontal</em> segments to link the two connector icons with the constraint of avoiding overlaying any instantiated object,</p></li>
+<li><p>created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call <cite>create_new_path(point[i], point[i+1])</cite> is called to generate the path linking each pair of points together.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="automatically">
+<h3>4.2.2. Automatically<a class="headerlink" href="#automatically" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fluid-connectors">
+<h4>4.2.2.1. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h4>
+<p>Natural mapping for a model with two fluid ports (most common case):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span></code>: inlet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_b</span></code>: outlet</p></li>
+</ul>
+<p>For more than two fluid ports e.g. coil we could use the variable name:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">port_a1</span></code>: primary fluid (liquid) inlet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">port_a2</span></code>: secondary fluid (air) inlet</p></li>
+</ul>
+<p>However that logic fails when the ports correspond to the same medium:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Actuators.Dampers.MixingBox</span></code>: <code class="docutils literal notranslate"><span class="pre">port_Out,</span> <span class="pre">port_Exh,</span> <span class="pre">port_Ret,</span> <span class="pre">port_Sup</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear</span></code>: <code class="docutils literal notranslate"><span class="pre">port_1,</span> <span class="pre">port_2,</span> <span class="pre">port_3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU</span></code>: <code class="docutils literal notranslate"><span class="pre">port_a1,</span> <span class="pre">port_a2,</span> <span class="pre">port_b1,</span> <span class="pre">port_b2</span></code></p></li>
+</ul>
+<p>For the configuration script:</p>
+<ul class="simple">
+<li><p>By default <code class="docutils literal notranslate"><span class="pre">port_a</span></code> and <code class="docutils literal notranslate"><span class="pre">port_b</span></code> will be tagged as <code class="docutils literal notranslate"><span class="pre">inlet</span></code> and <code class="docutils literal notranslate"><span class="pre">outlet</span></code> respectively.</p></li>
+<li><p>An optional tag is provided at the instance level to specify the fluid path e.g. <code class="docutils literal notranslate"><span class="pre">air_supply</span></code> or <code class="docutils literal notranslate"><span class="pre">air_return</span></code>.</p></li>
+<li><p>All fluid connectors are then tagged by concatenating the previous tags e.g. <code class="docutils literal notranslate"><span class="pre">air_supply_inlet</span></code> or <code class="docutils literal notranslate"><span class="pre">air_return_outlet</span></code>.</p></li>
+</ul>
+<p>We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve (see [figure](#connect_3wv)), the bypass port should be on a different fluid path than the inlet and outlet ports see figure. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+Furthermore a fluid connector can be connected to more than one other fluid connector. To support that feature another connector tag value is possible: <code class="docutils literal notranslate"><span class="pre">junction</span></code>.
+For a three way valve without any flow splitter to explicitly model the fluid junction the mapping dictionary could be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;port_1&quot;:</span> <span class="pre">&quot;hotwater_return_inlet&quot;,</span> <span class="pre">&quot;port_2&quot;:</span> <span class="pre">&quot;hotwater_return_outlet&quot;,</span> <span class="pre">&quot;port_3&quot;:</span> <span class="pre">&quot;hotwater_supply_junction&quot;}</span></code></p>
+<p>The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.</p>
+<p>If the tagging is resolved for all fluid connectors of the instantiated objects the connector tags are stored in a hierarchical vendor annotation at the model level e.g. <code class="docutils literal notranslate"><span class="pre">__Linkage_connect(Tags(object_name1={connector_name1=air_supply_inlet,</span> <span class="pre">connector_name2=air_supply_outlet,</span> <span class="pre">...},</span> <span class="pre">...))</span></code>. This is done when updating the model.</p>
+<p>All object names in <code class="docutils literal notranslate"><span class="pre">__Linkage_tags(Tags())</span></code> annotation reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, two additional inputs are needed:</p>
+<ol class="arabic simple">
+<li><p>The names of the start port and the end port for each fluid path. Note that those ports may be part of a different fluid path see figure.</p></li>
+<li><p>The direction (horizontal or vertical) of the connection path.</p></li>
+</ol>
+<p>Those are stored in <code class="docutils literal notranslate"><span class="pre">__Linkage_connect(Direction(fluid_path1={start_connector_name,</span> <span class="pre">end_connector_name,</span> <span class="pre">horizontal_or_vertical}))</span></code>.</p>
+<p>The connection logic is then as follows:</p>
+<ul>
+<li><p>List all the different fluid paths in <code class="docutils literal notranslate"><span class="pre">__Linkage_connect(Tags())</span></code> corresponding to each tuple <code class="docutils literal notranslate"><span class="pre">{fluid}_{path}</span></code> in all the connector tags <code class="docutils literal notranslate"><span class="pre">{fluid}_{path}_{port}</span></code>.</p></li>
+<li><p>For each fluid path:</p>
+<blockquote>
+<div><ul>
+<li><p>Find the position of the objects corresponding to the start and end ports specified in <code class="docutils literal notranslate"><span class="pre">__Linkage_connect(Direction(fluid_path1={start_connector_name,</span> <span class="pre">end_connector_name}))</span></code>. Those are further referred to as start and end position.</p></li>
+<li><div class="line-block">
+<div class="line">Find the orientation (up, down, right, left) of the direction (horizontal, vertical) of the connection path by comparing the <code class="docutils literal notranslate"><span class="pre">x</span></code> (resp. <code class="docutils literal notranslate"><span class="pre">y</span></code>) coordinate values of the start and end position if the direction is horizontal (resp. vertical).</div>
+</div>
+<div class="line-block">
+<div class="line">Throw an exception if the orientation cannot be resolved due to identical coordinate values.</div>
+</div>
+</li>
+<li><p>Order all the connectors belonging to that fluid path according to the orientation defined here above and based on the position of the corresponding objects with the constraint that for each object <code class="docutils literal notranslate"><span class="pre">inlet</span></code> has to be listed first and <code class="docutils literal notranslate"><span class="pre">outlet</span></code> last. Prepend / append that list with the start and end connectors.</p></li>
+<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations by iterating on the ordered list of connectors as illustrated in the pseudo code below. And generate the connection path and the corresponding graphical annotation see listing <a class="reference internal" href="#code-connect-fluid"><span class="std std-ref">Pseudo code illustrating the generation of connections between fluid ports</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="code-connect-fluid">
+<div class="code-block-caption"><span class="caption-number">Listing 4.1 </span><span class="caption-text">Pseudo code illustrating the generation of connections between fluid ports</span><a class="headerlink" href="#code-connect-fluid" title="Permalink to this code">¶</a></div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kr">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kr">if</span> <span class="kr">type</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;junction&quot;</span>  <span class="c1">// connect all junction connectors before iterating</span>
+      <span class="kr">while</span> <span class="kr">type</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;junction&quot;</span>
+            <span class="kr">connect</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ordered_connector</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="kr">annotation</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="n">create_new_path</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ordered_connector</span><span class="p">[</span><span class="n">j</span><span class="p">])))</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">j</span>
+<span class="kr">else</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ordered_connector</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+      <span class="kr">annotation</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="n">create_new_path</span><span class="p">(</span><span class="n">ordered_connector</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ordered_connector</span><span class="p">[</span><span class="n">j</span><span class="p">])))</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>[connect_3wv]: img/connect_3wv.svg
+![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv]
+<em>Generating connections with a fluid junction not modeled explicitly (typically a three way valve)</em></p>
+<p>[connect_3wv_junction]: img/connect_3wv_junction.svg
+![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv_junction]
+<em>Generating connections with a fluid junction modeled explicitly (typically a three way valve)</em></p>
+<p>The implications of that logic are the following:</p>
+<ul class="simple">
+<li><p>Within the same fluid path objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically <code class="docutils literal notranslate"><span class="pre">supply</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p></li>
+<li><p>A same fluid path does not necessarily imply a uniform flow rate.</p></li>
+</ul>
+</div>
+<div class="section" id="signal-connectors">
+<h4>4.2.2.2. Signal Connectors<a class="headerlink" href="#signal-connectors" title="Permalink to this headline">¶</a></h4>
+<p>To be updated</p>
+</div>
+<div class="section" id="data-model-example">
+<h4>4.2.2.3. Data Model Example<a class="headerlink" href="#data-model-example" title="Permalink to this headline">¶</a></h4>
+<p>See <a class="reference internal" href="#code-ahu"><span class="std std-ref">Example of the configuration data model for an air handling unit</span></a></p>
+<div class="literal-block-wrapper docutils container" id="code-ahu">
+<div class="code-block-caption"><span class="caption-number">Listing 4.2 </span><span class="caption-text">Example of the configuration data model for an air handling unit</span><a class="headerlink" href="#code-ahu" title="Permalink to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="s2">&quot;script&quot;</span><span class="o">:</span> <span class="s2">&quot;path of script.js&quot;</span><span class="p">,</span>
+
+      <span class="s2">&quot;system&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;AHU&quot;</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+
+      <span class="s2">&quot;diagram&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;configuration&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+            <span class="s2">&quot;modelica&quot;</span><span class="o">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="o">-</span><span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="c1">// see https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20List.html</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;AHU_#i&quot;</span> <span class="c1">// #i minimum available positive integer</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">]</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;medium&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;air&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;hotWater&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;chilledWater&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Media.Water&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+
+      <span class="s2">&quot;equipment&quot;</span><span class="o">:</span> <span class="p">[</span>  <span class="c1">// Brick relationship: hasPart</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;heaRec&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+                  <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="o">:</span> <span class="s2">&quot;DOA&quot;</span><span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="kc">null</span><span class="p">,</span>
+                  <span class="s2">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)&quot;</span><span class="p">,</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipHorizontal</span><span class="p">,</span>
+                  <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                  <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;port_a1&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_a2&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b1&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_b2&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">}},</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;eco&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Separate dedicated OA dampers&quot;</span><span class="p">,</span> <span class="s2">&quot;Single common OA damper&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+                  <span class="p">{</span><span class="s2">&quot;#type&quot;</span><span class="o">:</span> <span class="s2">&quot;VAV&quot;</span><span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="kc">null</span><span class="p">,</span>
+                  <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span><span class="p">,</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipVertical</span><span class="p">,</span>
+                  <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                  <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;connectors&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;port_Out&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_OutMin&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_junction&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Sup&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;port_Exh&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="s2">&quot;port_Ret&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
+                  <span class="p">}}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;supFan&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="c1">// array or array of arrays</span>
+                  <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                  <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="c1">// single coordinate array or array of coordinates arrays with size len(options),</span>
+                  <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="o">:</span> <span class="s2">&quot;air_supply&quot;</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;retFan&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y&quot;</span><span class="p">,</span> <span class="c1">// array or array of arrays</span>
+                  <span class="s2">&quot;icon_transformation&quot;</span><span class="o">:</span> <span class="nx">flipHorizontal</span><span class="p">,</span>
+                  <span class="s2">&quot;placement&quot;</span><span class="o">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span> <span class="c1">// single coordinate array or array of coordinates arrays with size len(options),</span>
+                  <span class="s2">&quot;connect_tags&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;fluid_path&quot;</span><span class="o">:</span> <span class="s2">&quot;air_return&quot;</span><span class="p">}</span>
+            <span class="p">},</span>
+      <span class="p">],</span>
+
+      <span class="s2">&quot;controls&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;widget&quot;</span><span class="o">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;condition&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="c1">// array of conditions for enabling/displaying this object</span>
+                  <span class="p">{</span><span class="s2">&quot;#equipmen[id=economizer].value&quot;</span><span class="o">:</span> <span class="s2">&quot;True&quot;</span><span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
+            <span class="p">},</span>
+      <span class="p">],</span>
+
+      <span class="s2">&quot;parameters&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;v_flowSup_nominal&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;v_flowRet_nominal&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Nominal return air volumetric flow rate&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;m3/h&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Issues:</p>
+<ul class="simple">
+<li><p>We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:</p>
+<ul>
+<li><p>identify which object and <code class="docutils literal notranslate"><span class="pre">connect</span></code> statement can be modified with the template script: declaration/statement annotation <code class="docutils literal notranslate"><span class="pre">__Linkage_modify=true</span></code></p></li>
+<li><p>generate the JSON configuration file:</p>
+<ul>
+<li><p>automatically from the model structure? Non working examples:</p>
+<ul>
+<li><p>Supply fan/Draw through: if the user has modified the <code class="docutils literal notranslate"><span class="pre">Placement</span></code> we have no one-to-one correspondance with JSON file. Also relying on the <code class="docutils literal notranslate"><span class="pre">connect</span></code> statements involving the object seems to complex.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>Icon for schematics can be specified as annotation in Modelica model (the icon transformation should be similar between Modelica and svg)</p></li>
+</ul>
+<p>Divers:</p>
+<ul class="simple">
+<li><p>Tooltip for every GUI item</p></li>
+</ul>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>Validation upon submit (export/generate) VS real-time</p></li>
+<li><p>Routine to add sensors for control sequences</p></li>
+<li><p>Routine to add fluid ports: part of data model?</p></li>
+</ul>
+<p>## Questions</p>
+<p>Choice of units: SI / IP</p>
+<p>Text editor</p>
+<p>Launch simulation integrated</p>
+<ul class="simple">
+<li><p>At least compilation required to validate the model?</p></li>
+<li><p>For control sequence configuration the model may not need to be fully specified.</p></li>
+</ul>
+<p>Visualize results: variable browser (with Brick/Haystack option similar as <code class="docutils literal notranslate"><span class="pre">re</span></code> option)</p>
+<p>No icon layer: just diagram layer showing graphical objects, component icons, connectors and connection lines</p>
+<p>Automatic medium propagation between connected components</p>
+<ul class="simple">
+<li><p>Expected as a future enhancement of Modelica standard: should we anticipate or wait and see?</p></li>
+</ul>
+<p>## Requirements</p>
+<p>Modelica standard graphical annotations part of specification</p>
+<p>—</p>
+<p>## Notes</p>
+<p>### Brick and tagging</p>
+<p>Set up parameters values like OS measures enable cf. electrical loads…</p>
+<p>### Various</p>
+<p>From Taylor Eng.</p>
+<p>&gt; For standard systems, it might be possible to simply include in their specifications a table of ASHRAE Guideline 36 sequences with check boxes for the paragraph numbers that are applicable to their project.</p>
+<p>From <a class="reference external" href="https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html">https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html</a></p>
+<p>With the current library design, it is necessary to explicitly select the medium model for each component in a circuit. This model is then propagated to the ports, and a Modelica translator will check that the quantity and unit attributes of connected interfaces are identical. Therefore, an error occurs, if connected FluidPorts do not have a medium with the same medium name. In the future, automatic propagation of fluid models through the ports will be introduced, but this still not possible with Modelica 3.0.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright (c) All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
