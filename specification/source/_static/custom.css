@@ -5,6 +5,11 @@ html{
   /*padding: 10px;*/
   background-color: #BFD1D4;
 }
+
+.container, .container-fluid {
+  max-width: 1600px;
+}
+
 body{
   color: #022e4d;
   border-radius: 4px;
