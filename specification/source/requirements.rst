@@ -450,18 +450,7 @@ Three main features of the expandable connector are leveraged:
 
       * Using a ``connect`` equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
 
-#. The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the ``connect`` equation where the variable is first being used. For instance when a variable is first connected to an inside connector ``Modelica.Blocks.Interfaces.RealOutput`` it gets the same causality i.e. output. The same variable can then be connected to another inside connector  ``Modelica.Blocks.Interfaces.RealInput``. That is not the case with non expandable connectors which must be specified as input or output when defined and cannot be connected to both inside connectors ``Modelica.Blocks.Interfaces.RealOutput`` and ``Modelica.Blocks.Interfaces.RealInput``.::
-
-      connector conNonExp = input Real;
-      expandable connector conExp;
-      component com1;  // with inside declaration: Modelica.Blocks.Interfaces.RealOutput y;
-      component com2;  // with inside declaration: Modelica.Blocks.Interfaces.RealInput u;
-      equation
-            connect(com1.y, conNonExp);  // allowed
-            connect(conNonExp, com2.u);  // not allowed
-
-            connect(com1.y, conExp.y);  // allowed: conExp gets augmented with the new output variable y
-            connect(conExp.y, com2.u);  // allowed: conExp.y serves as a gateway to stream com1.y value
+#. The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the ``connect`` equation where the variable is first being used. For instance when a variable is first connected to an inside connector ``Modelica.Blocks.Interfaces.RealOutput`` it gets the same causality i.e. output. The same variable can then be connected to another inside connector  ``Modelica.Blocks.Interfaces.RealInput``.
 
 #. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
 
