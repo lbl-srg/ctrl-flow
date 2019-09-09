@@ -367,18 +367,16 @@ For the configuration script:
 
 * All fluid connectors are then tagged by concatenating the previous tags e.g. ``air_supply_inlet`` or ``air_return_outlet``.
 
-We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see figure :numref:`linkage_connect_3wv`. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see :numref:`linkage_connect_3wv`. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
 Furthermore a fluid connector can be connected to more than one other fluid connector. To support that feature another connector tag value is needed: ``junction``.
 For a three way valve without any flow splitter to explicitly model the fluid junction the mapping dictionary could be:
 
 ``{"port_1": "hotwater_return_inlet", "port_2": "hotwater_return_outlet", "port_3": "hotwater_supply_junction"}``
 
-.. _linkage_connect_3wv:
-
 .. figure:: img/linkage_connect_3wv.svg
-      :scale: 150 %
+      :name: linkage_connect_3wv
 
-      Logic of ports connection in case of ``inlet`` and ``outlet`` ports (top) and ``junction`` ports (bottom)
+      Connection scheme with a fluid junction not modeled explicitly, using the connector tag ``junction``
 
 The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.
 
@@ -422,69 +420,192 @@ The connection logic is then as follows:
                   annotation(Line(points=create_new_path(ordered_connector[i], ordered_connector[j])))
                   i = j + 1
 
-        The figure :numref:`linkage_connect_junction` further illustrates the logic for connecting ``junction`` ports.
-
-.. _linkage_connect_junction:
+        :numref:`linkage_connect_junction` further illustrates the logic for connecting ``junction`` ports.
 
 .. figure:: img/linkage_connect_junction.svg
+      :name: linkage_connect_junction
+      :align: center
 
       Logic of ports connection in case of ``inlet`` and ``outlet`` ports (top) and ``junction`` ports (bottom)
 
-[connect_3wv]: img/connect_3wv.svg
-![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv]
-*Generating connections with a fluid junction not modeled explicitly (typically a three way valve)*
-
-[connect_3wv_junction]: img/connect_3wv_junction.svg
-![Generating connections with a fluid junction not modeled explicitly (typically a three way valve)][connect_3wv_junction]
-*Generating connections with a fluid junction modeled explicitly (typically a three way valve)*
-
 The implications of that logic are the following:
 
-* Within the same fluid path objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically ``supply`` and ``return``.
+* Within the same fluid path, objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically ``supply`` and ``return``.
 
 * A same fluid path does not necessarily imply a uniform flow rate.
 
 Signal Connectors
 .................
 
-To be updated
+Generating the ``connect`` equations for signal variables relies on the expandable connector type, see *§9.1.3
+Expandable Connectors* in :cite:`Modelica2017`. For the `Configuration widget` we will define classes of this type with a predefined set of control variables: such a class will be further referred to as `control bus`.
 
+Three main features of the expandable connector are leveraged:
 
+#. All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type ``Real``) can be connected i.e. be part of a ``connect`` equation.
 
+   .. note::
 
+      * Connecting a non connector variable to a connector variable with ``connect(non_connector_var, connector_var)`` yields a warning but no error. It is considered bad practice though and a standard equation should be used in place ``non_connector_var = connector_var``.
 
-Issues:
+      * Using a ``connect`` equation allows to draw a connection line which makes the model structure more obvious to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice ine Modelica Buildings library.
 
-* We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:
+#. The causality (input or output) of each variable inside an expandable connector is not predefined but rather depends on the ``connect`` equation where the variable is being used. So the same variable can be connected to an instance of ``Modelica.Blocks.Interfaces.RealOutput`` (and treated as an input) or an instance of ``Modelica.Blocks.Interfaces.RealInput`` (and treated as an output).
 
-  * identify which object and ``connect`` statement can be modified with the template script: declaration/statement annotation ``__Linkage_modify=true``
-  * generate the JSON configuration file:
+#. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `Control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
 
-    * automatically from the model structure? Non working examples:
+Those features are illustrated with a minimal example in the figures below where:
+
+* a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,
+
+* a controller system which divides the input variable (measurement) by itself and outputs a control variable equal to one.
+
+The same model is first implemented with an expandable connector and then with a standard connector.
+
+.. figure:: img/BusTestExp.svg
+      :name: BusTestExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with an expandable connector -- Top level
+
+.. code:: modelica
+
+      model BusTestExp
+      BusTestControllerExp controllerSystem;
+      BusTestControlledExp controlledSystem;
+      equation
+            connect(controllerSystem.ahuBus, controlledSystem.ahuBus);
+      end BusTestExp;
+
+.. figure:: img/BusTestControlledExp.svg
+      :name: BusTestControlledExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with an expandable connector -- Controlled component sublevel
+
+.. code:: modelica
+
+      model BusTestControlledExp
+      Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
+      Buildings.Experimental.Templates.BaseClasses.AhuBus ahuBus;
+      Modelica.Blocks.Routing.RealPassThrough actuator;
+      equation
+            connect(sensor.y, ahuBus.yMea);
+            connect(ahuBus.yAct, actuator.u);
+      end BusTestControlledExp;
+
+      expandable connector AhuBus
+      extends Modelica.Icons.SignalBus;
+      end AhuBus;
+
+.. note::
+
+      The definition of ``AhuBus`` in the code snippet here above does not include any variable declaration. However the variables ``ahuBus.yAct`` and ``ahuBus.yMea`` are used in ``connect`` equations. That is only possible with an expandable connector.
+
+      For the `Configuration widget` we will have predeclared variables with names allowing a one-to-one correspondence between:
+
+      * the control sequence input variables (outputs of the equipment model e.g. measured quantities and actuators returned positions),
+
+      * the control sequence output variables (inputs of the equipment model e.g. actuators commanded positions).
+
+      The control bus variable is used as a "gateway" to stream values between the controlled and controller systems.
+
+.. figure:: img/BusTestControllerExp.svg
+      :name: BusTestControllerExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with an expandable connector -- Controller component sublevel
+
+.. code:: modelica
+
+      model BusTestControlledExp
+            Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
+            Buildings.Experimental.Templates.BaseClasses.AhuBus ahuBus;
+            Modelica.Blocks.Routing.RealPassThrough actuator;
+      equation
+            connect(ahuBus.yAct, actuator.u);
+            connect(sensor.y, ahuBus.yMea)
+      end BusTestControlledExp;
+
+.. figure:: img/BusTestNonExp.svg
+      :name: BusTestNonExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with a standard connector -- Top level
+
+.. code:: modelica
+
+      model BusTestNonExp
+      BusTestControllerNonExp controllerSystem;
+      BusTestControlledNonExp controlledSystem;
+      equation
+            connect(controllerSystem.nonExpandableBus, controlledSystem.nonExpandableBus);
+      end BusTestNonExp;
+
+.. figure:: img/BusTestControlledNonExp.svg
+      :name: BusTestControlledNonExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with a standard connector -- Controlled component sublevel
+
+.. code:: modelica
+
+      model BusTestControlledNonExp
+      Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
+      Modelica.Blocks.Routing.RealPassThrough actuator;
+      BaseClasses.NonExpandableBus nonExpandableBus;
+      equation
+            nonExpandableBus.yMea = sensor.y;
+            actuator.u = nonExpandableBus.yAct;
+      end BusTestControlledNonExp;
+
+      connector NonExpandableBus
+      // The following declarations are required.
+      Real yMea;
+      Real yAct;
+      end NonExpandableBus;
+
+.. figure:: img/BusTestControllerNonExp.svg
+      :name: BusTestControllerNonExp
+      :width: 50%
+
+      Minimal example illustrating the connection scheme with a standard connector -- Controller component sublevel
+
+.. code:: modelica
+
+      model BusTestControllerNonExp
+      Controls.OBC.CDL.Continuous.Division controller;
+      Modelica.Blocks.Routing.RealPassThrough realPassThrough;
+      BaseClasses.NonExpandableBus nonExpandableBus;
+      equation
+            connect(realPassThrough.y, controller.u1);
+            controller.u2 = nonExpandableBus.yMea;
+            nonExpandableBus.yAct = controller.y;
+            realPassThrough.u = nonExpandableBus.yMea;
+      end BusTestControllerNonExp;
+
+Issues
+======
+
+We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:
+
+* identify which object and ``connect`` statement can be modified with the template script: declaration/statement annotation ``__Linkage_modify=true``
+
+* generate the JSON configuration file:
+
+      * automatically from the model structure? Non working examples:
 
       * Supply fan/Draw through: if the user has modified the ``Placement`` we have no one-to-one correspondance with JSON file. Also relying on the ``connect`` statements involving the object seems to complex.
 
 
-Notes:
-
-* Icon for schematics can be specified as annotation in Modelica model (the icon transformation should be similar between Modelica and svg)
-
-Divers:
-
-* Tooltip for every GUI item
-
-
-Questions:
+Questions
+=========
 
 * Validation upon submit (export/generate) VS real-time
 * Routine to add sensors for control sequences
 * Routine to add fluid ports: part of data model?
 
-## Questions
-
 Choice of units: SI / IP
-
-Text editor
 
 Launch simulation integrated
 
