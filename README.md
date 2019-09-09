@@ -10,7 +10,7 @@ or
 make latex
 ```
 
-The compilation requires sphinx-doc (http://www.sphinx-doc.org) and a few contributions, which can be installed by running
+The compilation requires `sphinx` (http://www.sphinx-doc.org) and a few contributions, which can be installed by running
 
 ```
 pip install sphinx
