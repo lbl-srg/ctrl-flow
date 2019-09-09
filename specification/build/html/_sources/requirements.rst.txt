@@ -446,13 +446,13 @@ Three main features of the expandable connector are leveraged:
 
    .. note::
 
-      * Connecting a non connector variable to a connector variable with ``connect(non_connector_var, connector_var)`` yields a warning but no error. It is considered bad practice though and a standard equation should be used in place ``non_connector_var = connector_var``.
+      * Connecting a non connector variable to a connector variable with ``connect(non_connector_var, connector_var)`` yields a warning but not an error. It is considered bad practice though and a standard equation should be used in place ``non_connector_var = connector_var``.
 
-      * Using a ``connect`` equation allows to draw a connection line which makes the model structure more obvious to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice ine Modelica Buildings library.
+      * Using a ``connect`` equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
 
-#. The causality (input or output) of each variable inside an expandable connector is not predefined but rather depends on the ``connect`` equation where the variable is being used. So the same variable can be connected to an instance of ``Modelica.Blocks.Interfaces.RealOutput`` (and treated as an input) or an instance of ``Modelica.Blocks.Interfaces.RealInput`` (and treated as an output).
+#. The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the ``connect`` equation where the variable is first being used. For instance when a variable is first connected to an inside connector ``Modelica.Blocks.Interfaces.RealOutput`` it gets the same causality i.e. output. The same variable can then be connected to an instance of ``Modelica.Blocks.Interfaces.RealInput``.
 
-#. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `Control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
+#. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
 
 Those features are illustrated with a minimal example in the figures below where:
 
@@ -460,7 +460,7 @@ Those features are illustrated with a minimal example in the figures below where
 
 * a controller system which divides the input variable (measurement) by itself and outputs a control variable equal to one.
 
-The same model is first implemented with an expandable connector and then with a standard connector.
+* The same model is first implemented with an expandable connector and then with a standard connector.
 
 .. figure:: img/BusTestExp.svg
       :name: BusTestExp
@@ -504,11 +504,11 @@ The same model is first implemented with an expandable connector and then with a
 
       For the `Configuration widget` we will have predeclared variables with names allowing a one-to-one correspondence between:
 
-      * the control sequence input variables (outputs of the equipment model e.g. measured quantities and actuators returned positions),
+      * the control sequence input variables and the outputs of the equipment model e.g. measured quantities and actuators returned positions,
 
-      * the control sequence output variables (inputs of the equipment model e.g. actuators commanded positions).
+      * the control sequence output variables and the inputs of the equipment model e.g. actuators commanded positions.
 
-      The control bus variable is used as a "gateway" to stream values between the controlled and controller systems.
+      The control bus variables are used as "gateways" to stream values between the controlled and controller systems.
 
 .. figure:: img/BusTestControllerExp.svg
       :name: BusTestControllerExp
