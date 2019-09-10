@@ -20,12 +20,12 @@ In this respect it must comply with the Modelica language specification :cite:`M
 * `to be updated`.
 
 
-Software Environment
-********************
+Software Compatibility
+**********************
 
 .. _tab_environment:
 
-.. table:: Requirements for software integration
+.. table:: Requirements for software compatibility
 
       ============================================== ============================================================================================
       Feature                                        Support
@@ -70,8 +70,8 @@ Functionalities
       :header-rows: 1
 
       *     - Feature
+            - V0
             - V1
-            - V2
             - Comment
 
       *     - **IO**
@@ -102,7 +102,7 @@ Functionalities
       *     - Variables browser
             - P
             - R
-            - Query selection of model variables based on regular expression (V1) or Brick tag :cite:`Brick` (V2)
+            - Query selection of model variables based on regular expression (V0) or Brick tag :cite:`Brick` (V1)
 
       *     - Plot simulation results
             - N
@@ -210,7 +210,14 @@ The user interface logic is illustrated in figures :numref:`screen_conf_0` and :
 
    Configuration widget -- Configuring an existing model
 
-The envisioned schema supporting this logic is illustrated in listing :ref:`code_conf_ahu`.
+The envisioned schema supporting this logic is illustrated in :numref:`code_conf_ahu` where:
+
+* the components referenced under the ``equipment`` name are connected together in one dedicated equipment model,
+
+* the components referenced under the ``controls`` name are connected together in one dedicated controls model,
+
+* the equipment and controls models are connected together by means of a `control bus`, see :numref:`BusTestExp`.
+
 
 .. code-block:: json
       :caption: Partial example of the configuration data model for an air handling unit
@@ -238,16 +245,30 @@ The envisioned schema supporting this logic is illustrated in listing :ref:`code
             "type": {
                   "description": "Type of AHU",
                   "widget": "Dropdown",
-                  "options": ["VAV", "DOA"]
+                  "options": ["VAV", "DOA", "Supply Only", "Exhaust Only"]
             },
 
-            "medium": {
-                  "air": "Buildings.Media.Air",
-                  "hotWater": "Buildings.Media.Water",
-                  "chilledWater": "Buildings.Media.Water"
+            "fluid_path": {
+                  "air_supply": [
+                        {"start_port": "port_outAir"},
+                        {"end_port": "port_supAir"},
+                        {"direction": "horizontal"},
+                        {"medium": "Buildings.Media.Air"}
+                  ]
             },
 
             "equipment": [
+                  {
+                        "name": ["port_outAir", "port_supAir"],
+                        "description": ["Outside air port", "Supply air port"],
+                        "condition": [
+                              "NOT",
+                              {"#type": "Exhaust Only"},
+                        ],
+                        "model": ["Modelica.Fluid.Interfaces.FluidPort_a", "Modelica.Fluid.Interfaces.FluidPort_b"]
+                        "placement": [[12, 1], [12,20]]
+                        "connect_tags": {"fluid_path": "air_supply"}
+                  },
                   {
                         "name": "heaRec",
                         "description": "Heat recovery",
@@ -314,6 +335,7 @@ The envisioned schema supporting this logic is illustrated in listing :ref:`code
             ],
 
             "controls": [
+
                   {
                         "description": "Economizer",
                         "widget": "Dropdown",
@@ -326,29 +348,52 @@ The envisioned schema supporting this logic is illustrated in listing :ref:`code
 
             "parameters": [
                   {
-                        "name": "v_flowSup_nominal",
+                        "name": "V_flowSup_nominal",
                         "description": "Nominal supply air volumetric flow rate",
                         "value": 0,
                         "unit": "m3/h"
                   },
                   {
-                        "name": "v_flowRet_nominal",
+                        "name": "V_flowRet_nominal",
                         "description": "Nominal return air volumetric flow rate",
                         "value": 0,
+                        "unit": "m3/h"
+                  }
+                  {
+                        "name": "V_flowOut_nominal",
+                        "description": "Nominal outdoor air volumetric flow rate",
+                        "value": 0,
+                        "condition": [
+                              {"#equipment[id=economizer].value": "True"}
+                        ],
                         "unit": "m3/h"
                   }
             ]
       }
 
-Fluid Connectors
-................
 
-Natural mapping for a model with two fluid ports (most common case):
+The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
+
+* the path of the class to be instantiated depending on the user input (note that some classes e.g. ``FluidPort`` can be instantiated as dependencies of others and have no corresponding input in the form);
+
+* the position of the component in simplified grid coordinates to be converted in diagram view coordinates.
+
+The next paragraphs address how the connections between the connectors of the different components have to be generated automatically based on the model structure.
+
+Fluid Connectors
+****************
+
+The fluid connections (``connect`` equations involving two fluid connectors) are generated based on :
+
+* the coordinates of the components in the diagram view,
+* a tag applied to the components' connectors.
+
+That tag can be automatically generated for components with the two following fluid ports (most common case):
 
 * ``Modelica.Fluid.Interfaces.FluidPort_a``: inlet
 * ``Modelica.Fluid.Interfaces.FluidPort_b``: outlet
 
-For more than two fluid ports e.g. coil we could use the variable name:
+For components with more than two fluid ports e.g. coil, the variable name could be used:
 
 * ``Modelica.Fluid.Interfaces.FluidPort_a port_a1``: primary fluid (liquid) inlet
 * ``Modelica.Fluid.Interfaces.FluidPort_a port_a2``: secondary fluid (air) inlet
@@ -359,24 +404,34 @@ However that logic fails when the ports correspond to the same medium e.g.:
 * ``Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear``: ``port_1, port_2, port_3``
 * ``Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU``: ``port_a1, port_a2, port_b1, port_b2``
 
-For the configuration script:
+So the following logic is considered:
 
-* By default ``port_a`` and ``port_b`` will be tagged as ``inlet`` and ``outlet`` respectively.
+1. Default mode
 
-* An optional tag is provided at the instance level to specify the fluid path e.g. ``air_supply`` or ``air_return``.
+      * By default ``port_a`` and ``port_b`` will be tagged as ``inlet`` and ``outlet`` respectively.
 
-* All fluid connectors are then tagged by concatenating the previous tags e.g. ``air_supply_inlet`` or ``air_return_outlet``.
+      * An optional tag is provided at the component level to specify the fluid path e.g. ``air_supply`` or ``air_return``.
 
-We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see :numref:`linkage_connect_3wv`. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
-Furthermore a fluid connector can be connected to more than one other fluid connector. To support that feature another connector tag value is needed: ``junction``.
-For a three way valve without any flow splitter to explicitly model the fluid junction the mapping dictionary could be:
+      * All fluid connectors are then tagged by concatenating the previous tags e.g. ``air_supply_inlet`` or ``air_return_outlet``.
 
-``{"port_1": "hotwater_return_inlet", "port_2": "hotwater_return_outlet", "port_3": "hotwater_supply_junction"}``
+2. Detailed mode
+
+      * | We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see :numref:`linkage_connect_3wv`. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+        | Furthermore a fluid connector can be connected to more than one other fluid connector. To support that feature another connector tag value is needed: ``junction``.
+
+      * For a three way valve without any flow splitter to explicitly model the fluid junction the mapping dictionary could be:
+
+        ``{"port_1": "hotwater_return_inlet", "port_2": "hotwater_return_outlet", "port_3": "hotwater_supply_junction"}``
 
 .. figure:: img/linkage_connect_3wv.svg
       :name: linkage_connect_3wv
 
       Connection scheme with a fluid junction not modeled explicitly, using the connector tag ``junction``
+
+.. figure:: img/linkage_connect_multi.svg
+      :name: linkage_connect_multi
+
+      Connection scheme with a fluid junction not modeled explicitly, using a dedicated fluid path
 
 The conversion script throws an exception if the instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.
 
@@ -384,11 +439,16 @@ If the tagging is resolved for all fluid connectors of the instantiated objects 
 
 All object names in ``__Linkage_tags(Tags())`` annotation reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, two additional inputs are needed:
 
-1. The names of the start port and the end port for each fluid path. Note that those ports may be part of a different fluid path see figure.
+1. The names of the start port and the end port for each fluid path.
+
+   .. note::
+      Those ports may be part of a different fluid path see ``fluid_path1`` in :numref:`linkage_connect_multi`.
+
+      Furthermore this a stringent limitation of that approach: if the structure of the model is complex, the start or end port of a specific fluid path can be hard to determine due to intricate boolean conditions. Allowing multiple tags for a single connector could be a better solution?
 
 2. The direction (horizontal or vertical) of the connection path.
 
-Those are stored in ``__Linkage_connect(Direction(fluid_path1={start_connector_name, end_connector_name, horizontal_or_vertical}))``.
+Those inputs are stored in ``__Linkage_connect(Direction(fluid_path1={start_connector_name, end_connector_name, horizontal_or_vertical}))``.
 
 The connection logic is then as follows:
 
@@ -420,11 +480,12 @@ The connection logic is then as follows:
                   annotation(Line(points=create_new_path(ordered_connector[i], ordered_connector[j])))
                   i = j + 1
 
+        The only valid connections are ``junction`` with ``junction`` and ``outlet`` with ``inlet``: throw an exception otherwise.
+
         :numref:`linkage_connect_junction` further illustrates the logic for connecting ``junction`` ports.
 
 .. figure:: img/linkage_connect_junction.svg
       :name: linkage_connect_junction
-      :align: center
 
       Logic of ports connection in case of ``inlet`` and ``outlet`` ports (top) and ``junction`` ports (bottom)
 
@@ -434,13 +495,15 @@ The implications of that logic are the following:
 
 * A same fluid path does not necessarily imply a uniform flow rate.
 
+* Among the multiple connectors which are part of the same junction, only one can have a paired ``outlet`` connector (part of the same component) within the same fluid path and the corresponding component must be placed further downstream. There is always the modeling alternative which consists in representing a junction by introducing a new fluid path as in :numref:`linkage_connect_multi`.
+
 Signal Connectors
-.................
+*****************
 
-Generating the ``connect`` equations for signal variables relies on the expandable connector type, see *§9.1.3
-Expandable Connectors* in :cite:`Modelica2017`. For the `Configuration widget` we will define classes of this type with a predefined set of control variables: such a class will be further referred to as `control bus`.
+Generating the ``connect`` equations for signal variables relies on string matching with the names of the variables declared in a a so-called `control bus` which has the type of an expandable connector type, see *§9.1.3
+Expandable Connectors* in :cite:`Modelica2017`.
 
-Three main features of the expandable connector are leveraged:
+The following features of the expandable connector are leveraged:
 
 #. All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type ``Real``) can be connected i.e. be part of a ``connect`` equation.
 
@@ -451,6 +514,8 @@ Three main features of the expandable connector are leveraged:
       * Using a ``connect`` equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
 
 #. The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the ``connect`` equation where the variable is first being used. For instance when a variable is first connected to an inside connector ``Modelica.Blocks.Interfaces.RealOutput`` it gets the same causality i.e. output. The same variable can then be connected to another inside connector  ``Modelica.Blocks.Interfaces.RealInput``.
+
+#. Possibly present but not connected variable is considered not declared: all variables need not be connected so the `control bus` does not have to be reconfigured depending on the model structure.
 
 #. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
 
@@ -510,6 +575,11 @@ Those features are illustrated with a minimal example in the figures below where
 
       The control bus variables are used as "gateways" to stream values between the controlled and controller systems.
 
+      For clarity it might be useful to group control input variables in one sub-bus and control output variables in another sub-bus.
+      The `experience feedback on bus usage in Modelica`_ shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option: the number of signals passing through busses has an impact on the number of equations and the simulation time.
+
+      .. _experience feedback on bus usage in Modelica: https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library
+
 .. figure:: img/BusTestControllerExp.svg
       :name: BusTestControllerExp
       :width: 50%
@@ -561,6 +631,7 @@ Those features are illustrated with a minimal example in the figures below where
 
       connector NonExpandableBus
       // The following declarations are required.
+      // The variables are not considered as connectors: they cannot be part of connect equations.
       Real yMea;
       Real yAct;
       end NonExpandableBus;
@@ -583,6 +654,10 @@ Those features are illustrated with a minimal example in the figures below where
             nonExpandableBus.yAct = controller.y;
             realPassThrough.u = nonExpandableBus.yMea;
       end BusTestControllerNonExp;
+
+The algorithm is as follows:
+
+*
 
 Issues
 ======
