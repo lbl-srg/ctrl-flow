@@ -35,11 +35,6 @@ Software Compatibility
       Offline version                                 Running on local server with access to resources hosted on the file system
       ============================================== ============================================================================================
 
-
-
-Modelica Graphical User Interface
----------------------------------
-
 Structure
 *********
 
@@ -74,7 +69,7 @@ Functionalities
             - V1
             - Comment
 
-      *     - **IO**
+      *     - **I/O**
             -
             -
             -
@@ -82,7 +77,55 @@ Functionalities
       *     - Load ``mo`` file
             - R
             -
-            - Simple Modelica model or full package
+            - | Simple Modelica model or full package.
+              | If the model contains annotations specific to the configurations script, the corresponding data model is loaded in memory for further configuration.
+
+      *     - Export simulation results
+            - R
+            -
+            - Export in the following format: ``mat, csv``. All variables or selection based on variables browser (see below).
+
+      *     - Variables browser
+            - P
+            - R
+            - Query selection of model variables based on regular expression (V0) or Brick/Haystack tag :cite:`Brick` :cite:`Haystack4` (V1)
+
+      *     - Plot simulation results
+            - N
+            - O
+            -
+
+      *     - Text editor
+            - N
+            - O
+            -
+
+      *     - Export control points summary
+            - R
+            - R
+            - Relies on LBNL module to generate the list of A/D I/O variables.
+
+      *     - Export schematics
+            - P
+            - R
+            - | Only the equipment drawing in V0. Control points and SOO description in V1 see :numref:`screen_schematics_modelica`.
+              | Relies on LBNL module CDL to Word translator.
+
+      *     - Import/Export data sheet
+            - P
+            - R
+            - Additional module to 1) generate a file in CSV (or Excel) format from the configuration data model (V0)
+              2) populate the configuration data model based on a file input in CSV (or Excel) format (V1).
+
+      *     - **Modelica features**
+            -
+            -
+            -
+
+      *     - Checking the compliance with Modelica standard
+            - P
+            - R
+            - Real-time checking of syntax (V0) and connection (V1).
 
       *     - Translate model
             - P
@@ -94,25 +137,14 @@ Functionalities
             -
             - The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.
 
-      *     - Export simulation results
-            - R
-            -
-            - Export in the following format: ``mat, csv``
-
-      *     - Variables browser
+      *     - Automatic medium propagation between connected components
             - P
-            - R
-            - Query selection of model variables based on regular expression (V0) or Brick tag :cite:`Brick` (V1)
+            - P
+            - | Partially supported because the configuration widget integrates that feature.
+              | When generating ``connect`` equation manually a similar approach as the *fluid path* used by the configuration widget should be developed, see components with 4 ports and 2 medium.
+              | Expected as a future enhancement of Modelica standard: should we anticipate or wait and see?
 
-      *     - Plot simulation results
-            - N
-            - O
-            -
 
-      *     - Text editor
-            - N
-            - O
-            -
 
       *     - **Object manipulation**
             -
@@ -164,6 +196,32 @@ Functionalities
             -
             - Class path when hovering an object in the diagram view and tooltip for each GUI element
 
+      *     - Color and style of connection lines
+            - P
+            - R
+            - | Allow the user to manually specify (right click menu) the style of the connections lines (V0).
+              | When generating a ``connect`` equation automatically select a line style based on some heuristic to be further specified (V1).
+
+      *     - Fancy connection lines
+            - N
+            - O
+            - | Gridified layout https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html
+              | Orthogonal edge route layout https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047_automaticdia.html
+
+      *     - **Miscellaneous**
+            -
+            -
+            -
+
+      *     - Choice of units SI / IP
+            - ?
+            - ?
+            -
+
+
+Modelica Graphical User Interface
+---------------------------------
+
 Generating Connections
 ******************************
 
@@ -181,43 +239,95 @@ When drawing a connection line between two connector icons:
 
         * created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call ``create_new_path(point[i], point[i+1])`` is called to generate the path linking each pair of points together.
 
+Schematics Export
+--------------------
+
+.. figure:: img/screen_schematics_modelica.png
+      :name: screen_schematics_modelica
+
+      Mockup of the schematics export -- Input Modelica file
+
+.. figure:: img/screen_schematics_output.svg
+      :name: screen_schematics_output
+
+      Mockup of the schematics export -- Output file (format to be specified: Word or PDF)
+
 Configuration Widget
 --------------------
 
 Functionalities
 ***************
 
-The configuration widget allows the user to generate a model of an HVAC system by filling up a simple form.
+The configuration widget allows the user to generate a Modelica model of an HVAC system by filling up a simple input form. There are two fundamental requirements regarding the generated model:
 
-The form is provided by the developer as a JSON file or a dictionary within a Python script (easier to program the modeling logic).
-It provides for each field:
+1. It must be "graphically readable" (both within LinkageJS and within any third-party Modelica GUI e.g. Dymola): this is a strong constraint regarding the connections that must be generated automatically.
 
-* the HTML widget and populating data to be used for user input,
+2. It must be ready to simulate: no additional modeling work or parameters setting is needed outside the configuration widget.
+
+The input form is provided by the developer (LBNL) in a data model with a format that is to be specified.
+
+The data model typically provides for each entry:
+
+* the HTML widget and populating data to be used for requesting user input,
 * the modeling data required to instantiate, position and set up the parameters of the different components,
 * some tags to be used to automatically generate the connections between the different components connectors.
 
 The user interface logic is illustrated in figures :numref:`screen_conf_0` and :numref:`screen_conf_1`.
 
-.. _screen_conf_0:
-
 .. figure:: img/screen_conf_0.svg
+      :name: screen_conf_0
 
       Configuration widget -- Configuring a new model
 
-.. _screen_conf_1:
-
 .. figure:: img/screen_conf_1.svg
+      :name: screen_conf_1
 
-   Configuration widget -- Configuring an existing model
+      Configuration widget -- Configuring an existing model
 
-The envisioned schema supporting this logic is illustrated in :numref:`code_conf_ahu` where:
+The envisioned data model supporting this logic is illustrated in :numref:`code_conf_ahu` where:
 
 * the components referenced under the ``equipment`` name are connected together in one dedicated equipment model,
 
 * the components referenced under the ``controls`` name are connected together in one dedicated controls model,
 
-* the equipment and controls models are connected together by means of a `control bus`, see :numref:`BusTestExp`.
+* the components referenced under the ``dependencies`` name are part of the equipment model:
 
+      * they typically correspond to sensors and outside fluid connectors,
+      * the model completeness depends on their presence,
+      * the requirements for their presence can be deduced from the equipment and controls options,
+      * they do not need additional fields in the user form of the configuration widget.
+
+* the equipment and controls models are connected together by means of a `control bus`, see :numref:`BusTestExp`: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level model ``AHU_1`` generated by the widget).
+
+.. note::
+
+      The pseudo code in :numref:`code_conf_ahu` uses functions such as ``find_equipment`` or ``find_parameter`` to simplify the syntax when auto referencing the data structure.
+
+      To solve:
+
+            * Conditional dependencies: model and placement require ``if then`` statements e.g. AFMS depending on economizer dampers option.
+
+            * Best format: JSON (expensive especially for boolean conditions), Python class, MapperClass from NREL URBANopt GeoJSON...
+
+            * Controls specification based on a standard
+
+                  * Top level controller with a list of parameters to be exposed as control options e.g.:
+
+                        * when they condition the model structure e.g. ``use_enthalpy`` requires an additional enthalpy sensor,
+
+                        * when they condition the dimension or instanciation of some connectors e.g. ``numZon``, ``have_occSen``.
+
+                        * when no default value is provided e.g. ``AFlo`` cf. requirement that the model generated by the configuration widget must be ready to simulate.
+
+                  * The other parameters are accessible outside of the configuration widget through the parameters panel.
+
+                  * `to be updated`: having high level parameters exposed in the configuration widget and low level parameters exposed in the parameters panel is confusing.
+
+                  * The alternative is to have a list of controller options for each equipment, the options are made available based on the standard selected (if any).
+
+                        * To be tested: can the "fluid path" mechanism also support
+
+                        * The connections between the different control blocks rely on the control bus.
 
 .. code-block:: json
       :caption: Partial example of the configuration data model for an air handling unit
@@ -258,17 +368,6 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
             },
 
             "equipment": [
-                  {
-                        "name": ["port_outAir", "port_supAir"],
-                        "description": ["Outside air port", "Supply air port"],
-                        "condition": [
-                              "NOT",
-                              {"#type": "Exhaust Only"},
-                        ],
-                        "model": ["Modelica.Fluid.Interfaces.FluidPort_a", "Modelica.Fluid.Interfaces.FluidPort_b"]
-                        "placement": [[12, 1], [12,20]]
-                        "connect_tags": {"fluid_path": "air_supply"}
-                  },
                   {
                         "name": "heaRec",
                         "description": "Heat recovery",
@@ -316,7 +415,7 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
                         "widget": "Dropdown",
                         "options": ["None", "Draw through", "Blow through"],
                         "value": "Draw through",
-                        "model": "Buildings.Fluid.Movers.SpeedControlled_y",
+                        "model": "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=find_medium(.).rho_default / 3600 * find_parameters(V_flowSup_nominal))",
                         "icon_transformation": null,
                         "placement": [null, [16, 11], [16, 18]],
                         "connect_tags": {"fluid_path": "air_supply"}
@@ -327,7 +426,11 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
                         "widget": "Dropdown",
                         "options": ["None", "Return", "Relief"],
                         "value": "Relief",
-                        "model": "Buildings.Fluid.Movers.SpeedControlled_y",
+                        "model": [
+                              null,
+                              "Buildings.Fluid.Movers.SpeedControlled_y(find_medium(.).rho_default / 3600 * find_parameters(V_flowRet_nominal))",
+                              "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=find_medium(.).rho_default / 3600 * (find_parameters(V_flowRet_nominal) - find_parameters(V_flowSup_nominal) + find_parameters(V_flowOut_nominal)))"
+                        ],
                         "icon_transformation": "flipHorizontal",
                         "placement": [null, [16, 11], [16, 18]],
                         "connect_tags": {"fluid_path": "air_return"}
@@ -335,7 +438,6 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
             ],
 
             "controls": [
-
                   {
                         "description": "Economizer",
                         "widget": "Dropdown",
@@ -346,25 +448,63 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
                   }
             ],
 
+            "dependencies": [
+                  {
+                        "name": ["port_outAir", "port_supAir"],
+                        "description": ["Outside air port", "Supply air port"],
+                        "condition": [
+                              "NOT",
+                              {"#type": "Exhaust Only"},
+                        ],
+                        "model": ["Modelica.Fluid.Interfaces.FluidPort_a", "Modelica.Fluid.Interfaces.FluidPort_b"],
+                        "placement": [[12, 1], [12,20]],
+                        "connect_tags": {"fluid_path": "air_supply"}
+                  },
+                  {
+                        "name": "senFloOut",
+                        "description": "Outdoor airflow measurement station",
+                        "condition": "conditioned by eco and controls",
+                        "model": "conditioned by eco and controls",
+                        "placement": "conditioned by eco and controls",
+                  }
+            ],
+
             "parameters": [
                   {
                         "name": "V_flowSup_nominal",
                         "description": "Nominal supply air volumetric flow rate",
                         "value": 0,
-                        "unit": "m3/h"
+                        "unit": "m3/h",
+                        "condition": [
+                              "NOT",
+                              {"#type": "Exhaust Only"},
+                        ],
                   },
                   {
                         "name": "V_flowRet_nominal",
                         "description": "Nominal return air volumetric flow rate",
                         "value": 0,
-                        "unit": "m3/h"
-                  }
+                        "unit": "m3/h",
+                        "condition": [
+                              "NOT",
+                              {"#type": "Supply Only"},
+                        ],
+                  },
                   {
                         "name": "V_flowOut_nominal",
                         "description": "Nominal outdoor air volumetric flow rate",
                         "value": 0,
                         "condition": [
-                              {"#equipment[id=economizer].value": "True"}
+                              {"#equipment[id=eco].value": "True"}
+                        ],
+                        "unit": "m3/h"
+                  },
+                  {
+                        "name": "V_flowCooCoi_nominal",
+                        "description": "Nominal outdoor air volumetric flow rate",
+                        "value": "V_flowSup_nominal",
+                        "condition": [
+                              {"#equipment[name=cooCoi].value": "Water"}
                         ],
                         "unit": "m3/h"
                   }
@@ -374,11 +514,11 @@ The envisioned schema supporting this logic is illustrated in :numref:`code_conf
 
 The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
 
-* the path of the class to be instantiated depending on the user input (note that some classes e.g. ``FluidPort`` can be instantiated as dependencies of others and have no corresponding input in the form);
+* the path of the class to be instantiated depending on the user input;
 
 * the position of the component in simplified grid coordinates to be converted in diagram view coordinates.
 
-The next paragraphs address how the connections between the connectors of the different components have to be generated automatically based on the model structure.
+The next paragraphs address how the connections between the connectors of the different components are generated automatically based on this initial model structure.
 
 Fluid Connectors
 ****************
@@ -517,7 +657,7 @@ The following features of the expandable connector are leveraged:
 
 #. Possibly present but not connected variable is considered not declared: all variables need not be connected so the `control bus` does not have to be reconfigured depending on the model structure.
 
-#. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the `Configuration widget` (we will have a predefined `control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
+#. The variables set of a class of type expandable connector is expanded whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the configuration widget (we will have a predefined `control bus` with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the `control bus`.
 
 Those features are illustrated with a minimal example in the figures below where:
 
@@ -559,6 +699,8 @@ Those features are illustrated with a minimal example in the figures below where
             connect(ahuBus.yAct, actuator.u);
       end BusTestControlledExp;
 
+.. code:: modelica
+
       expandable connector AhuBus
       extends Modelica.Icons.SignalBus;
       end AhuBus;
@@ -567,7 +709,7 @@ Those features are illustrated with a minimal example in the figures below where
 
       The definition of ``AhuBus`` in the code snippet here above does not include any variable declaration. However the variables ``ahuBus.yAct`` and ``ahuBus.yMea`` are used in ``connect`` equations. That is only possible with an expandable connector.
 
-      For the `Configuration widget` we will have predeclared variables with names allowing a one-to-one correspondence between:
+      For the configuration widget we will have predeclared variables with names allowing a one-to-one correspondence between:
 
       * the control sequence input variables and the outputs of the equipment model e.g. measured quantities and actuators returned positions,
 
@@ -580,7 +722,7 @@ Those features are illustrated with a minimal example in the figures below where
 
       .. _experience feedback on bus usage in Modelica: https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library
 
-.. figure:: img/BusTestControllerExp.svg
+.. figure:: img/l.pdf
       :name: BusTestControllerExp
       :width: 50%
 
@@ -629,6 +771,8 @@ Those features are illustrated with a minimal example in the figures below where
             actuator.u = nonExpandableBus.yAct;
       end BusTestControlledNonExp;
 
+.. code:: modelica
+
       connector NonExpandableBus
       // The following declarations are required.
       // The variables are not considered as connectors: they cannot be part of connect equations.
@@ -676,24 +820,15 @@ We have a linked modelica model residing on disk. When loading that model, Linka
 Questions
 =========
 
-* Validation upon submit (export/generate) VS real-time
-* Routine to add sensors for control sequences
-* Routine to add fluid ports: part of data model?
+* Similarities with ``MapperClass`` from URBANopt GeoJSON
 
-Choice of units: SI / IP
+* Interface with OS measures
 
-Launch simulation integrated
+* Interface with URBANopt GeoJSON
 
-* At least compilation required to validate the model?
-* For control sequence configuration the model may not need to be fully specified.
+* From OBC meeting on verification tool (9/10): generate *logical drawings*
 
-Visualize results: variable browser (with Brick/Haystack option similar as ``re`` option)
-
-No icon layer: just diagram layer showing graphical objects, component icons, connectors and connection lines
-
-Automatic medium propagation between connected components
-
-* Expected as a future enhancement of Modelica standard: should we anticipate or wait and see?
+* Form validation upon submit (export/generate) VS real-time
 
 .. note::
 
@@ -708,3 +843,9 @@ Automatic medium propagation between connected components
       From https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html
 
       With the current library design, it is necessary to explicitly select the medium model for each component in a circuit. This model is then propagated to the ports, and a Modelica translator will check that the quantity and unit attributes of connected interfaces are identical. Therefore, an error occurs, if connected FluidPorts do not have a medium with the same medium name. In the future, automatic propagation of fluid models through the ports will be introduced, but this still not possible with Modelica 3.0.
+
+
+To Do
+=====
+
+* Test Modelica to JSON to Modelica on the whole library and run unit tests

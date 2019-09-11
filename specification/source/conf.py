@@ -25,6 +25,7 @@ extensions = [
   'sphinx.ext.autodoc',
   'sphinx.ext.mathjax',
   'sphinx.ext.todo',
+  'sphinxcontrib.rsvgconverter',
 ]
 
 # mathjax_path is based on http://www.mathjax.org/docs/2.0/start.html
