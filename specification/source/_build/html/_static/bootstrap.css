@@ -1537,7 +1537,7 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
+  /* color: #c7254e; */
   background-color: #f9f2f4;
   border-radius: 4px;
 }
@@ -2256,6 +2256,7 @@ caption {
   padding-top: 8px;
   padding-bottom: 8px;
   color: #777;
+  font-style: italic;
   text-align: left;
 }
 th {

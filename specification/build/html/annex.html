@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>9. Annex &#8212; LinkageJS Requirements Specification</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. Glossary" href="glossary.html" />
+    <link rel="prev" title="8. Software Architecture" href="softwareArchitecture.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          LinkageJS</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">3. Process Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">4. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">4.1. General description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">4.2. Modelica Graphical User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">4.3. Schematics Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">4.4. Configuration Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html#issues">5. Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html#questions">6. Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html#to-do">7. To Do</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">8. Software Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Annex</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#validation-of-bus-connections">9.1. Validation of Bus Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">10. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">11. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">12. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">9. Annex</a><ul>
+<li><a class="reference internal" href="#validation-of-bus-connections">9.1. Validation of Bus Connections</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="softwareArchitecture.html" title="Previous Chapter: 8. Software Architecture"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 8. Software A...</span>
+    </a>
+  </li>
+  <li>
+    <a href="glossary.html" title="Next Chapter: 10. Glossary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">10. Glossary &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">9. Annex</a><ul>
+<li><a class="reference internal" href="#validation-of-bus-connections">9.1. Validation of Bus Connections</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="softwareArchitecture.html" title="Previous Chapter: 8. Software Architecture"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 8. Software A...</span>
+    </a>
+  </li>
+  <li>
+    <a href="glossary.html" title="Next Chapter: 10. Glossary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">10. Glossary &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="annex">
+<span id="sec-annex"></span><h1>9. Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="validation-of-bus-connections">
+<span id="par-valid-bus"></span><h2>9.1. Validation of Bus Connections<a class="headerlink" href="#validation-of-bus-connections" title="Permalink to this headline">¶</a></h2>
+<p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
+<p>The validation is performed:</p>
+<ul class="simple">
+<li><p>with Dymola (Version 2020, 64-bit, 2019-04-10) and JModelica (revision numbers from svn: JModelica 12903, Assimulo 873);</p></li>
+<li><p>first with a single instance of the controller and then with multiple instances corresponding to different parameters set up (see validation cases of the original controller <code class="docutils literal notranslate"><span class="pre">Validation.Controller</span></code> and <code class="docutils literal notranslate"><span class="pre">Validation.ControllerConfigurationTest</span></code>),</p></li>
+<li><p>with nested expandable connectors: a top-level control bus composed of a first sub-level control bus for control output variables and another for control input variables.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Connectors with conditional instances must be connected to the bus variables with the same conditional statement e.g.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span> <span class="n">have_occSen</span> <span class="kr">then</span>
+    <span class="kr">connect</span><span class="p">(</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">numZon</span><span class="p">],</span> <span class="n">nOcc</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">numZon</span><span class="p">])</span>
+<span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>With Dymola, bus variables cannot be connected to array connectors without explicitly specifying the indices range.
+Using the unspecified <code class="docutils literal notranslate"><span class="pre">[:]</span></code> syntax yields the following translation error.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">expand</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]</span> <span class="p">(</span><span class="n">since</span> <span class="n">element</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span> <span class="kr">in</span> <span class="kr">connect</span><span class="p">(</span><span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">],</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused
+indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Warning</span><span class="o">:</span> <span class="n">The</span> <span class="n">bus</span><span class="o">-</span><span class="kr">input</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">matches</span> <span class="n">multiple</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">connectors</span> <span class="kr">in</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">sets</span><span class="o">.</span>
+
+<span class="n">Bus</span><span class="o">-</span><span class="n">signal</span><span class="o">:</span> <span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">Connected</span> <span class="n">bus</span> <span class="n">variables</span><span class="o">:</span>
+<span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Connector of Real output signal&quot;</span>
+<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Primary airflow rate to the ventilation zone from the air handler, including outdoor air and recirculated air&quot;</span>
+<span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
+<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a strange behavior in Dymola. On the other hand JModelica 1) allows the unspecified <code class="docutils literal notranslate"><span class="pre">[:]</span></code> syntax and 2) does not generate any translation warning when explicitly specifying the indices range.
+JModelica’s behavior seems more aligned with <a class="reference internal" href="bibliography.html#modelica2017" id="id1">[Mod17]</a> <em>§9.1.3 Expandable Connectors</em> that states: “A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown.”
+The logic of JModelica for expandable connectors should be the requirement for LinkageJS.</p>
+<p><cite>Issue: how to make clear to the user which variable of the bus needs to be connected i.e. which variable is actually connected to an input connector of a component</cite>.</p>
+</div>
+<p>Simulation succeeds for the two tests cases with the two simulation tools.
+The results comparison to the original test case (without control bus) is presented in <a class="reference internal" href="#annex-valid-bus"><span class="std std-numref">Fig. 9.1</span></a> for Dymola.</p>
+<div class="figure align-default" id="annex-valid-bus">
+<img alt="_images/annex_valid_bus.svg" src="_images/annex_valid_bus.svg" /><p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and with (<code class="docutils literal notranslate"><span class="pre">new_bus</span></code>) expandable connectors</span><a class="headerlink" href="#annex-valid-bus" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright (c) All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
