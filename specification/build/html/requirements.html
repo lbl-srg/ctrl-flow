@@ -1,0 +1,1466 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>3. Requirements &#8212; LinkageJS Requirements Specification</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Software Architecture" href="architecture.html" />
+    <link rel="prev" title="2. Process Workflow" href="process.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          LinkageJS</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="index.html">Table of Contents</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">2. Process Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-description">3.1. General description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelica-graphical-user-interface">3.2. Modelica Graphical User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-widget">3.3. Configuration Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schematics-export">3.4. Schematics Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-tagged-variables">3.5. Working with Tagged Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openstudio-integration">3.6. OpenStudio Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interface-with-urbanopt-geojson">3.7. Interface with URBANopt GeoJSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#to-do">3.8. To Do</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">4. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">5. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">6. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3. Requirements</a><ul>
+<li><a class="reference internal" href="#general-description">3.1. General description</a><ul>
+<li><a class="reference internal" href="#main-functionalities-and-requirements">3.1.1. Main Functionalities and Requirements</a></li>
+<li><a class="reference internal" href="#software-compatibility">3.1.2. Software Compatibility</a></li>
+<li><a class="reference internal" href="#ui-visual-structure">3.1.3. UI Visual Structure</a></li>
+<li><a class="reference internal" href="#detailed-functionalities">3.1.4. Detailed Functionalities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modelica-graphical-user-interface">3.2. Modelica Graphical User Interface</a></li>
+<li><a class="reference internal" href="#configuration-widget">3.3. Configuration Widget</a><ul>
+<li><a class="reference internal" href="#functionalities">3.3.1. Functionalities</a></li>
+<li><a class="reference internal" href="#fluid-connectors">3.3.2. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">3.3.3. Signal Connectors</a><ul>
+<li><a class="reference internal" href="#general-principles">3.3.3.1. General Principles</a></li>
+<li><a class="reference internal" href="#validation-and-additional-requirements">3.3.3.2. Validation and Additional Requirements</a></li>
+<li><a class="reference internal" href="#additional-requirements-for-the-ui">3.3.3.3. Additional Requirements for the UI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#schematics-export">3.4. Schematics Export</a></li>
+<li><a class="reference internal" href="#working-with-tagged-variables">3.5. Working with Tagged Variables</a></li>
+<li><a class="reference internal" href="#openstudio-integration">3.6. OpenStudio Integration</a></li>
+<li><a class="reference internal" href="#interface-with-urbanopt-geojson">3.7. Interface with URBANopt GeoJSON</a></li>
+<li><a class="reference internal" href="#to-do">3.8. To Do</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="process.html" title="Previous Chapter: 2. Process Workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Process Workflow</span>
+    </a>
+  </li>
+  <li>
+    <a href="architecture.html" title="Next Chapter: 4. Software Architecture"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Software A... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">3. Requirements</a><ul>
+<li><a class="reference internal" href="#general-description">3.1. General description</a><ul>
+<li><a class="reference internal" href="#main-functionalities-and-requirements">3.1.1. Main Functionalities and Requirements</a></li>
+<li><a class="reference internal" href="#software-compatibility">3.1.2. Software Compatibility</a></li>
+<li><a class="reference internal" href="#ui-visual-structure">3.1.3. UI Visual Structure</a></li>
+<li><a class="reference internal" href="#detailed-functionalities">3.1.4. Detailed Functionalities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modelica-graphical-user-interface">3.2. Modelica Graphical User Interface</a></li>
+<li><a class="reference internal" href="#configuration-widget">3.3. Configuration Widget</a><ul>
+<li><a class="reference internal" href="#functionalities">3.3.1. Functionalities</a></li>
+<li><a class="reference internal" href="#fluid-connectors">3.3.2. Fluid Connectors</a></li>
+<li><a class="reference internal" href="#signal-connectors">3.3.3. Signal Connectors</a><ul>
+<li><a class="reference internal" href="#general-principles">3.3.3.1. General Principles</a></li>
+<li><a class="reference internal" href="#validation-and-additional-requirements">3.3.3.2. Validation and Additional Requirements</a></li>
+<li><a class="reference internal" href="#additional-requirements-for-the-ui">3.3.3.3. Additional Requirements for the UI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#schematics-export">3.4. Schematics Export</a></li>
+<li><a class="reference internal" href="#working-with-tagged-variables">3.5. Working with Tagged Variables</a></li>
+<li><a class="reference internal" href="#openstudio-integration">3.6. OpenStudio Integration</a></li>
+<li><a class="reference internal" href="#interface-with-urbanopt-geojson">3.7. Interface with URBANopt GeoJSON</a></li>
+<li><a class="reference internal" href="#to-do">3.8. To Do</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="process.html" title="Previous Chapter: 2. Process Workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Process Workflow</span>
+    </a>
+  </li>
+  <li>
+    <a href="architecture.html" title="Next Chapter: 4. Software Architecture"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Software A... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="requirements">
+<span id="sec-requirements"></span><h1>3. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the functional, mathematical and software requirements.</p>
+<div class="section" id="general-description">
+<span id="par-general-description"></span><h2>3.1. General description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-functionalities-and-requirements">
+<h3>3.1.1. Main Functionalities and Requirements<a class="headerlink" href="#main-functionalities-and-requirements" title="Permalink to this headline">¶</a></h3>
+<p>The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see <a class="reference internal" href="#par-modelica-gui"><span class="std std-numref">Section 3.2</span></a>.</p>
+<p>Built around this core functionality the following additional features are required:</p>
+<ol class="arabic simple">
+<li><p>A configuration widget supporting assisted modeling based on a simple HTML input form: see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.3</span></a>.</p></li>
+<li><p>A schematics export functionality: see <a class="reference internal" href="#par-schematics-export"><span class="std std-numref">Section 3.4</span></a>.</p></li>
+<li><p>A set of functionalities to enable working with tagged variables: see <a class="reference internal" href="#par-tagged-variables"><span class="std std-numref">Section 3.5</span></a>.</p></li>
+</ol>
+<p>In terms of software design:</p>
+<ul class="simple">
+<li><p>A standalone web based application is required, which relies on client side JS code with minimal dependencies.</p></li>
+<li><p>The application can be embedded in third party softwares. The primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS) for which the only additional requirement is to build down the UI to a single page HTML document.</p></li>
+<li><p>A Python or Ruby API is also needed to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by <a class="reference external" href="http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/">OpenStudio measures</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="software-compatibility">
+<h3>3.1.2. Software Compatibility<a class="headerlink" href="#software-compatibility" title="Permalink to this headline">¶</a></h3>
+<span id="tab-environment"></span><table class="docutils align-default" id="id13">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Requirements for software compatibility</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Platform (minimum version)</p></td>
+<td><p>Windows (10), Linux Ubuntu (16.04), OS X (10.10)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mobile device &amp; responsive design ?</p></td>
+<td><p>iOS, Android?</p></td>
+</tr>
+<tr class="row-even"><td><p>Web browser</p></td>
+<td><p>Chrome, Firefox, Safari</p></td>
+</tr>
+<tr class="row-odd"><td><p>Offline version?</p></td>
+<td><p>Running on local server with access to resources hosted on the file system</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ui-visual-structure">
+<h3>3.1.3. UI Visual Structure<a class="headerlink" href="#ui-visual-structure" title="Permalink to this headline">¶</a></h3>
+<p>See figure <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.2</span></a>:</p>
+<ul>
+<li><p>Left panel: library navigator</p></li>
+<li><p>Main panel: diagram view of the model</p></li>
+<li><p>Right panel:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Configuration widget</p></li>
+<li><p>Connections widget</p></li>
+<li><p>Annotations widget</p></li>
+<li><p>Parameters widget</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Menu bar</p></li>
+<li><p>Bottom panel: console</p></li>
+</ul>
+</div>
+<div class="section" id="detailed-functionalities">
+<h3>3.1.4. Detailed Functionalities<a class="headerlink" href="#detailed-functionalities" title="Permalink to this headline">¶</a></h3>
+<span id="tab-gui-func"></span><table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>V0</p></th>
+<th class="head"><p>V1</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Main functionalities</strong></p></td>
+<td></td>
+<td></td>
+<td><p>(as per <a class="reference internal" href="#par-general-description"><span class="std std-numref">Section 3.1</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Diagram editor for Modelica models</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>See detailed requirements below.</p></td>
+</tr>
+<tr class="row-even"><td><p>Configuration widget</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>An alpha version of the widget is required in V0 for testing and refining the requirements.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Schematics export</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Working with tagged variables</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>I/O</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Load <code class="docutils literal notranslate"><span class="pre">mo</span></code> file</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><div class="line-block">
+<div class="line">Simple Modelica model or full package (V0).</div>
+<div class="line">If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.3</span></a>), the corresponding data are loaded in memory for further configuration.</div>
+<div class="line">If the model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> the corresponding library is loaded.</div>
+<div class="line">If a package is loaded the structure of the package and sub packages is checked against <em>Chapter 13 Packages</em> (V1).</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Export simulation results</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>Export in the following format: <code class="docutils literal notranslate"><span class="pre">mat,</span> <span class="pre">csv</span></code>. All variables or selection based on variables browser (see below).</p></td>
+</tr>
+<tr class="row-even"><td><p>Variables browser</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>Query selection of model variables based on regular expression (V0) or Brick/Haystack tag <a class="bibtex reference internal" href="bibliography.html#brick" id="id1">[Bri]</a> <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id2">[Hay]</a> (V1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Plot simulation results</p></td>
+<td><p>N</p></td>
+<td><p>O</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Text editor</p></td>
+<td><p>N</p></td>
+<td><p>O</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Export control points summary</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>Relies on LBNL module to generate the list of A/B I/O variables.</p></td>
+</tr>
+<tr class="row-even"><td><p>Export schematics</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><div class="line-block">
+<div class="line">Only the equipment drawing in V0. Control points and SOO description in V1 see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.20</span></a>.</div>
+<div class="line">Relies on LBNL module CDL to Word translator.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Import/Export data sheet</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>Additional module to 1) generate a file in CSV (or Excel) format from the configuration data (V0)
+2) populate the configuration data based on a file input in CSV (or Excel) format (V1).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Modelica features</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Checking the compliance with Modelica standard</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>Real-time checking of syntax (V0) and connection (V1).</p></td>
+</tr>
+<tr class="row-even"><td><p>Translate model</p></td>
+<td><p>P</p></td>
+<td></td>
+<td><div class="line-block">
+<div class="line">The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.</div>
+<div class="line">The output of the translation routine is logged in LinkageJS console.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Simulate model</p></td>
+<td><p>P</p></td>
+<td></td>
+<td><div class="line-block">
+<div class="line">The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.</div>
+<div class="line">The output of the simulation routine is logged in LinkageJS console.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Automatic medium propagation between connected components</p></td>
+<td><p>P</p></td>
+<td><p>P</p></td>
+<td><div class="line-block">
+<div class="line">Partially supported because only the configuration widget integrates that feature.</div>
+<div class="line">When generating <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation manually a similar approach as the <em>fluid path</em> used by the configuration widget could be developed, see components with 4 ports and 2 medium.</div>
+<div class="line">Expected as a future enhancement of Modelica standard <a class="footnote-reference brackets" href="#f1" id="id3">1</a>: should we anticipate or wait and see?</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Support of Modelica graphical annotations</p></td>
+<td><p>R</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Icon layer</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Version checking and upgrade</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software checks the version number of the stored library, prompts the user for update if the version number does not match, execute the conversion script per user request.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Vectorized instances</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further connections to the connectors of that object must comply with the array structure.</p></td>
+</tr>
+<tr class="row-even"><td><p>Expandable connectors</p></td>
+<td><p>R</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Navigation in object composition</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>Right clicking an icon in the diagram view offers the option to open the model in another tab</p></td>
+</tr>
+<tr class="row-even"><td><p>Multiple objects selection for input of common parameters</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value is modified, all the selected objects will have their parameter value change.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>When instantiating a component, if the default name is already used in the model the software automatically appends the name with the lowest integer value that would ensure uniqueness.
+When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure consistency with the appended object names.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
+<td></td>
+<td></td>
+<td><p>A user experience similar to modern web based diagramming applications is expected e.g. <a class="reference external" href="https://www.draw.io">draw.io</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tan view</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>The diagram view is organized in tabs then can be manipulated, created and deleted typically as navigation tabs in a web browser.</p></td>
+</tr>
+<tr class="row-even"><td><p>Diagram split view</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy/Paste objects</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect equations.</p></td>
+</tr>
+<tr class="row-even"><td><p>Pan and zoom on mouse actions</p></td>
+<td><p>R</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Undo/Redo</p></td>
+<td><p>R</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Draw shape, text box</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Start connection line when hovering connectors</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Connection line jumps</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td><p>Gap jump at crossing</p></td>
+</tr>
+<tr class="row-odd"><td><p>Customize connection lines</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td><p>Color, width and line can be specified in the annotations panel</p></td>
+</tr>
+<tr class="row-even"><td><p>Hover information</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>Class path when hovering an object in the diagram view and tooltip help for each GUI element</p></td>
+</tr>
+<tr class="row-odd"><td><p>Color and style of connection lines</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><div class="line-block">
+<div class="line">Allow the user to manually specify (right click menu) the style of the connections lines (V0).</div>
+<div class="line">When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further specified (V1).</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Fancy connection lines?</p></td>
+<td><p>N</p></td>
+<td><p>O</p></td>
+<td><div class="line-block">
+<div class="line">Gridified layout <a class="reference external" href="https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html">https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html</a></div>
+<div class="line">Orthogonal edge route layout <a class="reference external" href="https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047_automaticdia.html">https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047_automaticdia.html</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Choice of units SI / IP</p></td>
+<td><p>?</p></td>
+<td><p>?</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelica-graphical-user-interface">
+<span id="par-modelica-gui"></span><h2>3.2. Modelica Graphical User Interface<a class="headerlink" href="#modelica-graphical-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>The software must comply with the Modelica language specification <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id4">[Mod17]</a> for every aspect relating to (the chapter numbers refer to <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id5">[Mod17]</a>):</p>
+<ul class="simple">
+<li><p>validating the syntax of the user inputs: see <em>Chapter 2 Lexical Structure</em> and <em>Chapter 3 Operators and Expressions</em>,</p></li>
+<li><p>the connection between objects: see <em>Chapter 9 Connectors and Connections</em>,</p></li>
+<li><p>the structure of packages: see <em>Chapter 13 Packages</em>,</p></li>
+<li><p>the annotations: see <em>Chapter 18 Annotations</em>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When drawing a connection line between two connector icons:</p>
+<ul>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation with the references to the two connectors is created,</p></li>
+<li><p>with a graphical annotation defining the connection path as an array of points and providing an optional smoothing function e.g. Bezier.</p></li>
+<li><p>When no smoothing function is specified the connection path must be rendered graphically as a set of segments.</p></li>
+<li><p>The array of points is either:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>created fully automatically when the next user’s click after having started a connection is made on a connector icon. The function call <code class="docutils literal notranslate"><span class="pre">create_new_path(connector1,</span> <span class="pre">connector2)</span></code> creates the minimum number of <em>vertical or horizontal</em> segments to link the two connector icons with the constraint of avoiding overlaying any instantiated object,</p></li>
+<li><p>created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call <code class="docutils literal notranslate"><span class="pre">create_new_path(point[i],</span> <span class="pre">point[i+1])</span></code> is called to generate the path linking each pair of points together.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuration-widget">
+<span id="par-configuration-widget"></span><h2>3.3. Configuration Widget<a class="headerlink" href="#configuration-widget" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functionalities">
+<h3>3.3.1. Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this headline">¶</a></h3>
+<p>The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
+It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
+The intent is to reduce the complexity to the mere definition of the system’s layout and the selection of standard control sequences already transcribed in Modelica <a class="footnote-reference brackets" href="#f2" id="id6">2</a>.
+<a class="reference external" href="https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F">CtrlSpecBuilder</a> is a tool widely used in the HVAC controls industry, which typically provides the same kind of functionality.</p>
+<p>There are three fundamental requirements regarding the Modelica model generated by the configuration widget:</p>
+<ol class="arabic">
+<li><p>It must be “graphically readable” (both within LinkageJS and within any third-party Modelica GUI e.g. Dymola): this is a strong constraint regarding the placement of the composing objects and the connections that must be generated automatically.</p></li>
+<li><p>It must be ready to simulate: no additional modeling work or parameters setting is needed outside the configuration widget.</p></li>
+<li><p>It must contain all annotations needed to regenerate the HTML input form when loaded, with all entries corresponding to the actual state of the model.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Manual modifications of the Modelica model made by the user are not supported by the configuration widget: an additional annotation should be included in the Modelica file to flag that the model has deviated from the template. In this case the configuration widget is disabled when loading that model.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>The input form is provided by the template developer (e.g. LBNL) in a data model with a format that is to be further specified in collaboration with the software developer.</p>
+<p>The data model typically provides for each entry:</p>
+<ul class="simple">
+<li><p>the HTML widget and populating data to be used for requesting user input,</p></li>
+<li><p>the modeling data required to instantiate, position and set up the parameters of the different components,</p></li>
+<li><p>some tags to be used to automatically generate the connections between the different components connectors.</p></li>
+</ul>
+<p>The user interface logic is illustrated in figures <a class="reference internal" href="#screen-conf-0"><span class="std std-numref">Fig. 3.1</span></a> and <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.2</span></a>.</p>
+<div class="figure align-default" id="screen-conf-0">
+<img alt="_images/screen_conf_0.svg" src="_images/screen_conf_0.svg" /><p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Configuration widget – Configuring a new model</span><a class="headerlink" href="#screen-conf-0" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="screen-conf-1">
+<img alt="_images/screen_conf_1.svg" src="_images/screen_conf_1.svg" /><p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Configuration widget – Configuring an existing model</span><a class="headerlink" href="#screen-conf-1" title="Permalink to this image">¶</a></p>
+</div>
+<p>The envisioned data structure supporting this logic is illustrated in <a class="reference internal" href="#code-conf-ahu"><span class="std std-numref">Listing 3.1</span></a> (pseudo code) where:</p>
+<ul>
+<li><p>the placement coordinates are provided relatively to a simplified grid, see <a class="reference internal" href="#grid"><span class="std std-numref">Fig. 3.3</span></a>, those are to be mapped to Modelica diagram coordinates by the widget,</p></li>
+<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">equipment</span></code> name are connected together with fluid connectors, see <a class="reference internal" href="#par-fluid-connectors"><span class="std std-numref">Section 3.3.2</span></a>,</p></li>
+<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">controls</span></code> name are connected together with signal connectors, see <a class="reference internal" href="#par-signal-connectors"><span class="std std-numref">Section 3.3.3</span></a>,</p></li>
+<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> name are part of the equipment section:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>they typically correspond to sensors and outside fluid connectors,</p></li>
+<li><p>the model completeness depends on their presence,</p></li>
+<li><p>the requirements for their presence can be deduced from the equipment and controls options,</p></li>
+<li><p>they do not need additional fields in the user form of the configuration widget.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>the equipment and controls models are connected together by means of a <em>control bus</em>, see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.20</span></a>: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.2</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level model <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget). That component exposes the outside fluid connectors as well as the top level control bus.</p></li>
+</ul>
+<p>The logic for instantiating classes from the library is straightforward. Each field of the form specifies:</p>
+<ul class="simple">
+<li><p>the path of the class to be instantiated depending on the user input;</p></li>
+<li><p>the position of the component in simplified grid coordinates to be converted in diagram view coordinates.</p></li>
+</ul>
+<p>The next paragraphs address how the connections between the connectors of the different components are generated automatically based on this initial model structure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>Test/issue</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Headered VS dedicated chilled water pump: conditional number of instances, placement and fluid path. Backup strategy: the first dedicated pump can be instantiated in the equipment section, the others in the dependencies section.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">RelativePressure</span></code> sensor requires the specification of two derived paths which is cumbersome since the fluid component around which the differential pressure is sensed belongs to a fluid path which depends on the sensor option e.g. AFMS (main path) or differential pressure (derived path). Backup strategy: considering an additional <code class="docutils literal notranslate"><span class="pre">junction</span></code> tag or specifying a tagging logic to determine if the parent fluid path gets interrupted or not at each fork…</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Best format</p>
+<blockquote>
+<div><ul>
+<li><p>JSON</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?</p></li>
+<li><p>Is a JSON schema needed to eventually validate the user inputs? In that case the template developer would have to write the boolean conditions twice with two different syntaxes: once in the template and once in the JSON schema (typically with the <a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/conditionals.html?highlight=condition">standard syntax</a> <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">then</span> <span class="pre">else</span></code> introduced in <em>Draft 7</em>)?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><div class="line-block">
+<div class="line">Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework</div>
+<div class="line">A robust syntax is required for:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>auto-referencing the data structure e.g. <code class="docutils literal notranslate"><span class="pre">#type.value</span></code> refers to the value of the field <code class="docutils literal notranslate"><span class="pre">value</span></code> of the object which <code class="docutils literal notranslate"><span class="pre">$id</span></code> is <code class="docutils literal notranslate"><span class="pre">type</span></code>,</p></li>
+<li><p>conditional statements: potentially every field might require a conditional statement – either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).</p></li>
+<li><p>(Ideally the syntax would also allow iteration <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with <code class="docutils literal notranslate"><span class="pre">n</span></code> chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first <code class="docutils literal notranslate"><span class="pre">n</span></code> ones based on a condition.)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Providing a reference guideline for the controls specification conditionally disables all controls options that do not comply with that guideline.</p></li>
+<li><p>Parameters specified in the configuration widget</p>
+<blockquote>
+<div><ul>
+<li><p>The template developer is free to integrate in the template any parameter of the composing components e.g. <code class="docutils literal notranslate"><span class="pre">V_flowSup_nominal</span></code> and reference them in the model declaration e.g. <code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default</span> <span class="pre">/</span> <span class="pre">3600</span> <span class="pre">*</span> <span class="pre">#V_flowSup_nominal.value)</span></code>. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil.</p></li>
+<li><p>Some parameters <em>need</em> to be integrated in the template (examples are provided in reference to <code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>when they impact the model structure e.g. <code class="docutils literal notranslate"><span class="pre">use_enthalpy</span></code> requires an additional enthalpy sensor,</p></li>
+<li><p>when they impact the dimension or instanciation of some connectors e.g. <code class="docutils literal notranslate"><span class="pre">numZon</span></code>, <code class="docutils literal notranslate"><span class="pre">have_occSen</span></code>,</p></li>
+<li><p>when no default value is provided e.g. <code class="docutils literal notranslate"><span class="pre">AFlo</span></code> cf. requirement that the model generated by the configuration widget must be ready to simulate.</p></li>
+</ul>
+</div></blockquote>
+<p>In the first two cases the model declaration must use the <code class="docutils literal notranslate"><span class="pre">final</span></code> qualifier for the corresponding parameters to prevent the user from overriding those values in the parameters panel.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="figure align-default" id="grid">
+<img alt="_images/grid.png" src="_images/grid.png" />
+<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model</span><a class="headerlink" href="#grid" title="Permalink to this image">¶</a></p>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-conf-ahu">
+<div class="code-block-caption"><span class="caption-number">Listing 3.1 </span><span class="caption-text">Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)</span><a class="headerlink" href="#code-conf-ahu" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#system&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+      <span class="p">},</span>
+
+      <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+
+      <span class="nt">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="nt">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">-120</span><span class="p">,</span><span class="mi">-200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+      <span class="p">},</span>
+
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#name&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU_#i&quot;</span>
+      <span class="p">},</span>
+
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#type&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">,</span> <span class="s2">&quot;Supply only&quot;</span><span class="p">,</span> <span class="s2">&quot;Exhaust only&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span>
+      <span class="p">},</span>
+
+      <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#air_supply&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;orientation&quot;</span><span class="p">:</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#air_return&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;orientation&quot;</span><span class="p">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+            <span class="p">}</span>
+      <span class="p">],</span>
+
+      <span class="nt">&quot;equipment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#heaRec&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;DOA&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="kc">null</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)&quot;</span>
+                  <span class="p">],</span>
+                  <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                  <span class="nt">&quot;connectors&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;port_a1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_a2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span>
+                  <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;VAV&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Dedicated OA damper&quot;</span><span class="p">,</span> <span class="s2">&quot;Common OA damper&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="kc">null</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span>
+                  <span class="p">],</span>
+                  <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipVertical&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                  <span class="nt">&quot;connectors&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;port_Out&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_out_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_OutMin&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_min_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Sup&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;port_Exh&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Ret&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
+                  <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowOut_nominal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal outdoor air volumetric flow rate&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Input real&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowSup_nominal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Input real&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Supply only&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="kc">null</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y((#air_return.medium).rho_default / 3600 * #V_flowRet_nominal.value)&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_return.medium).rho_default / 3600 * (#V_flowRet_nominal.value - #V_flowSup_nominal.value + #V_flowOut_nominal.value))&quot;</span>
+                  <span class="p">],</span>
+                  <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return&quot;</span>
+            <span class="p">}</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowRet_nominal&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air volumetric flow rate&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Input real&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span>
+            <span class="p">}</span>
+      <span class="p">],</span>
+
+      <span class="nt">&quot;controls&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Reference guideline for control sequences&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHUOpt&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Optimal start up&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Checkbox&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHUDemLim&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Demand limit set point adjustment&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Checkbox&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan control&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSupStaSto&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan start/stop control&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;On-Off&quot;</span><span class="p">,</span> <span class="s2">&quot;Static Pressure Control&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;ui::widget::option::disabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;On-Off&#39; elseif #conAHURef.value == &#39;ASHRAE G36&#39; then &#39;Static Pressure Control&#39;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#resPreStaSet&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Static pressure set point reset&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;T&amp;R&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;ui::widget::option::disabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;None&#39; elseif #conAHURef.value == &#39;ASHRAE G36&#39; then &#39;T&amp;R&#39;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply Air Temperature Control&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#resTSupSet&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air temperature set point reset&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;OAT Reset&quot;</span><span class="p">,</span> <span class="s2">&quot;OAT and T&amp;R&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;ui::widget::option::disabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">],</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;None&#39; elseif #conAHURef.value == &#39;ASHRAE G36&#39; then &#39;OAT and T&amp;R&#39;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#numZon&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of served VAV boxes&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget&quot;</span><span class="p">:</span> <span class="s2">&quot;Input integer&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;ui::widget::enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#resTSupSet.value == &#39;OAT and T&amp;R&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+            <span class="p">}</span>
+      <span class="p">],</span>
+
+      <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_outAir&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outside air port&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_supAir&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air port&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#senFloOut&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outdoor airflow measurement station&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#ecoCon.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then [18, 5] else [20, 5]&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHU&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU top level controller&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSupRef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;[5, 4]&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+      <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fluid-connectors">
+<span id="par-fluid-connectors"></span><h3>3.3.2. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h3>
+<p>The fluid connections (<code class="docutils literal notranslate"><span class="pre">connect</span></code> equations involving two fluid connectors) are generated based on :</p>
+<ul class="simple">
+<li><p>the coordinates of the components in the <em>diagram view</em> i.e. after converting the coordinates provided relatively to the simplified grid,</p></li>
+<li><p>a tag applied to the <em>fluid connectors</em> (or <em>fluid ports</em>) of the components.</p></li>
+</ul>
+<p>That tag can be automatically generated for components with the two following fluid ports (most common case):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span></code>: inlet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_b</span></code>: outlet</p></li>
+</ul>
+<p>For components with more than two fluid ports e.g. coil, the variable name could be used:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">port_a1</span></code>: primary fluid (liquid) inlet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">port_a2</span></code>: secondary fluid (air) inlet</p></li>
+</ul>
+<p>However that logic fails when the ports correspond to the same medium e.g.:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Actuators.Dampers.MixingBox</span></code>: <code class="docutils literal notranslate"><span class="pre">port_Out,</span> <span class="pre">port_Exh,</span> <span class="pre">port_Ret,</span> <span class="pre">port_Sup</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear</span></code>: <code class="docutils literal notranslate"><span class="pre">port_1,</span> <span class="pre">port_2,</span> <span class="pre">port_3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU</span></code>: <code class="docutils literal notranslate"><span class="pre">port_a1,</span> <span class="pre">port_a2,</span> <span class="pre">port_b1,</span> <span class="pre">port_b2</span></code></p></li>
+</ul>
+<p>So the following logic is considered:</p>
+<ol class="arabic">
+<li><p>Default mode</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>By default <code class="docutils literal notranslate"><span class="pre">port_a</span></code> and <code class="docutils literal notranslate"><span class="pre">port_b</span></code> will be tagged as <code class="docutils literal notranslate"><span class="pre">inlet</span></code> and <code class="docutils literal notranslate"><span class="pre">outlet</span></code> respectively.</p></li>
+<li><p>An additional tag is provided at the component level to specify the fluid path e.g. <code class="docutils literal notranslate"><span class="pre">air_supply</span></code> or <code class="docutils literal notranslate"><span class="pre">air_return</span></code>.</p></li>
+<li><p>All fluid connectors are then tagged by concatenating the previous tags e.g. <code class="docutils literal notranslate"><span class="pre">air_supply_inlet</span></code> or <code class="docutils literal notranslate"><span class="pre">air_return_outlet</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Detailed mode</p>
+<blockquote>
+<div><ul>
+<li><p>We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see <a class="reference internal" href="#linkage-connect-3wv"><span class="std std-numref">Fig. 3.4</span></a>. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.</p></li>
+<li><p>Furthermore a fluid connector can be connected to more than one other fluid connector (fork configuration). To support that feature the concept of <em>derived path</em> is introduced: if <code class="docutils literal notranslate"><span class="pre">fluid_path</span></code> is the name of a fluid path, each fluid path named <code class="docutils literal notranslate"><span class="pre">/^fluid_path_((?!_).)*$/gm</span></code> is considered a <em>derived path</em>. The original (derived from) path is the <em>parent path</em>. A path with no parent path is referred to as <em>main path</em>.</p></li>
+<li><p>For instance in case of a three way valve without any flow splitter to explicitly model the fluid junction, the mapping dictionary could be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;port_1&quot;:</span> <span class="pre">&quot;hotwater_return_inlet&quot;,</span> <span class="pre">&quot;port_2&quot;:</span> <span class="pre">&quot;hotwater_return_outlet&quot;,</span> <span class="pre">&quot;port_3&quot;:</span> <span class="pre">&quot;hotwater_supply_bypass_inlet&quot;}</span></code> where <code class="docutils literal notranslate"><span class="pre">hotwater_supply_bypass</span></code> is a derived path from <code class="docutils literal notranslate"><span class="pre">hotwater_supply</span></code>.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="figure align-default" id="linkage-connect-3wv">
+<img alt="_images/linkage_connect_3wv.svg" src="_images/linkage_connect_3wv.svg" /><p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Connection scheme with a fluid junction not modeled explicitly e.g. three-way valve. In this example the bypass and direct branches are derived paths from <code class="docutils literal notranslate"><span class="pre">fluid_path0</span></code> which consists only in one connector.</span><a class="headerlink" href="#linkage-connect-3wv" title="Permalink to this image">¶</a></p>
+</div>
+<p>The conversion script throws an exception if an instantiated class has some fluid ports that cannot be tagged with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.</p>
+<p>If the tagging is resolved for all fluid connectors of the instantiated objects, the connector tags are stored in a hierarchical vendor annotation at the model level e.g. <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(tags=&quot;{object_name1:</span> <span class="pre">{connector_name1:</span> <span class="pre">air_supply_inlet,</span> <span class="pre">connector_name2:</span> <span class="pre">air_supply_outlet,</span> <span class="pre">...},</span> <span class="pre">...}&quot;))</span></code>. This is done when updating the model.</p>
+<p>All object names in <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(tags=&quot;{...}&quot;))</span></code> annotation thus reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, two additional inputs are needed:</p>
+<ul class="simple">
+<li><p>The direction (horizontal or vertical) of the connection path.</p></li>
+<li><p>The orientation (up, down, right, left) of the connection path.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The direction and orientation (as well as the fluid medium) of a derived path are inherited from the parent path.</p>
+</div>
+<p>That information is stored in <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(paths=&quot;{fluid_path1:</span> <span class="pre">{direction:</span> <span class="pre">horizontal_or_vertical,</span> <span class="pre">orientation:</span> <span class="pre">right,</span> <span class="pre">...},</span> <span class="pre">...}&quot;))</span></code> for all main (not derived) fluid paths.</p>
+<p>The connection logic is then as follows:</p>
+<ul>
+<li><p>List all the different fluid paths in <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(tags=&quot;{...}&quot;))</span></code> as obtained by truncating <code class="docutils literal notranslate"><span class="pre">_inlet</span></code> and <code class="docutils literal notranslate"><span class="pre">_outlet</span></code> from each connector name. Get the orientation and direction of the main fluid paths from <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(paths=&quot;{...}&quot;))</span></code> and finally reconstruct the tree structure of the fluid paths based on their names:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>└── fluid_path0 (horizontal, right): [connectors list]
+    ├── fluid_path0_0 (inherited direction and orientation): [connectors list]
+    └── fluid_path0_1 (inherited direction and orientation): [connectors list]
+        ├── fluid_path0_1_0 (inherited direction and orientation): [connectors list]
+        └── fluid_path0_1_1 (inherited direction and orientation): [connectors list]
+├── fluid_path1 (horizontal, left): [connectors list]
+├── fluid_path3 (vertical, up): [connectors list]
+└── fluid_path4 (vertical, down): [connectors list]
+</pre></div>
+</div>
+</li>
+<li><p>For each fluid path:</p>
+<blockquote>
+<div><ul>
+<li><p>Order all the connectors in the connectors list according to the direction and orientation of the fluid path and based on the position of the corresponding <em>objects</em> (not connectors) with the constraint that for each object <code class="docutils literal notranslate"><span class="pre">inlet</span></code> has to be listed first and <code class="docutils literal notranslate"><span class="pre">outlet</span></code> last.</p></li>
+<li><p>For each <em>derived path</em> find the start and end connectors as described hereunder and prepend / append the connectors list.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the first (resp. last) connector in the ordered list is an outlet (resp. inlet), it is the start (resp. end) connector. (Note that the reciprocal is not true: a start port can be either an inlet or an outlet see <a class="reference internal" href="#linkage-connect-multi"><span class="std std-numref">Fig. 3.5</span></a>.)</p></li>
+<li><p>Otherwise the start (resp. end) connector is the outlet (resp. inlet) connector of the object in the parent path placed immediately before (resp. after) the object corresponding to the first (resp. last) connector – where before and after are relative to the direction and orientation of the fluid path (which are the same for the parent path).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>For each <em>parent path</em> split the path into several <em>sub paths</em> whenever a connector corresponds to the start or end port of a derived path.</p></li>
+<li><p>Throw an exception if one of the following rules is not verified:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Derived paths must start <em>or</em> end with a connector from a parent path.</p></li>
+<li><p>Each branch of a fork must be a derived path, it cannot belong to the parent path: so no object from the parent path can be positioned between the objects corresponding to the first and last connector of any derived path.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations by iterating on the ordered list of connectors and generate the connection path and the corresponding graphical annotation. The only valid connection along a fluid path is <code class="docutils literal notranslate"><span class="pre">outlet</span></code> with <code class="docutils literal notranslate"><span class="pre">inlet</span></code>.</p></li>
+<li><p>Populate the <code class="docutils literal notranslate"><span class="pre">iconTransformation</span></code> annotation of each outside connector instantiated as a dependency so that they belong to the same border (top, left, bottom, right) as in the diagram layer and be evenly positioned considering the icon’s dimensions. The bus connector is an exception and will always be positioned at the top center of the icon.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The implications of that logic are the following:</p>
+<ul class="simple">
+<li><p>Within the same fluid path, objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically <code class="docutils literal notranslate"><span class="pre">supply</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p></li>
+</ul>
+<p><a class="reference internal" href="#linkage-connect-multi"><span class="std std-numref">Fig. 3.5</span></a> to <a class="reference internal" href="#linkage-connect-duct"><span class="std std-numref">Fig. 3.7</span></a> further illustrate the connection logic on different test cases.</p>
+<div class="figure align-default" id="linkage-connect-multi">
+<img alt="_images/linkage_connect_multi.svg" src="_images/linkage_connect_multi.svg" /><p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Connection scheme with nested fluid junctions not modeled explicitly</span><a class="headerlink" href="#linkage-connect-multi" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="linkage-connect-dedicated">
+<img alt="_images/linkage_connect_dedicated.svg" src="_images/linkage_connect_dedicated.svg" /><p class="caption"><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Connection scheme with fluid branches with identical directions e.g. AHU with dedicated outdoor air damper for economizer</span><a class="headerlink" href="#linkage-connect-dedicated" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="linkage-connect-duct">
+<img alt="_images/linkage_connect_duct.svg" src="_images/linkage_connect_duct.svg" /><p class="caption"><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Connection scheme with fluid branches with different directions e.g. VAV duct system. Here a flow splitter is used to start several main fluid paths with a vertical connection direction.</span><a class="headerlink" href="#linkage-connect-duct" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="signal-connectors">
+<span id="par-signal-connectors"></span><h3>3.3.3. Signal Connectors<a class="headerlink" href="#signal-connectors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="general-principles">
+<h4>3.3.3.1. General Principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h4>
+<p>Generating the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations for signal variables relies on:</p>
+<ul class="simple">
+<li><p>a string matching principle applied to the names of the connector variables and their components e.g. <code class="docutils literal notranslate"><span class="pre">com.y</span></code> for the output connector <code class="docutils literal notranslate"><span class="pre">y</span></code> of the component <code class="docutils literal notranslate"><span class="pre">com</span></code>,</p></li>
+<li><p>a so-called <em>control bus</em> which has the type of an expandable connector, see <em>§9.1.3 Expandable Connectors</em> in <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id7">[Mod17]</a>.</p></li>
+</ul>
+<p>The following features of the expandable connector are leveraged:</p>
+<ol class="arabic">
+<li><p>All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type <code class="docutils literal notranslate"><span class="pre">Real</span></code>) can be connected i.e. be part of a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Connecting a non connector variable to a connector variable with <code class="docutils literal notranslate"><span class="pre">connect(non_connector_var,</span> <span class="pre">connector_var)</span></code> yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place <code class="docutils literal notranslate"><span class="pre">non_connector_var</span> <span class="pre">=</span> <span class="pre">connector_var</span></code>.</p></li>
+<li><p>Using a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.</p></li>
+</ul>
+</div>
+</li>
+<li><p>The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation where the variable is first being used. For instance when the variable of an expandable connector is first connected to an inside connector <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealOutput</span></code> it gets the same causality i.e. output. The same variable can then be connected to another inside connector  <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealInput</span></code>.</p></li>
+<li><p>Potentially present but not connected variables are eventually considered as undefined i.e. a tool may remove them or set them to the default value (Dymola treat them as not declared: they are not listed in <code class="docutils literal notranslate"><span class="pre">dsin.txt</span></code>): all variables need not be connected so the control bus does not have to be reconfigured depending on the model structure.</p></li>
+<li><p>The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any <em>instance</em> of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.</p></li>
+</ol>
+<p>Those features are illustrated with a minimal example in the figures below where:</p>
+<ul class="simple">
+<li><p>a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,</p></li>
+<li><p>a controller system which divides the input variable (measurement) by itself and thus outputs a control variable equal to one.</p></li>
+<li><p>The same model is first implemented with an expandable connector and then with a standard connector.</p></li>
+</ul>
+<div class="figure align-default" id="bustestexp">
+<a class="reference internal image-reference" href="_images/BusTestExp.svg"><img alt="_images/BusTestExp.svg" src="_images/BusTestExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Top level</span><a class="headerlink" href="#bustestexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestExp</span>
+<span class="n">BusTestControllerExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
+<span class="n">BusTestControlledExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">controllerSystem</span><span class="o">.</span><span class="n">ahuBus</span><span class="p">,</span> <span class="n">controlledSystem</span><span class="o">.</span><span class="n">ahuBus</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrolledexp">
+<a class="reference internal image-reference" href="_images/BusTestControlledExp.svg"><img alt="_images/BusTestControlledExp.svg" src="_images/BusTestControlledExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.9 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrolledexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+<span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ahuBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">);</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">,</span> <span class="n">actuator</span><span class="o">.</span><span class="n">u</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">expandable</span> <span class="kr">connector</span> <span class="nc">AhuBus</span>
+<span class="kr">extends</span> <span class="n">Modelica</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">SignalBus</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">AhuBus</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The definition of <code class="docutils literal notranslate"><span class="pre">AhuBus</span></code> in the code snippet here above does not include any variable declaration. However the variables <code class="docutils literal notranslate"><span class="pre">ahuBus.yAct</span></code> and <code class="docutils literal notranslate"><span class="pre">ahuBus.yMea</span></code> are used in <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations. That is only possible with an expandable connector.</p>
+<p>For the configuration widget we will have predeclared variables with names allowing a one-to-one correspondence between:</p>
+<ul class="simple">
+<li><p>the control sequence input variables and the outputs of the equipment model e.g. sensed quantities and actuators returned positions,</p></li>
+<li><p>the control sequence output variables and the inputs of the equipment model e.g. actuators commanded positions.</p></li>
+</ul>
+<p>The control bus variables are used as “gateways” to stream values between the controlled and controller systems.</p>
+<p>For clarity it might be useful to group control input variables in one sub-bus and control output variables in another sub-bus.
+The <a class="reference external" href="https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library">experience feedback on bus usage in Modelica</a> shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option: the number of signals passing through busses has an impact on the number of equations and the simulation time.</p>
+</div>
+<div class="figure align-default" id="bustestcontrollerexp">
+<a class="reference internal image-reference" href="_images/BusTestControllerExp.svg"><img alt="_images/BusTestControllerExp.svg" src="_images/BusTestControllerExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.10 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollerexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
+      <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+      <span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
+      <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">,</span> <span class="n">actuator</span><span class="o">.</span><span class="n">u</span><span class="p">);</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ahuBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">)</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestnonexp">
+<a class="reference internal image-reference" href="_images/BusTestNonExp.svg"><img alt="_images/BusTestNonExp.svg" src="_images/BusTestNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.11 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Top level</span><a class="headerlink" href="#bustestnonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestNonExp</span>
+<span class="n">BusTestControllerNonExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
+<span class="n">BusTestControlledNonExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">controllerSystem</span><span class="o">.</span><span class="n">nonExpandableBus</span><span class="p">,</span> <span class="n">controlledSystem</span><span class="o">.</span><span class="n">nonExpandableBus</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrollednonexp">
+<a class="reference internal image-reference" href="_images/BusTestControlledNonExp.svg"><img alt="_images/BusTestControlledNonExp.svg" src="_images/BusTestControlledNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.12 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrollednonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledNonExp</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="n">BaseClasses</span><span class="o">.</span><span class="n">NonExpandableBus</span> <span class="n">nonExpandableBus</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">actuator</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">connector</span> <span class="nc">NonExpandableBus</span>
+<span class="c1">// The following declarations are required.</span>
+<span class="c1">// The variables are not considered as connectors: they cannot be part of connect equations.</span>
+<span class="nb">Real</span> <span class="n">yMea</span><span class="p">;</span>
+<span class="nb">Real</span> <span class="n">yAct</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">NonExpandableBus</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrollernonexp">
+<a class="reference internal image-reference" href="_images/BusTestControllerNonExp.svg"><img alt="_images/BusTestControllerNonExp.svg" src="_images/BusTestControllerNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollernonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControllerNonExp</span>
+<span class="n">Controls</span><span class="o">.</span><span class="n">OBC</span><span class="o">.</span><span class="n">CDL</span><span class="o">.</span><span class="n">Continuous</span><span class="o">.</span><span class="n">Division</span> <span class="n">controller</span><span class="p">;</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">realPassThrough</span><span class="p">;</span>
+<span class="n">BaseClasses</span><span class="o">.</span><span class="n">NonExpandableBus</span> <span class="n">nonExpandableBus</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">realPassThrough</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">controller</span><span class="o">.</span><span class="n">u1</span><span class="p">);</span>
+      <span class="n">controller</span><span class="o">.</span><span class="n">u2</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">;</span>
+      <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yAct</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">realPassThrough</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">BusTestControllerNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation-and-additional-requirements">
+<h4>3.3.3.2. Validation and Additional Requirements<a class="headerlink" href="#validation-and-additional-requirements" title="Permalink to this headline">¶</a></h4>
+<p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
+<p>The validation is performed:</p>
+<ul class="simple">
+<li><p>with Dymola (Version 2020, 64-bit, 2019-04-10) and JModelica (revision numbers from svn: JModelica 12903, Assimulo 873);</p></li>
+<li><p>first with a single instance of the controller and then with multiple instances corresponding to different parameters set up (see validation cases of the original controller <code class="docutils literal notranslate"><span class="pre">Validation.Controller</span></code> and <code class="docutils literal notranslate"><span class="pre">Validation.ControllerConfigurationTest</span></code>),</p></li>
+<li><p>with nested expandable connectors: a top-level control bus composed of a first sub-level control bus for control output variables and another for control input variables.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Connectors with conditional instances must be connected to the bus variables with the same conditional statement e.g.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span> <span class="n">have_occSen</span> <span class="kr">then</span>
+    <span class="kr">connect</span><span class="p">(</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">numZon</span><span class="p">],</span> <span class="n">nOcc</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">numZon</span><span class="p">])</span>
+<span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>With Dymola, bus variables cannot be connected to array connectors without explicitly specifying the indices range.
+Using the unspecified <code class="docutils literal notranslate"><span class="pre">[:]</span></code> syntax yields the following translation error.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">expand</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]</span> <span class="p">(</span><span class="n">since</span> <span class="n">element</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span> <span class="kr">in</span> <span class="kr">connect</span><span class="p">(</span><span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">],</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused
+indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Warning</span><span class="o">:</span> <span class="n">The</span> <span class="n">bus</span><span class="o">-</span><span class="kr">input</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">matches</span> <span class="n">multiple</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">connectors</span> <span class="kr">in</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">sets</span><span class="o">.</span>
+
+<span class="n">Bus</span><span class="o">-</span><span class="n">signal</span><span class="o">:</span> <span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">Connected</span> <span class="n">bus</span> <span class="n">variables</span><span class="o">:</span>
+<span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Connector of Real output signal&quot;</span>
+<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Primary airflow rate to the ventilation zone from the air handler, including outdoor air and recirculated air&quot;</span>
+<span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
+<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a strange behavior in Dymola. On the other hand JModelica 1) allows the unspecified <code class="docutils literal notranslate"><span class="pre">[:]</span></code> syntax and 2) does not generate any translation warning when explicitly specifying the indices range.
+JModelica’s behavior seems more aligned with <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id8">[Mod17]</a> <em>§9.1.3 Expandable Connectors</em> that states: “A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown.”
+The same logic as JModelica for array variables connections to expandable connectors is required for LinkageJS.</p>
+</div>
+<p>Simulation succeeds for the two tests cases with the two simulation tools.
+The results comparison to the original test case (without control bus) is presented in <a class="reference internal" href="#annex-valid-bus"><span class="std std-numref">Fig. 3.14</span></a> for Dymola.</p>
+<div class="figure align-default" id="annex-valid-bus">
+<img alt="_images/annex_valid_bus.svg" src="_images/annex_valid_bus.svg" /><p class="caption"><span class="caption-number">Fig. 3.14 </span><span class="caption-text">G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and with (<code class="docutils literal notranslate"><span class="pre">new_bus</span></code>) expandable connectors</span><a class="headerlink" href="#annex-valid-bus" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="additional-requirements-for-the-ui">
+<h4>3.3.3.3. Additional Requirements for the UI<a class="headerlink" href="#additional-requirements-for-the-ui" title="Permalink to this headline">¶</a></h4>
+<p>Based on the previous validation case, <a class="reference internal" href="#dymola-bus"><span class="std std-numref">Fig. 3.15</span></a> presents the Dymola pop-up window displayed when connecting the sub-bus of input control variables to the main control bus.</p>
+<div class="figure align-default" id="dymola-bus">
+<img alt="_images/dymola_bus.png" src="_images/dymola_bus.png" />
+<p class="caption"><span class="caption-number">Fig. 3.15 </span><span class="caption-text">Dymola pop-up window when connecting the sub-bus of input control variables (left) to the main control bus (right) – case of outside connectors</span><a class="headerlink" href="#dymola-bus" title="Permalink to this image">¶</a></p>
+</div>
+<p>The variables listed immediately after the bus name are either:</p>
+<ul class="simple">
+<li><p><em>declared variables</em> that are not connected e.g. <code class="docutils literal notranslate"><span class="pre">ahuBus.yTest</span></code> (declared as <code class="docutils literal notranslate"><span class="pre">Real</span></code> in the bus definition): those variables are only <em>potentially present</em> and eventually considered as <em>undefined</em> when translating the model (treated by Dymola as if they were never declared);</p></li>
+<li><p>or <em>present variables</em> i.e. variables that appear in a connect equation e.g. <code class="docutils literal notranslate"><span class="pre">ahuSubBusI.TZonHeaSet</span></code>: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for <em>that instance</em> of the expandable connector i.e. variables that are declared in another component and connected to the connector’s instance.</p></li>
+</ul>
+<p>The variables listed under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">variable</span></code> are the remaining <em>potentially present variables</em> (in addition to the declared but not connected variables). Those variables are elaborated by the augmentation process for <em>all instances</em> of the expandable connector, however they are not connected in that instance of the connector.</p>
+<p>In addition to Dymola’s features for handling the bus connections, LinkageJS requires the following:</p>
+<ul>
+<li><p>Color code to distinguish between:</p>
+<blockquote>
+<div><ul>
+<li><p>Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.</p>
+<blockquote>
+<div><ul>
+<li><div class="line-block">
+<div class="line">Remark: Dymola does not throw any exception when a <em>declared</em> bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for <code class="docutils literal notranslate"><span class="pre">Real</span></code>) to feed the connected variable.</div>
+<div class="line">That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.</div>
+<div class="line">JModelica throws an exception in any case with the message <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">following</span> <span class="pre">variable(s)</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">matched</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">equation</span></code>.</div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id9">[Mod17]</a> <em>§9.1.3 Expandable Connectors</em>: “variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. […] elements that are only potentially present are not seen as declared.”</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>View the “expanded” connection set of an expandable connector in each level of composition – that covers several topics:</p>
+<blockquote>
+<div><ul>
+<li><p>The user can view the connection set of a connector simply by selecting it and without having to make an actual connection (as in Dymola).</p></li>
+<li><p>The user can view the name of component and connector variable to which the expandable connector’s variables are connected: similar to Dymola’s function <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Connection</span></code> accessible by right-clicking on a connection line.</p></li>
+<li><div class="line-block">
+<div class="line">From <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id10">[Mod17]</a> <em>§9.1.3 Expandable Connectors</em>: “When two expandable connectors are connected, each is augmented with the variables that are only declared in the other expandable connector (the new variables are neither input nor output).”</div>
+<div class="line">That feature is illustrated in the minimal example <a class="reference internal" href="#bus-minimal"><span class="std std-numref">Fig. 3.16</span></a> where a sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code> with declared variables <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> and <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is connected to the declared sub-bus <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> of a bus. <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> is connected to another variable so it is considered present. <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is not connected so it is only considered potentially present. Finally <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> is connected but not declared which makes it a present variable. <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 3.17</span></a> to <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 3.19</span></a> then show which variables are exposed to the user. In consistency with <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id11">[Mod17]</a> the declared variables of <code class="docutils literal notranslate"><span class="pre">subBus</span></code> are considered declared variables in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> appears in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">variable</span></code> i.e. as a potentially present variable whereas it is a present variable in the connected sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code>.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is an issue for the user who will not have the information at the bus level of the connections which are required by the sub-bus variables e.g. Dymola will allow connecting an output connector to <code class="docutils literal notranslate"><span class="pre">bus.ahuI.yDeclaredPresent</span></code> but the translation of the model will fail due to <code class="docutils literal notranslate"><span class="pre">Multiple</span> <span class="pre">sources</span> <span class="pre">for</span> <span class="pre">causal</span> <span class="pre">signal</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">connection</span> <span class="pre">set</span></code>.</p></li>
+<li><p>Directly connecting variables to the bus (without intermediary sub-bus) can solve that issue for outside connectors but not for inside connectors, see below.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><div class="line-block">
+<div class="line">Another issue is illustrated <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 3.19</span></a> where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, LinkageJS requires that the “expanded” connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the <em>augmentation set</em> as defined in <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id12">[Mod17]</a> <em>9.1.3 Expandable Connectors</em>. In our example the same information displayed in <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 3.17</span></a> for the original sub-bus should be accessible when displaying the connection set of <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> whatever the current status (inside or outside) of the connector <code class="docutils literal notranslate"><span class="pre">bus</span></code>. A typical view of the connection set of expandable connectors for LinkageJS could be:</div>
+</div>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">Typical view of the connection set of expandable connectors – visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Present</p></th>
+<th class="head"><p>Declared</p></th>
+<th class="head"><p>I/O</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>bus</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var1</span></code> (present variable connected only once: red color)</p></td>
+<td><p>x</p></td>
+<td><p>O</p></td>
+<td><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">comp1.var1</span></code></p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var2</span></code>  (present variable connected twice: default color)</p></td>
+<td><p>x</p></td>
+<td><p>O</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">comp2.var1</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">comp1.var2</span></code></p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var3</span></code> (declared variable not connected: light grey color)</p></td>
+<td><p>O</p></td>
+<td><p>x</p></td>
+<td></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Add variable</em></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var4</span></code> (variable elaborated by augmentation from <em>all instances</em> of the connector: light grey color)</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+<td></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>subBus</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var5</span></code> (present variable connected only once: red color)</p></td>
+<td><p>x</p></td>
+<td><p>O</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">comp3.var5</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span></p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Add variable</em></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var6</span></code> (variable elaborated by augmentation from <em>all instances</em> of the connector: light grey color)</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+<td></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="figure align-default" id="bus-minimal">
+<img alt="_images/bus_minimal.svg" src="_images/bus_minimal.svg" /><p class="caption"><span class="caption-number">Fig. 3.16 </span><span class="caption-text">Minimal example of sub-bus to bus connection illustrating how the bus variables are exposed in Dymola – case of outside connectors</span><a class="headerlink" href="#bus-minimal" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="subbus-outside">
+<img alt="_images/subbus_outside.png" src="_images/subbus_outside.png" />
+<p class="caption"><span class="caption-number">Fig. 3.17 </span><span class="caption-text">Sub-bus variables being exposed in case the sub-bus is an outside connector</span><a class="headerlink" href="#subbus-outside" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="bus-outside">
+<img alt="_images/bus_outside.png" src="_images/bus_outside.png" />
+<p class="caption"><span class="caption-number">Fig. 3.18 </span><span class="caption-text">Bus variables being exposed in case the bus is an outside connector</span><a class="headerlink" href="#bus-outside" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="bus-inside">
+<img alt="_images/bus_inside.png" src="_images/bus_inside.png" />
+<p class="caption"><span class="caption-number">Fig. 3.19 </span><span class="caption-text">Bus variables being exposed in case the bus is an inside connector</span><a class="headerlink" href="#bus-inside" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="schematics-export">
+<span id="par-schematics-export"></span><h2>3.4. Schematics Export<a class="headerlink" href="#schematics-export" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="screen-schematics-modelica">
+<img alt="_images/screen_schematics_modelica.svg" src="_images/screen_schematics_modelica.svg" /><p class="caption"><span class="caption-number">Fig. 3.20 </span><span class="caption-text">Mockup of the schematics export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="screen-schematics-output">
+<img alt="_images/screen_schematics_output.svg" src="_images/screen_schematics_output.svg" /><p class="caption"><span class="caption-number">Fig. 3.21 </span><span class="caption-text">Mockup of the schematics export – Output file (format to be specified: Word or PDF)</span><a class="headerlink" href="#screen-schematics-output" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="working-with-tagged-variables">
+<span id="par-tagged-variables"></span><h2>3.5. Working with Tagged Variables<a class="headerlink" href="#working-with-tagged-variables" title="Permalink to this headline">¶</a></h2>
+<p>To be updated: specify the requirements for tagging variables and performing some queries of the set of tagged variables</p>
+<p>Set up parameters values with OS measures e.g. nominal electrical loads or boiler efficiency</p>
+</div>
+<div class="section" id="openstudio-integration">
+<h2>3.6. OpenStudio Integration<a class="headerlink" href="#openstudio-integration" title="Permalink to this headline">¶</a></h2>
+<p>To be updated.</p>
+</div>
+<div class="section" id="interface-with-urbanopt-geojson">
+<h2>3.7. Interface with URBANopt GeoJSON<a class="headerlink" href="#interface-with-urbanopt-geojson" title="Permalink to this headline">¶</a></h2>
+<p>To be updated.</p>
+</div>
+<div class="section" id="to-do">
+<h2>3.8. To Do<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Test Modelica to JSON to Modelica on the whole library and run unit tests</p></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>From <a class="reference external" href="https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html">https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html</a></p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p>From Taylor Engineering: “For standard systems, it might be possible to simply include in their specifications a table of ASHRAE Guideline 36 sequences with check boxes for the paragraph numbers that are applicable to their project.”</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2017-2019 The Regents of the University of California (through Lawrence Berkeley National Laboratory),
+subject to receipt of any required approvals from U.S. Department of Energy.  All rights reserved..<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
