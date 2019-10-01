@@ -78,13 +78,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#configuration-widget">4.4. Configuration Widget</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#issues">5. Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#loading-a-modelica-model-with-linkagejs-annotations">5. Loading a Modelica Model with LinkageJS Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#questions">6. Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#to-do">7. To Do</a></li>
 <li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">8. Software Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">10. Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">11. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annex.html">9. Annex</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#validation-of-bus-connections">9.1. Validation of Bus Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">10. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">11. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">12. References</a></li>
 </ul>
 </ul>
 </li>
@@ -118,7 +122,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#issues">5. Issues</a></li>
+<li><a class="reference internal" href="#loading-a-modelica-model-with-linkagejs-annotations">5. Loading a Modelica Model with LinkageJS Annotations</a></li>
 <li><a class="reference internal" href="#questions">6. Questions</a></li>
 <li><a class="reference internal" href="#to-do">7. To Do</a></li>
 </ul>
@@ -184,7 +188,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#issues">5. Issues</a></li>
+<li><a class="reference internal" href="#loading-a-modelica-model-with-linkagejs-annotations">5. Loading a Modelica Model with LinkageJS Annotations</a></li>
 <li><a class="reference internal" href="#questions">6. Questions</a></li>
 <li><a class="reference internal" href="#to-do">7. To Do</a></li>
 </ul>
@@ -479,8 +483,7 @@ In this respect it must comply with the Modelica language specification <a class
 <div class="section" id="schematics-export">
 <h2>4.3. Schematics Export<a class="headerlink" href="#schematics-export" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="screen-schematics-modelica">
-<img alt="_images/screen_schematics_modelica.png" src="_images/screen_schematics_modelica.png" />
-<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Mockup of the schematics export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
+<img alt="_images/screen_schematics_modelica.svg" src="_images/screen_schematics_modelica.svg" /><p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Mockup of the schematics export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="screen-schematics-output">
 <img alt="_images/screen_schematics_output.svg" src="_images/screen_schematics_output.svg" /><p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Mockup of the schematics export – Output file (format to be specified: Word or PDF)</span><a class="headerlink" href="#screen-schematics-output" title="Permalink to this image">¶</a></p>
@@ -490,7 +493,8 @@ In this respect it must comply with the Modelica language specification <a class
 <h2>4.4. Configuration Widget<a class="headerlink" href="#configuration-widget" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
 <h3>4.4.1. Functionalities<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>The configuration widget allows the user to generate a Modelica model of an HVAC system by filling up a simple input form. There are two fundamental requirements regarding the generated model:</p>
+<p>The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
+There are two fundamental requirements regarding the generated model:</p>
 <ol class="arabic simple">
 <li><p>It must be “graphically readable” (both within LinkageJS and within any third-party Modelica GUI e.g. Dymola): this is a strong constraint regarding the connections that must be generated automatically.</p></li>
 <li><p>It must be ready to simulate: no additional modeling work or parameters setting is needed outside the configuration widget.</p></li>
@@ -523,7 +527,7 @@ In this respect it must comply with the Modelica language specification <a class
 </ul>
 </div></blockquote>
 </li>
-<li><p>the equipment and controls models are connected together by means of a <cite>control bus</cite>, see <a class="reference internal" href="#bustestexp"><span class="std std-numref">Fig. 4.8</span></a>: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 4.4</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level model <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget).</p></li>
+<li><p>the equipment and controls models are connected together by means of a <cite>control bus</cite>, see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 4.1</span></a>: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 4.4</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level model <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget). That component exposes the outside fluid connectors as well as the top level control bus.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -531,6 +535,7 @@ In this respect it must comply with the Modelica language specification <a class
 <p>To solve:</p>
 <blockquote>
 <div><ul>
+<li><p>Test headered VS dedicated chilled water pump: conditional number of instances, placement and fluid path. Idea: the first dedicated pump can be instantiated in the equipment section, the others in the dependencies section.</p></li>
 <li><p>Conditional dependencies: model and placement require <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">then</span></code> statements e.g. AFMS depending on economizer dampers option.</p></li>
 <li><p>Best format: JSON (expensive especially for boolean conditions), Python class, MapperClass from NREL URBANopt GeoJSON…</p></li>
 <li><p>Controls specification based on a standard</p>
@@ -936,7 +941,7 @@ Expandable Connectors</em> in <a class="reference internal" href="bibliography.h
 The <a class="reference external" href="https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library">experience feedback on bus usage in Modelica</a> shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option: the number of signals passing through busses has an impact on the number of equations and the simulation time.</p>
 </div>
 <div class="figure align-default" id="bustestcontrollerexp">
-<a class="reference internal image-reference" href="_images/l.pdf"><img alt="_images/l.pdf" src="_images/l.pdf" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="_images/BusTestControllerExp.svg"><img alt="_images/BusTestControllerExp.svg" src="_images/BusTestControllerExp.svg" width="50%" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollerexp" title="Permalink to this image">¶</a></p>
 </div>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
@@ -1006,19 +1011,12 @@ The <a class="reference external" href="https://www.claytex.com/blog/libraries/r
 </div>
 </div>
 </div>
-<div class="section" id="issues">
-<h1>5. Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h1>
-<p>We have a linked modelica model residing on disk. When loading that model, LinkageJS must be able to:</p>
-<ul>
-<li><p>identify which object and <code class="docutils literal notranslate"><span class="pre">connect</span></code> statement can be modified with the template script: declaration/statement annotation <code class="docutils literal notranslate"><span class="pre">__Linkage_modify=true</span></code></p></li>
-<li><p>generate the JSON configuration file:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>automatically from the model structure? Non working examples:</p></li>
-<li><p>Supply fan/Draw through: if the user has modified the <code class="docutils literal notranslate"><span class="pre">Placement</span></code> we have no one-to-one correspondance with JSON file. Also relying on the <code class="docutils literal notranslate"><span class="pre">connect</span></code> statements involving the object seems to complex.</p></li>
-</ul>
-</div></blockquote>
-</li>
+<div class="section" id="loading-a-modelica-model-with-linkagejs-annotations">
+<h1>5. Loading a Modelica Model with LinkageJS Annotations<a class="headerlink" href="#loading-a-modelica-model-with-linkagejs-annotations" title="Permalink to this headline">¶</a></h1>
+<p>Issue: the model might have been edited manually by the user.</p>
+<ul class="simple">
+<li><p>If some components are not found in Linkage annotations, the configuration widget is disabled.</p></li>
+<li><p>Or we try to reconstruct the fluid paths based on the updated connection set and the existing Linkage annotations. Every new component gets included in the configuration data model (additional section).</p></li>
 </ul>
 </div>
 <div class="section" id="questions">

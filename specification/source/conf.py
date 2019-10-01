@@ -50,8 +50,9 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'LinkageJS'
-copyright = u'(c) All rights reserved'
+project = 'LinkageJS'
+copyright = """2017-2019 The Regents of the University of California (through Lawrence Berkeley National Laboratory),
+subject to receipt of any required approvals from U.S. Department of Energy.  All rights reserved."""
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -478,7 +479,7 @@ latex_elements['preamble'] = r'''
 \usepackage{tikz}
 \usepackage{graphicx}
 \usetikzlibrary{calc}
-
+\usepackage{textcomp}
 '''
 
 def setup(app):

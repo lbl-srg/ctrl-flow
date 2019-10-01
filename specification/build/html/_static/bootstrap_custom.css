@@ -160,14 +160,12 @@ a.headerlink:hover {
 cite, tt {
     font-family: 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;
-    font-size: 1em;
     color: #750000;
 }
 
 cite, code, tt {
     font-family: 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;
-    font-size: 1em;
 }
 
 tt {
@@ -242,7 +240,6 @@ table td, table th {
 }
 
 div.admonition, div.warning {
-    font-size: 0.9em;
     margin: 1em 0 1em 0;
     border: 1px solid #86989B;
     background-color: #f7f7f7;

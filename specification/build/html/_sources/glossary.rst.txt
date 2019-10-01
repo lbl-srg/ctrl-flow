@@ -3,8 +3,7 @@
 Glossary
 --------
 
-This section provides definitions for abbreviations and terms introduced in
-the Open Building Controls project.
+To be updated.
 
 .. If you add new entries, keep the alphabetical sorting.
 

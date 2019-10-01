@@ -1,0 +1,236 @@
+{
+      "system": {
+            "$id": "#system",
+            "description": "System type",
+            "value": "AHU"
+      },
+
+      "icon": "path of icon.mo",
+
+      "diagram": {
+            "configuration": [24, 24],
+            "modelica": [[-120,-200], [120,120]]
+      },
+
+      "name": {
+            "$id": "#name",
+            "description": "Model name",
+            "widget": "Text",
+            "value": "AHU_#i"
+      },
+
+      "type": {
+            "$id": "#type",
+            "description": "Type of AHU",
+            "widget": "Dropdown",
+            "options": ["VAV", "DOA", "Supply only", "Exhaust only"],
+            "value": "VAV"
+      },
+
+      "fluid_path": [
+            {
+                  "$id": "#air_supply",
+                  "direction": "horizontal",
+                  "orientation": "right",
+                  "medium": "Buildings.Media.Air"
+            },
+            {
+                  "$id": "#air_return",
+                  "direction": "horizontal",
+                  "orientation": "left",
+                  "medium": "Buildings.Media.Air"
+            }
+      ],
+
+      "equipment": [
+            {
+                  "$id": "#heaRec",
+                  "description": "Heat recovery",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#type.value == 'DOA'",
+                  "options": ["None", "Fixed plate", "Enthalpy wheel", "Sensible wheel"],
+                  "value": "None",
+                  "model": [
+                        null,
+                        "Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU",
+                        "Buildings.Fluid.HeatExchangers.EnthalpyWheel",
+                        "Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)"
+                  ],
+                  "icon_transformation": "flipHorizontal",
+                  "placement": [18, 6],
+                  "connectors": {
+                        "port_a1": "air_return_inlet", "port_a2": "air_supply_inlet", "port_b1": "air_return_outlet", "port_b2": "air_supply_outlet"
+                  }
+            },
+            {
+                  "$id": "#eco",
+                  "description": "Economizer",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#type.value == 'VAV'",
+                  "options": ["None", "Dedicated OA damper", "Common OA damper"],
+                  "value": "None",
+                  "model": [
+                        null,
+                        "Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow",
+                        "Buildings.Fluid.Actuators.Dampers.MixingBox"
+                  ],
+                  "icon_transformation": "flipVertical",
+                  "placement": [18, 9],
+                  "connectors": {
+                        "port_Out": "air_supply_out_inlet", "port_OutMin": "air_supply_min_inlet", "port_Sup": "air_supply_outlet",
+                        "port_Exh": "air_return_outlet", "port_Ret": "air_return_inlet"
+                  }
+            },
+            {
+                  "$id": "#V_flowOut_nominal",
+                  "description": "Nominal outdoor air volumetric flow rate",
+                  "ui::widget": "Input real",
+                  "ui::widget::enabled": "#eco.value != 'None'",
+                  "value": 0,
+                  "unit": "m3/h"
+            },
+            {
+                  "$id": "#fanSup",
+                  "description": "Supply fan",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#type.value != 'Exhaust only'",
+                  "options": ["None", "Draw through", "Blow through"],
+                  "value": "Draw through",
+                  "model": "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)",
+                  "icon_transformation": null,
+                  "placement": [null, [18, 11], [18, 18]],
+                  "fluid_path": "air_supply"
+            },
+            {
+                  "$id": "#V_flowSup_nominal",
+                  "description": "Nominal supply air volumetric flow rate",
+                  "ui::widget": "Input real",
+                  "ui::widget::enabled": "#fanSup.value != 'None'",
+                  "value": 0,
+                  "unit": "m3/h"
+            },
+            {
+                  "$id": "#fanRet",
+                  "description": "Return/Relief fan",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#type.value != 'Supply only'",
+                  "options": ["None", "Return", "Relief"],
+                  "value": "Relief",
+                  "model": [
+                        null,
+                        "Buildings.Fluid.Movers.SpeedControlled_y((#air_return.medium).rho_default / 3600 * #V_flowRet_nominal.value)",
+                        "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_return.medium).rho_default / 3600 * (#V_flowRet_nominal.value - #V_flowSup_nominal.value + #V_flowOut_nominal.value))"
+                  ],
+                  "icon_transformation": "flipHorizontal",
+                  "placement": [null, [14, 13], [14, 4]],
+                  "fluid_path": "air_return"
+            }
+            {
+                  "$id": "#V_flowRet_nominal",
+                  "description": "Nominal return air volumetric flow rate",
+                  "ui::widget": "Input real",
+                  "ui::widget::enabled": "#fanRet.value != 'None'",
+                  "value": 0,
+                  "unit": "m3/h"
+            }
+      ],
+
+      "controls": [
+            {
+                  "$id": "#conAHURef",
+                  "description": "Reference guideline for control sequences",
+                  "ui::widget": "Dropdown",
+                  "options": ["ASHRAE G36"],
+                  "value": null
+            },
+            {
+                  "$id": "#conAHUOpt",
+                  "description": "Optimal start up",
+                  "ui::widget": "Checkbox",
+                  "value": false
+            },
+            {
+                  "$id": "#conAHUDemLim",
+                  "description": "Demand limit set point adjustment",
+                  "ui::widget": "Checkbox",
+                  "value": false
+            },
+            {
+                  "description": "Supply fan control",
+                  "ui::widget": "Text"
+            },
+            {
+                  "$id": "#conFanSupStaSto",
+                  "description": "Supply fan start/stop control",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#fanSup.value != 'None'",
+                  "options": ["On-Off", "Static Pressure Control"],
+                  "ui::widget::option::disabled": ["#conAHURef.value == 'ASHRAE G36'", ""],
+                  "value": "if #conAHURef.value == null then 'On-Off' elseif #conAHURef.value == 'ASHRAE G36' then 'Static Pressure Control'"
+            },
+            {
+                  "$id": "#resPreStaSet",
+                  "description": "Static pressure set point reset",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#fanSup.value != 'None'",
+                  "options": ["None", "T&R"],
+                  "ui::widget::option::disabled": ["#conAHURef.value == 'ASHRAE G36'", ""],
+                  "value": "if #conAHURef.value == null then 'None' elseif #conAHURef.value == 'ASHRAE G36' then 'T&R'"
+            },
+            {
+                  "description": "Supply Air Temperature Control",
+                  "ui::widget": "Text"
+            },
+            {
+                  "$id": "#resTSupSet",
+                  "description": "Supply air temperature set point reset",
+                  "ui::widget": "Dropdown",
+                  "ui::widget::enabled": "#type.value != 'Exhaust only'",
+                  "options": ["None", "OAT Reset", "OAT and T&R"],
+                  "ui::widget::option::disabled": ["#conAHURef.value == 'ASHRAE G36'", "#conAHURef.value == 'ASHRAE G36'", ""],
+                  "value": "if #conAHURef.value == null then 'None' elseif #conAHURef.value == 'ASHRAE G36' then 'OAT and T&R'"
+            },
+            {
+                  "$id": "#numZon",
+                  "description": "Number of served VAV boxes",
+                  "ui::widget": "Input integer",
+                  "ui::widget::enabled": "#resTSupSet.value == 'OAT and T&R'",
+                  "value": null
+            }
+      ],
+
+      "dependencies": [
+            {
+                  "$id": "#port_outAir",
+                  "description": "Outside air port",
+                  "enabled": "#type.value != 'Exhaust only'",
+                  "model": "Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)",
+                  "placement": [18, 1],
+                  "fluid_path": "air_supply"
+            },
+            {
+                  "$id": "#port_supAir",
+                  "description": "Supply air port",
+                  "enabled": "#type.value != 'Exhaust only'",
+                  "model": "Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)",
+                  "placement": [18, 24],
+                  "fluid_path": "air_supply"
+            },
+            {
+                  "$id": "#senFloOut",
+                  "description": "Outdoor airflow measurement station",
+                  "enabled": "#ecoCon.value == 'ASHRAE G36'",
+                  "model": "Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=#air_supply.medium)",
+                  "placement": "if #eco.value == 'Dedicated OA damper' then [18, 5] else [20, 5]",
+                  "fluid_path": ""
+            },
+            {
+                  "$id": "#conAHU",
+                  "description": "AHU top level controller",
+                  "enabled": "#conFanSupRef.value == 'ASHRAE G36'",
+                  "model": "Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller",
+                  "placement": "[5, 4]",
+                  "fluid_path": ""
+            }
+      ]
+}

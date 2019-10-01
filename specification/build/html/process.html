@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>3. Process Workflow &#8212; LinkageJS Requirements Specification</title>
+    <title>2. Process Workflow &#8212; LinkageJS Requirements Specification</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -20,6 +20,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -27,8 +28,8 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Requirements" href="requirements.html" />
-    <link rel="prev" title="2. Conventions" href="conventions.html" />
+    <link rel="next" title="3. Requirements" href="requirements.html" />
+    <link rel="prev" title="1. Preamble" href="preamble.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -69,26 +70,22 @@
 <li class="toctree-l2"><a class="reference internal" href="preamble.html#purpose-of-the-document">1.1. Purpose of the Document</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">2. Conventions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Process Workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">4. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">4.1. General description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">4.2. Modelica Graphical User Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">4.3. Schematics Export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">4.4. Configuration Widget</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Process Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">3.2. Modelica Graphical User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">3.3. Configuration Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">3.4. Schematics Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#working-with-tagged-variables">3.5. Working with Tagged Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">3.6. OpenStudio Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">3.7. Interface with URBANopt GeoJSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#to-do">3.8. To Do</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html#issues">5. Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html#questions">6. Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html#to-do">7. To Do</a></li>
-<li class="toctree-l1"><a class="reference internal" href="softwareArchitecture.html">8. Software Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="annex.html">9. Annex</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="annex.html#validation-of-bus-connections">9.1. Validation of Bus Connections</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">10. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">11. Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">12. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">4. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">5. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">6. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. References</a></li>
 </ul>
 </ul>
 </li>
@@ -102,7 +99,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3. Process Workflow</a></li>
+<li><a class="reference internal" href="#">2. Process Workflow</a></li>
 </ul>
 </ul>
 </li>
@@ -112,11 +109,11 @@
               
                 
   <li>
-    <a href="conventions.html" title="Previous Chapter: 2. Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Conventions</span>
+    <a href="preamble.html" title="Previous Chapter: 1. Preamble"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Preamble</span>
     </a>
   </li>
   <li>
-    <a href="requirements.html" title="Next Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Requirements &raquo;</span>
+    <a href="requirements.html" title="Next Chapter: 3. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. Requirements &raquo;</span>
     </a>
   </li>
               
@@ -146,15 +143,15 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">3. Process Workflow</a></li>
+<li><a class="reference internal" href="#">2. Process Workflow</a></li>
 </ul>
 
   <li>
-    <a href="conventions.html" title="Previous Chapter: 2. Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Conventions</span>
+    <a href="preamble.html" title="Previous Chapter: 1. Preamble"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Preamble</span>
     </a>
   </li>
   <li>
-    <a href="requirements.html" title="Next Chapter: 4. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Requirements &raquo;</span>
+    <a href="requirements.html" title="Next Chapter: 3. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. Requirements &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -169,17 +166,8 @@
     <div class="col-md-9 content">
       
   <div class="section" id="process-workflow">
-<span id="sec-process"></span><h1>3. Process Workflow<a class="headerlink" href="#process-workflow" title="Permalink to this headline">¶</a></h1>
-<p>a design engineer selects, configures, tests and evaluates the performance of a control sequence
-using building energy simulation (2),
-starting from a control sequence library that contains ASHRAE GPC 36 sequences,
-as well as user-added sequences (3),
-linked to a model of the mechanical system and the building (4).
-If the sequences meet closed-loop performance requirements,
-the designer exports a control specification,
-including the sequences and functional verification tests expressed in
-the Controls Description Language CDL (5).
-Optionally, for reuse in similar projects,</p>
+<span id="sec-process"></span><h1>2. Process Workflow<a class="headerlink" href="#process-workflow" title="Permalink to this headline">¶</a></h1>
+<p>To be updated.</p>
 </div>
 
 
@@ -198,7 +186,8 @@ Optionally, for reuse in similar projects,</p>
       
     </p>
     <p>
-        &copy; Copyright (c) All rights reserved.<br/>
+        &copy; Copyright 2017-2019 The Regents of the University of California (through Lawrence Berkeley National Laboratory),
+subject to receipt of any required approvals from U.S. Department of Energy.  All rights reserved..<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
