@@ -1,4 +1,4 @@
 .vscode
 settings.json
 *tmp*
-source/_*
+specification/source/_build
