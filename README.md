@@ -20,9 +20,11 @@ pip install sphinx_bootstrap_theme
 # Instructions regarding the use of GitHub Pages
 
 The PDF file is available at:
+
 [https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf](https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf)
 
 The HTML files are hosted with GitHub Pages at:
+
 [https://antoinegautier.github.io/linkage.js](https://antoinegautier.github.io/linkage.js)
 
 To push the subdirectory `specification/.` and rebuild GitHub Pages, run the following command from that subdirectory:
