@@ -59,7 +59,7 @@ linkcheck:
 	      "or in $(BUILDDIR)/linkcheck/output.txt."
 
 push:
-	git add -A && git commit -m 'rebuild pages'
+	git add -A && git commit --allow-empty -m 'rebuild pages'
 	cd $(HOME)/github/linkage.js && git subtree push --prefix specification/build/html origin gh-pages
 
 dist: html, latex, linkcheck
