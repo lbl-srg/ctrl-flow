@@ -6,7 +6,7 @@ The PDF file is available at
 
 [https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf](https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf)
 
-The HTML files are hosted with GitHub Pages at
+The HTML files are served with GitHub Pages at
 
 [https://antoinegautier.github.io/linkage.js](https://antoinegautier.github.io/linkage.js)
 
@@ -16,19 +16,21 @@ To push the subdirectory `specification/.` and rebuild GitHub Pages, run the fol
 make push
 ```
 
-## Instructions regarding the use of `sphinx`
+## Instructions Regarding the Use of `sphinx`
 
-From `specification/.` this document can be compiled  using
+From `specification/.` this document can be built using
 
 ```
 make html
 ```
+
 or
+
 ```
 make latex
 ```
 
-The compilation requires `sphinx` (http://www.sphinx-doc.org) and a few contributions, which can be installed by running
+It requires `sphinx` (http://www.sphinx-doc.org) and a few contributions, which can be installed by running
 
 ```
 pip install sphinx
