@@ -504,7 +504,7 @@ To be updated cf. different integration targets
 
 Simple Modelica model or full package (V0).
 
-If the model contains annotations specific to the configuration widget (see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}), the corresponding data are loaded in memory for further configuration.
+If the model contains annotations specific to the configuration widget (see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}), the  corresponding data are loaded in memory for further configuration.
 
 If the model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} the corresponding library is loaded.
 
@@ -515,7 +515,9 @@ Export simulation results
 &
 R
 &&
-Export in the following format: \sphinxcode{\sphinxupquote{mat, csv}}. All variables or selection based on variables browser (see below).
+Export in the following format: \sphinxcode{\sphinxupquote{mat, csv}}.
+
+All variables or selection based on variables browser (see below).
 \\
 \hline
 Variables browser
@@ -524,7 +526,7 @@ P
 &
 R
 &
-Query selection of model variables based on regular expression (V0) or Brick/Haystack tag \sphinxcite{bibliography:brick} \sphinxcite{bibliography:haystack4} (V1)
+Query selection of model variables based on regular expression (V0) or Brick/Haystack tag \sphinxcite{bibliography:brick}  \sphinxcite{bibliography:haystack4} (V1)
 \\
 \hline
 Plot simulation results
@@ -545,7 +547,7 @@ Export control points summary
 &
 R
 &&
-Relies on LBNL module to generate the list of A/B I/O variables.
+Relies on LBL module to generate the list of A/B I/O variables.
 \\
 \hline
 Export schematics
@@ -554,9 +556,9 @@ P
 &
 R
 &
-Only the equipment drawing in V0. Control points and SOO description in V1 see numref:\sphinxtitleref{screen\_schematics\_modelica}.
+Only the equipment drawing in V0. Control points and SOO description in V1 see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}.
 
-Relies on LBNL module CDL to Word translator.
+Relies on LBL module CDL to Word translator.
 \\
 \hline
 Import/Export data sheet
@@ -585,7 +587,7 @@ Translate model
 &
 P
 &&
-The software settings allow the user to specify a command for translating the model with a third party Modelica ol e.g. JModelica.
+The software settings allow the user to specify a command for translating the model with a third party Modelica ol  e.g. JModelica.
 
 The output of the translation routine is logged in LinkageJS console.
 \\
@@ -594,7 +596,7 @@ Simulate model
 &
 P
 &&
-The software settings allow the user to specify a command for simulating the model with a third party Modelica ool .g. JModelica.
+The software settings allow the user to specify a command for simulating the model with a third party Modelica ool  .g. JModelica.
 
 The output of the simulation routine is logged in LinkageJS console.
 \\
@@ -607,7 +609,7 @@ P
 &
 Partially supported because only the configuration widget integrates that feature.
 
-When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget could be developed, see components with 4 ports and 2 medium.
+When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget  could be developed, see components with 4 ports and 2 medium.
 
 Expected as a future enhancement of Modelica standard %
 \begin{footnote}[1]\sphinxAtStartFootnote
@@ -634,7 +636,7 @@ O
 &
 R
 &
-If a loaded model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} e.g. \sphinxcode{\sphinxupquote{uses(Buildings(version="6.0.0")}} the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
+If a loaded model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} e.g. \sphinxcode{\sphinxupquote{uses(Buildings(version="6.0.0")}} the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.
 \\
 \hline
 \sphinxstylestrong{Object manipulation}
@@ -644,7 +646,7 @@ Vectorized instances
 &
 R
 &&
-An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further connections to the connectors of that object must comply with the array structure.
+An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.
 \\
 \hline
 Expandable connectors
@@ -665,16 +667,16 @@ O
 &
 R
 &
-If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue s modified, all the selected objects will have their parameter value change.
+If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue  s modified, all the selected objects will have their parameter value change.
 \\
 \hline
 Avoiding duplicate names
 &
 R
 &&
-When instantiating a component, if the default name is already used in the model the software automatically appends he name with the lowest integer value that would ensure uniqueness.
+When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.
 
-When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure consistency with the appended object names.
+When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.
 \\
 \hline
 \sphinxstylestrong{Graphical features}
@@ -686,7 +688,7 @@ Tab view
 &
 R
 &&
-The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a eb browser.
+The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.
 \\
 \hline
 Diagram split view
@@ -695,14 +697,14 @@ N
 &
 R
 &
-The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.
+The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.
 \\
 \hline
 Copy/Paste objects
 &
 R
 &&
-Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect equations.
+Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.
 \\
 \hline
 Pan and zoom on mouse actions
@@ -762,7 +764,7 @@ R
 &
 Allow the user to manually specify (right click menu) the style of the connections lines (V0).
 
-When generating a \sphinxcode{\sphinxupquote{connect}} equation automatically select a line style based on some heuristic to be further specified (V1).
+When generating a \sphinxcode{\sphinxupquote{connect}} equation automatically select a line style based on some heuristic to be further  specified (V1).
 \\
 \hline
 Fancy connection lines?
@@ -773,7 +775,7 @@ O
 &
 Gridified layout \sphinxurl{https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html}
 
-Orthogonal edge route layout \sphinxurl{https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047\_automaticdia.html}
+Orthogonal edge route layout \sphinxurl{https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/} 6047\_automaticdia.html
 \\
 \hline
 \sphinxstylestrong{Miscellaneous}
@@ -1380,10 +1382,10 @@ List all the different fluid paths in \sphinxcode{\sphinxupquote{\_\_Linkage(Con
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 └── fluid\PYGZus{}path0 (horizontal, right): [connectors list]
-    ├── fluid\PYGZus{}path0\PYGZus{}0 (inherited direction and orientation): [connectors list]
-    └── fluid\PYGZus{}path0\PYGZus{}1 (inherited direction and orientation): [connectors list]
-        ├── fluid\PYGZus{}path0\PYGZus{}1\PYGZus{}0 (inherited direction and orientation): [connectors list]
-        └── fluid\PYGZus{}path0\PYGZus{}1\PYGZus{}1 (inherited direction and orientation): [connectors list]
+  ├── fluid\PYGZus{}path0\PYGZus{}0 (inherited direction and orientation): [connectors list]
+  └── fluid\PYGZus{}path0\PYGZus{}1 (inherited direction and orientation): [connectors list]
+    ├── fluid\PYGZus{}path0\PYGZus{}1\PYGZus{}0 (inherited direction and orientation): [connectors list]
+    └── fluid\PYGZus{}path0\PYGZus{}1\PYGZus{}1 (inherited direction and orientation): [connectors list]
 ├── fluid\PYGZus{}path1 (horizontal, left): [connectors list]
 ├── fluid\PYGZus{}path3 (vertical, up): [connectors list]
 └── fluid\PYGZus{}path4 (vertical, down): [connectors list]
@@ -1690,8 +1692,7 @@ Using the unspecified \sphinxcode{\sphinxupquote{{[}:{]}}} syntax yields the fol
 \PYG{n}{Failed} \PYG{n}{to} \PYG{n}{expand} \PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{nOcc}\PYG{p}{[}\PYG{o}{:}\PYG{p}{]} \PYG{p}{(}\PYG{n}{since} \PYG{n}{element} \PYG{n}{does} \PYG{o+ow}{not} \PYG{n}{exist}\PYG{p}{)} \PYG{k+kr}{in} \PYG{k+kr}{connect}\PYG{p}{(}\PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{nOcc}\PYG{p}{[}\PYG{o}{:}\PYG{p}{],} \PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{nOcc}\PYG{p}{[}\PYG{o}{:}\PYG{p}{]);}
 \end{sphinxVerbatim}
 
-Providing an explicit indices range e.g. \sphinxcode{\sphinxupquote{{[}1:numZon{]}}} like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of \sphinxstylestrong{20} to the connector, the unused
-indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.
+Providing an explicit indices range e.g. \sphinxcode{\sphinxupquote{{[}1:numZon{]}}} like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of \sphinxstylestrong{20} to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Warning}\PYG{o}{:} \PYG{n}{The} \PYG{n}{bus}\PYG{o}{\PYGZhy{}}\PYG{k+kr}{input} \PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{n}{matches} \PYG{n}{multiple} \PYG{n}{top}\PYG{o}{\PYGZhy{}}\PYG{n}{level} \PYG{n}{connectors} \PYG{k+kr}{in} \PYG{n}{the} \PYG{n}{connection} \PYG{n}{sets}\PYG{o}{.}
@@ -1700,7 +1701,7 @@ indices (from 3 to 20 in the example hereunder) are then removed from the simula
 
 \PYG{n}{Connected} \PYG{n}{bus} \PYG{n}{variables}\PYG{o}{:}
 \PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Connector of Real output signal}\PYG{l+s+s2}{\PYGZdq{}}
-\PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuBus}\PYG{o}{.}\PYG{n}{ahuI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Primary airflow rate to the ventilation zone from the air handler, including outdoor air and recirculated air}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuBus}\PYG{o}{.}\PYG{n}{ahuI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Primary airflow rate to the ventilation zone from the air handler, including   outdoor air and recirculated air}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{n}{ahuBus}\PYG{o}{.}\PYG{n}{ahuI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)}
 \PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)}
 \end{sphinxVerbatim}
