@@ -297,7 +297,7 @@
 <td><p>R</p></td>
 <td><p>To be updated cf. different integration targets</p>
 <p>Simple Modelica model or full package (V0).</p>
-<p>If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the corresponding data are loaded in memory for further configuration.</p>
+<p>If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the  corresponding data are loaded in memory for further configuration.</p>
 <p>If the model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> the corresponding library is loaded.</p>
 <p>If a package is loaded the structure of the package and sub packages is checked against <em>Chapter 13 Packages</em> (V1).</p>
 </td>
@@ -305,12 +305,14 @@
 <tr class="row-odd"><td><p>Export simulation results</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>Export in the following format: <code class="docutils literal notranslate"><span class="pre">mat,</span> <span class="pre">csv</span></code>. All variables or selection based on variables browser (see below).</p></td>
+<td><p>Export in the following format: <code class="docutils literal notranslate"><span class="pre">mat,</span> <span class="pre">csv</span></code>.</p>
+<p>All variables or selection based on variables browser (see below).</p>
+</td>
 </tr>
 <tr class="row-even"><td><p>Variables browser</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
-<td><p>Query selection of model variables based on regular expression (V0) or Brick/Haystack tag <a class="bibtex reference internal" href="bibliography.html#brick" id="id1">[Bri]</a> <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id2">[Hay]</a> (V1)</p></td>
+<td><p>Query selection of model variables based on regular expression (V0) or Brick/Haystack tag <a class="bibtex reference internal" href="bibliography.html#brick" id="id1">[Bri]</a>  <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id2">[Hay]</a> (V1)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Plot simulation results</p></td>
 <td><p>N</p></td>
@@ -325,13 +327,13 @@
 <tr class="row-odd"><td><p>Export control points summary</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>Relies on LBNL module to generate the list of A/B I/O variables.</p></td>
+<td><p>Relies on LBL module to generate the list of A/B I/O variables.</p></td>
 </tr>
 <tr class="row-even"><td><p>Export schematics</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
-<td><p>Only the equipment drawing in V0. Control points and SOO description in V1 see numref:<cite>screen_schematics_modelica</cite>.</p>
-<p>Relies on LBNL module CDL to Word translator.</p>
+<td><p>Only the equipment drawing in V0. Control points and SOO description in V1 see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.20</span></a>.</p>
+<p>Relies on LBL module CDL to Word translator.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Import/Export data sheet</p></td>
@@ -353,14 +355,14 @@
 <tr class="row-even"><td><p>Translate model</p></td>
 <td><p>P</p></td>
 <td></td>
-<td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica ol e.g. JModelica.</p>
+<td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica ol  e.g. JModelica.</p>
 <p>The output of the translation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Simulate model</p></td>
 <td><p>P</p></td>
 <td></td>
-<td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica ool .g. JModelica.</p>
+<td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica ool  .g. JModelica.</p>
 <p>The output of the simulation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
@@ -368,7 +370,7 @@
 <td><p>P</p></td>
 <td><p>P</p></td>
 <td><p>Partially supported because only the configuration widget integrates that feature.</p>
-<p>When generating <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation manually a similar approach as the <em>fluid path</em> used by the configuration widget could be developed, see components with 4 ports and 2 medium.</p>
+<p>When generating <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation manually a similar approach as the <em>fluid path</em> used by the configuration widget  could be developed, see components with 4 ports and 2 medium.</p>
 <p>Expected as a future enhancement of Modelica standard <a class="footnote-reference brackets" href="#f1" id="id3">1</a>: should we anticipate or wait and see?</p>
 </td>
 </tr>
@@ -385,7 +387,7 @@
 <tr class="row-odd"><td><p>Version checking and upgrade</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
-<td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.</p></td>
+<td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
 <td></td>
@@ -395,7 +397,7 @@
 <tr class="row-odd"><td><p>Vectorized instances</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further connections to the connectors of that object must comply with the array structure.</p></td>
+<td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.</p></td>
 </tr>
 <tr class="row-even"><td><p>Expandable connectors</p></td>
 <td><p>R</p></td>
@@ -410,13 +412,13 @@
 <tr class="row-even"><td><p>Multiple objects selection for input of common parameters</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
-<td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue s modified, all the selected objects will have their parameter value change.</p></td>
+<td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue  s modified, all the selected objects will have their parameter value change.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>When instantiating a component, if the default name is already used in the model the software automatically appends he name with the lowest integer value that would ensure uniqueness.</p>
-<p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure consistency with the appended object names.</p>
+<td><p>When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.</p>
+<p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
@@ -427,17 +429,17 @@
 <tr class="row-odd"><td><p>Tab view</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a eb browser.</p></td>
+<td><p>The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.</p></td>
 </tr>
 <tr class="row-even"><td><p>Diagram split view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.</p></td>
+<td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Copy/Paste objects</p></td>
 <td><p>R</p></td>
 <td></td>
-<td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect equations.</p></td>
+<td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.</p></td>
 </tr>
 <tr class="row-even"><td><p>Pan and zoom on mouse actions</p></td>
 <td><p>R</p></td>
@@ -478,14 +480,14 @@
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Allow the user to manually specify (right click menu) the style of the connections lines (V0).</p>
-<p>When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further specified (V1).</p>
+<p>When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further  specified (V1).</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Fancy connection lines?</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td><p>Gridified layout <a class="reference external" href="https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html">https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html</a></p>
-<p>Orthogonal edge route layout <a class="reference external" href="https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047_automaticdia.html">https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047_automaticdia.html</a></p>
+<p>Orthogonal edge route layout <a class="reference external" href="https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/">https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/</a> 6047_automaticdia.html</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
@@ -931,10 +933,10 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <ul>
 <li><p>List all the different fluid paths in <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(tags=&quot;{...}&quot;))</span></code> as obtained by truncating <code class="docutils literal notranslate"><span class="pre">_inlet</span></code> and <code class="docutils literal notranslate"><span class="pre">_outlet</span></code> from each connector name. Get the orientation and direction of the main fluid paths from <code class="docutils literal notranslate"><span class="pre">__Linkage(Connect(paths=&quot;{...}&quot;))</span></code> and finally reconstruct the tree structure of the fluid paths based on their names:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>└── fluid_path0 (horizontal, right): [connectors list]
-    ├── fluid_path0_0 (inherited direction and orientation): [connectors list]
-    └── fluid_path0_1 (inherited direction and orientation): [connectors list]
-        ├── fluid_path0_1_0 (inherited direction and orientation): [connectors list]
-        └── fluid_path0_1_1 (inherited direction and orientation): [connectors list]
+  ├── fluid_path0_0 (inherited direction and orientation): [connectors list]
+  └── fluid_path0_1 (inherited direction and orientation): [connectors list]
+    ├── fluid_path0_1_0 (inherited direction and orientation): [connectors list]
+    └── fluid_path0_1_1 (inherited direction and orientation): [connectors list]
 ├── fluid_path1 (horizontal, left): [connectors list]
 ├── fluid_path3 (vertical, up): [connectors list]
 └── fluid_path4 (vertical, down): [connectors list]
@@ -1137,15 +1139,14 @@ Using the unspecified <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">expand</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]</span> <span class="p">(</span><span class="n">since</span> <span class="n">element</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span> <span class="kr">in</span> <span class="kr">connect</span><span class="p">(</span><span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">],</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused
-indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.</p>
+<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.</p>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Warning</span><span class="o">:</span> <span class="n">The</span> <span class="n">bus</span><span class="o">-</span><span class="kr">input</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">matches</span> <span class="n">multiple</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">connectors</span> <span class="kr">in</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">sets</span><span class="o">.</span>
 
 <span class="n">Bus</span><span class="o">-</span><span class="n">signal</span><span class="o">:</span> <span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">Connected</span> <span class="n">bus</span> <span class="n">variables</span><span class="o">:</span>
 <span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Connector of Real output signal&quot;</span>
-<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Primary airflow rate to the ventilation zone from the air handler, including outdoor air and recirculated air&quot;</span>
+<span class="n">conAHU</span><span class="o">.</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span> <span class="s2">&quot;Primary airflow rate to the ventilation zone from the air handler, including   outdoor air and recirculated air&quot;</span>
 <span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
 <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">(</span><span class="kr">connect</span><span class="p">)</span>
 </pre></div>
