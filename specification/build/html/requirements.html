@@ -246,7 +246,7 @@
 </div>
 <div class="section" id="detailed-functionalities">
 <h2>3.2. Detailed Functionalities<a class="headerlink" href="#detailed-functionalities" title="Permalink to this headline">¶</a></h2>
-<span id="tab-gui-func"></span><table class="colwidths-given docutils align-left" id="id15">
+<span id="tab-gui-func"></span><table class="colwidths-given docutils align-default" id="id15">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30%" />
@@ -1206,7 +1206,7 @@ The results comparison to the original test case (without control bus) is presen
 <li><div class="line-block">
 <div class="line">Another issue is illustrated <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 3.19</span></a> where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, LinkageJS requires that the “expanded” connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the <em>augmentation set</em> as defined in <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id12">[Mod17]</a> <em>9.1.3 Expandable Connectors</em>. In our example the same information displayed in <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 3.17</span></a> for the original sub-bus should be accessible when displaying the connection set of <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> whatever the current status (inside or outside) of the connector <code class="docutils literal notranslate"><span class="pre">bus</span></code>. A typical view of the connection set of expandable connectors for LinkageJS could be:</div>
 </div>
-<table class="colwidths-given docutils align-left" id="id16">
+<table class="colwidths-given docutils align-default" id="id16">
 <caption><span class="caption-number">Table 3.3 </span><span class="caption-text">Typical view of the connection set of expandable connectors – visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 40%" />
