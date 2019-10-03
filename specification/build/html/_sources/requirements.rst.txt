@@ -48,11 +48,9 @@ In terms of software design:
 Software Compatibility
 **********************
 
-
 .. _tab_environment:
 
 .. table:: Requirements for software compatibility
-  :align: left
 
   ============================================== =================================================
   Feature                                        Support

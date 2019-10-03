@@ -48,11 +48,9 @@ In terms of software design:
 Software Compatibility
 **********************
 
-
 .. _tab_environment:
 
 .. table:: Requirements for software compatibility
-  :align: left
 
   ============================================== =================================================
   Feature                                        Support
@@ -94,7 +92,6 @@ Detailed Functionalities
 .. list-table:: Functionalities of the software -- R: required, P: required partially, O: optional, N: not required
   :widths: 30 10 10 50
   :header-rows: 1
-  :align: left
 
   * - Feature
     - V0
@@ -893,7 +890,6 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
     .. list-table:: Typical view of the connection set of expandable connectors -- visible from outside component (connector is inside), "Present" and "I/O" columns display the connection status over the full augmentation set
       :widths: 40 10 10 30 10
       :header-rows: 1
-      :align: left
 
       * - Variable
         - Present
