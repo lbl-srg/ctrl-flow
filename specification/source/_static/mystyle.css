@@ -1,0 +1,45 @@
+h1  {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+h2  {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+h3  {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.section  {
+    margin-bottom: 40px;
+}
+
+li {
+    margin: 0 0 10px;
+}
+
+iframe  {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.figure p.caption {
+    color: #777;
+}
+
+div.code-block-caption {
+    color: #777;
+    font-size: unset;
+}
+
+code {
+    color: #476582;
+    padding: .25rem .5rem;
+    margin: 0;
+    background-color: rgba(27,31,35,.05);
+    border-radius: 3px;
+}

@@ -246,8 +246,8 @@
 \usepackage{textcomp}
 
 
-\title{LinkageJS Specification}
-\date{Oct 01, 2019}
+\title{LinkageJS Requirements Specification}
+\date{Oct 02, 2019}
 \release{}
 \author{}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{lbl-icon.png}\par}
@@ -284,40 +284,61 @@ To be updated.
 
 \chapter{Requirements}
 \label{\detokenize{requirements:requirements}}\label{\detokenize{requirements:sec-requirements}}\label{\detokenize{requirements::doc}}
-This section describes the functional, mathematical and software requirements.
 
-
-\section{General description}
+\section{General Description}
 \label{\detokenize{requirements:general-description}}\label{\detokenize{requirements:par-general-description}}
 
-\subsection{Main Functionalities and Requirements}
-\label{\detokenize{requirements:main-functionalities-and-requirements}}
+\subsection{Main Requirements}
+\label{\detokenize{requirements:main-requirements}}
 The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see \hyperref[\detokenize{requirements:par-modelica-gui}]{Section \ref{\detokenize{requirements:par-modelica-gui}}}.
 
 Built around this core functionality the following additional features are required:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
-A configuration widget supporting assisted modeling based on a simple HTML input form: see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}.
+A configuration widget supporting assisted modeling based on a simple HTML input form: see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}
 
 \item {} 
-A schematics export functionality: see \hyperref[\detokenize{requirements:par-schematics-export}]{Section \ref{\detokenize{requirements:par-schematics-export}}}.
+A schematics export functionality: see \hyperref[\detokenize{requirements:par-schematics-export}]{Section \ref{\detokenize{requirements:par-schematics-export}}}
 
 \item {} 
-A set of functionalities to enable working with tagged variables: see \hyperref[\detokenize{requirements:par-tagged-variables}]{Section \ref{\detokenize{requirements:par-tagged-variables}}}.
+A set of functionalities to enable working with tagged variables: see \hyperref[\detokenize{requirements:par-tagged-variables}]{Section \ref{\detokenize{requirements:par-tagged-variables}}}
 
 \end{enumerate}
 
 In terms of software design:
 \begin{itemize}
 \item {} 
-A standalone web based application is required, which relies on client side JS code with minimal dependencies.
+The software relies on client side JS code with minimal dependencies and is built down to a single page HTML document (SPA).
 
 \item {} 
-The application can be embedded in third party softwares. The primary target is \sphinxhref{https://www.openstudio.net}{OpenStudio®} (OS) for which the only additional requirement is to build down the UI to a single page HTML document.
+A widget structure is required that allows seamless embedding into:
+\begin{itemize}
+\item {} 
+a desktop app \textendash{} with standard access to the local file system based on system calls,
 
 \item {} 
-A Python or Ruby API is also needed to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by \sphinxhref{http://nrel.github.io/OpenStudio-user-documentation/reference/measure\_writing\_guide/}{OpenStudio measures}.
+a standalone web app \textendash{} with access to the local file system limited to Download \& Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),
+
+\item {} 
+any third party application with the suitable framework to serve a single page HTML document \textendash{} with access to the local file system through the file system API of the third party application.
+\begin{itemize}
+\item {} 
+The primary target is \sphinxhref{https://www.openstudio.net}{OpenStudio®} (OS).
+
+\item {} 
+An example of a JS application embedded in OS is \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/reference/geometry\_editor}{FloorspaceJS}. The standalone SPA lives here: \sphinxurl{https://nrel.github.io/floorspace.js}. FloorspaceJS can be considered as a reference for the development.
+
+\end{itemize}
+
+\end{itemize}
+
+\begin{sphinxadmonition}{note}{Note:}
+Those three integration targets are actual deliverables.
+\end{sphinxadmonition}
+
+\item {} 
+A Python or Ruby API is needed to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by \sphinxhref{http://nrel.github.io/OpenStudio-user-documentation/reference/measure\_writing\_guide/}{OpenStudio measures}.
 
 \end{itemize}
 
@@ -326,10 +347,10 @@ A Python or Ruby API is also needed to access the data model and leverage the ma
 \label{\detokenize{requirements:software-compatibility}}
 
 \begin{savenotes}\sphinxattablestart
-\centering
+\raggedright
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id13}}\label{\detokenize{requirements:tab-environment}}
+\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id14}}\label{\detokenize{requirements:tab-environment}}
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -352,11 +373,6 @@ iOS, Android?
 Web browser
 &
 Chrome, Firefox, Safari
-\\
-\hline
-Offline version?
-&
-Running on local server with access to resources hosted on the file system
 \\
 \hline
 \end{tabulary}
@@ -400,12 +416,12 @@ Bottom panel: console
 \end{itemize}
 
 
-\subsection{Detailed Functionalities}
+\section{Detailed Functionalities}
 \label{\detokenize{requirements:detailed-functionalities}}
 
-\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|\X{40}{180}|\X{20}{180}|\X{20}{180}|\X{100}{180}|}
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[l]{|\X{30}{100}|\X{10}{100}|\X{10}{100}|\X{50}{100}|}
 \sphinxthelongtablecaptionisattop
-\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id14}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
+\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id15}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 Feature
@@ -484,12 +500,15 @@ P
 &
 R
 &
-\begin{DUlineblock}{0em}
-\item[] Simple Modelica model or full package (V0).
-\item[] If the model contains annotations specific to the configuration widget (see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}), the corresponding data are loaded in memory for further configuration.
-\item[] If the model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} the corresponding library is loaded.
-\item[] If a package is loaded the structure of the package and sub packages is checked against \sphinxstyleemphasis{Chapter 13 Packages} (V1).
-\end{DUlineblock}
+To be updated cf. different integration targets
+
+Simple Modelica model or full package (V0).
+
+If the model contains annotations specific to the configuration widget (see \hyperref[\detokenize{requirements:par-configuration-widget}]{Section \ref{\detokenize{requirements:par-configuration-widget}}}), the corresponding data are loaded in memory for further configuration.
+
+If the model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} the corresponding library is loaded.
+
+If a package is loaded the structure of the package and sub packages is checked against \sphinxstyleemphasis{Chapter 13 Packages} (V1).
 \\
 \hline
 Export simulation results
@@ -535,10 +554,9 @@ P
 &
 R
 &
-\begin{DUlineblock}{0em}
-\item[] Only the equipment drawing in V0. Control points and SOO description in V1 see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}.
-\item[] Relies on LBNL module CDL to Word translator.
-\end{DUlineblock}
+Only the equipment drawing in V0. Control points and SOO description in V1 see numref:\sphinxtitleref{screen\_schematics\_modelica}.
+
+Relies on LBNL module CDL to Word translator.
 \\
 \hline
 Import/Export data sheet
@@ -567,20 +585,18 @@ Translate model
 &
 P
 &&
-\begin{DUlineblock}{0em}
-\item[] The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.
-\item[] The output of the translation routine is logged in LinkageJS console.
-\end{DUlineblock}
+The software settings allow the user to specify a command for translating the model with a third party Modelica ol e.g. JModelica.
+
+The output of the translation routine is logged in LinkageJS console.
 \\
 \hline
 Simulate model
 &
 P
 &&
-\begin{DUlineblock}{0em}
-\item[] The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.
-\item[] The output of the simulation routine is logged in LinkageJS console.
-\end{DUlineblock}
+The software settings allow the user to specify a command for simulating the model with a third party Modelica ool .g. JModelica.
+
+The output of the simulation routine is logged in LinkageJS console.
 \\
 \hline
 Automatic medium propagation between connected components
@@ -589,15 +605,15 @@ P
 &
 P
 &
-\begin{DUlineblock}{0em}
-\item[] Partially supported because only the configuration widget integrates that feature.
-\item[] When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget could be developed, see components with 4 ports and 2 medium.
-\item[] Expected as a future enhancement of Modelica standard %
+Partially supported because only the configuration widget integrates that feature.
+
+When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget could be developed, see components with 4 ports and 2 medium.
+
+Expected as a future enhancement of Modelica standard %
 \begin{footnote}[1]\sphinxAtStartFootnote
 From \sphinxurl{https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html}
 %
 \end{footnote}: should we anticipate or wait and see?
-\end{DUlineblock}
 \\
 \hline
 Support of Modelica graphical annotations
@@ -618,7 +634,7 @@ O
 &
 R
 &
-If a loaded model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} e.g. \sphinxcode{\sphinxupquote{uses(Buildings(version="6.0.0")}} the software checks the version number of the stored library, prompts the user for update if the version number does not match, execute the conversion script per user request.
+If a loaded model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} e.g. \sphinxcode{\sphinxupquote{uses(Buildings(version="6.0.0")}} the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
 \\
 \hline
 \sphinxstylestrong{Object manipulation}
@@ -649,27 +665,28 @@ O
 &
 R
 &
-If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value is modified, all the selected objects will have their parameter value change.
+If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue s modified, all the selected objects will have their parameter value change.
 \\
 \hline
 Avoiding duplicate names
 &
 R
 &&
-When instantiating a component, if the default name is already used in the model the software automatically appends the name with the lowest integer value that would ensure uniqueness.
+When instantiating a component, if the default name is already used in the model the software automatically appends he name with the lowest integer value that would ensure uniqueness.
+
 When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure consistency with the appended object names.
 \\
 \hline
 \sphinxstylestrong{Graphical features}
 &&&
-A user experience similar to modern web based diagramming applications is expected e.g. \sphinxhref{https://www.draw.io}{draw.io}.
+A user experience similar to modern web based diagramming applications is expected e.g. \sphinxhref{https://w.draw.io}{draw.io}.
 \\
 \hline
-Tan view
+Tab view
 &
 R
 &&
-The diagram view is organized in tabs then can be manipulated, created and deleted typically as navigation tabs in a web browser.
+The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a eb browser.
 \\
 \hline
 Diagram split view
@@ -743,10 +760,9 @@ P
 &
 R
 &
-\begin{DUlineblock}{0em}
-\item[] Allow the user to manually specify (right click menu) the style of the connections lines (V0).
-\item[] When generating a \sphinxcode{\sphinxupquote{connect}} equation automatically select a line style based on some heuristic to be further specified (V1).
-\end{DUlineblock}
+Allow the user to manually specify (right click menu) the style of the connections lines (V0).
+
+When generating a \sphinxcode{\sphinxupquote{connect}} equation automatically select a line style based on some heuristic to be further specified (V1).
 \\
 \hline
 Fancy connection lines?
@@ -755,10 +771,9 @@ N
 &
 O
 &
-\begin{DUlineblock}{0em}
-\item[] Gridified layout \sphinxurl{https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html}
-\item[] Orthogonal edge route layout \sphinxurl{https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047\_automaticdia.html}
-\end{DUlineblock}
+Gridified layout \sphinxurl{https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html}
+
+Orthogonal edge route layout \sphinxurl{https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/6047\_automaticdia.html}
 \\
 \hline
 \sphinxstylestrong{Miscellaneous}
@@ -793,7 +808,7 @@ the annotations: see \sphinxstyleemphasis{Chapter 18 Annotations}.
 \end{itemize}
 
 \begin{sphinxadmonition}{note}{Note:}
-When drawing a connection line between two connector icons:
+When drawing a connection line between two connector icons in the diagram view:
 \begin{itemize}
 \item {} 
 a \sphinxcode{\sphinxupquote{connect}} equation with the references to the two connectors is created,
@@ -1781,10 +1796,10 @@ Directly connecting variables to the bus (without intermediary sub-bus) can solv
 
 
 \begin{savenotes}\sphinxattablestart
-\centering
+\raggedright
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id15}}
+\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id16}}
 \sphinxaftertopcaption
 \begin{tabular}[t]{|\X{40}{100}|\X{10}{100}|\X{10}{100}|\X{30}{100}|\X{10}{100}|}
 \hline
@@ -1943,12 +1958,14 @@ To be updated.
 To be updated.
 
 
-\section{To Do}
-\label{\detokenize{requirements:to-do}}\begin{itemize}
-\item {} 
-Test Modelica to JSON to Modelica on the whole library and run unit tests
+\section{Encryption}
+\label{\detokenize{requirements:encryption}}
+See current standardization effort in \sphinxhref{https://github.com/modelica/ModelicaSpecification/issues/1868}{\#1868}.
 
-\end{itemize}
+
+\section{Licensing}
+\label{\detokenize{requirements:licensing}}
+To be updated cf. licensing strategy different for each integration target
 
 
 \chapter{Software Architecture}

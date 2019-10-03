@@ -8,19 +8,13 @@
     <title>1. Preamble &#8212; LinkageJS Requirements Specification</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap_custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +31,8 @@
 
   </head><body>
 
-  <div id="navbar" class="navbar navbar-default ">
-    <div class="container-fluid">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -72,14 +66,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">2. Process Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">3.2. Modelica Graphical User Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">3.3. Configuration Widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">3.4. Schematics Export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#working-with-tagged-variables">3.5. Working with Tagged Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">3.6. OpenStudio Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">3.7. Interface with URBANopt GeoJSON</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#to-do">3.8. To Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#detailed-functionalities">3.2. Detailed Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">3.3. Modelica Graphical User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">3.4. Configuration Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">3.5. Schematics Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#working-with-tagged-variables">3.6. Working with Tagged Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">3.7. OpenStudio Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">3.8. Interface with URBANopt GeoJSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">3.9. Encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">3.10. Licensing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">4. Software Architecture</a></li>
@@ -126,7 +122,6 @@
             
           </ul>
 
-<!--
           
             
 <form class="navbar-form navbar-right" action="search.html" method="get">
@@ -137,39 +132,13 @@
   <input type="hidden" name="area" value="default" />
 </form>
           
--->
         </div>
     </div>
   </div>
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">1. Preamble</a><ul>
-<li><a class="reference internal" href="#purpose-of-the-document">1.1. Purpose of the Document</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="index.html" title="Previous Chapter: LinkageJS Requirements Specification (Working Draft)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; LinkageJS Req...</span>
-    </a>
-  </li>
-  <li>
-    <a href="process.html" title="Next Chapter: 2. Process Workflow"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Process Workflow &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-    <div class="col-md-9 content">
+    <div class="col-md-12 content">
       
   <div class="section" id="preamble">
 <h1>1. Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h1>
@@ -197,8 +166,8 @@ The proposed design should not be considered finalized.</p>
       
     </p>
     <p>
-        &copy; Copyright 2017-2019 The Regents of the University of California (through Lawrence Berkeley National Laboratory),
-subject to receipt of any required approvals from U.S. Department of Energy.  All rights reserved..<br/>
+        &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
+      Last updated on Oct, 02, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
