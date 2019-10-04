@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  3 OCT 2019 20:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  3 OCT 2019 22:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1294,8 +1294,6 @@ LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 (Font)              scaled to size 6.64998pt on input line 256.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 (Font)              scaled to size 4.74998pt on input line 256.
-Package tocstyle Info: prepare \l@subsection for redefinition on input line 256
-.
 Package tocstyle Info: prepare \l@table for redefinition on input line 256.
 Package tocstyle Info: prepare \l@figure for redefinition on input line 256.
 
@@ -1327,7 +1325,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 ABD: EveryShipout initializing macros
 Package hyperref Info: Option `pageanchor' set `false' on input line 259.
-<lbl-icon.png, id=112, 132.495pt x 100.375pt>
+<lbl-icon.png, id=84, 132.495pt x 100.375pt>
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 259.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1pcr.fd
@@ -1378,11 +1376,6 @@ text indent by \l@... (toc, 0):  14.24995pt
 number indent by parent (toc, 0):  0.0pt
 text indent calculated (toc, 0): 10.0319pt
 number indent calculated (toc, 0): 0.0pt
-number indent by \l@... (toc, 1):  14.24995pt
-text indent by \l@... (toc, 1):  21.84995pt
-number indent by parent (toc, 1):  10.0319pt
-text indent calculated (toc, 1): 23.23665pt
-number indent calculated (toc, 1): 10.0319pt
 number indent by \l@... (toc, 0):  0.0pt
 text indent by \l@... (toc, 0):  14.24995pt
 number indent by parent (toc, 0):  0.0pt
@@ -1398,21 +1391,6 @@ text indent by \l@... (toc, 1):  21.84995pt
 number indent by parent (toc, 1):  10.0319pt
 text indent calculated (toc, 1): 23.23665pt
 number indent calculated (toc, 1): 10.0319pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
 number indent by \l@... (toc, 1):  14.24995pt
 text indent by \l@... (toc, 1):  21.84995pt
 number indent by parent (toc, 1):  10.0319pt
@@ -1428,21 +1406,6 @@ text indent by \l@... (toc, 1):  21.84995pt
 number indent by parent (toc, 1):  10.0319pt
 text indent calculated (toc, 1): 23.23665pt
 number indent calculated (toc, 1): 10.0319pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
-number indent by \l@... (toc, 2):  36.0999pt
-text indent by \l@... (toc, 2):  30.39987pt
-number indent by parent (toc, 2):  33.26855pt
-text indent calculated (toc, 2): 25.87755pt
-number indent calculated (toc, 2): 33.26855pt
 number indent by \l@... (toc, 1):  14.24995pt
 text indent by \l@... (toc, 1):  21.84995pt
 number indent by parent (toc, 1):  10.0319pt
@@ -1514,17 +1477,11 @@ number indent calculated (toc, 0): 0.0pt
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 19.70294pt on input line 269.
+(Font)              scaled to size 19.70294pt on input line 271.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 269.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 271.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 19.70294pt on input line 269.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 272.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 272.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 272.
+(Font)              scaled to size 19.70294pt on input line 271.
 [1
 
 
@@ -1534,6 +1491,12 @@ Chapter 2.
 
 ]
 Chapter 3.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 288.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 288.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 288.
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 311.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1phv.fd
@@ -1585,12 +1548,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 785--787
  []
 
 [5] [6] [7] [8]
-<screen_conf_0.pdf, id=243, 963.6pt x 542.025pt>
+<screen_conf_0.pdf, id=212, 963.6pt x 542.025pt>
 File: screen_conf_0.pdf Graphic file (type pdf)
 <use screen_conf_0.pdf>
 Package pdftex.def Info: screen_conf_0.pdf  used on input line 900.
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
-<screen_conf_1.pdf, id=244, 963.6pt x 542.025pt>
+<screen_conf_1.pdf, id=213, 963.6pt x 542.025pt>
 File: screen_conf_1.pdf Graphic file (type pdf)
 <use screen_conf_1.pdf>
 Package pdftex.def Info: screen_conf_1.pdf  used on input line 907.
@@ -1602,7 +1565,7 @@ t / 3600 *
  []
 
 [11]
-<grid.png, id=331, 1996.45876pt x 983.675pt>
+<grid.png, id=302, 1996.45876pt x 983.675pt>
 File: grid.png Graphic file (type png)
 <use grid.png>
 Package pdftex.def Info: grid.png  used on input line 1034.
@@ -1681,7 +1644,7 @@ Underfull \hbox (badness 7256) in paragraph at lines 1352--1353
 T1/pcr/m/n/10 hotwater_supply_bypass \T1/phv/m/n/10 is a
  []
 
-<linkage_connect_3wv.pdf, id=363, 584.1825pt x 132.495pt>
+<linkage_connect_3wv.pdf, id=334, 584.1825pt x 132.495pt>
 File: linkage_connect_3wv.pdf Graphic file (type pdf)
 <use linkage_connect_3wv.pdf>
 Package pdftex.def Info: linkage_connect_3wv.pdf  used on input line 1362.
@@ -1705,18 +1668,18 @@ ect(paths="{fluid_path1: {direction:
 pdfTeX warning: pdflatex (file ./linkage_connect_3wv.pdf): PDF inclusion: inval
 id other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<linkage_connect_multi.pdf, id=397, 578.16pt x 131.53139pt>
+<linkage_connect_multi.pdf, id=368, 578.16pt x 131.53139pt>
 File: linkage_connect_multi.pdf Graphic file (type pdf)
 <use linkage_connect_multi.pdf>
 Package pdftex.def Info: linkage_connect_multi.pdf  used on input line 1455.
 (pdftex.def)             Requested size: 505.88875pt x 115.09569pt.
-<linkage_connect_dedicated.pdf, id=398, 424.4658pt x 149.59889pt>
+<linkage_connect_dedicated.pdf, id=369, 424.4658pt x 149.59889pt>
 File: linkage_connect_dedicated.pdf Graphic file (type pdf)
 <use linkage_connect_dedicated.pdf>
 Package pdftex.def Info: linkage_connect_dedicated.pdf  used on input line 1462
 .
 (pdftex.def)             Requested size: 424.46475pt x 149.59851pt.
-<linkage_connect_duct.pdf, id=399, 379.4175pt x 247.8861pt>
+<linkage_connect_duct.pdf, id=370, 379.4175pt x 247.8861pt>
 File: linkage_connect_duct.pdf Graphic file (type pdf)
 <use linkage_connect_duct.pdf>
 Package pdftex.def Info: linkage_connect_duct.pdf  used on input line 1469.
@@ -1735,29 +1698,29 @@ d.
 pdfTeX warning: pdflatex (file ./linkage_connect_duct.pdf): PDF inclusion: inva
 lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<BusTestExp.pdf, id=445, 2777.37625pt x 1151.30125pt>
+<BusTestExp.pdf, id=415, 2777.37625pt x 1151.30125pt>
 File: BusTestExp.pdf Graphic file (type pdf)
 <use BusTestExp.pdf>
 Package pdftex.def Info: BusTestExp.pdf  used on input line 1528.
 (pdftex.def)             Requested size: 252.94499pt x 104.84236pt.
  [22 <./BusTestExp.pdf>]
-<BusTestControlledExp.pdf, id=463, 2556.55125pt x 1156.32pt>
+<BusTestControlledExp.pdf, id=434, 2556.55125pt x 1156.32pt>
 File: BusTestControlledExp.pdf Graphic file (type pdf)
 <use BusTestControlledExp.pdf>
 Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 1544.
 (pdftex.def)             Requested size: 252.94499pt x 114.40369pt.
-<BusTestControllerExp.pdf, id=465, 2712.1325pt x 1225.57875pt>
+<BusTestControllerExp.pdf, id=436, 2712.1325pt x 1225.57875pt>
 File: BusTestControllerExp.pdf Graphic file (type pdf)
 <use BusTestControllerExp.pdf>
 Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 1587.
 (pdftex.def)             Requested size: 252.94499pt x 114.2993pt.
  [23 <./BusTestControlledExp.pdf>]
-<BusTestNonExp.pdf, id=480, 2771.35374pt x 1145.27875pt>
+<BusTestNonExp.pdf, id=451, 2771.35374pt x 1145.27875pt>
 File: BusTestNonExp.pdf Graphic file (type pdf)
 <use BusTestNonExp.pdf>
 Package pdftex.def Info: BusTestNonExp.pdf  used on input line 1605.
 (pdftex.def)             Requested size: 252.94499pt x 104.5211pt.
-<BusTestControlledNonExp.pdf, id=481, 2853.66125pt x 1182.4175pt>
+<BusTestControlledNonExp.pdf, id=452, 2853.66125pt x 1182.4175pt>
 File: BusTestControlledNonExp.pdf Graphic file (type pdf)
 <use BusTestControlledNonExp.pdf>
 Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 1621.
@@ -1767,7 +1730,7 @@ Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 1621.
 pdfTeX warning: pdflatex (file ./BusTestNonExp.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
 >]
-<BusTestControllerNonExp.pdf, id=503, 2694.065pt x 1219.55624pt>
+<BusTestControllerNonExp.pdf, id=474, 2694.065pt x 1219.55624pt>
 File: BusTestControllerNonExp.pdf Graphic file (type pdf)
 <use BusTestControllerNonExp.pdf>
 Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 1648.
@@ -1777,12 +1740,12 @@ Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 1648.
 pdfTeX warning: pdflatex (file ./BusTestControllerNonExp.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >] [26]
-<annex_valid_bus.pdf, id=533, 1448.41125pt x 893.3375pt>
+<annex_valid_bus.pdf, id=504, 1448.41125pt x 893.3375pt>
 File: annex_valid_bus.pdf Graphic file (type pdf)
 <use annex_valid_bus.pdf>
 Package pdftex.def Info: annex_valid_bus.pdf  used on input line 1724.
 (pdftex.def)             Requested size: 451.68457pt x 278.58113pt.
-<dymola_bus.png, id=536, 1355.0625pt x 848.16875pt>
+<dymola_bus.png, id=507, 1355.0625pt x 848.16875pt>
 File: dymola_bus.png Graphic file (type png)
 <use dymola_bus.png>
 Package pdftex.def Info: dymola_bus.png  used on input line 1736.
@@ -1797,33 +1760,33 @@ Underfull \hbox (badness 7504) in paragraph at lines 1841--1842
 []|\T1/pcr/m/n/10 comp2.var1 $\OMS/cmsy/m/n/10 !$
  []
 
-<bus_minimal.pdf, id=575, 2165.08875pt x 1100.11pt>
+<bus_minimal.pdf, id=545, 2165.08875pt x 1100.11pt>
 File: bus_minimal.pdf Graphic file (type pdf)
 <use bus_minimal.pdf>
 Package pdftex.def Info: bus_minimal.pdf  used on input line 1905.
 (pdftex.def)             Requested size: 451.68457pt x 229.50237pt.
-<subbus_outside.png, id=576, 510.90875pt x 112.42pt>
+<subbus_outside.png, id=546, 510.90875pt x 112.42pt>
 File: subbus_outside.png Graphic file (type png)
 <use subbus_outside.png>
 Package pdftex.def Info: subbus_outside.png  used on input line 1912.
 (pdftex.def)             Requested size: 225.84229pt x 49.69308pt.
-<bus_outside.png, id=577, 507.8975pt x 145.54375pt>
+<bus_outside.png, id=547, 507.8975pt x 145.54375pt>
 File: bus_outside.png Graphic file (type png)
 <use bus_outside.png>
 Package pdftex.def Info: bus_outside.png  used on input line 1919.
 (pdftex.def)             Requested size: 225.84229pt x 64.71678pt.
-<bus_inside.png, id=578, 505.89pt x 81.30376pt>
+<bus_inside.png, id=548, 505.89pt x 81.30376pt>
 File: bus_inside.png Graphic file (type png)
 <use bus_inside.png>
 Package pdftex.def Info: bus_inside.png  used on input line 1926.
 (pdftex.def)             Requested size: 225.84229pt x 36.29604pt.
-<screen_schematics_modelica.pdf, id=579, 2165.08875pt x 1288.815pt>
+<screen_schematics_modelica.pdf, id=549, 2165.08875pt x 1288.815pt>
 File: screen_schematics_modelica.pdf Graphic file (type pdf)
 <use screen_schematics_modelica.pdf>
 Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 193
 6.
 (pdftex.def)             Requested size: 505.88872pt x 301.14099pt.
-<screen_schematics_output.pdf, id=580, 963.6pt x 542.025pt>
+<screen_schematics_output.pdf, id=550, 963.6pt x 542.025pt>
 File: screen_schematics_output.pdf Graphic file (type pdf)
 <use screen_schematics_output.pdf>
 Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1943.
@@ -1833,7 +1796,7 @@ Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1943.
 inside.png>] [32 <./screen_schematics_modelica.pdf>] [33 <./screen_schematics_o
 utput.pdf>] [34]
 Chapter 4.
-<linkage_architecture_0.pdf, id=639, 897.3525pt x 608.2725pt>
+<linkage_architecture_0.pdf, id=610, 897.3525pt x 608.2725pt>
 File: linkage_architecture_0.pdf Graphic file (type pdf)
 <use linkage_architecture_0.pdf>
 Package pdftex.def Info: linkage_architecture_0.pdf  used on input line 1982.
@@ -1863,22 +1826,22 @@ Chapter 7.
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2043.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2043.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2045.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2045.
  (./LinkageSpec.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2043.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2043.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2045.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2045.
 
 Package rerunfilecheck Info: File `LinkageSpec.out' has not changed.
-(rerunfilecheck)             Checksum: 03216880A2308F79DADCAA10C87DDAA0;3691.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2043.
+(rerunfilecheck)             Checksum: E260C9A167197EFC43937ED88EE70222;2592.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2045.
  ) 
 Here is how much of TeX's memory you used:
- 26571 strings out of 494053
- 455523 string characters out of 6163845
- 1060662 words of memory out of 5000000
- 29555 multiletter control sequences out of 15000+600000
- 72922 words of font info for 107 fonts, out of 8000000 for 9000
+ 26557 strings out of 494053
+ 455194 string characters out of 6163845
+ 1060709 words of memory out of 5000000
+ 29541 multiletter control sequences out of 15000+600000
+ 74019 words of font info for 108 fonts, out of 8000000 for 9000
  320 hyphenation exceptions out of 8191
  55i,13n,48p,1673b,667s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -1891,10 +1854,10 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageSpec.pdf (42 pages, 2195002 bytes).
+Output written on LinkageSpec.pdf (42 pages, 2194042 bytes).
 PDF statistics:
- 754 PDF objects out of 1000 (max. 8388607)
- 602 compressed objects within 7 object streams
- 118 named destinations out of 1000 (max. 500000)
- 344 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 724 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 288 words of extra memory for PDF output out of 10000 (max. 10000000)
 

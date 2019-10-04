@@ -1,21 +1,20 @@
-=======================================================
+####################################################
 LinkageJS Requirements Specification (Working Draft)
-=======================================================
+####################################################
 
-.. only:: html
+.. raw:: html
 
-   This documentation specifies the requirements for LinkageJS software.
-
-   The document is work in progress, used as a discussion basis: any of the design may change.
-
-.. only:: html
-
-   Table of Contents
-   =================
+   </div>
+    <div class="col-md-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Contents</h3>
+        </div>
+    <div class="panel-body">
 
 .. toctree::
    :numbered:
-   :maxdepth: 3
+   :maxdepth: 2
 
    preamble
    process
@@ -24,3 +23,9 @@ LinkageJS Requirements Specification (Working Draft)
    glossary
    acknowledgments
    bibliography
+
+.. raw:: html
+
+       </div>
+     </div>
+   </div>

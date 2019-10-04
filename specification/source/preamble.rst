@@ -2,13 +2,12 @@
 
    \pagestyle{plain}
 
+
 Preamble
 ========
 
-Purpose of the Document
------------------------
+This documentation specifies the requirements for LinkageJS software.
 
-This document specifies the requirements for LinkageJS software.
+It is still work in progress, intended to be used as a discussion basis.
 
-The document is a working document that is used as a discussion basis and will evolve as the development progresses.
-The proposed design should not be considered finalized.
+The proposed design should not be considered finalized and will evolve as the development progresses.
