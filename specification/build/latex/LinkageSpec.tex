@@ -247,7 +247,7 @@
 
 
 \title{LinkageJS Requirements Specification}
-\date{Oct 02, 2019}
+\date{Oct 03, 2019}
 \release{}
 \author{}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{lbl-icon.png}\par}
@@ -315,13 +315,13 @@ The software relies on client side JS code with minimal dependencies and is buil
 A widget structure is required that allows seamless embedding into:
 \begin{itemize}
 \item {} 
-a desktop app \textendash{} with standard access to the local file system based on system calls,
+a desktop app \textendash{} with standard access to the local file system,
 
 \item {} 
 a standalone web app \textendash{} with access to the local file system limited to Download \& Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),
 
 \item {} 
-any third party application with the suitable framework to serve a single page HTML document \textendash{} with access to the local file system through the file system API of the third party application.
+any third party application with the suitable framework to serve a single page HTML document \textendash{} with access to the local file system through the API of the third party application.
 \begin{itemize}
 \item {} 
 The primary target is \sphinxhref{https://www.openstudio.net}{OpenStudio®} (OS).
@@ -511,6 +511,13 @@ If the model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} 
 If a package is loaded the structure of the package and sub packages is checked against \sphinxstyleemphasis{Chapter 13 Packages} (V1).
 \\
 \hline
+Export \sphinxtitleref{mo} file
+&
+R
+&&
+“Total model” export option?
+\\
+\hline
 Export simulation results
 &
 R
@@ -561,7 +568,7 @@ Only the equipment drawing in V0. Control points and SOO description in V1 see \
 Relies on LBL module CDL to Word translator.
 \\
 \hline
-Import/Export data sheet
+Import/Export data sheet?
 &
 P
 &
@@ -869,7 +876,7 @@ Manual modifications of the Modelica model made by the user are not supported by
 
 \end{enumerate}
 
-The input form is provided by the template developer (e.g. LBNL) in a data model with a format that is to be further specified in collaboration with the software developer.
+The input form is provided by the template developer (e.g. LBL) in a data model with a format that is to be further specified in collaboration with the software developer.
 
 The data model typically provides for each entry:
 \begin{itemize}
@@ -1971,9 +1978,14 @@ To be updated cf. licensing strategy different for each integration target
 
 \chapter{Software Architecture}
 \label{\detokenize{architecture:software-architecture}}\label{\detokenize{architecture:sec-architecture}}\label{\detokenize{architecture::doc}}
-This section describes the software architecture of LinkageJS.
+\hyperref[\detokenize{architecture:linkage-architecture-0}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-0}}} present the envisioned software architecture for the desktop app.
 
-To be updated.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{linkage_architecture_0}.pdf}
+\caption{Software architecture - Desktop app}\label{\detokenize{architecture:linkage-architecture-0}}\end{figure}
 
 
 \chapter{Glossary}

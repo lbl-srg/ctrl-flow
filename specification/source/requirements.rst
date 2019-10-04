@@ -28,11 +28,11 @@ In terms of software design:
 
 * A widget structure is required that allows seamless embedding into:
 
-  * a desktop app -- with standard access to the local file system based on system calls,
+  * a desktop app -- with standard access to the local file system,
 
   * a standalone web app -- with access to the local file system limited to Download & Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),
 
-  * any third party application with the suitable framework to serve a single page HTML document -- with access to the local file system through the file system API of the third party application.
+  * any third party application with the suitable framework to serve a single page HTML document -- with access to the local file system through the API of the third party application.
 
     * The primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS).
 
@@ -139,6 +139,11 @@ Detailed Functionalities
 
        If a package is loaded the structure of the package and sub packages is checked against *Chapter 13 Packages* (V1).
 
+   * - Export `mo` file
+     - R
+     -
+     - "Total model" export option?
+
    * - Export simulation results
      - R
      -
@@ -173,11 +178,12 @@ Detailed Functionalities
 
        Relies on LBL module CDL to Word translator.
 
-   * - Import/Export data sheet
+   * - Import/Export data sheet?
      - P
      - R
      - Additional module to 1) generate a file in CSV (or Excel) format from the configuration data (V0)
        2) populate the configuration data based on a file input in CSV (or Excel) format (V1).
+
 
    * - **Modelica features**
      -
@@ -392,7 +398,7 @@ There are three fundamental requirements regarding the Modelica model generated 
 
    * Manual modifications of the Modelica model made by the user are not supported by the configuration widget: an additional annotation should be included in the Modelica file to flag that the model has deviated from the template. In this case the configuration widget is disabled when loading that model.
 
-The input form is provided by the template developer (e.g. LBNL) in a data model with a format that is to be further specified in collaboration with the software developer.
+The input form is provided by the template developer (e.g. LBL) in a data model with a format that is to be further specified in collaboration with the software developer.
 
 The data model typically provides for each entry:
 

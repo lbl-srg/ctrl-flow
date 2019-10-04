@@ -65,9 +65,6 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_title': "LinkageJS",
     'navbar_site_name': "Site",
-    'navbar_links': [
-        ("Table of Contents", "index"),
-    ],
 
     'nosidebar': True,
 

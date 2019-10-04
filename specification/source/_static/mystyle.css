@@ -47,3 +47,7 @@ code {
 table.align-default {
     text-align: left;
 }
+
+.alert>ul, .alert>ol {
+    margin-top: 10px;
+}

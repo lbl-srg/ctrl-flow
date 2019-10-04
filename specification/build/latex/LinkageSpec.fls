@@ -542,6 +542,11 @@ INPUT ./screen_schematics_output.pdf
 INPUT ./screen_schematics_output.pdf
 INPUT screen_schematics_output.pdf
 INPUT ./screen_schematics_output.pdf
+INPUT linkage_architecture_0.pdf
+INPUT ./linkage_architecture_0.pdf
+INPUT ./linkage_architecture_0.pdf
+INPUT linkage_architecture_0.pdf
+INPUT ./linkage_architecture_0.pdf
 INPUT LinkageSpec.ind
 INPUT LinkageSpec.ind
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf

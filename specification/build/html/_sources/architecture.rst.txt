@@ -3,6 +3,10 @@
 Software Architecture
 ---------------------
 
-This section describes the software architecture of LinkageJS.
+:numref:`linkage_architecture_0` present the envisioned software architecture for the desktop app.
 
-To be updated.
+
+.. figure:: img/linkage_architecture_0.*
+   :name: linkage_architecture_0
+
+   Software architecture - Desktop app

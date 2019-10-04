@@ -48,8 +48,6 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="index.html">Table of Contents</a></li>
-            
             
               <li class="dropdown globaltoc-container">
   <a role="button"
@@ -182,9 +180,9 @@
 <li><p>The software relies on client side JS code with minimal dependencies and is built down to a single page HTML document (SPA).</p></li>
 <li><p>A widget structure is required that allows seamless embedding into:</p>
 <ul class="simple">
-<li><p>a desktop app – with standard access to the local file system based on system calls,</p></li>
+<li><p>a desktop app – with standard access to the local file system,</p></li>
 <li><p>a standalone web app – with access to the local file system limited to Download &amp; Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),</p></li>
-<li><p>any third party application with the suitable framework to serve a single page HTML document – with access to the local file system through the file system API of the third party application.</p>
+<li><p>any third party application with the suitable framework to serve a single page HTML document – with access to the local file system through the API of the third party application.</p>
 <ul>
 <li><p>The primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS).</p></li>
 <li><p>An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS can be considered as a reference for the development.</p></li>
@@ -302,71 +300,76 @@
 <p>If a package is loaded the structure of the package and sub packages is checked against <em>Chapter 13 Packages</em> (V1).</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Export simulation results</p></td>
+<tr class="row-odd"><td><p>Export <cite>mo</cite> file</p></td>
+<td><p>R</p></td>
+<td></td>
+<td><p>“Total model” export option?</p></td>
+</tr>
+<tr class="row-even"><td><p>Export simulation results</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Export in the following format: <code class="docutils literal notranslate"><span class="pre">mat,</span> <span class="pre">csv</span></code>.</p>
 <p>All variables or selection based on variables browser (see below).</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Variables browser</p></td>
+<tr class="row-odd"><td><p>Variables browser</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Query selection of model variables based on regular expression (V0) or Brick/Haystack tag <a class="bibtex reference internal" href="bibliography.html#brick" id="id1">[Bri]</a>  <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id2">[Hay]</a> (V1)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Plot simulation results</p></td>
+<tr class="row-even"><td><p>Plot simulation results</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Text editor</p></td>
+<tr class="row-odd"><td><p>Text editor</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Export control points summary</p></td>
+<tr class="row-even"><td><p>Export control points summary</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Relies on LBL module to generate the list of A/B I/O variables.</p></td>
 </tr>
-<tr class="row-even"><td><p>Export schematics</p></td>
+<tr class="row-odd"><td><p>Export schematics</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Only the equipment drawing in V0. Control points and SOO description in V1 see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.20</span></a>.</p>
 <p>Relies on LBL module CDL to Word translator.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Import/Export data sheet</p></td>
+<tr class="row-even"><td><p>Import/Export data sheet?</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Additional module to 1) generate a file in CSV (or Excel) format from the configuration data (V0)
 2) populate the configuration data based on a file input in CSV (or Excel) format (V1).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Modelica features</strong></p></td>
+<tr class="row-odd"><td><p><strong>Modelica features</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Checking the compliance with Modelica standard</p></td>
+<tr class="row-even"><td><p>Checking the compliance with Modelica standard</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Real-time checking of syntax (V0) and connection (V1).</p></td>
 </tr>
-<tr class="row-even"><td><p>Translate model</p></td>
+<tr class="row-odd"><td><p>Translate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica ol  e.g. JModelica.</p>
 <p>The output of the translation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Simulate model</p></td>
+<tr class="row-even"><td><p>Simulate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica ool  .g. JModelica.</p>
 <p>The output of the simulation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Automatic medium propagation between connected components</p></td>
+<tr class="row-odd"><td><p>Automatic medium propagation between connected components</p></td>
 <td><p>P</p></td>
 <td><p>P</p></td>
 <td><p>Partially supported because only the configuration widget integrates that feature.</p>
@@ -374,128 +377,128 @@
 <p>Expected as a future enhancement of Modelica standard <a class="footnote-reference brackets" href="#f1" id="id3">1</a>: should we anticipate or wait and see?</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Support of Modelica graphical annotations</p></td>
+<tr class="row-even"><td><p>Support of Modelica graphical annotations</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Icon layer</p></td>
+<tr class="row-odd"><td><p>Icon layer</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Version checking and upgrade</p></td>
+<tr class="row-even"><td><p>Version checking and upgrade</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
+<tr class="row-odd"><td><p><strong>Object manipulation</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Vectorized instances</p></td>
+<tr class="row-even"><td><p>Vectorized instances</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.</p></td>
 </tr>
-<tr class="row-even"><td><p>Expandable connectors</p></td>
+<tr class="row-odd"><td><p>Expandable connectors</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Navigation in object composition</p></td>
+<tr class="row-even"><td><p>Navigation in object composition</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Right clicking an icon in the diagram view offers the option to open the model in another tab</p></td>
 </tr>
-<tr class="row-even"><td><p>Multiple objects selection for input of common parameters</p></td>
+<tr class="row-odd"><td><p>Multiple objects selection for input of common parameters</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue  s modified, all the selected objects will have their parameter value change.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
+<tr class="row-even"><td><p>Avoiding duplicate names</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.</p>
 <p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
+<tr class="row-odd"><td><p><strong>Graphical features</strong></p></td>
 <td></td>
 <td></td>
 <td><p>A user experience similar to modern web based diagramming applications is expected e.g. <a class="reference external" href="https://w.draw.io">draw.io</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Tab view</p></td>
+<tr class="row-even"><td><p>Tab view</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.</p></td>
 </tr>
-<tr class="row-even"><td><p>Diagram split view</p></td>
+<tr class="row-odd"><td><p>Diagram split view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
 <td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Copy/Paste objects</p></td>
+<tr class="row-even"><td><p>Copy/Paste objects</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.</p></td>
 </tr>
-<tr class="row-even"><td><p>Pan and zoom on mouse actions</p></td>
+<tr class="row-odd"><td><p>Pan and zoom on mouse actions</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Undo/Redo</p></td>
+<tr class="row-even"><td><p>Undo/Redo</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Draw shape, text box</p></td>
+<tr class="row-odd"><td><p>Draw shape, text box</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Start connection line when hovering connectors</p></td>
+<tr class="row-even"><td><p>Start connection line when hovering connectors</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Connection line jumps</p></td>
+<tr class="row-odd"><td><p>Connection line jumps</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Gap jump at crossing</p></td>
 </tr>
-<tr class="row-odd"><td><p>Customize connection lines</p></td>
+<tr class="row-even"><td><p>Customize connection lines</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Color, width and line can be specified in the annotations panel</p></td>
 </tr>
-<tr class="row-even"><td><p>Hover information</p></td>
+<tr class="row-odd"><td><p>Hover information</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Class path when hovering an object in the diagram view and tooltip help for each GUI element</p></td>
 </tr>
-<tr class="row-odd"><td><p>Color and style of connection lines</p></td>
+<tr class="row-even"><td><p>Color and style of connection lines</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Allow the user to manually specify (right click menu) the style of the connections lines (V0).</p>
 <p>When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further  specified (V1).</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Fancy connection lines?</p></td>
+<tr class="row-odd"><td><p>Fancy connection lines?</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td><p>Gridified layout <a class="reference external" href="https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html">https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html</a></p>
 <p>Orthogonal edge route layout <a class="reference external" href="https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/">https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/</a> 6047_automaticdia.html</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
+<tr class="row-even"><td><p><strong>Miscellaneous</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Choice of units SI / IP</p></td>
+<tr class="row-odd"><td><p>Choice of units SI / IP</p></td>
 <td><p>?</p></td>
 <td><p>?</p></td>
 <td></td>
@@ -546,7 +549,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </ul>
 </li>
 </ol>
-<p>The input form is provided by the template developer (e.g. LBNL) in a data model with a format that is to be further specified in collaboration with the software developer.</p>
+<p>The input form is provided by the template developer (e.g. LBL) in a data model with a format that is to be further specified in collaboration with the software developer.</p>
 <p>The data model typically provides for each entry:</p>
 <ul class="simple">
 <li><p>the HTML widget and populating data to be used for requesting user input,</p></li>
@@ -1367,7 +1370,7 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 02, 2019.<br/>
+      Last updated on Oct, 03, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
