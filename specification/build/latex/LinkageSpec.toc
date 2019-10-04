@@ -18,7 +18,7 @@
 \contentsline {subsubsection}{\numberline {3.4.3.3}Additional Requirements for the UI}{27}{subsubsection.3.4.3.3}% 
 \contentsline {section}{\numberline {3.5}Schematics Export}{30}{section.3.5}% 
 \contentsline {section}{\numberline {3.6}Working with Tagged Variables}{30}{section.3.6}% 
-\contentsline {section}{\numberline {3.7}OpenStudio Integration}{30}{section.3.7}% 
+\contentsline {section}{\numberline {3.7}OpenStudio Integration}{32}{section.3.7}% 
 \contentsline {section}{\numberline {3.8}Interface with URBANopt GeoJSON}{32}{section.3.8}% 
 \contentsline {section}{\numberline {3.9}Encryption}{32}{section.3.9}% 
 \contentsline {section}{\numberline {3.10}Licensing}{32}{section.3.10}% 

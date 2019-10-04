@@ -51,3 +51,16 @@ table.align-default {
 .alert>ul, .alert>ol {
     margin-top: 10px;
 }
+
+div.admonition {
+    background-image: unset;
+    padding: .1rem 1.5rem;
+    border-left-width: 0.7rem;
+    border-left-style: solid;
+    margin: 1rem 0;
+}
+
+div.admonition.note {
+    background-color: #f3f5f7;
+    border-color: #d8e2ed;
+}

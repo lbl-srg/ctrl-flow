@@ -8,7 +8,7 @@
     <title>3. Requirements &#8212; LinkageJS Requirements Specification</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -996,10 +996,8 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <li><p>All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type <code class="docutils literal notranslate"><span class="pre">Real</span></code>) can be connected i.e. be part of a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Connecting a non connector variable to a connector variable with <code class="docutils literal notranslate"><span class="pre">connect(non_connector_var,</span> <span class="pre">connector_var)</span></code> yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place <code class="docutils literal notranslate"><span class="pre">non_connector_var</span> <span class="pre">=</span> <span class="pre">connector_var</span></code>.</p></li>
-<li><p>Using a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.</p></li>
-</ul>
+<p>Connecting a non connector variable to a connector variable with <code class="docutils literal notranslate"><span class="pre">connect(non_connector_var,</span> <span class="pre">connector_var)</span></code> yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place <code class="docutils literal notranslate"><span class="pre">non_connector_var</span> <span class="pre">=</span> <span class="pre">connector_var</span></code>.</p>
+<p>Using a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.</p>
 </div>
 </li>
 <li><p>The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation where the variable is first being used. For instance when the variable of an expandable connector is first connected to an inside connector <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealOutput</span></code> it gets the same causality i.e. output. The same variable can then be connected to another inside connector  <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealInput</span></code>.</p></li>
@@ -1182,14 +1180,12 @@ The results comparison to the original test case (without control bus) is presen
 <li><p>Color code to distinguish between:</p>
 <ul>
 <li><p>Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.</p>
-<ul>
-<li><div class="line-block">
-<div class="line">Remark: Dymola does not throw any exception when a <em>declared</em> bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for <code class="docutils literal notranslate"><span class="pre">Real</span></code>) to feed the connected variable.</div>
-<div class="line">That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.</div>
-<div class="line">JModelica throws an exception in any case with the message <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">following</span> <span class="pre">variable(s)</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">matched</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">equation</span></code>.</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dymola does not throw any exception when a <em>declared</em> bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for <code class="docutils literal notranslate"><span class="pre">Real</span></code>) to feed the connected variable.</p>
+<p>That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.</p>
+<p>JModelica throws an exception in any case with the message <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">following</span> <span class="pre">variable(s)</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">matched</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">equation</span></code>.</p>
 </div>
-</li>
-</ul>
 </li>
 <li><p>Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id9">[Mod17]</a> <em>§9.1.3 Expandable Connectors</em>: “variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. […] elements that are only potentially present are not seen as declared.”</p></li>
 </ul>

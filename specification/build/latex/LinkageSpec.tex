@@ -1491,14 +1491,10 @@ The following features of the expandable connector are leveraged:
 \item {} 
 All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type \sphinxcode{\sphinxupquote{Real}}) can be connected i.e. be part of a \sphinxcode{\sphinxupquote{connect}} equation.
 
-\begin{sphinxadmonition}{note}{Note:}\begin{itemize}
-\item {} 
+\begin{sphinxadmonition}{note}{Note:}
 Connecting a non connector variable to a connector variable with \sphinxcode{\sphinxupquote{connect(non\_connector\_var, connector\_var)}} yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place \sphinxcode{\sphinxupquote{non\_connector\_var = connector\_var}}.
 
-\item {} 
 Using a \sphinxcode{\sphinxupquote{connect}} equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing \sphinxcode{\sphinxupquote{connect}} equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
-
-\end{itemize}
 \end{sphinxadmonition}
 
 \item {} 
@@ -1759,15 +1755,14 @@ Color code to distinguish between:
 \begin{itemize}
 \item {} 
 Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.
-\begin{itemize}
-\item {} 
-\begin{DUlineblock}{0em}
-\item[] Remark: Dymola does not throw any exception when a \sphinxstyleemphasis{declared} bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for \sphinxcode{\sphinxupquote{Real}}) to feed the connected variable.
-\item[] That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.
-\item[] JModelica throws an exception in any case with the message \sphinxcode{\sphinxupquote{The following variable(s) could not be matched to any equation}}.
-\end{DUlineblock}
 
-\end{itemize}
+\begin{sphinxadmonition}{warning}{Warning:}
+Dymola does not throw any exception when a \sphinxstyleemphasis{declared} bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for \sphinxcode{\sphinxupquote{Real}}) to feed the connected variable.
+
+That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.
+
+JModelica throws an exception in any case with the message \sphinxcode{\sphinxupquote{The following variable(s) could not be matched to any equation}}.
+\end{sphinxadmonition}
 
 \item {} 
 Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to \sphinxcite{bibliography:modelica2017} \sphinxstyleemphasis{\S{}9.1.3 Expandable Connectors}: “variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. {[}…{]} elements that are only potentially present are not seen as declared.”

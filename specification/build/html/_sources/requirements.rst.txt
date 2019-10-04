@@ -642,9 +642,9 @@ The following features of the expandable connector are leveraged:
 
    .. note::
 
-      * Connecting a non connector variable to a connector variable with ``connect(non_connector_var, connector_var)`` yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place ``non_connector_var = connector_var``.
+      Connecting a non connector variable to a connector variable with ``connect(non_connector_var, connector_var)`` yields a warning but not an error in Dymola. It is considered bad practice though and a standard equation should be used in place ``non_connector_var = connector_var``.
 
-      * Using a ``connect`` equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
+      Using a ``connect`` equation allows to draw a connection line which makes the model structure explicit to the user. Furthermore it avoids mixing ``connect`` equations and standard equations within the same equation set, which has been adopted as a best practice in the Modelica Buildings library.
 
 #. The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the ``connect`` equation where the variable is first being used. For instance when the variable of an expandable connector is first connected to an inside connector ``Modelica.Blocks.Interfaces.RealOutput`` it gets the same causality i.e. output. The same variable can then be connected to another inside connector  ``Modelica.Blocks.Interfaces.RealInput``.
 
@@ -873,9 +873,13 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
 
   * Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.
 
-    * | Remark: Dymola does not throw any exception when a *declared* bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for ``Real``) to feed the connected variable.
-      | That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.
-      | JModelica throws an exception in any case with the message ``The following variable(s) could not be matched to any equation``.
+    .. warning::
+
+       Dymola does not throw any exception when a *declared* bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for ``Real``) to feed the connected variable.
+
+       That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.
+
+       JModelica throws an exception in any case with the message ``The following variable(s) could not be matched to any equation``.
 
   * Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to :cite:`Modelica2017` *§9.1.3 Expandable Connectors*: "variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. [...] elements that are only potentially present are not seen as declared."
 

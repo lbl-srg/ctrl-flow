@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  3 OCT 2019 19:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  3 OCT 2019 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1738,29 +1738,29 @@ lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 <BusTestExp.pdf, id=445, 2777.37625pt x 1151.30125pt>
 File: BusTestExp.pdf Graphic file (type pdf)
 <use BusTestExp.pdf>
-Package pdftex.def Info: BusTestExp.pdf  used on input line 1532.
+Package pdftex.def Info: BusTestExp.pdf  used on input line 1528.
 (pdftex.def)             Requested size: 252.94499pt x 104.84236pt.
  [22 <./BusTestExp.pdf>]
 <BusTestControlledExp.pdf, id=463, 2556.55125pt x 1156.32pt>
 File: BusTestControlledExp.pdf Graphic file (type pdf)
 <use BusTestControlledExp.pdf>
-Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 1548.
+Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 1544.
 (pdftex.def)             Requested size: 252.94499pt x 114.40369pt.
 <BusTestControllerExp.pdf, id=465, 2712.1325pt x 1225.57875pt>
 File: BusTestControllerExp.pdf Graphic file (type pdf)
 <use BusTestControllerExp.pdf>
-Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 1591.
+Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 1587.
 (pdftex.def)             Requested size: 252.94499pt x 114.2993pt.
  [23 <./BusTestControlledExp.pdf>]
 <BusTestNonExp.pdf, id=480, 2771.35374pt x 1145.27875pt>
 File: BusTestNonExp.pdf Graphic file (type pdf)
 <use BusTestNonExp.pdf>
-Package pdftex.def Info: BusTestNonExp.pdf  used on input line 1609.
+Package pdftex.def Info: BusTestNonExp.pdf  used on input line 1605.
 (pdftex.def)             Requested size: 252.94499pt x 104.5211pt.
 <BusTestControlledNonExp.pdf, id=481, 2853.66125pt x 1182.4175pt>
 File: BusTestControlledNonExp.pdf Graphic file (type pdf)
 <use BusTestControlledNonExp.pdf>
-Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 1625.
+Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 1621.
 (pdftex.def)             Requested size: 252.94499pt x 104.80722pt.
  [24 <./BusTestControllerExp.pdf> <./BusTestNonExp.pdf
 
@@ -1770,7 +1770,7 @@ fs with page group included in a single page
 <BusTestControllerNonExp.pdf, id=503, 2694.065pt x 1219.55624pt>
 File: BusTestControllerNonExp.pdf Graphic file (type pdf)
 <use BusTestControllerNonExp.pdf>
-Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 1652.
+Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 1648.
 (pdftex.def)             Requested size: 252.94499pt x 114.5006pt.
  [25 <./BusTestControlledNonExp.pdf> <./BusTestControllerNonExp.pdf
 
@@ -1780,58 +1780,58 @@ ultiple pdfs with page group included in a single page
 <annex_valid_bus.pdf, id=533, 1448.41125pt x 893.3375pt>
 File: annex_valid_bus.pdf Graphic file (type pdf)
 <use annex_valid_bus.pdf>
-Package pdftex.def Info: annex_valid_bus.pdf  used on input line 1728.
+Package pdftex.def Info: annex_valid_bus.pdf  used on input line 1724.
 (pdftex.def)             Requested size: 505.86859pt x 312.01851pt.
 <dymola_bus.png, id=536, 1355.0625pt x 848.16875pt>
 File: dymola_bus.png Graphic file (type png)
 <use dymola_bus.png>
-Package pdftex.def Info: dymola_bus.png  used on input line 1740.
+Package pdftex.def Info: dymola_bus.png  used on input line 1736.
 (pdftex.def)             Requested size: 505.89345pt x 316.65181pt.
  [27 <./annex_valid_bus.pdf>] [28 <./dymola_bus.png>] [29]
-Overfull \hbox (4.56003pt too wide) in paragraph at lines 1819--1820
+Overfull \hbox (4.56003pt too wide) in paragraph at lines 1814--1815
 []|\T1/phv/m/n/10 Declared| 
  []
 
 
-Overfull \hbox (14.20227pt too wide) in paragraph at lines 1823--1825
+Overfull \hbox (14.20227pt too wide) in paragraph at lines 1818--1820
 []|\T1/phv/m/n/10 Description| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1846--1847
+Underfull \hbox (badness 10000) in paragraph at lines 1841--1842
 []|\T1/pcr/m/n/10 comp2.var1 $\OMS/cmsy/m/n/10 !$ \T1/pcr/m/n/10 comp1.
  []
 
 <bus_minimal.pdf, id=575, 2165.08875pt x 1100.11pt>
 File: bus_minimal.pdf Graphic file (type pdf)
 <use bus_minimal.pdf>
-Package pdftex.def Info: bus_minimal.pdf  used on input line 1910.
+Package pdftex.def Info: bus_minimal.pdf  used on input line 1905.
 (pdftex.def)             Requested size: 505.88872pt x 257.04869pt.
 <subbus_outside.png, id=576, 510.90875pt x 112.42pt>
 File: subbus_outside.png Graphic file (type png)
 <use subbus_outside.png>
-Package pdftex.def Info: subbus_outside.png  used on input line 1917.
+Package pdftex.def Info: subbus_outside.png  used on input line 1912.
 (pdftex.def)             Requested size: 505.88698pt x 111.32014pt.
 <bus_outside.png, id=577, 507.8975pt x 145.54375pt>
 File: bus_outside.png Graphic file (type png)
 <use bus_outside.png>
-Package pdftex.def Info: bus_outside.png  used on input line 1924.
+Package pdftex.def Info: bus_outside.png  used on input line 1919.
 (pdftex.def)             Requested size: 505.90454pt x 144.97928pt.
 <bus_inside.png, id=578, 505.89pt x 81.30376pt>
 File: bus_inside.png Graphic file (type png)
 <use bus_inside.png>
-Package pdftex.def Info: bus_inside.png  used on input line 1931.
+Package pdftex.def Info: bus_inside.png  used on input line 1926.
 (pdftex.def)             Requested size: 505.88875pt x 81.30354pt.
 <screen_schematics_modelica.pdf, id=579, 2165.08875pt x 1288.815pt>
 File: screen_schematics_modelica.pdf Graphic file (type pdf)
 <use screen_schematics_modelica.pdf>
-Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 194
-1.
+Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 193
+6.
 (pdftex.def)             Requested size: 505.88872pt x 301.14099pt.
 <screen_schematics_output.pdf, id=580, 963.6pt x 542.025pt>
 File: screen_schematics_output.pdf Graphic file (type pdf)
 <use screen_schematics_output.pdf>
-Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1948.
+Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1943.
 
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
 [30] [31 <./bus_minimal.pdf> <./subbus_outside.png>] [32 <./bus_outside.png> <.
@@ -1841,7 +1841,7 @@ Chapter 4.
 <linkage_architecture_0.pdf, id=639, 897.3525pt x 608.2725pt>
 File: linkage_architecture_0.pdf Graphic file (type pdf)
 <use linkage_architecture_0.pdf>
-Package pdftex.def Info: linkage_architecture_0.pdf  used on input line 1987.
+Package pdftex.def Info: linkage_architecture_0.pdf  used on input line 1982.
 (pdftex.def)             Requested size: 505.88232pt x 342.9228pt.
 [35
 
@@ -1868,15 +1868,15 @@ Chapter 7.
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2048.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2048.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2043.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2043.
  (./LinkageSpec.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2048.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2048.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2043.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2043.
 
 Package rerunfilecheck Info: File `LinkageSpec.out' has not changed.
 (rerunfilecheck)             Checksum: 03216880A2308F79DADCAA10C87DDAA0;3691.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2048.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2043.
  ) 
 Here is how much of TeX's memory you used:
  26571 strings out of 494053
@@ -1896,7 +1896,7 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageSpec.pdf (42 pages, 2194888 bytes).
+Output written on LinkageSpec.pdf (42 pages, 2195134 bytes).
 PDF statistics:
  754 PDF objects out of 1000 (max. 8388607)
  602 compressed objects within 7 object streams

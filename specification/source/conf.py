@@ -328,4 +328,4 @@ latex_elements['preamble'] = r'''
 '''
 
 def setup(app):
-    app.add_stylesheet('mystyle.css')
+    app.add_stylesheet('my-styles.css')
