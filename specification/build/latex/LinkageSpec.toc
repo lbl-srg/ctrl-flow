@@ -1,0 +1,29 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Preamble}{1}{chapter.1}% 
+\contentsline {chapter}{\numberline {2}Process Workflow}{2}{chapter.2}% 
+\contentsline {chapter}{\numberline {3}Requirements}{3}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}General Description}{3}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Main Requirements}{3}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Software Compatibility}{4}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}UI Visual Structure}{4}{subsection.3.1.3}% 
+\contentsline {section}{\numberline {3.2}Detailed Functionalities}{4}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Modelica Graphical User Interface}{7}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}Configuration Widget}{8}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}Functionalities}{8}{subsection.3.4.1}% 
+\contentsline {subsection}{\numberline {3.4.2}Fluid Connectors}{17}{subsection.3.4.2}% 
+\contentsline {subsection}{\numberline {3.4.3}Signal Connectors}{20}{subsection.3.4.3}% 
+\contentsline {subsubsection}{\numberline {3.4.3.1}General Principles}{20}{subsubsection.3.4.3.1}% 
+\contentsline {subsubsection}{\numberline {3.4.3.2}Validation and Additional Requirements}{26}{subsubsection.3.4.3.2}% 
+\contentsline {subsubsection}{\numberline {3.4.3.3}Additional Requirements for the UI}{27}{subsubsection.3.4.3.3}% 
+\contentsline {section}{\numberline {3.5}Schematics Export}{30}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Working with Tagged Variables}{30}{section.3.6}% 
+\contentsline {section}{\numberline {3.7}OpenStudio Integration}{30}{section.3.7}% 
+\contentsline {section}{\numberline {3.8}Interface with URBANopt GeoJSON}{34}{section.3.8}% 
+\contentsline {section}{\numberline {3.9}Encryption}{34}{section.3.9}% 
+\contentsline {section}{\numberline {3.10}Licensing}{34}{section.3.10}% 
+\contentsline {chapter}{\numberline {4}Software Architecture}{35}{chapter.4}% 
+\contentsline {chapter}{\numberline {5}Glossary}{36}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Acknowledgments}{37}{chapter.6}% 
+\contentsline {chapter}{\numberline {7}References}{38}{chapter.7}% 
+\contentsline {chapter}{Bibliography}{39}{chapter.7}% 
+\contentsline {chapter}{Index}{40}{section*.6}% 
