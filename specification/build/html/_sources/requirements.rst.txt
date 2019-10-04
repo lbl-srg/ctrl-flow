@@ -844,6 +844,7 @@ The results comparison to the original test case (without control bus) is presen
 
 .. figure:: img/annex_valid_bus.svg
    :name: annex_valid_bus
+   :width: 800px
 
    G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (``origin``) and with (``new_bus``) expandable connectors
 
@@ -898,7 +899,7 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
   * | Another issue is illustrated :numref:`bus_inside` where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, LinkageJS requires that the "expanded" connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the *augmentation set* as defined in :cite:`Modelica2017` *9.1.3 Expandable Connectors*. In our example the same information displayed in :numref:`subbus_outside` for the original sub-bus should be accessible when displaying the connection set of ``bus.ahuI`` whatever the current status (inside or outside) of the connector ``bus``. A typical view of the connection set of expandable connectors for LinkageJS could be:
 
     .. list-table:: Typical view of the connection set of expandable connectors -- visible from outside component (connector is inside), "Present" and "I/O" columns display the connection status over the full augmentation set
-       :widths: 40 10 10 30 10
+       :widths: 40 10 10 20 20
        :header-rows: 1
 
        * - Variable
@@ -969,21 +970,25 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
 
 .. figure:: img/bus_minimal.svg
    :name: bus_minimal
+   :width: 800px
 
    Minimal example of sub-bus to bus connection illustrating how the bus variables are exposed in Dymola -- case of outside connectors
 
 .. figure:: img/subbus_outside.png
    :name: subbus_outside
+   :width: 400px
 
    Sub-bus variables being exposed in case the sub-bus is an outside connector
 
 .. figure:: img/bus_outside.png
    :name: bus_outside
+   :width: 400px
 
    Bus variables being exposed in case the bus is an outside connector
 
 .. figure:: img/bus_inside.png
    :name: bus_inside
+   :width: 400px
 
    Bus variables being exposed in case the bus is an inside connector
 
