@@ -3,7 +3,7 @@
 Software Architecture
 ---------------------
 
-:numref:`linkage_architecture_0` present the envisioned software architecture for the desktop app.
+:numref:`linkage_architecture_0` presents the envisioned software architecture for the desktop app.
 
 
 .. figure:: img/linkage_architecture_0.*
