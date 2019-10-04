@@ -162,15 +162,15 @@
   <div class="section" id="requirements">
 <span id="sec-requirements"></span><h1>3. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="general-description">
-<span id="par-general-description"></span><h2>3.1. General Description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
+<span id="sec-general-description"></span><h2>3.1. General Description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-requirements">
 <h3>3.1.1. Main Requirements<a class="headerlink" href="#main-requirements" title="Permalink to this headline">¶</a></h3>
-<p>The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see <a class="reference internal" href="#par-modelica-gui"><span class="std std-numref">Section 3.3</span></a>.</p>
+<p>The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see <a class="reference internal" href="#sec-functionalities"><span class="std std-numref">Section 3.2</span></a> and <a class="reference internal" href="#sec-modelica-gui"><span class="std std-numref">Section 3.3</span></a>.</p>
 <p>Built around this core functionality the following additional features are required:</p>
 <ol class="arabic simple">
-<li><p>A configuration widget supporting assisted modeling based on a simple HTML input form: see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.4</span></a></p></li>
-<li><p>A schematics export functionality: see <a class="reference internal" href="#par-schematics-export"><span class="std std-numref">Section 3.5</span></a></p></li>
-<li><p>A set of functionalities to enable working with tagged variables: see <a class="reference internal" href="#par-tagged-variables"><span class="std std-numref">Section 3.6</span></a></p></li>
+<li><p>A configuration widget supporting assisted modeling based on a simple HTML input form: see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a></p></li>
+<li><p>A schematics export functionality: see <a class="reference internal" href="#sec-schematics-export"><span class="std std-numref">Section 3.5</span></a></p></li>
+<li><p>A set of functionalities to enable working with tagged variables: see <a class="reference internal" href="#sec-tagged-variables"><span class="std std-numref">Section 3.6</span></a></p></li>
 </ol>
 <p>In terms of software design:</p>
 <ul>
@@ -179,10 +179,10 @@
 <ul class="simple">
 <li><p>a desktop app – with standard access to the local file system,</p></li>
 <li><p>a standalone web app – with access to the local file system limited to Download &amp; Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),</p></li>
-<li><p>any third party application with the suitable framework to serve a single page HTML document – with access to the local file system through the API of the third party application.</p>
+<li><p>any third party application with the suitable framework to serve a single page HTML document executing JS code – with access to the local file system through the API of the third party application:</p>
 <ul>
-<li><p>The primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS).</p></li>
-<li><p>An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS can be considered as a reference for the development.</p></li>
+<li><p>the primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS),</p></li>
+<li><p>an example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS can be considered as a reference for the development.</p></li>
 </ul>
 </li>
 </ul>
@@ -225,7 +225,7 @@
 <p>See figure <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.2</span></a>:</p>
 <ul class="simple">
 <li><p>Left panel: library navigator</p></li>
-<li><p>Main panel: diagram view of the model</p></li>
+<li><p>Main panel: model editor with diagram, icon, documentation or code view</p></li>
 <li><p>Right panel:</p>
 <ul>
 <li><p>Configuration widget</p></li>
@@ -240,7 +240,7 @@
 </div>
 </div>
 <div class="section" id="detailed-functionalities">
-<h2>3.2. Detailed Functionalities<a class="headerlink" href="#detailed-functionalities" title="Permalink to this headline">¶</a></h2>
+<span id="sec-functionalities"></span><h2>3.2. Detailed Functionalities<a class="headerlink" href="#detailed-functionalities" title="Permalink to this headline">¶</a></h2>
 <span id="tab-gui-func"></span><table class="colwidths-given docutils align-default" id="id15">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -260,7 +260,7 @@
 <tr class="row-even"><td><p><strong>Main functionalities</strong></p></td>
 <td></td>
 <td></td>
-<td><p>(as per <a class="reference internal" href="#par-general-description"><span class="std std-numref">Section 3.1</span></a>)</p></td>
+<td><p>(as per <a class="reference internal" href="#sec-general-description"><span class="std std-numref">Section 3.1</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Diagram editor for Modelica models</p></td>
 <td><p>R</p></td>
@@ -292,7 +292,7 @@
 <td><p>R</p></td>
 <td><p>To be updated cf. different integration targets</p>
 <p>Simple Modelica model or full package (V0).</p>
-<p>If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#par-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the  corresponding data are loaded in memory for further configuration.</p>
+<p>If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the  corresponding data are loaded in memory for further configuration.</p>
 <p>If the model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> the corresponding library is loaded.</p>
 <p>If a package is loaded the structure of the package and sub packages is checked against <em>Chapter 13 Packages</em> (V1).</p>
 </td>
@@ -319,54 +319,49 @@
 <td><p>O</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Text editor</p></td>
-<td><p>N</p></td>
-<td><p>O</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Export control points summary</p></td>
+<tr class="row-odd"><td><p>Export control points summary</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Relies on LBL module to generate the list of A/B I/O variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Export schematics</p></td>
+<tr class="row-even"><td><p>Export schematics</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Only the equipment drawing in V0. Control points and SOO description in V1 see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.20</span></a>.</p>
 <p>Relies on LBL module CDL to Word translator.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Import/Export data sheet?</p></td>
+<tr class="row-odd"><td><p>Import/Export data sheet?</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Additional module to 1) generate a file in CSV (or Excel) format from the configuration data (V0)
 2) populate the configuration data based on a file input in CSV (or Excel) format (V1).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Modelica features</strong></p></td>
+<tr class="row-even"><td><p><strong>Modelica features</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Checking the compliance with Modelica standard</p></td>
+<tr class="row-odd"><td><p>Checking the compliance with Modelica standard</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Real-time checking of syntax (V0) and connection (V1).</p></td>
 </tr>
-<tr class="row-odd"><td><p>Translate model</p></td>
+<tr class="row-even"><td><p>Translate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica ol  e.g. JModelica.</p>
 <p>The output of the translation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Simulate model</p></td>
+<tr class="row-odd"><td><p>Simulate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica ool  .g. JModelica.</p>
 <p>The output of the simulation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Automatic medium propagation between connected components</p></td>
+<tr class="row-even"><td><p>Automatic medium propagation between connected components</p></td>
 <td><p>P</p></td>
 <td><p>P</p></td>
 <td><p>Partially supported because only the configuration widget integrates that feature.</p>
@@ -374,128 +369,138 @@
 <p>Expected as a future enhancement of Modelica standard <a class="footnote-reference brackets" href="#f1" id="id3">1</a>: should we anticipate or wait and see?</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Support of Modelica graphical annotations</p></td>
+<tr class="row-odd"><td><p>Support of Modelica graphical annotations</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Icon layer</p></td>
+<tr class="row-even"><td><p>Code editor</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>Raw text editor (V0) with linter and Modelica specification check upon save (V1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Icon editor</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
+<td><p>Editing functionalities similar to diagram editor</p></td>
+</tr>
+<tr class="row-even"><td><p>Documentation view</p></td>
+<td><p>R</p></td>
+<td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Version checking and upgrade</p></td>
+<tr class="row-odd"><td><p>Library version management</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Object manipulation</strong></p></td>
+<tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Vectorized instances</p></td>
+<tr class="row-odd"><td><p>Vectorized instances</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Expandable connectors</p></td>
+<tr class="row-even"><td><p>Expandable connectors</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Navigation in object composition</p></td>
+<tr class="row-odd"><td><p>Navigation in object composition</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Right clicking an icon in the diagram view offers the option to open the model in another tab</p></td>
 </tr>
-<tr class="row-odd"><td><p>Multiple objects selection for input of common parameters</p></td>
+<tr class="row-even"><td><p>Multiple objects selection for input of common parameters</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue  s modified, all the selected objects will have their parameter value change.</p></td>
 </tr>
-<tr class="row-even"><td><p>Avoiding duplicate names</p></td>
+<tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.</p>
 <p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>Graphical features</strong></p></td>
+<tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
 <td></td>
 <td></td>
 <td><p>A user experience similar to modern web based diagramming applications is expected e.g. <a class="reference external" href="https://w.draw.io">draw.io</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p>Tab view</p></td>
+<tr class="row-odd"><td><p>Tab view</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Diagram split view</p></td>
+<tr class="row-even"><td><p>Diagram split view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
 <td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.</p></td>
 </tr>
-<tr class="row-even"><td><p>Copy/Paste objects</p></td>
+<tr class="row-odd"><td><p>Copy/Paste objects</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Pan and zoom on mouse actions</p></td>
+<tr class="row-even"><td><p>Pan and zoom on mouse actions</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Undo/Redo</p></td>
+<tr class="row-odd"><td><p>Undo/Redo</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Draw shape, text box</p></td>
+<tr class="row-even"><td><p>Draw shape, text box</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Start connection line when hovering connectors</p></td>
+<tr class="row-odd"><td><p>Start connection line when hovering connectors</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Connection line jumps</p></td>
+<tr class="row-even"><td><p>Connection line jumps</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Gap jump at crossing</p></td>
 </tr>
-<tr class="row-even"><td><p>Customize connection lines</p></td>
+<tr class="row-odd"><td><p>Customize connection lines</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Color, width and line can be specified in the annotations panel</p></td>
 </tr>
-<tr class="row-odd"><td><p>Hover information</p></td>
+<tr class="row-even"><td><p>Hover information</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Class path when hovering an object in the diagram view and tooltip help for each GUI element</p></td>
 </tr>
-<tr class="row-even"><td><p>Color and style of connection lines</p></td>
+<tr class="row-odd"><td><p>Color and style of connection lines</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Allow the user to manually specify (right click menu) the style of the connections lines (V0).</p>
 <p>When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further  specified (V1).</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Fancy connection lines?</p></td>
+<tr class="row-even"><td><p>Fancy connection lines?</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td><p>Gridified layout <a class="reference external" href="https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html">https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html</a></p>
 <p>Orthogonal edge route layout <a class="reference external" href="https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/">https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/</a> 6047_automaticdia.html</p>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Miscellaneous</strong></p></td>
+<tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Choice of units SI / IP</p></td>
+<tr class="row-even"><td><p>Choice of units SI / IP</p></td>
 <td><p>?</p></td>
 <td><p>?</p></td>
 <td></td>
@@ -504,7 +509,7 @@
 </table>
 </div>
 <div class="section" id="modelica-graphical-user-interface">
-<span id="par-modelica-gui"></span><h2>3.3. Modelica Graphical User Interface<a class="headerlink" href="#modelica-graphical-user-interface" title="Permalink to this headline">¶</a></h2>
+<span id="sec-modelica-gui"></span><h2>3.3. Modelica Graphical User Interface<a class="headerlink" href="#modelica-graphical-user-interface" title="Permalink to this headline">¶</a></h2>
 <p>The software must comply with the Modelica language specification <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id4">[Mod17]</a> for every aspect relating to (the chapter numbers refer to <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id5">[Mod17]</a>):</p>
 <ul class="simple">
 <li><p>validating the syntax of the user inputs: see <em>Chapter 2 Lexical Structure</em> and <em>Chapter 3 Operators and Expressions</em>,</p></li>
@@ -529,7 +534,7 @@
 </div>
 </div>
 <div class="section" id="configuration-widget">
-<span id="par-configuration-widget"></span><h2>3.4. Configuration Widget<a class="headerlink" href="#configuration-widget" title="Permalink to this headline">¶</a></h2>
+<span id="sec-configuration-widget"></span><h2>3.4. Configuration Widget<a class="headerlink" href="#configuration-widget" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="functionalities">
 <h3>3.4.1. Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this headline">¶</a></h3>
 <p>The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
@@ -563,8 +568,8 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <p>The envisioned data structure supporting this logic is illustrated in <a class="reference internal" href="#code-conf-ahu"><span class="std std-numref">Listing 3.1</span></a> (pseudo code) where:</p>
 <ul class="simple">
 <li><p>the placement coordinates are provided relatively to a simplified grid, see <a class="reference internal" href="#grid"><span class="std std-numref">Fig. 3.3</span></a>, those are to be mapped to Modelica diagram coordinates by the widget,</p></li>
-<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">equipment</span></code> name are connected together with fluid connectors, see <a class="reference internal" href="#par-fluid-connectors"><span class="std std-numref">Section 3.4.2</span></a>,</p></li>
-<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">controls</span></code> name are connected together with signal connectors, see <a class="reference internal" href="#par-signal-connectors"><span class="std std-numref">Section 3.4.3</span></a>,</p></li>
+<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">equipment</span></code> name are connected together with fluid connectors, see <a class="reference internal" href="#sec-fluid-connectors"><span class="std std-numref">Section 3.4.2</span></a>,</p></li>
+<li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">controls</span></code> name are connected together with signal connectors, see <a class="reference internal" href="#sec-signal-connectors"><span class="std std-numref">Section 3.4.3</span></a>,</p></li>
 <li><p>the components referenced under the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> name are part of the equipment section:</p>
 <ul>
 <li><p>they typically correspond to sensors and outside fluid connectors,</p></li>
@@ -873,7 +878,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div>
 </div>
 <div class="section" id="fluid-connectors">
-<span id="par-fluid-connectors"></span><h3>3.4.2. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h3>
+<span id="sec-fluid-connectors"></span><h3>3.4.2. Fluid Connectors<a class="headerlink" href="#fluid-connectors" title="Permalink to this headline">¶</a></h3>
 <p>The fluid connections (<code class="docutils literal notranslate"><span class="pre">connect</span></code> equations involving two fluid connectors) are generated based on :</p>
 <ul class="simple">
 <li><p>the coordinates of the components in the <em>diagram view</em> i.e. after converting the coordinates provided relatively to the simplified grid,</p></li>
@@ -980,7 +985,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div>
 </div>
 <div class="section" id="signal-connectors">
-<span id="par-signal-connectors"></span><h3>3.4.3. Signal Connectors<a class="headerlink" href="#signal-connectors" title="Permalink to this headline">¶</a></h3>
+<span id="sec-signal-connectors"></span><h3>3.4.3. Signal Connectors<a class="headerlink" href="#signal-connectors" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="general-principles">
 <h4>3.4.3.1. General Principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h4>
 <p>Generating the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations for signal variables relies on:</p>
@@ -1308,7 +1313,7 @@ The results comparison to the original test case (without control bus) is presen
 </div>
 </div>
 <div class="section" id="schematics-export">
-<span id="par-schematics-export"></span><h2>3.5. Schematics Export<a class="headerlink" href="#schematics-export" title="Permalink to this headline">¶</a></h2>
+<span id="sec-schematics-export"></span><h2>3.5. Schematics Export<a class="headerlink" href="#schematics-export" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="screen-schematics-modelica">
 <img alt="_images/screen_schematics_modelica.svg" src="_images/screen_schematics_modelica.svg" /><p class="caption"><span class="caption-number">Fig. 3.20 </span><span class="caption-text">Mockup of the schematics export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
 </div>
@@ -1317,7 +1322,7 @@ The results comparison to the original test case (without control bus) is presen
 </div>
 </div>
 <div class="section" id="working-with-tagged-variables">
-<span id="par-tagged-variables"></span><h2>3.6. Working with Tagged Variables<a class="headerlink" href="#working-with-tagged-variables" title="Permalink to this headline">¶</a></h2>
+<span id="sec-tagged-variables"></span><h2>3.6. Working with Tagged Variables<a class="headerlink" href="#working-with-tagged-variables" title="Permalink to this headline">¶</a></h2>
 <p>To be updated: specify the requirements for tagging variables and performing some queries of the set of tagged variables</p>
 <p>Set up parameters values with OS measures e.g. nominal electrical loads or boiler efficiency</p>
 </div>
@@ -1365,7 +1370,7 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 03, 2019.<br/>
+      Last updated on Oct, 04, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

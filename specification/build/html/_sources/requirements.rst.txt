@@ -3,7 +3,7 @@
 Requirements
 ============
 
-.. _par_general_description:
+.. _sec_general_description:
 
 General Description
 -------------------
@@ -11,16 +11,15 @@ General Description
 Main Requirements
 *****************
 
-
-The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see :numref:`par_modelica_gui`.
+The software is primarily a graphical user interface for editing Modelica models in a diagrammatic form: see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
 
 Built around this core functionality the following additional features are required:
 
-#. A configuration widget supporting assisted modeling based on a simple HTML input form: see :numref:`par_configuration_widget`
+#. A configuration widget supporting assisted modeling based on a simple HTML input form: see :numref:`sec_configuration_widget`
 
-#. A schematics export functionality: see :numref:`par_schematics_export`
+#. A schematics export functionality: see :numref:`sec_schematics_export`
 
-#. A set of functionalities to enable working with tagged variables: see :numref:`par_tagged_variables`
+#. A set of functionalities to enable working with tagged variables: see :numref:`sec_tagged_variables`
 
 In terms of software design:
 
@@ -32,11 +31,11 @@ In terms of software design:
 
   * a standalone web app -- with access to the local file system limited to Download & Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),
 
-  * any third party application with the suitable framework to serve a single page HTML document -- with access to the local file system through the API of the third party application.
+  * any third party application with the suitable framework to serve a single page HTML document executing JS code -- with access to the local file system through the API of the third party application:
 
-    * The primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS).
+    * the primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS),
 
-    * An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS can be considered as a reference for the development.
+    * an example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS can be considered as a reference for the development.
 
   .. note::
 
@@ -68,7 +67,7 @@ See figure :numref:`screen_conf_1`:
 
 * Left panel: library navigator
 
-* Main panel: diagram view of the model
+* Main panel: model editor with diagram, icon, documentation or code view
 
 * Right panel:
 
@@ -81,6 +80,8 @@ See figure :numref:`screen_conf_1`:
 
 * Bottom panel: console
 
+
+.. _sec_functionalities:
 
 Detailed Functionalities
 ------------------------
@@ -99,7 +100,7 @@ Detailed Functionalities
    * - **Main functionalities**
      -
      -
-     - (as per :numref:`par_general_description`)
+     - (as per :numref:`sec_general_description`)
 
    * - Diagram editor for Modelica models
      - R
@@ -133,7 +134,7 @@ Detailed Functionalities
 
        Simple Modelica model or full package (V0).
 
-       If the model contains annotations specific to the configuration widget (see :numref:`par_configuration_widget`), the  corresponding data are loaded in memory for further configuration.
+       If the model contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the  corresponding data are loaded in memory for further configuration.
 
        If the model contains the Modelica annotation ``uses`` the corresponding library is loaded.
 
@@ -157,11 +158,6 @@ Detailed Functionalities
      - Query selection of model variables based on regular expression (V0) or Brick/Haystack tag :cite:`Brick`  :cite:`Haystack4` (V1)
 
    * - Plot simulation results
-     - N
-     - O
-     -
-
-   * - Text editor
      - N
      - O
      -
@@ -223,12 +219,22 @@ Detailed Functionalities
      -
      -
 
-   * - Icon layer
+   * - Code editor
+     - P
+     - R
+     - Raw text editor (V0) with linter and Modelica specification check upon save (V1)
+
+   * - Icon editor
      - O
      - R
+     - Editing functionalities similar to diagram editor
+
+   * - Documentation view
+     - R
+     -
      -
 
-   * - Version checking and upgrade
+   * - Library version management
      - O
      - R
      - If a loaded model contains the Modelica annotation ``uses`` e.g. ``uses(Buildings(version="6.0.0")`` the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.
@@ -344,7 +350,7 @@ Detailed Functionalities
      - ?
      -
 
-.. _par_modelica_gui:
+.. _sec_modelica_gui:
 
 Modelica Graphical User Interface
 ---------------------------------
@@ -375,7 +381,7 @@ The software must comply with the Modelica language specification :cite:`Modelic
 
      * created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call ``create_new_path(point[i], point[i+1])`` is called to generate the path linking each pair of points together.
 
-.. _par_configuration_widget:
+.. _sec_configuration_widget:
 
 Configuration Widget
 --------------------
@@ -422,9 +428,9 @@ The envisioned data structure supporting this logic is illustrated in :numref:`c
 
 * the placement coordinates are provided relatively to a simplified grid, see :numref:`grid`, those are to be mapped to Modelica diagram coordinates by the widget,
 
-* the components referenced under the ``equipment`` name are connected together with fluid connectors, see :numref:`par_fluid_connectors`,
+* the components referenced under the ``equipment`` name are connected together with fluid connectors, see :numref:`sec_fluid_connectors`,
 
-* the components referenced under the ``controls`` name are connected together with signal connectors, see :numref:`par_signal_connectors`,
+* the components referenced under the ``controls`` name are connected together with signal connectors, see :numref:`sec_signal_connectors`,
 
 * the components referenced under the ``dependencies`` name are part of the equipment section:
 
@@ -497,7 +503,7 @@ The next paragraphs address how the connections between the connectors of the di
    :name: code_conf_ahu
 
 
-.. _par_fluid_connectors:
+.. _sec_fluid_connectors:
 
 Fluid Connectors
 ****************
@@ -622,7 +628,7 @@ The implications of that logic are the following:
    Connection scheme with fluid branches with different directions e.g. VAV duct system. Here a flow splitter is used to start several main fluid paths with a vertical connection direction.
 
 
-.. _par_signal_connectors:
+.. _sec_signal_connectors:
 
 Signal Connectors
 *****************
@@ -994,7 +1000,7 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
 
 
 
-.. _par_schematics_export:
+.. _sec_schematics_export:
 
 Schematics Export
 -----------------
@@ -1009,7 +1015,7 @@ Schematics Export
 
    Mockup of the schematics export -- Output file (format to be specified: Word or PDF)
 
-.. _par_tagged_variables:
+.. _sec_tagged_variables:
 
 
 Working with Tagged Variables
