@@ -15,6 +15,13 @@ extensions = [
     'sphinxcontrib.rsvgconverter',
 ]
 
+# Rst_prolog is a string of reStructuredText that will be included at the beginning of every source file that is read.
+
+rst_prolog = """
+.. role:: underline
+   :class: underline
+"""
+
 # mathjax_path
 mathjax_path = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 

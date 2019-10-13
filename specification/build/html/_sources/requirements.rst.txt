@@ -3,6 +3,23 @@
 Requirements
 ============
 
+.. todo::
+
+   Validate the support for expandable connectors by the translator: are they part of CDL spec?
+
+   Devise how return status signals can be generated for components that do not have built-in output status variables.
+
+   * Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a ``pre`` operator.
+
+   Allow for top level controller XOR individual controllers.
+
+   Specify fluid connection for differential pressure sensor: might need an additional mechanism to explicitly specify a port-to-port connect equation instead of the fluid path.
+
+   Specify more the tagging process and how it can support mapping with equipment characteristics and sizing from data & sizing sheets.
+
+   * EIKON uses two concepts: *reference* (used programmatically) and *display* (used for UI only) name.
+   * HVAC zone, floor, room name is enough?
+
 .. _sec_general_description:
 
 General Description
@@ -54,7 +71,7 @@ Software Compatibility
    ============================================== =================================================
    Feature                                        Support
    ============================================== =================================================
-   Platform (minimum version)                      Windows (10), Linux Ubuntu (16.04), OS X (10.10)
+   Platform (minimum version)                      Windows (10), Linux Ubuntu (18.04), OS X (10.10)
    Mobile device & responsive design ?             iOS, Android?
    Web browser                                     Chrome, Firefox, Safari
    ============================================== =================================================
@@ -71,10 +88,9 @@ See figure :numref:`screen_conf_1`:
 
 * Right panel:
 
-  * Configuration widget
-  * Connections widget
-  * Annotations widget
-  * Parameters widget
+  * Configuration tab
+  * Connections tab
+  * Parameters tab
 
 * Menu bar
 
@@ -177,8 +193,8 @@ Detailed Functionalities
    * - Import/Export data sheet?
      - P
      - R
-     - Additional module to 1) generate a file in CSV (or Excel) format from the configuration data (V0)
-       2) populate the configuration data based on a file input in CSV (or Excel) format (V1).
+     - Additional module to 1) generate a file in CSV or JSON format from the configuration data (V0)
+       2) populate the configuration data based on a file input in CSV or JSON format (V1).
 
 
    * - **Modelica features**
@@ -194,7 +210,7 @@ Detailed Functionalities
    * - Translate model
      - P
      -
-     - The software settings allow the user to specify a command for translating the model with a third party Modelica ol  e.g. JModelica.
+     - The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.
 
        The output of the translation routine is logged in LinkageJS console.
 
@@ -426,7 +442,7 @@ The user interface logic is illustrated in figures :numref:`screen_conf_0` and :
 
 The envisioned data structure supporting this logic is illustrated in :numref:`code_conf_ahu` (pseudo code) where:
 
-* the placement coordinates are provided relatively to a simplified grid, see :numref:`grid`, those are to be mapped to Modelica diagram coordinates by the widget,
+* the placement coordinates are provided relatively to a simplified grid, see :numref:`grid` -- those are to be mapped to Modelica diagram coordinates by the widget,
 
 * the components referenced under the ``equipment`` name are connected together with fluid connectors, see :numref:`sec_fluid_connectors`,
 
@@ -451,44 +467,47 @@ The next paragraphs address how the connections between the connectors of the di
 
 .. note::
 
-   * Test/issue
+   :underline:`Test/issue`
 
-     * Headered VS dedicated chilled water pump: conditional number of instances, placement and fluid path. Backup strategy: the first dedicated pump can be instantiated in the equipment section, the others in the dependencies section.
+   * Headered VS dedicated chilled water pump: conditional number of instances, placement and fluid path. Backup strategy: the first dedicated pump can be instantiated in the equipment section, the others in the dependencies section.
 
-     * A ``RelativePressure`` sensor requires the specification of two derived paths which is cumbersome since the fluid component around which the differential pressure is sensed belongs to a fluid path which depends on the sensor option e.g. AFMS (main path) or differential pressure (derived path). Backup strategy: considering an additional ``junction`` tag or specifying a tagging logic to determine if the parent fluid path gets interrupted or not at each fork...
+   * A ``RelativePressure`` sensor requires the specification of two derived paths which is cumbersome since the fluid component around which the differential pressure is sensed belongs to a fluid path which depends on the sensor option e.g. AFMS (main path) or differential pressure (derived path). Backup strategy: considering an additional ``junction`` tag or specifying a tagging logic to determine if the parent fluid path gets interrupted or not at each fork...
 
-   * Best format
+   :underline:`Best format`
 
-     * JSON
+   * JSON
 
-       * Expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
+     * Expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
 
-       * Is a JSON schema needed to eventually validate the user inputs? In that case the template developer would have to write the boolean conditions twice with two different syntaxes: once in the template and once in the JSON schema (typically with the `standard syntax <https://json-schema.org/understanding-json-schema/reference/conditionals.html?highlight=condition>`_ ``if then else`` introduced in *Draft 7*)?
+     * Is a JSON schema needed to eventually validate the user inputs? In that case the template developer would have to write the boolean conditions twice with two different syntaxes: once in the template and once in the JSON schema (typically with the `standard syntax <https://json-schema.org/understanding-json-schema/reference/conditionals.html?highlight=condition>`_ ``if then else`` introduced in *Draft 7*)?
 
-     * | Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework
-       | A robust syntax is required for:
+   * Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework
 
-       * auto-referencing the data structure e.g. ``#type.value`` refers to the value of the field ``value`` of the object which ``$id`` is ``type``,
+     A robust syntax is required for:
 
-       * conditional statements: potentially every field might require a conditional statement -- either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).
+     * auto-referencing the data structure e.g. ``#type.value`` refers to the value of the field ``value`` of the object which ``$id`` is ``type``,
 
-       * (Ideally the syntax would also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with ``n`` chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first ``n`` ones based on a condition.)
+     * conditional statements: potentially every field might require a conditional statement -- either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).
 
-   * Providing a reference guideline for the controls specification conditionally disables all controls options that do not comply with that guideline.
+     * Ideally the syntax should also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with ``n`` chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first ``n`` ones based on a condition.
 
-   * Parameters specified in the configuration widget
+   :underline:`Reference guideline for controls specification`
 
-     * The template developer is free to integrate in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in the model declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil.
+   * Providing a reference guideline for controls specification conditionally disables all controls options that do not comply with that guideline.
 
-     * Some parameters *need* to be integrated in the template (examples are provided in reference to ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``):
+   :underline:`Parameters exposed by the configuration widget`
 
-       * when they impact the model structure e.g. ``use_enthalpy`` requires an additional enthalpy sensor,
+   * The template developer is free to integrate in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in the model declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil.
 
-       * when they impact the dimension or instanciation of some connectors e.g. ``numZon``, ``have_occSen``,
+   * Some parameters *need* to be integrated in the template (examples are provided in reference to ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``):
 
-       * when no default value is provided e.g. ``AFlo`` cf. requirement that the model generated by the configuration widget must be ready to simulate.
+     * when they impact the model structure e.g. ``use_enthalpy`` requires an additional enthalpy sensor,
 
-       In the first two cases the model declaration must use the ``final`` qualifier for the corresponding parameters to prevent the user from overriding those values in the parameters panel.
+     * when they impact the dimension or instanciation of some connectors e.g. ``numZon``, ``have_occSen``,
+
+     * when no default value is provided e.g. ``AFlo`` cf. requirement that the model generated by the configuration widget must be ready to simulate.
+
+     In the first two cases the model declaration must use the ``final`` qualifier for the corresponding parameters to prevent the user from overriding those values in the parameters panel.
 
 
 .. figure:: img/grid.png
@@ -638,9 +657,13 @@ General Principles
 
 Generating the ``connect`` equations for signal variables relies on:
 
-* a string matching principle applied to the names of the connector variables and their components e.g. ``com.y`` for the output connector ``y`` of the component ``com``,
+* a (fuzzy) string matching principle applied to the names of the connector variables and their components e.g. ``com.y`` for the output connector ``y`` of the component ``com``,
 
 * a so-called *control bus* which has the type of an expandable connector, see *§9.1.3 Expandable Connectors* in :cite:`Modelica2017`.
+
+  (For clarity it might be useful to group control input variables in one sub-bus and control output variables in another sub-bus. The `experience feedback on bus usage in Modelica`_ shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option.)
+
+.. _experience feedback on bus usage in Modelica: https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library
 
 The following features of the expandable connector are leveraged:
 
@@ -656,159 +679,76 @@ The following features of the expandable connector are leveraged:
 
 #. Potentially present but not connected variables are eventually considered as undefined i.e. a tool may remove them or set them to the default value (Dymola treat them as not declared: they are not listed in ``dsin.txt``): all variables need not be connected so the control bus does not have to be reconfigured depending on the model structure.
 
-#. The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables corresponding to the control sequences implemented for each system), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.
+#. The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.
 
-Those features are illustrated with a minimal example in the figures below where:
+Those features are illustrated with a minimal example in annex, see :numref:`sec_annex_bus_example`.
 
-* a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,
 
-* a controller system which divides the input variable (measurement) by itself and thus outputs a control variable equal to one.
+Generating Connections by Approximate String Matching
+`````````````````````````````````````````````````````
 
-* The same model is first implemented with an expandable connector and then with a standard connector.
+To support automatic connections of signal variables a predefined control bus will be defined for each type of system (e.g. VAV, CHW plant) with a set of predeclared variables. The names of the variables must allow a one-to-one correspondence between:
 
-.. figure:: img/BusTestExp.svg
-   :name: BusTestExp
-   :width: 50%
+* the control sequence input variables and the outputs of the equipment model e.g. sensed quantities and actuators returned positions,
 
-   Minimal example illustrating the connection scheme with an expandable connector -- Top level
+* the control sequence output variables and the inputs of the equipment model e.g. actuators commanded positions.
 
-.. code:: modelica
+Thus the control bus variables are used as "gateways" to stream values between the controlled system and the controller system.
 
-   model BusTestExp
-   BusTestControllerExp controllerSystem;
-   BusTestControlledExp controlledSystem;
-   equation
-         connect(controllerSystem.ahuBus, controlledSystem.ahuBus);
-   end BusTestExp;
+However an exact string matching is not conceivable. An approximate (or fuzzy) string matching algorithm must be used instead.
 
-.. figure:: img/BusTestControlledExp.svg
-   :name: BusTestControlledExp
-   :width: 50%
 
-   Minimal example illustrating the connection scheme with an expandable connector -- Controlled component sublevel
+.. code-block:: python
+   :caption: Example of a Python function used for fuzzy string matching
+   :name: code_string_match
 
-.. code:: modelica
+   from fuzzywuzzy import fuzz
+   from fuzzywuzzy import process
 
-   model BusTestControlledExp
-   Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
-   Buildings.Experimental.Templates.BaseClasses.AhuBus ahuBus;
-   Modelica.Blocks.Routing.RealPassThrough actuator;
-   equation
-         connect(sensor.y, ahuBus.yMea);
-         connect(ahuBus.yAct, actuator.u);
-   end BusTestControlledExp;
+   import itertools as it
+   import re
 
-.. code:: modelica
 
-   expandable connector AhuBus
-   extends Modelica.Icons.SignalBus;
-   end AhuBus;
+   def return_best(string, choices):
+       # Constrain array to array and scalar (or array element) to scalar.
+       # Need to specify a logic for tagging scalar variables that should be connected to array elements e.g. '*_zon*.y'.
+       # Guard against array element A[i] to be connected to scalar variable.
+       if bool(re.search('\[.+\]|_zon.*\.', string)) and not bool(re.search('\[\d+\]', string)):
+           choices = [el for el in choices if re.search('\[.+\]', el)]
+           # Replace [.*] by [:]
+           string = re.sub('\[.*\]', '[:]', string, flags=re.I)
+           string = re.sub('_zon.*\.', '[:].', string, flags=re.I)
+       else:
+           choices = [el for el in choices if not re.search('\[.+\]', el)]
 
-.. note::
+       # Replace pre by p and tem by t.
+       string = re.sub('pre', 'P', string, flags=re.I)
+       string = re.sub('tem', 'T', string, flags=re.I)
 
-   The definition of ``AhuBus`` in the code snippet here above does not include any variable declaration. However the variables ``ahuBus.yAct`` and ``ahuBus.yMea`` are used in ``connect`` equations. That is only possible with an expandable connector.
+       # Perform comparison.
+       res = process.extract(string, choices, limit=2, scorer=fuzz.token_sort_ratio)
 
-   For the configuration widget we will have predeclared variables with names allowing a one-to-one correspondence between:
+       return list(it.chain(*res))
 
-   * the control sequence input variables and the outputs of the equipment model e.g. sensed quantities and actuators returned positions,
+Results in :numref:`fig_string_match`.
 
-   * the control sequence output variables and the inputs of the equipment model e.g. actuators commanded positions.
+.. raw:: html
+   :file: html/string_match.html
 
-   The control bus variables are used as "gateways" to stream values between the controlled and controller systems.
+.. raw:: html
 
-   For clarity it might be useful to group control input variables in one sub-bus and control output variables in another sub-bus.
-   The `experience feedback on bus usage in Modelica`_ shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option: the number of signals passing through busses has an impact on the number of equations and the simulation time.
+   <span style="display:block; margin-bottom:-20px;"></span>
 
-   .. _experience feedback on bus usage in Modelica: https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library
+.. figure:: img/string_match.*
+   :name: fig_string_match
 
-.. figure:: img/BusTestControllerExp.svg
-   :name: BusTestControllerExp
-   :width: 50%
-
-   Minimal example illustrating the connection scheme with an expandable connector -- Controller component sublevel
-
-.. code:: modelica
-
-   model BusTestControlledExp
-         Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
-         Buildings.Experimental.Templates.BaseClasses.AhuBus ahuBus;
-         Modelica.Blocks.Routing.RealPassThrough actuator;
-   equation
-         connect(ahuBus.yAct, actuator.u);
-         connect(sensor.y, ahuBus.yMea)
-   end BusTestControlledExp;
-
-.. figure:: img/BusTestNonExp.svg
-   :name: BusTestNonExp
-   :width: 50%
-
-   Minimal example illustrating the connection scheme with a standard connector -- Top level
-
-.. code:: modelica
-
-   model BusTestNonExp
-   BusTestControllerNonExp controllerSystem;
-   BusTestControlledNonExp controlledSystem;
-   equation
-         connect(controllerSystem.nonExpandableBus, controlledSystem.nonExpandableBus);
-   end BusTestNonExp;
-
-.. figure:: img/BusTestControlledNonExp.svg
-   :name: BusTestControlledNonExp
-   :width: 50%
-
-   Minimal example illustrating the connection scheme with a standard connector -- Controlled component sublevel
-
-.. code:: modelica
-
-   model BusTestControlledNonExp
-   Modelica.Blocks.Sources.RealExpression sensor(y=2 + sin(time*3.14));
-   Modelica.Blocks.Routing.RealPassThrough actuator;
-   BaseClasses.NonExpandableBus nonExpandableBus;
-   equation
-         nonExpandableBus.yMea = sensor.y;
-         actuator.u = nonExpandableBus.yAct;
-   end BusTestControlledNonExp;
-
-.. code:: modelica
-
-   connector NonExpandableBus
-   // The following declarations are required.
-   // The variables are not considered as connectors: they cannot be part of connect equations.
-   Real yMea;
-   Real yAct;
-   end NonExpandableBus;
-
-.. figure:: img/BusTestControllerNonExp.svg
-  :name: BusTestControllerNonExp
-  :width: 50%
-
-  Minimal example illustrating the connection scheme with a standard connector -- Controller component sublevel
-
-.. code:: modelica
-
-   model BusTestControllerNonExp
-   Controls.OBC.CDL.Continuous.Division controller;
-   Modelica.Blocks.Routing.RealPassThrough realPassThrough;
-   BaseClasses.NonExpandableBus nonExpandableBus;
-   equation
-         connect(realPassThrough.y, controller.u1);
-         controller.u2 = nonExpandableBus.yMea;
-         nonExpandableBus.yAct = controller.y;
-         realPassThrough.u = nonExpandableBus.yMea;
-   end BusTestControllerNonExp;
+   Fuzzy string matching test case -- G36 VAV AHU Controller
 
 
 Validation and Additional Requirements
 ``````````````````````````````````````
 
-The use of expandable connectors (control bus) is validated in case of a complex controller (``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``).
-
-The validation is performed:
-
-* with Dymola (Version 2020, 64-bit, 2019-04-10) and JModelica (revision numbers from svn: JModelica 12903, Assimulo 873);
-* first with a single instance of the controller and then with multiple instances corresponding to different parameters set up (see validation cases of the original controller ``Validation.Controller`` and ``Validation.ControllerConfigurationTest``),
-* with nested expandable connectors: a top-level control bus composed of a first sub-level control bus for control output variables and another for control input variables.
+The use of expandable connectors (control bus) is validated in case of a complex controller, see :numref:`sec_annex_bus_valid`.
 
 .. note::
 
@@ -845,15 +785,6 @@ The validation is performed:
    JModelica's behavior seems more aligned with :cite:`Modelica2017` *§9.1.3 Expandable Connectors* that states: "A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown."
    The same logic as JModelica for array variables connections to expandable connectors is required for LinkageJS.
 
-Simulation succeeds for the two tests cases with the two simulation tools.
-The results comparison to the original test case (without control bus) is presented in :numref:`annex_valid_bus` for Dymola.
-
-.. figure:: img/annex_valid_bus.svg
-   :name: annex_valid_bus
-   :width: 800px
-
-   G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (``origin``) and with (``new_bus``) expandable connectors
-
 
 Additional Requirements for the UI
 ``````````````````````````````````
@@ -869,8 +800,9 @@ Based on the previous validation case, :numref:`dymola_bus` presents the Dymola 
 
 The variables listed immediately after the bus name are either:
 
-* *declared variables* that are not connected e.g. ``ahuBus.yTest`` (declared as ``Real`` in the bus definition): those variables are only *potentially present* and eventually considered as *undefined* when translating the model (treated by Dymola as if they were never declared);
-* or *present variables* i.e. variables that appear in a connect equation e.g. ``ahuSubBusI.TZonHeaSet``: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for *that instance* of the expandable connector i.e. variables that are declared in another component and connected to the connector's instance.
+* *declared variables* that are not connected e.g. ``ahuBus.yTest`` (declared as ``Real`` in the bus definition): those variables are only *potentially present* and eventually considered as *undefined* when translating the model (treated by Dymola as if they were never declared) or,
+
+* *present variables* i.e. variables that appear in a connect equation e.g. ``ahuSubBusI.TZonHeaSet``: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for *that instance* of the expandable connector i.e. variables that are declared in another component and connected to the connector's instance.
 
 The variables listed under ``Add variable`` are the remaining *potentially present variables* (in addition to the declared but not connected variables). Those variables are elaborated by the augmentation process for *all instances* of the expandable connector, however they are not connected in that instance of the connector.
 
@@ -997,7 +929,6 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
    :width: 400px
 
    Bus variables being exposed in case the bus is an inside connector
-
 
 
 .. _sec_schematics_export:

@@ -20,6 +20,7 @@ LinkageJS Requirements Specification (Working Draft)
    process
    requirements
    architecture
+   annex
    glossary
    acknowledgments
    bibliography
