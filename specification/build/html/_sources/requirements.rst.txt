@@ -5,7 +5,9 @@ Requirements
 
 .. todo::
 
-   Validate the support for expandable connectors by the translator: are they part of CDL spec?
+   Validate the support for expandable connectors by the translator: are they even part of CDL spec? Breaking up of control sequences between different controllers?
+
+   Update the way top level parameters are handled by the configuration widget: dependencies to convert them into usable parameters? Actual Modelica variable names used at model instantiation or reference to those parameters: precise!
 
    Devise how return status signals can be generated for components that do not have built-in output status variables.
 
@@ -19,6 +21,8 @@ Requirements
 
    * EIKON uses two concepts: *reference* (used programmatically) and *display* (used for UI only) name.
    * HVAC zone, floor, room name is enough?
+
+   Diagram connection line: first segment must distantiate from graphical object
 
 .. _sec_general_description:
 

@@ -169,7 +169,8 @@
 <span id="sec-requirements"></span><h1>3. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>Validate the support for expandable connectors by the translator: are they part of CDL spec?</p>
+<p>Validate the support for expandable connectors by the translator: are they even part of CDL spec? Breaking up of control sequences between different controllers?</p>
+<p>Update the way top level parameters are handled by the configuration widget: dependencies to convert them into usable parameters? Actual Modelica variable names used at model instantiation or reference to those parameters: precise!</p>
 <p>Devise how return status signals can be generated for components that do not have built-in output status variables.</p>
 <ul class="simple">
 <li><p>Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a <code class="docutils literal notranslate"><span class="pre">pre</span></code> operator.</p></li>
@@ -181,6 +182,7 @@
 <li><p>EIKON uses two concepts: <em>reference</em> (used programmatically) and <em>display</em> (used for UI only) name.</p></li>
 <li><p>HVAC zone, floor, room name is enough?</p></li>
 </ul>
+<p>Diagram connection line: first segment must distantiate from graphical object</p>
 </div>
 <div class="section" id="general-description">
 <span id="sec-general-description"></span><h2>3.1. General Description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
@@ -2713,7 +2715,7 @@ The same logic as JModelica for array variables connections to expandable connec
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 12, 2019.<br/>
+      Last updated on Oct, 13, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
