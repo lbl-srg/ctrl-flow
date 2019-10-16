@@ -398,7 +398,9 @@
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_supAir&quot;</span><span class="p">,</span>
@@ -406,15 +408,19 @@
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
-            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#senFloOut&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outdoor airflow measurement station&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#ecoCon.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then [18, 5] else [20, 5]&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then [20, 5] else [18, 5]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then &#39;air_supply_min&#39; else &#39;air_supply_out&#39;&quot;</span>
+            <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#m_flowOut_nominal&quot;</span><span class="p">,</span>

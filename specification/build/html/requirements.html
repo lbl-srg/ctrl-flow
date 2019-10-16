@@ -182,19 +182,16 @@
 <li><p>Specification with the configuration widget of “unbreakable” parts of the control sequence.</p></li>
 <li><p>Also need to 1) expand arrays into scalar instances and connections 2) suppress bus gateway variables <code class="docutils literal notranslate"><span class="pre">connect(v1,</span> <span class="pre">bus.v);</span> <span class="pre">connect(v2,</span> <span class="pre">bus.v)</span></code> into <code class="docutils literal notranslate"><span class="pre">connect(v1,</span> <span class="pre">v2)</span></code> unless supported by CDL spec. &amp; translator?</p></li>
 </ul>
-<p>Update the way top level parameters are handled by the configuration widget: dependencies to convert them into usable parameters? Actual Modelica variable names used at model instantiation or reference to those parameters: precise!</p>
 <p>Devise how return status signals can be generated for components that do not have built-in output status variables.</p>
 <ul class="simple">
 <li><p>Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a <code class="docutils literal notranslate"><span class="pre">pre</span></code> operator.</p></li>
 </ul>
 <p>Allow for top level controller XOR individual controllers.</p>
-<p>Specify fluid connection for differential pressure sensor: might need an additional mechanism to explicitly specify a port-to-port connect equation instead of the fluid path.</p>
 <p>Specify more the tagging process and how it can support mapping with equipment characteristics and sizing from data &amp; sizing sheets.</p>
 <ul class="simple">
 <li><p>EIKON uses two concepts: <em>reference</em> (used programmatically) and <em>display</em> (used for UI only) name.</p></li>
 <li><p>HVAC zone, floor, room name is enough?</p></li>
 </ul>
-<p>Check the logic for fluid connectors: vertical / horizontal direction seems enough.</p>
 </div>
 <div class="section" id="general-description">
 <span id="sec-general-description"></span><h2>3.1. General Description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
@@ -753,7 +750,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">medium</span></code> : string : required</p>
 <blockquote>
-<div><p>Common medium of the fluid path e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Buildings.Media.Air&quot;</span></code></p>
+<div><p>Common medium for that fluid path and all derived paths e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Buildings.Media.Air&quot;</span></code></p>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -815,7 +812,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">value</span></code> : string (C), number, boolean, null : required</p>
 <blockquote>
-<div><p><em>enum</em> : <code class="docutils literal notranslate"><span class="pre">widget.options</span></code> (if provided)</p>
+<div><p>[<em>enum</em> : <code class="docutils literal notranslate"><span class="pre">widget.options</span></code> (if provided)]</p>
 <div class="line-block">
 <div class="line">Value of the object. Default value prior to user input.</div>
 <div class="line">May be provided as a literal expression in which all literal references to object properties (prefixed with <code class="docutils literal notranslate"><span class="pre">#</span></code>) must be replaced by their numerical value.</div>
@@ -849,7 +846,10 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">placement</span></code> : array, string (C) : optional</p>
 <blockquote>
-<div><p><em>items</em> : array, integer</p>
+<div><p>[<em>items</em> : array, integer]</p>
+<blockquote>
+<div><p>[<em>items</em> : integer]</p>
+</div></blockquote>
 <div class="line-block">
 <div class="line">Placement of the component icon provided in simplified grid coordinates <code class="docutils literal notranslate"><span class="pre">[line,</span> <span class="pre">column]</span></code> to be mapped with the model diagram coordinates.</div>
 <div class="line">Can be an array of arrays where the main array must have the same size as <code class="docutils literal notranslate"><span class="pre">widget.options</span></code> if the latter is provided (in which case the elements of <code class="docutils literal notranslate"><span class="pre">placement</span></code> get mapped with the elements of <code class="docutils literal notranslate"><span class="pre">widget.options</span></code> based on their indices).</div>
@@ -866,7 +866,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <div><p><em>enum</em> : <code class="docutils literal notranslate"><span class="pre">[&quot;path&quot;,</span> <span class="pre">&quot;tags&quot;,</span> <span class="pre">&quot;explicit&quot;]</span></code></p>
 <p>Type of connection logic.</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">value</span></code> : string, object : required</p>
+<p><code class="docutils literal notranslate"><span class="pre">value</span></code> : string (C), object : required</p>
 <blockquote>
 <div><div class="line-block">
 <div class="line">If <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">==</span> <span class="pre">&quot;path&quot;</span></code>: fluid path (string) that must be used to generate the tags in case of two connectors only. It must not be used if the component has more than two connectors or a non standard connectors scheme (different from one instance of <code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span></code> and one instance of <code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_b</span></code>).</div>

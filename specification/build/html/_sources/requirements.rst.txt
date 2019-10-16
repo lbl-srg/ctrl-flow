@@ -14,22 +14,17 @@ Requirements
    * Specification with the configuration widget of "unbreakable" parts of the control sequence.
    * Also need to 1) expand arrays into scalar instances and connections 2) suppress bus gateway variables ``connect(v1, bus.v); connect(v2, bus.v)`` into ``connect(v1, v2)`` unless supported by CDL spec. & translator?
 
-   Update the way top level parameters are handled by the configuration widget: dependencies to convert them into usable parameters? Actual Modelica variable names used at model instantiation or reference to those parameters: precise!
-
    Devise how return status signals can be generated for components that do not have built-in output status variables.
 
    * Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a ``pre`` operator.
 
    Allow for top level controller XOR individual controllers.
 
-   Specify fluid connection for differential pressure sensor: might need an additional mechanism to explicitly specify a port-to-port connect equation instead of the fluid path.
-
    Specify more the tagging process and how it can support mapping with equipment characteristics and sizing from data & sizing sheets.
 
    * EIKON uses two concepts: *reference* (used programmatically) and *display* (used for UI only) name.
    * HVAC zone, floor, room name is enough?
 
-   Check the logic for fluid connectors: vertical / horizontal direction seems enough.
 
 .. _sec_general_description:
 
@@ -624,7 +619,7 @@ For each object, the fields are defined as follows. When the type of a field is 
 
       ``medium`` : string : required
 
-        Common medium of the fluid path e.g. ``"Buildings.Media.Air"``
+        Common medium for that fluid path and all derived paths e.g. ``"Buildings.Media.Air"``
 
   ``equipment`` : array : optional
 
@@ -686,7 +681,7 @@ For each object, the fields are defined as follows. When the type of a field is 
 
   ``value`` : string (C), number, boolean, null : required
 
-    *enum* : ``widget.options`` (if provided)
+    [*enum* : ``widget.options`` (if provided)]
 
     | Value of the object. Default value prior to user input.
     | May be provided as a literal expression in which all literal references to object properties (prefixed with ``#``) must be replaced by their numerical value.
@@ -721,7 +716,9 @@ For each object, the fields are defined as follows. When the type of a field is 
 
   ``placement`` : array, string (C) : optional
 
-    *items* : array, integer
+    [*items* : array, integer]
+
+      [*items* : integer]
 
     | Placement of the component icon provided in simplified grid coordinates ``[line, column]`` to be mapped with the model diagram coordinates.
     | Can be an array of arrays where the main array must have the same size as ``widget.options`` if the latter is provided (in which case the elements of ``placement`` get mapped with the elements of ``widget.options`` based on their indices).
@@ -737,7 +734,7 @@ For each object, the fields are defined as follows. When the type of a field is 
 
       Type of connection logic.
 
-    ``value`` : string, object : required
+    ``value`` : string (C), object : required
 
       | If ``type == "path"``: fluid path (string) that must be used to generate the tags in case of two connectors only. It must not be used if the component has more than two connectors or a non standard connectors scheme (different from one instance of ``Modelica.Fluid.Interfaces.FluidPort_a`` and one instance of ``Modelica.Fluid.Interfaces.FluidPort_b``).
       | If ``type == "tags"``: object providing for each connector (referenced by its instance name) the tag to be applied.
@@ -758,6 +755,7 @@ The fluid connections (``connect`` equations involving two fluid connectors) mus
 * a heuristic connection logic (see :numref:`sec_heuristic`) based on:
 
   * the coordinates of the components in the diagram layout i.e. after converting the coordinates provided relatively to the simplified grid,
+
   * a tag applied to the fluid connectors (or fluid ports) of the components.
 
 .. _sec_explicit:
