@@ -3,6 +3,17 @@
 Annex
 =====
 
+.. _sec_annex_json:
+
+Example of the Configuration Data Structure
+-------------------------------------------
+
+.. literalinclude:: json/ahu_example.json
+   :language: json
+   :caption: Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)
+   :name: code_conf_ahu
+
+
 .. _sec_annex_bus_example:
 
 Illustration of the Main Features of the Expandable Connectors

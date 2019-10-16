@@ -79,3 +79,9 @@ div.admonition.note {
 .underline {
     text-decoration: underline;
 }
+
+blockquote {
+    font-size: unset;
+    padding: unset;
+    padding-left: 20px;
+}

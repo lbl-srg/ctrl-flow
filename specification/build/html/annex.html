@@ -75,8 +75,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">4. Software Architecture</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Annex</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#illustration-of-the-main-features-of-the-expandable-connectors">5.1. Illustration of the Main Features of the Expandable Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#validation-of-the-use-of-expandable-connectors">5.2. Validation of the Use of Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-of-the-configuration-data-structure">5.1. Example of the Configuration Data Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#illustration-of-the-main-features-of-the-expandable-connectors">5.2. Illustration of the Main Features of the Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validation-of-the-use-of-expandable-connectors">5.3. Validation of the Use of Expandable Connectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">6. Glossary</a></li>
@@ -96,8 +97,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">5. Annex</a><ul>
-<li><a class="reference internal" href="#illustration-of-the-main-features-of-the-expandable-connectors">5.1. Illustration of the Main Features of the Expandable Connectors</a></li>
-<li><a class="reference internal" href="#validation-of-the-use-of-expandable-connectors">5.2. Validation of the Use of Expandable Connectors</a></li>
+<li><a class="reference internal" href="#example-of-the-configuration-data-structure">5.1. Example of the Configuration Data Structure</a></li>
+<li><a class="reference internal" href="#illustration-of-the-main-features-of-the-expandable-connectors">5.2. Illustration of the Main Features of the Expandable Connectors</a></li>
+<li><a class="reference internal" href="#validation-of-the-use-of-expandable-connectors">5.3. Validation of the Use of Expandable Connectors</a></li>
 </ul>
 </li>
 </ul>
@@ -143,8 +145,317 @@
       
   <div class="section" id="annex">
 <span id="sec-annex"></span><h1>5. Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-of-the-configuration-data-structure">
+<span id="sec-annex-json"></span><h2>5.1. Example of the Configuration Data Structure<a class="headerlink" href="#example-of-the-configuration-data-structure" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="code-conf-ahu">
+<div class="code-block-caption"><span class="caption-number">Listing 5.1 </span><span class="caption-text">Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)</span><a class="headerlink" href="#code-conf-ahu" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#system&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+        <span class="nt">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">-120</span><span class="p">,</span><span class="mi">-200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#name&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text input&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#type&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">,</span> <span class="s2">&quot;Supply only&quot;</span><span class="p">,</span> <span class="s2">&quot;Exhaust only&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;fluid_paths&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#air_supply&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;east&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#air_return&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;west&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;equipment&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#heaRec&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;DOA&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;port_a1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_a2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;VAV&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Dedicated OA damper&quot;</span><span class="p">,</span> <span class="s2">&quot;Common OA damper&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipVertical&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;port_Out&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_out_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_OutMin&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_min_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Sup&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;port_Exh&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Ret&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal outdoor air volumetric flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.VolumeFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/s&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowSup_nominal)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air volumetric flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Supply only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowRet_nominal)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowRel_nominal)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air volumetric flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/h&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;controls&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Reference guideline for control sequences&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHUOpt&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Optimal start up&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Heating&quot;</span><span class="p">,</span> <span class="s2">&quot;Cooling&quot;</span><span class="p">,</span> <span class="s2">&quot;Heating and cooling&quot;</span><span class="p">],</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSup&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan control&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSupStaSto&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan start/stop control&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSup.widget.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;On-Off&quot;</span><span class="p">,</span> <span class="s2">&quot;Static Pressure Control&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;options.enabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value != &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;On-Off&#39; elseif #conAHURef.value == &#39;ASHRAE G36&#39; then &#39;Static Pressure Control&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#resPreStaSet&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Static pressure set point reset&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conFanSup.widget.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;T&amp;R&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;options.enabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value != &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;None&#39; elseif #conAHURef.value == &#39;ASHRAE G36&#39; then &#39;T&amp;R&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#conTAirSup&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply Air Temperature Control&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#resTSupSet&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air temperature set point reset&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conTAirSup.widget.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;OAT Reset&quot;</span><span class="p">,</span> <span class="s2">&quot;OAT and T&amp;R&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;options.enabled&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#conAHURef.value != (&#39;ASHRAE G36&#39; or &#39;ASHRAE 2006&#39;)&quot;</span><span class="p">,</span> <span class="s2">&quot;#conAHURef.value != &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #conAHURef.value == null then &#39;None&#39; else &#39;OAT and T&amp;R&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#numZon&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of served VAV boxes&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conTAirSup.widget.enabled and #resTSupSet.value == &#39;OAT and T&amp;R&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_outAir&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outside air port&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_supAir&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air port&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#senFloOut&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outdoor airflow measurement station&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#ecoCon.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then [18, 5] else [20, 5]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;fluid_path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#m_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal outdoor air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowOut_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default / 3600 * V_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#m_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowSup_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default / 3600 * V_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#m_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowRet_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default / 3600 * V_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#m_flowRel_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal relief air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowRet_nominal - m_flowSup_nominal + m_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="illustration-of-the-main-features-of-the-expandable-connectors">
-<span id="sec-annex-bus-example"></span><h2>5.1. Illustration of the Main Features of the Expandable Connectors<a class="headerlink" href="#illustration-of-the-main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<span id="sec-annex-bus-example"></span><h2>5.2. Illustration of the Main Features of the Expandable Connectors<a class="headerlink" href="#illustration-of-the-main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The main features of the expandable connectors (as described in <a class="reference internal" href="requirements.html#sec-signal-connectors"><span class="std std-numref">Section 3.4.3</span></a>) are illustrated with a minimal example described in the figures below where:</p>
 <ul class="simple">
 <li><p>a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,</p></li>
@@ -252,7 +563,7 @@
 </div>
 </div>
 <div class="section" id="validation-of-the-use-of-expandable-connectors">
-<span id="sec-annex-bus-valid"></span><h2>5.2. Validation of the Use of Expandable Connectors<a class="headerlink" href="#validation-of-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<span id="sec-annex-bus-valid"></span><h2>5.3. Validation of the Use of Expandable Connectors<a class="headerlink" href="#validation-of-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
 <p>The validation is performed:</p>
 <ul class="simple">
@@ -286,7 +597,7 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 12, 2019.<br/>
+      Last updated on Oct, 15, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
