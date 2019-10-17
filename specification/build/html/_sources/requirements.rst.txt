@@ -683,7 +683,7 @@ For each object, the fields are defined as follows. When the type of a field is 
 
     [*enum* : ``widget.options`` (if provided)]
 
-    | Value of the object. Default value prior to user input.
+    | Value of the object (default value prior to user input).
     | May be provided as a literal expression in which all literal references to object properties (prefixed with ``#``) must be replaced by their numerical value.
 
   ``unit`` : string : optional

@@ -1,0 +1,15 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry {Analog Value}, \hyperindexformat{\spxpagem}{47}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry {Binary Value}, \hyperindexformat{\spxpagem}{47}
+  \item \spxentry {Building Model}, \hyperindexformat{\spxpagem}{47}
+
+\end{sphinxtheindex}
