@@ -5,10 +5,6 @@ Requirements
 
 .. todo::
 
-   Conventions refer to RFC 2119 [RFC2119].
-
-   Look into https://jsonapi.org/
-
    How to extract CDL part (to be translated) from whole system model?
 
    * Specification with the configuration widget of "unbreakable" parts of the control sequence.
@@ -24,6 +20,8 @@ Requirements
 
    * EIKON uses two concepts: *reference* (used programmatically) and *display* (used for UI only) name.
    * HVAC zone, floor, room name is enough?
+
+   Specify how modifying mo files so that diffs are minimal? The diff has to be done on JSON objects only?
 
 
 .. _sec_general_description:
@@ -236,7 +234,7 @@ Detailed Functionalities
    * - Simulate model
      - P
      -
-     - The software settings allow the user to specify a command for simulating the model with a third party Modelica ool  .g. JModelica.
+     - The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.
 
        The output of the simulation routine is logged in LinkageJS console.
 
@@ -245,9 +243,7 @@ Detailed Functionalities
      - P
      - Partially supported because only the configuration widget integrates that feature.
 
-       When generating ``connect`` equation manually a similar approach as the *fluid path* used by the configuration widget  could be developed, see components with 4 ports and 2 medium.
-
-       Expected as a future enhancement of Modelica standard [#f1]_: should we anticipate or wait and see?
+       When generating ``connect`` equation manually a similar approach as the *fluid path* used by the configuration widget might be developed, see components with 4 ports and 2 medium.
 
    * - Support of Modelica graphical annotations
      - R
@@ -273,6 +269,11 @@ Detailed Functionalities
      - O
      - R
      - If a loaded model contains the Modelica annotation ``uses`` e.g. ``uses(Buildings(version="6.0.0")`` the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.
+
+   * - Path discovery
+     - R
+     -
+     - A routine to reconstruct the path or URL of a referenced resource within the loaded Modelica libraries is required. Typically a resource can be referenced with the following syntax ``modelica://Buildings.Air.Systems.SingleZone.VAV``.
 
    * - **Object manipulation**
      -
@@ -366,14 +367,7 @@ Detailed Functionalities
      - R
      - Allow the user to manually specify (right click menu) the style of the connections lines (V0).
 
-       When generating a ``connect`` equation automatically select a line style based on some heuristic to be further  specified (V1).
-
-   * - Fancy connection lines?
-     - N
-     - O
-     - Gridified layout https://ialab.it.monash.edu/webcola/examples/dotpowergraph.html
-
-       Orthogonal edge route layout https://www.visual-paradigm.com/support/documents/vpuserguide/1283/28/ 6047_automaticdia.html
+       When generating a ``connect`` equation automatically select a line style based on some heuristic to be further specified (V1).
 
    * - **Miscellaneous**
      -
@@ -384,6 +378,23 @@ Detailed Functionalities
      - ?
      - ?
      -
+
+   * - User documentation
+     - R
+     -
+     - User manual of the GUI and the corresponding API.
+
+       Both an HTML version and a PDF version are required (may rely on Sphinx).
+
+   * - Developer documentation
+     - R
+     -
+     - All classes, methods, free functions and modules must be documented with an exhaustive description of the functionalities, parameters and return values.
+
+       UML diagrams should also be provided.
+
+       At least an HTML version is required, PDF version is optional (may rely on Sphinx or VuePress).
+
 
 .. _sec_modelica_gui:
 
@@ -422,7 +433,7 @@ The software must comply with the Modelica language specification :cite:`Modelic
 .. figure:: img/linkage_connect_distance.svg
    :name: linkage_connect_distance
 
-   Connection line drawing logic near a connector
+   Logic for generating a connection line in the neighborhood of a connector
 
 
 .. _sec_configuration_widget:
@@ -436,7 +447,10 @@ Functionalities
 The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
 It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
 The intent is to reduce the complexity to the mere definition of the system's layout and the selection of standard control sequences already transcribed in Modelica :cite:`OBC`.
-`CtrlSpecBuilder <https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F>`_ is a tool widely used in the HVAC controls industry, which typically provides the same kind of functionality.
+
+.. note::
+
+   `CtrlSpecBuilder <https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F>`_ is a tool widely used in the HVAC controls industry for specifying control sequences. It might be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.
 
 There are fundamental requirements regarding the Modelica model generated by the configuration widget:
 
@@ -461,7 +475,7 @@ The data model typically provides for each entry:
 * the modeling data required to instantiate, position and set up the parameters of the different components,
 * some tags to be used to automatically generate the connections between the different components connectors.
 
-The user interface logic is illustrated in figures :numref:`screen_conf_0` and :numref:`screen_conf_1`.
+The user interface logic is illustrated in figures :numref:`screen_conf_0` and :numref:`screen_conf_1`. Note that the comments in those figures are part of the requirements.
 
 .. figure:: img/screen_conf_0.svg
    :name: screen_conf_0
@@ -473,22 +487,22 @@ The user interface logic is illustrated in figures :numref:`screen_conf_0` and :
 
    Configuration widget -- Configuring an existing model
 
-The envisioned data structure supporting this logic is illustrated in :numref:`code_conf_ahu` (pseudo code) where:
+The envisioned data structure supporting this logic consists in:
 
-* the placement coordinates are provided relatively to a simplified grid, see :numref:`grid` -- those are to be mapped to Modelica diagram coordinates by the widget,
+* placement coordinates provided relatively to a simplified grid, see :numref:`grid` -- those are to be mapped to Modelica diagram coordinates by the widget,
 
-* the components referenced under the ``equipment`` name are connected together with fluid connectors, see :numref:`sec_fluid_connectors`,
+* an ``equipment`` section referencing the components that must be connected together with fluid connectors, see :numref:`sec_fluid_connectors`,
 
-* the components referenced under the ``controls`` name are connected together with signal connectors, see :numref:`sec_signal_connectors`,
+* a ``controls`` section referencing the components that must connected together with signal connectors, see :numref:`sec_signal_connectors`,
 
-* the components referenced under the ``dependencies`` name are part of the equipment section:
+* a ``dependencies`` section referencing additional components with the following characteristics:
 
   * they typically correspond to sensors and outside fluid connectors,
   * the model completeness depends on their presence,
   * the requirements for their presence can be deduced from the equipment and controls options,
   * they do not need additional fields in the user form of the configuration widget.
 
-* the equipment and controls models are connected together by means of a *control bus*, see :numref:`screen_schematics_modelica`: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level model ``AHU_1`` generated by the widget). That component exposes the outside fluid connectors as well as the top level control bus.
+The equipment and controls models are connected together by means of a *control bus*, see :numref:`screen_schematics_modelica`: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level model ``AHU_1`` generated by the widget). That component exposes the outside fluid connectors as well as the top level control bus.
 
 The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
 
@@ -500,19 +514,11 @@ The next paragraphs address how the connections between the connectors of the di
 
 .. note::
 
-   :underline:`Test/issue`
-
-   * Headered VS dedicated chilled water pump: conditional number of instances, placement and fluid path. Backup strategy: the first dedicated pump can be instantiated in the equipment section, the others in the dependencies section.
-
-   * A ``RelativePressure`` sensor requires the specification of two derived paths which is cumbersome since the fluid component around which the differential pressure is sensed belongs to a fluid path which depends on the sensor option e.g. AFMS (main path) or differential pressure (derived path). Backup strategy: considering an additional ``junction`` tag or specifying a tagging logic to determine if the parent fluid path gets interrupted or not at each fork...
-
-   :underline:`Best format`
+   :underline:`Data Structure Format`
 
    * JSON
 
      * Expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
-
-     * Is a JSON schema needed to eventually validate the user inputs? In that case the template developer would have to write the boolean conditions twice with two different syntaxes: once in the template and once in the JSON schema (typically with the `standard syntax <https://json-schema.org/understanding-json-schema/reference/conditionals.html?highlight=condition>`_ ``if then else`` introduced in *Draft 7*)?
 
    * Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework
 
@@ -524,23 +530,19 @@ The next paragraphs address how the connections between the connectors of the di
 
      * Ideally the syntax should also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with ``n`` chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first ``n`` ones based on a condition.
 
-   :underline:`Reference guideline for controls specification`
+   :underline:`Reference Guideline for Controls Specification`
 
    * Providing a reference guideline for controls specification conditionally disables all controls options that do not comply with that guideline.
 
-   :underline:`Parameters exposed by the configuration widget`
+   :underline:`Parameters Exposed by the Configuration Widget`
 
-   * The template developer is free to integrate in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in the model declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil.
+   * The template developer is free to declare in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in the model declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistance of those references in :numref:`sec_persisting_data`.
 
    * Some parameters *need* to be integrated in the template (examples are provided in reference to ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``):
 
-     * when they impact the model structure e.g. ``use_enthalpy`` requires an additional enthalpy sensor,
-
-     * when they impact the dimension or instanciation of some connectors e.g. ``numZon``, ``have_occSen``,
+     * when they impact the model structure e.g. ``use_enthalpy`` requires an additional enthalpy sensor: in that case the model declaration must use the ``final`` qualifier to prevent the user from overriding those values in the parameters panel,
 
      * when no default value is provided e.g. ``AFlo`` cf. requirement that the model generated by the configuration widget must be ready to simulate.
-
-     In the first two cases the model declaration must use the ``final`` qualifier for the corresponding parameters to prevent the user from overriding those values in the parameters panel.
 
 
 .. figure:: img/grid.png
@@ -561,31 +563,16 @@ For each object, the fields are defined as follows. When the type of a field is 
 
 **Configuration object definition**
 
-  ``system`` : string : required
+  ``type`` : string : required
 
-    System to configure e.g. air handling unit, chilled water plant.
+    Type of system to configure e.g. air handling unit, chilled water plant.
 
-  ``icon`` : string : required
+  ``subtype`` : object : required
 
-    Path to icon file.
+    | Subtype of system e.g. for an air handling unit: variable air volume or dedicated outdoor air.
+    | Object defined as `elementary object`_.
 
-  ``diagram`` : object : required
-
-    Object defined as follows.
-
-    ``configuration`` : array : required
-
-      *items* : integer
-
-      Array on length 2, providing the number of lines and columns of the simplified grid layout.
-
-    ``model`` : array : required
-
-      *items* : array
-
-        *items* : integer
-
-        Array on length 2 providing the coordinates of one corner of the diagram rectangular layout.
+    *required* : ``[$id, description, widget, value]``
 
   ``name`` : object : required
 
@@ -594,18 +581,12 @@ For each object, the fields are defined as follows. When the type of a field is 
 
     *required* : ``[$id, description, widget, value]``
 
-  ``type`` : object : required
-
-    | Type of system e.g. for an air handling unit: variable air volume or dedicated outdoor air.
-    | Object defined as `elementary object`_.
-
-    *required* : ``[$id, description, widget, value]``
-
   ``fluid_paths`` : array : required
 
     *items* : object
 
-    Object defined as follows.
+    | Definition of all parent fluid paths of the model.
+    | Object defined as follows.
 
       ``$id`` : string : required
 
@@ -620,6 +601,32 @@ For each object, the fields are defined as follows. When the type of a field is 
       ``medium`` : string : required
 
         Common medium for that fluid path and all derived paths e.g. ``"Buildings.Media.Air"``
+
+  ``icon`` : string : required
+
+    Path to icon file.
+
+  ``diagram`` : object : required
+
+    Size of the diagram layout.
+
+    Object defined as follows.
+
+    ``configuration`` : array : required
+
+      *items* : integer
+
+      Array on length 2, providing the number of lines and columns of the simplified grid layout.
+
+    ``model`` : array : required
+
+      *items* : array
+
+      Array on length 2 providing the coordinates tuples of two opposite corners of the diagram rectangular layout.
+
+        *items* : integer
+
+        Array on length 2 providing the coordinates of one corner of the diagram rectangular layout.
 
   ``equipment`` : array : optional
 
@@ -743,6 +750,32 @@ For each object, the fields are defined as follows. When the type of a field is 
 An example of the resulting data structure is provided in annex, see :numref:`sec_annex_json`.
 
 
+.. _sec_persisting_data:
+
+Persisting Data
+***************
+
+Path of the Configuration File
+``````````````````````````````
+
+The path (relative to the library entry path, see *Path discovery* in :numref:`tab_gui_func`) must be stored in a hierarchical vendor annotation at the model level e.g. ``__Linkage(path="modelica://Buildings.Configuration.AHU")``.
+
+Configuration Objects
+`````````````````````
+
+The ``value`` of all objects must be stored with their ``$id`` in a serialized format within a hierarchical vendor annotation at the model level. (This is done at the model level since some configuration data may be linked to some model declarations indirectly using dependencies so annotations at the declaration level would not cover all use cases.)
+
+This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model.
+
+There are two kind of references:
+
+* LinkageJS references prefixed by ``#`` which must be interpreted by the configuration widget and replaced by their actual value e.g. ``Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)``.
+
+* Modelica references provided as literal variables e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowRet_nominal)``.
+
+Unless specified as ``final`` those references may be overwritten by the user. When loading a model the configuration widget must parse the ``$id` and ``value`` of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by ``#``). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
+
+
 .. _sec_fluid_connectors:
 
 Fluid Connectors
@@ -762,6 +795,8 @@ The fluid connections (``connect`` equations involving two fluid connectors) mus
 
 Explicit Connection Logic
 ``````````````````````````
+
+In certain cases it may be convenient to specify explicitly a one-to-one connection scheme between the connectors of the model e.g. a differential pressure sensor to be connected with the outlet port of a fan model and a port of a fluid source providing the reference pressure.
 
 That logic is activated at the component level by the keyword ``connect.type == "explicit"``.
 
@@ -789,24 +824,20 @@ That logic relies on connectors tagging which supports two modes:
 
    * Furthermore a fluid connector can be connected to more than one other fluid connector (fork configuration). To support that feature the concept of *derived path* is introduced: if ``fluid_path`` is the name of a fluid path, each fluid path named ``/^fluid_path_((?!_).)*$/gm`` is considered a *derived path*. The original (derived from) path is the *parent path*. A path with no parent path is referred to as *main path*.
 
-   * For instance in case of a three way valve without any flow splitter to explicitly model the fluid junction, the mapping dictionary could be:
+   * For instance in case of a three way valve the mapping dictionary could be:
 
      ``{"port_1": "hotwater_return_inlet", "port_2": "hotwater_return_outlet", "port_3": "hotwater_supply_bypass_inlet"}`` where ``hotwater_supply_bypass`` is a derived path from ``hotwater_supply``.
 
 .. figure:: img/linkage_connect_3wv.*
    :name: linkage_connect_3wv
 
-   Connection scheme with a fluid junction not modeled explicitly e.g. three-way valve. In this example the bypass and direct branches are derived paths from ``fluid_path0`` which consists only in one connector.
+   Example of the connection scheme for a three-way valve. The first diagram does not include an explicit model of the fluid junction whereas the second does (and represents the highly recommended modeling approach). This example illustrates how the fluid connection logic allows for both modeling approaches. In the first case the bypass and direct branches are derived paths from ``fluid_path0`` which consists only in one connector. In the second case they are different main paths, the bypass branch having a different direction than the direct branch (the user could also use an "explicit" connection logic to avoid the definition of an additional main fluid path).
 
-3. Explicit mode (``connect.type == "explicit"``)
+The conversion script throws an exception if an instantiated class has ``connect.type != "explicit"`` and some fluid ports that cannot be tagged nor connected with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.
+Once the tagging is resolved for all fluid connectors of the instantiated objects with ``connect.type != "explicit"``, the connector tags are stored in a list, furthered referred to as "tagged connectors list".
+All object names in that list thus reference instantiated objects with fluid ports that have to be connected to each other.
 
-   * Eventually it may be more convenient in certain cases to specify explicitly a one-to-one connection scheme between the connectors of the model e.g. a differential pressure sensor to be connected with the outlet port of a fan model and a port of a fluid source providing the reference pressure.
-
-The conversion script throws an exception if an instantiated class has some fluid ports that cannot be tagged nor connected with the previous logic e.g. non default names and no (or incomplete) mapping dictionary provided.
-
-If the tagging is resolved for all fluid connectors of the instantiated objects, the connector tags are stored in a hierarchical vendor annotation at the model level e.g. ``__Linkage(Connect(tags="{object_name1: {connector_name1: air_supply_inlet, connector_name2: air_supply_outlet, ...}, ...}"))``.
-
-All object names in ``__Linkage(Connect(tags="{...}"))`` annotation thus reference instantiated objects with fluid ports that have to be connected to each other. To build the full connection set, the direction (north, south, east, west) along which the objects must be connected needs to be provided.
+To build the full connection set, the direction (north, south, east, west) along which the objects must be connected needs to be provided for all main (not derived) fluid paths.
 
 .. note::
 
@@ -814,13 +845,11 @@ All object names in ``__Linkage(Connect(tags="{...}"))`` annotation thus referen
 
    Modelica ``connect`` construct is symmetric so at first glance only the vertical / horizontal direction of a fluid path seems enough. However the actual orientation along the fluid path is needed in order to identify the start and end connectors, see below.
 
-That information is stored in ``__Linkage(Connect(paths="{fluid_path1: {direction: horizontal_or_vertical, ...}, ...}"))`` for all main (not derived) fluid paths.
-
 The connection logic is then as follows:
 
-* List all the different fluid paths in ``__Linkage(Connect(tags="{...}"))`` as obtained by truncating ``_inlet`` and ``_outlet`` from each connector name. Get the orientation and direction of the main fluid paths from ``__Linkage(Connect(paths="{...}"))`` and finally reconstruct the tree structure of the fluid paths based on their names:
+* List all the different fluid paths in the tagged connectors list as obtained by truncating ``_inlet`` and ``_outlet`` from each connector name. Get the direction of the main fluid paths in the configuration data and finally reconstruct the tree structure of the fluid paths based on their names:
 
-  .. code-block:: none
+  .. code-block::
 
      └── fluid_path0 (direction: east): [connectors list]
        ├── fluid_path0_0 (inherited direction: east): [connectors list]
@@ -838,6 +867,7 @@ The connection logic is then as follows:
   * For each *derived path* find the start and end connectors as described hereunder and prepend / append the connectors list.
 
     * If the first (resp. last) connector in the ordered list is an outlet (resp. inlet), it is the start (resp. end) connector. (Note that the reciprocal is not true: a start port can be either an inlet or an outlet see :numref:`linkage_connect_multi`.)
+
     * Otherwise the start (resp. end) connector is the outlet (resp. inlet) connector of the object in the parent path placed immediately before (resp. after) the object corresponding to the first (resp. last) connector -- where before and after are relative to the direction and orientation of the fluid path (which are the same for the parent path).
 
   *  For each *parent path* split the path into several *sub paths* whenever a connector corresponds to the start or end port of a derived path.
@@ -853,7 +883,7 @@ The connection logic is then as follows:
 
 The implications of that logic are the following:
 
-* Within the same fluid path, objects are connected in a given direction and orientation: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically ``supply`` and ``return``.
+* Within the same fluid path, objects are connected in one given direction only: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically ``supply`` and ``return``.
 
 :numref:`linkage_connect_multi` to :numref:`linkage_connect_duct` further illustrate the connection logic on different test cases.
 
@@ -1222,5 +1252,3 @@ To be updated cf. licensing strategy different for each integration target
 
 
 .. rubric:: Footnotes
-
-.. [#f1] From https://build.openmodelica.org/Documentation/Modelica.Fluid.UsersGuide.ComponentDefinition.FluidConnectors.html

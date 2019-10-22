@@ -58,7 +58,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble and Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">2. Process Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a></li>
@@ -150,15 +150,19 @@
 <div class="literal-block-wrapper docutils container" id="code-conf-ahu">
 <div class="code-block-caption"><span class="caption-number">Listing 5.1 </span><span class="caption-text">Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)</span><a class="headerlink" href="#code-conf-ahu" title="Permalink to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#system&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#type&quot;</span><span class="p">,</span>
         <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
-        <span class="nt">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">-120</span><span class="p">,</span><span class="mi">-200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+    <span class="nt">&quot;subtype&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">,</span> <span class="s2">&quot;Supply only&quot;</span><span class="p">,</span> <span class="s2">&quot;Exhaust only&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#name&quot;</span><span class="p">,</span>
@@ -167,15 +171,6 @@
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text input&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#type&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">,</span> <span class="s2">&quot;Supply only&quot;</span><span class="p">,</span> <span class="s2">&quot;Exhaust only&quot;</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;fluid_paths&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -189,11 +184,16 @@
             <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
+    <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+        <span class="nt">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">-120</span><span class="p">,</span><span class="mi">-200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+    <span class="p">},</span>
     <span class="nt">&quot;equipment&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#heaRec&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;DOA&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value == &#39;DOA&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">]</span>
@@ -217,7 +217,7 @@
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value == &#39;VAV&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value == &#39;VAV&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Dedicated OA damper&quot;</span><span class="p">,</span> <span class="s2">&quot;Common OA damper&quot;</span><span class="p">]</span>
@@ -252,7 +252,7 @@
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">]</span>
@@ -277,7 +277,7 @@
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Supply only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Supply only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">]</span>
@@ -395,7 +395,7 @@
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_outAir&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outside air port&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
             <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -405,7 +405,7 @@
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#port_supAir&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air port&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#type.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
             <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -462,7 +462,7 @@
 </div>
 <div class="section" id="illustration-of-the-main-features-of-the-expandable-connectors">
 <span id="sec-annex-bus-example"></span><h2>5.2. Illustration of the Main Features of the Expandable Connectors<a class="headerlink" href="#illustration-of-the-main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
-<p>The main features of the expandable connectors (as described in <a class="reference internal" href="requirements.html#sec-signal-connectors"><span class="std std-numref">Section 3.4.3</span></a>) are illustrated with a minimal example described in the figures below where:</p>
+<p>The main features of the expandable connectors (as described in <a class="reference internal" href="requirements.html#sec-signal-connectors"><span class="std std-numref">Section 3.4.4</span></a>) are illustrated with a minimal example described in the figures below where:</p>
 <ul class="simple">
 <li><p>a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,</p></li>
 <li><p>a controller system which divides the input variable (measurement) by itself and thus outputs a control variable equal to one.</p></li>
@@ -603,7 +603,7 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 15, 2019.<br/>
+      Last updated on Oct, 21, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

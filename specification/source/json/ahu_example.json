@@ -1,13 +1,17 @@
 {
-    "system": {
-        "$id": "#system",
+    "type": {
+        "$id": "#type",
         "description": "System type",
         "value": "AHU"
     },
-    "icon": "path of icon.mo",
-    "diagram": {
-        "configuration": [24, 24],
-        "modelica": [[-120,-200], [120,120]]
+    "subtype": {
+        "$id": "#subtype",
+        "description": "Type of AHU",
+        "widget": {
+            "type": "Dropdown",
+            "options": ["VAV", "DOA", "Supply only", "Exhaust only"]
+        },
+        "value": "VAV"
     },
     "name": {
         "$id": "#name",
@@ -16,15 +20,6 @@
             "type": "Text input"
         },
         "value": "AHU"
-    },
-    "type": {
-        "$id": "#type",
-        "description": "Type of AHU",
-        "widget": {
-            "type": "Dropdown",
-            "options": ["VAV", "DOA", "Supply only", "Exhaust only"]
-        },
-        "value": "VAV"
     },
     "fluid_paths": [
         {
@@ -38,11 +33,16 @@
             "medium": "Buildings.Media.Air"
         }
     ],
+    "icon": "path of icon.mo",
+    "diagram": {
+        "configuration": [24, 24],
+        "modelica": [[-120,-200], [120,120]]
+    },
     "equipment": [
         {
             "$id": "#heaRec",
             "description": "Heat recovery",
-            "enabled": "#type.value == 'DOA'",
+            "enabled": "#subtype.value == 'DOA'",
             "widget": {
                 "type": "Dropdown menu",
                 "options": ["None", "Fixed plate", "Enthalpy wheel", "Sensible wheel"]
@@ -66,7 +66,7 @@
         {
             "$id": "#eco",
             "description": "Economizer",
-            "enabled": "#type.value == 'VAV'",
+            "enabled": "#subtype.value == 'VAV'",
             "widget": {
                 "type": "Dropdown menu",
                 "options": ["None", "Dedicated OA damper", "Common OA damper"]
@@ -101,7 +101,7 @@
         {
             "$id": "#fanSup",
             "description": "Supply fan",
-            "enabled": "#type.value != 'Exhaust only'",
+            "enabled": "#subtype.value != 'Exhaust only'",
             "widget": {
                 "type": "Dropdown menu",
                 "options": ["None", "Draw through", "Blow through"]
@@ -126,7 +126,7 @@
         {
             "$id": "#fanRet",
             "description": "Return/Relief fan",
-            "enabled": "#type.value != 'Supply only'",
+            "enabled": "#subtype.value != 'Supply only'",
             "widget": {
                 "type": "Dropdown menu",
                 "options": ["None", "Return", "Relief"]
@@ -244,7 +244,7 @@
         {
             "$id": "#port_outAir",
             "description": "Outside air port",
-            "enabled": "#type.value != 'Exhaust only'",
+            "enabled": "#subtype.value != 'Exhaust only'",
             "declaration": "Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)",
             "placement": [18, 1],
             "connect": {
@@ -254,7 +254,7 @@
         {
             "$id": "#port_supAir",
             "description": "Supply air port",
-            "enabled": "#type.value != 'Exhaust only'",
+            "enabled": "#subtype.value != 'Exhaust only'",
             "declaration": "Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)",
             "placement": [18, 24],
             "connect": {
