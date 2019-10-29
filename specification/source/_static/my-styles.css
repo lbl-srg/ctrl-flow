@@ -57,6 +57,14 @@ div.code-block-caption {
     font-size: unset;
 }
 
+.label {
+    color: unset;
+}
+
+cite {
+    color:red;
+}
+
 code {
     color: #476582;
     padding: .25rem .5rem;

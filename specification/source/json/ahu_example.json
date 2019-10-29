@@ -164,8 +164,8 @@
                 "type": "Dropdown menu",
                 "options": ["ASHRAE 2006", "ASHRAE G36"],
                 "options.enabled": [
-                    "Set of conditional statements allowing the use of ASHRAE 2006 SOO",
-                    "Set of conditional statements allowing the use of ASHRAE G36 SOO"
+                    "Set of conditional statements allowing the use of ASHRAE 2006",
+                    "Set of conditional statements allowing the use of ASHRAE G36"
                 ]
             },
             "value": null

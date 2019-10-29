@@ -273,8 +273,9 @@
 This documentation specifies the requirements for LinkageJS software: a graphical user interface for editing Modelica models of HVAC and control systems.
 
 It is intended to be mainly used as a discussion basis with the software development team.
-
 Therefore the proposed design should not be considered finalized and will evolve as the development progresses.
+
+Most of the concepts used to develop that specification are defined in the Modelica Language Specification \sphinxcite{bibliography:modelica2017}.
 
 \begin{sphinxadmonition}{note}{Conventions}
 
@@ -282,24 +283,9 @@ The words \sphinxstyleemphasis{must, must not, required, shall, shall not, shoul
 \end{sphinxadmonition}
 
 
-\chapter{Process Workflow}
-\label{\detokenize{process:process-workflow}}\label{\detokenize{process:sec-process}}\label{\detokenize{process::doc}}
-To be updated.
-
-
 \chapter{Requirements}
 \label{\detokenize{requirements:requirements}}\label{\detokenize{requirements:sec-requirements}}\label{\detokenize{requirements::doc}}
 \begin{sphinxadmonition}{note}{\label{\detokenize{requirements:id1}}Todo:}
-How to extract CDL part (to be translated) from whole system model?
-\begin{itemize}
-\item {} 
-Specification with the configuration widget of “unbreakable” parts of the control sequence.
-
-\item {} 
-Also need to 1) expand arrays into scalar instances and connections 2) suppress bus gateway variables \sphinxcode{\sphinxupquote{connect(v1, bus.v); connect(v2, bus.v)}} into \sphinxcode{\sphinxupquote{connect(v1, v2)}} unless supported by CDL spec. \& translator?
-
-\end{itemize}
-
 Devise how return status signals can be generated for components that do not have built-in output status variables.
 \begin{itemize}
 \item {} 
@@ -378,7 +364,7 @@ The software requirements regarding platform and environment compatibility are p
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id17}}\label{\detokenize{requirements:tab-environment}}
+\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id18}}\label{\detokenize{requirements:tab-environment}}
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -395,7 +381,7 @@ Windows (10), Linux Ubuntu (18.04), OS X (10.10)
 \hline
 Mobile device
 &
-iOS, Android?
+\sphinxtitleref{iOS, Android?}
 \\
 \hline
 Web browser
@@ -451,8 +437,10 @@ Bottom panel: console
 
 \end{itemize}
 
-The placement of the different UI elements may be different than the one proposed here above but the user must have access to all those elements.
+The placement of the different UI elements may differ from the one proposed here above (especially the right panel tabs may be relocated into the left panel) but the user must have access to all those elements.
+
 Ideally a toggle feature should be implemented to show or hide each side panel, either by user click if the panel is pinned or automatically.
+
 Optionally a fully customizable workspace may be implemented.
 
 
@@ -461,7 +449,7 @@ Optionally a fully customizable workspace may be implemented.
 
 \begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|\X{30}{100}|\X{10}{100}|\X{10}{100}|\X{50}{100}|}
 \sphinxthelongtablecaptionisattop
-\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id18}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
+\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id19}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 Feature
@@ -514,7 +502,7 @@ P
 &
 R
 &
-An alpha version of the widget is required in V0 for testing and refining the requirements.
+An alpha version of the widget is required in V0 for testing and refining the requirements. That first version should at least include an implementation of the equipment model configuration and the generation of fluid connections.
 \\
 \hline
 Documentation export
@@ -522,14 +510,18 @@ Documentation export
 N
 &
 R
-&\\
+&
+See \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}.
+\\
 \hline
-Working with tagged variables
+Variables tagging
 &
 N
 &
 R
-&\\
+&
+See \hyperref[\detokenize{requirements:sec-tagged-variables}]{Section \ref{\detokenize{requirements:sec-tagged-variables}}}.
+\\
 \hline
 \sphinxstylestrong{I/O}
 &&&\\
@@ -540,9 +532,7 @@ P
 &
 R
 &
-To be updated cf. different integration targets
-
-Simple Modelica model or full package (V0).
+Simple Modelica model or full package with recursive parsing (V0)
 
 If the model contains annotations specific to the configuration widget (see \hyperref[\detokenize{requirements:sec-configuration-widget}]{Section \ref{\detokenize{requirements:sec-configuration-widget}}}), the  corresponding data are loaded in memory for further configuration.
 
@@ -551,11 +541,11 @@ If the model contains the Modelica annotation \sphinxcode{\sphinxupquote{uses}} 
 If a package is loaded the structure of the package and sub packages is checked against \sphinxstyleemphasis{Chapter 13 Packages} (V1).
 \\
 \hline
-Export \sphinxtitleref{mo} file
+Export \sphinxcode{\sphinxupquote{mo}} file
 &
 R
 &&
-“Total model” export option?
+\sphinxtitleref{Need for “total model” export option?}
 \\
 \hline
 Export simulation results
@@ -573,7 +563,9 @@ P
 &
 R
 &
-Query selection of model variables based on regular expression (V0) or Brick/Haystack tag \sphinxcite{bibliography:brick}  \sphinxcite{bibliography:haystack4} (V1)
+Query selection of model variables based on regular expression (V0)
+
+Or Brick/Haystack tag \sphinxcite{bibliography:brick} \sphinxcite{bibliography:haystack4} (V1)
 \\
 \hline
 Plot simulation results
@@ -583,32 +575,33 @@ N
 O
 &\\
 \hline
-Export control points summary
-&
-R
-&&
-Relies on LBL module to generate the list of A/B I/O variables.
-\\
-\hline
-Export schematics
+Export documentation
 &
 P
 &
 R
 &
-Only the equipment drawing in V0. Control points and SOO description in V1 see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}.
+Control points and sequence of operation description (based on CDL to Word translator developed by LBL) (V0)
 
-Relies on LBL module CDL to Word translator.
+Equipment schematics see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}} (V1)
 \\
 \hline
-Import/Export data sheet?
+Import/Export data sheet
 &
 P
 &
 R
 &
-Additional module to 1) generate a file in CSV or JSON format from the configuration data (V0)
-2) populate the configuration data based on a file input in CSV or JSON format (V1).
+Additional module to
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{)}%
+\item {} 
+generate a file in CSV or JSON format from the configuration data (V0),
+
+\item {} 
+populate the configuration data based on a file input in CSV or JSON format (V1).
+
+\end{enumerate}
 \\
 \hline
 \sphinxstylestrong{Modelica features}
@@ -620,7 +613,11 @@ P
 &
 R
 &
-Real-time checking of syntax (V0) and connection (V1).
+Real-time checking of syntax for component names (V0)
+
+Real-time checking of connections and checking upon submit against Modelica language specification (V1)
+
+\sphinxtitleref{Is the validation against Modelica JSON schema enough?}
 \\
 \hline
 Translate model
@@ -720,13 +717,13 @@ R
 Right clicking an icon in the diagram view offers the option to open the model in another tab
 \\
 \hline
-Multiple objects selection for input of common parameters
+Multiple objects selection for setting the value of common parameters
 &
 O
 &
 R
 &
-If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter alue  s modified, all the selected objects will have their parameter value change.
+If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value  is modified, all the selected objects will have their parameter value updated.
 \\
 \hline
 Avoiding duplicate names
@@ -838,7 +835,7 @@ Snap to grid (V0) and alignment lines with neighbor objects (V1) with the option
 \sphinxstylestrong{Miscellaneous}
 &&&\\
 \hline
-Choice of units SI / IP
+\sphinxtitleref{Choice of units SI / IP}
 &
 ?
 &
@@ -849,7 +846,7 @@ User documentation
 &
 R
 &&
-User manual of the GUI and the corresponding API.
+User manual of the GUI and the corresponding API
 
 Both an HTML version and a PDF version are required (may rely on Sphinx).
 \\
@@ -892,7 +889,7 @@ the annotations: see \sphinxstyleemphasis{Chapter 18 Annotations}.
 
 \subsection{JSON Representation}
 \label{\detokenize{requirements:json-representation}}
-LBL has already developed a Modelica to JSON translator \sphinxhref{https://lbl-srg.github.io/modelica-json/}{Modelica to JSON translator}. This development includes the definition of two JSON schemas:
+LBL has already developed a \sphinxhref{https://lbl-srg.github.io/modelica-json/}{Modelica to JSON translator}. This development includes the definition of two JSON schemas:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -980,7 +977,7 @@ The implementation of control sequences must comply with OpenBuildingControl req
 It is required that the CDL part of the model can be programmatically isolated from the rest of the model in order to be translated into vendor-specific code (by means of a third-party translator).
 
 \item {} 
-The expandable connectors (control bus) are not part of CDL specification: \sphinxstylestrong{how to represent communication between sub-systems?}
+The expandable connectors (control bus) are not part of CDL specification: \sphinxtitleref{validate than then can be used to implement the connections between sub-systems e.g. AHU and terminal unit.}
 
 \end{itemize}
 
@@ -994,7 +991,7 @@ The data model typically provides for each entry:
 the HTML widget and populating data to be used for requesting user input,
 
 \item {} 
-the modeling data required to instantiate, position and set up the parameters of the different components,
+the modeling data required to instantiate, position and set the parameters values of the different components,
 
 \item {} 
 some tags to be used to automatically generate the connections between the different components connectors.
@@ -1017,7 +1014,7 @@ The user interface logic is illustrated in figures \hyperref[\detokenize{require
 \noindent\sphinxincludegraphics{{screen_conf_1}.pdf}
 \caption{Configuration widget \textendash{} Configuring an existing model}\label{\detokenize{requirements:screen-conf-1}}\end{figure}
 
-Equipment and controller models are connected together by means of a \sphinxstyleemphasis{control bus}, see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}: the upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget, see \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}} where the component named \sphinxcode{\sphinxupquote{AHU\_1\_01\_02}} represents an instance of the upper-level model \sphinxcode{\sphinxupquote{AHU\_1}} generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
+Equipment and controller models are connected together by means of a \sphinxstyleemphasis{control bus}, see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}. The upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget: see \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}} where the component named \sphinxcode{\sphinxupquote{AHU\_1\_01\_02}} represents an instance of the upper-level model \sphinxcode{\sphinxupquote{AHU\_1}} generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
 
 The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
 \begin{itemize}
@@ -1112,9 +1109,12 @@ when no default value is provided e.g. \sphinxcode{\sphinxupquote{AFlo}} cf. req
 \caption{Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model}\label{\detokenize{requirements:grid}}\end{figure}
 
 
-\subsubsection{API Description}
-\label{\detokenize{requirements:api-description}}
-For each object, the fields are defined as follows. When the type of a field is specified as a string marked with (C) it may correspond to:
+\subsubsection{API Definitions}
+\label{\detokenize{requirements:api-definitions}}
+In the definitions provided here below:
+\begin{itemize}
+\item {} 
+When the type of a field is specified as a string marked with (C) it may correspond to:
 \begin{itemize}
 \item {} 
 a conditional statement provided as a string that must be interpreted by the UI engine,
@@ -1122,16 +1122,25 @@ a conditional statement provided as a string that must be interpreted by the UI 
 \item {} 
 a reference to another field value of type boolean (that may itself correspond to a conditional statement provided as a string).
 
-\item {} 
-The syntax supporting this feature shall be specified in collaboration with the UI developer.
+\end{itemize}
 
-\begin{sphinxadmonition}{note}{Note:}
-The syntax must support e.g. \sphinxcode{\sphinxupquote{(\#air\_supply.medium).rho\_default}} where the first dot is used to access the property \sphinxcode{\sphinxupquote{medium}} of the configuration object with \sphinxcode{\sphinxupquote{\$id == \#air\_supply}} (which must be replaced by its value) while the second dot is used to access Modelica property \sphinxcode{\sphinxupquote{rho\_default}} of the class \sphinxcode{\sphinxupquote{Medium}} (which must be kept literal).
-\end{sphinxadmonition}
+\item {} 
+References to other fields of the data structure may be of two kinds:
+\begin{itemize}
+\item {} 
+LinkageJS references prefixed by \sphinxcode{\sphinxupquote{\#}} which must be interpreted by the configuration widget and replaced by their actual value e.g. \sphinxcode{\sphinxupquote{"declaration": "Modelica.Fluid.Interfaces.FluidPort\_a (redeclare package Medium=\#air\_supply.medium)"}} for the object \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a id\_value(redeclare package Medium=Buildings.Media.Air)}} in the generated model.
+
+\item {} 
+Modelica references provided as literal variables e.g. \sphinxcode{\sphinxupquote{"declaration": "Buildings.Fluid.Movers.SpeedControlled\_y (m\_flow\_nominal=m\_flowRet\_nominal)"}} for the object if \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y id\_value(m\_flow\_nominal=m\_flowRet\_nominal)}} in the generated model.
+
+\end{itemize}
+
+\item {} 
+The syntax supporting those features shall be specified in collaboration with the UI developer. The syntax must support e.g. \sphinxcode{\sphinxupquote{(\#air\_supply.medium).rho\_default}} where the first dot is used to access the property \sphinxcode{\sphinxupquote{medium}} of the configuration object with \sphinxcode{\sphinxupquote{\$id == \#air\_supply}} (which must be replaced by its value) while the second dot is used to access Modelica property \sphinxcode{\sphinxupquote{rho\_default}} of the class \sphinxcode{\sphinxupquote{Medium}} (which must be kept literal).
 
 \end{itemize}
 \phantomsection\label{\detokenize{requirements:configuration-api}}
-\sphinxstylestrong{Configuration object definition}
+\sphinxstylestrong{Configuration Object Definition}
 \begin{quote}
 
 \sphinxcode{\sphinxupquote{type}} : object : required
@@ -1173,7 +1182,7 @@ The syntax must support e.g. \sphinxcode{\sphinxupquote{(\#air\_supply.medium).r
 \sphinxstyleemphasis{items} : object
 
 \begin{DUlineblock}{0em}
-\item[] Definition of all parent fluid paths of the model.
+\item[] Definition of all \sphinxstyleemphasis{main fluid paths} of the model, see \hyperref[\detokenize{requirements:sec-heuristic}]{Section \ref{\detokenize{requirements:sec-heuristic}}}.
 \item[] Object defined as follows.
 \end{DUlineblock}
 
@@ -1289,7 +1298,7 @@ Object defined as {\hyperref[\detokenize{requirements:elementary-object}]{\sphin
 \sphinxcode{\sphinxupquote{enabled}} : boolean, string (C) : optional, default \sphinxcode{\sphinxupquote{true}}
 \begin{quote}
 
-Indicates if the object must be used or not. If not, the UI does not display the corresponding widget, no modification to the model is done and the object field \sphinxcode{\sphinxupquote{value}} gets assigned its \sphinxstylestrong{default value or null?}.
+Indicates if the object must be used or not. If not, the UI does not display the corresponding widget, no modification to the model is done and the object field \sphinxcode{\sphinxupquote{value}} is assigned its default value.
 \end{quote}
 
 \sphinxcode{\sphinxupquote{widget}} : object : optional
@@ -1327,7 +1336,7 @@ Indicates which option can be selected by the user. Must be the same size as \sp
 
 \begin{DUlineblock}{0em}
 \item[] Value of the object (default value prior to user input).
-\item[] May be provided as a literal expression in which all literal references to object properties (prefixed with \sphinxcode{\sphinxupquote{\#}}) must be replaced by their numerical value.
+\item[] May be provided as a literal expression in which all literal references to object properties (prefixed with \sphinxcode{\sphinxupquote{\#}}) must be replaced by their actual value.
 \end{DUlineblock}
 \end{quote}
 
@@ -1413,7 +1422,7 @@ Any valid Modelica annotation or an array of those which must have the same size
 \sphinxcode{\sphinxupquote{symbol\_path}} : string (C) : optional
 \begin{quote}
 
-Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
+Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}. That path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either a filter (SVG symbol needed) or a duct section (no SVG symbol needed).
 \end{quote}
 
 \sphinxcode{\sphinxupquote{icon\_transformation}} : string (C) : optional
@@ -1436,19 +1445,7 @@ The path (relative to the library entry path, see \sphinxstyleemphasis{Path disc
 
 The \sphinxcode{\sphinxupquote{value}} of all objects must be stored with their \sphinxcode{\sphinxupquote{\$id}} in a serialized format within a hierarchical vendor annotation at the model level. (This is done at the model level since some configuration data may be linked to some model declarations indirectly using dependencies so annotations at the declaration level would not cover all use cases.)
 
-This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model.
-
-There are two kind of references:
-\begin{itemize}
-\item {} 
-LinkageJS references prefixed by \sphinxcode{\sphinxupquote{\#}} which must be interpreted by the configuration widget and replaced by their actual value e.g. \sphinxcode{\sphinxupquote{"declaration": "Modelica.Fluid.Interfaces.FluidPort\_a (redeclare package Medium=\#air\_supply.medium)"}} for the object \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a id\_value(redeclare package Medium=Buildings.Media.Air)}} in the generated model.
-
-\item {} 
-Modelica references provided as literal variables e.g. \sphinxcode{\sphinxupquote{"declaration": "Buildings.Fluid.Movers.SpeedControlled\_y (m\_flow\_nominal=m\_flowRet\_nominal)"}} for the object if \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y id\_value(m\_flow\_nominal=m\_flowRet\_nominal)}} in the generated model.
-
-\end{itemize}
-
-Unless specified as \sphinxcode{\sphinxupquote{final}} those references may be overwritten by the user. When loading a model the configuration widget must parse the \sphinxcode{\sphinxupquote{\$id}} and \sphinxcode{\sphinxupquote{value}} of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by \sphinxcode{\sphinxupquote{\#}}). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
+This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model. Unless specified as \sphinxcode{\sphinxupquote{final}} those references may be overwritten by the user. When loading a model the configuration widget must parse the \sphinxcode{\sphinxupquote{\$id}} and \sphinxcode{\sphinxupquote{value}} of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by \sphinxcode{\sphinxupquote{\#}}). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
 
 \sphinxstylestrong{Engineering Symbol SVG File path}
 
@@ -1606,14 +1603,14 @@ That logic implies that within the same fluid path, objects are connected in one
 \capstart
 
 \noindent\sphinxincludegraphics{{linkage_connect_multi}.pdf}
-\caption{Connection scheme with nested fluid junctions not modeled explicitly}\label{\detokenize{requirements:linkage-connect-multi}}\end{figure}
+\caption{Connection scheme with nested fluid junctions not modeled explicitly (using derived paths)}\label{\detokenize{requirements:linkage-connect-multi}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics{{linkage_connect_dedicated}.pdf}
-\caption{Connection scheme with fluid branches with identical directions e.g. AHU with dedicated outdoor air damper for economizer}\label{\detokenize{requirements:linkage-connect-dedicated}}\end{figure}
+\noindent\sphinxincludegraphics{{linkage_connect_multi_exp}.pdf}
+\caption{Connection scheme with nested fluid junctions modeled explicitly (recommended modeling approach)}\label{\detokenize{requirements:linkage-connect-multi-exp}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -1634,13 +1631,13 @@ Generating the \sphinxcode{\sphinxupquote{connect}} equations for signal variabl
 a (fuzzy) string matching principle applied to the names of the connector variables and their components e.g. \sphinxcode{\sphinxupquote{com.y}} for the output connector \sphinxcode{\sphinxupquote{y}} of the component \sphinxcode{\sphinxupquote{com}},
 
 \item {} 
-a so-called \sphinxstyleemphasis{control bus} which has the type of an expandable connector, see \sphinxstyleemphasis{\S{}9.1.3 Expandable Connectors} in \sphinxcite{bibliography:modelica2017}.
+a so-called \sphinxstyleemphasis{control bus} which has the type of an \sphinxstyleemphasis{expandable connector}, see \sphinxstyleemphasis{\S{}9.1.3 Expandable Connectors} in \sphinxcite{bibliography:modelica2017}.
 
 (For clarity it may be useful to group control input variables in one sub-bus and control output variables in another sub-bus. The \sphinxhref{https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library}{experience feedback on bus usage in Modelica} shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option.)
 
 \end{itemize}
 
-The following features of the expandable connector are leveraged:
+The following features of the expandable connectors are leveraged:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -1668,6 +1665,10 @@ Those features are illustrated with a minimal example in annex, see \hyperref[\d
 
 \subsubsection{Generating Connections by Approximate String Matching}
 \label{\detokenize{requirements:generating-connections-by-approximate-string-matching}}
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxtitleref{The module implementing the string matching algorithm will be developed by LBL.}
+\end{sphinxadmonition}
+
 To support automatic connections of signal variables a predefined control bus will be defined for each type of system (e.g. AHU, CHW plant) with a set of predeclared variables. The names of the variables must allow a one-to-one correspondence between:
 \begin{itemize}
 \item {} 
@@ -1680,7 +1681,18 @@ the control sequence output variables and the inputs of the equipment model e.g.
 
 Thus the control bus variables are used as “gateways” to stream values between the controlled system and the controller system.
 
-However an exact string matching is not conceivable. An approximate (or fuzzy) string matching algorithm must be used instead.
+However an exact string matching is not conceivable. An approximate (or fuzzy) string matching algorithm must be used instead. Such an algorithm has been tested in the case of an advanced control sequence implementation in CDL (\sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}): see \hyperref[\detokenize{requirements:code-string-match}]{Listing \ref{\detokenize{requirements:code-string-match}}} and results in \hyperref[\detokenize{requirements:fig-string-match}]{Fig.\@ \ref{\detokenize{requirements:fig-string-match}}}. The main conclusions of that test are the following:
+\begin{itemize}
+\item {} 
+Strict naming conventions solve most of the mismatch cases with a satisfying confidence (end score \textgreater{} 60).
+
+\item {} 
+There is still a need to specify a convention to determine which array element should be connected to a scalar variable.
+
+\item {} 
+There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}}) for which a logic consisting in using only the variable name if it is descriptive enough (test on length of suffix of standard variables names) and the initial matching score is low (below 50).
+
+\end{itemize}
 \sphinxSetupCaptionForVerbatim{Example of a Python function used for fuzzy string matching}
 \def\sphinxLiteralBlockLabel{\label{\detokenize{requirements:code-string-match}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1717,19 +1729,6 @@ However an exact string matching is not conceivable. An approximate (or fuzzy) s
      \PYG{k}{return} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{it}\PYG{o}{.}\PYG{n}{chain}\PYG{p}{(}\PYG{o}{*}\PYG{n}{res}\PYG{p}{)}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-Results in \hyperref[\detokenize{requirements:fig-string-match}]{Fig.\@ \ref{\detokenize{requirements:fig-string-match}}}.
-\begin{itemize}
-\item {} 
-Strict naming conventions solve most of the mismatch cases with a satisfying confidence (end score \textgreater{} 60).
-
-\item {} 
-There is still a need to specify a convention to determine which array element should be connected to a scalar variable.
-
-\item {} 
-There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}}) for which a logic consisting in using only the variable name if it is descriptive enough (test on length of suffix of standard variables names) and the initial matching score is low (below 50).
-
-\end{itemize}
-
 
 
 
@@ -1739,7 +1738,8 @@ There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}})
 \capstart
 
 \noindent\sphinxincludegraphics{{string_match}.pdf}
-\caption{Fuzzy string matching test case \textendash{} G36 VAV AHU Controller}\label{\detokenize{requirements:fig-string-match}}\end{figure}
+\caption{Fuzzy string matching test case \textendash{} G36 VAV AHU Controller.
+\sphinxcode{\sphinxupquote{match}} (resp. \sphinxcode{\sphinxupquote{match\_to}}) is the bus variable with the highest matching score when compared to \sphinxcode{\sphinxupquote{Controller variable}} (resp. \sphinxcode{\sphinxupquote{Variable to connect to}}). \sphinxcode{\sphinxupquote{score}} (resp. \sphinxcode{\sphinxupquote{score\_to}}) is the corresponding matching score and       \sphinxcode{\sphinxupquote{sec\_score}} (resp. \sphinxcode{\sphinxupquote{sec\_score\_to}}) is the second highest score. Variables highlighted in red show when the algorithm fails. Rows highlighted in grey show the effect of renaming the variables based on strict naming conventions e.g. quantity first with standard abbreviation, etc.}\label{\detokenize{requirements:fig-string-match}}\end{figure}
 
 
 \subsubsection{Validation and Additional Requirements}
@@ -1776,7 +1776,16 @@ Providing an explicit indices range e.g. \sphinxcode{\sphinxupquote{{[}1:numZon{
 \PYG{n}{conAHU}\PYG{o}{.}\PYG{n}{ahuSubBusI}\PYG{o}{.}\PYG{n}{VDis\PYGZus{}flow}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{p}{(}\PYG{k+kr}{connect}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-This is a strange behavior in Dymola. On the other hand JModelica 1) allows the unspecified \sphinxcode{\sphinxupquote{{[}:{]}}} syntax and 2) does not generate any translation warning when explicitly specifying the indices range.
+This is a strange behavior in Dymola. On the other hand JModelica:
+\begin{itemize}
+\item {} 
+allows the unspecified \sphinxcode{\sphinxupquote{{[}:{]}}} syntax and,
+
+\item {} 
+does not generate any translation warning when explicitly specifying the indices range.
+
+\end{itemize}
+
 JModelica’s behavior seems more aligned with \sphinxcite{bibliography:modelica2017} \sphinxstyleemphasis{\S{}9.1.3 Expandable Connectors} that states: “A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown.”
 The same logic as JModelica for array variables connections to expandable connectors is required for LinkageJS.
 \end{sphinxadmonition}
@@ -1860,7 +1869,7 @@ Directly connecting variables to the bus (without intermediary sub-bus) can solv
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id19}}
+\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id20}}
 \sphinxaftertopcaption
 \begin{tabular}[t]{|\X{40}{100}|\X{10}{100}|\X{10}{100}|\X{20}{100}|\X{20}{100}|}
 \hline
@@ -1985,16 +1994,9 @@ O
 \caption{Bus variables being exposed in case the bus is an inside connector}\label{\detokenize{requirements:bus-inside}}\end{figure}
 
 
-\subsection{Parameters Setting}
-\label{\detokenize{requirements:parameters-setting}}\label{\detokenize{requirements:sec-parameters}}
-To be updated.
-
-The name and comment of the instance must be displayed in the parameters tab.
-
-
 \subsection{Control Sequence Configuration}
 \label{\detokenize{requirements:control-sequence-configuration}}
-In theory the configuration widget specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the \sphinxhref{https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL}{CDL Library}) and automatically generating connections between those blocks. However:
+In principle the configuration widget as specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the \sphinxhref{https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL}{CDL Library}) and automatically generating connections between those blocks. However:
 \begin{itemize}
 \item {} 
 it would require to distinguish between low-level control blocks (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.CDL.Continuous.LimPID}}) composing a system controller \textendash{} which must be connected with direct connect equations and not with expandable connectors variables that are not part of the CDL specification \textendash{} and high-level control blocks (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}) \textendash{} which can be connected to other high-level controllers (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.TerminalUnits.Controller}}) using expandable connectors variables (the CDL translation will be done for each high-level controller individually),
@@ -2007,6 +2009,43 @@ the complexity of some sequences makes it hard to validate the reliability of su
 Therefore in practice and at least for the first version of LinkageJS it has been decided to rely on pre-assembled high-level control blocks. For each system type (e.g. AHU) one (or a very limited number) of control block(s) should be instantiated by the configuration widget for which the connections can be generated using expandable connectors as described before.
 
 The example of the configuration file for a VAV system in \hyperref[\detokenize{annex:sec-annex-json}]{Section \ref{\detokenize{annex:sec-annex-json}}} illustrates that use case.
+
+
+\section{Parameters Setting}
+\label{\detokenize{requirements:parameters-setting}}\label{\detokenize{requirements:sec-parameters}}
+The parameters tab must expose the parameters of the objects selected in the diagram view, except if the parameters are declared as \sphinxstyleemphasis{protected} or have a \sphinxstyleemphasis{final} modifier. The name, unit and comment (description string) from the parameter declaration must be displayed.
+
+
+\subsection{Multiple Selection}
+\label{\detokenize{requirements:multiple-selection}}
+When multiple objects are selected in the diagram view the parameters tab must expose only common parameters (the intersection of the multiple parameters sets). The dimensionality of the parameters is not updated e.g. if the user selects an instance \sphinxcode{\sphinxupquote{comp}} of the class \sphinxcode{\sphinxupquote{Component}} and an instance \sphinxcode{\sphinxupquote{obj}} of the class \sphinxcode{\sphinxupquote{Object}} where both classes declare  a \sphinxcode{\sphinxupquote{Real}} scalar parameter \sphinxcode{\sphinxupquote{par}} (dimensionality 0) then the parameters tab must display an input field for \sphinxcode{\sphinxupquote{par}} (dimensionality 0) and the user input will be used to assign the same value to \sphinxcode{\sphinxupquote{par}} in both instances.
+
+
+\subsection{Array Selection}
+\label{\detokenize{requirements:array-selection}}
+When an array of instances is selected the parameters tab must update the dimensionality of each parameter e.g. if the user selects an array \sphinxcode{\sphinxupquote{comp{[}n{]}}} of instances of the class \sphinxcode{\sphinxupquote{Component}} which declares a \sphinxcode{\sphinxupquote{Real}} scalar parameter \sphinxcode{\sphinxupquote{parSca}} (dimensionality 0) and a \sphinxcode{\sphinxupquote{Real}} array parameter \sphinxcode{\sphinxupquote{parArr{[}m{]}}} (dimensionality 1) then the parameters tab must display input fields for \sphinxcode{\sphinxupquote{parSca{[}n{]}}} (dimensionality 1) and \sphinxcode{\sphinxupquote{parArr{[}m{]}{[}n{]}}} (dimensionality 2).
+
+
+\subsection{Enumeration and Boolean}
+\label{\detokenize{requirements:enumeration-and-boolean}}
+For parameters of type \sphinxstyleemphasis{enumeration} or \sphinxstyleemphasis{Boolean} a dropdown menu should be displayed in the parameters tab and populated by the enumeration items or \sphinxcode{\sphinxupquote{true}} and \sphinxcode{\sphinxupquote{false}}.
+
+
+\subsection{Record}
+\label{\detokenize{requirements:record}}
+The parameters tab must allow exploring the inner structure of a parameter \sphinxstyleemphasis{record} and setting the lower level parameters values. Since a record is a class with no selected instance in that use case a graphical hint should be implemented e.g. frozen diagram view deemphasized by grey filter.
+
+
+\subsection{Grouped Parameters}
+\label{\detokenize{requirements:grouped-parameters}}
+A declaration annotation may be used by the model developer to specify how parameters should be divided up in different \sphinxstyleemphasis{tabs} and \sphinxstyleemphasis{groups} e.g. \sphinxcode{\sphinxupquote{annotation(Dialog(tab="General", group="Nominal condition"))}}. The parameters tab must reflect that structure.
+
+
+\subsection{Validation}
+\label{\detokenize{requirements:validation}}
+Values entered by the user must be validated \sphinxstyleemphasis{upon submit} against Modelica language specification \sphinxcite{bibliography:modelica2017} and parameter attributes e.g. \sphinxcode{\sphinxupquote{min}}, \sphinxcode{\sphinxupquote{max}}. (The sizes of array dimensions may be validated at run-time only by the simulation tool.)
+
+A color code is required to identify the fields with incorrect values and the corresponding error message must be displayed on hover.
 
 
 \section{Documentation Export}
@@ -2027,26 +2066,26 @@ Control sequence description
 
 The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget e.g. primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.
 
-\hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}} illustrates the typical diagram model generated by the configuration widget and \hyperref[\detokenize{requirements:screen-schematics-output}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-output}}} mocks up the corresponding export that should be generated. The actual export output may consist in three different files.
+\hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}} provides the typical diagram view of the Modelica model generated by the configuration widget and \hyperref[\detokenize{requirements:screen-schematics-output}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-output}}} mocks up the corresponding documentation that should be exported. The documentation export may consist in three different files.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics{{screen_schematics_modelica}.pdf}
-\caption{Mockup of the documentation export \textendash{} Input Modelica file}\label{\detokenize{requirements:screen-schematics-modelica}}\end{figure}
+\caption{Diagram view of the Modelica model generated by the configuration widget}\label{\detokenize{requirements:screen-schematics-modelica}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics{{screen_schematics_output}.pdf}
-\caption{Mockup of the documentation export \textendash{} Output file}\label{\detokenize{requirements:screen-schematics-output}}\end{figure}
+\caption{Mockup of the documentation export}\label{\detokenize{requirements:screen-schematics-output}}\end{figure}
 
 
 \subsection{Engineering Schematics}
 \label{\detokenize{requirements:engineering-schematics}}
-Objects of the original model to be included in the final export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. \sphinxcode{\sphinxupquote{annotation(\_\_Linkage(symbol\_path="value of symbol\_path"))}}. That annotation may be:
+Objects of the original model to be included in the schematics export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. \sphinxcode{\sphinxupquote{annotation(\_\_Linkage(symbol\_path="value of symbol\_path"))}}. That annotation may be:
 \begin{itemize}
 \item {} 
 specified in the configuration file, see \sphinxcode{\sphinxupquote{symbol\_path}} in {\hyperref[\detokenize{requirements:configuration-api}]{\sphinxcrossref{Configuration API}}},
@@ -2065,7 +2104,7 @@ Due to geometry discrepancies between Modelica icons and engineering symbols a p
 For the exported objects:
 \begin{itemize}
 \item {} 
-the connectors connected to the control input and output sub buses must be split into two groups depending on their type \textendash{} boolean or numeric,
+the connectors connected to the control input and output sub-buses must be split into two groups depending on their type \textendash{} boolean or numeric,
 
 \item {} 
 an index tag is then generated based on the object position, from top to bottom and left to right,
@@ -2097,7 +2136,7 @@ The requirements for tagging variables and performing some queries on the set of
 Those additional requirements should at least address the following typical use cases:
 \begin{itemize}
 \item {} 
-Setting up parameters values with OS measures e.g. nominal electrical loads or boiler efficiency
+Setting parameters values with OpenStudio measures e.g. nominal electrical loads or boiler efficiency
 
 \item {} 
 Plotting variables selected by a description string e.g. “indoor air temperature for all zones of the first floor”
@@ -2112,7 +2151,7 @@ An algorithm based on the variables names (similar to the one proposed for gener
 
 \section{OpenStudio Integration}
 \label{\detokenize{requirements:openstudio-integration}}
-LinkageJS must eventually be integrated as a specific \sphinxstyleemphasis{tab} in the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/}{OpenStudio} (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future \sphinxhref{https://lbl-srg.github.io/soep/}{Spawn of EnergyPlus} (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating\_your\_model/\#air-plant-and-zone-hvac-systems}{HVAC Systems tab}).
+LinkageJS must eventually be integrated as a specific \sphinxstyleemphasis{tab} in the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/}{OpenStudio} (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future \sphinxhref{https://lbl-srg.github.io/soep/}{Spawn of EnergyPlus} (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating\_your\_model/\#air-plant-and-zone-hvac-systems}{HVAC Systems tab}.)
 
 In SOEP workflow a multi-zone building model (EnergyPlus input file \sphinxcode{\sphinxupquote{idf}}) is configured within OpenStudio. The OpenStudio model \sphinxcode{\sphinxupquote{osm}} exposes functions to access \sphinxcode{\sphinxupquote{idf}} parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the \sphinxcode{\sphinxupquote{idf}} file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
 
@@ -2130,19 +2169,19 @@ specify LinkageJS API (to be developed by the UI developer).
 
 \end{itemize}
 
-This is illustrated in \hyperref[\detokenize{architecture:linkage-architecture-os}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-os}}}.
+This is illustrated in annex, see \hyperref[\detokenize{architecture:linkage-architecture-os}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-os}}}.
 
 
 \section{Interface with URBANopt GeoJSON}
 \label{\detokenize{requirements:interface-with-urbanopt-geojson}}
-A seamless integration of LinkageJS into URBANopt modeling workflow is required. To support that feature additional requirements will be specified by LBL in a second version of this document.
+A seamless integration of LinkageJS into \sphinxhref{https://www.nrel.gov/buildings/urbanopt.html}{URBANopt} modeling workflow is required. To support that feature additional requirements will be specified by LBL in a second version of this document.
 
-The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-LinkageJS workflow. Therefore the requirements should mainly address the persistence of modeling data and shared resources between the two processes.
+The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-LinkageJS workflow. Therefore the requirements should only relate to the persistence of modeling data and the shared resources between the two processes.
 
 
 \section{Licensing}
 \label{\detokenize{requirements:licensing}}
-LinkageJS core components (e.g. \sphinxstyleemphasis{Editor Layer} in \hyperref[\detokenize{architecture:sec-architecture}]{Section \ref{\detokenize{architecture:sec-architecture}}}) must be open sourced: \sphinxstylestrong{under BSD 3/4-clause?}
+LinkageJS core components (e.g. \sphinxstyleemphasis{Editor Layer} in \hyperref[\detokenize{architecture:sec-architecture}]{Section \ref{\detokenize{architecture:sec-architecture}}}) must be open sourced: \sphinxtitleref{under BSD 3 or 4-clause?}
 
 Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:
 \begin{itemize}
@@ -2174,7 +2213,7 @@ For OpenStudio there is currently a shift in the \sphinxhref{https://www.openstu
 
 \section{Encryption}
 \label{\detokenize{requirements:encryption}}
-Need for any specific requirement regarding “total model export”?
+\sphinxtitleref{Need for any specific requirement regarding “total model export”?}
 
 See current standardization effort in \sphinxhref{https://github.com/modelica/ModelicaSpecification/issues/1868}{\#1868}.
 
@@ -2182,7 +2221,9 @@ See current standardization effort in \sphinxhref{https://github.com/modelica/Mo
 \chapter{Software Architecture}
 \label{\detokenize{architecture:software-architecture}}\label{\detokenize{architecture:sec-architecture}}\label{\detokenize{architecture::doc}}
 \hyperref[\detokenize{architecture:linkage-architecture-legend}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-legend}}} to \hyperref[\detokenize{architecture:linkage-architecture-os}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-os}}} provide simplified architecture diagrams for the three integration targets.
-Those are not hard and fast, they are rather provided to give an idea of the main modules to develop and how they interface with LBL in-house developments.
+Those are not hard and fast. They rather aim at describing the main modules to develop and how they interface with LBL or third party developments.
+
+\sphinxtitleref{To be updated: add definitions cf. Michael’s comments.}
 
 \begin{figure}[htbp]
 \centering
@@ -2210,7 +2251,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
 \capstart
 
 \noindent\sphinxincludegraphics{{linkage_architecture_os}.pdf}
-\caption{Software architecture - Integration in third party application e.g. \sphinxhref{https://www.openstudio.net}{OpenStudio®}}\label{\detokenize{architecture:linkage-architecture-os}}\end{figure}
+\caption{Software architecture - Integration in third party application e.g. \sphinxhref{https://www.openstudio.net}{OpenStudio®} (OS)}\label{\detokenize{architecture:linkage-architecture-os}}\end{figure}
 
 
 \chapter{Annex}
@@ -2386,8 +2427,8 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
                 \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}ASHRAE 2006\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}ASHRAE G36\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
                 \PYG{n+nt}{\PYGZdq{}options.enabled\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
-                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing the use of ASHRAE 2006 SOO\PYGZdq{}}\PYG{p}{,}
-                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing ASHRAE G36 SOO\PYGZdq{}}
+                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing the use of ASHRAE 2006\PYGZdq{}}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing the use of ASHRAE G36\PYGZdq{}}
                 \PYG{p}{]}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
@@ -2421,7 +2462,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}winSen\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have occupancy sensor\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have window status sensor\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
@@ -2430,7 +2471,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}perZonRehBox\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have occupancy sensor\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if there is any VAV\PYGZhy{}reheat boxes on perimeter zones\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
@@ -2439,7 +2480,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}duaDucBox\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Check if the AHU serves dual duct boxes\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if the AHU serves dual duct boxes\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
@@ -2448,7 +2489,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}airFloMeaSta\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Check if the AHU has AFMS (Airflow measurement station)\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if the AHU has Air Flow Measurement Station\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
@@ -2478,7 +2519,7 @@ Those are not hard and fast, they are rather provided to give an idea of the mai
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Maximum expected system primary airflow at design stage\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric vector input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
         \PYG{p}{\PYGZcb{}}
@@ -2710,34 +2751,9 @@ The results comparison to the original test case (without control bus) is presen
 \caption{G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (\sphinxcode{\sphinxupquote{origin}}) and with (\sphinxcode{\sphinxupquote{new\_bus}}) expandable connectors}\label{\detokenize{annex:annex-valid-bus}}\end{figure}
 
 
-\chapter{Glossary}
-\label{\detokenize{glossary:glossary}}\label{\detokenize{glossary:sec-glossary}}\label{\detokenize{glossary::doc}}
-To be updated.
-\begin{description}
-\item[{Analog Value\index{Analog Value@\spxentry{Analog Value}|spxpagem}\phantomsection\label{\detokenize{glossary:term-analog-value}}}] \leavevmode
-In CDL, we say a value is analog if it represents a continuous
-number. The value may be presented by an analog signal such as
-voltage, or by a digital signal.
-
-\item[{Binary Value\index{Binary Value@\spxentry{Binary Value}|spxpagem}\phantomsection\label{\detokenize{glossary:term-binary-value}}}] \leavevmode
-In CDL, we say a value is binary if it can take on the values
-0 and 1. The value may however be presented by an analog signal
-that can take on two values (within some tolerance) in order
-to communicate the binary value.
-
-\item[{Building Model\index{Building Model@\spxentry{Building Model}|spxpagem}\phantomsection\label{\detokenize{glossary:term-building-model}}}] \leavevmode
-Digital model of the physical behavior of a given building over time,
-which accounts for any elements of the building envelope and includes a
-representation of internal gains and occupancy. Building model has connectors
-to be coupled with an environment model and any HVAC and non-HVAC system models
-pertaining to the building.
-
-\end{description}
-
-
 \chapter{Acknowledgments}
 \label{\detokenize{acknowledgments:acknowledgments}}\label{\detokenize{acknowledgments::doc}}
-To be updated.
+This research is supported by the Assistant Secretary for Energy Efficiency and Renewable Energy, Office of Building Technologies of the U.S. Department of Energy.
 
 
 \chapter{References}

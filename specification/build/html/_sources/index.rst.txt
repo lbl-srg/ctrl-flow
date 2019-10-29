@@ -17,11 +17,9 @@ LinkageJS Requirements Specification (Working Draft)
    :maxdepth: 2
 
    preamble
-   process
    requirements
    architecture
    annex
-   glossary
    acknowledgments
    bibliography
 
