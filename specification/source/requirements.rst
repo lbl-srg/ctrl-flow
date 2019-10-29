@@ -32,7 +32,7 @@ Built around this core functionality the following additional features are requi
 
 #. A configuration widget supporting assisted modeling based on a simple HTML input form: see :numref:`sec_configuration_widget`
 
-#. A schematics export functionality: see :numref:`sec_schematics_export`
+#. A documentation export functionality: see :numref:`sec_documentation_export`
 
 #. A set of functionalities to enable working with tagged variables: see :numref:`sec_tagged_variables`
 
@@ -141,7 +141,7 @@ Detailed Functionalities
      - R
      - An alpha version of the widget is required in V0 for testing and refining the requirements.
 
-   * - Schematics export
+   * - Documentation export
      - N
      - R
      -
@@ -781,7 +781,7 @@ For each object, the fields are defined as follows. When the type of a field is 
 
   ``symbol_path`` : string (C) : optional
 
-    Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see :numref:`sec_schematics_export`. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
+    Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see :numref:`sec_documentation_export`. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
 
   ``icon_transformation`` : string (C) : optional
 
@@ -1270,12 +1270,12 @@ Therefore in practice and at least for the first version of LinkageJS it has bee
 The example of the configuration file for a VAV system in :numref:`sec_annex_json` illustrates that use case.
 
 
-.. _sec_schematics_export:
+.. _sec_documentation_export:
 
-Schematics Export
------------------
+Documentation Export
+--------------------
 
-The schematics export encompasses three items:
+The documentation export encompasses three items:
 
 #. Engineering schematics of the equipment including the controls points
 
@@ -1291,12 +1291,12 @@ The composition level at which the functionality will typically be used is the s
 .. figure:: img/screen_schematics_modelica.svg
    :name: screen_schematics_modelica
 
-   Mockup of the schematics export -- Input Modelica file
+   Mockup of the documentation export -- Input Modelica file
 
 .. figure:: img/screen_schematics_output.svg
    :name: screen_schematics_output
 
-   Mockup of the schematics export -- Output file (format to be specified: Word or PDF)
+   Mockup of the documentation export -- Output file
 
 
 Engineering Schematics
@@ -1385,7 +1385,7 @@ The URBANopt-Modelica project has adopted the Modelica language to interface the
 Licensing
 ---------
 
-As a project funded by the U.S. Department of Energy’s Building Technologies Office (BTO) LinkageJS core components (e.g. *Editor Layer* in :numref:`sec_architecture`) must be open sourced: **under BSD 3/4-clause?**.
+LinkageJS core components (e.g. *Editor Layer* in :numref:`sec_architecture`) must be open sourced: **under BSD 3/4-clause?**
 
 Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:
 
@@ -1403,7 +1403,7 @@ Different licensing options are then envisioned depending on the integration tar
 
   Licensing will depend on the application distribution model.
 
-  For OpenStudio there is currently a shift in the `licensing strategy <https://www.openstudio.net/new-future-for-openstudio-application>`_. For this integration target the specification will be precised to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
+  For OpenStudio there is currently a shift in the `licensing strategy <https://www.openstudio.net/new-future-for-openstudio-application>`_: the specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
 
 
 Encryption

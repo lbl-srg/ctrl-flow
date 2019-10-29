@@ -83,7 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#control-sequence-configuration">3.4.6. Control Sequence Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#schematics-export">3.5. Schematics Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-export">3.5. Documentation Export</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#engineering-schematics">3.5.1. Engineering Schematics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-points-list">3.5.2. Control Points List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-sequence-description">3.5.3. Control Sequence Description</a></li>
@@ -158,7 +158,7 @@
 <li><a class="reference internal" href="#control-sequence-configuration">3.4.6. Control Sequence Configuration</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#schematics-export">3.5. Schematics Export</a><ul>
+<li><a class="reference internal" href="#documentation-export">3.5. Documentation Export</a><ul>
 <li><a class="reference internal" href="#engineering-schematics">3.5.1. Engineering Schematics</a></li>
 <li><a class="reference internal" href="#control-points-list">3.5.2. Control Points List</a></li>
 <li><a class="reference internal" href="#control-sequence-description">3.5.3. Control Sequence Description</a></li>
@@ -235,7 +235,7 @@
 <p>Built around this core functionality the following additional features are required:</p>
 <ol class="arabic simple">
 <li><p>A configuration widget supporting assisted modeling based on a simple HTML input form: see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a></p></li>
-<li><p>A schematics export functionality: see <a class="reference internal" href="#sec-schematics-export"><span class="std std-numref">Section 3.5</span></a></p></li>
+<li><p>A documentation export functionality: see <a class="reference internal" href="#sec-documentation-export"><span class="std std-numref">Section 3.5</span></a></p></li>
 <li><p>A set of functionalities to enable working with tagged variables: see <a class="reference internal" href="#sec-tagged-variables"><span class="std std-numref">Section 3.6</span></a></p></li>
 </ol>
 <p>In terms of software design:</p>
@@ -346,7 +346,7 @@ Optionally a fully customizable workspace may be implemented.</p>
 <td><p>R</p></td>
 <td><p>An alpha version of the widget is required in V0 for testing and refining the requirements.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Schematics export</p></td>
+<tr class="row-odd"><td><p>Documentation export</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
 <td></td>
@@ -943,7 +943,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">symbol_path</span></code> : string (C) : optional</p>
 <blockquote>
-<div><p>Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see <a class="reference internal" href="#sec-schematics-export"><span class="std std-numref">Section 3.5</span></a>. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).</p>
+<div><p>Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see <a class="reference internal" href="#sec-documentation-export"><span class="std std-numref">Section 3.5</span></a>. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">icon_transformation</span></code> : string (C) : optional</p>
 <blockquote>
@@ -3573,9 +3573,9 @@ A similar view of the connections set must be implemented with the additional re
 <p>The example of the configuration file for a VAV system in <a class="reference internal" href="annex.html#sec-annex-json"><span class="std std-numref">Section 5.1</span></a> illustrates that use case.</p>
 </div>
 </div>
-<div class="section" id="schematics-export">
-<span id="sec-schematics-export"></span><h2>3.5. Schematics Export<a class="headerlink" href="#schematics-export" title="Permalink to this headline">¶</a></h2>
-<p>The schematics export encompasses three items:</p>
+<div class="section" id="documentation-export">
+<span id="sec-documentation-export"></span><h2>3.5. Documentation Export<a class="headerlink" href="#documentation-export" title="Permalink to this headline">¶</a></h2>
+<p>The documentation export encompasses three items:</p>
 <ol class="arabic simple">
 <li><p>Engineering schematics of the equipment including the controls points</p></li>
 <li><p>Control points list</p></li>
@@ -3584,10 +3584,10 @@ A similar view of the connections set must be implemented with the additional re
 <p>The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget e.g. primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.</p>
 <p><a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.16</span></a> illustrates the typical diagram model generated by the configuration widget and <a class="reference internal" href="#screen-schematics-output"><span class="std std-numref">Fig. 3.17</span></a> mocks up the corresponding export that should be generated. The actual export output may consist in three different files.</p>
 <div class="figure align-default" id="screen-schematics-modelica">
-<img alt="_images/screen_schematics_modelica.svg" src="_images/screen_schematics_modelica.svg" /><p class="caption"><span class="caption-number">Fig. 3.16 </span><span class="caption-text">Mockup of the schematics export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
+<img alt="_images/screen_schematics_modelica.svg" src="_images/screen_schematics_modelica.svg" /><p class="caption"><span class="caption-number">Fig. 3.16 </span><span class="caption-text">Mockup of the documentation export – Input Modelica file</span><a class="headerlink" href="#screen-schematics-modelica" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="screen-schematics-output">
-<img alt="_images/screen_schematics_output.svg" src="_images/screen_schematics_output.svg" /><p class="caption"><span class="caption-number">Fig. 3.17 </span><span class="caption-text">Mockup of the schematics export – Output file (format to be specified: Word or PDF)</span><a class="headerlink" href="#screen-schematics-output" title="Permalink to this image">¶</a></p>
+<img alt="_images/screen_schematics_output.svg" src="_images/screen_schematics_output.svg" /><p class="caption"><span class="caption-number">Fig. 3.17 </span><span class="caption-text">Mockup of the documentation export – Output file</span><a class="headerlink" href="#screen-schematics-output" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="engineering-schematics">
 <h3>3.5.1. Engineering Schematics<a class="headerlink" href="#engineering-schematics" title="Permalink to this headline">¶</a></h3>
@@ -3641,7 +3641,7 @@ A similar view of the connections set must be implemented with the additional re
 <li><p>devise the read and write access to the local file system e.g. by means of OS API (functions to be developed by LBL or NREL),</p></li>
 <li><p>specify LinkageJS API (to be developed by the UI developer).</p></li>
 </ul>
-<p>This is illustrated in <a class="reference internal" href="architecture.html#linkage-architecture-os"><span class="std std-numref">Fig. 4.3</span></a>.</p>
+<p>This is illustrated in <a class="reference internal" href="architecture.html#linkage-architecture-os"><span class="std std-numref">Fig. 4.4</span></a>.</p>
 </div>
 <div class="section" id="interface-with-urbanopt-geojson">
 <h2>3.8. Interface with URBANopt GeoJSON<a class="headerlink" href="#interface-with-urbanopt-geojson" title="Permalink to this headline">¶</a></h2>
@@ -3650,7 +3650,7 @@ A similar view of the connections set must be implemented with the additional re
 </div>
 <div class="section" id="licensing">
 <h2>3.9. Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
-<p>As a project funded by the U.S. Department of Energy’s Building Technologies Office (BTO) LinkageJS core components (e.g. <em>Editor Layer</em> in <a class="reference internal" href="architecture.html#sec-architecture"><span class="std std-numref">Section 4</span></a>) must be open sourced: <strong>under BSD 3/4-clause?</strong>.</p>
+<p>LinkageJS core components (e.g. <em>Editor Layer</em> in <a class="reference internal" href="architecture.html#sec-architecture"><span class="std std-numref">Section 4</span></a>) must be open sourced: <strong>under BSD 3/4-clause?</strong></p>
 <p>Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:</p>
 <ul>
 <li><p>Desktop app</p>
@@ -3664,7 +3664,7 @@ A similar view of the connections set must be implemented with the additional re
 </li>
 <li><p>Third party application embedding</p>
 <p>Licensing will depend on the application distribution model.</p>
-<p>For OpenStudio there is currently a shift in the <a class="reference external" href="https://www.openstudio.net/new-future-for-openstudio-application">licensing strategy</a>. For this integration target the specification will be precised to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).</p>
+<p>For OpenStudio there is currently a shift in the <a class="reference external" href="https://www.openstudio.net/new-future-for-openstudio-application">licensing strategy</a>: the specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).</p>
 </li>
 </ul>
 </div>
