@@ -60,23 +60,46 @@
 <li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble and Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">2. Process Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#main-requirements">3.1.1. Main Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#software-compatibility">3.1.2. Software Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#ui-visual-structure">3.1.3. UI Visual Structure</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#detailed-functionalities">3.2. Detailed Functionalities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">3.3. Modelica Graphical User Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">3.4. Configuration Widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">3.5. Schematics Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">3.3. Modelica Graphical User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#modelica-language">3.3.1. Modelica Language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#json-representation">3.3.2. JSON Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#connection-lines">3.3.3. Connection Lines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">3.4. Configuration Widget</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#functionalities">3.4.1. Functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#data-model">3.4.2. Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#fluid-connectors">3.4.3. Fluid Connectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#signal-connectors">3.4.4. Signal Connectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#parameters-setting">3.4.5. Parameters Setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-sequence-configuration">3.4.6. Control Sequence Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#schematics-export">3.5. Schematics Export</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#engineering-schematics">3.5.1. Engineering Schematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-points-list">3.5.2. Control Points List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-sequence-description">3.5.3. Control Sequence Description</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#working-with-tagged-variables">3.6. Working with Tagged Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">3.7. OpenStudio Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">3.8. Interface with URBANopt GeoJSON</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">3.9. Encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">3.10. Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">3.9. Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">3.10. Encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">4. Software Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="annex.html">5. Annex</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="annex.html#example-of-the-configuration-data-structure">5.1. Example of the Configuration Data Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annex.html#illustration-of-the-main-features-of-the-expandable-connectors">5.2. Illustration of the Main Features of the Expandable Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annex.html#validation-of-the-use-of-expandable-connectors">5.3. Validation of the Use of Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#main-features-of-the-expandable-connectors">5.2. Main Features of the Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connectors">5.3. Validating the Use of Expandable Connectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">6. Glossary</a></li>
@@ -169,7 +192,7 @@
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 21, 2019.<br/>
+      Last updated on Oct, 28, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

@@ -18,12 +18,18 @@ h4  {
     margin-bottom: 10px;
 }
 
-li {
-    margin: 0 0 10px;
+ul, ol {
+    margin-top: 10px;
 }
 
+/*
 .alert>ul, .alert>ol {
     margin-top: 10px;
+}
+*/
+
+li {
+    margin: 0 0 10px;
 }
 
 .literal-block-wrapper {

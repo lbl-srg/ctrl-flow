@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  21 OCT 2019 17:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  28 OCT 2019 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1502,6 +1502,10 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 271.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 19.70294pt on input line 271.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 281.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 281.
 [1
 
 
@@ -1518,109 +1522,127 @@ File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 295.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 315.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 315.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 326.
+(Font)              scaled to size 13.67995pt on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 326.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 326.
+(Font)              scaled to size 13.67995pt on input line 314.
  [3
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 393.
+(Font)              scaled to size 8.54997pt on input line 381.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 393.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 381.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.54997pt on input line 393.
-<screen_mockup.pdf, id=175, 713.66624pt x 426.59375pt>
+(Font)              scaled to size 8.54997pt on input line 381.
+<screen_mockup.pdf, id=176, 713.66624pt x 426.59375pt>
 File: screen_mockup.pdf Graphic file (type pdf)
 <use screen_mockup.pdf>
-Package pdftex.def Info: screen_mockup.pdf  used on input line 431.
+Package pdftex.def Info: screen_mockup.pdf  used on input line 421.
 (pdftex.def)             Requested size: 505.88985pt x 302.41501pt.
  [4]
-[5 <./screen_mockup.pdf>] [6] [7] [8]
-<linkage_connect_distance.pdf, id=268, 492.84125pt x 122.4575pt>
+[5 <./screen_mockup.pdf>] [6] [7] [8] [9]
+<linkage_connect_distance.pdf, id=282, 492.84125pt x 122.4575pt>
 File: linkage_connect_distance.pdf Graphic file (type pdf)
 <use linkage_connect_distance.pdf>
-Package pdftex.def Info: linkage_connect_distance.pdf  used on input line 921.
+Package pdftex.def Info: linkage_connect_distance.pdf  used on input line 942.
 (pdftex.def)             Requested size: 492.84003pt x 122.45718pt.
- [9] [10 <./linkage_connect_distance.pdf>]
-<screen_conf_0.pdf, id=300, 963.6pt x 542.025pt>
+ [10 <./linkage_connect_distance.pdf>]
+<screen_conf_0.pdf, id=308, 963.6pt x 542.025pt>
 File: screen_conf_0.pdf Graphic file (type pdf)
 <use screen_conf_0.pdf>
-Package pdftex.def Info: screen_conf_0.pdf  used on input line 989.
+Package pdftex.def Info: screen_conf_0.pdf  used on input line 1010.
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
-<screen_conf_1.pdf, id=301, 963.6pt x 542.025pt>
+<screen_conf_1.pdf, id=309, 963.6pt x 542.025pt>
 File: screen_conf_1.pdf Graphic file (type pdf)
 <use screen_conf_1.pdf>
-Package pdftex.def Info: screen_conf_1.pdf  used on input line 996.
+Package pdftex.def Info: screen_conf_1.pdf  used on input line 1017.
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
 [11 <./screen_conf_0.pdf>] [12 <./screen_conf_1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1083
-\T1/pcr/m/n/10 Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho
-_default / 3600
+Underfull \hbox (badness 6641) in paragraph at lines 1095--1096
+\T1/phv/m/n/10 The tem-plate de-vel-oper is free to de-clare in the tem-plate a
+ny pa-ram-e-ter of the com-pos-ing com-po-
  []
 
-<grid.png, id=384, 1996.45876pt x 983.675pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1096
+\T1/pcr/m/n/10 Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho
+_default / 3600 *
+ []
+
+[13]
+<grid.png, id=404, 1996.45876pt x 983.675pt>
 File: grid.png Graphic file (type png)
 <use grid.png>
-Package pdftex.def Info: grid.png  used on input line 1102.
+Package pdftex.def Info: grid.png  used on input line 1111.
 (pdftex.def)             Requested size: 505.87636pt x 249.25029pt.
-[13] [14 <./grid.png>] [15] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
-[]\T1/phv/m/n/10 Modelica ref-er-ences pro-vided as lit-eral vari-ables e.g. \T
-1/pcr/m/n/10 Buildings.Fluid.Movers.
+ [14 <./grid.png>] [15] [16] [17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 1444--1445
+\T1/pcr/m/n/10 Fluid.Interfaces.FluidPort_a id_value(redeclare package Medium=B
+uildings.Media.
  []
 
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 1.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-) [18]
-Underfull \hbox (badness 10000) in paragraph at lines 1487--1488
+
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1448
+[]\T1/phv/m/n/10 Modelica ref-er-ences pro-vided as lit-eral vari-ables e.g. \T
+1/pcr/m/n/10 "declaration": "Buildings.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1448
+\T1/pcr/m/n/10 Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRet_nominal
+)" \T1/phv/m/n/10 for the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1448
+\T1/phv/m/n/10 ob-ject if \T1/pcr/m/n/10 "$id": "id_value" \T1/phv/m/n/10 leads
+ to \T1/pcr/m/n/10 Buildings.Fluid.Movers.SpeedControlled_y
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 1518--1519
 []\T1/pcr/m/n/10 {"port_1": "hotwater_return_inlet", "port_2": "hotwater_return
 _outlet",
  []
 
 
-Underfull \hbox (badness 7256) in paragraph at lines 1487--1488
+Underfull \hbox (badness 7256) in paragraph at lines 1518--1519
 \T1/pcr/m/n/10 "port_3": "hotwater_supply_bypass_inlet"} \T1/phv/m/n/10 where \
 T1/pcr/m/n/10 hotwater_supply_bypass \T1/phv/m/n/10 is a
  []
 
-<linkage_connect_3wv.pdf, id=433, 584.1825pt x 304.2567pt>
+<linkage_connect_3wv.pdf, id=459, 584.1825pt x 304.2567pt>
 File: linkage_connect_3wv.pdf Graphic file (type pdf)
 <use linkage_connect_3wv.pdf>
-Package pdftex.def Info: linkage_connect_3wv.pdf  used on input line 1497.
+Package pdftex.def Info: linkage_connect_3wv.pdf  used on input line 1528.
 (pdftex.def)             Requested size: 505.90814pt x 263.48483pt.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 1498.
-[19] [20 <./linkage_connect_3wv.pdf
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 1529.
+[20] [21 <./linkage_connect_3wv.pdf
 
 pdfTeX warning: pdflatex (file ./linkage_connect_3wv.pdf): PDF inclusion: inval
 id other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [21]
-<linkage_connect_multi.pdf, id=474, 578.16pt x 131.53139pt>
+>] [22]
+<linkage_connect_multi.pdf, id=499, 578.16pt x 131.53139pt>
 File: linkage_connect_multi.pdf Graphic file (type pdf)
 <use linkage_connect_multi.pdf>
-Package pdftex.def Info: linkage_connect_multi.pdf  used on input line 1582.
+Package pdftex.def Info: linkage_connect_multi.pdf  used on input line 1608.
 (pdftex.def)             Requested size: 505.88875pt x 115.09569pt.
-<linkage_connect_dedicated.pdf, id=475, 424.4658pt x 149.59889pt>
+<linkage_connect_dedicated.pdf, id=500, 424.4658pt x 149.59889pt>
 File: linkage_connect_dedicated.pdf Graphic file (type pdf)
 <use linkage_connect_dedicated.pdf>
-Package pdftex.def Info: linkage_connect_dedicated.pdf  used on input line 1589
+Package pdftex.def Info: linkage_connect_dedicated.pdf  used on input line 1615
 .
 (pdftex.def)             Requested size: 424.46475pt x 149.59851pt.
-<linkage_connect_duct.pdf, id=476, 379.4175pt x 247.8861pt>
+<linkage_connect_duct.pdf, id=501, 379.4175pt x 247.8861pt>
 File: linkage_connect_duct.pdf Graphic file (type pdf)
 <use linkage_connect_duct.pdf>
-Package pdftex.def Info: linkage_connect_duct.pdf  used on input line 1596.
+Package pdftex.def Info: linkage_connect_duct.pdf  used on input line 1622.
 (pdftex.def)             Requested size: 379.41656pt x 247.88547pt.
- [22 <./linkage_connect_multi.pdf
+ [23 <./linkage_connect_multi.pdf
 
 pdfTeX warning: pdflatex (file ./linkage_connect_multi.pdf): PDF inclusion: inv
 alid other resource which is no dict (key 'ProcSets', type <array>); ignored.
@@ -1629,222 +1651,269 @@ alid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 pdfTeX warning: pdflatex (file ./linkage_connect_dedicated.pdf): PDF inclusion:
  invalid other resource which is no dict (key 'ProcSets', type <array>); ignore
 d.
->] [23 <./linkage_connect_duct.pdf
+>] [24 <./linkage_connect_duct.pdf
 
 pdfTeX warning: pdflatex (file ./linkage_connect_duct.pdf): PDF inclusion: inva
 lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 Package hyperref Info: bookmark level for unknown literalblock defaults to 0 on
- input line 1660.
+ input line 1686.
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1661.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1687.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 1693
+.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
 LaTeX Font Info:    Font shape `TS1/pcr/m/it' in size <9> not available
-(Font)              Font shape `TS1/pcr/m/sl' tried instead on input line 1670.
+(Font)              Font shape `TS1/pcr/m/sl' tried instead on input line 1695.
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 1688.
- [24]
-<string_match.pdf, id=540, 948.54375pt x 698.61pt>
+(Font)              scaled to size 7.59998pt on input line 1718.
+ [25]
+<string_match.pdf, id=565, 1054.94125pt x 742.775pt>
 File: string_match.pdf Graphic file (type pdf)
 <use string_match.pdf>
-Package pdftex.def Info: string_match.pdf  used on input line 1700.
-(pdftex.def)             Requested size: 505.88103pt x 372.59605pt.
- [25 <./string_match.pdf>]
-<dymola_bus.png, id=571, 1355.0625pt x 848.16875pt>
+Package pdftex.def Info: string_match.pdf  used on input line 1741.
+(pdftex.def)             Requested size: 505.88315pt x 356.19926pt.
+
+[26] [27 <./string_match.pdf>]
+<dymola_bus.png, id=602, 1355.0625pt x 848.16875pt>
 File: dymola_bus.png Graphic file (type png)
 <use dymola_bus.png>
-Package pdftex.def Info: dymola_bus.png  used on input line 1753.
+Package pdftex.def Info: dymola_bus.png  used on input line 1794.
 (pdftex.def)             Requested size: 505.89345pt x 316.65181pt.
- [26] [27 <./dymola_bus.png>] [28]
-Overfull \hbox (4.56003pt too wide) in paragraph at lines 1831--1832
+ [28] [29 <./dymola_bus.png>]
+Overfull \hbox (4.56003pt too wide) in paragraph at lines 1872--1873
 []|\T1/phv/m/n/10 Declared| 
  []
 
 
-Underfull \hbox (badness 7504) in paragraph at lines 1858--1859
+Underfull \hbox (badness 7504) in paragraph at lines 1899--1900
 []|\T1/pcr/m/n/10 comp2.var1 $\OMS/cmsy/m/n/10 !$
  []
 
-<bus_minimal.pdf, id=606, 2165.08875pt x 1100.11pt>
+[30]
+<bus_minimal.pdf, id=636, 2165.08875pt x 1100.11pt>
 File: bus_minimal.pdf Graphic file (type pdf)
 <use bus_minimal.pdf>
-Package pdftex.def Info: bus_minimal.pdf  used on input line 1922.
+Package pdftex.def Info: bus_minimal.pdf  used on input line 1963.
 (pdftex.def)             Requested size: 451.68457pt x 229.50237pt.
-<subbus_outside.png, id=607, 510.90875pt x 112.42pt>
+<subbus_outside.png, id=637, 510.90875pt x 112.42pt>
 File: subbus_outside.png Graphic file (type png)
 <use subbus_outside.png>
-Package pdftex.def Info: subbus_outside.png  used on input line 1929.
+Package pdftex.def Info: subbus_outside.png  used on input line 1970.
 (pdftex.def)             Requested size: 225.84229pt x 49.69308pt.
-<bus_outside.png, id=608, 507.8975pt x 145.54375pt>
+<bus_outside.png, id=638, 507.8975pt x 145.54375pt>
 File: bus_outside.png Graphic file (type png)
 <use bus_outside.png>
-Package pdftex.def Info: bus_outside.png  used on input line 1936.
+Package pdftex.def Info: bus_outside.png  used on input line 1977.
 (pdftex.def)             Requested size: 225.84229pt x 64.71678pt.
-<bus_inside.png, id=609, 505.89pt x 81.30376pt>
+<bus_inside.png, id=639, 505.89pt x 81.30376pt>
 File: bus_inside.png Graphic file (type png)
 <use bus_inside.png>
-Package pdftex.def Info: bus_inside.png  used on input line 1943.
+Package pdftex.def Info: bus_inside.png  used on input line 1984.
 (pdftex.def)             Requested size: 225.84229pt x 36.29604pt.
-[29] [30 <./bus_minimal.pdf> <./subbus_outside.png> <./bus_outside.png> <./bus_
-inside.png>]
-<screen_schematics_modelica.pdf, id=633, 2165.08875pt x 1288.815pt>
+ [31 <./bus_minimal.pdf>] [32 <./subbus_outside.png> <./bus_outside.png> <./bus
+_inside.png>]
+<screen_schematics_modelica.pdf, id=670, 2165.08875pt x 1288.815pt>
 File: screen_schematics_modelica.pdf Graphic file (type pdf)
 <use screen_schematics_modelica.pdf>
-Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 196
-0.
+Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 203
+6.
 (pdftex.def)             Requested size: 505.88872pt x 301.14099pt.
-<screen_schematics_output.pdf, id=634, 963.6pt x 542.025pt>
+<screen_schematics_output.pdf, id=671, 963.6pt x 542.025pt>
 File: screen_schematics_output.pdf Graphic file (type pdf)
 <use screen_schematics_output.pdf>
-Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1967.
+Package pdftex.def Info: screen_schematics_output.pdf  used on input line 2043.
 
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
- [31 <./screen_schematics_modelica.pdf>] [32 <./screen_schematics_output.pdf>] 
-[33]
+ [33 <./screen_schematics_modelica.pdf>] [34 <./screen_schematics_output.pdf>] 
+[35] [36] [37]
 Chapter 4.
-<linkage_architecture.pdf, id=671, 897.3525pt x 608.2725pt>
+<linkage_architecture_legend.pdf, id=741, 232.9503pt x 103.3461pt>
+File: linkage_architecture_legend.pdf Graphic file (type pdf)
+<use linkage_architecture_legend.pdf>
+Package pdftex.def Info: linkage_architecture_legend.pdf  used on input line 21
+91.
+(pdftex.def)             Requested size: 232.94972pt x 103.34584pt.
+<linkage_architecture.pdf, id=742, 897.3525pt x 608.2725pt>
 File: linkage_architecture.pdf Graphic file (type pdf)
 <use linkage_architecture.pdf>
-Package pdftex.def Info: linkage_architecture.pdf  used on input line 2006.
+Package pdftex.def Info: linkage_architecture.pdf  used on input line 2198.
 (pdftex.def)             Requested size: 505.88232pt x 342.9228pt.
-[34
+<linkage_architecture_spa.pdf, id=743, 1033.94275pt x 608.2725pt>
+File: linkage_architecture_spa.pdf Graphic file (type pdf)
+<use linkage_architecture_spa.pdf>
+Package pdftex.def Info: linkage_architecture_spa.pdf  used on input line 2205.
 
- <./linkage_architecture.pdf
+(pdftex.def)             Requested size: 505.8791pt x 297.6199pt.
+<linkage_architecture_os.pdf, id=744, 1026.9567pt x 608.2725pt>
+File: linkage_architecture_os.pdf Graphic file (type pdf)
+<use linkage_architecture_os.pdf>
+Package pdftex.def Info: linkage_architecture_os.pdf  used on input line 2212.
+(pdftex.def)             Requested size: 505.89278pt x 299.64326pt.
+LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <9> not available
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 2.
+LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
+(Font)              scaled to size 8.54997pt on input line 2.
+[38
+
+ <./linkage_architecture_legend.pdf
+
+pdfTeX warning: pdflatex (file ./linkage_architecture_legend.pdf): PDF inclusio
+n: invalid other resource which is no dict (key 'ProcSets', type <array>); igno
+red.
+>] [39 <./linkage_architecture.pdf
 
 pdfTeX warning: pdflatex (file ./linkage_architecture.pdf): PDF inclusion: inva
 lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] [40 <./linkage_architecture_spa.pdf
+
+pdfTeX warning: pdflatex (file ./linkage_architecture_spa.pdf): PDF inclusion: 
+invalid other resource which is no dict (key 'ProcSets', type <array>); ignored
+.
+>] [41 <./linkage_architecture_os.pdf
+
+pdfTeX warning: pdflatex (file ./linkage_architecture_os.pdf): PDF inclusion: i
+nvalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+
 >]
 Chapter 5.
-[35
+[42
 
 ]
-Underfull \vbox (badness 10000) detected at line 2324
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2324
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
-[36]
-Underfull \vbox (badness 10000) detected at line 2324
- []
-
-
-Underfull \vbox (badness 10000) detected at line 2324
- []
-
-[37]
-Underfull \vbox (badness 10000) detected at line 2324
+[43]
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2324
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
-[38]
-Underfull \vbox (badness 10000) detected at line 2324
- []
-
-
-Underfull \vbox (badness 10000) detected at line 2324
- []
-
-[39]
-Underfull \vbox (badness 10000) detected at line 2324
+[44]
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2324
+Underfull \vbox (badness 10000) detected at line 2541
  []
 
-[40] [41]
-<BusTestExp.pdf, id=732, 2777.37625pt x 1151.30125pt>
+[45]
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+[46]
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+[47]
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2541
+ []
+
+[48]
+<BusTestExp.pdf, id=871, 2777.37625pt x 1151.30125pt>
 File: BusTestExp.pdf Graphic file (type pdf)
 <use BusTestExp.pdf>
-Package pdftex.def Info: BusTestExp.pdf  used on input line 2346.
+Package pdftex.def Info: BusTestExp.pdf  used on input line 2563.
 (pdftex.def)             Requested size: 252.94499pt x 104.84236pt.
-<BusTestControlledExp.pdf, id=733, 2556.55125pt x 1156.32pt>
+<BusTestControlledExp.pdf, id=872, 2556.55125pt x 1156.32pt>
 File: BusTestControlledExp.pdf Graphic file (type pdf)
 <use BusTestControlledExp.pdf>
-Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 2362.
+Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 2579.
 (pdftex.def)             Requested size: 252.94499pt x 114.40369pt.
- [42 <./BusTestExp.pdf> <./BusTestControlledExp.pdf
-
-pdfTeX warning: pdflatex (file ./BusTestControlledExp.pdf): PDF inclusion: mult
-iple pdfs with page group included in a single page
->]
-<BusTestControllerExp.pdf, id=755, 2712.1325pt x 1225.57875pt>
+ [49 <./BusTestExp.pdf>]
+<BusTestControllerExp.pdf, id=886, 2712.1325pt x 1225.57875pt>
 File: BusTestControllerExp.pdf Graphic file (type pdf)
 <use BusTestControllerExp.pdf>
-Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 2390.
+Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 2607.
 (pdftex.def)             Requested size: 252.94499pt x 114.2993pt.
-<BusTestNonExp.pdf, id=756, 2771.35374pt x 1145.27875pt>
+<BusTestNonExp.pdf, id=887, 2771.35374pt x 1145.27875pt>
 File: BusTestNonExp.pdf Graphic file (type pdf)
 <use BusTestNonExp.pdf>
-Package pdftex.def Info: BusTestNonExp.pdf  used on input line 2408.
+Package pdftex.def Info: BusTestNonExp.pdf  used on input line 2625.
 (pdftex.def)             Requested size: 252.94499pt x 104.5211pt.
- [43 <./BusTestControllerExp.pdf> <./BusTestNonExp.pdf
+ [50 <./BusTestControlledExp.pdf> <./BusTestControllerExp.pdf
 
-pdfTeX warning: pdflatex (file ./BusTestNonExp.pdf): PDF inclusion: multiple pd
-fs with page group included in a single page
+pdfTeX warning: pdflatex (file ./BusTestControllerExp.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 >]
-<BusTestControlledNonExp.pdf, id=778, 2853.66125pt x 1182.4175pt>
+<BusTestControlledNonExp.pdf, id=909, 2853.66125pt x 1182.4175pt>
 File: BusTestControlledNonExp.pdf Graphic file (type pdf)
 <use BusTestControlledNonExp.pdf>
-Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 2424.
+Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 2641.
 (pdftex.def)             Requested size: 252.94499pt x 104.80722pt.
-<BusTestControllerNonExp.pdf, id=779, 2694.065pt x 1219.55624pt>
+<BusTestControllerNonExp.pdf, id=910, 2694.065pt x 1219.55624pt>
 File: BusTestControllerNonExp.pdf Graphic file (type pdf)
 <use BusTestControllerNonExp.pdf>
-Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 2451.
+Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 2668.
 (pdftex.def)             Requested size: 252.94499pt x 114.5006pt.
- [44 <./BusTestControlledNonExp.pdf> <./BusTestControllerNonExp.pdf
+ [51 <./BusTestNonExp.pdf> <./BusTestControlledNonExp.pdf
 
-pdfTeX warning: pdflatex (file ./BusTestControllerNonExp.pdf): PDF inclusion: m
+pdfTeX warning: pdflatex (file ./BusTestControlledNonExp.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >]
-<annex_valid_bus.pdf, id=803, 1448.41125pt x 893.3375pt>
+<annex_valid_bus.pdf, id=934, 1448.41125pt x 893.3375pt>
 File: annex_valid_bus.pdf Graphic file (type pdf)
 <use annex_valid_bus.pdf>
-Package pdftex.def Info: annex_valid_bus.pdf  used on input line 2492.
+Package pdftex.def Info: annex_valid_bus.pdf  used on input line 2709.
 (pdftex.def)             Requested size: 451.68457pt x 278.58113pt.
- [45] [46 <./annex_valid_bus.pdf>]
+ [52 <./BusTestControllerNonExp.pdf>] [53 <./annex_valid_bus.pdf>]
 Chapter 6.
-[47
+[54
 
 ]
 Chapter 7.
-[48
+[55
 
 ]
 Chapter 8.
-[49
+[56
 
-] (./LinkageSpec.ind [50
+] (./LinkageSpec.ind [57
 
-] [51
+] [58
 
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2547.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2547.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2764.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2764.
  (./LinkageSpec.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2547.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2547.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2764.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2764.
 
 Package rerunfilecheck Info: File `LinkageSpec.out' has not changed.
-(rerunfilecheck)             Checksum: 7F0FDAE2FF1752BF6EC27948875AF47A;3724.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2547.
+(rerunfilecheck)             Checksum: F10F0B6DDF43DD48647C39D4239E729F;3597.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2764.
  ) 
 Here is how much of TeX's memory you used:
- 26604 strings out of 494053
- 456577 string characters out of 6163845
- 1067782 words of memory out of 5000000
- 29572 multiletter control sequences out of 15000+600000
- 63194 words of font info for 90 fonts, out of 8000000 for 9000
+ 26658 strings out of 494053
+ 457853 string characters out of 6163845
+ 1072131 words of memory out of 5000000
+ 29597 multiletter control sequences out of 15000+600000
+ 63252 words of font info for 90 fonts, out of 8000000 for 9000
  320 hyphenation exceptions out of 8191
- 55i,12n,48p,1673b,626s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,48p,1673b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -1855,10 +1924,10 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageSpec.pdf (53 pages, 2506777 bytes).
+Output written on LinkageSpec.pdf (60 pages, 2687945 bytes).
 PDF statistics:
- 913 PDF objects out of 1000 (max. 8388607)
- 717 compressed objects within 8 object streams
- 144 named destinations out of 1000 (max. 500000)
- 335 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1059 PDF objects out of 1200 (max. 8388607)
+ 838 compressed objects within 9 object streams
+ 169 named destinations out of 1000 (max. 500000)
+ 350 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,11 +5,11 @@
 \let\spxextra \sphinxstyleindexextra
 
   \bigletter A
-  \item \spxentry {Analog Value}, \hyperindexformat{\spxpagem}{47}
+  \item \spxentry {Analog Value}, \hyperindexformat{\spxpagem}{54}
 
   \indexspace
   \bigletter B
-  \item \spxentry {Binary Value}, \hyperindexformat{\spxpagem}{47}
-  \item \spxentry {Building Model}, \hyperindexformat{\spxpagem}{47}
+  \item \spxentry {Binary Value}, \hyperindexformat{\spxpagem}{54}
+  \item \spxentry {Building Model}, \hyperindexformat{\spxpagem}{54}
 
 \end{sphinxtheindex}

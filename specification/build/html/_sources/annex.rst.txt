@@ -16,8 +16,8 @@ Example of the Configuration Data Structure
 
 .. _sec_annex_bus_example:
 
-Illustration of the Main Features of the Expandable Connectors
---------------------------------------------------------------
+Main Features of the Expandable Connectors
+------------------------------------------
 
 The main features of the expandable connectors (as described in :numref:`sec_signal_connectors`) are illustrated with a minimal example described in the figures below where:
 
@@ -149,8 +149,8 @@ The main features of the expandable connectors (as described in :numref:`sec_sig
 
 .. _sec_annex_bus_valid:
 
-Validation of the Use of Expandable Connectors
-----------------------------------------------
+Validating the Use of Expandable Connectors
+-------------------------------------------
 
 The use of expandable connectors (control bus) is validated in case of a complex controller (``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``).
 

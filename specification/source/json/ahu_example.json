@@ -1,11 +1,11 @@
 {
     "type": {
-        "$id": "#type",
+        "$id": "type",
         "description": "System type",
         "value": "AHU"
     },
     "subtype": {
-        "$id": "#subtype",
+        "$id": "subtype",
         "description": "Type of AHU",
         "widget": {
             "type": "Dropdown",
@@ -14,7 +14,7 @@
         "value": "VAV"
     },
     "name": {
-        "$id": "#name",
+        "$id": "name",
         "description": "Model name",
         "widget": {
             "type": "Text input"
@@ -23,12 +23,12 @@
     },
     "fluid_paths": [
         {
-            "$id": "#air_supply",
+            "$id": "air_supply",
             "direction": "east",
             "medium": "Buildings.Media.Air"
         },
         {
-            "$id": "#air_return",
+            "$id": "air_return",
             "direction": "west",
             "medium": "Buildings.Media.Air"
         }
@@ -40,7 +40,7 @@
     },
     "equipment": [
         {
-            "$id": "#heaRec",
+            "$id": "heaRec",
             "description": "Heat recovery",
             "enabled": "#subtype.value == 'DOA'",
             "widget": {
@@ -52,7 +52,7 @@
                 null,
                 "Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU",
                 "Buildings.Fluid.HeatExchangers.EnthalpyWheel",
-                "Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)"
+                "Buildings.Fluid.HeatExchangers.EnthalpyWheel (sensible=true)"
             ],
             "icon_transformation": "flipHorizontal",
             "placement": [18, 6],
@@ -64,7 +64,7 @@
             }
         },
         {
-            "$id": "#eco",
+            "$id": "eco",
             "description": "Economizer",
             "enabled": "#subtype.value == 'VAV'",
             "widget": {
@@ -88,18 +88,18 @@
             }
         },
         {
-            "$id": "#V_flowOut_nominal",
-            "description": "Nominal outdoor air volumetric flow rate",
+            "$id": "V_flowOut_nominal",
+            "description": "Nominal outdoor air volume flow rate",
             "enabled": "#eco.value != 'None'",
             "widget": {
                 "type": "Numeric input"
             },
-            "declaration": "Modelica.SIunits.VolumeFlowRate",
             "value": 0,
-            "unit": "m3/s"
+            "unit": "m3/s",
+            "declaration": "Modelica.SIunits.VolumeFlowRate"
         },
         {
-            "$id": "#fanSup",
+            "$id": "fanSup",
             "description": "Supply fan",
             "enabled": "#subtype.value != 'Exhaust only'",
             "widget": {
@@ -107,24 +107,25 @@
                 "options": ["None", "Draw through", "Blow through"]
             },
             "value": "Draw through",
-            "declaration": "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowSup_nominal)",
+            "declaration": "Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowSup_nominal)",
             "placement": [null, [18, 11], [18, 18]],
             "connect": {
                 "value": "air_supply"
             }
         },
         {
-            "$id": "#V_flowSup_nominal",
-            "description": "Nominal supply air volumetric flow rate",
+            "$id": "V_flowSup_nominal",
+            "description": "Nominal supply air volume flow rate",
             "enabled": "#fanSup.value != 'None'",
             "widget": {
                 "type": "Numeric input"
             },
             "value": 0,
-            "unit": "m3/h"
+            "unit": "m3/s",
+            "declaration": "Modelica.SIunits.VolumeFlowRate"
         },
         {
-            "$id": "#fanRet",
+            "$id": "fanRet",
             "description": "Return/Relief fan",
             "enabled": "#subtype.value != 'Supply only'",
             "widget": {
@@ -134,8 +135,8 @@
             "value": "Relief",
             "declaration": [
                 null,
-                "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowRet_nominal)",
-                "Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=m_flowRel_nominal)"
+                "Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRet_nominal)",
+                "Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRel_nominal)"
             ],
             "icon_transformation": "flipHorizontal",
             "placement": [null, [14, 13], [14, 4]],
@@ -144,96 +145,116 @@
             }
         },
         {
-            "$id": "#V_flowRet_nominal",
-            "description": "Nominal return air volumetric flow rate",
+            "$id": "V_flowRet_nominal",
+            "description": "Nominal return air volume flow rate",
             "enabled": "#fanRet.value != 'None'",
             "widget": {
                 "type": "Numeric input"
             },
             "value": 0,
-            "unit": "m3/h"
+            "unit": "m3/s",
+            "declaration": "Modelica.SIunits.VolumeFlowRate"
         }
     ],
     "controls": [
         {
-            "$id": "#conAHURef",
+            "$id": "conAHURef",
             "description": "Reference guideline for control sequences",
             "widget": {
                 "type": "Dropdown menu",
-                "options": ["None", "ASHRAE 2006", "ASHRAE G36"]
+                "options": ["ASHRAE 2006", "ASHRAE G36"],
+                "options.enabled": [
+                    "Set of conditional statements allowing the use of ASHRAE 2006 SOO",
+                    "Set of conditional statements allowing ASHRAE G36 SOO"
+                ]
             },
-            "value": "None"
+            "value": null
         },
         {
-            "$id": "#conAHUOpt",
-            "description": "Optimal start up",
+            "$id": "numZon",
+            "description": "Total number of served VAV boxes",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
-                "type": "Dropdown menu",
-                "options": ["None", "Heating", "Cooling", "Heating and cooling"],
+                "type": "Numeric input"
             },
-            "value": "None",
-            "declaration": [null,
-                "Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)",
-                "Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)",
-                "Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=#conAHUOpt.value)"
-            ]
+            "value": null
         },
         {
-            "$id": "#conFanSup",
-            "description": "Supply fan control",
-            "enabled": "#fanSup.value != 'None'",
+            "$id": "AFlo[numZon]",
+            "description": "Floor area of each zone",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
-                "type": "Text"
+                "type": "Numeric vector input"
+            },
+            "value": null
+        },
+        {
+            "$id": "have_occSen",
+            "description": "Set to true if zones have occupancy sensor",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
+            "widget": {
+                "type": "Boolean select"
+            },
+            "value": false
+        },
+        {
+            "$id": "have_winSen",
+            "description": "Set to true if zones have occupancy sensor",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
+            "widget": {
+                "type": "Boolean select"
+            },
+            "value": false
+        },
+        {
+            "$id": "have_perZonRehBox",
+            "description": "Set to true if zones have occupancy sensor",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
+            "widget": {
+                "type": "Boolean select"
+            },
+            "value": false
+        },
+        {
+            "$id": "have_duaDucBox",
+            "description": "Check if the AHU serves dual duct boxes",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
+            "widget": {
+                "type": "Boolean select"
+            },
+            "value": false
+        },
+        {
+            "$id": "have_airFloMeaSta",
+            "description": "Check if the AHU has AFMS (Airflow measurement station)",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
+            "widget": {
+                "type": "Boolean select"
+            },
+            "value": false,
+            "declaration": [
+                null,
+                "Buildings.Fluid.Sensors.VolumeFlowRate (redeclare package Medium=#air_supply.medium)",
+
+            ],
+            "placement": "if #eco.value == 'Dedicated OA damper' then [20, 5] else [18, 5]",
+            "connect": {
+                "value": "if #eco.value == 'Dedicated OA damper' then 'air_supply_min' else 'air_supply_out'"
             }
         },
         {
-            "$id": "#conFanSupStaSto",
-            "description": "Supply fan start/stop control",
-            "enabled": "#conFanSup.widget.enabled",
+            "$id": "minZonPriFlo[numZon]",
+            "description": "Minimum expected zone primary flow rate",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
-                "type": "Dropdown menu",
-                "options": ["On-Off", "Static Pressure Control"],
-                "options.enabled": ["#conAHURef.value != 'ASHRAE G36'", true]
+                "type": "Numeric vector input"
             },
-            "value": "if #conAHURef.value == null then 'On-Off' elseif #conAHURef.value == 'ASHRAE G36' then 'Static Pressure Control'",
-            "declaration": ["..."]
+            "value": null
         },
         {
-            "$id": "#resPreStaSet",
-            "description": "Static pressure set point reset",
-            "enabled": "#conFanSup.widget.enabled",
-            "widget": {
-                "type": "Dropdown menu",
-                "options": ["None", "T&R"],
-                "options.enabled": ["#conAHURef.value != 'ASHRAE G36'", true]
-            },
-            "value": "if #conAHURef.value == null then 'None' elseif #conAHURef.value == 'ASHRAE G36' then 'T&R'",
-            "declaration": ["..."]
-        },
-        {
-            "$id": "#conTAirSup",
-            "description": "Supply Air Temperature Control",
-            "enabled": "#fanSup.value != 'None'",
-            "widget": {
-                "type": "Text"
-            }
-        },
-        {
-            "$id": "#resTSupSet",
-            "description": "Supply air temperature set point reset",
-            "enabled": "#conTAirSup.widget.enabled",
-            "widget": {
-                "type": "Dropdown menu",
-                "options": ["None", "OAT Reset", "OAT and T&R"],
-                "options.enabled": ["#conAHURef.value != ('ASHRAE G36' or 'ASHRAE 2006')", "#conAHURef.value != 'ASHRAE G36'", true]
-            },
-            "value": "if #conAHURef.value == null then 'None' else 'OAT and T&R'",
-            "declaration": ["..."]
-        },
-        {
-            "$id": "#numZon",
-            "description": "Number of served VAV boxes",
-            "enabled": "#conTAirSup.widget.enabled and #resTSupSet.value == 'OAT and T&R'",
+            "$id": "VPriSysMax_flow[numZon]",
+            "description": "Maximum expected system primary airflow at design stage",
+            "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
                 "type": "Numeric input"
             },
@@ -242,61 +263,51 @@
     ],
     "dependencies": [
         {
-            "$id": "#port_outAir",
+            "$id": "port_outAir",
             "description": "Outside air port",
             "enabled": "#subtype.value != 'Exhaust only'",
-            "declaration": "Modelica.Fluid.Interfaces.FluidPort_a(redeclare package Medium=#air_supply.medium)",
+            "declaration": "Modelica.Fluid.Interfaces.FluidPort_a (redeclare package Medium=#air_supply.medium)",
             "placement": [18, 1],
             "connect": {
                 "value": "air_supply"
             }
         },
         {
-            "$id": "#port_supAir",
+            "$id": "port_supAir",
             "description": "Supply air port",
             "enabled": "#subtype.value != 'Exhaust only'",
-            "declaration": "Modelica.Fluid.Interfaces.FluidPort_b(redeclare package Medium=#air_supply.medium)",
+            "declaration": "Modelica.Fluid.Interfaces.FluidPort_b (redeclare package Medium=#air_supply.medium)",
             "placement": [18, 24],
             "connect": {
                 "value": "air_supply"
             }
         },
         {
-            "$id": "#senFloOut",
-            "description": "Outdoor airflow measurement station",
-            "enabled": "#eco.value != 'None'",
-            "declaration": "Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=#air_supply.medium)",
-            "placement": "if #eco.value == 'Dedicated OA damper' then [20, 5] else [18, 5]",
-            "connect": {
-                "value": "if #eco.value == 'Dedicated OA damper' then 'air_supply_min' else 'air_supply_out'"
-            }
-        },
-        {
-            "$id": "#m_flowOut_nominal",
+            "$id": "m_flowOut_nominal",
             "description": "Nominal outdoor air mass flow rate",
             "enabled": "#V_flowOut_nominal.enabled",
             "declaration": "Modelica.SIunits.MassFlowRate",
-            "value": "(#air_supply.medium).rho_default / 3600 * V_flowOut_nominal",
+            "value": "(#air_supply.medium).rho_default * V_flowOut_nominal",
             "protected": true
         },
         {
-            "$id": "#m_flowSup_nominal",
+            "$id": "m_flowSup_nominal",
             "description": "Nominal supply air mass flow rate",
             "enabled": "#V_flowSup_nominal.enabled",
             "declaration": "Modelica.SIunits.MassFlowRate",
-            "value": "(#air_supply.medium).rho_default / 3600 * V_flowSup_nominal",
+            "value": "(#air_supply.medium).rho_default * V_flowSup_nominal",
             "protected": true
         },
         {
-            "$id": "#m_flowRet_nominal",
+            "$id": "m_flowRet_nominal",
             "description": "Nominal return air mass flow rate",
             "enabled": "#V_flowRet_nominal.enabled",
             "declaration": "Modelica.SIunits.MassFlowRate",
-            "value": "(#air_supply.medium).rho_default / 3600 * V_flowRet_nominal",
+            "value": "(#air_supply.medium).rho_default * V_flowRet_nominal",
             "protected": true
         },
         {
-            "$id": "#m_flowRel_nominal",
+            "$id": "m_flowRel_nominal",
             "description": "Nominal relief air mass flow rate",
             "enabled": "#eco.value != 'None'",
             "declaration": "Modelica.SIunits.MassFlowRate",

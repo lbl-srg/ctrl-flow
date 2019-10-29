@@ -247,7 +247,7 @@
 
 
 \title{LinkageJS Requirements Specification}
-\date{Oct 21, 2019}
+\date{Oct 28, 2019}
 \release{}
 \author{(Working Draft)}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{lbl-icon.png}\par}
@@ -270,15 +270,15 @@
 
 \chapter{Preamble and Conventions}
 \label{\detokenize{preamble:preamble-and-conventions}}\label{\detokenize{preamble::doc}}
-This documentation specifies the requirements for LinkageJS software.
+This documentation specifies the requirements for LinkageJS software: a graphical user interface for editing Modelica models of HVAC and control systems.
 
-It is still work in progress, intended to be used as a discussion basis.
+It is intended to be mainly used as a discussion basis with the software development team.
 
-The proposed design should not be considered finalized and will evolve as the development progresses.
+Therefore the proposed design should not be considered finalized and will evolve as the development progresses.
 
 \begin{sphinxadmonition}{note}{Conventions}
 
-The words “must”, “must not”, “required”, “shall”, “shall not”, “should”, “should not”, “recommended”, “may” and “optional” in this document are to be interpreted as described in \sphinxhref{https://tools.ietf.org/html/rfc2119}{RFC2119}.
+The words \sphinxstyleemphasis{must, must not, required, shall, shall not, should, should not, recommended, may, optional} in this document must be interpreted as described in \sphinxhref{https://tools.ietf.org/html/rfc2119}{RFC2119}.
 \end{sphinxadmonition}
 
 
@@ -304,18 +304,6 @@ Devise how return status signals can be generated for components that do not hav
 \begin{itemize}
 \item {} 
 Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a \sphinxcode{\sphinxupquote{pre}} operator.
-
-\end{itemize}
-
-Allow for top level controller XOR individual controllers.
-
-Specify more the tagging process and how it can support mapping with equipment characteristics and sizing from data \& sizing sheets.
-\begin{itemize}
-\item {} 
-EIKON uses two concepts: \sphinxstyleemphasis{reference} (used programmatically) and \sphinxstyleemphasis{display} (used for UI only) name.
-
-\item {} 
-HVAC zone, floor, room name is enough?
 
 \end{itemize}
 
@@ -365,7 +353,7 @@ any third party application with the suitable framework to serve a single page H
 the primary target is \sphinxhref{https://www.openstudio.net}{OpenStudio®} (OS),
 
 \item {} 
-an example of a JS application embedded in OS is \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/reference/geometry\_editor}{FloorspaceJS}. The standalone SPA lives here: \sphinxurl{https://nrel.github.io/floorspace.js}. FloorspaceJS can be considered as a reference for the development.
+an example of a JS application embedded in OS is \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/reference/geometry\_editor}{FloorspaceJS}. The standalone SPA lives here: \sphinxurl{https://nrel.github.io/floorspace.js}. FloorspaceJS may be considered as a reference for the development.
 
 \end{itemize}
 
@@ -390,7 +378,7 @@ The software requirements regarding platform and environment compatibility are p
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id16}}\label{\detokenize{requirements:tab-environment}}
+\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id17}}\label{\detokenize{requirements:tab-environment}}
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -405,7 +393,7 @@ Platform (minimum version)
 Windows (10), Linux Ubuntu (18.04), OS X (10.10)
 \\
 \hline
-Mobile device \& responsive design ?
+Mobile device
 &
 iOS, Android?
 \\
@@ -422,6 +410,8 @@ Chrome, Firefox, Safari
 
 \subsection{UI Visual Structure}
 \label{\detokenize{requirements:ui-visual-structure}}
+A responsive design is required.
+
 A minimal mockup of the UI is presented \hyperref[\detokenize{requirements:screen-mockup}]{Fig.\@ \ref{\detokenize{requirements:screen-mockup}}}.
 
 \begin{figure}[htbp]
@@ -461,7 +451,7 @@ Bottom panel: console
 
 \end{itemize}
 
-The placement of the different UI elements might be different than the one proposed here above but the user must have access to all those elements.
+The placement of the different UI elements may be different than the one proposed here above but the user must have access to all those elements.
 Ideally a toggle feature should be implemented to show or hide each side panel, either by user click if the panel is pinned or automatically.
 Optionally a fully customizable workspace may be implemented.
 
@@ -471,7 +461,7 @@ Optionally a fully customizable workspace may be implemented.
 
 \begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|\X{30}{100}|\X{10}{100}|\X{10}{100}|\X{50}{100}|}
 \sphinxthelongtablecaptionisattop
-\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id17}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
+\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id18}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 Feature
@@ -659,7 +649,7 @@ P
 &
 Partially supported because only the configuration widget integrates that feature.
 
-When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget might be developed, see components with 4 ports and 2 medium.
+When generating \sphinxcode{\sphinxupquote{connect}} equation manually a similar approach as the \sphinxstyleemphasis{fluid path} used by the configuration widget may be developed, see components with 4 ports and 2 medium.
 \\
 \hline
 Support of Modelica graphical annotations
@@ -667,13 +657,15 @@ Support of Modelica graphical annotations
 R
 &&\\
 \hline
-Code editor
+Modelica code editor
 &
 P
 &
 R
 &
 Raw text editor (V0) with linter and Modelica specification check upon save (V1)
+
+Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators being developed by LBL).
 \\
 \hline
 Icon editor
@@ -834,6 +826,15 @@ Allow the user to manually specify (right click menu) the style of the connectio
 When generating a \sphinxcode{\sphinxupquote{connect}} equation automatically select a line style based on some heuristic to be further specified (V1).
 \\
 \hline
+Drawing guides
+&
+P
+&
+R
+&
+Snap to grid (V0) and alignment lines with neighbor objects (V1) with the option to enable/disable those guides.
+\\
+\hline
 \sphinxstylestrong{Miscellaneous}
 &&&\\
 \hline
@@ -869,6 +870,9 @@ At least an HTML version is required, PDF version is optional (may rely on Sphin
 
 \section{Modelica Graphical User Interface}
 \label{\detokenize{requirements:modelica-graphical-user-interface}}\label{\detokenize{requirements:sec-modelica-gui}}
+
+\subsection{Modelica Language}
+\label{\detokenize{requirements:modelica-language}}
 The software must comply with the Modelica language specification \sphinxcite{bibliography:modelica2017} for every aspect relating to (the chapter numbers refer to \sphinxcite{bibliography:modelica2017}):
 \begin{itemize}
 \item {} 
@@ -885,7 +889,25 @@ the annotations: see \sphinxstyleemphasis{Chapter 18 Annotations}.
 
 \end{itemize}
 
-\begin{sphinxadmonition}{note}{Note:}
+
+\subsection{JSON Representation}
+\label{\detokenize{requirements:json-representation}}
+LBL has already developed a Modelica to JSON translator \sphinxhref{https://lbl-srg.github.io/modelica-json/}{Modelica to JSON translator}. This development includes the definition of two JSON schemas:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxhref{https://lbl-srg.github.io/modelica-json/modelica.html}{Schema-modelica.json} validates the JSON files parsed from Modelica.
+
+\item {} 
+\sphinxhref{https://lbl-srg.github.io/modelica-json/CDL.html}{Schema-CDL.json} validates the JSON files parsed from \sphinxhref{http://obc.lbl.gov/specification/cdl}{CDL} (subset of Modelica language used for control sequence implementation).
+
+\end{enumerate}
+
+Those developments should be leveraged to define a JSON-based native format for LinkageJS.
+
+
+\subsection{Connection Lines}
+\label{\detokenize{requirements:connection-lines}}
 When drawing a connection line between two connector icons in the diagram view:
 \begin{itemize}
 \item {} 
@@ -912,7 +934,6 @@ created semi automatically based on the input points corresponding to the user c
 The first and last couple of points must be so that the connection line does not overlap the component icon but rather grows the distance to it, see \hyperref[\detokenize{requirements:linkage-connect-distance}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-distance}}}.
 
 \end{itemize}
-\end{sphinxadmonition}
 
 \begin{figure}[htbp]
 \centering
@@ -932,7 +953,7 @@ It is mostly needed for integrating advanced control sequences that can have doz
 The intent is to reduce the complexity to the mere definition of the system’s layout and the selection of standard control sequences already transcribed in Modelica \sphinxcite{bibliography:obc}.
 
 \begin{sphinxadmonition}{note}{Note:}
-\sphinxhref{https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F}{CtrlSpecBuilder} is a tool widely used in the HVAC controls industry for specifying control sequences. It might be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.
+\sphinxhref{https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F}{CtrlSpecBuilder} is a tool widely used in the HVAC controls industry for specifying control sequences. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.
 \end{sphinxadmonition}
 
 There are fundamental requirements regarding the Modelica model generated by the configuration widget:
@@ -980,7 +1001,7 @@ some tags to be used to automatically generate the connections between the diffe
 
 \end{itemize}
 
-The user interface logic is illustrated in figures \hyperref[\detokenize{requirements:screen-conf-0}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-0}}} and \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}}. Note that the comments in those figures are part of the requirements.
+The user interface logic is illustrated in figures \hyperref[\detokenize{requirements:screen-conf-0}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-0}}} and \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}}: the comments in those figures are part of the requirements.
 
 \begin{figure}[htbp]
 \centering
@@ -996,10 +1017,27 @@ The user interface logic is illustrated in figures \hyperref[\detokenize{require
 \noindent\sphinxincludegraphics{{screen_conf_1}.pdf}
 \caption{Configuration widget \textendash{} Configuring an existing model}\label{\detokenize{requirements:screen-conf-1}}\end{figure}
 
-The envisioned data structure supporting this logic consists in:
+Equipment and controller models are connected together by means of a \sphinxstyleemphasis{control bus}, see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}: the upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget, see \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}} where the component named \sphinxcode{\sphinxupquote{AHU\_1\_01\_02}} represents an instance of the upper-level model \sphinxcode{\sphinxupquote{AHU\_1}} generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
+
+The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
 \begin{itemize}
 \item {} 
-placement coordinates provided relatively to a simplified grid, see \hyperref[\detokenize{requirements:grid}]{Fig.\@ \ref{\detokenize{requirements:grid}}} \textendash{} those are to be mapped to Modelica diagram coordinates by the widget,
+the reference of the class (library path) to be instantiated depending on the user input;
+
+\item {} 
+the position of the component in simplified grid coordinates to be converted in diagram view coordinates.
+
+\end{itemize}
+
+\hyperref[\detokenize{requirements:sec-fluid-connectors}]{Section \ref{\detokenize{requirements:sec-fluid-connectors}}} and \hyperref[\detokenize{requirements:sec-signal-connectors}]{Section \ref{\detokenize{requirements:sec-signal-connectors}}} address how the connections between the connectors of the different components are generated automatically based on this initial model structure.
+
+
+\subsection{Data Model}
+\label{\detokenize{requirements:data-model}}
+The envisioned data structure supporting the configuration process consists in:
+\begin{itemize}
+\item {} 
+placement coordinates provided relatively to a simplified grid, see \hyperref[\detokenize{requirements:grid}]{Fig.\@ \ref{\detokenize{requirements:grid}}} \textendash{} those must be mapped to Modelica diagram coordinates by the widget,
 
 \item {} 
 an \sphinxcode{\sphinxupquote{equipment}} section referencing the components that must be connected together with fluid connectors, see \hyperref[\detokenize{requirements:sec-fluid-connectors}]{Section \ref{\detokenize{requirements:sec-fluid-connectors}}},
@@ -1026,63 +1064,37 @@ they do not need additional fields in the user form of the configuration widget.
 
 \end{itemize}
 
-The equipment and controls models are connected together by means of a \sphinxstyleemphasis{control bus}, see \hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}}: the upper-level model including the equipment and controls models is the ultimate output of the configuration widget (see \hyperref[\detokenize{requirements:screen-conf-1}]{Fig.\@ \ref{\detokenize{requirements:screen-conf-1}}} where the component named \sphinxcode{\sphinxupquote{AHU\_1\_01\_02}} represents an instance of the upper-level model \sphinxcode{\sphinxupquote{AHU\_1}} generated by the widget). That component exposes the outside fluid connectors as well as the top level control bus.
 
-The logic for instantiating classes from the library is straightforward. Each field of the form specifies:
+\subsubsection{Format}
+\label{\detokenize{requirements:format}}
+A robust syntax is required for:
 \begin{itemize}
 \item {} 
-the path of the class to be instantiated depending on the user input;
+auto-referencing the data structure e.g. \sphinxcode{\sphinxupquote{\#type.value}} refers to the value of the field \sphinxcode{\sphinxupquote{value}} of the object which \sphinxcode{\sphinxupquote{\$id}} is \sphinxcode{\sphinxupquote{type}}: must be interpreted by the configuration widget and replaced by the actual value when generating the model,
 
 \item {} 
-the position of the component in simplified grid coordinates to be converted in diagram view coordinates.
+conditional statements: potentially every field may require a conditional statement \textendash{} either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).
 
 \end{itemize}
 
-The next paragraphs address how the connections between the connectors of the different components are generated automatically based on this initial model structure.
+Ideally the syntax should also allow iteration \sphinxcode{\sphinxupquote{for}} loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with \sphinxcode{\sphinxupquote{n}} chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first \sphinxcode{\sphinxupquote{n}} ones based on a condition.
 
-\begin{sphinxadmonition}{note}{Note:}
-\DUrole{underline}{Data Structure Format}
+Possible formats:
 \begin{itemize}
 \item {} 
-JSON
-\begin{itemize}
-\item {} 
-Expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
-
-\end{itemize}
+JSON: preferred format but expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
 
 \item {} 
 Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework
 
-A robust syntax is required for:
-\begin{itemize}
-\item {} 
-auto-referencing the data structure e.g. \sphinxcode{\sphinxupquote{\#type.value}} refers to the value of the field \sphinxcode{\sphinxupquote{value}} of the object which \sphinxcode{\sphinxupquote{\$id}} is \sphinxcode{\sphinxupquote{type}},
-
-\item {} 
-conditional statements: potentially every field might require a conditional statement \textendash{} either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).
-
-\item {} 
-Ideally the syntax should also allow iteration \sphinxcode{\sphinxupquote{for}} loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with \sphinxcode{\sphinxupquote{n}} chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first \sphinxcode{\sphinxupquote{n}} ones based on a condition.
-
 \end{itemize}
 
-\end{itemize}
 
-\DUrole{underline}{Reference Guideline for Controls Specification}
-\begin{itemize}
-\item {} 
-Providing a reference guideline for controls specification conditionally disables all controls options that do not comply with that guideline.
+\subsubsection{Parameters Exposed by the Configuration Widget}
+\label{\detokenize{requirements:parameters-exposed-by-the-configuration-widget}}
+The template developer is free to declare in the template any parameter of the composing components e.g. \sphinxcode{\sphinxupquote{V\_flowSup\_nominal}} and reference them in any declaration e.g. \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y(m\_flow\_nominal=(\#air\_supply.medium).rho\_default / 3600 * \#V\_flowSup\_nominal.value)}}. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistence of those references in \hyperref[\detokenize{requirements:sec-persisting-data}]{Section \ref{\detokenize{requirements:sec-persisting-data}}}.
 
-\end{itemize}
-
-\DUrole{underline}{Parameters Exposed by the Configuration Widget}
-\begin{itemize}
-\item {} 
-The template developer is free to declare in the template any parameter of the composing components e.g. \sphinxcode{\sphinxupquote{V\_flowSup\_nominal}} and reference them in the model declaration e.g. \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y(m\_flow\_nominal=(\#air\_supply.medium).rho\_default / 3600 * \#V\_flowSup\_nominal.value)}}. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistance of those references in \hyperref[\detokenize{requirements:sec-persisting-data}]{Section \ref{\detokenize{requirements:sec-persisting-data}}}.
-
-\item {} 
-Some parameters \sphinxstyleemphasis{need} to be integrated in the template (examples are provided in reference to \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}):
+Some parameters must be integrated in the template (examples below are provided in reference to \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}):
 \begin{itemize}
 \item {} 
 when they impact the model structure e.g. \sphinxcode{\sphinxupquote{use\_enthalpy}} requires an additional enthalpy sensor: in that case the model declaration must use the \sphinxcode{\sphinxupquote{final}} qualifier to prevent the user from overriding those values in the parameters panel,
@@ -1092,9 +1104,6 @@ when no default value is provided e.g. \sphinxcode{\sphinxupquote{AFlo}} cf. req
 
 \end{itemize}
 
-\end{itemize}
-\end{sphinxadmonition}
-
 \begin{figure}[htbp]
 \centering
 \capstart
@@ -1102,6 +1111,9 @@ when no default value is provided e.g. \sphinxcode{\sphinxupquote{AFlo}} cf. req
 \noindent\sphinxincludegraphics{{grid}.png}
 \caption{Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model}\label{\detokenize{requirements:grid}}\end{figure}
 
+
+\subsubsection{API Description}
+\label{\detokenize{requirements:api-description}}
 For each object, the fields are defined as follows. When the type of a field is specified as a string marked with (C) it may correspond to:
 \begin{itemize}
 \item {} 
@@ -1114,18 +1126,23 @@ a reference to another field value of type boolean (that may itself correspond t
 The syntax supporting this feature shall be specified in collaboration with the UI developer.
 
 \begin{sphinxadmonition}{note}{Note:}
-The syntax must support e.g. \sphinxcode{\sphinxupquote{(\#air\_supply.medium).rho\_default}} where the first dot is used to access the property \sphinxcode{\sphinxupquote{medium}} of the object with \sphinxcode{\sphinxupquote{\$id == \#air\_supply}} (which must be replaced by its value) while the second dot is used to access Modelica property \sphinxcode{\sphinxupquote{rho\_default}} of the class \sphinxcode{\sphinxupquote{Medium}} (which must be kept literal).
+The syntax must support e.g. \sphinxcode{\sphinxupquote{(\#air\_supply.medium).rho\_default}} where the first dot is used to access the property \sphinxcode{\sphinxupquote{medium}} of the configuration object with \sphinxcode{\sphinxupquote{\$id == \#air\_supply}} (which must be replaced by its value) while the second dot is used to access Modelica property \sphinxcode{\sphinxupquote{rho\_default}} of the class \sphinxcode{\sphinxupquote{Medium}} (which must be kept literal).
 \end{sphinxadmonition}
 
 \end{itemize}
-
+\phantomsection\label{\detokenize{requirements:configuration-api}}
 \sphinxstylestrong{Configuration object definition}
 \begin{quote}
 
-\sphinxcode{\sphinxupquote{type}} : string : required
+\sphinxcode{\sphinxupquote{type}} : object : required
 \begin{quote}
 
-Type of system to configure e.g. air handling unit, chilled water plant.
+\begin{DUlineblock}{0em}
+\item[] Type of system to configure e.g. air handling unit, chilled water plant.
+\item[] Object defined as {\hyperref[\detokenize{requirements:elementary-object}]{\sphinxcrossref{elementary object}}}.
+\end{DUlineblock}
+
+\sphinxstyleemphasis{required} : \sphinxcode{\sphinxupquote{{[}\$id, description, value{]}}}
 \end{quote}
 
 \sphinxcode{\sphinxupquote{subtype}} : object : required
@@ -1159,6 +1176,8 @@ Type of system to configure e.g. air handling unit, chilled water plant.
 \item[] Definition of all parent fluid paths of the model.
 \item[] Object defined as follows.
 \end{DUlineblock}
+
+\sphinxstyleemphasis{required} : \sphinxcode{\sphinxupquote{{[}\$id, direction, medium{]}}}
 \begin{quote}
 
 \sphinxcode{\sphinxupquote{\$id}} : string : required
@@ -1244,16 +1263,16 @@ Object defined as {\hyperref[\detokenize{requirements:elementary-object}]{\sphin
 \end{quote}
 \end{quote}
 \phantomsection\label{\detokenize{requirements:elementary-object}}
-\sphinxstylestrong{Elementary object definition}
+\sphinxstylestrong{Elementary Object Definition}
 \begin{quote}
 
 \sphinxcode{\sphinxupquote{\$id}} : string : required
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] Unique string identifier starting with \sphinxcode{\sphinxupquote{\#}}.
-\item[] Used for referencing the object properties e.g. \sphinxcode{\sphinxupquote{id\_value.property}}.
-\item[] If the object has a \sphinxcode{\sphinxupquote{declare}} field, the name of the declared component is the value of \sphinxcode{\sphinxupquote{\$id}} without the dash character.
+\item[] Unique string identifier.
+\item[] Used for referencing the object properties in other configuration objects: references are prefixed with \sphinxcode{\sphinxupquote{\#}} in the examples e.g. \sphinxcode{\sphinxupquote{\#id\_value.property}}.
+\item[] If the object has a \sphinxcode{\sphinxupquote{declaration}} field, the name of the declared component is the value of \sphinxcode{\sphinxupquote{\$id}}.
 \item[] Must be suffixed with brackets e.g. \sphinxcode{\sphinxupquote{{[}2{]}}} in case of array variables.
 \end{DUlineblock}
 \end{quote}
@@ -1323,31 +1342,13 @@ Unit of the value. Must be displayed in the UI.
 
 {[}\sphinxstyleemphasis{items} : string (C){]}
 
-Any valid Modelica declaration (component or parameter) or an array of those which must have the same size as \sphinxcode{\sphinxupquote{widget.options}} if the latter is provided (in which case the elements of \sphinxcode{\sphinxupquote{declaration}} get mapped with the elements of \sphinxcode{\sphinxupquote{widget.options}} based on their indices).
+Any valid Modelica declaration(*) (component or parameter) or an array of those that has the same size as \sphinxcode{\sphinxupquote{widget.options}} if the latter is provided (in which case the elements of \sphinxcode{\sphinxupquote{declaration}} get mapped with the elements of \sphinxcode{\sphinxupquote{widget.options}} based on their indices).
 
 \begin{sphinxadmonition}{note}{Note:}
-If one option requires multiple declarations, the first one will typically be specified here and the other ones as dependencies.
+(*) The name of the instance is not included in the declaration but provided with the \sphinxcode{\sphinxupquote{\$id}} entry: it must be inserted between the class reference and the optional parameters of the instance (specified within parenthesis).
+
+If one option requires multiple declarations, the first one should typically be specified here and the other ones as dependencies.
 \end{sphinxadmonition}
-\end{quote}
-
-\sphinxcode{\sphinxupquote{annotation}} : array, string (C), null : optional
-\begin{quote}
-
-{[}\sphinxstyleemphasis{items} : string (C){]}
-
-Any valid Modelica annotation or an array of those which must have the same size as \sphinxcode{\sphinxupquote{widget.options}} if the latter is provided (in which case the elements of \sphinxcode{\sphinxupquote{annotation}} get mapped with the elements of \sphinxcode{\sphinxupquote{widget.options}} based on their indices).
-\end{quote}
-
-\sphinxcode{\sphinxupquote{protected}} : boolean : optional, default \sphinxcode{\sphinxupquote{false}}
-\begin{quote}
-
-Indicates if the declaration should be public or protected.
-\end{quote}
-
-\sphinxcode{\sphinxupquote{icon\_transformation}} : string (C) : optional
-\begin{quote}
-
-Graphical transformation that must be applied to the component icon e.g. \sphinxcode{\sphinxupquote{"flipHorizontal"}}.
 \end{quote}
 
 \sphinxcode{\sphinxupquote{placement}} : array, string (C) : optional
@@ -1391,21 +1392,48 @@ Type of connection logic.
 \end{DUlineblock}
 \end{quote}
 \end{quote}
+
+\sphinxcode{\sphinxupquote{annotation}} : array, string (C), null : optional
+\begin{quote}
+
+{[}\sphinxstyleemphasis{items} : string (C){]}
+
+Any valid Modelica annotation or an array of those which must have the same size as \sphinxcode{\sphinxupquote{widget.options}} if the latter is provided (in which case the elements of \sphinxcode{\sphinxupquote{annotation}} get mapped with the elements of \sphinxcode{\sphinxupquote{widget.options}} based on their indices).
+\end{quote}
+
+\sphinxcode{\sphinxupquote{protected}} : boolean : optional, default \sphinxcode{\sphinxupquote{false}}
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Indicates if the declaration should be public or protected.
+\item[] All protected declarations must be grouped together at the end of the declaration section in the Modelica model (to avoid multiple \sphinxcode{\sphinxupquote{protected}} and \sphinxcode{\sphinxupquote{public}} specifiers in the source file).
+\end{DUlineblock}
+\end{quote}
+
+\sphinxcode{\sphinxupquote{symbol\_path}} : string (C) : optional
+\begin{quote}
+
+Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see \hyperref[\detokenize{requirements:sec-schematics-export}]{Section \ref{\detokenize{requirements:sec-schematics-export}}}. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
+\end{quote}
+
+\sphinxcode{\sphinxupquote{icon\_transformation}} : string (C) : optional
+\begin{quote}
+
+Graphical transformation that must be applied to the component icon e.g. \sphinxcode{\sphinxupquote{"flipHorizontal"}}.
+\end{quote}
 \end{quote}
 
 An example of the resulting data structure is provided in annex, see \hyperref[\detokenize{annex:sec-annex-json}]{Section \ref{\detokenize{annex:sec-annex-json}}}.
 
 
-\subsection{Persisting Data}
+\subsubsection{Persisting Data}
 \label{\detokenize{requirements:persisting-data}}\label{\detokenize{requirements:sec-persisting-data}}
+\sphinxstylestrong{Path of the Configuration File}
 
-\subsubsection{Path of the Configuration File}
-\label{\detokenize{requirements:path-of-the-configuration-file}}
 The path (relative to the library entry path, see \sphinxstyleemphasis{Path discovery} in \hyperref[\detokenize{requirements:tab-gui-func}]{Table \ref{\detokenize{requirements:tab-gui-func}}}) must be stored in a hierarchical vendor annotation at the model level e.g. \sphinxcode{\sphinxupquote{\_\_Linkage(path="modelica://Buildings.Configuration.AHU")}}.
 
+\sphinxstylestrong{Configuration Objects}
 
-\subsubsection{Configuration Objects}
-\label{\detokenize{requirements:configuration-objects}}
 The \sphinxcode{\sphinxupquote{value}} of all objects must be stored with their \sphinxcode{\sphinxupquote{\$id}} in a serialized format within a hierarchical vendor annotation at the model level. (This is done at the model level since some configuration data may be linked to some model declarations indirectly using dependencies so annotations at the declaration level would not cover all use cases.)
 
 This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model.
@@ -1413,14 +1441,18 @@ This is especially needed so that the references to the configuration data in th
 There are two kind of references:
 \begin{itemize}
 \item {} 
-LinkageJS references prefixed by \sphinxcode{\sphinxupquote{\#}} which must be interpreted by the configuration widget and replaced by their actual value e.g. \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a(redeclare package Medium=\#air\_supply.medium)}}.
+LinkageJS references prefixed by \sphinxcode{\sphinxupquote{\#}} which must be interpreted by the configuration widget and replaced by their actual value e.g. \sphinxcode{\sphinxupquote{"declaration": "Modelica.Fluid.Interfaces.FluidPort\_a (redeclare package Medium=\#air\_supply.medium)"}} for the object \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a id\_value(redeclare package Medium=Buildings.Media.Air)}} in the generated model.
 
 \item {} 
-Modelica references provided as literal variables e.g. \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y(m\_flow\_nominal=m\_flowRet\_nominal)}}.
+Modelica references provided as literal variables e.g. \sphinxcode{\sphinxupquote{"declaration": "Buildings.Fluid.Movers.SpeedControlled\_y (m\_flow\_nominal=m\_flowRet\_nominal)"}} for the object if \sphinxcode{\sphinxupquote{"\$id": "id\_value"}} leads to \sphinxcode{\sphinxupquote{Buildings.Fluid.Movers.SpeedControlled\_y id\_value(m\_flow\_nominal=m\_flowRet\_nominal)}} in the generated model.
 
 \end{itemize}
 
-Unless specified as \sphinxcode{\sphinxupquote{final}} those references may be overwritten by the user. When loading a model the configuration widget must parse the \sphinxcode{\sphinxupquote{\$id{}` and {}`{}`value}} of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by \sphinxcode{\sphinxupquote{\#}}). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
+Unless specified as \sphinxcode{\sphinxupquote{final}} those references may be overwritten by the user. When loading a model the configuration widget must parse the \sphinxcode{\sphinxupquote{\$id}} and \sphinxcode{\sphinxupquote{value}} of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by \sphinxcode{\sphinxupquote{\#}}). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
+
+\sphinxstylestrong{Engineering Symbol SVG File path}
+
+The path (\sphinxcode{\sphinxupquote{symbol\_path}} in {\hyperref[\detokenize{requirements:configuration-api}]{\sphinxcrossref{Configuration API}}}) is stored in a vendor annotation at the declaration level e.g. \sphinxcode{\sphinxupquote{annotation(\_\_Linkage(symbol\_path="value of symbol\_path"))}}.
 
 
 \subsection{Fluid Connectors}
@@ -1459,13 +1491,13 @@ That logic relies on connectors tagging which supports two modes:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
-Default mode (\sphinxcode{\sphinxupquote{connect.type == "path"}})
+Default mode (\sphinxcode{\sphinxupquote{connect.type == "path"}} or \sphinxcode{\sphinxupquote{null}})
 \begin{itemize}
 \item {} 
-By default the instances of \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a}} and \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_b}} will be suffixed \sphinxcode{\sphinxupquote{inlet}} and \sphinxcode{\sphinxupquote{outlet}} respectively.
+By default an instance of \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_a}} (resp. \sphinxcode{\sphinxupquote{Modelica.Fluid.Interfaces.FluidPort\_b}}) must be tagged with the suffix \sphinxcode{\sphinxupquote{inlet}} (resp. \sphinxcode{\sphinxupquote{outlet}}).
 
 \item {} 
-The prefix tag is provided at the component level to specify the fluid path e.g. \sphinxcode{\sphinxupquote{air\_supply}} or \sphinxcode{\sphinxupquote{air\_return}}.
+The tag prefix is provided at the component level to specify the fluid path e.g. \sphinxcode{\sphinxupquote{air\_supply}} or \sphinxcode{\sphinxupquote{air\_return}}.
 
 \item {} 
 The fluid connectors are then tagged by concatenating the previous strings e.g. \sphinxcode{\sphinxupquote{air\_supply\_inlet}} or \sphinxcode{\sphinxupquote{air\_return\_outlet}}.
@@ -1476,13 +1508,12 @@ The fluid connectors are then tagged by concatenating the previous strings e.g. 
 Detailed mode (\sphinxcode{\sphinxupquote{connect.type == "tags"}})
 \begin{itemize}
 \item {} 
-We need an additional mechanism to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see \hyperref[\detokenize{requirements:linkage-connect-3wv}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-3wv}}}. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
+An additional mechanism is required to allow tagging each fluid port individually. Typically for a three way valve, the bypass port should be on a different fluid path than the inlet and outlet ports see \hyperref[\detokenize{requirements:linkage-connect-3wv}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-3wv}}}. Hence we need a mapping dictionary at the connector level which, if provided, takes precedence on the default logic specified above.
 
 \item {} 
-Furthermore a fluid connector can be connected to more than one other fluid connector (fork configuration). To support that feature the concept of \sphinxstyleemphasis{derived path} is introduced: if \sphinxcode{\sphinxupquote{fluid\_path}} is the name of a fluid path, each fluid path named \sphinxcode{\sphinxupquote{/\textasciicircum{}fluid\_path\_((?!\_).)*\$/gm}} is considered a \sphinxstyleemphasis{derived path}. The original (derived from) path is the \sphinxstyleemphasis{parent path}. A path with no parent path is referred to as \sphinxstyleemphasis{main path}.
+Furthermore a fluid connector may be connected to more than one other fluid connector (fork configuration). To support that feature the concept of \sphinxstyleemphasis{derived path} is introduced: if \sphinxcode{\sphinxupquote{fluid\_path}} is the name of a fluid path, each fluid path named \sphinxcode{\sphinxupquote{/\textasciicircum{}fluid\_path\_((?!\_).)*\$/gm}} is considered a \sphinxstyleemphasis{derived path}. The original (derived from) path is the \sphinxstyleemphasis{parent path}. A path with no parent path is referred to as \sphinxstyleemphasis{main path}.
 
-\item {} 
-For instance in case of a three way valve the mapping dictionary could be:
+For instance in case of a three way valve the mapping dictionary may be:
 
 \sphinxcode{\sphinxupquote{\{"port\_1": "hotwater\_return\_inlet", "port\_2": "hotwater\_return\_outlet", "port\_3": "hotwater\_supply\_bypass\_inlet"\}}} where \sphinxcode{\sphinxupquote{hotwater\_supply\_bypass}} is a derived path from \sphinxcode{\sphinxupquote{hotwater\_supply}}.
 
@@ -1532,7 +1563,7 @@ For each fluid path:
 Order all the connectors in the connectors list according to the direction of the fluid path and based on the position of the corresponding \sphinxstyleemphasis{objects} (not connectors) with the constraint that for each object \sphinxcode{\sphinxupquote{inlet}} has to be listed first and \sphinxcode{\sphinxupquote{outlet}} last.
 
 \item {} 
-For each \sphinxstyleemphasis{derived path} find the start and end connectors as described hereunder and prepend / append the connectors list.
+For each derived path find the start and end connectors as described hereunder and prepend / append the connectors list.
 \begin{itemize}
 \item {} 
 If the first (resp. last) connector in the ordered list is an outlet (resp. inlet), it is the start (resp. end) connector. (Note that the reciprocal is not true: a start port can be either an inlet or an outlet see \hyperref[\detokenize{requirements:linkage-connect-multi}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-multi}}}.)
@@ -1560,18 +1591,13 @@ Each branch of a fork must be a derived path, it cannot belong to the parent pat
 Generate the \sphinxcode{\sphinxupquote{connect}} equations by iterating on the ordered list of connectors and generate the connection path and the corresponding graphical annotation. The only valid connection along a fluid path is \sphinxcode{\sphinxupquote{outlet}} with \sphinxcode{\sphinxupquote{inlet}}.
 
 \item {} 
-Populate the \sphinxcode{\sphinxupquote{iconTransformation}} annotation of each outside connector instantiated as a dependency so that they belong to the same border (top, left, bottom, right) as in the diagram layer and be evenly positioned considering the icon’s dimensions. The bus connector is an exception and will always be positioned at the top center of the icon.
+Populate the \sphinxcode{\sphinxupquote{iconTransformation}} annotation of each outside connector instantiated as a dependency so that, in the icon layer, they belong to the same border (top, left, bottom, right) as in the diagram layer and be evenly positioned considering the icon’s dimensions. The bus connector is an exception and must always be positioned at the top center of the icon.
 
 \end{itemize}
 
 \end{itemize}
 
-The implications of that logic are the following:
-\begin{itemize}
-\item {} 
-Within the same fluid path, objects are connected in one given direction only: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically \sphinxcode{\sphinxupquote{supply}} and \sphinxcode{\sphinxupquote{return}}.
-
-\end{itemize}
+That logic implies that within the same fluid path, objects are connected in one given direction only: to represent a fluid loop (graphically) at least two fluid paths must be defined, typically \sphinxcode{\sphinxupquote{supply}} and \sphinxcode{\sphinxupquote{return}}.
 
 \hyperref[\detokenize{requirements:linkage-connect-multi}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-multi}}} to \hyperref[\detokenize{requirements:linkage-connect-duct}]{Fig.\@ \ref{\detokenize{requirements:linkage-connect-duct}}} further illustrate the connection logic on different test cases.
 
@@ -1610,7 +1636,7 @@ a (fuzzy) string matching principle applied to the names of the connector variab
 \item {} 
 a so-called \sphinxstyleemphasis{control bus} which has the type of an expandable connector, see \sphinxstyleemphasis{\S{}9.1.3 Expandable Connectors} in \sphinxcite{bibliography:modelica2017}.
 
-(For clarity it might be useful to group control input variables in one sub-bus and control output variables in another sub-bus. The \sphinxhref{https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library}{experience feedback on bus usage in Modelica} shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option.)
+(For clarity it may be useful to group control input variables in one sub-bus and control output variables in another sub-bus. The \sphinxhref{https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library}{experience feedback on bus usage in Modelica} shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option.)
 
 \end{itemize}
 
@@ -1642,7 +1668,7 @@ Those features are illustrated with a minimal example in annex, see \hyperref[\d
 
 \subsubsection{Generating Connections by Approximate String Matching}
 \label{\detokenize{requirements:generating-connections-by-approximate-string-matching}}
-To support automatic connections of signal variables a predefined control bus will be defined for each type of system (e.g. VAV, CHW plant) with a set of predeclared variables. The names of the variables must allow a one-to-one correspondence between:
+To support automatic connections of signal variables a predefined control bus will be defined for each type of system (e.g. AHU, CHW plant) with a set of predeclared variables. The names of the variables must allow a one-to-one correspondence between:
 \begin{itemize}
 \item {} 
 the control sequence input variables and the outputs of the equipment model e.g. sensed quantities and actuators returned positions,
@@ -1658,36 +1684,51 @@ However an exact string matching is not conceivable. An approximate (or fuzzy) s
 \sphinxSetupCaptionForVerbatim{Example of a Python function used for fuzzy string matching}
 \def\sphinxLiteralBlockLabel{\label{\detokenize{requirements:code-string-match}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{fuzz}
-\PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{process}
+ \PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{fuzz}
+ \PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{process}
+ \PYG{k+kn}{import} \PYG{n+nn}{itertools} \PYG{k+kn}{as} \PYG{n+nn}{it}
+ \PYG{k+kn}{import} \PYG{n+nn}{re}
 
-\PYG{k+kn}{import} \PYG{n+nn}{itertools} \PYG{k+kn}{as} \PYG{n+nn}{it}
-\PYG{k+kn}{import} \PYG{n+nn}{re}
 
+ \PYG{k}{def} \PYG{n+nf}{return\PYGZus{}best}\PYG{p}{(}\PYG{n}{string}\PYG{p}{,} \PYG{n}{choices}\PYG{p}{,} \PYG{n}{sys\PYGZus{}type}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Ahu}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{:}
+     \PYG{c+c1}{\PYGZsh{} Constrain array to array and scalar (or array element) to scalar.}
+     \PYG{c+c1}{\PYGZsh{} Need to specify a logic for tagging scalar variables that should be connected to array elements e.g. \PYGZsq{}*\PYGZus{}zon*.y\PYGZsq{}.}
+     \PYG{c+c1}{\PYGZsh{} But allow a single array element to be connected to a scalar variable: not bool(re.search(\PYGZsq{}\PYGZbs{}[\PYGZbs{}d+\PYGZbs{}]\PYGZsq{}, string))}
+     \PYG{k}{if} \PYG{n+nb}{bool}\PYG{p}{(}\PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]\textbar{}\PYGZus{}zon.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n+nb}{bool}\PYG{p}{(}\PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{d+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:}
+         \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{el} \PYG{k}{for} \PYG{n}{el} \PYG{o+ow}{in} \PYG{n}{choices} \PYG{k}{if} \PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{el}\PYG{p}{)}\PYG{p}{]}
+         \PYG{c+c1}{\PYGZsh{} Replace [.*] by [:]}
+         \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{[:]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
+         \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}zon.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{[:].}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
+     \PYG{k}{else}\PYG{p}{:}
+         \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{el} \PYG{k}{for} \PYG{n}{el} \PYG{o+ow}{in} \PYG{n}{choices} \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{el}\PYG{p}{)}\PYG{p}{]}
 
-\PYG{k}{def} \PYG{n+nf}{return\PYGZus{}best}\PYG{p}{(}\PYG{n}{string}\PYG{p}{,} \PYG{n}{choices}\PYG{p}{)}\PYG{p}{:}
-    \PYG{c+c1}{\PYGZsh{} Constrain array to array and scalar (or array element) to scalar.}
-    \PYG{c+c1}{\PYGZsh{} Need to specify a logic for tagging scalar variables that should be connected to array elements e.g. \PYGZsq{}*\PYGZus{}zon*.y\PYGZsq{}.}
-    \PYG{c+c1}{\PYGZsh{} Guard against array element A[i] to be connected to scalar variable.}
-    \PYG{k}{if} \PYG{n+nb}{bool}\PYG{p}{(}\PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]\textbar{}\PYGZus{}zon.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n+nb}{bool}\PYG{p}{(}\PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{d+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:}
-        \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{el} \PYG{k}{for} \PYG{n}{el} \PYG{o+ow}{in} \PYG{n}{choices} \PYG{k}{if} \PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{el}\PYG{p}{)}\PYG{p}{]}
-        \PYG{c+c1}{\PYGZsh{} Replace [.*] by [:]}
-        \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{[:]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
-        \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}zon.*}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{[:].}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
-    \PYG{k}{else}\PYG{p}{:}
-        \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{el} \PYG{k}{for} \PYG{n}{el} \PYG{o+ow}{in} \PYG{n}{choices} \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{re}\PYG{o}{.}\PYG{n}{search}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{[.+}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{]}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{el}\PYG{p}{)}\PYG{p}{]}
+     \PYG{c+c1}{\PYGZsh{} Replace pre by p and tem by t.}
+     \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{pre}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{P}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
+     \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{tem}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{T}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
 
-    \PYG{c+c1}{\PYGZsh{} Replace pre by p and tem by t.}
-    \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{pre}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{P}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
-    \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{tem}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{T}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{flags}\PYG{o}{=}\PYG{n}{re}\PYG{o}{.}\PYG{n}{I}\PYG{p}{)}
+     \PYG{c+c1}{\PYGZsh{} Do not consider controller and bus component names.}
+     \PYG{c+c1}{\PYGZsh{} Remark: has only little impact.}
+     \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}
+     \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{choices}\PYG{p}{]}
 
-    \PYG{c+c1}{\PYGZsh{} Perform comparison.}
-    \PYG{n}{res} \PYG{o}{=} \PYG{n}{process}\PYG{o}{.}\PYG{n}{extract}\PYG{p}{(}\PYG{n}{string}\PYG{p}{,} \PYG{n}{choices}\PYG{p}{,} \PYG{n}{limit}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{scorer}\PYG{o}{=}\PYG{n}{fuzz}\PYG{o}{.}\PYG{n}{token\PYGZus{}sort\PYGZus{}ratio}\PYG{p}{)}
+     \PYG{c+c1}{\PYGZsh{} Perform comparison.}
+     \PYG{n}{res} \PYG{o}{=} \PYG{n}{process}\PYG{o}{.}\PYG{n}{extract}\PYG{p}{(}\PYG{n}{string}\PYG{p}{,} \PYG{n}{choices}\PYG{p}{,} \PYG{n}{limit}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{scorer}\PYG{o}{=}\PYG{n}{fuzz}\PYG{o}{.}\PYG{n}{token\PYGZus{}sort\PYGZus{}ratio}\PYG{p}{)}
 
-    \PYG{k}{return} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{it}\PYG{o}{.}\PYG{n}{chain}\PYG{p}{(}\PYG{o}{*}\PYG{n}{res}\PYG{p}{)}\PYG{p}{)}
+     \PYG{k}{return} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{it}\PYG{o}{.}\PYG{n}{chain}\PYG{p}{(}\PYG{o}{*}\PYG{n}{res}\PYG{p}{)}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 Results in \hyperref[\detokenize{requirements:fig-string-match}]{Fig.\@ \ref{\detokenize{requirements:fig-string-match}}}.
+\begin{itemize}
+\item {} 
+Strict naming conventions solve most of the mismatch cases with a satisfying confidence (end score \textgreater{} 60).
+
+\item {} 
+There is still a need to specify a convention to determine which array element should be connected to a scalar variable.
+
+\item {} 
+There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}}) for which a logic consisting in using only the variable name if it is descriptive enough (test on length of suffix of standard variables names) and the initial matching score is low (below 50).
+
+\end{itemize}
 
 
 
@@ -1819,7 +1860,7 @@ Directly connecting variables to the bus (without intermediary sub-bus) can solv
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id18}}
+\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id19}}
 \sphinxaftertopcaption
 \begin{tabular}[t]{|\X{40}{100}|\X{10}{100}|\X{10}{100}|\X{20}{100}|\X{20}{100}|}
 \hline
@@ -1944,15 +1985,50 @@ O
 \caption{Bus variables being exposed in case the bus is an inside connector}\label{\detokenize{requirements:bus-inside}}\end{figure}
 
 
-\subsubsection{Parameters Setting}
+\subsection{Parameters Setting}
 \label{\detokenize{requirements:parameters-setting}}\label{\detokenize{requirements:sec-parameters}}
 To be updated.
 
 The name and comment of the instance must be displayed in the parameters tab.
 
 
+\subsection{Control Sequence Configuration}
+\label{\detokenize{requirements:control-sequence-configuration}}
+In theory the configuration widget specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the \sphinxhref{https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL}{CDL Library}) and automatically generating connections between those blocks. However:
+\begin{itemize}
+\item {} 
+it would require to distinguish between low-level control blocks (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.CDL.Continuous.LimPID}}) composing a system controller \textendash{} which must be connected with direct connect equations and not with expandable connectors variables that are not part of the CDL specification \textendash{} and high-level control blocks (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}) \textendash{} which can be connected to other high-level controllers (e.g. \sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.TerminalUnits.Controller}}) using expandable connectors variables (the CDL translation will be done for each high-level controller individually),
+
+\item {} 
+the complexity of some sequences makes it hard to validate the reliability of such an approach without extensive testing.
+
+\end{itemize}
+
+Therefore in practice and at least for the first version of LinkageJS it has been decided to rely on pre-assembled high-level control blocks. For each system type (e.g. AHU) one (or a very limited number) of control block(s) should be instantiated by the configuration widget for which the connections can be generated using expandable connectors as described before.
+
+The example of the configuration file for a VAV system in \hyperref[\detokenize{annex:sec-annex-json}]{Section \ref{\detokenize{annex:sec-annex-json}}} illustrates that use case.
+
+
 \section{Schematics Export}
 \label{\detokenize{requirements:schematics-export}}\label{\detokenize{requirements:sec-schematics-export}}
+The schematics export encompasses three items:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+Engineering schematics of the equipment including the controls points
+
+\item {} 
+Control points list
+
+\item {} 
+Control sequence description
+
+\end{enumerate}
+
+The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget e.g. primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.
+
+\hyperref[\detokenize{requirements:screen-schematics-modelica}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-modelica}}} illustrates the typical diagram model generated by the configuration widget and \hyperref[\detokenize{requirements:screen-schematics-output}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-output}}} mocks up the corresponding export that should be generated. The actual export output may consist in three different files.
+
 \begin{figure}[htbp]
 \centering
 \capstart
@@ -1968,36 +2044,152 @@ The name and comment of the instance must be displayed in the parameters tab.
 \caption{Mockup of the schematics export \textendash{} Output file (format to be specified: Word or PDF)}\label{\detokenize{requirements:screen-schematics-output}}\end{figure}
 
 
+\subsection{Engineering Schematics}
+\label{\detokenize{requirements:engineering-schematics}}
+Objects of the original model to be included in the final export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. \sphinxcode{\sphinxupquote{annotation(\_\_Linkage(symbol\_path="value of symbol\_path"))}}. That annotation may be:
+\begin{itemize}
+\item {} 
+specified in the configuration file, see \sphinxcode{\sphinxupquote{symbol\_path}} in {\hyperref[\detokenize{requirements:configuration-api}]{\sphinxcrossref{Configuration API}}},
+
+\item {} 
+specified manually by the user for potentially any instantiated component.
+
+\end{itemize}
+
+\begin{sphinxadmonition}{note}{Note:}
+It is expected that LinkageJS will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares e.g. AutoCAD®.
+
+Due to geometry discrepancies between Modelica icons and engineering symbols a perfect alignment of the latter is not expected by simply mapping the diagram coordinates of the former to the SVG layout. A mechanism should be developed to automatically correct small alignment defaults.
+\end{sphinxadmonition}
+
+For the exported objects:
+\begin{itemize}
+\item {} 
+the connectors connected to the control input and output sub buses must be split into two groups depending on their type \textendash{} boolean or numeric,
+
+\item {} 
+an index tag is then generated based on the object position, from top to bottom and left to right,
+
+\item {} 
+eventually connection lines are drawn to link those tags to the four different control points buses (AI, AO, DI, DO). The line must be vertical, with an optional horizontal offset from the index tag to avoid overlapping any other object.
+
+\end{itemize}
+
+SVG is the required output format.
+
+See \hyperref[\detokenize{requirements:screen-schematics-output}]{Fig.\@ \ref{\detokenize{requirements:screen-schematics-output}}} for the typical output of the schematics export process.
+
+
+\subsection{Control Points List}
+\label{\detokenize{requirements:control-points-list}}
+Generating the control points list is done by calling a module developed by LBL (ongoing development) which returns an HTML or Word document.
+
+
+\subsection{Control Sequence Description}
+\label{\detokenize{requirements:control-sequence-description}}
+Generating the control sequence description is done by calling a \sphinxhref{https://lbl-srg.github.io/modelica-json/}{module developed by LBL} which returns an HTML or Word document.
+
+
 \section{Working with Tagged Variables}
 \label{\detokenize{requirements:working-with-tagged-variables}}\label{\detokenize{requirements:sec-tagged-variables}}
-To be updated: specify the requirements for tagging variables and performing some queries of the set of tagged variables
+The requirements for tagging variables and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
 
-Set up parameters values with OS measures e.g. nominal electrical loads or boiler efficiency
+Those additional requirements should at least address the following typical use cases:
+\begin{itemize}
+\item {} 
+Setting up parameters values with OS measures e.g. nominal electrical loads or boiler efficiency
+
+\item {} 
+Plotting variables selected by a description string e.g. “indoor air temperature for all zones of the first floor”
+
+\item {} 
+Mapping with equipment characteristics and sizing from data sheets or calculation spreadsheets
+
+\end{itemize}
+
+An algorithm based on the variables names (similar to the one proposed for generating automatic connections for signal variables, see \hyperref[\detokenize{requirements:sec-signal-connectors}]{Section \ref{\detokenize{requirements:sec-signal-connectors}}}) is envisioned.
 
 
 \section{OpenStudio Integration}
 \label{\detokenize{requirements:openstudio-integration}}
-To be updated.
+LinkageJS must eventually be integrated as a specific \sphinxstyleemphasis{tab} in the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/}{OpenStudio} (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future \sphinxhref{https://lbl-srg.github.io/soep/}{Spawn of EnergyPlus} (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating\_your\_model/\#air-plant-and-zone-hvac-systems}{HVAC Systems tab}).
+
+In SOEP workflow a building multi-zone model (EnergyPlus input file \sphinxcode{\sphinxupquote{idf}}) is configured within OpenStudio. The OpenStudio model \sphinxcode{\sphinxupquote{osm}} exposes functions to access \sphinxcode{\sphinxupquote{idf}} parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the \sphinxcode{\sphinxupquote{idf}} file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
+
+The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.
+
+An API must also be developed to access LinkageJS functionalities and data model in a programmatic way. The preferred language is Python (largely used in the Modelica users’ community) or Ruby (largely used in the OpenStudio users’ community).
+
+Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to:
+\begin{itemize}
+\item {} 
+devise the read and write access to the local file system e.g. by means of OS API (functions to be developed by LBL or NREL),
+
+\item {} 
+specify LinkageJS API (to be developed by the UI developer).
+
+\end{itemize}
+
+This is illustrated in \hyperref[\detokenize{architecture:linkage-architecture-os}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-os}}}.
 
 
 \section{Interface with URBANopt GeoJSON}
 \label{\detokenize{requirements:interface-with-urbanopt-geojson}}
-To be updated.
+A seamless integration of LinkageJS into URBANopt modeling workflow is required. To support that feature additional requirements will be specified by LBL in a second version of this document.
 
-
-\section{Encryption}
-\label{\detokenize{requirements:encryption}}
-See current standardization effort in \sphinxhref{https://github.com/modelica/ModelicaSpecification/issues/1868}{\#1868}.
+The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-LinkageJS workflow. Therefore the requirements should mainly address the persistence of modeling data and shared resources between the two processes.
 
 
 \section{Licensing}
 \label{\detokenize{requirements:licensing}}
-To be updated cf. licensing strategy different for each integration target
+As a project funded by the U.S. Department of Energy’s Building Technologies Office (BTO) LinkageJS core components (e.g. \sphinxstyleemphasis{Editor Layer} in \hyperref[\detokenize{architecture:sec-architecture}]{Section \ref{\detokenize{architecture:sec-architecture}}}) must be open sourced: \sphinxstylestrong{under BSD 3/4-clause?}.
+
+Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:
+\begin{itemize}
+\item {} 
+Desktop app
+
+Subscription-based
+
+\item {} 
+Standalone web app
+\begin{itemize}
+\item {} 
+Free account allowing access to Modelica libraries preloaded by default e.g. Modelica Standard and Buildings: the user can only upload and download single Modelica files (not a package).
+
+\item {} 
+Pro account allowing access to server storage of Modelica files (packages uploaded and models saved by the user): the user can update the stored libraries and reopen saved models between sessions.
+
+\end{itemize}
+
+\item {} 
+Third party application embedding
+
+Licensing will depend on the application distribution model.
+
+For OpenStudio there is currently a shift in the \sphinxhref{https://www.openstudio.net/new-future-for-openstudio-application}{licensing strategy}. For this integration target the specification will be precised to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
+
+\end{itemize}
+
+
+\section{Encryption}
+\label{\detokenize{requirements:encryption}}
+Need for any specific requirement regarding “total model export”?
+
+See current standardization effort in \sphinxhref{https://github.com/modelica/ModelicaSpecification/issues/1868}{\#1868}.
 
 
 \chapter{Software Architecture}
 \label{\detokenize{architecture:software-architecture}}\label{\detokenize{architecture:sec-architecture}}\label{\detokenize{architecture::doc}}
-\hyperref[\detokenize{architecture:linkage-architecture}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture}}} presents the envisioned software architecture for the desktop app.
+\hyperref[\detokenize{architecture:linkage-architecture-legend}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-legend}}} to \hyperref[\detokenize{architecture:linkage-architecture-os}]{Fig.\@ \ref{\detokenize{architecture:linkage-architecture-os}}} provide simplified architecture diagrams for the three integration targets.
+Those are not hard and fast, they are rather provided to give an idea of the main modules to develop and how they interface with LBL in-house developments.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{linkage_architecture_legend}.pdf}
+\caption{Software architecture legend}\label{\detokenize{architecture:linkage-architecture-legend}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -2005,6 +2197,20 @@ To be updated cf. licensing strategy different for each integration target
 
 \noindent\sphinxincludegraphics{{linkage_architecture}.pdf}
 \caption{Software architecture - Desktop app}\label{\detokenize{architecture:linkage-architecture}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{linkage_architecture_spa}.pdf}
+\caption{Software architecture - Standalone web app}\label{\detokenize{architecture:linkage-architecture-spa}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{linkage_architecture_os}.pdf}
+\caption{Software architecture - Integration in third party application e.g. \sphinxhref{https://www.openstudio.net}{OpenStudio®}}\label{\detokenize{architecture:linkage-architecture-os}}\end{figure}
 
 
 \chapter{Annex}
@@ -2016,12 +2222,12 @@ To be updated cf. licensing strategy different for each integration target
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{p}{\PYGZob{}}
     \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}type\PYGZdq{}}\PYG{p}{,}
+        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}System type\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}AHU\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}subtype\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype\PYGZdq{}}\PYG{p}{,}
+        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}subtype\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Type of AHU\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown\PYGZdq{}}\PYG{p}{,}
@@ -2030,7 +2236,7 @@ To be updated cf. licensing strategy different for each integration target
         \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}VAV\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}name\PYGZdq{}}\PYG{p}{,}
+        \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Model name\PYGZdq{}}\PYG{p}{,}
         \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
             \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Text input\PYGZdq{}}
@@ -2039,12 +2245,12 @@ To be updated cf. licensing strategy different for each integration target
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}fluid\PYGZus{}paths\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}air\PYGZus{}supply\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}air\PYGZus{}supply\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}direction\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}east\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}medium\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Buildings.Media.Air\PYGZdq{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}air\PYGZus{}return\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}air\PYGZus{}return\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}direction\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}west\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}medium\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Buildings.Media.Air\PYGZdq{}}
         \PYG{p}{\PYGZcb{}}
@@ -2056,7 +2262,7 @@ To be updated cf. licensing strategy different for each integration target
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}equipment\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}heaRec\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}heaRec\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Heat recovery\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value == \PYGZsq{}DOA\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
@@ -2068,7 +2274,7 @@ To be updated cf. licensing strategy different for each integration target
                 \PYG{k+kc}{null}\PYG{p}{,}
                 \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU\PYGZdq{}}\PYG{p}{,}
                 \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.HeatExchangers.EnthalpyWheel\PYGZdq{}}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.HeatExchangers.EnthalpyWheel(sensible=true)\PYGZdq{}}
+                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.HeatExchangers.EnthalpyWheel (sensible=true)\PYGZdq{}}
             \PYG{p}{]}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}icon\PYGZus{}transformation\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}flipHorizontal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{,}
@@ -2080,7 +2286,7 @@ To be updated cf. licensing strategy different for each integration target
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}eco\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}eco\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Economizer\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value == \PYGZsq{}VAV\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
@@ -2104,18 +2310,18 @@ To be updated cf. licensing strategy different for each integration target
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal outdoor air volumetric flow rate\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}V\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal outdoor air volume flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}eco.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.VolumeFlowRate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/s\PYGZdq{}}
+            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/s\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.VolumeFlowRate\PYGZdq{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanSup\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fanSup\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply fan\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value != \PYGZsq{}Exhaust only\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
@@ -2123,24 +2329,25 @@ To be updated cf. licensing strategy different for each integration target
                 \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Draw through\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Blow through\PYGZdq{}}\PYG{p}{]}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Draw through\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y(m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowSup\PYGZus{}nominal)\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y (m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowSup\PYGZus{}nominal)\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{k+kc}{null}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{18}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}connect\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}air\PYGZus{}supply\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal supply air volumetric flow rate\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}V\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal supply air volume flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanSup.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/h\PYGZdq{}}
+            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/s\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.VolumeFlowRate\PYGZdq{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanRet\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fanRet\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Return/Relief fan\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value != \PYGZsq{}Supply only\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
@@ -2150,8 +2357,8 @@ To be updated cf. licensing strategy different for each integration target
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Relief\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
                 \PYG{k+kc}{null}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y(m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowRet\PYGZus{}nominal)\PYGZdq{}}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y(m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowRel\PYGZus{}nominal)\PYGZdq{}}
+                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y (m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowRet\PYGZus{}nominal)\PYGZdq{}}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Movers.SpeedControlled\PYGZus{}y (m\PYGZus{}flow\PYGZus{}nominal=m\PYGZus{}flowRel\PYGZus{}nominal)\PYGZdq{}}
             \PYG{p}{]}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}icon\PYGZus{}transformation\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}flipHorizontal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{k+kc}{null}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{13}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
@@ -2160,96 +2367,116 @@ To be updated cf. licensing strategy different for each integration target
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal return air volumetric flow rate\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}V\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal return air volume flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanRet.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/h\PYGZdq{}}
+            \PYG{n+nt}{\PYGZdq{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m3/s\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.VolumeFlowRate\PYGZdq{}}
         \PYG{p}{\PYGZcb{}}
     \PYG{p}{]}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}controls\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}conAHURef\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Reference guideline for control sequences\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}ASHRAE 2006\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}ASHRAE G36\PYGZdq{}}\PYG{p}{]}
+                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}ASHRAE 2006\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}ASHRAE G36\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
+                \PYG{n+nt}{\PYGZdq{}options.enabled\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
+                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing the use of ASHRAE 2006 SOO\PYGZdq{}}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}Set of conditional statements allowing ASHRAE G36 SOO\PYGZdq{}}
+                \PYG{p}{]}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHUOpt\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Optimal start up\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}numZon\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Total number of served VAV boxes\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Heating\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Cooling\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Heating and cooling\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{k+kc}{null}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=\PYGZsh{}conAHUOpt.value)\PYGZdq{}}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=\PYGZsh{}conAHUOpt.value)\PYGZdq{}}\PYG{p}{,}
-                \PYG{l+s+s2}{\PYGZdq{}Buildings.Controls.OBC.CDL.Utilities.OptimalStartUp(mode=\PYGZsh{}conAHUOpt.value)\PYGZdq{}}
-            \PYG{p}{]}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conFanSup\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply fan control\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanSup.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}AFlo[numZon]\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Floor area of each zone\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Text\PYGZdq{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric vector input\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}occSen\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have occupancy sensor\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{false}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}winSen\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have occupancy sensor\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{false}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}perZonRehBox\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Set to true if zones have occupancy sensor\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{false}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}duaDucBox\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Check if the AHU serves dual duct boxes\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{false}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}have\PYGZus{}airFloMeaSta\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Check if the AHU has AFMS (Airflow measurement station)\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Boolean select\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{false}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
+                \PYG{k+kc}{null}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Sensors.VolumeFlowRate (redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
+
+            \PYG{p}{]}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}eco.value == \PYGZsq{}Dedicated OA damper\PYGZsq{} then [20, 5] else [18, 5]\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}connect\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}eco.value == \PYGZsq{}Dedicated OA damper\PYGZsq{} then \PYGZsq{}air\PYGZus{}supply\PYGZus{}min\PYGZsq{} else \PYGZsq{}air\PYGZus{}supply\PYGZus{}out\PYGZsq{}\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conFanSupStaSto\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply fan start/stop control\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conFanSup.widget.enabled\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}minZonPriFlo[numZon]\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Minimum expected zone primary flow rate\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}On\PYGZhy{}Off\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Static Pressure Control\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options.enabled\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value != \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,} \PYG{k+kc}{true}\PYG{p}{]}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric vector input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}conAHURef.value == null then \PYGZsq{}On\PYGZhy{}Off\PYGZsq{} elseif \PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{} then \PYGZsq{}Static Pressure Control\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}...\PYGZdq{}}\PYG{p}{]}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{null}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}resPreStaSet\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Static pressure set point reset\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conFanSup.widget.enabled\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}T\PYGZam{}R\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options.enabled\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value != \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,} \PYG{k+kc}{true}\PYG{p}{]}
-            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}conAHURef.value == null then \PYGZsq{}None\PYGZsq{} elseif \PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{} then \PYGZsq{}T\PYGZam{}R\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}...\PYGZdq{}}\PYG{p}{]}
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-        \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conTAirSup\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply Air Temperature Control\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}fanSup.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Text\PYGZdq{}}
-            \PYG{p}{\PYGZcb{}}
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-        \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}resTSupSet\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply air temperature set point reset\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conTAirSup.widget.enabled\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Dropdown menu\PYGZdq{}}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}None\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}OAT Reset\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}OAT and T\PYGZam{}R\PYGZdq{}}\PYG{p}{]}\PYG{p}{,}
-                \PYG{n+nt}{\PYGZdq{}options.enabled\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value != (\PYGZsq{}ASHRAE G36\PYGZsq{} or \PYGZsq{}ASHRAE 2006\PYGZsq{})\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value != \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,} \PYG{k+kc}{true}\PYG{p}{]}
-            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}conAHURef.value == null then \PYGZsq{}None\PYGZsq{} else \PYGZsq{}OAT and T\PYGZam{}R\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}...\PYGZdq{}}\PYG{p}{]}
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-        \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}numZon\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Number of served VAV boxes\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conTAirSup.widget.enabled and \PYGZsh{}resTSupSet.value == \PYGZsq{}OAT and T\PYGZam{}R\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}VPriSysMax\PYGZus{}flow[numZon]\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Maximum expected system primary airflow at design stage\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}conAHURef.value == \PYGZsq{}ASHRAE G36\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}widget\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Numeric input\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}\PYG{p}{,}
@@ -2258,61 +2485,51 @@ To be updated cf. licensing strategy different for each integration target
     \PYG{p}{]}\PYG{p}{,}
     \PYG{n+nt}{\PYGZdq{}dependencies\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}port\PYGZus{}outAir\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}port\PYGZus{}outAir\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Outside air port\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value != \PYGZsq{}Exhaust only\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.Fluid.Interfaces.FluidPort\PYGZus{}a(redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.Fluid.Interfaces.FluidPort\PYGZus{}a (redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}connect\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}air\PYGZus{}supply\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}port\PYGZus{}supAir\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}port\PYGZus{}supAir\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Supply air port\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}subtype.value != \PYGZsq{}Exhaust only\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.Fluid.Interfaces.FluidPort\PYGZus{}b(redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.Fluid.Interfaces.FluidPort\PYGZus{}b (redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{24}\PYG{p}{]}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}connect\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
                 \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}air\PYGZus{}supply\PYGZdq{}}
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}senFloOut\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Outdoor airflow measurement station\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}eco.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Buildings.Fluid.Sensors.VolumeFlowRate(redeclare package Medium=\PYGZsh{}air\PYGZus{}supply.medium)\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}placement\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}eco.value == \PYGZsq{}Dedicated OA damper\PYGZsq{} then [20, 5] else [18, 5]\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}connect\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-                \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}if \PYGZsh{}eco.value == \PYGZsq{}Dedicated OA damper\PYGZsq{} then \PYGZsq{}air\PYGZus{}supply\PYGZus{}min\PYGZsq{} else \PYGZsq{}air\PYGZus{}supply\PYGZus{}out\PYGZsq{}\PYGZdq{}}
-            \PYG{p}{\PYGZcb{}}
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-        \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}m\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal outdoor air mass flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowOut\PYGZus{}nominal.enabled\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.MassFlowRate\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default / 3600 * V\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default * V\PYGZus{}flowOut\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}protected\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{true}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}m\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal supply air mass flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowSup\PYGZus{}nominal.enabled\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.MassFlowRate\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default / 3600 * V\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default * V\PYGZus{}flowSup\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}protected\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{true}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}m\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal return air mass flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}V\PYGZus{}flowRet\PYGZus{}nominal.enabled\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.MassFlowRate\PYGZdq{}}\PYG{p}{,}
-            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default / 3600 * V\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}value\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}(\PYGZsh{}air\PYGZus{}supply.medium).rho\PYGZus{}default * V\PYGZus{}flowRet\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}protected\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{true}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{p}{\PYGZob{}}
-            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}m\PYGZus{}flowRel\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
+            \PYG{n+nt}{\PYGZdq{}\PYGZdl{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}m\PYGZus{}flowRel\PYGZus{}nominal\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}description\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Nominal relief air mass flow rate\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}enabled\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}eco.value != \PYGZsq{}None\PYGZsq{}\PYGZdq{}}\PYG{p}{,}
             \PYG{n+nt}{\PYGZdq{}declaration\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Modelica.SIunits.MassFlowRate\PYGZdq{}}\PYG{p}{,}
@@ -2324,8 +2541,8 @@ To be updated cf. licensing strategy different for each integration target
 \end{sphinxVerbatim}
 
 
-\section{Illustration of the Main Features of the Expandable Connectors}
-\label{\detokenize{annex:illustration-of-the-main-features-of-the-expandable-connectors}}\label{\detokenize{annex:sec-annex-bus-example}}
+\section{Main Features of the Expandable Connectors}
+\label{\detokenize{annex:main-features-of-the-expandable-connectors}}\label{\detokenize{annex:sec-annex-bus-example}}
 The main features of the expandable connectors (as described in \hyperref[\detokenize{requirements:sec-signal-connectors}]{Section \ref{\detokenize{requirements:sec-signal-connectors}}}) are illustrated with a minimal example described in the figures below where:
 \begin{itemize}
 \item {} 
@@ -2465,8 +2682,8 @@ The definition of \sphinxcode{\sphinxupquote{AhuBus}} in the code snippet here a
 \end{sphinxVerbatim}
 
 
-\section{Validation of the Use of Expandable Connectors}
-\label{\detokenize{annex:validation-of-the-use-of-expandable-connectors}}\label{\detokenize{annex:sec-annex-bus-valid}}
+\section{Validating the Use of Expandable Connectors}
+\label{\detokenize{annex:validating-the-use-of-expandable-connectors}}\label{\detokenize{annex:sec-annex-bus-valid}}
 The use of expandable connectors (control bus) is validated in case of a complex controller (\sphinxcode{\sphinxupquote{Buildings.Controls.OBC.ASHRAE.G36\_PR1.AHUs.MultiZone.VAV.Controller}}).
 
 The validation is performed:
