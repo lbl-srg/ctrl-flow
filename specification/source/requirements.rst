@@ -963,7 +963,7 @@ Generating the ``connect`` equations for signal variables relies on:
 
 .. _experience feedback on bus usage in Modelica: https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library
 
-The following features of the expandable connector are leveraged:
+The following features of the expandable connectors are leveraged:
 
 #. All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type ``Real``) can be connected i.e. be part of a ``connect`` equation.
 
@@ -993,7 +993,13 @@ To support automatic connections of signal variables a predefined control bus wi
 
 Thus the control bus variables are used as "gateways" to stream values between the controlled system and the controller system.
 
-However an exact string matching is not conceivable. An approximate (or fuzzy) string matching algorithm must be used instead.
+However an exact string matching is not conceivable. An approximate (or fuzzy) string matching algorithm must be used instead. Such an algorithm has been tested in the case of an advanced control sequence implementation in CDL (``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``): see :numref:`code_string_match` and results in :numref:`fig_string_match`. The main conclusions of that test are the following:
+
+* Strict naming conventions solve most of the mismatch cases with a satisfying confidence (end score > 60).
+
+* There is still a need to specify a convention to determine which array element should be connected to a scalar variable.
+
+* There is one remaining mismatch (``busAhu.TZonHeaSet``) for which a logic consisting in using only the variable name if it is descriptive enough (test on length of suffix of standard variables names) and the initial matching score is low (below 50).
 
 
 .. code-block:: python
@@ -1033,15 +1039,6 @@ However an exact string matching is not conceivable. An approximate (or fuzzy) s
         return list(it.chain(*res))
 
 
-Results in :numref:`fig_string_match`.
-
-* Strict naming conventions solve most of the mismatch cases with a satisfying confidence (end score > 60).
-
-* There is still a need to specify a convention to determine which array element should be connected to a scalar variable.
-
-* There is one remaining mismatch (``busAhu.TZonHeaSet``) for which a logic consisting in using only the variable name if it is descriptive enough (test on length of suffix of standard variables names) and the initial matching score is low (below 50).
-
-
 .. raw:: html
    :file: html/string_match.html
 
@@ -1053,6 +1050,7 @@ Results in :numref:`fig_string_match`.
    :name: fig_string_match
 
    Fuzzy string matching test case -- G36 VAV AHU Controller
+   ``match`` (resp. ``match_to``) is the bus variable with the highest matching score when compared to ``Controller variable`` (resp. ``Variable to connect to``). ``score`` (resp. ``score_to``) is the corresponding matching score and 	``sec_score`` (resp. ``sec_score_to``) is the second highest score.
 
 
 Validation and Additional Requirements
