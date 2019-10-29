@@ -165,7 +165,7 @@
                 "options": ["ASHRAE 2006", "ASHRAE G36"],
                 "options.enabled": [
                     "Set of conditional statements allowing the use of ASHRAE 2006 SOO",
-                    "Set of conditional statements allowing ASHRAE G36 SOO"
+                    "Set of conditional statements allowing the use of ASHRAE G36 SOO"
                 ]
             },
             "value": null
@@ -199,7 +199,7 @@
         },
         {
             "$id": "have_winSen",
-            "description": "Set to true if zones have occupancy sensor",
+            "description": "Set to true if zones have window status sensor",
             "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
                 "type": "Boolean select"
@@ -208,7 +208,7 @@
         },
         {
             "$id": "have_perZonRehBox",
-            "description": "Set to true if zones have occupancy sensor",
+            "description": "Set to true if there is any VAV-reheat boxes on perimeter zones",
             "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
                 "type": "Boolean select"
@@ -217,7 +217,7 @@
         },
         {
             "$id": "have_duaDucBox",
-            "description": "Check if the AHU serves dual duct boxes",
+            "description": "Set to true if the AHU serves dual duct boxes",
             "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
                 "type": "Boolean select"
@@ -226,7 +226,7 @@
         },
         {
             "$id": "have_airFloMeaSta",
-            "description": "Check if the AHU has AFMS (Airflow measurement station)",
+            "description": "Set to true if the AHU has Air Flow Measurement Station",
             "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
                 "type": "Boolean select"
@@ -256,7 +256,7 @@
             "description": "Maximum expected system primary airflow at design stage",
             "enabled": "#conAHURef.value == 'ASHRAE G36'",
             "widget": {
-                "type": "Numeric input"
+                "type": "Numeric vector input"
             },
             "value": null
         }

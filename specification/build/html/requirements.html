@@ -138,7 +138,7 @@
 <li><a class="reference internal" href="#data-model">3.4.2. Data Model</a><ul>
 <li><a class="reference internal" href="#format">3.4.2.1. Format</a></li>
 <li><a class="reference internal" href="#parameters-exposed-by-the-configuration-widget">3.4.2.2. Parameters Exposed by the Configuration Widget</a></li>
-<li><a class="reference internal" href="#api-description">3.4.2.3. API Description</a></li>
+<li><a class="reference internal" href="#api-definitions">3.4.2.3. API Definitions</a></li>
 <li><a class="reference internal" href="#persisting-data">3.4.2.4. Persisting Data</a></li>
 </ul>
 </li>
@@ -308,7 +308,7 @@
 <li><p>Menu bar</p></li>
 <li><p>Bottom panel: console</p></li>
 </ul>
-<p>The placement of the different UI elements may be different than the one proposed here above but the user must have access to all those elements.
+<p>The placement of the different UI elements may be different than the one proposed here above (especially the right panel tabs may be relocated into the left panel) but the user must have access to all those elements.
 Ideally a toggle feature should be implemented to show or hide each side panel, either by user click if the panel is pinned or automatically.
 Optionally a fully customizable workspace may be implemented.</p>
 </div>
@@ -734,20 +734,25 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model</span><a class="headerlink" href="#grid" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="api-description">
-<h4>3.4.2.3. API Description<a class="headerlink" href="#api-description" title="Permalink to this headline">¶</a></h4>
-<p>For each object, the fields are defined as follows. When the type of a field is specified as a string marked with (C) it may correspond to:</p>
+<div class="section" id="api-definitions">
+<h4>3.4.2.3. API Definitions<a class="headerlink" href="#api-definitions" title="Permalink to this headline">¶</a></h4>
+<p>In the definitions provided here below:</p>
+<ul class="simple">
+<li><p>When the type of a field is specified as a string marked with (C) it may correspond to:</p>
 <ul>
 <li><p>a conditional statement provided as a string that must be interpreted by the UI engine,</p></li>
 <li><p>a reference to another field value of type boolean (that may itself correspond to a conditional statement provided as a string).</p></li>
-<li><p>The syntax supporting this feature shall be specified in collaboration with the UI developer.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The syntax must support e.g. <code class="docutils literal notranslate"><span class="pre">(#air_supply.medium).rho_default</span></code> where the first dot is used to access the property <code class="docutils literal notranslate"><span class="pre">medium</span></code> of the configuration object with <code class="docutils literal notranslate"><span class="pre">$id</span> <span class="pre">==</span> <span class="pre">#air_supply</span></code> (which must be replaced by its value) while the second dot is used to access Modelica property <code class="docutils literal notranslate"><span class="pre">rho_default</span></code> of the class <code class="docutils literal notranslate"><span class="pre">Medium</span></code> (which must be kept literal).</p>
-</div>
-</li>
 </ul>
-<p id="configuration-api"><strong>Configuration object definition</strong></p>
+</li>
+<li><p>References to other fields of the data structure may be of two kinds:</p>
+<ul>
+<li><p>LinkageJS references prefixed by <code class="docutils literal notranslate"><span class="pre">#</span></code> which must be interpreted by the configuration widget and replaced by their actual value e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=#air_supply.medium)&quot;</span></code> for the object <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">id_value(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=Buildings.Media.Air)</span></code> in the generated model.</p></li>
+<li><p>Modelica references provided as literal variables e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">(m_flow_nominal=m_flowRet_nominal)&quot;</span></code> for the object if <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">id_value(m_flow_nominal=m_flowRet_nominal)</span></code> in the generated model.</p></li>
+</ul>
+</li>
+<li><p>The syntax supporting those features shall be specified in collaboration with the UI developer. The syntax must support e.g. <code class="docutils literal notranslate"><span class="pre">(#air_supply.medium).rho_default</span></code> where the first dot is used to access the property <code class="docutils literal notranslate"><span class="pre">medium</span></code> of the configuration object with <code class="docutils literal notranslate"><span class="pre">$id</span> <span class="pre">==</span> <span class="pre">#air_supply</span></code> (which must be replaced by its value) while the second dot is used to access Modelica property <code class="docutils literal notranslate"><span class="pre">rho_default</span></code> of the class <code class="docutils literal notranslate"><span class="pre">Medium</span></code> (which must be kept literal).</p></li>
+</ul>
+<p id="configuration-api"><strong>Configuration Object Definition</strong></p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">type</span></code> : object : required</p>
 <blockquote>
@@ -958,13 +963,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <p>The path (relative to the library entry path, see <em>Path discovery</em> in <a class="reference internal" href="#tab-gui-func"><span class="std std-numref">Table 3.2</span></a>) must be stored in a hierarchical vendor annotation at the model level e.g. <code class="docutils literal notranslate"><span class="pre">__Linkage(path=&quot;modelica://Buildings.Configuration.AHU&quot;)</span></code>.</p>
 <p><strong>Configuration Objects</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> of all objects must be stored with their <code class="docutils literal notranslate"><span class="pre">$id</span></code> in a serialized format within a hierarchical vendor annotation at the model level. (This is done at the model level since some configuration data may be linked to some model declarations indirectly using dependencies so annotations at the declaration level would not cover all use cases.)</p>
-<p>This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model.</p>
-<p>There are two kind of references:</p>
-<ul class="simple">
-<li><p>LinkageJS references prefixed by <code class="docutils literal notranslate"><span class="pre">#</span></code> which must be interpreted by the configuration widget and replaced by their actual value e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=#air_supply.medium)&quot;</span></code> for the object <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">id_value(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=Buildings.Media.Air)</span></code> in the generated model.</p></li>
-<li><p>Modelica references provided as literal variables e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">(m_flow_nominal=m_flowRet_nominal)&quot;</span></code> for the object if <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">id_value(m_flow_nominal=m_flowRet_nominal)</span></code> in the generated model.</p></li>
-</ul>
-<p>Unless specified as <code class="docutils literal notranslate"><span class="pre">final</span></code> those references may be overwritten by the user. When loading a model the configuration widget must parse the <code class="docutils literal notranslate"><span class="pre">$id</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by <code class="docutils literal notranslate"><span class="pre">#</span></code>). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.</p>
+<p>This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model. Unless specified as <code class="docutils literal notranslate"><span class="pre">final</span></code> those references may be overwritten by the user. When loading a model the configuration widget must parse the <code class="docutils literal notranslate"><span class="pre">$id</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by <code class="docutils literal notranslate"><span class="pre">#</span></code>). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.</p>
 <p><strong>Engineering Symbol SVG File path</strong></p>
 <p>The path (<code class="docutils literal notranslate"><span class="pre">symbol_path</span></code> in <a class="reference internal" href="#configuration-api">Configuration API</a>) is stored in a vendor annotation at the declaration level e.g. <code class="docutils literal notranslate"><span class="pre">annotation(__Linkage(symbol_path=&quot;value</span> <span class="pre">of</span> <span class="pre">symbol_path&quot;))</span></code>.</p>
 </div>

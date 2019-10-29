@@ -339,7 +339,7 @@
                 <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
                 <span class="nt">&quot;options.enabled&quot;</span><span class="p">:</span> <span class="p">[</span>
                     <span class="s2">&quot;Set of conditional statements allowing the use of ASHRAE 2006 SOO&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;Set of conditional statements allowing ASHRAE G36 SOO&quot;</span>
+                    <span class="s2">&quot;Set of conditional statements allowing the use of ASHRAE G36 SOO&quot;</span>
                 <span class="p">]</span>
             <span class="p">},</span>
             <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
@@ -373,7 +373,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_winSen&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if zones have occupancy sensor&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if zones have window status sensor&quot;</span><span class="p">,</span>
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
@@ -382,7 +382,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_perZonRehBox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if zones have occupancy sensor&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if there is any VAV-reheat boxes on perimeter zones&quot;</span><span class="p">,</span>
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
@@ -391,7 +391,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_duaDucBox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Check if the AHU serves dual duct boxes&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if the AHU serves dual duct boxes&quot;</span><span class="p">,</span>
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
@@ -400,7 +400,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_airFloMeaSta&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Check if the AHU has AFMS (Airflow measurement station)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if the AHU has Air Flow Measurement Station&quot;</span><span class="p">,</span>
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
@@ -430,7 +430,7 @@
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Maximum expected system primary airflow at design stage&quot;</span><span class="p">,</span>
             <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric vector input&quot;</span>
             <span class="p">},</span>
             <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
         <span class="p">}</span>
@@ -637,7 +637,7 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 28, 2019.<br/>
+      Last updated on Oct, 29, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

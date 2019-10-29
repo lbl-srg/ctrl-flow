@@ -105,7 +105,7 @@ The minimal requirements are:
 
 * Bottom panel: console
 
-The placement of the different UI elements may be different than the one proposed here above but the user must have access to all those elements.
+The placement of the different UI elements may be different than the one proposed here above (especially the right panel tabs may be relocated into the left panel) but the user must have access to all those elements.
 Ideally a toggle feature should be implemented to show or hide each side panel, either by user click if the panel is pinned or automatically.
 Optionally a fully customizable workspace may be implemented.
 
@@ -574,22 +574,29 @@ Some parameters must be integrated in the template (examples below are provided 
    Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model
 
 
-API Description
-```````````````
+API Definitions
+````````````````
 
-For each object, the fields are defined as follows. When the type of a field is specified as a string marked with (C) it may correspond to:
+In the definitions provided here below:
 
-* a conditional statement provided as a string that must be interpreted by the UI engine,
-* a reference to another field value of type boolean (that may itself correspond to a conditional statement provided as a string).
-* The syntax supporting this feature shall be specified in collaboration with the UI developer.
+* When the type of a field is specified as a string marked with (C) it may correspond to:
 
-  .. note::
+  * a conditional statement provided as a string that must be interpreted by the UI engine,
 
-      The syntax must support e.g. ``(#air_supply.medium).rho_default`` where the first dot is used to access the property ``medium`` of the configuration object with ``$id == #air_supply`` (which must be replaced by its value) while the second dot is used to access Modelica property ``rho_default`` of the class ``Medium`` (which must be kept literal).
+  * a reference to another field value of type boolean (that may itself correspond to a conditional statement provided as a string).
+
+* References to other fields of the data structure may be of two kinds:
+
+  * LinkageJS references prefixed by ``#`` which must be interpreted by the configuration widget and replaced by their actual value e.g. ``"declaration": "Modelica.Fluid.Interfaces.FluidPort_a (redeclare package Medium=#air_supply.medium)"`` for the object ``"$id": "id_value"`` leads to ``Modelica.Fluid.Interfaces.FluidPort_a id_value(redeclare package Medium=Buildings.Media.Air)`` in the generated model.
+
+  * Modelica references provided as literal variables e.g. ``"declaration": "Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRet_nominal)"`` for the object if ``"$id": "id_value"`` leads to ``Buildings.Fluid.Movers.SpeedControlled_y id_value(m_flow_nominal=m_flowRet_nominal)`` in the generated model.
+
+* The syntax supporting those features shall be specified in collaboration with the UI developer. The syntax must support e.g. ``(#air_supply.medium).rho_default`` where the first dot is used to access the property ``medium`` of the configuration object with ``$id == #air_supply`` (which must be replaced by its value) while the second dot is used to access Modelica property ``rho_default`` of the class ``Medium`` (which must be kept literal).
+
 
 .. _Configuration API:
 
-**Configuration object definition**
+**Configuration Object Definition**
 
   ``type`` : object : required
 
@@ -805,15 +812,7 @@ The path (relative to the library entry path, see *Path discovery* in :numref:`t
 
 The ``value`` of all objects must be stored with their ``$id`` in a serialized format within a hierarchical vendor annotation at the model level. (This is done at the model level since some configuration data may be linked to some model declarations indirectly using dependencies so annotations at the declaration level would not cover all use cases.)
 
-This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model.
-
-There are two kind of references:
-
-* LinkageJS references prefixed by ``#`` which must be interpreted by the configuration widget and replaced by their actual value e.g. ``"declaration": "Modelica.Fluid.Interfaces.FluidPort_a (redeclare package Medium=#air_supply.medium)"`` for the object ``"$id": "id_value"`` leads to ``Modelica.Fluid.Interfaces.FluidPort_a id_value(redeclare package Medium=Buildings.Media.Air)`` in the generated model.
-
-* Modelica references provided as literal variables e.g. ``"declaration": "Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRet_nominal)"`` for the object if ``"$id": "id_value"`` leads to ``Buildings.Fluid.Movers.SpeedControlled_y id_value(m_flow_nominal=m_flowRet_nominal)`` in the generated model.
-
-Unless specified as ``final`` those references may be overwritten by the user. When loading a model the configuration widget must parse the ``$id`` and ``value`` of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by ``#``). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
+This is especially needed so that the references to the configuration data in the object declarations persist when saving and loading a model. Unless specified as ``final`` those references may be overwritten by the user. When loading a model the configuration widget must parse the ``$id`` and ``value`` of the stored configuration data and reconstruct the corresponding model declarations using the configuration file (and interpreting the references prefixed by ``#``). Those declarations are compared to the ones present in the model: if they differ, the ones in the model take precedence.
 
 
 **Engineering Symbol SVG File path**
