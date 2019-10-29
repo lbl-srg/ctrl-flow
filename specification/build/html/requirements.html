@@ -3633,7 +3633,7 @@ A similar view of the connections set must be implemented with the additional re
 <div class="section" id="openstudio-integration">
 <h2>3.7. OpenStudio Integration<a class="headerlink" href="#openstudio-integration" title="Permalink to this headline">¶</a></h2>
 <p>LinkageJS must eventually be integrated as a specific <em>tab</em> in the <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/">OpenStudio</a> (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future <a class="reference external" href="https://lbl-srg.github.io/soep/">Spawn of EnergyPlus</a> (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems">HVAC Systems tab</a>).</p>
-<p>In SOEP workflow a building multi-zone model (EnergyPlus input file <code class="docutils literal notranslate"><span class="pre">idf</span></code>) is configured within OpenStudio. The OpenStudio model <code class="docutils literal notranslate"><span class="pre">osm</span></code> exposes functions to access <code class="docutils literal notranslate"><span class="pre">idf</span></code> parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the <code class="docutils literal notranslate"><span class="pre">idf</span></code> file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.</p>
+<p>In SOEP workflow a multi-zone building model (EnergyPlus input file <code class="docutils literal notranslate"><span class="pre">idf</span></code>) is configured within OpenStudio. The OpenStudio model <code class="docutils literal notranslate"><span class="pre">osm</span></code> exposes functions to access <code class="docutils literal notranslate"><span class="pre">idf</span></code> parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the <code class="docutils literal notranslate"><span class="pre">idf</span></code> file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.</p>
 <p>The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.</p>
 <p>An API must also be developed to access LinkageJS functionalities and data model in a programmatic way. The preferred language is Python (largely used in the Modelica users’ community) or Ruby (largely used in the OpenStudio users’ community).</p>
 <p>Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to:</p>
@@ -3692,7 +3692,7 @@ A similar view of the connections set must be implemented with the additional re
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Oct, 28, 2019.<br/>
+      Last updated on Oct, 29, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

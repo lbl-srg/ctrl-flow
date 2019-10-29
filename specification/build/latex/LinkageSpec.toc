@@ -28,7 +28,7 @@
 \contentsline {subsubsection}{\numberline {3.4.4.4}Additional Requirements for the UI}{28}{subsubsection.3.4.4.4}% 
 \contentsline {subsection}{\numberline {3.4.5}Parameters Setting}{32}{subsection.3.4.5}% 
 \contentsline {subsection}{\numberline {3.4.6}Control Sequence Configuration}{32}{subsection.3.4.6}% 
-\contentsline {section}{\numberline {3.5}Schematics Export}{33}{section.3.5}% 
+\contentsline {section}{\numberline {3.5}Documentation Export}{33}{section.3.5}% 
 \contentsline {subsection}{\numberline {3.5.1}Engineering Schematics}{33}{subsection.3.5.1}% 
 \contentsline {subsection}{\numberline {3.5.2}Control Points List}{35}{subsection.3.5.2}% 
 \contentsline {subsection}{\numberline {3.5.3}Control Sequence Description}{35}{subsection.3.5.3}% 

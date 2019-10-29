@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  28 OCT 2019 17:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  29 OCT 2019 09:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1903,13 +1903,13 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2764.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2764.
 
 Package rerunfilecheck Info: File `LinkageSpec.out' has not changed.
-(rerunfilecheck)             Checksum: F10F0B6DDF43DD48647C39D4239E729F;3597.
+(rerunfilecheck)             Checksum: 74A4E5C4FFD694B662DFABB15DE05BD3;3612.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2764.
  ) 
 Here is how much of TeX's memory you used:
  26658 strings out of 494053
- 457853 string characters out of 6163845
- 1072131 words of memory out of 5000000
+ 457859 string characters out of 6163845
+ 1072105 words of memory out of 5000000
  29597 multiletter control sequences out of 15000+600000
  63252 words of font info for 90 fonts, out of 8000000 for 9000
  320 hyphenation exceptions out of 8191
@@ -1924,7 +1924,7 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageSpec.pdf (60 pages, 2687945 bytes).
+Output written on LinkageSpec.pdf (60 pages, 2687698 bytes).
 PDF statistics:
  1059 PDF objects out of 1200 (max. 8388607)
  838 compressed objects within 9 object streams

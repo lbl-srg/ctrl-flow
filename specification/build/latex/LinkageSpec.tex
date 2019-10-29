@@ -247,7 +247,7 @@
 
 
 \title{LinkageJS Requirements Specification}
-\date{Oct 28, 2019}
+\date{Oct 29, 2019}
 \release{}
 \author{(Working Draft)}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{lbl-icon.png}\par}
@@ -325,7 +325,7 @@ Built around this core functionality the following additional features are requi
 A configuration widget supporting assisted modeling based on a simple HTML input form: see \hyperref[\detokenize{requirements:sec-configuration-widget}]{Section \ref{\detokenize{requirements:sec-configuration-widget}}}
 
 \item {} 
-A schematics export functionality: see \hyperref[\detokenize{requirements:sec-schematics-export}]{Section \ref{\detokenize{requirements:sec-schematics-export}}}
+A documentation export functionality: see \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}
 
 \item {} 
 A set of functionalities to enable working with tagged variables: see \hyperref[\detokenize{requirements:sec-tagged-variables}]{Section \ref{\detokenize{requirements:sec-tagged-variables}}}
@@ -517,7 +517,7 @@ R
 An alpha version of the widget is required in V0 for testing and refining the requirements.
 \\
 \hline
-Schematics export
+Documentation export
 &
 N
 &
@@ -1413,7 +1413,7 @@ Any valid Modelica annotation or an array of those which must have the same size
 \sphinxcode{\sphinxupquote{symbol\_path}} : string (C) : optional
 \begin{quote}
 
-Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see \hyperref[\detokenize{requirements:sec-schematics-export}]{Section \ref{\detokenize{requirements:sec-schematics-export}}}. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
+Path of the SVG file containing the engineering symbol of the component. This is needed for the schematics export functionality, see \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}. That path path is specified by the template developer and not in the class definition because the same class can be used to represent different equipment parts e.g. a flow resistance model can be used to represent either an air filter (SVG symbol needed) or a duct section (no SVG symbol needed).
 \end{quote}
 
 \sphinxcode{\sphinxupquote{icon\_transformation}} : string (C) : optional
@@ -2009,9 +2009,9 @@ Therefore in practice and at least for the first version of LinkageJS it has bee
 The example of the configuration file for a VAV system in \hyperref[\detokenize{annex:sec-annex-json}]{Section \ref{\detokenize{annex:sec-annex-json}}} illustrates that use case.
 
 
-\section{Schematics Export}
-\label{\detokenize{requirements:schematics-export}}\label{\detokenize{requirements:sec-schematics-export}}
-The schematics export encompasses three items:
+\section{Documentation Export}
+\label{\detokenize{requirements:documentation-export}}\label{\detokenize{requirements:sec-documentation-export}}
+The documentation export encompasses three items:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -2034,14 +2034,14 @@ The composition level at which the functionality will typically be used is the s
 \capstart
 
 \noindent\sphinxincludegraphics{{screen_schematics_modelica}.pdf}
-\caption{Mockup of the schematics export \textendash{} Input Modelica file}\label{\detokenize{requirements:screen-schematics-modelica}}\end{figure}
+\caption{Mockup of the documentation export \textendash{} Input Modelica file}\label{\detokenize{requirements:screen-schematics-modelica}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics{{screen_schematics_output}.pdf}
-\caption{Mockup of the schematics export \textendash{} Output file (format to be specified: Word or PDF)}\label{\detokenize{requirements:screen-schematics-output}}\end{figure}
+\caption{Mockup of the documentation export \textendash{} Output file}\label{\detokenize{requirements:screen-schematics-output}}\end{figure}
 
 
 \subsection{Engineering Schematics}
@@ -2114,7 +2114,7 @@ An algorithm based on the variables names (similar to the one proposed for gener
 \label{\detokenize{requirements:openstudio-integration}}
 LinkageJS must eventually be integrated as a specific \sphinxstyleemphasis{tab} in the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/}{OpenStudio} (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future \sphinxhref{https://lbl-srg.github.io/soep/}{Spawn of EnergyPlus} (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the \sphinxhref{https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating\_your\_model/\#air-plant-and-zone-hvac-systems}{HVAC Systems tab}).
 
-In SOEP workflow a building multi-zone model (EnergyPlus input file \sphinxcode{\sphinxupquote{idf}}) is configured within OpenStudio. The OpenStudio model \sphinxcode{\sphinxupquote{osm}} exposes functions to access \sphinxcode{\sphinxupquote{idf}} parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the \sphinxcode{\sphinxupquote{idf}} file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
+In SOEP workflow a multi-zone building model (EnergyPlus input file \sphinxcode{\sphinxupquote{idf}}) is configured within OpenStudio. The OpenStudio model \sphinxcode{\sphinxupquote{osm}} exposes functions to access \sphinxcode{\sphinxupquote{idf}} parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the \sphinxcode{\sphinxupquote{idf}} file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
 
 The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.
 
@@ -2142,7 +2142,7 @@ The URBANopt-Modelica project has adopted the Modelica language to interface the
 
 \section{Licensing}
 \label{\detokenize{requirements:licensing}}
-As a project funded by the U.S. Department of Energy’s Building Technologies Office (BTO) LinkageJS core components (e.g. \sphinxstyleemphasis{Editor Layer} in \hyperref[\detokenize{architecture:sec-architecture}]{Section \ref{\detokenize{architecture:sec-architecture}}}) must be open sourced: \sphinxstylestrong{under BSD 3/4-clause?}.
+LinkageJS core components (e.g. \sphinxstyleemphasis{Editor Layer} in \hyperref[\detokenize{architecture:sec-architecture}]{Section \ref{\detokenize{architecture:sec-architecture}}}) must be open sourced: \sphinxstylestrong{under BSD 3/4-clause?}
 
 Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:
 \begin{itemize}
@@ -2167,7 +2167,7 @@ Third party application embedding
 
 Licensing will depend on the application distribution model.
 
-For OpenStudio there is currently a shift in the \sphinxhref{https://www.openstudio.net/new-future-for-openstudio-application}{licensing strategy}. For this integration target the specification will be precised to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
+For OpenStudio there is currently a shift in the \sphinxhref{https://www.openstudio.net/new-future-for-openstudio-application}{licensing strategy}: the specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
 
 \end{itemize}
 

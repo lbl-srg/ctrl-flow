@@ -1359,7 +1359,7 @@ OpenStudio Integration
 
 LinkageJS must eventually be integrated as a specific *tab* in the `OpenStudio <https://nrel.github.io/OpenStudio-user-documentation/>`_ (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future `Spawn of EnergyPlus <https://lbl-srg.github.io/soep/>`_ (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the `HVAC Systems tab <https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems>`_).
 
-In SOEP workflow a building multi-zone model (EnergyPlus input file ``idf``) is configured within OpenStudio. The OpenStudio model ``osm`` exposes functions to access ``idf`` parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the ``idf`` file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
+In SOEP workflow a multi-zone building model (EnergyPlus input file ``idf``) is configured within OpenStudio. The OpenStudio model ``osm`` exposes functions to access ``idf`` parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the ``idf`` file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
 
 The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.
 
