@@ -450,7 +450,7 @@ When drawing a connection line between two connector icons in the diagram view:
 * The first and last couple of points must be so that the connection line does not overlap the component icon but rather grows the distance to it, see :numref:`linkage_connect_distance`.
 
 
-.. figure:: img/linkage_connect_distance.svg
+.. figure:: img/linkage_connect_distance.*
    :name: linkage_connect_distance
 
    Logic for generating a connection line in the neighborhood of a connector

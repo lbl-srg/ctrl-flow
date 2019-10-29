@@ -141,7 +141,7 @@ latex_documents = [
   ('index',
    'LinkageSpec.tex',
    'LinkageJS Requirements Specification',
-   '(Working Draft)', 'manual'),
+   '(V0)', 'manual'),
 ]
 
 release = ''

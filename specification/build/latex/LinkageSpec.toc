@@ -15,38 +15,38 @@
 \contentsline {subsection}{\numberline {2.4.2}Data Model}{10}{subsection.2.4.2}% 
 \contentsline {subsubsection}{\numberline {2.4.2.1}Format}{13}{subsubsection.2.4.2.1}% 
 \contentsline {subsubsection}{\numberline {2.4.2.2}Parameters Exposed by the Configuration Widget}{13}{subsubsection.2.4.2.2}% 
-\contentsline {subsubsection}{\numberline {2.4.2.3}API Definitions}{14}{subsubsection.2.4.2.3}% 
+\contentsline {subsubsection}{\numberline {2.4.2.3}API Definitions}{13}{subsubsection.2.4.2.3}% 
 \contentsline {subsubsection}{\numberline {2.4.2.4}Persisting Data}{19}{subsubsection.2.4.2.4}% 
 \contentsline {subsection}{\numberline {2.4.3}Fluid Connectors}{19}{subsection.2.4.3}% 
 \contentsline {subsubsection}{\numberline {2.4.3.1}Explicit Connection Logic}{19}{subsubsection.2.4.3.1}% 
-\contentsline {subsubsection}{\numberline {2.4.3.2}Heuristic Connection Logic}{20}{subsubsection.2.4.3.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3.2}Heuristic Connection Logic}{19}{subsubsection.2.4.3.2}% 
 \contentsline {subsection}{\numberline {2.4.4}Signal Connectors}{22}{subsection.2.4.4}% 
 \contentsline {subsubsection}{\numberline {2.4.4.1}General Principles}{22}{subsubsection.2.4.4.1}% 
 \contentsline {subsubsection}{\numberline {2.4.4.2}Generating Connections by Approximate String Matching}{24}{subsubsection.2.4.4.2}% 
-\contentsline {subsubsection}{\numberline {2.4.4.3}Validation and Additional Requirements}{26}{subsubsection.2.4.4.3}% 
+\contentsline {subsubsection}{\numberline {2.4.4.3}Validation and Additional Requirements}{25}{subsubsection.2.4.4.3}% 
 \contentsline {subsubsection}{\numberline {2.4.4.4}Additional Requirements for the UI}{27}{subsubsection.2.4.4.4}% 
-\contentsline {subsection}{\numberline {2.4.5}Control Sequence Configuration}{30}{subsection.2.4.5}% 
+\contentsline {subsection}{\numberline {2.4.5}Control Sequence Configuration}{31}{subsection.2.4.5}% 
 \contentsline {section}{\numberline {2.5}Parameters Setting}{32}{section.2.5}% 
 \contentsline {subsection}{\numberline {2.5.1}Multiple Selection}{32}{subsection.2.5.1}% 
 \contentsline {subsection}{\numberline {2.5.2}Array Selection}{32}{subsection.2.5.2}% 
 \contentsline {subsection}{\numberline {2.5.3}Enumeration and Boolean}{32}{subsection.2.5.3}% 
-\contentsline {subsection}{\numberline {2.5.4}Record}{33}{subsection.2.5.4}% 
-\contentsline {subsection}{\numberline {2.5.5}Grouped Parameters}{33}{subsection.2.5.5}% 
+\contentsline {subsection}{\numberline {2.5.4}Record}{32}{subsection.2.5.4}% 
+\contentsline {subsection}{\numberline {2.5.5}Grouped Parameters}{32}{subsection.2.5.5}% 
 \contentsline {subsection}{\numberline {2.5.6}Validation}{33}{subsection.2.5.6}% 
 \contentsline {section}{\numberline {2.6}Documentation Export}{33}{section.2.6}% 
 \contentsline {subsection}{\numberline {2.6.1}Engineering Schematics}{33}{subsection.2.6.1}% 
 \contentsline {subsection}{\numberline {2.6.2}Control Points List}{36}{subsection.2.6.2}% 
 \contentsline {subsection}{\numberline {2.6.3}Control Sequence Description}{36}{subsection.2.6.3}% 
 \contentsline {section}{\numberline {2.7}Working with Tagged Variables}{36}{section.2.7}% 
-\contentsline {section}{\numberline {2.8}OpenStudio Integration}{37}{section.2.8}% 
+\contentsline {section}{\numberline {2.8}OpenStudio Integration}{36}{section.2.8}% 
 \contentsline {section}{\numberline {2.9}Interface with URBANopt GeoJSON}{37}{section.2.9}% 
 \contentsline {section}{\numberline {2.10}Licensing}{37}{section.2.10}% 
-\contentsline {section}{\numberline {2.11}Encryption}{38}{section.2.11}% 
-\contentsline {chapter}{\numberline {3}Software Architecture}{39}{chapter.3}% 
-\contentsline {chapter}{\numberline {4}Annex}{43}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Example of the Configuration Data Structure}{43}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Main Features of the Expandable Connectors}{50}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Validating the Use of Expandable Connectors}{53}{section.4.3}% 
-\contentsline {chapter}{\numberline {5}Acknowledgments}{55}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}References}{56}{chapter.6}% 
-\contentsline {chapter}{Bibliography}{57}{chapter.6}% 
+\contentsline {section}{\numberline {2.11}Encryption}{37}{section.2.11}% 
+\contentsline {chapter}{\numberline {3}Software Architecture}{38}{chapter.3}% 
+\contentsline {chapter}{\numberline {4}Annex}{42}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Example of the Configuration Data Structure}{42}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Main Features of the Expandable Connectors}{49}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Validating the Use of Expandable Connectors}{52}{section.4.3}% 
+\contentsline {chapter}{\numberline {5}Acknowledgments}{54}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}References}{55}{chapter.6}% 
+\contentsline {chapter}{Bibliography}{56}{chapter.6}% 
