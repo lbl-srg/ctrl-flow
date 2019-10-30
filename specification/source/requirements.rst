@@ -1410,7 +1410,7 @@ Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be
 
 * specify LinkageJS API (to be developed by the UI developer).
 
-This is illustrated in annex, see :numref:`linkage_architecture_os`.
+This is illustrated in :numref:`linkage_architecture_os`.
 
 
 Interface with URBANopt GeoJSON

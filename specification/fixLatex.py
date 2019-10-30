@@ -1,12 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from io import open
 import os
 import sys
 print(sys.version)
+sys.path.append('./source')
+from conf import project
 
-oldFil=os.path.join("build", "latex", "LinkageSpec.tex")
-newFil=os.path.join("build", "latex", "LinkageSpec.tex-new")
+oldFil=os.path.join("build", "latex", "{}.tex".format(project))
+newFil=os.path.join("build", "latex", "{}.tex-new".format(project))
 
 def freplace(old, new):
     with open(oldFil, mode="rt", encoding="utf-8") as fin, open(newFil, mode="wt", encoding="utf-8") as fout:

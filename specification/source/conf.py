@@ -5,6 +5,12 @@ import sphinx_bootstrap_theme
 
 sys.path.append(os.path.abspath('.'))
 
+# General information about the project.
+project = 'LinkageJS'
+doc_title = 'LinkageJS Requirements Specification'
+doc_version = 'V0 -- Working Draft'
+copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
+
 # Extensions
 
 extensions = [
@@ -20,7 +26,13 @@ extensions = [
 rst_prolog = """
 .. role:: underline
    :class: underline
-"""
+
+.. |project| replace:: {project}
+
+.. |doc_title| replace:: {doc_title}
+
+.. |doc_version| replace:: {doc_version}
+""".format(project=project, doc_title=doc_title, doc_version=doc_version)
 
 # mathjax_path
 mathjax_path = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
@@ -38,10 +50,6 @@ source_encoding = 'utf-8'
 
 # The master toctree document.
 master_doc = 'index'
-
-# General information about the project.
-project = 'LinkageJS'
-copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # The short X.Y version.
 version = ''
@@ -70,37 +78,27 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # Theme options are theme-specific and customize the look and feel
 html_theme_options = {
-    'navbar_title': "LinkageJS",
-    'navbar_site_name': "Site",
-
+    'navbar_title': project,
     'nosidebar': True,
-
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': True,
-
     # Render the current pages TOC in the navbar. (Default: true)
     'navbar_pagenav': True,
-
     # Tab name for the current pages TOC. (Default: "Page")
+    'navbar_site_name': "Site",
     'navbar_pagenav_name': "Page",
-
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
     'globaltoc_depth': 3,
-
     # Include hidden TOCs in Site navbar?
     'globaltoc_includehidden': True,
-
     # HTML navbar class (Default: "navbar") to attach to <div> element.
     # For black navbar, do "navbar navbar-inverse"
     'navbar_class': "navbar",
-
     # Fix navigation bar to top of page?
     'navbar_fixed_top': True,
-
     # Location of link to source.
     'source_link_position': "footer",
-
     # Bootswatch (http://bootswatch.com/) theme.
     # 'bootswatch_theme': "united",
 }
@@ -108,7 +106,7 @@ html_theme_options = {
 html_last_updated_fmt = '%b, %d, %Y'
 
 # The name for this set of Sphinx documents.
-html_title = "LinkageJS Requirements Specification"
+html_title = doc_title
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -139,9 +137,10 @@ latex_additional_files = ['_static/latex-note.png', '_static/latex-warning.png']
 # Grouping the document tree into LaTeX files.
 latex_documents = [
   ('index',
-   'LinkageSpec.tex',
-   'LinkageJS Requirements Specification',
-   '(V0)', 'manual'),
+   '{}.tex'.format(project),
+   doc_title,
+   doc_version,
+   'manual'),
 ]
 
 release = ''

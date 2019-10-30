@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  29 OCT 2019 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  29 OCT 2019 22:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**LinkageSpec.tex
-(./LinkageSpec.tex
+**LinkageJS.tex
+(./LinkageJS.tex
 LaTeX2e <2018-12-01>
 (./sphinxmanual.cls
 Document Class: sphinxmanual 2018/12/23 v2.0 Document class (Sphinx manual)
@@ -152,7 +152,7 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
 \c@AlphaDecCnt=\count104
 )
 (./sphinx.sty
-Package: sphinx 2019/06/04 v2.1.1 LaTeX package (Sphinx markup)
+Package: sphinx 2019/09/02 v2.2.1 LaTeX package (Sphinx markup)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
@@ -1127,12 +1127,12 @@ s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 \@indexfile=\write5
-\openout5 = `LinkageSpec.idx'.
+\openout5 = `LinkageJS.idx'.
 
 
-Writing index file LinkageSpec.idx
-(./LinkageSpec.aux)
-\openout1 = `LinkageSpec.aux'.
+Writing index file LinkageJS.idx
+(./LinkageJS.aux)
+\openout1 = `LinkageJS.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 256.
 LaTeX Font Info:    ... okay on input line 256.
@@ -1149,8 +1149,7 @@ LaTeX Font Info:    ... okay on input line 256.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 256.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 256.
 
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 256.
@@ -1159,7 +1158,6 @@ LaTeX Font Info:    ... okay on input line 256.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 256.
 LaTeX Font Info:    ... okay on input line 256.
 LaTeX Font Info:    Try loading font information for T1+phv on input line 256.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
@@ -1211,9 +1209,9 @@ LaTeX Info: Redefining \ref on input line 256.
 LaTeX Info: Redefining \pageref on input line 256.
 LaTeX Info: Redefining \nameref on input line 256.
 
-(./LinkageSpec.out) (./LinkageSpec.out)
+(./LinkageJS.out) (./LinkageJS.out)
 \@outlinefile=\write6
-\openout6 = `LinkageSpec.out'.
+\openout6 = `LinkageJS.out'.
 
 \c@lstlisting=\count175
 
@@ -1370,7 +1368,7 @@ con.png>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 23.63593pt on input line 261.
 
-(./LinkageSpec.toc
+(./LinkageJS.toc
 number indent by \l@... (toc, 0):  0.0pt
 text indent by \l@... (toc, 0):  14.24995pt
 number indent by parent (toc, 0):  0.0pt
@@ -1478,7 +1476,7 @@ text indent calculated (toc, 0): 10.0319pt
 number indent calculated (toc, 0): 0.0pt
 )
 \tf@toc=\write7
-\openout7 = `LinkageSpec.toc'.
+\openout7 = `LinkageJS.toc'.
 
  [1
 
@@ -1868,27 +1866,27 @@ Chapter 5.
 Chapter 6.
 [55
 
-] (./LinkageSpec.ind) [56
+] (./LinkageJS.ind) [56
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2780.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 2780.
- (./LinkageSpec.aux)
+ (./LinkageJS.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2780.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2780.
 
-Package rerunfilecheck Info: File `LinkageSpec.out' has not changed.
+Package rerunfilecheck Info: File `LinkageJS.out' has not changed.
 (rerunfilecheck)             Checksum: 21FBAAA96E2185B40FB0895B3D35D197;3480.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2780.
  ) 
 Here is how much of TeX's memory you used:
  26649 strings out of 494053
- 457799 string characters out of 6163845
- 1073293 words of memory out of 5000000
+ 457765 string characters out of 6163845
+ 1073460 words of memory out of 5000000
  29589 multiletter control sequences out of 15000+600000
  62098 words of font info for 89 fonts, out of 8000000 for 9000
  320 hyphenation exceptions out of 8191
- 55i,12n,48p,1673b,630s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,48p,1671b,630s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -1899,7 +1897,7 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageSpec.pdf (58 pages, 2726078 bytes).
+Output written on LinkageJS.pdf (58 pages, 2725974 bytes).
 PDF statistics:
  1064 PDF objects out of 1200 (max. 8388607)
  841 compressed objects within 9 object streams

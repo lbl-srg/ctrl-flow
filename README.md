@@ -4,7 +4,7 @@
 
 The PDF version of the documentation is available at
 
-[https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf](https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageSpec.pdf)
+[https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf](https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf)
 
 The HTML version is available at
 
