@@ -4,11 +4,11 @@
 
 The PDF version of the documentation is available at
 
-[https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf](https://github.com/AntoineGautier/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf)
+[https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/LinkageJS.pdf)
 
 The HTML version is available at
 
-[https://antoinegautier.github.io/linkage.js](https://antoinegautier.github.io/linkage.js)
+[https://lbl-srg.github.io/linkage.js](https://lbl-srg.github.io/linkage.js)
 
 ## How to Build
 
