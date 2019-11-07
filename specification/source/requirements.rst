@@ -1348,7 +1348,7 @@ Objects of the original model to be included in the schematics export must have 
 
 .. note::
 
-   It is expected that LinkageJS will eventually be used in to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares e.g. AutoCAD®.
+   It is expected that LinkageJS will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares e.g. AutoCAD®.
 
    Due to geometry discrepancies between Modelica icons and engineering symbols a perfect alignment of the latter is not expected by simply mapping the diagram coordinates of the former to the SVG layout. A mechanism should be developed to automatically correct small alignment defaults.
 
