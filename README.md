@@ -27,8 +27,7 @@ make latex
 It requires [Sphinx](http://www.sphinx-doc.org) and a few contributions, which can be installed by running
 
 ```
-pip install sphinx
-pip install sphinx_bootstrap_theme
+pip install sphinx sphinx_bootstrap_theme sphinxcontrib.bibtex
 ```
 
 To push the subdirectory `specification/.` and rebuild GitHub Pages, run the following command from that subdirectory
