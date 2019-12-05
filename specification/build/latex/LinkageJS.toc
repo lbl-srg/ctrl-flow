@@ -25,7 +25,7 @@
 \contentsline {subsubsection}{\numberline {2.4.4.2}Generating Connections by Approximate String Matching}{24}{subsubsection.2.4.4.2}% 
 \contentsline {subsubsection}{\numberline {2.4.4.3}Validation and Additional Requirements}{25}{subsubsection.2.4.4.3}% 
 \contentsline {subsubsection}{\numberline {2.4.4.4}Additional Requirements for the UI}{27}{subsubsection.2.4.4.4}% 
-\contentsline {subsection}{\numberline {2.4.5}Control Sequence Configuration}{30}{subsection.2.4.5}% 
+\contentsline {subsection}{\numberline {2.4.5}Control Sequence Configuration}{31}{subsection.2.4.5}% 
 \contentsline {section}{\numberline {2.5}Parameters Setting}{32}{section.2.5}% 
 \contentsline {subsection}{\numberline {2.5.1}Multiple Selection}{32}{subsection.2.5.1}% 
 \contentsline {subsection}{\numberline {2.5.2}Array Selection}{32}{subsection.2.5.2}% 
