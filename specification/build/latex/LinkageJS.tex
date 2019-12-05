@@ -247,7 +247,7 @@
 
 
 \title{LinkageJS Requirements Specification}
-\date{Nov 07, 2019}
+\date{Dec 05, 2019}
 \release{}
 \author{V0 -- Working Draft}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{lbl-icon.png}\par}
@@ -314,7 +314,7 @@ A configuration widget supporting assisted modeling based on a simple HTML input
 A documentation export functionality: see \hyperref[\detokenize{requirements:sec-documentation-export}]{Section \ref{\detokenize{requirements:sec-documentation-export}}}
 
 \item {} 
-A set of functionalities to enable working with tagged variables: see \hyperref[\detokenize{requirements:sec-tagged-variables}]{Section \ref{\detokenize{requirements:sec-tagged-variables}}}
+A set of functionalities to enable working with tagged variables (complying with \sphinxcite{bibliography:brick} or \sphinxcite{bibliography:haystack4}): see \hyperref[\detokenize{requirements:sec-tagged-variables}]{Section \ref{\detokenize{requirements:sec-tagged-variables}}}
 
 \end{enumerate}
 
@@ -364,7 +364,7 @@ The software requirements regarding platform and environment compatibility are p
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id18}}\label{\detokenize{requirements:tab-environment}}
+\sphinxcaption{Requirements for software compatibility}\label{\detokenize{requirements:id22}}\label{\detokenize{requirements:tab-environment}}
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -449,7 +449,7 @@ Optionally a fully customizable workspace may be implemented.
 
 \begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|\X{30}{100}|\X{10}{100}|\X{10}{100}|\X{50}{100}|}
 \sphinxthelongtablecaptionisattop
-\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id19}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
+\caption{Functionalities of the software \textendash{} R: required, P: required partially, O: optional, N: not required\strut}\label{\detokenize{requirements:id23}}\label{\detokenize{requirements:tab-gui-func}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 Feature
@@ -1698,7 +1698,7 @@ There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}})
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
  \PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{fuzz}
  \PYG{k+kn}{from} \PYG{n+nn}{fuzzywuzzy} \PYG{k+kn}{import} \PYG{n}{process}
- \PYG{k+kn}{import} \PYG{n+nn}{itertools} \PYG{k+kn}{as} \PYG{n+nn}{it}
+ \PYG{k+kn}{import} \PYG{n+nn}{itertools} \PYG{k}{as} \PYG{n+nn}{it}
  \PYG{k+kn}{import} \PYG{n+nn}{re}
 
 
@@ -1720,8 +1720,8 @@ There is one remaining mismatch (\sphinxcode{\sphinxupquote{busAhu.TZonHeaSet}})
 
      \PYG{c+c1}{\PYGZsh{} Do not consider controller and bus component names.}
      \PYG{c+c1}{\PYGZsh{} Remark: has only little impact.}
-     \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}
-     \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{choices}\PYG{p}{]}
+     \PYG{n}{string} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{string}\PYG{p}{)}
+     \PYG{n}{choices} \PYG{o}{=} \PYG{p}{[}\PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}(con\textbar{}bus)}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sys\PYGZus{}type}\PYG{p}{)}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{choices}\PYG{p}{]}
 
      \PYG{c+c1}{\PYGZsh{} Perform comparison.}
      \PYG{n}{res} \PYG{o}{=} \PYG{n}{process}\PYG{o}{.}\PYG{n}{extract}\PYG{p}{(}\PYG{n}{string}\PYG{p}{,} \PYG{n}{choices}\PYG{p}{,} \PYG{n}{limit}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{scorer}\PYG{o}{=}\PYG{n}{fuzz}\PYG{o}{.}\PYG{n}{token\PYGZus{}sort\PYGZus{}ratio}\PYG{p}{)}
@@ -1869,7 +1869,7 @@ Directly connecting variables to the bus (without intermediary sub-bus) can solv
 \centering
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
-\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id20}}
+\sphinxcaption{Typical view of the connection set of expandable connectors \textendash{} visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set}\label{\detokenize{requirements:id24}}
 \sphinxaftertopcaption
 \begin{tabular}[t]{|\X{40}{100}|\X{10}{100}|\X{10}{100}|\X{20}{100}|\X{20}{100}|}
 \hline
@@ -2131,7 +2131,7 @@ Generating the control sequence description is done by calling a \sphinxhref{htt
 
 \section{Working with Tagged Variables}
 \label{\detokenize{requirements:working-with-tagged-variables}}\label{\detokenize{requirements:sec-tagged-variables}}
-The requirements for tagging variables and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
+The requirements for tagging variables (based on \sphinxcite{bibliography:brick} or \sphinxcite{bibliography:haystack4}) and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
 
 Those additional requirements should at least address the following typical use cases:
 \begin{itemize}

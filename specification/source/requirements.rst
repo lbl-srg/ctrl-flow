@@ -28,7 +28,7 @@ Built around this core functionality the following additional features are requi
 
 #. A documentation export functionality: see :numref:`sec_documentation_export`
 
-#. A set of functionalities to enable working with tagged variables: see :numref:`sec_tagged_variables`
+#. A set of functionalities to enable working with tagged variables (complying with :cite:`Brick` or :cite:`Haystack4`): see :numref:`sec_tagged_variables`
 
 In terms of software design:
 
@@ -1380,7 +1380,7 @@ Generating the control sequence description is done by calling a `module develop
 Working with Tagged Variables
 -----------------------------
 
-The requirements for tagging variables and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
+The requirements for tagging variables (based on :cite:`Brick` or :cite:`Haystack4`) and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
 
 Those additional requirements should at least address the following typical use cases:
 

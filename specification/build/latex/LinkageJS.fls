@@ -1,4 +1,4 @@
-PWD /home/agautier/github/linkage.js/specification/build/latex
+PWD /Users/agautier/gitrepo/linkage.js/specification/build/latex
 INPUT /usr/local/texlive/2019/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -18,6 +18,7 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cmap/t1.cmap
 OUTPUT LinkageJS.pdf
@@ -228,7 +229,6 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.r
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
@@ -312,6 +312,12 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cmap/ot1.cmap
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cmap/ot1.cmap
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/helvetic/phvr7t.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/helvetic/phvr7t.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/oml.cmap
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/oml.cmap
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/oms.cmap
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/oms.cmap
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/omx.cmap
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/mmap/omx.cmap
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd

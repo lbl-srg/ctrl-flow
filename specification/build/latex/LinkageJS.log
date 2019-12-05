@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.9)  7 NOV 2019 10:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 DEC 2019 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -116,16 +116,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2019/07/19 3.33 The Babel package
+Package: babel 2019/05/04 3.31 The Babel package
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2019/07/19 3.33 Babel switching mechanism
+File: switch.def 2019/05/04 3.31 Babel switching mechanism
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2019/07/19 3.33 Babel common definitions
+File: babel.def 2019/05/04 3.31 Babel common definitions
 \babel@savecnt=\count101
 \U@D=\dimen112
 
@@ -352,7 +352,7 @@ Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2019/07/16 v2.11 Sectioning titles
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box29
 \beforetitleunit=\skip62
 \aftertitleunit=\skip63
@@ -527,7 +527,7 @@ Package ifluatex Info: LuaTeX not detected.
 \DUlineblockindent=\skip73
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2019/06/12 v6.88h Hypertext links for LaTeX
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
@@ -546,7 +546,7 @@ Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 Package hobsub Info: Skipping package `etexcmds' (already loaded).
 Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -579,7 +579,7 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 \Hy@pagecounter=\count119
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2019/06/12 v6.88h Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
@@ -588,42 +588,42 @@ Now handling font encoding PD1 ...
 (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `unicode' set `true' on input line 4424.
+Package hyperref Info: Option `unicode' set `true' on input line 4393.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2019/06/12 v6.88h Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 4424.
-Package hyperref Info: Option `breaklinks' set `true' on input line 4424.
-Package hyperref Info: Hyper figures OFF on input line 4550.
-Package hyperref Info: Link nesting OFF on input line 4555.
-Package hyperref Info: Hyper index ON on input line 4558.
-Package hyperref Info: Plain pages OFF on input line 4565.
-Package hyperref Info: Backreferencing OFF on input line 4570.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4393.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4393.
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4803.
+Package hyperref Info: Bookmarks ON on input line 4772.
 \c@Hy@tempcnt=\count121
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5156.
+LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen146
 \Fld@menulength=\count122
 \Field@Width=\dimen147
 \Fld@charsize=\dimen148
-Package hyperref Info: Hyper figures OFF on input line 6411.
-Package hyperref Info: Link nesting OFF on input line 6416.
-Package hyperref Info: Hyper index ON on input line 6419.
-Package hyperref Info: backreferencing OFF on input line 6426.
-Package hyperref Info: Link coloring ON on input line 6429.
-Package hyperref Info: Link coloring with OCG OFF on input line 6436.
-Package hyperref Info: PDF/A mode OFF on input line 6441.
-LaTeX Info: Redefining \ref on input line 6481.
-LaTeX Info: Redefining \pageref on input line 6485.
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring ON on input line 6398.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
 \Hy@abspage=\count123
 \c@Item=\count124
 \c@Hfootnote=\count125
@@ -631,7 +631,7 @@ LaTeX Info: Redefining \pageref on input line 6485.
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2019/06/12 v6.88h Hyperref driver for pdfTeX
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
 \Fld@listcount=\count126
 \c@bookmark@seq@number=\count127
 
@@ -721,7 +721,7 @@ Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
+Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip75
 \enit@outerparindent=\dimen149
 \enit@toks=\toks28
@@ -856,14 +856,14 @@ Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
 ))
-Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgf 2019/04/04 v3.1.2 (3.1.2)
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfsys 2019/04/04 v3.1.2 (3.1.2)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks34
 \pgfkeys@temptoks=\toks35
@@ -880,8 +880,6 @@ ode.tex
 \pgf@yb=\dimen173
 \pgf@xc=\dimen174
 \pgf@yc=\dimen175
-\pgf@xd=\dimen176
-\pgf@yd=\dimen177
 \w@pgf@writea=\write4
 \r@pgf@reada=\read2
 \c@pgf@counta=\count147
@@ -894,35 +892,35 @@ ode.tex
 \pgf@sys@id@count=\count151
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
+File: pgf.cfg 2019/04/04 v3.1.2 (3.1.2)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
 ef
-File: pgfsys-pdftex.def 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsys-pdftex.def 2019/04/04 v3.1.2 (3.1.2)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
 df.def
-File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsys-common-pdf.def 2019/04/04 v3.1.2 (3.1.2)
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
-File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsyssoftpath.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgfsyssoftpath@smallbuffer@items=\count152
 \pgfsyssoftpath@bigbuffer@items=\count153
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
-File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsysprotocol.code.tex 2019/04/04 v3.1.2 (3.1.2)
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfcore 2019/04/04 v3.1.2 (3.1.2)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen178
+\pgfmath@dimen=\dimen176
 \pgfmath@count=\count154
 \pgfmath@box=\box51
 \pgfmath@toks=\toks40
@@ -949,40 +947,40 @@ code.tex)
 erarithmetics.code.tex)))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count155
-)) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
-File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@picminx=\dimen179
-\pgf@picmaxx=\dimen180
-\pgf@picminy=\dimen181
-\pgf@picmaxy=\dimen182
-\pgf@pathminx=\dimen183
-\pgf@pathmaxx=\dimen184
-\pgf@pathminy=\dimen185
-\pgf@pathmaxy=\dimen186
-\pgf@xx=\dimen187
-\pgf@xy=\dimen188
-\pgf@yx=\dimen189
-\pgf@yy=\dimen190
-\pgf@zx=\dimen191
-\pgf@zy=\dimen192
+File: pgfcorepoints.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@picminx=\dimen177
+\pgf@picmaxx=\dimen178
+\pgf@picminy=\dimen179
+\pgf@picmaxy=\dimen180
+\pgf@pathminx=\dimen181
+\pgf@pathmaxx=\dimen182
+\pgf@pathminy=\dimen183
+\pgf@pathmaxy=\dimen184
+\pgf@xx=\dimen185
+\pgf@xy=\dimen186
+\pgf@yx=\dimen187
+\pgf@yy=\dimen188
+\pgf@zx=\dimen189
+\pgf@zy=\dimen190
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
-File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@path@lastx=\dimen193
-\pgf@path@lasty=\dimen194
+File: pgfcorepathconstruct.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@path@lastx=\dimen191
+\pgf@path@lasty=\dimen192
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
-File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@shorten@end@additional=\dimen195
-\pgf@shorten@start@additional=\dimen196
+File: pgfcorepathusage.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@shorten@end@additional=\dimen193
+\pgf@shorten@start@additional=\dimen194
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
-File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorescopes.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgfpic=\box52
 \pgf@hbox=\box53
 \pgf@layerbox@main=\box54
@@ -990,83 +988,83 @@ File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
-File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgflinewidth=\dimen197
+File: pgfcoregraphicstate.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgflinewidth=\dimen195
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
-File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@pt@x=\dimen198
-\pgf@pt@y=\dimen199
-\pgf@pt@temp=\dimen256
+File: pgfcoretransformations.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@pt@x=\dimen196
+\pgf@pt@y=\dimen197
+\pgf@pt@temp=\dimen198
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
-File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorequick.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
 ode.tex
-File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreobjects.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
 ssing.code.tex
-File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorepathprocessing.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
-File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgfarrowsep=\dimen257
+File: pgfcorearrows.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfarrowsep=\dimen199
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
-File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@max=\dimen258
+File: pgfcoreshade.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@max=\dimen256
 \pgf@sys@shading@range@num=\count157
 \pgf@shadingcount=\count158
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
-File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreimage.code.tex 2019/04/04 v3.1.2 (3.1.2)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
-File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreexternal.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgfexternal@startupbox=\box55
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
-File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorelayers.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
 ncy.code.tex
-File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoretransparency.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
 code.tex
-File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorepatterns.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
 tex
-File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorerdf.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
-File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmoduleshapes.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgfnodeparttextbox=\box56
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
-File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmoduleplot.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
-Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@nodesepstart=\dimen259
-\pgf@nodesepend=\dimen260
+Package: pgfcomp-version-0-65 2019/04/04 v3.1.2 (3.1.2)
+\pgf@nodesepstart=\dimen257
+\pgf@nodesepend=\dimen258
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
-Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfcomp-version-1-18 2019/04/04 v3.1.2 (3.1.2)
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -1074,32 +1072,30 @@ Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgffor 2019/04/04 v3.1.2 (3.1.2)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen261
-\pgffor@skip=\dimen262
+\pgffor@iter=\dimen259
+\pgffor@skip=\dimen260
 \pgffor@stack=\toks43
 \pgffor@toks=\toks44
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
-Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
+Package: tikz 2019/04/04 v3.1.2 (3.1.2)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
-File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgflibraryplothandlers.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgf@plot@mark@count=\count159
-\pgfplotmarksize=\dimen263
+\pgfplotmarksize=\dimen261
 )
-\tikz@lastx=\dimen264
-\tikz@lasty=\dimen265
-\tikz@lastxsaved=\dimen266
-\tikz@lastysaved=\dimen267
-\tikz@lastmovetox=\dimen268
-\tikz@lastmovetoy=\dimen269
-\tikzleveldistance=\dimen270
-\tikzsiblingdistance=\dimen271
+\tikz@lastx=\dimen262
+\tikz@lasty=\dimen263
+\tikz@lastxsaved=\dimen264
+\tikz@lastysaved=\dimen265
+\tikzleveldistance=\dimen266
+\tikzsiblingdistance=\dimen267
 \tikz@figbox=\box57
 \tikz@figbox@bg=\box58
 \tikz@tempbox=\box59
@@ -1111,7 +1107,7 @@ File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
-File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmodulematrix.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \pgfmatrixcurrentrow=\count164
 \pgfmatrixcurrentcolumn=\count165
 \pgf@matrix@numberofcolumns=\count166
@@ -1120,11 +1116,11 @@ File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibrarytopaths.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibrarycalc.code.tex 2019/04/04 v3.1.2 (3.1.2)
 )
 \@indexfile=\write5
 \openout5 = `LinkageJS.idx'.
@@ -1167,13 +1163,13 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count168
-\scratchdimen=\dimen272
+\scratchdimen=\dimen268
 \scratchbox=\box61
 \nofMPsegments=\count169
 \nofMParguments=\count170
 \everyMPshowfont=\toks45
 \MPscratchCnt=\count171
-\MPscratchDim=\dimen273
+\MPscratchDim=\dimen269
 \MPnumerator=\count172
 \makeMPintoPDFobject=\count173
 \everyMPtoPDFconversion=\toks46
@@ -1276,6 +1272,7 @@ LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
 (Font)              scaled to size 6.64998pt on input line 256.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
 (Font)              scaled to size 4.74998pt on input line 256.
+<<oml.cmap>><<oms.cmap>><<omx.cmap>>
 LaTeX Font Info:    Try loading font information for U+msa on input line 256.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1323,7 +1320,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 ABD: EveryShipout initializing macros
 Package hyperref Info: Option `pageanchor' set `false' on input line 259.
-<lbl-icon.png, id=92, 132.495pt x 100.375pt>
+<lbl-icon.png, id=95, 132.495pt x 100.375pt>
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 259.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1pcr.fd
@@ -1521,14 +1518,14 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 367.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.54997pt on input line 367.
-<screen_mockup.pdf, id=163, 713.66624pt x 426.59375pt>
+<screen_mockup.pdf, id=170, 963.6pt x 542.025pt>
 File: screen_mockup.pdf Graphic file (type pdf)
 <use screen_mockup.pdf>
 Package pdftex.def Info: screen_mockup.pdf  used on input line 407.
-(pdftex.def)             Requested size: 505.88985pt x 302.41501pt.
+(pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
  [3]
 [4 <./screen_mockup.pdf>] [5] [6] [7] [8]
-<linkage_connect_distance.pdf, id=274, 327.14218pt x 60.225pt>
+<linkage_connect_distance.pdf, id=284, 327.14218pt x 60.225pt>
 File: linkage_connect_distance.pdf Graphic file (type pdf)
 <use linkage_connect_distance.pdf>
 Package pdftex.def Info: linkage_connect_distance.pdf  used on input line 939.
@@ -1539,12 +1536,12 @@ pdfTeX warning: pdflatex (file ./linkage_connect_distance.pdf): PDF inclusion:
 invalid other resource which is no dict (key 'ProcSets', type <array>); ignored
 .
 >]
-<screen_conf_0.pdf, id=305, 963.6pt x 542.025pt>
+<screen_conf_0.pdf, id=315, 963.6pt x 542.025pt>
 File: screen_conf_0.pdf Graphic file (type pdf)
 <use screen_conf_0.pdf>
 Package pdftex.def Info: screen_conf_0.pdf  used on input line 1007.
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
-<screen_conf_1.pdf, id=306, 963.6pt x 542.025pt>
+<screen_conf_1.pdf, id=316, 963.6pt x 542.025pt>
 File: screen_conf_1.pdf Graphic file (type pdf)
 <use screen_conf_1.pdf>
 Package pdftex.def Info: screen_conf_1.pdf  used on input line 1014.
@@ -1561,7 +1558,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1092--1093
 _default / 3600 *
  []
 
-<grid.png, id=401, 1996.45876pt x 983.675pt>
+<grid.png, id=422, 1996.45876pt x 983.675pt>
 File: grid.png Graphic file (type png)
 <use grid.png>
 Package pdftex.def Info: grid.png  used on input line 1108.
@@ -1596,7 +1593,7 @@ Underfull \hbox (badness 7256) in paragraph at lines 1515--1516
 T1/pcr/m/n/10 hotwater_supply_bypass \T1/phv/m/n/10 is a
  []
 
-<linkage_connect_3wv.pdf, id=466, 584.1825pt x 304.2567pt>
+<linkage_connect_3wv.pdf, id=487, 584.1825pt x 304.2567pt>
 File: linkage_connect_3wv.pdf Graphic file (type pdf)
 <use linkage_connect_3wv.pdf>
 Package pdftex.def Info: linkage_connect_3wv.pdf  used on input line 1525.
@@ -1608,18 +1605,18 @@ LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
 pdfTeX warning: pdflatex (file ./linkage_connect_3wv.pdf): PDF inclusion: inval
 id other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >] [21]
-<linkage_connect_multi.pdf, id=499, 578.16pt x 131.53139pt>
+<linkage_connect_multi.pdf, id=520, 578.16pt x 131.53139pt>
 File: linkage_connect_multi.pdf Graphic file (type pdf)
 <use linkage_connect_multi.pdf>
 Package pdftex.def Info: linkage_connect_multi.pdf  used on input line 1605.
 (pdftex.def)             Requested size: 505.88875pt x 115.09569pt.
-<linkage_connect_multi_exp.pdf, id=500, 496.9767pt x 130.5678pt>
+<linkage_connect_multi_exp.pdf, id=521, 496.9767pt x 130.5678pt>
 File: linkage_connect_multi_exp.pdf Graphic file (type pdf)
 <use linkage_connect_multi_exp.pdf>
 Package pdftex.def Info: linkage_connect_multi_exp.pdf  used on input line 1612
 .
 (pdftex.def)             Requested size: 496.97548pt x 130.56746pt.
-<linkage_connect_duct.pdf, id=501, 379.4175pt x 247.8861pt>
+<linkage_connect_duct.pdf, id=522, 379.4175pt x 247.8861pt>
 File: linkage_connect_duct.pdf Graphic file (type pdf)
 <use linkage_connect_duct.pdf>
 Package pdftex.def Info: linkage_connect_duct.pdf  used on input line 1619.
@@ -1653,14 +1650,14 @@ LaTeX Font Info:    Font shape `TS1/pcr/m/it' in size <9> not available
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.59998pt on input line 1730.
  [24]
-<string_match.pdf, id=567, 1054.94125pt x 742.775pt>
+<string_match.pdf, id=588, 1054.94125pt x 742.775pt>
 File: string_match.pdf Graphic file (type pdf)
 <use string_match.pdf>
 Package pdftex.def Info: string_match.pdf  used on input line 1740.
 (pdftex.def)             Requested size: 505.88315pt x 356.19926pt.
 
 [25] [26 <./string_match.pdf>]
-<dymola_bus.png, id=604, 1355.0625pt x 848.16875pt>
+<dymola_bus.png, id=625, 1355.0625pt x 848.16875pt>
 File: dymola_bus.png Graphic file (type png)
 <use dymola_bus.png>
 Package pdftex.def Info: dymola_bus.png  used on input line 1803.
@@ -1675,35 +1672,35 @@ Underfull \hbox (badness 7504) in paragraph at lines 1908--1909
 []|\T1/pcr/m/n/10 comp2.var1 $\OMS/cmsy/m/n/10 !$
  []
 
-<bus_minimal.pdf, id=638, 2165.08875pt x 1100.11pt>
+<bus_minimal.pdf, id=659, 1261.70505pt x 713.332pt>
 File: bus_minimal.pdf Graphic file (type pdf)
 <use bus_minimal.pdf>
 Package pdftex.def Info: bus_minimal.pdf  used on input line 1972.
-(pdftex.def)             Requested size: 451.68457pt x 229.50237pt.
-<subbus_outside.png, id=639, 510.90875pt x 112.42pt>
+(pdftex.def)             Requested size: 451.68457pt x 255.36256pt.
+<subbus_outside.png, id=660, 510.90875pt x 112.42pt>
 File: subbus_outside.png Graphic file (type png)
 <use subbus_outside.png>
 Package pdftex.def Info: subbus_outside.png  used on input line 1979.
 (pdftex.def)             Requested size: 225.84229pt x 49.69308pt.
-<bus_outside.png, id=640, 507.8975pt x 145.54375pt>
+<bus_outside.png, id=661, 507.8975pt x 145.54375pt>
 File: bus_outside.png Graphic file (type png)
 <use bus_outside.png>
 Package pdftex.def Info: bus_outside.png  used on input line 1986.
 (pdftex.def)             Requested size: 225.84229pt x 64.71678pt.
-<bus_inside.png, id=641, 505.89pt x 81.30376pt>
+<bus_inside.png, id=662, 505.89pt x 81.30376pt>
 File: bus_inside.png Graphic file (type png)
 <use bus_inside.png>
 Package pdftex.def Info: bus_inside.png  used on input line 1993.
 (pdftex.def)             Requested size: 225.84229pt x 36.29604pt.
-[30 <./bus_minimal.pdf>] [31 <./subbus_outside.png> <./bus_outside.png> <./bus_
+[30] [31 <./bus_minimal.pdf> <./subbus_outside.png> <./bus_outside.png> <./bus_
 inside.png>] [32]
-<screen_schematics_modelica.pdf, id=682, 2165.08875pt x 1288.815pt>
+<screen_schematics_modelica.pdf, id=698, 1379.47292pt x 1095.41179pt>
 File: screen_schematics_modelica.pdf Graphic file (type pdf)
 <use screen_schematics_modelica.pdf>
 Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 207
 5.
-(pdftex.def)             Requested size: 505.88872pt x 301.14099pt.
-<screen_schematics_output.pdf, id=683, 963.6pt x 542.025pt>
+(pdftex.def)             Requested size: 505.87144pt x 401.70238pt.
+<screen_schematics_output.pdf, id=699, 963.6pt x 542.025pt>
 File: screen_schematics_output.pdf Graphic file (type pdf)
 <use screen_schematics_output.pdf>
 Package pdftex.def Info: screen_schematics_output.pdf  used on input line 2082.
@@ -1712,24 +1709,24 @@ Package pdftex.def Info: screen_schematics_output.pdf  used on input line 2082.
  [33] [34 <./screen_schematics_modelica.pdf>] [35 <./screen_schematics_output.p
 df>] [36] [37]
 Chapter 3.
-<linkage_architecture_legend.pdf, id=755, 232.9503pt x 103.3461pt>
+<linkage_architecture_legend.pdf, id=769, 232.9503pt x 103.3461pt>
 File: linkage_architecture_legend.pdf Graphic file (type pdf)
 <use linkage_architecture_legend.pdf>
 Package pdftex.def Info: linkage_architecture_legend.pdf  used on input line 22
 32.
 (pdftex.def)             Requested size: 232.94972pt x 103.34584pt.
-<linkage_architecture.pdf, id=756, 897.3525pt x 608.2725pt>
+<linkage_architecture.pdf, id=770, 897.3525pt x 608.2725pt>
 File: linkage_architecture.pdf Graphic file (type pdf)
 <use linkage_architecture.pdf>
 Package pdftex.def Info: linkage_architecture.pdf  used on input line 2239.
 (pdftex.def)             Requested size: 505.88232pt x 342.9228pt.
-<linkage_architecture_spa.pdf, id=757, 1033.94275pt x 608.2725pt>
+<linkage_architecture_spa.pdf, id=771, 1033.94275pt x 608.2725pt>
 File: linkage_architecture_spa.pdf Graphic file (type pdf)
 <use linkage_architecture_spa.pdf>
 Package pdftex.def Info: linkage_architecture_spa.pdf  used on input line 2246.
 
 (pdftex.def)             Requested size: 505.8791pt x 297.6199pt.
-<linkage_architecture_os.pdf, id=758, 1026.9567pt x 608.2725pt>
+<linkage_architecture_os.pdf, id=772, 1026.9567pt x 608.2725pt>
 File: linkage_architecture_os.pdf Graphic file (type pdf)
 <use linkage_architecture_os.pdf>
 Package pdftex.def Info: linkage_architecture_os.pdf  used on input line 2253.
@@ -1812,52 +1809,52 @@ Underfull \vbox (badness 10000) detected at line 2582
  []
 
 [48]
-<BusTestExp.pdf, id=890, 2777.37625pt x 1151.30125pt>
+<BusTestExp.pdf, id=904, 2263.78757pt x 565.94739pt>
 File: BusTestExp.pdf Graphic file (type pdf)
 <use BusTestExp.pdf>
 Package pdftex.def Info: BusTestExp.pdf  used on input line 2604.
-(pdftex.def)             Requested size: 252.94499pt x 104.84236pt.
-<BusTestControlledExp.pdf, id=891, 2556.55125pt x 1156.32pt>
+(pdftex.def)             Requested size: 252.94499pt x 63.23022pt.
+<BusTestControlledExp.pdf, id=905, 2265.85118pt x 279.54437pt>
 File: BusTestControlledExp.pdf Graphic file (type pdf)
 <use BusTestControlledExp.pdf>
 Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 2620.
-(pdftex.def)             Requested size: 252.94499pt x 114.40369pt.
- [49 <./BusTestExp.pdf>]
-<BusTestControllerExp.pdf, id=905, 2712.1325pt x 1225.57875pt>
+(pdftex.def)             Requested size: 252.94499pt x 31.20638pt.
+ [49 <./BusTestExp.pdf> <./BusTestControlledExp.pdf
+
+pdfTeX warning: pdflatex (file ./BusTestControlledExp.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>]
+<BusTestControllerExp.pdf, id=915, 1355.59782pt x 1028.8016pt>
 File: BusTestControllerExp.pdf Graphic file (type pdf)
 <use BusTestControllerExp.pdf>
 Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 2648.
-(pdftex.def)             Requested size: 252.94499pt x 114.2993pt.
-<BusTestNonExp.pdf, id=906, 2771.35374pt x 1145.27875pt>
+(pdftex.def)             Requested size: 252.94499pt x 191.95793pt.
+<BusTestNonExp.pdf, id=916, 2263.78757pt x 565.94739pt>
 File: BusTestNonExp.pdf Graphic file (type pdf)
 <use BusTestNonExp.pdf>
 Package pdftex.def Info: BusTestNonExp.pdf  used on input line 2666.
-(pdftex.def)             Requested size: 252.94499pt x 104.5211pt.
- [50 <./BusTestControlledExp.pdf> <./BusTestControllerExp.pdf
-
-pdfTeX warning: pdflatex (file ./BusTestControllerExp.pdf): PDF inclusion: mult
-iple pdfs with page group included in a single page
->]
-<BusTestControlledNonExp.pdf, id=928, 2853.66125pt x 1182.4175pt>
+(pdftex.def)             Requested size: 252.94499pt x 63.23022pt.
+<BusTestControlledNonExp.pdf, id=917, 2101.92332pt x 907.55664pt>
 File: BusTestControlledNonExp.pdf Graphic file (type pdf)
 <use BusTestControlledNonExp.pdf>
 Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 2682.
-(pdftex.def)             Requested size: 252.94499pt x 104.80722pt.
-<BusTestControllerNonExp.pdf, id=929, 2694.065pt x 1219.55624pt>
+(pdftex.def)             Requested size: 252.94499pt x 109.20676pt.
+ [50 <./BusTestControllerExp.pdf>]
+<BusTestControllerNonExp.pdf, id=925, 913.51285pt x 961.5925pt>
 File: BusTestControllerNonExp.pdf Graphic file (type pdf)
 <use BusTestControllerNonExp.pdf>
 Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 2709.
-(pdftex.def)             Requested size: 252.94499pt x 114.5006pt.
+(pdftex.def)             Requested size: 252.94499pt x 266.25082pt.
  [51 <./BusTestNonExp.pdf> <./BusTestControlledNonExp.pdf
 
 pdfTeX warning: pdflatex (file ./BusTestControlledNonExp.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >]
-<annex_valid_bus.pdf, id=953, 1448.41125pt x 893.3375pt>
+<annex_valid_bus.pdf, id=937, 1158.4907pt x 714.42378pt>
 File: annex_valid_bus.pdf Graphic file (type pdf)
 <use annex_valid_bus.pdf>
 Package pdftex.def Info: annex_valid_bus.pdf  used on input line 2750.
-(pdftex.def)             Requested size: 451.68457pt x 278.58113pt.
+(pdftex.def)             Requested size: 451.68457pt x 278.54785pt.
  [52 <./BusTestControllerNonExp.pdf>] [53 <./annex_valid_bus.pdf>]
 Chapter 5.
 [54
@@ -1880,12 +1877,12 @@ Package rerunfilecheck Info: File `LinkageJS.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2780.
  ) 
 Here is how much of TeX's memory you used:
- 26649 strings out of 494053
- 457765 string characters out of 6163845
- 1073460 words of memory out of 5000000
- 29589 multiletter control sequences out of 15000+600000
+ 26522 strings out of 492616
+ 455528 string characters out of 6129482
+ 1071075 words of memory out of 5000000
+ 29658 multiletter control sequences out of 15000+600000
  62098 words of font info for 89 fonts, out of 8000000 for 9000
- 320 hyphenation exceptions out of 8191
+ 1142 hyphenation exceptions out of 8191
  55i,12n,48p,1671b,630s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
@@ -1897,10 +1894,10 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on LinkageJS.pdf (58 pages, 2725967 bytes).
+Output written on LinkageJS.pdf (58 pages, 2354768 bytes).
 PDF statistics:
- 1064 PDF objects out of 1200 (max. 8388607)
- 841 compressed objects within 9 object streams
+ 2963 PDF objects out of 2984 (max. 8388607)
+ 2106 compressed objects within 22 object streams
  169 named destinations out of 1000 (max. 500000)
- 334 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
 
