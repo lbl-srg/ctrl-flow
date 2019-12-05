@@ -1,6 +1,4 @@
 # Makefile for Sphinx documentation
-#
-REPOSITORY = linkage.js
 
 # You can set these variables from the command line.
 SPHINXOPTS    = -W
@@ -61,6 +59,7 @@ linkcheck:
 
 push:
 	git add -A && git commit --allow-empty -m 'rebuild pages'
-	cd $(HOME)/github/${REPOSITORY} && git subtree push --prefix specification/build/html origin gh-pages
+	cd .. && git subtree push --prefix specification/build/html origin gh-pages
+	cd specification
 
 dist: html, latex, linkcheck
