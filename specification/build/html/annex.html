@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4. Annex &#8212; LinkageJS Requirements Specification</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Acknowledgments" href="acknowledgments.html" />
+    <link rel="prev" title="3. Software Architecture" href="architecture.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          LinkageJS</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">2. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">2.1. General Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#main-requirements">2.1.1. Main Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#software-compatibility">2.1.2. Software Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#ui-visual-structure">2.1.3. UI Visual Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#detailed-functionalities">2.2. Detailed Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-graphical-user-interface">2.3. Modelica Graphical User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#modelica-language">2.3.1. Modelica Language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#json-representation">2.3.2. JSON Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#connection-lines">2.3.3. Connection Lines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#configuration-widget">2.4. Configuration Widget</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#functionalities">2.4.1. Functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#data-model">2.4.2. Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#fluid-connectors">2.4.3. Fluid Connectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#signal-connectors">2.4.4. Signal Connectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-sequence-configuration">2.4.5. Control Sequence Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#parameters-setting">2.5. Parameters Setting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#multiple-selection">2.5.1. Multiple Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#array-selection">2.5.2. Array Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#enumeration-and-boolean">2.5.3. Enumeration and Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#record">2.5.4. Record</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#grouped-parameters">2.5.5. Grouped Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#validation">2.5.6. Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#documentation-export">2.6. Documentation Export</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#engineering-schematics">2.6.1. Engineering Schematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-points-list">2.6.2. Control Points List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-sequence-description">2.6.3. Control Sequence Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#working-with-tagged-variables">2.7. Working with Tagged Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">2.8. OpenStudio Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">2.9. Interface with URBANopt GeoJSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">2.10. Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">2.11. Encryption</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">3. Software Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Annex</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-of-the-configuration-data-structure">4.1. Example of the Configuration Data Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-features-of-the-expandable-connectors">4.2. Main Features of the Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validating-the-use-of-expandable-connectors">4.3. Validating the Use of Expandable Connectors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">5. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">6. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">4. Annex</a><ul>
+<li><a class="reference internal" href="#example-of-the-configuration-data-structure">4.1. Example of the Configuration Data Structure</a></li>
+<li><a class="reference internal" href="#main-features-of-the-expandable-connectors">4.2. Main Features of the Expandable Connectors</a></li>
+<li><a class="reference internal" href="#validating-the-use-of-expandable-connectors">4.3. Validating the Use of Expandable Connectors</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="architecture.html" title="Previous Chapter: 3. Software Architecture"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. Software A...</span>
+    </a>
+  </li>
+  <li>
+    <a href="acknowledgments.html" title="Next Chapter: 5. Acknowledgments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Acknowledgments &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="annex">
+<span id="sec-annex"></span><h1>4. Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-of-the-configuration-data-structure">
+<span id="sec-annex-json"></span><h2>4.1. Example of the Configuration Data Structure<a class="headerlink" href="#example-of-the-configuration-data-structure" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="code-conf-ahu">
+<div class="code-block-caption"><span class="caption-number">Listing 4.1 </span><span class="caption-text">Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)</span><a class="headerlink" href="#code-conf-ahu" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;System type&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;subtype&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;subtype&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of AHU&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;VAV&quot;</span><span class="p">,</span> <span class="s2">&quot;DOA&quot;</span><span class="p">,</span> <span class="s2">&quot;Supply only&quot;</span><span class="p">,</span> <span class="s2">&quot;Exhaust only&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;VAV&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Model name&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text input&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AHU&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;fluid_paths&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;east&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;west&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;medium&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Media.Air&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;path of icon.mo&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;diagram&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+        <span class="nt">&quot;modelica&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">-120</span><span class="p">,</span><span class="mi">-200</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">]]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;equipment&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;heaRec&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat recovery&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value == &#39;DOA&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed plate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enthalpy wheel&quot;</span><span class="p">,</span> <span class="s2">&quot;Sensible wheel&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.PlateHeatExchangerEffectivenessNTU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.HeatExchangers.EnthalpyWheel (sensible=true)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;port_a1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_a2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b1&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_b2&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;eco&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Economizer&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value == &#39;VAV&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Dedicated OA damper&quot;</span><span class="p">,</span> <span class="s2">&quot;Common OA damper&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBoxMinimumFlow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Actuators.Dampers.MixingBox&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipVertical&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;port_Out&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_out_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_OutMin&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_min_inlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Sup&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply_outlet&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;port_Exh&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_outlet&quot;</span><span class="p">,</span> <span class="nt">&quot;port_Ret&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return_inlet&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;V_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal outdoor air volume flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/s&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.VolumeFlowRate&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;fanSup&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply fan&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span> <span class="s2">&quot;Blow through&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Draw through&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowSup_nominal)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">]],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;V_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air volume flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanSup.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/s&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.VolumeFlowRate&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;fanRet&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Return/Relief fan&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Supply only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="s2">&quot;Relief&quot;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Relief&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRet_nominal)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Movers.SpeedControlled_y (m_flow_nominal=m_flowRel_nominal)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;icon_transformation&quot;</span><span class="p">:</span> <span class="s2">&quot;flipHorizontal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_return&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;V_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air volume flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#fanRet.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;m3/s&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.VolumeFlowRate&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;controls&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;conAHURef&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Reference guideline for control sequences&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Dropdown menu&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ASHRAE 2006&quot;</span><span class="p">,</span> <span class="s2">&quot;ASHRAE G36&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;options.enabled&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Set of conditional statements allowing the use of ASHRAE 2006&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Set of conditional statements allowing the use of ASHRAE G36&quot;</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;numZon&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Total number of served VAV boxes&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;AFlo[numZon]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Floor area of each zone&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric vector input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_occSen&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if zones have occupancy sensor&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_winSen&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if zones have window status sensor&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_perZonRehBox&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if there is any VAV-reheat boxes on perimeter zones&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_duaDucBox&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if the AHU serves dual duct boxes&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;have_airFloMeaSta&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true if the AHU has Air Flow Measurement Station&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Boolean select&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;Buildings.Fluid.Sensors.VolumeFlowRate (redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+
+            <span class="p">],</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then [20, 5] else [18, 5]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;if #eco.value == &#39;Dedicated OA damper&#39; then &#39;air_supply_min&#39; else &#39;air_supply_out&#39;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;minZonPriFlo[numZon]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Minimum expected zone primary flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric vector input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;VPriSysMax_flow[numZon]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Maximum expected system primary airflow at design stage&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#conAHURef.value == &#39;ASHRAE G36&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;widget&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric vector input&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;port_outAir&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Outside air port&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_a (redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;port_supAir&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Supply air port&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#subtype.value != &#39;Exhaust only&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.Fluid.Interfaces.FluidPort_b (redeclare package Medium=#air_supply.medium)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;placement&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="nt">&quot;connect&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;air_supply&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal outdoor air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowOut_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default * V_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal supply air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowSup_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default * V_flowSup_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal return air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#V_flowRet_nominal.enabled&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;(#air_supply.medium).rho_default * V_flowRet_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowRel_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal relief air mass flow rate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;#eco.value != &#39;None&#39;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="s2">&quot;Modelica.SIunits.MassFlowRate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;m_flowRet_nominal - m_flowSup_nominal + m_flowOut_nominal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;protected&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="main-features-of-the-expandable-connectors">
+<span id="sec-annex-bus-example"></span><h2>4.2. Main Features of the Expandable Connectors<a class="headerlink" href="#main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<p>The main features of the expandable connectors (as described in <a class="reference internal" href="requirements.html#sec-signal-connectors"><span class="std std-numref">Section 2.4.4</span></a>) are illustrated with a minimal example described in the figures below where:</p>
+<ul class="simple">
+<li><p>a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,</p></li>
+<li><p>a controller system which divides the input variable (measurement) by itself and thus outputs a control variable equal to one.</p></li>
+<li><p>The same model is first implemented with an expandable connector and then with a standard connector.</p></li>
+</ul>
+<div class="figure align-default" id="bustestexp">
+<a class="reference internal image-reference" href="_images/BusTestExp.svg"><img alt="_images/BusTestExp.svg" src="_images/BusTestExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Top level</span><a class="headerlink" href="#bustestexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestExp</span>
+<span class="n">BusTestControllerExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
+<span class="n">BusTestControlledExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">controllerSystem</span><span class="o">.</span><span class="n">ahuBus</span><span class="p">,</span> <span class="n">controlledSystem</span><span class="o">.</span><span class="n">ahuBus</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrolledexp">
+<a class="reference internal image-reference" href="_images/BusTestControlledExp.svg"><img alt="_images/BusTestControlledExp.svg" src="_images/BusTestControlledExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrolledexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+<span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ahuBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">);</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">,</span> <span class="n">actuator</span><span class="o">.</span><span class="n">u</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">expandable</span> <span class="kr">connector</span> <span class="nc">AhuBus</span>
+<span class="kr">extends</span> <span class="n">Modelica</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">SignalBus</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">AhuBus</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The definition of <code class="docutils literal notranslate"><span class="pre">AhuBus</span></code> in the code snippet here above does not include any variable declaration. However the variables <code class="docutils literal notranslate"><span class="pre">ahuBus.yAct</span></code> and <code class="docutils literal notranslate"><span class="pre">ahuBus.yMea</span></code> are used in <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations. That is only possible with an expandable connector.</p>
+</div>
+<div class="figure align-default" id="bustestcontrollerexp">
+<a class="reference internal image-reference" href="_images/BusTestControllerExp.svg"><img alt="_images/BusTestControllerExp.svg" src="_images/BusTestControllerExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollerexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
+      <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+      <span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
+      <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">,</span> <span class="n">actuator</span><span class="o">.</span><span class="n">u</span><span class="p">);</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ahuBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">)</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestnonexp">
+<a class="reference internal image-reference" href="_images/BusTestNonExp.svg"><img alt="_images/BusTestNonExp.svg" src="_images/BusTestNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Top level</span><a class="headerlink" href="#bustestnonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestNonExp</span>
+<span class="n">BusTestControllerNonExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
+<span class="n">BusTestControlledNonExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">controllerSystem</span><span class="o">.</span><span class="n">nonExpandableBus</span><span class="p">,</span> <span class="n">controlledSystem</span><span class="o">.</span><span class="n">nonExpandableBus</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nc">BusTestNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrollednonexp">
+<a class="reference internal image-reference" href="_images/BusTestControlledNonExp.svg"><img alt="_images/BusTestControlledNonExp.svg" src="_images/BusTestControlledNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrollednonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledNonExp</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
+<span class="n">BaseClasses</span><span class="o">.</span><span class="n">NonExpandableBus</span> <span class="n">nonExpandableBus</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">actuator</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yAct</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">BusTestControlledNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">connector</span> <span class="nc">NonExpandableBus</span>
+<span class="c1">// The following declarations are required.</span>
+<span class="c1">// The variables are not considered as connectors: they cannot be part of connect equations.</span>
+<span class="nb">Real</span> <span class="n">yMea</span><span class="p">;</span>
+<span class="nb">Real</span> <span class="n">yAct</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">NonExpandableBus</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="bustestcontrollernonexp">
+<a class="reference internal image-reference" href="_images/BusTestControllerNonExp.svg"><img alt="_images/BusTestControllerNonExp.svg" src="_images/BusTestControllerNonExp.svg" width="50%" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollernonexp" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControllerNonExp</span>
+<span class="n">Controls</span><span class="o">.</span><span class="n">OBC</span><span class="o">.</span><span class="n">CDL</span><span class="o">.</span><span class="n">Continuous</span><span class="o">.</span><span class="n">Division</span> <span class="n">controller</span><span class="p">;</span>
+<span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">realPassThrough</span><span class="p">;</span>
+<span class="n">BaseClasses</span><span class="o">.</span><span class="n">NonExpandableBus</span> <span class="n">nonExpandableBus</span><span class="p">;</span>
+<span class="kr">equation</span>
+      <span class="kr">connect</span><span class="p">(</span><span class="n">realPassThrough</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">controller</span><span class="o">.</span><span class="n">u1</span><span class="p">);</span>
+      <span class="n">controller</span><span class="o">.</span><span class="n">u2</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">;</span>
+      <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yAct</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">realPassThrough</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">nonExpandableBus</span><span class="o">.</span><span class="n">yMea</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">BusTestControllerNonExp</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validating-the-use-of-expandable-connectors">
+<span id="sec-annex-bus-valid"></span><h2>4.3. Validating the Use of Expandable Connectors<a class="headerlink" href="#validating-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
+<p>The validation is performed:</p>
+<ul class="simple">
+<li><p>with Dymola (Version 2020, 64-bit, 2019-04-10) and JModelica (revision numbers from svn: JModelica 12903, Assimulo 873);</p></li>
+<li><p>first with a single instance of the controller and then with multiple instances corresponding to different parameters set up (see validation cases of the original controller <code class="docutils literal notranslate"><span class="pre">Validation.Controller</span></code> and <code class="docutils literal notranslate"><span class="pre">Validation.ControllerConfigurationTest</span></code>),</p></li>
+<li><p>with nested expandable connectors: a top-level control bus composed of a first sub-level control bus for control output variables and another for control input variables.</p></li>
+</ul>
+<p>Simulation succeeds for the two tests cases with the two simulation tools.
+The results comparison to the original test case (without control bus) is presented in <a class="reference internal" href="#annex-valid-bus"><span class="std std-numref">Fig. 4.7</span></a> for Dymola.</p>
+<div class="figure align-default" id="annex-valid-bus">
+<a class="reference internal image-reference" href="_images/annex_valid_bus.svg"><img alt="_images/annex_valid_bus.svg" src="_images/annex_valid_bus.svg" width="800px" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.7 </span><span class="caption-text">G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and with (<code class="docutils literal notranslate"><span class="pre">new_bus</span></code>) expandable connectors</span><a class="headerlink" href="#annex-valid-bus" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
+      Last updated on Dec, 05, 2019.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
