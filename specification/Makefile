@@ -60,6 +60,5 @@ linkcheck:
 push:
 	git add -A && git commit --allow-empty -m 'rebuild pages'
 	cd .. && git subtree push --prefix specification/build/html origin gh-pages
-	cd specification
 
 dist: html, latex, linkcheck
