@@ -3,15 +3,6 @@
 Requirements
 ============
 
-.. todo::
-
-   Devise how return status signals can be generated for components that do not have built-in output status variables.
-
-   * Typically the pump model: difficult to implement without state event, otherwise short circuit the input control signal potentially with a ``pre`` operator.
-
-   Specify how modifying mo files so that diffs are minimal? The diff has to be done on JSON objects only?
-
-
 .. _sec_general_description:
 
 General Description
