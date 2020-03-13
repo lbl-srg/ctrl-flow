@@ -9,16 +9,12 @@
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -100,7 +100,6 @@
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">2.8. OpenStudio Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">2.9. Interface with URBANopt GeoJSON</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">2.10. Licensing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">2.11. Encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Software Architecture</a></li>
@@ -165,24 +164,34 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="software-architecture">
-<span id="sec-architecture"></span><h1>3. Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#linkage-architecture-legend"><span class="std std-numref">Fig. 3.1</span></a> to <a class="reference internal" href="#linkage-architecture-os"><span class="std std-numref">Fig. 3.4</span></a> provide simplified architecture diagrams for the three integration targets.
-Those are not hard and fast. They rather aim at describing the main modules to develop and how they interface with LBL or third party developments.</p>
-<p><cite>To be updated: add definitions cf. Michael’s comments.</cite></p>
+<span id="sec-architecture"></span><h1><span class="section-number">3. </span>Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#linkage-architecture-legend"><span class="std std-numref">Fig. 3.1</span></a> to <a class="reference internal" href="#linkage-architecture-os"><span class="std std-numref">Fig. 3.5</span></a> provide architecture diagrams for the three integration targets.
+Those are not hard and fast. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third party developments.</p>
+<p>The following definitions and conventions are used.</p>
+<blockquote>
+<div><p>Config data: pieces of data provided as input to the configuration widget, see <a class="reference internal" href="requirements.html#sec-data-model"><span class="std std-numref">Section 2.4.2</span></a> for definitions and <a class="reference internal" href="annex.html#sec-annex-json"><span class="std std-numref">Section 4.1</span></a> for an actual example.</p>
+<p>Model data: pieces of data used by the graphical editor to allow manipulating a Modelica model. Those correspond to the Modelica code as interpreted by the editor according to its specific data model.</p>
+<p>Return <em>&lt;arg&gt;</em>: describes the translating task from one language (e.g. Modelica or Brick) or one data model (e.g. Modelica raw code or JSON) to another, specified as <em>&lt;arg&gt;</em>.</p>
+<p>Input: describes the user action of setting a parameter value through mouse or keyboard input.</p>
+<p>Call &gt;&gt; return <em>&lt;arg&gt;</em>: describes a bidirectional task where a component A calls another component B, and B returns <em>&lt;arg&gt;</em> to A.</p>
+</div></blockquote>
 <div class="figure align-default" id="linkage-architecture-legend">
 <img alt="_images/linkage_architecture_legend.svg" src="_images/linkage_architecture_legend.svg" /><p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Software architecture legend</span><a class="headerlink" href="#linkage-architecture-legend" title="Permalink to this image">¶</a></p>
 </div>
+<div class="figure align-default" id="linkage-architecture-plugin">
+<img alt="_images/linkage_architecture_plugin.svg" src="_images/linkage_architecture_plugin.svg" /><p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Software architecture for the configuration widget integrated as a plugin to an existing graphical editor for Modelica</span><a class="headerlink" href="#linkage-architecture-plugin" title="Permalink to this image">¶</a></p>
+</div>
 <div class="figure align-default" id="linkage-architecture">
-<img alt="_images/linkage_architecture.svg" src="_images/linkage_architecture.svg" /><p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Software architecture - Desktop app</span><a class="headerlink" href="#linkage-architecture" title="Permalink to this image">¶</a></p>
+<img alt="_images/linkage_architecture.svg" src="_images/linkage_architecture.svg" /><p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Software architecture for the full-featured graphical editor embedding the configuration widget - Desktop app</span><a class="headerlink" href="#linkage-architecture" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="linkage-architecture-spa">
-<img alt="_images/linkage_architecture_spa.svg" src="_images/linkage_architecture_spa.svg" /><p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Software architecture - Standalone web app</span><a class="headerlink" href="#linkage-architecture-spa" title="Permalink to this image">¶</a></p>
+<img alt="_images/linkage_architecture_spa.svg" src="_images/linkage_architecture_spa.svg" /><p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Software architecture for the full-featured graphical editor embedding the configuration widget - Standalone web app</span><a class="headerlink" href="#linkage-architecture-spa" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="linkage-architecture-os">
-<img alt="_images/linkage_architecture_os.svg" src="_images/linkage_architecture_os.svg" /><p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Software architecture - Integration in third party application e.g. <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS)</span><a class="headerlink" href="#linkage-architecture-os" title="Permalink to this image">¶</a></p>
+<img alt="_images/linkage_architecture_os.svg" src="_images/linkage_architecture_os.svg" /><p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Software architecture for the full-featured graphical editor embedding the configuration widget - Integration in third party application e.g. <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS)</span><a class="headerlink" href="#linkage-architecture-os" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 
@@ -203,8 +212,8 @@ Those are not hard and fast. They rather aim at describing the main modules to d
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Dec, 05, 2019.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+      Last updated on Mar, 12, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

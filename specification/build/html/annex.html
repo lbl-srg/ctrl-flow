@@ -9,16 +9,12 @@
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -100,7 +100,6 @@
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#openstudio-integration">2.8. OpenStudio Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#interface-with-urbanopt-geojson">2.9. Interface with URBANopt GeoJSON</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#licensing">2.10. Licensing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#encryption">2.11. Encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">3. Software Architecture</a></li>
@@ -170,12 +169,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="annex">
-<span id="sec-annex"></span><h1>4. Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
+<span id="sec-annex"></span><h1><span class="section-number">4. </span>Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="example-of-the-configuration-data-structure">
-<span id="sec-annex-json"></span><h2>4.1. Example of the Configuration Data Structure<a class="headerlink" href="#example-of-the-configuration-data-structure" title="Permalink to this headline">¶</a></h2>
+<span id="sec-annex-json"></span><h2><span class="section-number">4.1. </span>Example of the Configuration Data Structure<a class="headerlink" href="#example-of-the-configuration-data-structure" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-conf-ahu">
 <div class="code-block-caption"><span class="caption-number">Listing 4.1 </span><span class="caption-text">Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)</span><a class="headerlink" href="#code-conf-ahu" title="Permalink to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -501,7 +500,7 @@
 </div>
 </div>
 <div class="section" id="main-features-of-the-expandable-connectors">
-<span id="sec-annex-bus-example"></span><h2>4.2. Main Features of the Expandable Connectors<a class="headerlink" href="#main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<span id="sec-annex-bus-example"></span><h2><span class="section-number">4.2. </span>Main Features of the Expandable Connectors<a class="headerlink" href="#main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The main features of the expandable connectors (as described in <a class="reference internal" href="requirements.html#sec-signal-connectors"><span class="std std-numref">Section 2.4.4</span></a>) are illustrated with a minimal example described in the figures below where:</p>
 <ul class="simple">
 <li><p>a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,</p></li>
@@ -609,7 +608,7 @@
 </div>
 </div>
 <div class="section" id="validating-the-use-of-expandable-connectors">
-<span id="sec-annex-bus-valid"></span><h2>4.3. Validating the Use of Expandable Connectors<a class="headerlink" href="#validating-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
+<span id="sec-annex-bus-valid"></span><h2><span class="section-number">4.3. </span>Validating the Use of Expandable Connectors<a class="headerlink" href="#validating-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
 <p>The validation is performed:</p>
 <ul class="simple">
@@ -643,8 +642,8 @@ The results comparison to the original test case (without control bus) is presen
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Dec, 05, 2019.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+      Last updated on Mar, 12, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>
