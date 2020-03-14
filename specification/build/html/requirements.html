@@ -234,10 +234,11 @@
 <li><p>A configuration widget supporting assisted modeling based on a simple HTML input form, see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 2.4</span></a>.</p></li>
 </ol>
 <p>We envision a phased development where</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>the configuration widget would be first implemented as a plugin to be integrated in an existing graphical editor for Modelica,</p></li>
 <li><p>a full-featured graphical editor would be developed in a second phase, integrating the configuration widget natively.</p></li>
-</ul>
+</ol>
+<p>The current specification provides minimal requirements for the graphical editor, and detailed requirements and even implementation strategies for the configuration widget, which is the priority development.</p>
 <div class="section" id="main-requirements">
 <h3><span class="section-number">2.1.1. </span>Main Requirements<a class="headerlink" href="#main-requirements" title="Permalink to this headline">¶</a></h3>
 <p>To following requirements apply to both the configuration widget (first phase of development) and the diagram editor (second phase of development).</p>
@@ -257,7 +258,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Those three integration targets are actual deliverables.</p>
-<p>For the first development phase pertaining only to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica.</p>
+<p>For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. The exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions in this first phase shall be further discussed with the provider.</p>
 </div>
 </li>
 <li><p>A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by <a class="reference external" href="http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/">OpenStudio measures</a>.</p></li>
@@ -375,38 +376,33 @@ requirement.</p></td>
 <p>If a package is loaded the structure of the package and sub packages is checked against <em>Chapter 13 Packages</em> (V1).</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Export <code class="docutils literal notranslate"><span class="pre">mo</span></code> file</p></td>
-<td><p>R</p></td>
-<td></td>
-<td><p><cite>Need for “total model” export option?</cite></p></td>
-</tr>
-<tr class="row-even"><td><p>Export simulation results</p></td>
+<tr class="row-odd"><td><p>Export simulation results</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Export in the following format: <code class="docutils literal notranslate"><span class="pre">mat,</span> <span class="pre">csv</span></code>.</p>
 <p>All variables or selection based on variables browser (see below).</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Variables browser</p></td>
+<tr class="row-even"><td><p>Variables browser</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Query selection of model variables based on regular expression (V0)</p>
 <p>Or Brick/Haystack tag <a class="bibtex reference internal" href="bibliography.html#brick" id="id1">[Bri]</a> <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id2">[Hay]</a> (V1)</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Plot simulation results</p></td>
+<tr class="row-odd"><td><p>Plot simulation results</p></td>
 <td><p>N</p></td>
 <td><p>O</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Export documentation</p></td>
+<tr class="row-even"><td><p>Export documentation</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Control points and sequence of operation description (based on CDL to Word translator developed by LBL) (V0)</p>
 <p>Equipment schematics see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 2.16</span></a> (V1)</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Import/Export data sheet</p></td>
+<tr class="row-odd"><td><p>Import/Export data sheet</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Additional module to</p>
@@ -416,189 +412,188 @@ requirement.</p></td>
 </ol>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>Modelica features</strong></p></td>
+<tr class="row-even"><td><p><strong>Modelica features</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Checking the compliance with Modelica standard</p></td>
+<tr class="row-odd"><td><p>Checking the compliance with Modelica standard</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Real-time checking of syntax for component names (V0)</p>
 <p>Real-time checking of connections and checking upon submit against Modelica language specification (V1)</p>
-<p><cite>Is the validation against Modelica JSON schema enough?</cite></p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Translate model</p></td>
+<tr class="row-even"><td><p>Translate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.</p>
 <p>The output of the translation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Simulate model</p></td>
+<tr class="row-odd"><td><p>Simulate model</p></td>
 <td><p>P</p></td>
 <td></td>
 <td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.</p>
 <p>The output of the simulation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Automatic medium propagation between connected components</p></td>
+<tr class="row-even"><td><p>Automatic medium propagation between connected components</p></td>
 <td><p>P</p></td>
 <td><p>P</p></td>
 <td><p>Partially supported because only the configuration widget integrates that feature.</p>
 <p>When generating <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation manually a similar approach as the <em>fluid path</em> used by the configuration widget may be developed, see components with 4 ports and 2 medium.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Support of Modelica graphical annotations</p></td>
+<tr class="row-odd"><td><p>Support of Modelica graphical annotations</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Modelica code editor</p></td>
+<tr class="row-even"><td><p>Modelica code editor</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Raw text editor (V0) with linter and Modelica specification check upon save (V1)</p>
 <p>Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators being developed by LBL).</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Icon editor</p></td>
+<tr class="row-odd"><td><p>Icon editor</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Editing functionalities similar to diagram editor</p></td>
 </tr>
-<tr class="row-odd"><td><p>Documentation view</p></td>
+<tr class="row-even"><td><p>Documentation view</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Library version management</p></td>
+<tr class="row-odd"><td><p>Library version management</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code> the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Path discovery</p></td>
+<tr class="row-even"><td><p>Path discovery</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>A routine to reconstruct the path or URL of a referenced resource within the loaded Modelica libraries is required. Typically a resource can be referenced with the following syntax <code class="docutils literal notranslate"><span class="pre">modelica://Buildings.Air.Systems.SingleZone.VAV</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
+<tr class="row-odd"><td><p><strong>Object manipulation</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Vectorized instances</p></td>
+<tr class="row-even"><td><p>Vectorized instances</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.</p></td>
 </tr>
-<tr class="row-even"><td><p>Expandable connectors</p></td>
+<tr class="row-odd"><td><p>Expandable connectors</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Navigation in object composition</p></td>
+<tr class="row-even"><td><p>Navigation in object composition</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Right clicking an icon in the diagram view offers the option to open the model in another tab</p></td>
 </tr>
-<tr class="row-even"><td><p>Multiple objects selection for setting the value of common parameters</p></td>
+<tr class="row-odd"><td><p>Multiple objects selection for setting the value of common parameters</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value  is modified, all the selected objects will have their parameter value updated.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
+<tr class="row-even"><td><p>Avoiding duplicate names</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.</p>
 <p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
+<tr class="row-odd"><td><p><strong>Graphical features</strong></p></td>
 <td></td>
 <td></td>
 <td><p>A user experience similar to modern web based diagramming applications is expected e.g. <a class="reference external" href="https://w.draw.io">draw.io</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Tab view</p></td>
+<tr class="row-even"><td><p>Tab view</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.</p></td>
 </tr>
-<tr class="row-even"><td><p>Diagram split view</p></td>
+<tr class="row-odd"><td><p>Diagram split view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
 <td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Copy/Paste objects</p></td>
+<tr class="row-even"><td><p>Copy/Paste objects</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.</p></td>
 </tr>
-<tr class="row-even"><td><p>Pan and zoom on mouse actions</p></td>
+<tr class="row-odd"><td><p>Pan and zoom on mouse actions</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Undo/Redo</p></td>
+<tr class="row-even"><td><p>Undo/Redo</p></td>
 <td><p>R</p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Draw shape, text box</p></td>
+<tr class="row-odd"><td><p>Draw shape, text box</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Start connection line when hovering connectors</p></td>
+<tr class="row-even"><td><p>Start connection line when hovering connectors</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Connection line jumps</p></td>
+<tr class="row-odd"><td><p>Connection line jumps</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Gap jump at crossing</p></td>
 </tr>
-<tr class="row-odd"><td><p>Customize connection lines</p></td>
+<tr class="row-even"><td><p>Customize connection lines</p></td>
 <td><p>O</p></td>
 <td><p>R</p></td>
 <td><p>Color, width and line can be specified in the annotations panel</p></td>
 </tr>
-<tr class="row-even"><td><p>Hover information</p></td>
+<tr class="row-odd"><td><p>Hover information</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>Class path when hovering an object in the diagram view and tooltip help for each GUI element</p></td>
 </tr>
-<tr class="row-odd"><td><p>Color and style of connection lines</p></td>
+<tr class="row-even"><td><p>Color and style of connection lines</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Allow the user to manually specify (right click menu) the style of the connections lines (V0).</p>
 <p>When generating a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation automatically select a line style based on some heuristic to be further specified (V1).</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Drawing guides</p></td>
+<tr class="row-odd"><td><p>Drawing guides</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
 <td><p>Snap to grid (V0) and alignment lines with neighbor objects (V1) with the option to enable/disable those guides.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
+<tr class="row-even"><td><p><strong>Miscellaneous</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><cite>Choice of units SI / IP</cite></p></td>
+<tr class="row-odd"><td><p><cite>Choice of units SI / IP</cite></p></td>
 <td><p>?</p></td>
 <td><p>?</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>User documentation</p></td>
+<tr class="row-even"><td><p>User documentation</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>User manual of the GUI and the corresponding API</p>
 <p>Both an HTML version and a PDF version are required (may rely on Sphinx).</p>
 </td>
 </tr>
-<tr class="row-even"><td><p>Developer documentation</p></td>
+<tr class="row-odd"><td><p>Developer documentation</p></td>
 <td><p>R</p></td>
 <td></td>
 <td><p>All classes, methods, free functions and modules must be documented with an exhaustive description of the functionalities, parameters and return values.</p>
@@ -659,7 +654,7 @@ It is mostly needed for integrating advanced control sequences that can have doz
 The intent is to reduce the complexity to the mere definition of the system’s layout and the selection of standard control sequences already transcribed in Modelica <a class="bibtex reference internal" href="bibliography.html#obc" id="id5">[LBNL19]</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference external" href="https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F">CtrlSpecBuilder</a> is a tool widely used in the HVAC controls industry for specifying control sequences. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.</p>
+<p><a class="reference external" href="https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F">CtrlSpecBuilder</a> is a tool widely used in the HVAC industry for specifying control systems. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.</p>
 </div>
 <p>There are fundamental requirements regarding the Modelica model generated by the configuration widget:</p>
 <ol class="arabic">
@@ -673,7 +668,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <li><p>The implementation of control sequences must comply with OpenBuildingControl requirements, see <em>§7 Control Description Language</em> and <em>§8 Code Generation</em> in <a class="bibtex reference internal" href="bibliography.html#obc" id="id6">[LBNL19]</a>. Especially:</p>
 <ul>
 <li><p>It is required that the CDL part of the model can be programmatically isolated from the rest of the model in order to be translated into vendor-specific code (by means of a third-party translator).</p></li>
-<li><p>The expandable connectors (control bus) are not part of CDL specification. Those are used to connect</p>
+<li><p>The expandable connectors (control bus) are not part of CDL specification. Those are used by the configuration widget to connect</p>
 <ul class="simple">
 <li><p>control blocks and equipment models within a composed sub-system model, e.g., AHU or terminal unit,</p></li>
 <li><p>different sub-system models together to compose a whole system model, e.g., VAV system serving different rooms.</p></li>
@@ -684,7 +679,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </li>
 </ol>
 <p>The input form is provided by the template developer (e.g. LBL) in a data model with a format that is to be further specified in collaboration with the software developer.</p>
-<p>The data model typically provides for each entry:</p>
+<p>The data model typically provides for each entry</p>
 <ul class="simple">
 <li><p>the HTML widget and populating data to be used for requesting user input,</p></li>
 <li><p>the modeling data required to instantiate, position and set the parameters values of the different components,</p></li>
@@ -698,32 +693,32 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <img alt="_images/screen_conf_1.svg" src="_images/screen_conf_1.svg" /><p class="caption"><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Configuration widget – Configuring an existing model</span><a class="headerlink" href="#screen-conf-1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Equipment and controller models are connected together by means of a <em>control bus</em>, see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 2.16</span></a>. The upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget: see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 2.4</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level model <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.</p>
-<p>The logic for instantiating classes from the library is straightforward. Each field of the form specifies:</p>
+<p>The logic for instantiating classes from the library is straightforward. Each field of the form specifies</p>
 <ul class="simple">
-<li><p>the reference of the class (library path) to be instantiated depending on the user input;</p></li>
+<li><p>the reference of the class (library path) to be instantiated depending on the user input,</p></li>
 <li><p>the position of the component in simplified grid coordinates to be converted in diagram view coordinates.</p></li>
 </ul>
 <p><a class="reference internal" href="#sec-fluid-connectors"><span class="std std-numref">Section 2.4.3</span></a> and <a class="reference internal" href="#sec-signal-connectors"><span class="std std-numref">Section 2.4.4</span></a> address how the connections between the connectors of the different components are generated automatically based on this initial model structure.</p>
 </div>
 <div class="section" id="data-model">
 <span id="sec-data-model"></span><h3><span class="section-number">2.4.2. </span>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
-<p>The envisioned data structure supporting the configuration process consists in:</p>
+<p>The envisioned data structure supporting the configuration process consists in</p>
 <ul class="simple">
 <li><p>placement coordinates provided relatively to a simplified grid, see <a class="reference internal" href="#grid"><span class="std std-numref">Fig. 2.5</span></a> – those must be mapped to Modelica diagram coordinates by the widget,</p></li>
 <li><p>an <code class="docutils literal notranslate"><span class="pre">equipment</span></code> section referencing the components that must be connected together with fluid connectors, see <a class="reference internal" href="#sec-fluid-connectors"><span class="std std-numref">Section 2.4.3</span></a>,</p></li>
-<li><p>a <code class="docutils literal notranslate"><span class="pre">controls</span></code> section referencing the components that must connected together with signal connectors, see <a class="reference internal" href="#sec-signal-connectors"><span class="std std-numref">Section 2.4.4</span></a>,</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">controls</span></code> section referencing the components that must connected together with signal connectors, including schedules, set points, optimal start, etc., see <a class="reference internal" href="#sec-signal-connectors"><span class="std std-numref">Section 2.4.4</span></a>,</p></li>
 <li><p>a <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> section referencing additional components with the following characteristics:</p>
 <ul>
-<li><p>they typically correspond to sensors and outside fluid connectors,</p></li>
-<li><p>the model completeness depends on their presence,</p></li>
-<li><p>the requirements for their presence can be deduced from the equipment and controls options,</p></li>
-<li><p>they do not need additional fields in the user form of the configuration widget.</p></li>
+<li><p>They typically correspond to sensors and outside fluid connectors.</p></li>
+<li><p>The model completeness depends on their presence.</p></li>
+<li><p>The requirements for their presence can be deduced from the equipment and controls options.</p></li>
+<li><p>They do not need additional fields in the user form of the configuration widget.</p></li>
 </ul>
 </li>
 </ul>
 <div class="section" id="format">
 <h4><span class="section-number">2.4.2.1. </span>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h4>
-<p>A robust syntax is required for:</p>
+<p>A robust syntax is required for</p>
 <ul class="simple">
 <li><p>auto-referencing the data structure e.g. <code class="docutils literal notranslate"><span class="pre">#type.value</span></code> refers to the value of the field <code class="docutils literal notranslate"><span class="pre">value</span></code> of the object which <code class="docutils literal notranslate"><span class="pre">$id</span></code> is <code class="docutils literal notranslate"><span class="pre">type</span></code>: must be interpreted by the configuration widget and replaced by the actual value when generating the model,</p></li>
 <li><p>conditional statements: potentially every field may require a conditional statement – either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).</p></li>
@@ -738,7 +733,7 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <div class="section" id="parameters-exposed-by-the-configuration-widget">
 <h4><span class="section-number">2.4.2.2. </span>Parameters Exposed by the Configuration Widget<a class="headerlink" href="#parameters-exposed-by-the-configuration-widget" title="Permalink to this headline">¶</a></h4>
 <p>The template developer is free to declare in the template any parameter of the composing components e.g. <code class="docutils literal notranslate"><span class="pre">V_flowSup_nominal</span></code> and reference them in any declaration e.g. <code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default</span> <span class="pre">/</span> <span class="pre">3600</span> <span class="pre">*</span> <span class="pre">#V_flowSup_nominal.value)</span></code>. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistence of those references in <a class="reference internal" href="#sec-persisting-data"><span class="std std-numref">Section 2.4.2.4</span></a>.</p>
-<p>Some parameters must be integrated in the template (examples below are provided in reference to <code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>):</p>
+<p>Some parameters must be integrated in the template (examples below are provided in reference to <code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>)</p>
 <ul class="simple">
 <li><p>when they impact the model structure e.g. <code class="docutils literal notranslate"><span class="pre">use_enthalpy</span></code> requires an additional enthalpy sensor: in that case the model declaration must use the <code class="docutils literal notranslate"><span class="pre">final</span></code> qualifier to prevent the user from overriding those values in the parameters panel,</p></li>
 <li><p>when no default value is provided e.g. <code class="docutils literal notranslate"><span class="pre">AFlo</span></code> cf. requirement that the model generated by the configuration widget must be ready to simulate.</p></li>
@@ -750,15 +745,15 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 </div>
 <div class="section" id="configuration-data-definitions">
 <h4><span class="section-number">2.4.2.3. </span>Configuration Data Definitions<a class="headerlink" href="#configuration-data-definitions" title="Permalink to this headline">¶</a></h4>
-<p>In the definitions provided here below:</p>
+<p>In the definitions provided here below</p>
 <ul class="simple">
-<li><p>When the type of a field is specified as a string marked with (C) it may correspond to:</p>
+<li><p>when the type of a field is specified as a string marked with (C), it may correspond to</p>
 <ul>
 <li><p>a conditional statement provided as a string that must be interpreted by the UI engine,</p></li>
 <li><p>a reference to another field value of type boolean (that may itself correspond to a conditional statement provided as a string).</p></li>
 </ul>
 </li>
-<li><p>References to other fields of the data structure may be of two kinds:</p>
+<li><p>references to other fields of the data structure may be of two kinds:</p>
 <ul>
 <li><p>LinkageJS references prefixed by <code class="docutils literal notranslate"><span class="pre">#</span></code> which must be interpreted by the configuration widget and replaced by their actual value e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=#air_supply.medium)&quot;</span></code> for the object <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Modelica.Fluid.Interfaces.FluidPort_a</span> <span class="pre">id_value(redeclare</span> <span class="pre">package</span> <span class="pre">Medium=Buildings.Media.Air)</span></code> in the generated model.</p></li>
 <li><p>Modelica references provided as literal variables e.g. <code class="docutils literal notranslate"><span class="pre">&quot;declaration&quot;:</span> <span class="pre">&quot;Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">(m_flow_nominal=m_flowRet_nominal)&quot;</span></code> for the object if <code class="docutils literal notranslate"><span class="pre">&quot;$id&quot;:</span> <span class="pre">&quot;id_value&quot;</span></code> leads to <code class="docutils literal notranslate"><span class="pre">Buildings.Fluid.Movers.SpeedControlled_y</span> <span class="pre">id_value(m_flow_nominal=m_flowRet_nominal)</span></code> in the generated model.</p></li>
@@ -1086,13 +1081,11 @@ All object names in that list thus reference instantiated objects with fluid por
 <div class="section" id="general-principles">
 <h4><span class="section-number">2.4.4.1. </span>General Principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h4>
 <p>Generating the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations for signal variables relies on:</p>
-<ul>
+<ul class="simple">
 <li><p>a (fuzzy) string matching principle applied to the names of the connector variables and their components e.g. <code class="docutils literal notranslate"><span class="pre">com.y</span></code> for the output connector <code class="docutils literal notranslate"><span class="pre">y</span></code> of the component <code class="docutils literal notranslate"><span class="pre">com</span></code>,</p></li>
-<li><p>a so-called <em>control bus</em> which has the type of an <em>expandable connector</em>, see <em>§9.1.3 Expandable Connectors</em> in <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id8">[Mod17]</a>.</p>
-<p>(For clarity it may be useful to group control input variables in one sub-bus and control output variables in another sub-bus. The <a class="reference external" href="https://www.claytex.com/blog/libraries/rationalisation-bus-sub-bus-signals-engines-library">experience feedback on bus usage in Modelica</a> shows that restricting the number of sub-buses and the use of bus variables to sensed and actuated signals only is a preferred option.)</p>
-</li>
+<li><p>a so-called <em>control bus</em> which has the type of an <em>expandable connector</em>, see <em>§9.1.3 Expandable Connectors</em> in <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id8">[Mod17]</a>.</p></li>
 </ul>
-<p>The following features of the expandable connectors are leveraged:</p>
+<p>The following features of the expandable connectors are leveraged. They are illustrated with minimal examples in annex, see <a class="reference internal" href="annex.html#sec-annex-bus-example"><span class="std std-numref">Section 4.2</span></a>.</p>
 <ol class="arabic">
 <li><p>All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type <code class="docutils literal notranslate"><span class="pre">Real</span></code>) can be connected i.e. be part of a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation.</p>
 <div class="admonition note">
@@ -1104,8 +1097,8 @@ All object names in that list thus reference instantiated objects with fluid por
 <li><p>The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation where the variable is first being used. For instance when the variable of an expandable connector is first connected to an inside connector <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealOutput</span></code> it gets the same causality i.e. output. The same variable can then be connected to another inside connector  <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealInput</span></code>.</p></li>
 <li><p>Potentially present but not connected variables are eventually considered as undefined i.e. a tool may remove them or set them to the default value (Dymola treat them as not declared: they are not listed in <code class="docutils literal notranslate"><span class="pre">dsin.txt</span></code>): all variables need not be connected so the control bus does not have to be reconfigured depending on the model structure.</p></li>
 <li><p>The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any <em>instance</em> of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.</p></li>
+<li><p>Expandable connectors can be used in arrays, as any other type. The typical use case is the need for connecting the control input signals from a set of terminal units to a supervisory controller at the AHU or plant level. This use has been validated on minimal examples in <a class="reference internal" href="annex.html#sec-annex-bus-example"><span class="std std-numref">Section 4.2</span></a>. It shows that the simplest structure for the expandable connector should be preferred, with no sub bus as it can cause some parsing issues depending on the Modelica tool being used.</p></li>
 </ol>
-<p>Those features are illustrated with a minimal example in annex, see <a class="reference internal" href="annex.html#sec-annex-bus-example"><span class="std std-numref">Section 4.2</span></a>.</p>
 </div>
 <div class="section" id="generating-connections-by-approximate-string-matching">
 <h4><span class="section-number">2.4.4.2. </span>Generating Connections by Approximate String Matching<a class="headerlink" href="#generating-connections-by-approximate-string-matching" title="Permalink to this headline">¶</a></h4>
@@ -3606,7 +3599,7 @@ A similar view of the connections set must be implemented with the additional re
 </div>
 <div class="section" id="record">
 <h3><span class="section-number">2.5.4. </span>Record<a class="headerlink" href="#record" title="Permalink to this headline">¶</a></h3>
-<p>The parameters tab must allow exploring the inner structure of a parameter <em>record</em> and setting the lower level parameters values. Since a record is a class with no selected instance in that use case a graphical hint should be implemented e.g. frozen diagram view deemphasized by grey filter.</p>
+<p>The parameters tab must allow exploring the inner structure of a parameter <em>record</em> and setting the lower level parameters values.</p>
 </div>
 <div class="section" id="grouped-parameters">
 <h3><span class="section-number">2.5.5. </span>Grouped Parameters<a class="headerlink" href="#grouped-parameters" title="Permalink to this headline">¶</a></h3>
@@ -3732,7 +3725,7 @@ A similar view of the connections set must be implemented with the additional re
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Mar, 12, 2020.<br/>
+      Last updated on Mar, 13, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
