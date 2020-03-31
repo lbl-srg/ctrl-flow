@@ -40,8 +40,7 @@ To following requirements apply to both the configuration widget (first phase of
     * For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. That requires for the editor to be able to serve a single page HTML document executing JS code.
 
     * For the second development phase the primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS).
-
-        * An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
+      An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
 
   .. note::
 

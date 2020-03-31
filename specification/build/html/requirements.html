@@ -246,19 +246,14 @@
 <ul>
 <li><p>The software must rely on client side JS code with minimal dependencies and must be built down to a single page HTML document (SPA).</p></li>
 <li><p>A widget structure is required that allows seamless embedding into:</p>
-<ul>
+<ul class="simple">
 <li><p>a desktop app – with standard access to the local file system,</p></li>
 <li><p>a standalone web app – with access to the local file system limited to Download &amp; Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),</p></li>
 <li><p>any third party application with the suitable framework to serve a single page HTML document executing JS code – with access to the local file system through the API of the third party application:</p>
 <ul>
 <li><p>For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. That requires for the editor to be able to serve a single page HTML document executing JS code.</p></li>
-<li><p>For the second development phase the primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS).</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS may be considered as a reference for the development.</p></li>
-</ul>
-</div></blockquote>
-</li>
+<li><p>For the second development phase the primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS).
+An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS may be considered as a reference for the development.</p></li>
 </ul>
 </li>
 </ul>
