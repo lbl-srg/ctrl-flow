@@ -8,11 +8,11 @@ Those are not hard and fast. They rather aim at illustrating the data workflow a
 
 The following definitions and conventions are used.
 
-  Config data: pieces of data provided as input to the configuration widget, see :numref:`sec_data_model` for definitions and :numref:`sec_annex_json` for an actual example.
+  Config(uration) data: pieces of data provided as input to the configuration widget, see :numref:`sec_data_model` for definitions and :numref:`sec_annex_json` for an actual example.
 
   Model data: pieces of data used by the graphical editor to allow manipulating a Modelica model. Those correspond to the Modelica code as interpreted by the editor according to its specific data model.
 
-  Return *<arg>*: describes the translating task from one language (e.g. Modelica or Brick) or one data model (e.g. Modelica raw code or JSON) to another, specified as *<arg>*.
+  Return *<arg>*: describes the translating task from one language (e.g. Modelica or Brick) or one data model (e.g. Modelica raw code or JSON) to another, specified by *<arg>*.
 
   Input: describes the user action of setting a parameter value through mouse or keyboard input.
 

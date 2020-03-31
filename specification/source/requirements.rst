@@ -37,15 +37,18 @@ To following requirements apply to both the configuration widget (first phase of
 
   * any third party application with the suitable framework to serve a single page HTML document executing JS code -- with access to the local file system through the API of the third party application:
 
-    * the primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS),
+    * For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. That requires for the editor to be able to serve a single page HTML document executing JS code.
 
-    * an example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
+    * For the second development phase the primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS).
+
+        * An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
 
   .. note::
 
      Those three integration targets are actual deliverables.
 
-     For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. The exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions in this first phase shall be further discussed with the provider.
+     For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.
+
 
 * A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
 

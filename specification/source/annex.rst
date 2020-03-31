@@ -168,3 +168,9 @@ The results comparison to the original test case (without control bus) is presen
    :width: 800px
 
    G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (``origin``) and with (``new_bus``) expandable connectors
+
+.. _sec_annex_bus_array:
+
+Validating the Use of Expandable Connector Arrays
+-------------------------------------------------
+
