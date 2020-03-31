@@ -974,7 +974,7 @@ The following features of the expandable connectors are leveraged. They are illu
 
 #. The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any *instance* of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.
 
-#. Expandable connectors can be used in arrays, as any other Modelica type. A typical use case is the connection of control input signals from a set of terminal units to a supervisory controller at the AHU or at the plant level. This use case has been validated on minimal examples in :numref:`sec_annex_bus_example`. It shows that the simplest structure of expandable connectors should be preferred when using arrays. Namely sub-buses should be avoided as they can cause some parsing issues depending on the Modelica tool being used.
+#. Expandable connectors can be used in arrays, as any other Modelica type. A typical use case is the connection of control input signals from a set of terminal units to a supervisory controller at the AHU or at the plant level. This use case has been validated on minimal examples in :numref:`sec_annex_bus_array`.
 
 
 Generating Connections by Approximate String Matching

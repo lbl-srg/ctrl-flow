@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 1495.000000 688.000000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="rgb(235,235,235)" stroke="rgb(0,0,0)" stroke-opacity="1" x="473.333" y="322.067" width="109.667" height="43.8667"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="321.149" width="0.917333" height="44.784"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="365.933" width="110.584" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="583" y="322.067" width="0.917333" height="44.784"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="473.333" y="321.149" width="110.584" height="0.917333"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="322.067" width="1.376" height="43.8667"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="322.067" width="109.667" height="1.376"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="582.083" y="322.067" width="0.917333" height="43.8667"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="473.333" y="365.016" width="109.667" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="581.165" y="322.984" width="0.917333" height="42.032"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="474.251" y="364.099" width="107.832" height="0.917333"/>
+	<text fill="rgb(0,0,0)" font-size="11" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="344">{i for i in 1:nTer}</text>
+	<text fill="rgb(0,0,255)" font-size="22" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="305.617">outSig[]</text>
+	<rect fill="rgb(235,235,235)" stroke="rgb(0,0,0)" stroke-opacity="1" x="473.333" y="322.067" width="109.667" height="43.8667"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="321.149" width="0.917333" height="44.784"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="365.933" width="110.584" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="583" y="322.067" width="0.917333" height="44.784"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="473.333" y="321.149" width="110.584" height="0.917333"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="322.067" width="1.376" height="43.8667"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="322.067" width="109.667" height="1.376"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="582.083" y="322.067" width="0.917333" height="43.8667"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="473.333" y="365.016" width="109.667" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="581.165" y="322.984" width="0.917333" height="42.032"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="474.251" y="364.099" width="107.832" height="0.917333"/>
+	<text fill="rgb(0,0,0)" font-size="11" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="344">{i for i in 1:nTer}</text>
+	<text fill="rgb(0,0,255)" font-size="22" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="305.617">outSig[]</text>
+	<rect fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" x="473.333" y="508.5" width="109.667" height="109.667"/>
+	<text fill="rgb(0,0,255)" font-size="22" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="492.05">inpSig[]</text>
+	<polyline fill="none" stroke="rgb(0,0,127)" stroke-opacity="1" points="583.000000,563.333333 473.333333,563.333333"/>
+	<rect fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" x="473.333" y="508.5" width="109.667" height="109.667"/>
+	<text fill="rgb(0,0,255)" font-size="22" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="492.05">inpSig[]</text>
+	<polyline fill="none" stroke="rgb(0,0,127)" stroke-opacity="1" points="583.000000,563.333333 473.333333,563.333333"/>
+	<text fill="rgb(0,0,255)" font-size="22" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="53.3833">staAhu</text>
+	<rect fill="rgb(210,210,210)" stroke="rgb(0,0,0)" stroke-opacity="1" x="473.333" y="69.8333" width="109.667" height="109.667"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="68.916" width="0.917333" height="110.584"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="472.416" y="179.5" width="110.584" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="583" y="69.8333" width="0.917333" height="110.584"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="473.333" y="68.916" width="110.584" height="0.917333"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="69.8333" width="1.376" height="109.667"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="473.333" y="69.8333" width="109.667" height="1.376"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="582.083" y="69.8333" width="0.917333" height="109.667"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="473.333" y="178.583" width="109.667" height="0.917333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="581.165" y="70.7507" width="0.917333" height="107.832"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="474.251" y="177.665" width="107.832" height="0.917333"/>
+	<ellipse fill="rgb(235,235,235)" stroke="rgb(235,235,235)" stroke-opacity="1" cx="570.937" cy="124.667" rx="3.83833" ry="3.83833"/>
+	<polyline fill="none" stroke="rgb(255,0,255)" stroke-opacity="1" points="478.816667,163.050000 567.646667,163.050000"/>
+	<polygon fill="rgb(255,0,255)" stroke="rgb(255,0,255)" stroke-opacity="1" points="577.516667,163.050000 565.453333,158.663333 565.453333,167.436667 577.516667,163.050000"/>
+	<polygon fill="rgb(255,0,255)" stroke="rgb(255,0,255)" stroke-opacity="1" points="484.300000,76.413333 479.913333,88.476667 488.686667,88.476667 484.300000,76.413333"/>
+	<polyline fill="none" stroke="rgb(255,0,255)" stroke-opacity="1" points="484.300000,88.476667 484.300000,169.630000"/>
+	<polyline fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" points="484.300000,124.666667 563.260000,124.666667"/>
+	<text fill="rgb(0,0,0)" font-size="16" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="528.167" y="193.208">true</text>
+	<polyline fill="none" stroke="rgb(255,255,255)" stroke-width="5" stroke-opacity="1" points="588.483333,344.000000 802.333333,344.000000 802.333333,343.451667 1022.215000,343.451667"/>
+	<polyline fill="none" stroke="rgb(0,0,127)" stroke-opacity="1" points="588.483333,344.000000 802.333333,344.000000 802.333333,343.451667 1022.215000,343.451667"/>
+	<text fill="rgb(0,0,0)" font-size="10" font-family="helvetica" text-anchor="start" dominant-baseline="central" x="621.383" y="327.55">ahuTer.outSig</text>
+	<polyline fill="none" stroke="rgb(255,255,255)" stroke-width="6" stroke-opacity="1" points="1022.215000,343.451667 1022.215000,563.333333 593.966667,563.333333"/>
+	<polyline fill="none" stroke="rgb(255,204,51)" stroke-width="2" stroke-opacity="1" points="1022.215000,343.451667 1022.215000,563.333333 593.966667,563.333333"/>
+	<text fill="rgb(0,0,0)" font-size="10" font-family="helvetica" text-anchor="start" dominant-baseline="central" x="626.867" y="546.883">ahuTer.inpSig</text>
+	<polyline fill="none" stroke="rgb(255,255,255)" stroke-width="5" stroke-opacity="1" points="593.966667,124.666667 1022.215000,124.666667 1022.215000,343.451667"/>
+	<polyline fill="none" stroke="rgb(255,0,255)" stroke-opacity="1" points="593.966667,124.666667 1022.215000,124.666667 1022.215000,343.451667"/>
+	<text fill="rgb(0,0,0)" font-size="10" font-family="helvetica" text-anchor="start" dominant-baseline="central" x="626.867" y="108.217">staAhu</text>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="583.000000,338.516667 593.966667,344.000000 583.000000,349.483333 583.000000,338.516667"/>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="583.000000,338.516667 593.966667,344.000000 583.000000,349.483333 583.000000,338.516667"/>
+	<polygon fill="rgb(0,0,127)" stroke="rgb(0,0,127)" stroke-opacity="1" points="604.933333,552.366667 583.000000,563.333333 604.933333,574.300000 604.933333,552.366667"/>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="473.333333,557.850000 462.366667,563.333333 473.333333,568.816667 473.333333,557.850000"/>
+	<polygon fill="rgb(0,0,127)" stroke="rgb(0,0,127)" stroke-opacity="1" points="604.933333,552.366667 583.000000,563.333333 604.933333,574.300000 604.933333,552.366667"/>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="473.333333,557.850000 462.366667,563.333333 473.333333,568.816667 473.333333,557.850000"/>
+	<polygon fill="rgb(255,204,51)" stroke="rgb(0,0,0)" stroke-opacity="1" points="1021.666667,316.583333 1025.957375,316.597042 1030.056167,316.638167 1033.963042,316.706708 1037.678000,316.802667 1041.201042,316.926042 1044.532167,317.076833 1047.671375,317.255042 1050.618667,317.460667 1053.374042,317.693708 1055.937500,317.954167 1058.309042,318.242042 1060.488667,318.557333 1062.476375,318.900042 1064.272167,319.270167 1065.876042,319.667708 1067.288000,320.092667 1068.508042,320.545042 1069.536167,321.024833 1070.372375,321.532042 1071.016667,322.066667 1071.016667,322.066667 1072.003667,323.300417 1072.771333,324.808333 1073.319667,326.590417 1073.648667,328.646667 1073.758333,330.977083 1073.648667,333.581667 1073.319667,336.460417 1072.771333,339.613333 1072.003667,343.040417 1071.016667,346.741667 1071.016667,346.741667 1071.016667,346.741667 1069.920000,350.415500 1068.823333,353.760333 1067.726667,356.776167 1066.630000,359.463000 1065.533333,361.820833 1064.436667,363.849667 1063.340000,365.549500 1062.243333,366.920333 1061.146667,367.962167 1060.050000,368.675000 1060.050000,368.675000 1060.050000,368.675000 1058.679167,369.195917 1056.760000,369.662000 1054.292500,370.073250 1051.276667,370.429667 1047.712500,370.731250 1043.600000,370.978000 1038.939167,371.169917 1036.403125,371.245313 1033.730000,371.307000 1030.919792,371.354979 1027.972500,371.389250 1024.888125,371.409813 1021.666667,371.416667 1021.666667,371.416667 1018.445208,371.409813 1015.360833,371.389250 1012.413542,371.354979 1009.603333,371.307000 1006.930208,371.245313 1004.394167,371.169917 1001.995208,371.080813 999.733333,370.978000 997.608542,370.861479 995.620833,370.731250 993.770208,370.587313 992.056667,370.429667 990.480208,370.258312 989.040833,370.073250 987.738542,369.874479 986.573333,369.662000 985.545208,369.435813 984.654167,369.195917 983.900208,368.942312 983.283333,368.675000 983.283333,368.675000 982.186667,367.962167 981.090000,366.920333 979.993333,365.549500 978.896667,363.849667 977.800000,361.820833 976.703333,359.463000 975.606667,356.776167 974.510000,353.760333 973.413333,350.415500 972.316667,346.741667 972.316667,346.741667 972.316667,346.741667 971.329667,343.040417 970.562000,339.613333 970.013667,336.460417 969.684667,333.581667 969.575000,330.977083 969.684667,328.646667 970.013667,326.590417 970.562000,324.808333 971.329667,323.300417 972.316667,322.066667 972.316667,322.066667 972.316667,322.066667 973.797167,321.024833 976.045333,320.092667 979.061167,319.270167 982.844667,318.557333 987.395833,317.954167 989.959292,317.693708 992.714667,317.460667 995.661958,317.255042 998.801167,317.076833 1002.132292,316.926042 1005.655333,316.802667 1009.370292,316.706708 1013.277167,316.638167 1017.375958,316.597042 1021.666667,316.583333"/>
+	<ellipse fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" cx="988.767" cy="333.033" rx="2.74167" ry="2.74167"/>
+	<ellipse fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" cx="1021.67" cy="333.033" rx="2.74167" ry="2.74167"/>
+	<ellipse fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" cx="1054.57" cy="333.033" rx="2.74167" ry="2.74167"/>
+	<ellipse fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" cx="1005.22" cy="354.967" rx="2.74167" ry="2.74167"/>
+	<ellipse fill="none" stroke="rgb(0,0,0)" stroke-opacity="1" cx="1038.12" cy="354.967" rx="2.74167" ry="2.74167"/>
+	<text fill="rgb(0,0,0)" font-size="33" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="1021.67" y="283.683">ahuBus</text>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(255,0,255)" stroke-opacity="1" points="583.000000,119.183333 593.966667,124.666667 583.000000,130.150000 583.000000,119.183333"/>
+</svg>

@@ -107,7 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="annex.html#example-of-the-configuration-data-structure">4.1. Example of the Configuration Data Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annex.html#main-features-of-the-expandable-connectors">4.2. Main Features of the Expandable Connectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connectors">4.3. Validating the Use of Expandable Connectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connector-arrays">4.4. Validating the Use of Expandable Connector Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connector-arrays">4.4. Validating the Use of Expandable Connector Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#connecting-one-central-system-model-to-an-array-of-terminal-system-models">4.4.1. Connecting One Central System Model to an Array of Terminal System Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">4.4.2. Connecting an Array of Central System Models to an Array of Terminal System Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#passing-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing a Scalar Variable to an Array of System Models</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">5. Acknowledgments</a></li>
@@ -1099,7 +1104,7 @@ All object names in that list thus reference instantiated objects with fluid por
 <li><p>The causality (input or output) of each variable inside an expandable connector is not predefined but rather set by the <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation where the variable is first being used. For instance when the variable of an expandable connector is first connected to an inside connector <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealOutput</span></code> it gets the same causality i.e. output. The same variable can then be connected to another inside connector  <code class="docutils literal notranslate"><span class="pre">Modelica.Blocks.Interfaces.RealInput</span></code>.</p></li>
 <li><p>Potentially present but not connected variables are eventually considered as undefined i.e. a tool may remove them or set them to the default value (Dymola treat them as not declared: they are not listed in <code class="docutils literal notranslate"><span class="pre">dsin.txt</span></code>): all variables need not be connected so the control bus does not have to be reconfigured depending on the model structure.</p></li>
 <li><p>The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any <em>instance</em> of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.</p></li>
-<li><p>Expandable connectors can be used in arrays, as any other Modelica type. A typical use case is the connection of control input signals from a set of terminal units to a supervisory controller at the AHU or at the plant level. This use case has been validated on minimal examples in <a class="reference internal" href="annex.html#sec-annex-bus-example"><span class="std std-numref">Section 4.2</span></a>. It shows that the simplest structure of expandable connectors should be preferred when using arrays. Namely sub-buses should be avoided as they can cause some parsing issues depending on the Modelica tool being used.</p></li>
+<li><p>Expandable connectors can be used in arrays, as any other Modelica type. A typical use case is the connection of control input signals from a set of terminal units to a supervisory controller at the AHU or at the plant level. This use case has been validated on minimal examples in <a class="reference internal" href="annex.html#sec-annex-bus-array"><span class="std std-numref">Section 4.4</span></a>.</p></li>
 </ol>
 </div>
 <div class="section" id="generating-connections-by-approximate-string-matching">
@@ -3727,7 +3732,7 @@ A similar view of the connections set must be implemented with the additional re
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Mar, 30, 2020.<br/>
+      Last updated on Mar, 31, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
