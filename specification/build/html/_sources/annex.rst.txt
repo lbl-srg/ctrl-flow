@@ -273,8 +273,8 @@ OCT also fails to translate the model but for a different reason, see error mess
 However, when manually adding the connect statement between the two *inside* connectors ``connect(dummyTerminal.terBus, dummyCentral.ahuBus.ahuTer)``, the model simulates with OCT.
 
 
-Passing a Scalar Variable to an Array of System Models
-******************************************************
+Passing on a Scalar Variable to an Array of System Models
+*********************************************************
 
 The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.

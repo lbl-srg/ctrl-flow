@@ -110,7 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#validating-the-use-of-expandable-connector-arrays">4.4. Validating the Use of Expandable Connector Arrays</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-one-central-system-model-to-an-array-of-terminal-system-models">4.4.1. Connecting One Central System Model to an Array of Terminal System Models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">4.4.2. Connecting an Array of Central System Models to an Array of Terminal System Models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#passing-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing a Scalar Variable to an Array of System Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-on-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing on a Scalar Variable to an Array of System Models</a></li>
 </ul>
 </li>
 </ul>
@@ -137,7 +137,7 @@
 <li><a class="reference internal" href="#validating-the-use-of-expandable-connector-arrays">4.4. Validating the Use of Expandable Connector Arrays</a><ul>
 <li><a class="reference internal" href="#connecting-one-central-system-model-to-an-array-of-terminal-system-models">4.4.1. Connecting One Central System Model to an Array of Terminal System Models</a></li>
 <li><a class="reference internal" href="#connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">4.4.2. Connecting an Array of Central System Models to an Array of Terminal System Models</a></li>
-<li><a class="reference internal" href="#passing-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing a Scalar Variable to an Array of System Models</a></li>
+<li><a class="reference internal" href="#passing-on-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing on a Scalar Variable to an Array of System Models</a></li>
 </ul>
 </li>
 </ul>
@@ -705,8 +705,8 @@ The results comparison to the original test case (without control bus) is presen
 <p>OCT also fails to translate the model but for a different reason, see error message previously mentioned.
 However, when manually adding the connect statement between the two <em>inside</em> connectors <code class="docutils literal notranslate"><span class="pre">connect(dummyTerminal.terBus,</span> <span class="pre">dummyCentral.ahuBus.ahuTer)</span></code>, the model simulates with OCT.</p>
 </div>
-<div class="section" id="passing-a-scalar-variable-to-an-array-of-system-models">
-<h3><span class="section-number">4.4.3. </span>Passing a Scalar Variable to an Array of System Models<a class="headerlink" href="#passing-a-scalar-variable-to-an-array-of-system-models" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="passing-on-a-scalar-variable-to-an-array-of-system-models">
+<h3><span class="section-number">4.4.3. </span>Passing on a Scalar Variable to an Array of System Models<a class="headerlink" href="#passing-on-a-scalar-variable-to-an-array-of-system-models" title="Permalink to this headline">¶</a></h3>
 <p>The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.</p>
 <ol class="arabic simple">
