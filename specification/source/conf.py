@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath('.'))
 # General information about the project.
 project = 'LinkageJS'
 doc_title = 'LinkageJS Requirements Specification'
-doc_version = 'V1 - First Release for Solicitation'
+doc_version = 'V0 - First Release for Solicitation'
 copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # Extensions
