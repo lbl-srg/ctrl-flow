@@ -1040,7 +1040,7 @@ However an exact string matching is not conceivable. An approximate (or fuzzy) s
 
 
 .. raw:: html
-   :file: html/string_match.html
+   :file: _static/string_match.html
 
 .. raw:: html
 
