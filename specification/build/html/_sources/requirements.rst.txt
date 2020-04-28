@@ -16,7 +16,7 @@ The software relies on two main components.
 
 We envision a phased development where
 
-#. the configuration widget would be first implemented as a plugin to be integrated in an existing graphical editor for Modelica,
+#. the configuration widget would be first implemented and integrated into an existing graphical editor for Modelica,
 
 #. a full-featured graphical editor would be developed in a second phase, integrating the configuration widget natively.
 
@@ -35,11 +35,11 @@ To following requirements apply to both the configuration widget (first phase of
 
   * a standalone web app -- with access to the local file system limited to Download & Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),
 
-  * any third party application with the suitable framework to serve a single page HTML document executing JS code -- with access to the local file system through the API of the third party application:
+  * any third-party application with the suitable framework to serve a single page HTML document executing JS code -- with access to the local file system through the API of the third-party application:
 
-    * For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. That requires for the editor to be able to serve a single page HTML document executing JS code.
+    * For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated into this editor. That requires for the editor to be able to serve a single page HTML document executing JS code.
 
-    * For the second development phase the primary target is `OpenStudio® <https://www.openstudio.net>`_ (OS).
+    * For the second development phase, the primary integration target is `OpenStudio® <https://www.openstudio.net>`_ (OS) while the widget to be integrated is now the full-featured editor (including the configuration widget).
       An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
 
   .. note::
@@ -215,14 +215,14 @@ Detailed Functionalities
    * - Translate model
      - P
      -
-     - The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.
+     - The software settings allow the user to specify a command for translating the model with a third-party Modelica tool e.g. JModelica.
 
        The output of the translation routine is logged in LinkageJS console.
 
    * - Simulate model
      - P
      -
-     - The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.
+     - The software settings allow the user to specify a command for simulating the model with a third-party Modelica tool e.g. JModelica.
 
        The output of the simulation routine is logged in LinkageJS console.
 
@@ -459,7 +459,7 @@ Functionalities
 
 The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
 It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
-The intent is to reduce the complexity to the mere definition of the system's layout and the selection of standard control sequences already transcribed in Modelica :cite:`OBC`.
+The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica :cite:`OBC`.
 
 .. note::
 
@@ -573,8 +573,8 @@ Some parameters must be integrated in the template (examples below are provided 
    Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model
 
 
-Configuration Data Definitions
-``````````````````````````````
+Configuration Schema
+````````````````````
 
 In the definitions provided here below
 
@@ -1433,7 +1433,7 @@ Different licensing options are then envisioned depending on the integration tar
 
   * Pro account allowing access to server storage of Modelica files (packages uploaded and models saved by the user): the user can update the stored libraries and reopen saved models between sessions.
 
-* Third party application embedding
+* Third-party application embedding
 
   Licensing will depend on the application distribution model.
 

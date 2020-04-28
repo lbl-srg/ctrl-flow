@@ -4,7 +4,7 @@ Software Architecture
 ---------------------
 
 :numref:`linkage_architecture_legend` to :numref:`linkage_architecture_os` provide architecture diagrams for the three integration targets.
-Those are not hard and fast. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third party developments.
+Those are not hard and fast. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third-party developments.
 
 The following definitions and conventions are used.
 
@@ -28,7 +28,7 @@ The following definitions and conventions are used.
 .. figure:: img/linkage_architecture_plugin.*
    :name: linkage_architecture_plugin
 
-   Software architecture for the configuration widget integrated as a plugin to an existing graphical editor for Modelica
+   Software architecture for the configuration widget integrated into an existing graphical editor for Modelica
 
 
 .. figure:: img/linkage_architecture.*
@@ -46,4 +46,4 @@ The following definitions and conventions are used.
 .. figure:: img/linkage_architecture_os.*
    :name: linkage_architecture_os
 
-   Software architecture for the full-featured graphical editor embedding the configuration widget - Integration in third party application e.g. `OpenStudio® <https://www.openstudio.net>`_ (OS)
+   Software architecture for the full-featured graphical editor embedding the configuration widget - Integration in third-party application e.g. `OpenStudio® <https://www.openstudio.net>`_ (OS)

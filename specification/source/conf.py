@@ -3,13 +3,16 @@
 
 import sys, os
 import sphinx_bootstrap_theme
+from datetime import date
 
 sys.path.append(os.path.abspath('.'))
 
 # General information about the project.
 project = 'LinkageJS'
+version = '0.1'  # short X.Y version
+release = '{}'.format(version)  # full version, including alpha/beta/rc tags
 doc_title = 'LinkageJS Requirements Specification'
-doc_version = 'V0 - First Release for Solicitation'
+doc_version = 'V{} - First Release for Solicitation'.format(release)
 copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # Extensions
@@ -22,17 +25,18 @@ extensions = [
 ]
 
 # Rst_prolog is a string of reStructuredText that will be included at the beginning of every source file that is read.
-
 rst_prolog = '''
 .. role:: underline
    :class: underline
+
+.. |date| replace:: {today}
 
 .. |project| replace:: {project}
 
 .. |doc_title| replace:: {doc_title}
 
 .. |doc_version| replace:: {doc_version}
-'''.format(project=project, doc_title=doc_title, doc_version=doc_version)
+'''.format(today=date.today(), project=project, doc_title=doc_title, doc_version=doc_version)
 
 # mathjax_path
 mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
@@ -50,11 +54,6 @@ source_encoding = 'utf-8'
 
 # The master toctree document.
 master_doc = 'index'
-
-# The short X.Y version.
-version = ''
-# The full version, including alpha/beta/rc tags.
-release = ''
 
 # List of documents that shouldn't be included in the build.
 #unused_docs = []

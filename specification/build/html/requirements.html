@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           LinkageJS</a>
-        <span class="navbar-text navbar-version pull-left"><b></b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -58,7 +58,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preamble.html">2. Preamble and Conventions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-description">3.1. General Description</a><ul>
@@ -150,7 +150,7 @@
 <li><a class="reference internal" href="#data-model">3.4.2. Data Model</a><ul>
 <li><a class="reference internal" href="#format">3.4.2.1. Format</a></li>
 <li><a class="reference internal" href="#parameters-exposed-by-the-configuration-widget">3.4.2.2. Parameters Exposed by the Configuration Widget</a></li>
-<li><a class="reference internal" href="#configuration-data-definitions">3.4.2.3. Configuration Data Definitions</a></li>
+<li><a class="reference internal" href="#configuration-schema">3.4.2.3. Configuration Schema</a></li>
 <li><a class="reference internal" href="#persisting-data">3.4.2.4. Persisting Data</a></li>
 </ul>
 </li>
@@ -242,7 +242,7 @@
 </ol>
 <p>We envision a phased development where</p>
 <ol class="arabic simple">
-<li><p>the configuration widget would be first implemented as a plugin to be integrated in an existing graphical editor for Modelica,</p></li>
+<li><p>the configuration widget would be first implemented and integrated into an existing graphical editor for Modelica,</p></li>
 <li><p>a full-featured graphical editor would be developed in a second phase, integrating the configuration widget natively.</p></li>
 </ol>
 <p>The current specification provides minimal requirements for the graphical editor, and detailed requirements and even implementation strategies for the configuration widget, which is the priority development.</p>
@@ -255,10 +255,10 @@
 <ul class="simple">
 <li><p>a desktop app – with standard access to the local file system,</p></li>
 <li><p>a standalone web app – with access to the local file system limited to Download &amp; Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),</p></li>
-<li><p>any third party application with the suitable framework to serve a single page HTML document executing JS code – with access to the local file system through the API of the third party application:</p>
+<li><p>any third-party application with the suitable framework to serve a single page HTML document executing JS code – with access to the local file system through the API of the third-party application:</p>
 <ul>
-<li><p>For the first development phase pertaining to the configuration widget, the third party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated as a plugin into the editor. That requires for the editor to be able to serve a single page HTML document executing JS code.</p></li>
-<li><p>For the second development phase the primary target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS).
+<li><p>For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated into this editor. That requires for the editor to be able to serve a single page HTML document executing JS code.</p></li>
+<li><p>For the second development phase, the primary integration target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS) while the widget to be integrated is now the full-featured editor (including the configuration widget).
 An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS may be considered as a reference for the development.</p></li>
 </ul>
 </li>
@@ -435,14 +435,14 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Translate model</p></td>
 <td><p>P</p></td>
 <td></td>
-<td><p>The software settings allow the user to specify a command for translating the model with a third party Modelica tool e.g. JModelica.</p>
+<td><p>The software settings allow the user to specify a command for translating the model with a third-party Modelica tool e.g. JModelica.</p>
 <p>The output of the translation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Simulate model</p></td>
 <td><p>P</p></td>
 <td></td>
-<td><p>The software settings allow the user to specify a command for simulating the model with a third party Modelica tool e.g. JModelica.</p>
+<td><p>The software settings allow the user to specify a command for simulating the model with a third-party Modelica tool e.g. JModelica.</p>
 <p>The output of the simulation routine is logged in LinkageJS console.</p>
 </td>
 </tr>
@@ -659,7 +659,7 @@ requirement.</p></td>
 <h3><span class="section-number">3.4.1. </span>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this headline">¶</a></h3>
 <p>The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
 It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
-The intent is to reduce the complexity to the mere definition of the system’s layout and the selection of standard control sequences already transcribed in Modelica <a class="bibtex reference internal" href="bibliography.html#obc" id="id5">[LBNL19]</a>.</p>
+The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica <a class="bibtex reference internal" href="bibliography.html#obc" id="id5">[LBNL19]</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F">CtrlSpecBuilder</a> is a tool widely used in the HVAC industry for specifying control systems. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.</p>
@@ -751,8 +751,8 @@ The intent is to reduce the complexity to the mere definition of the system’s 
 <p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Simplified grid providing placement coordinates for all objects to be instantiated when configuring an AHU model</span><a class="headerlink" href="#grid" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="configuration-data-definitions">
-<h4><span class="section-number">3.4.2.3. </span>Configuration Data Definitions<a class="headerlink" href="#configuration-data-definitions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="configuration-schema">
+<h4><span class="section-number">3.4.2.3. </span>Configuration Schema<a class="headerlink" href="#configuration-schema" title="Permalink to this headline">¶</a></h4>
 <p>In the definitions provided here below</p>
 <ul class="simple">
 <li><p>when the type of a field is specified as a string marked with (C), it may correspond to</p>
@@ -3708,7 +3708,7 @@ A similar view of the connections set must be implemented with the additional re
 <li><p>Pro account allowing access to server storage of Modelica files (packages uploaded and models saved by the user): the user can update the stored libraries and reopen saved models between sessions.</p></li>
 </ul>
 </li>
-<li><p>Third party application embedding</p>
+<li><p>Third-party application embedding</p>
 <p>Licensing will depend on the application distribution model.</p>
 <p>For OpenStudio there is currently a shift in the <a class="reference external" href="https://www.openstudio.net/new-future-for-openstudio-application">licensing strategy</a>: the specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).</p>
 </li>
@@ -3733,8 +3733,8 @@ A similar view of the connections set must be implemented with the additional re
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Apr, 13, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.1.<br/>
+      Last updated on Apr, 27, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.<br/>
     </p>
   </div>
 </footer>
