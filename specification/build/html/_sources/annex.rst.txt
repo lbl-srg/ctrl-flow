@@ -279,7 +279,8 @@ Passing on a Scalar Variable to an Array of System Models
 The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.
 
-1. Instantiating a replicator (routing) component to connect the variable to the expandable connector array.
+1. Instantiating a replicator (routing) component to connect the variable to the expandable connector array. After discussion with the team, it seems like the best approach to use in production.
+
 2. Looping over the expandable connector array elements to connect each of them to the variable.
 
 The test performed here aims to provide a more "user-friendly" way of achieving the same result with only one connection being made (either graphically or programmatically).
@@ -298,8 +299,8 @@ The best approach would be a binding of the variable in the declaration of the e
          "Terminal unit sub-bus";
    end AhuBus;
 
-However that syntax is neither supported by Dymola nor by OCT.
-Also an equation section is not allowed in an expandable connector class according to Modelica specification.
+However that syntax is against the Modelica language specification.
+It is indeed equivalent to an equation, and equations are not allowed in an expandable connector class.
 
 The approach eventually tested relies on a so-called "gateway" model composed of several instances of expandable connectors and an equation section used to establish the needed connect statements. Note that if a variable is left unconnected then it is considered undefined, so the corresponding connect statement is automatically removed by Modelica tools.
 

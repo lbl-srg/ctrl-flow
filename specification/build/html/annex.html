@@ -711,7 +711,7 @@ However, when manually adding the connect statement between the two <em>inside</
 <p>The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.</p>
 <ol class="arabic simple">
-<li><p>Instantiating a replicator (routing) component to connect the variable to the expandable connector array.</p></li>
+<li><p>Instantiating a replicator (routing) component to connect the variable to the expandable connector array. After discussion with the team, it seems like the best approach to use in production.</p></li>
 <li><p>Looping over the expandable connector array elements to connect each of them to the variable.</p></li>
 </ol>
 <p>The test performed here aims to provide a more “user-friendly” way of achieving the same result with only one connection being made (either graphically or programmatically).</p>
@@ -727,8 +727,8 @@ Two programmatic options are obviously available.</p>
 <span class="n">end</span> <span class="n">AhuBus</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>However that syntax is neither supported by Dymola nor by OCT.
-Also an equation section is not allowed in an expandable connector class according to Modelica specification.</p>
+<p>However that syntax is against the Modelica language specification.
+It is indeed equivalent to an equation, and equations are not allowed in an expandable connector class.</p>
 <p>The approach eventually tested relies on a so-called “gateway” model composed of several instances of expandable connectors and an equation section used to establish the needed connect statements. Note that if a variable is left unconnected then it is considered undefined, so the corresponding connect statement is automatically removed by Modelica tools.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="n">AhuBusGateway</span>
    <span class="s2">&quot;Model to connect scalar variables from main bus to an array of sub-bus&quot;</span>
@@ -772,7 +772,7 @@ Also an equation section is not allowed in an expandable connector class accordi
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Apr, 27, 2020.<br/>
+      Last updated on Apr, 28, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.<br/>
     </p>
   </div>

@@ -369,10 +369,12 @@ Detailed Functionalities
      -
      -
 
-   * - `Choice of units SI / IP`
-     - ?
-     - ?
+   * - Internationalization
+     - R
      -
+     - The software will be delivered in US English only, but it must be architectured to allow seamless integration of additional languages in the future.
+
+       The choice between I-P and SI units must be possible. The mechanism supporting different units will be specified by LBL in a later version of this document.
 
    * - User documentation
      - R
@@ -1375,7 +1377,7 @@ Generating the control sequence description is done by calling a `module develop
 Working with Tagged Variables
 -----------------------------
 
-The requirements for tagging variables (based on :cite:`Brick` or :cite:`Haystack4`) and performing some queries on the set of tagged variables will be specified by LBL in a second version of this document.
+The requirements for tagging variables (based on :cite:`Brick` or :cite:`Haystack4`) and performing some queries on the set of tagged variables will be specified by LBL in a later version of this document.
 
 Those additional requirements should at least address the following typical use cases:
 
@@ -1411,7 +1413,7 @@ This is illustrated in :numref:`linkage_architecture_os`.
 Interface with URBANopt GeoJSON
 -------------------------------
 
-A seamless integration of LinkageJS into `URBANopt <https://www.nrel.gov/buildings/urbanopt.html>`_ modeling workflow is required. To support that feature additional requirements will be specified by LBL in a second version of this document.
+A seamless integration of LinkageJS into `URBANopt <https://www.nrel.gov/buildings/urbanopt.html>`_ modeling workflow is required. To support that feature additional requirements will be specified by LBL in a later version of this document.
 
 The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-LinkageJS workflow. Therefore the requirements should only relate to the persistence of modeling data and the shared resources between the two processes.
 
