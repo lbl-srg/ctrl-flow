@@ -3,13 +3,16 @@
 
 import sys, os
 import sphinx_bootstrap_theme
+from datetime import date
 
 sys.path.append(os.path.abspath('.'))
 
 # General information about the project.
 project = 'LinkageJS'
+version = '0.1'  # short X.Y version
+release = '{}'.format(version)  # full version, including alpha/beta/rc tags
 doc_title = 'LinkageJS Requirements Specification'
-doc_version = 'V0 -- Working Draft'
+doc_version = 'V{} - First Release for Solicitation'.format(release)
 copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # Extensions
@@ -22,20 +25,21 @@ extensions = [
 ]
 
 # Rst_prolog is a string of reStructuredText that will be included at the beginning of every source file that is read.
-
-rst_prolog = """
+rst_prolog = '''
 .. role:: underline
    :class: underline
+
+.. |date| replace:: {today}
 
 .. |project| replace:: {project}
 
 .. |doc_title| replace:: {doc_title}
 
 .. |doc_version| replace:: {doc_version}
-""".format(project=project, doc_title=doc_title, doc_version=doc_version)
+'''.format(today=date.today(), project=project, doc_title=doc_title, doc_version=doc_version)
 
 # mathjax_path
-mathjax_path = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
 todo_include_todos = True
 
@@ -50,11 +54,6 @@ source_encoding = 'utf-8'
 
 # The master toctree document.
 master_doc = 'index'
-
-# The short X.Y version.
-version = ''
-# The full version, including alpha/beta/rc tags.
-release = ''
 
 # List of documents that shouldn't be included in the build.
 #unused_docs = []
@@ -80,27 +79,26 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_title': project,
     'nosidebar': True,
+    'body_min_width': '100%',
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': True,
     # Render the current pages TOC in the navbar. (Default: true)
     'navbar_pagenav': True,
-    # Tab name for the current pages TOC. (Default: "Page")
-    'navbar_site_name': "Site",
-    'navbar_pagenav_name': "Page",
-    # Global TOC depth for "site" navbar tab. (Default: 1)
+    # Tab name for the current pages TOC. (Default: 'Page')
+    'navbar_site_name': 'Site',
+    'navbar_pagenav_name': 'Page',
+    # Global TOC depth for 'site' navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
     'globaltoc_depth': 3,
     # Include hidden TOCs in Site navbar?
     'globaltoc_includehidden': True,
-    # HTML navbar class (Default: "navbar") to attach to <div> element.
-    # For black navbar, do "navbar navbar-inverse"
-    'navbar_class': "navbar",
+    # HTML navbar class (Default: 'navbar') to attach to <div> element.
+    # For black navbar, do 'navbar navbar-inverse'
+    'navbar_class': 'navbar',
     # Fix navigation bar to top of page?
     'navbar_fixed_top': True,
     # Location of link to source.
-    'source_link_position': "footer",
-    # Bootswatch (http://bootswatch.com/) theme.
-    # 'bootswatch_theme': "united",
+    'source_link_position': 'footer',
 }
 
 html_last_updated_fmt = '%b, %d, %Y'
@@ -111,11 +109,11 @@ html_title = doc_title
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = "_static/lbl-icon.ico"
+html_favicon = '_static/lbl-icon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+# so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ['_static']
 
 # If true, links to the reST sources are added to the pages.

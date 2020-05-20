@@ -1,4 +1,5 @@
 .vscode
+.DS_Store
 settings.json
 *tmp*
 specification/source/_build

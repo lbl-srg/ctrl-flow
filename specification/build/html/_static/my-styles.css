@@ -99,3 +99,7 @@ blockquote {
     padding: unset;
     padding-left: 20px;
 }
+
+.h2.rubric {
+    font-weight: 500;
+}
