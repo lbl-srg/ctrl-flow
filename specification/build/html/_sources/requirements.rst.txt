@@ -39,7 +39,7 @@ The following requirements apply to both the configuration widget (first phase o
 
      For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.
 
-* The diagram editor must consume and return Modelica files formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
+* The diagram editor must consume and return Modelica models formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
 
 * A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica models formatted into JSON, see previous item.
 
@@ -1440,7 +1440,7 @@ The software is developed under funding from the U.S. Department of Energy and t
 
 The main software components built as part of this development project must be open sourced, e.g., under BSD 3 or 4-clause, with possible additions to make it easy to accept improvements.
 
-Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target rely on fully open source code and be made available as a free software.
+Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target be made available as a free software.
 
 * Desktop app
 

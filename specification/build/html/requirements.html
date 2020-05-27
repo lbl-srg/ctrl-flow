@@ -262,7 +262,7 @@ An example of a JS application embedded in OS is <a class="reference external" h
 <p>For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.</p>
 </div>
 </li>
-<li><p>The diagram editor must consume and return Modelica files formatted into JSON. LBL has developed a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a> that should be used for these formatting tasks.</p></li>
+<li><p>The diagram editor must consume and return Modelica models formatted into JSON. LBL has developed a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a> that should be used for these formatting tasks.</p></li>
 <li><p>A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica models formatted into JSON, see previous item.</p></li>
 <li><p>A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of <a class="reference external" href="http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/">OpenStudio measures</a>.</p></li>
 </ul>
@@ -3711,7 +3711,7 @@ A similar view of the connections set must be implemented with the additional re
 <h2><span class="section-number">3.10. </span>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
 <p>The software is developed under funding from the U.S. Department of Energy and the U.S. Government consequently retains certain rights. As such, the U.S. Government has been granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, distribute copies to the public, prepare derivative works, and perform publicly and display publicly, and to permit other to do so.</p>
 <p>The main software components built as part of this development project must be open sourced, e.g., under BSD 3 or 4-clause, with possible additions to make it easy to accept improvements.</p>
-<p>Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target rely on fully open source code and be made available as a free software.</p>
+<p>Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target be made available as a free software.</p>
 <ul>
 <li><p>Desktop app</p>
 <p>Subscription-based</p>
