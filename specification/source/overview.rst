@@ -1,7 +1,7 @@
 Overview
 ========
 
-The software relies on two main components.
+The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems. It relies on two main components.
 
 #. A graphical user interface for editing Modelica models in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
 
