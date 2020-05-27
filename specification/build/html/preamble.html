@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>2. Preamble and Conventions &#8212; LinkageJS Requirements Specification</title>
+    <title>1. Preamble and Conventions &#8212; LinkageJS Requirements Specification</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
@@ -18,8 +18,8 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Requirements" href="requirements.html" />
-    <link rel="prev" title="1. Overview" href="overview.html" />
+    <link rel="next" title="2. Overview" href="overview.html" />
+    <link rel="prev" title="LinkageJS Requirements Specification" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -58,8 +58,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Preamble and Conventions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Preamble and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">2. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements.html#main-requirements">3.1.1. Main Requirements</a></li>
@@ -131,7 +131,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">2. Preamble and Conventions</a></li>
+<li><a class="reference internal" href="#">1. Preamble and Conventions</a></li>
 </ul>
 </ul>
 </li>
@@ -141,11 +141,11 @@
               
                 
   <li>
-    <a href="overview.html" title="Previous Chapter: 1. Overview"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Overview</span>
+    <a href="index.html" title="Previous Chapter: LinkageJS Requirements Specification"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; LinkageJS Req...</span>
     </a>
   </li>
   <li>
-    <a href="requirements.html" title="Next Chapter: 3. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. Requirements &raquo;</span>
+    <a href="overview.html" title="Next Chapter: 2. Overview"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Overview &raquo;</span>
     </a>
   </li>
               
@@ -174,14 +174,19 @@
     <div class="body col-md-12 content" role="main">
       
   <div class="section" id="preamble-and-conventions">
-<h1><span class="section-number">2. </span>Preamble and Conventions<a class="headerlink" href="#preamble-and-conventions" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Preamble and Conventions<a class="headerlink" href="#preamble-and-conventions" title="Permalink to this headline">¶</a></h1>
 <p>This documentation specifies the requirements for LinkageJS software: <em>a graphical user interface for editing Modelica models of HVAC and control systems</em>.</p>
-<p>It is intended to be mainly used as a discussion basis with the software development team.
-Therefore the proposed design should not be considered finalized and will evolve during the iteration process with the development team.</p>
-<p>Most of the concepts used to develop that specification are defined in the Modelica Language Specification <a class="bibtex reference internal" href="bibliography.html#modelica2017" id="id1">[Mod17]</a>.</p>
-<div class="note admonition">
-<p class="admonition-title">Conventions</p>
-<p>The words <em>must, must not, required, shall, shall not, should, should not, recommended, may, optional</em> in this document must be interpreted as described in <a class="reference external" href="https://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
+<ul class="simple">
+<li><p>Everything that relates to the software functionalities and the data formats to be consumed and returned must be considered as minimum requirements and implemented in the final deliverables.</p></li>
+<li><p>However, the specification also provides some implementation strategies when it comes to devising the “assisted modeling” mode, enabling to build complex thermo-fluid models and control sequences based on a simple HTML input form. Here the proposed design should only be considered as a possible path. Alternative approaches are welcome but they must at least provide the same level of functionalities as the proposed approach and meet the minimum requirements that are expressed.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To clearly distinguish what constitutes requirements from what constitutes a design proposition open to some alternative approaches, we will use this warning format throughout the specification.</p>
+<p>Furthermore we use the following <strong>convention</strong>.</p>
+<ul class="simple">
+<li><p>The words <em>must, must not, required, shall, shall not, should, should not, recommended, may, optional</em> in this document must be interpreted as described in <a class="reference external" href="https://tools.ietf.org/html/rfc2119">RFC2119</a>.</p></li>
+</ul>
 </div>
 </div>
 
@@ -202,7 +207,7 @@ Therefore the proposed design should not be considered finalized and will evolve
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Apr, 28, 2020.<br/>
+      Last updated on May, 27, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.<br/>
     </p>
   </div>

@@ -3,29 +3,20 @@
 Requirements
 ============
 
+.. note::
+
+   Most of the concepts used to develop that specification are defined in the Modelica Language Specification :cite:`Modelica2017`.
+
+
 .. _sec_general_description:
 
 General Description
 -------------------
 
-The software relies on two main components.
-
-#. A graphical user interface for editing Modelica models in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
-
-#. A configuration widget supporting assisted modeling based on a simple HTML input form, see :numref:`sec_configuration_widget`.
-
-We envision a phased development where
-
-#. the configuration widget would be first implemented and integrated into an existing graphical editor for Modelica,
-
-#. a full-featured graphical editor would be developed in a second phase, integrating the configuration widget natively.
-
-The current specification provides minimal requirements for the graphical editor, and detailed requirements and even implementation strategies for the configuration widget, which is the priority development.
-
 Main Requirements
 *****************
 
-To following requirements apply to both the configuration widget (first phase of development) and the diagram editor (second phase of development).
+The following requirements apply to both the configuration widget (first phase of the development) and the diagram editor (second phase of the development).
 
 * The software must rely on client side JS code with minimal dependencies and must be built down to a single page HTML document (SPA).
 
@@ -48,8 +39,11 @@ To following requirements apply to both the configuration widget (first phase of
 
      For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.
 
+* The diagram editor must consume and return Modelica files formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
 
-* A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way e.g. by `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
+* A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica models formatted into JSON, see previous item.
+
+* A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
 
 
 Software Compatibility
@@ -84,7 +78,7 @@ A minimal mockup of the UI is presented :numref:`screen_mockup`.
 
    UI Visual Structure
 
-The minimal requirements are:
+The minimum requirements are as follows.
 
 * Left panel: library navigator
 
@@ -112,6 +106,8 @@ Optionally a fully customizable workspace may be implemented.
 Detailed Functionalities
 ------------------------
 
+:numref:`tab_gui_func` provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, phase 2 refers to the full-featured editor.
+
 .. _tab_gui_func:
 
 .. list-table:: Functionalities of the software -- R: required, P: required partially, O: optional, N: not required
@@ -119,8 +115,8 @@ Detailed Functionalities
    :header-rows: 1
 
    * - Feature
-     - V0
-     - V1
+     - Phase 1
+     - Phase 2
      - Comment
 
    * - **Main functionalities**
@@ -129,17 +125,17 @@ Detailed Functionalities
      - (as per :numref:`sec_general_description`)
 
    * - Diagram editor for Modelica models
+     - N
      - R
-     -
-     - See detailed requirements below.
+     - In the first phase, the configuration widget must be integrated into an existing diagram editor for Modelica. Such an editor must be developed in the second phase.
 
    * - Configuration widget
-     - P
      - R
-     - An alpha version of the widget is required in V0 for testing and refining the requirements. That first version should at least include an implementation of the equipment model configuration and the generation of fluid connections.
+     - R
+     -
 
    * - Documentation export
-     - N
+     - R
      - R
      - See :numref:`sec_documentation_export`.
 
@@ -154,50 +150,52 @@ Detailed Functionalities
      -
 
    * - Load ``mo`` file
-     - P
+     - N
      - R
-     - Simple Modelica model or full package with recursive parsing (V0)
+     - Simple Modelica model or full package ``Package.mo`` with recursive parsing
 
-       If the model contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the  corresponding data are loaded in memory for further configuration.
+       If the model contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the corresponding data must be loaded in memory for further configuration.
 
-       If the model contains the Modelica annotation ``uses`` the corresponding library is loaded.
+       If the model contains the Modelica annotation ``uses`` the corresponding library must be loaded.
 
-       If a package is loaded the structure of the package and sub packages is checked against *Chapter 13 Packages* (V1).
+       If a package is loaded, the structure of the package and sub packages should be checked against *Chapter 13 Packages*.
 
    * - Export simulation results
+     - N
      - R
-     -
-     - Export in the following format: ``mat, csv``.
+     - Export in the following format: ``mat``, ``csv``.
 
-       All variables or selection based on variables browser (see below).
+       All variables or selection based on variable browser (see below).
 
-   * - Variables browser
-     - P
+   * - Variable browser
+     - N
      - R
-     - Query selection of model variables based on regular expression (V0)
+     - Selection of model variables based on regular expression (R)
 
-       Or Brick/Haystack tag :cite:`Brick` :cite:`Haystack4` (V1)
+       Or Brick/Haystack query :cite:`Brick` :cite:`Haystack4` (O)
 
    * - Plot simulation results
      - N
-     - O
-     -
+     - R
+     - HTML plots of variables selected within the variable browser
+
+       Pan, zoom and value display at hover must be available.
+
+       The independent variable on the X-axis must be chosen by the user, with the time variable as default.
 
    * - Export documentation
-     - P
      - R
-     - Control points and sequence of operation description (based on CDL to Word translator developed by LBL) (V0)
-
-       Equipment schematics see :numref:`screen_schematics_modelica` (V1)
+     - R
+     - Control points, sequence of operation description (based on CDL to Word translator developed by LBL), and equipment schematics see :numref:`sec_documentation_export`
 
    * - Import/Export data sheet
-     - P
+     - N
      - R
      - Additional module to
 
-       1) generate a file in CSV or JSON format from the configuration data (V0),
+       1) generate a file in CSV or JSON format from the configuration data,
 
-       2) populate the configuration data based on a file input in CSV or JSON format (V1).
+       2) populate the configuration data based on a file input in CSV or JSON format.
 
 
    * - **Modelica features**
@@ -205,64 +203,64 @@ Detailed Functionalities
      -
      -
 
-   * - Checking the compliance with Modelica standard
-     - P
+   * - Checking the compliance with Modelica specification
+     - N
      - R
-     - Real-time checking of syntax for component names (V0)
+     - Real-time checking of syntax for component names
 
-       Real-time checking of connections and checking upon submit against Modelica language specification (V1)
+       Real-time checking of connections
 
    * - Translate model
-     - P
-     -
+     - N
+     - R
      - The software settings allow the user to specify a command for translating the model with a third-party Modelica tool e.g. JModelica.
 
        The output of the translation routine is logged in LinkageJS console.
 
    * - Simulate model
-     - P
-     -
-     - The software settings allow the user to specify a command for simulating the model with a third-party Modelica tool e.g. JModelica.
+     - N
+     - R
+     - The software settings allow the user to specify a command for simulating the model with a third-party Modelica tool, e.g., JModelica.
 
        The output of the simulation routine is logged in LinkageJS console.
 
    * - Automatic medium propagation between connected components
-     - P
-     - P
-     - Partially supported because only the configuration widget integrates that feature.
+     - R
+     - O
+     - Only the configuration widget integrates this feature as a minimum requirement.
 
-       When generating ``connect`` equation manually a similar approach as the *fluid path* used by the configuration widget may be developed, see components with 4 ports and 2 medium.
+       When generating ``connect`` equations manually within the diagram editor, a similar approach as the *fluid path* used by the configuration widget may be developed, see components with four ports and two media.
 
    * - Support of Modelica graphical annotations
+     - N
      - R
-     -
      -
 
    * - Modelica code editor
-     - P
+     - N
      - R
-     - Raw text editor (V0) with linter and Modelica specification check upon save (V1)
+     - Raw text editor with linter and Modelica specification checking upon save
 
-       Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators being developed by LBL).
+       Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators are developed by LBL).
 
    * - Icon editor
-     - O
+     - N
      - R
      - Editing functionalities similar to diagram editor
 
    * - Documentation view
+     - N
      - R
-     -
-     -
+     - Rendering of the documentation section of the model annotation (HTML format)
 
    * - Library version management
-     - O
      - R
-     - If a loaded model contains the Modelica annotation ``uses`` e.g. ``uses(Buildings(version="6.0.0")`` the software  checks the version number of the stored library, prompts the user for update if the version number does not match,  executes the conversion script per user request.
+     - R
+     - If a loaded model contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
 
    * - Path discovery
      - R
-     -
+     - R
      - A routine to reconstruct the path or URL of a referenced resource within the loaded Modelica libraries is required. Typically a resource can be referenced with the following syntax ``modelica://Buildings.Air.Systems.SingleZone.VAV``.
 
    * - **Object manipulation**
@@ -271,29 +269,29 @@ Detailed Functionalities
      -
 
    * - Vectorized instances
+     - N
      - R
-     -
      - An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.
 
    * - Expandable connectors
+     - N
      - R
-     -
      -
 
    * - Navigation in object composition
+     - N
      - R
-     -
      - Right clicking an icon in the diagram view offers the option to open the model in another tab
 
    * - Multiple objects selection for setting the value of common parameters
-     - O
+     - N
      - R
-     - If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value  is modified, all the selected objects will have their parameter value updated.
+     - If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value is modified, all the selected objects will have their parameter value updated.
 
    * - Avoiding duplicate names
      - R
-     -
-     - When instantiating a component, if the default name is already used in the model the software automatically appends  he name with the lowest integer value that would ensure uniqueness.
+     - R
+     - When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the model the software automatically appends the name with the lowest integer value that would ensure uniqueness.
 
        When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.
 
@@ -304,65 +302,65 @@ Detailed Functionalities
 
    * - Tab view
      - R
-     -
-     - The diagram view is organized in tabs that can be manipulated, created and deleted typically as navigation tabs n a  eb browser.
+     - R
+     - The UI is organized in tabs that can be manipulated, created and deleted typically as navigation tabs in a web browser.
 
    * - Diagram split view
      - N
      - R
-     - The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped  from one view to another. The views are synchronized so that if the same model is open in different views and gets  modified, all the views of the model are updated to reflect the modifications.
+     - The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.
 
    * - Copy/Paste objects
      - R
-     -
+     - R
      - Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.
 
    * - Pan and zoom on mouse actions
+     - N
      - R
-     -
      -
 
    * - Undo/Redo
      - R
-     -
-     -
+     - R
+     - Available through buttons and standard keyboard shortcuts
 
    * - Draw shape, text box
-     - O
+     - N
      - R
      -
 
    * - Start connection line when hovering connectors
-     - O
+     - N
      - R
      -
 
    * - Connection line jumps
-     - O
+     - N
      - R
      - Gap jump at crossing
 
    * - Customize connection lines
-     - O
+     - N
      - R
      - Color, width and line can be specified in the annotations panel
 
    * - Hover information
      - R
-     -
+     - R
      - Class path when hovering an object in the diagram view and tooltip help for each GUI element
 
    * - Color and style of connection lines
-     - P
+     - N
      - R
-     - Allow the user to manually specify (right click menu) the style of the connections lines (V0).
+     - Allow the user to manually specify (right click menu) the style of the connections lines.
 
-       When generating a ``connect`` equation automatically select a line style based on some heuristic to be further specified (V1).
+       When generating a ``connect`` equation automatically select a line style based on some heuristic to be further specified.
 
    * - Drawing guides
-     - P
+     - N
      - R
-     - Snap to grid (V0) and alignment lines with neighbor objects (V1) with the option to enable/disable those guides.
+     - Snap to grid and alignment lines with neighbor objects with the option to enable/disable those guides.
 
    * - **Miscellaneous**
      -
@@ -371,22 +369,22 @@ Detailed Functionalities
 
    * - Internationalization
      - R
-     -
+     - R
      - The software will be delivered in US English only, but it must be architectured to allow seamless integration of additional languages in the future.
 
        The choice between I-P and SI units must be possible. The mechanism supporting different units will be specified by LBL in a later version of this document.
 
    * - User documentation
      - R
-     -
+     - R
      - User manual of the GUI and the corresponding API
 
        Both an HTML version and a PDF version are required (may rely on Sphinx).
 
    * - Developer documentation
      - R
-     -
-     - All classes, methods, free functions and modules must be documented with an exhaustive description of the functionalities, parameters and return values.
+     - R
+     - All classes, methods, free functions, and schemas must be documented with an exhaustive description of the functionalities, parameters, return values, etc.
 
        UML diagrams should also be provided.
 
@@ -415,8 +413,8 @@ The software must comply with the Modelica language specification :cite:`Modelic
 JSON Representation
 *******************
 
-LBL has already developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_. This development includes the definition of two JSON schemas:
-
+LBL has already developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_.
+This development includes the definition of two JSON schemas:
 
 #. `Schema-modelica.json <https://lbl-srg.github.io/modelica-json/modelica.html>`_ validates the JSON files parsed from Modelica.
 
@@ -428,7 +426,7 @@ Those developments should be leveraged to define a JSON-based native format for 
 Connection Lines
 ****************
 
-When drawing a connection line between two connector icons in the diagram view:
+When drawing a connection line between two connector icons in the diagram view
 
 * a ``connect`` equation with the references to the two connectors must be created,
 
@@ -489,9 +487,9 @@ There are fundamental requirements regarding the Modelica model generated by the
 
      This is consistent with OpenBuildingControl requirement to provide control sequence specification at the equipment level only (controller programming), not for system level applications (system programming).
 
-The input form is provided by the template developer (e.g. LBL) in a data model with a format that is to be further specified in collaboration with the software developer.
+The input form is provided by the template developer (e.g., LBL) in a data model with a format that is to be further specified in collaboration with the software developer. The minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain.
 
-The data model typically provides for each entry
+The data model should typically provide for each entry
 
 * the HTML widget and populating data to be used for requesting user input,
 * the modeling data required to instantiate, position and set the parameters values of the different components,
@@ -525,6 +523,11 @@ The logic for instantiating classes from the library is straightforward. Each fi
 Data Model
 **********
 
+.. warning::
+
+  This paragraph proposes a data model that may be used to support the configuration workflow. This part of the specification is not hard and fast, we are rather trying to illustrate a possible implementation path. Alternative approaches are welcome but they must at least provide the same level of functionalities as the proposed approach and meet the minimum requirements that are expressed.
+
+
 The envisioned data structure supporting the configuration process consists in
 
 * placement coordinates provided relatively to a simplified grid, see :numref:`grid` -- those must be mapped to Modelica diagram coordinates by the widget,
@@ -542,17 +545,17 @@ The envisioned data structure supporting the configuration process consists in
 
 Format
 ``````
-A robust syntax is required for
+A robust syntax is a minimum requirement for
 
-* auto-referencing the data structure e.g. ``#type.value`` refers to the value of the field ``value`` of the object which ``$id`` is ``type``: must be interpreted by the configuration widget and replaced by the actual value when generating the model,
+* auto-referencing the data structure, for instance ``#type.value`` refers to the value of the field ``value`` of the object which ``$id`` is ``type``, and it must be interpreted by the configuration widget and replaced by the actual value when generating the model,
 
-* conditional statements: potentially every field may require a conditional statement -- either data fields (e.g. the model to be instantiated and its placement) or UI fields (e.g. the condition to enable a widget itself or the different options of a menu widget).
+* conditional statements: potentially every field may require a conditional statement -- either data fields (e.g., the model to be instantiated and its placement) or UI fields (e.g., the condition to enable a widget itself or the different options of a menu widget).
 
-Ideally the syntax should also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates e.g. chiller plant with ``n`` chillers. Backup strategy: define all (e.g. 10) possible instances and enable only the first ``n`` ones based on a condition.
+Ideally the syntax should also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates, for instance a chiller plant with ``n`` chillers. Backup strategy: define a maximum number of instances and enable only the first ``n`` ones based on a condition.
 
 Possible formats:
 
-* JSON: preferred format but expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
+* JSON: recommended format but expensive syntax especially for boolean conditions or auto-referencing the data structure: is there any standard syntax?
 
 * Specific format to be defined in collaboration with the UI developer and depending on the selected UI framework
 
@@ -560,7 +563,7 @@ Possible formats:
 Parameters Exposed by the Configuration Widget
 ``````````````````````````````````````````````
 
-The template developer is free to declare in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in any declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistence of those references in :numref:`sec_persisting_data`.
+The template developer must have the ability to declare in the template any parameter of the composing components e.g. ``V_flowSup_nominal`` and reference them in any declaration e.g. ``Buildings.Fluid.Movers.SpeedControlled_y(m_flow_nominal=(#air_supply.medium).rho_default / 3600 * #V_flowSup_nominal.value)``. The configuration widget must replace the referenced names by their actual values (literal or numerical). The user will be able to override those values in the parameters panel e.g. if he wants to specify a different nominal air flow rate for the heating or cooling coil. See additional requirements regarding the persistence of those references in :numref:`sec_persisting_data`.
 
 Some parameters must be integrated in the template (examples below are provided in reference to ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``)
 
@@ -577,6 +580,8 @@ Some parameters must be integrated in the template (examples below are provided 
 
 Configuration Schema
 ````````````````````
+
+A well documented schema must be developed, to support the development of the configuration files by third parties and the validation of the configuration data input by the user.
 
 In the definitions provided here below
 
@@ -601,14 +606,14 @@ In the definitions provided here below
 
   ``type`` : object : required
 
-    | Type of system to configure e.g. air handling unit, chilled water plant.
+    | Type of system to configure, e.g., air handling unit, chilled water plant.
     | Object defined as `elementary object`_.
 
     *required* : ``[$id, description, value]``
 
   ``subtype`` : object : required
 
-    | Subtype of system e.g. for an air handling unit: variable air volume or dedicated outdoor air.
+    | Subtype of system, e.g., for an air handling unit: variable air volume or dedicated outdoor air.
     | Object defined as `elementary object`_.
 
     *required* : ``[$id, description, widget, value]``
@@ -641,7 +646,7 @@ In the definitions provided here below
 
       ``medium`` : string : required
 
-        Common medium for that fluid path and all derived paths e.g. ``"Buildings.Media.Air"``
+        Common medium for that fluid path and all derived paths, e.g., ``"Buildings.Media.Air"``
 
   ``icon`` : string : required
 
@@ -694,7 +699,7 @@ In the definitions provided here below
   ``$id`` : string : required
 
     | Unique string identifier.
-    | Used for referencing the object properties in other configuration objects: references are prefixed with ``#`` in the examples e.g. ``#id_value.property``.
+    | Used for referencing the object properties in other configuration objects: references are prefixed with ``#`` in the examples, e.g., ``#id_value.property``.
     | If the object has a ``declaration`` field, the name of the declared component is the value of ``$id``.
     | Must be suffixed with brackets e.g. ``[2]`` in case of array variables.
 
@@ -719,7 +724,7 @@ In the definitions provided here below
 
       *items* : string
 
-      Options to be displayed by certain widgets e.g. dropdown menu.
+      Options to be displayed by certain widgets, e.g., dropdown menu.
 
     ``options.enabled`` : array : optional
 
@@ -826,13 +831,18 @@ The path (``symbol_path`` in `Configuration data`_) is stored in a vendor annota
 Fluid Connectors
 ****************
 
-The fluid connections (``connect`` equations involving two fluid connectors) must be generated based on either:
+.. warning::
+
+  This paragraph proposes an algorithm that may be used to support the generation of ``connect`` statements between fluid connectors. This part of the specification is not hard and fast, we are rather trying to illustrate a possible implementation path. Alternative approaches are welcome but they must at least provide the same level of functionalities as the proposed approach and meet the minimum requirements that are expressed.
+
+
+The fluid connections (``connect`` equations involving two fluid connectors) is generated based on either:
 
 * an explicit connection logic relying on one-to-one relationships between connectors (see :numref:`sec_explicit`) or,
 
 * a heuristic connection logic (see :numref:`sec_heuristic`) based on:
 
-  * the coordinates of the components in the diagram layout i.e. after converting the coordinates provided relatively to the simplified grid,
+  * the coordinates of the components in the diagram layout, i.e., after converting the coordinates provided relatively to the simplified grid,
 
   * a tag applied to the fluid connectors (or fluid ports) of the components.
 
@@ -841,7 +851,7 @@ The fluid connections (``connect`` equations involving two fluid connectors) mus
 Explicit Connection Logic
 ``````````````````````````
 
-In certain cases it may be convenient to specify explicitly a one-to-one connection scheme between the connectors of the model e.g. a differential pressure sensor to be connected with the outlet port of a fan model and a port of a fluid source providing the reference pressure.
+In certain cases it may be convenient to specify explicitly a one-to-one connection scheme between the connectors of the model, for instance a differential pressure sensor to be connected with the outlet port of a fan model and a port of a fluid source providing the reference pressure.
 
 That logic is activated at the component level by the keyword ``connect.type == "explicit"``.
 
@@ -853,15 +863,15 @@ The user provides for each connector the name of the component instance and conn
 Heuristic Connection Logic
 ``````````````````````````
 
-That logic relies on connectors tagging which supports two modes:
+That logic relies on connectors tagging which supports two modes.
 
 1. Default mode (``connect.type == "path"`` or ``null``)
 
    * By default an instance of ``Modelica.Fluid.Interfaces.FluidPort_a`` (resp. ``Modelica.Fluid.Interfaces.FluidPort_b``) must be tagged with the suffix ``inlet`` (resp. ``outlet``).
 
-   * The tag prefix is provided at the component level to specify the fluid path e.g. ``air_supply`` or ``air_return``.
+   * The tag prefix is provided at the component level to specify the fluid path, for instance ``air_supply`` or ``air_return``.
 
-   * The fluid connectors are then tagged by concatenating the previous strings e.g. ``air_supply_inlet`` or ``air_return_outlet``.
+   * The fluid connectors are then tagged by concatenating the previous strings, for instance ``air_supply_inlet`` or ``air_return_outlet``.
 
 2. Detailed mode (``connect.type == "tags"``)
 
@@ -950,6 +960,11 @@ That logic implies that within the same fluid path, objects are connected in one
 
 Signal Connectors
 *****************
+
+.. warning::
+
+  This paragraph proposes an algorithm that may be used to support the generation of ``connect`` statements between signal (or block) connectors. This part of the specification is not hard and fast, we are rather trying to illustrate a possible implementation path. Alternative approaches are welcome but they must at least provide the same level of functionalities as the proposed approach and meet the minimum requirements that are expressed.
+
 
 General Principles
 ``````````````````
@@ -1115,21 +1130,21 @@ A similar view of the connections set must be implemented with the additional re
    Dymola pop-up window when connecting the sub-bus of input control variables (left) to the main control bus (right) -- case of outside connectors
 
 
-The variables listed immediately after the bus name are either:
+The variables listed immediately after the bus name are either
 
-* *declared variables* that are not connected e.g. ``ahuBus.yTest`` (declared as ``Real`` in the bus definition): those variables are only *potentially present* and eventually considered as *undefined* when translating the model (treated by Dymola as if they were never declared) or,
+* *declared variables* that are not connected, for instance ``ahuBus.yTest`` (declared as ``Real`` in the bus definition): those variables are only *potentially present* and eventually considered as *undefined* when translating the model (treated by Dymola as if they were never declared) or,
 
-* *present variables* i.e. variables that appear in a connect equation e.g. ``ahuSubBusI.TZonHeaSet``: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for *that instance* of the expandable connector i.e. variables that are declared in another component and connected to the connector's instance.
+* *present variables* i.e. variables that appear in a connect equation, for instance ``ahuSubBusI.TZonHeaSet``: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for *that instance* of the expandable connector i.e. variables that are declared in another component and connected to the connector's instance.
 
 The variables listed under ``Add variable`` are the remaining *potentially present variables* (in addition to the declared but not connected variables). Those variables are elaborated by the augmentation process for *all instances* of the expandable connector, however they are not connected in that instance of the connector.
 
-In addition to Dymola's features for handling the bus connections, LinkageJS requires the following:
+In addition to Dymola's features for handling the bus connections, LinkageJS requires the following.
 
-* Color code to distinguish between:
+* Color code to distinguish between
 
   * Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.
 
-    .. warning::
+    .. Note::
 
        Dymola does not throw any exception when a *declared* bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for ``Real``) to feed the connected variable.
 
@@ -1143,10 +1158,10 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
 
   * The user can view the connection set of a connector simply by selecting it and without having to make an actual connection (as in Dymola).
 
-  * The user can view the name of component and connector variable to which the expandable connector's variables are connected: similar to Dymola's function ``Find Connection`` accessible by right-clicking on a connection line.
+  * The user can view the name of the component and connector variable to which the expandable connector's variables are connected: similar to Dymola's function ``Find Connection`` accessible by right-clicking on a connection line.
 
   * | From :cite:`Modelica2017` *§9.1.3 Expandable Connectors*: "When two expandable connectors are connected, each is augmented with the variables that are only declared in the other expandable connector (the new variables are neither input nor output)."
-    | That feature is illustrated in the minimal example :numref:`bus_minimal` where a sub-bus ``subBus`` with declared variables ``yDeclaredPresent`` and ``yDeclaredNotPresent`` is connected to the declared sub-bus ``bus.ahuI`` of a bus. ``yDeclaredPresent`` is connected to another variable so it is considered present. ``yDeclaredNotPresent`` is not connected so it is only considered potentially present. Finally ``yNotDeclaredPresent`` is connected but not declared which makes it a present variable. :numref:`subbus_outside` to :numref:`bus_inside` then show which variables are exposed to the user. In consistency with :cite:`Modelica2017` the declared variables of ``subBus`` are considered declared variables in ``bus.ahuI`` due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable ``yNotDeclaredPresent`` appears in ``bus.ahuI`` under ``Add variable`` i.e. as a potentially present variable whereas it is a present variable in the connected sub-bus ``subBus``.
+    | That feature is illustrated in the minimal example :numref:`bus_minimal` where a sub-bus ``subBus`` with declared variables ``yDeclaredPresent`` and ``yDeclaredNotPresent`` is connected to the declared sub-bus ``bus.ahuI`` of a bus. ``yDeclaredPresent`` is connected to another variable so it is considered present. ``yDeclaredNotPresent`` is not connected so it is only considered potentially present. Finally ``yNotDeclaredPresent`` is connected but not declared which makes it a present variable. :numref:`subbus_outside` to :numref:`bus_inside` then show which variables are exposed to the user. In consistency with :cite:`Modelica2017` the declared variables of ``subBus`` are considered declared variables in ``bus.ahuI`` due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable ``yNotDeclaredPresent`` appears in ``bus.ahuI`` under ``Add variable``, i.e., as a potentially present variable whereas it is a present variable in the connected sub-bus ``subBus``.
 
     * This is an issue for the user who will not have the information at the bus level of the connections which are required by the sub-bus variables e.g. Dymola will allow connecting an output connector to ``bus.ahuI.yDeclaredPresent`` but the translation of the model will fail due to ``Multiple sources for causal signal in the same connection set``.
     * Directly connecting variables to the bus (without intermediary sub-bus) can solve that issue for outside connectors but not for inside connectors, see below.
@@ -1251,13 +1266,13 @@ In addition to Dymola's features for handling the bus connections, LinkageJS req
 Control Sequence Configuration
 ******************************
 
-In principle the configuration widget as specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the `CDL Library <https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL>`_) and automatically generating connections between those blocks. However:
+In principle the configuration widget as specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the `CDL Library <https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL>`_) and automatically generating connections between those blocks. However
 
-* it would require to distinguish between low-level control blocks (e.g. ``Buildings.Controls.OBC.CDL.Continuous.LimPID``) composing a system controller -- which must be connected with direct connect equations and not with expandable connectors variables that are not part of the CDL specification -- and high-level control blocks (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``) -- which can be connected to other high-level controllers (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Controller``) using expandable connectors variables (the CDL translation will be done for each high-level controller individually),
+* this would require to distinguish between low-level control blocks (e.g. ``Buildings.Controls.OBC.CDL.Continuous.LimPID``) composing a system controller -- which must be connected with direct connect equations and not with expandable connectors variables that are not part of the CDL specification -- and high-level control blocks (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``) -- which can be connected to other high-level controllers (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Controller``) using expandable connectors variables (the CDL translation will be done for each high-level controller individually),
 
 * the complexity of some sequences makes it hard to validate the reliability of such an approach without extensive testing.
 
-Therefore in practice and at least for the first version of LinkageJS it has been decided to rely on pre-assembled high-level control blocks. For each system type (e.g. AHU) one (or a very limited number) of control block(s) should be instantiated by the configuration widget for which the connections can be generated using expandable connectors as described before.
+Therefore in practice, and at least for the first version of LinkageJS, it has been decided to rely on pre-assembled high-level control blocks. For each system type (e.g., AHU) one (or a very limited number) of control block(s) should be instantiated by the configuration widget for which the connections can be generated using expandable connectors as described before.
 
 The example of the configuration file for a VAV system in :numref:`sec_annex_json` illustrates that use case.
 
@@ -1311,7 +1326,7 @@ A color code is required to identify the fields with incorrect values and the co
 Documentation Export
 --------------------
 
-The documentation export encompasses three items:
+The documentation export encompasses three items.
 
 #. Engineering schematics of the equipment including the controls points
 
@@ -1319,9 +1334,9 @@ The documentation export encompasses three items:
 
 #. Control sequence description
 
-The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget e.g. primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.
+The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget, for instance primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.
 
-:numref:`screen_schematics_modelica` provides the typical diagram view of the Modelica model generated by the configuration widget and :numref:`screen_schematics_output` mocks up the corresponding documentation that should be exported. The documentation export may consist in three different files.
+:numref:`screen_schematics_modelica` provides the typical diagram view of the Modelica model generated by the configuration widget and :numref:`screen_schematics_output` mocks up the corresponding documentation that must be exported. The documentation export may consist in three different files but must contain all the material described in the following paragraphs.
 
 
 .. figure:: img/screen_schematics_modelica.*
@@ -1338,18 +1353,18 @@ The composition level at which the functionality will typically be used is the s
 Engineering Schematics
 **********************
 
-Objects of the original model to be included in the schematics export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. ``annotation(__Linkage(symbol_path="value of symbol_path"))``. That annotation may be:
+Objects of the original model to be included in the schematics export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. ``annotation(__Linkage(symbol_path="value of symbol_path"))``. That annotation may be
 
 * specified in the configuration file, see ``symbol_path`` in `Configuration data`_,
 * specified manually by the user for potentially any instantiated component.
 
 .. note::
 
-   It is expected that LinkageJS will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares e.g. AutoCAD®.
+   It is expected that LinkageJS will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares, e.g., AutoCAD®.
 
    Due to geometry discrepancies between Modelica icons and engineering symbols a perfect alignment of the latter is not expected by simply mapping the diagram coordinates of the former to the SVG layout. A mechanism should be developed to automatically correct small alignment defaults.
 
-For the exported objects:
+For the exported objects
 
 * the connectors connected to the control input and output sub-buses must be split into two groups depending on their type -- boolean or numeric,
 * an index tag is then generated based on the object position, from top to bottom and left to right,
@@ -1379,31 +1394,31 @@ Working with Tagged Variables
 
 The requirements for tagging variables (based on :cite:`Brick` or :cite:`Haystack4`) and performing some queries on the set of tagged variables will be specified by LBL in a later version of this document.
 
-Those additional requirements should at least address the following typical use cases:
+Those additional requirements should at least address the following typical use cases.
 
-* Setting parameters values with OpenStudio measures e.g. nominal electrical loads or boiler efficiency
+* Setting parameters values with OpenStudio measures, for instance e.g. nominal electrical loads or boiler efficiency
 
-* Plotting variables selected by a description string e.g. "indoor air temperature for all zones of the first floor"
+* Plotting variables selected by a description string, for instance "indoor air temperature for all zones of the first floor"
 
 * Mapping with equipment characteristics and sizing from data sheets or equipment schedules
 
-An algorithm based on the variables names (similar to the one proposed for generating automatic connections for signal variables, see :numref:`sec_signal_connectors`) is envisioned.
+An algorithm based on the variable names (similar to the one proposed for generating automatic connections for signal variables, see :numref:`sec_signal_connectors`) is envisioned.
 
 
 OpenStudio Integration
 ----------------------
 
-LinkageJS must eventually be integrated as a specific *tab* in the `OpenStudio <https://nrel.github.io/OpenStudio-user-documentation/>`_ (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future `Spawn of EnergyPlus <https://lbl-srg.github.io/soep/>`_ (SOEP) workflow. (In the curent EnergyPlus workflow those capabilities are provided by the `HVAC Systems tab <https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems>`_.)
+LinkageJS must eventually be integrated as a specific *tab* in the `OpenStudio <https://nrel.github.io/OpenStudio-user-documentation/>`_ (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future `Spawn of EnergyPlus <https://lbl-srg.github.io/soep/>`_ (SOEP) workflow. (In the current EnergyPlus workflow those capabilities are provided by the `HVAC Systems tab <https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems>`_.)
 
-In SOEP workflow a multi-zone building model (EnergyPlus input file ``idf``) is configured within OpenStudio. The OpenStudio model ``osm`` exposes functions to access ``idf`` parameters e.g. zone names and characteristics. Modelica classes are created by extending SOEP zone model and referencing the ``idf`` file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
+In SOEP workflow a multi-zone building model (EnergyPlus input file ``idf``) is configured within OpenStudio. The OpenStudio model ``osm`` exposes functions to access ``idf`` parameters e.g. zone names and characteristics. Modelica classes are created by extending the SOEP zone model and referencing the ``idf`` file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.
 
 The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.
 
 An API must also be developed to access LinkageJS functionalities and data model in a programmatic way. The preferred language is Python (largely used in the Modelica users' community) or Ruby (largely used in the OpenStudio users' community).
 
-Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to:
+Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to
 
-* devise the read and write access to the local file system e.g. by means of OS API (functions to be developed by LBL or NREL),
+* devise the read and write access to the local file system, for instance by means of OS API (functions to be developed by LBL or NREL),
 
 * specify LinkageJS API (to be developed by the UI developer).
 
@@ -1413,7 +1428,7 @@ This is illustrated in :numref:`linkage_architecture_os`.
 Interface with URBANopt GeoJSON
 -------------------------------
 
-A seamless integration of LinkageJS into `URBANopt <https://www.nrel.gov/buildings/urbanopt.html>`_ modeling workflow is required. To support that feature additional requirements will be specified by LBL in a later version of this document.
+A seamless integration of LinkageJS in `URBANopt <https://www.nrel.gov/buildings/urbanopt.html>`_ modeling workflow is required. To support that feature additional requirements will be specified by LBL in a later version of this document.
 
 The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-LinkageJS workflow. Therefore the requirements should only relate to the persistence of modeling data and the shared resources between the two processes.
 
@@ -1421,9 +1436,11 @@ The URBANopt-Modelica project has adopted the Modelica language to interface the
 Licensing
 ---------
 
-LinkageJS core components (e.g. *Editor Layer* in :numref:`sec_architecture`) must be open sourced: `under BSD 3 or 4-clause?`
+The software is developed under funding from the U.S. Department of Energy and the U.S. Government consequently retains certain rights. As such, the U.S. Government has been granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, distribute copies to the public, prepare derivative works, and perform publicly and display publicly, and to permit other to do so.
 
-Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors:
+The main software components built as part of this development project must be open sourced, e.g., under BSD 3 or 4-clause, with possible additions to make it easy to accept improvements.
+
+Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target rely on fully open source code and be made available as a free software.
 
 * Desktop app
 
@@ -1431,7 +1448,7 @@ Different licensing options are then envisioned depending on the integration tar
 
 * Standalone web app
 
-  * Free account allowing access to Modelica libraries preloaded by default e.g. Modelica Standard and Buildings: the user can only upload and download single Modelica files (not a package).
+  * Free account allowing access to Modelica libraries preloaded by default, for instance Modelica Standard and Buildings: the user can only upload and download single Modelica files (not a package).
 
   * Pro account allowing access to server storage of Modelica files (packages uploaded and models saved by the user): the user can update the stored libraries and reopen saved models between sessions.
 
@@ -1439,5 +1456,5 @@ Different licensing options are then envisioned depending on the integration tar
 
   Licensing will depend on the application distribution model.
 
-  For OpenStudio there is currently a shift in the `licensing strategy <https://www.openstudio.net/new-future-for-openstudio-application>`_: the specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
+  For OpenStudio there is currently a shift in the `licensing strategy <https://www.openstudio.net/new-future-for-openstudio-application>`_. The specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
 

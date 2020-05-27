@@ -2,8 +2,10 @@
 |doc_title|
 ###########
 
-.. rubric:: |doc_version|
-   :class: h2
+.. only:: html
+
+   .. rubric:: |doc_version|
+      :class: h2
 
 .. raw:: html
 
@@ -19,8 +21,8 @@
    :numbered:
    :maxdepth: 2
 
-   overview
    preamble
+   overview
    requirements
    architecture
    annex

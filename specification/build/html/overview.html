@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>1. Overview &#8212; LinkageJS Requirements Specification</title>
+    <title>2. Overview &#8212; LinkageJS Requirements Specification</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
@@ -18,8 +18,8 @@
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Preamble and Conventions" href="preamble.html" />
-    <link rel="prev" title="LinkageJS Requirements Specification" href="index.html" />
+    <link rel="next" title="3. Requirements" href="requirements.html" />
+    <link rel="prev" title="1. Preamble and Conventions" href="preamble.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -58,8 +58,8 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preamble.html">2. Preamble and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble and Conventions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">3. Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#general-description">3.1. General Description</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements.html#main-requirements">3.1.1. Main Requirements</a></li>
@@ -131,7 +131,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">1. Overview</a></li>
+<li><a class="reference internal" href="#">2. Overview</a></li>
 </ul>
 </ul>
 </li>
@@ -141,11 +141,11 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: LinkageJS Requirements Specification"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; LinkageJS Req...</span>
+    <a href="preamble.html" title="Previous Chapter: 1. Preamble and Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Preamble a...</span>
     </a>
   </li>
   <li>
-    <a href="preamble.html" title="Next Chapter: 2. Preamble and Conventions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Preamble a... &raquo;</span>
+    <a href="requirements.html" title="Next Chapter: 3. Requirements"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. Requirements &raquo;</span>
     </a>
   </li>
               
@@ -174,7 +174,17 @@
     <div class="body col-md-12 content" role="main">
       
   <div class="section" id="overview">
-<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The software relies on two main components.</p>
+<ol class="arabic simple">
+<li><p>A graphical user interface for editing Modelica models in a diagrammatic form, see <a class="reference internal" href="requirements.html#sec-functionalities"><span class="std std-numref">Section 3.2</span></a> and <a class="reference internal" href="requirements.html#sec-modelica-gui"><span class="std std-numref">Section 3.3</span></a>.</p></li>
+<li><p>A configuration widget supporting assisted modeling based on a simple HTML input form, see <a class="reference internal" href="requirements.html#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a>.</p></li>
+</ol>
+<p>We envision a phased development where</p>
+<ol class="arabic simple">
+<li><p>the configuration widget would be first implemented and integrated into an existing graphical editor for Modelica,</p></li>
+<li><p>the full-featured editor would be developed in a second phase, providing diagrammatic editing capabilities and integrating the configuration widget natively.</p></li>
+</ol>
 <iframe src="_static/overview.html" width="100%" height="800px" frameBorder="0"></div>
 
 
@@ -194,7 +204,7 @@
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Apr, 28, 2020.<br/>
+      Last updated on May, 27, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.<br/>
     </p>
   </div>
