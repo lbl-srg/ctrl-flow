@@ -259,12 +259,11 @@ An example of a JS application embedded in OS is <a class="reference external" h
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Those three integration targets are actual deliverables.</p>
-<p>For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.</p>
 </div>
 </li>
-<li><p>The diagram editor must consume and return Modelica models formatted into JSON. LBL has developed a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a> that should be used for these formatting tasks.</p></li>
-<li><p>A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica models formatted into JSON, see previous item.</p></li>
-<li><p>A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of <a class="reference external" href="http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/">OpenStudio measures</a>.</p></li>
+<li><p>The diagram editor must consume and return Modelica classes formatted into JSON. LBL has developed a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a> that should be used for these formatting tasks.</p></li>
+<li><p>A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica classes formatted into JSON, see previous item.</p></li>
+<li><p>A Python API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of <a class="reference external" href="http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/">OpenStudio measures</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="software-compatibility">
@@ -306,7 +305,7 @@ requirement.</p></td>
 <p>The minimum requirements are as follows.</p>
 <ul class="simple">
 <li><p>Left panel: library navigator</p></li>
-<li><p>Main panel: model editor with diagram, icon, documentation or code view</p></li>
+<li><p>Main panel: editor with diagram, icon, documentation or code view</p></li>
 <li><p>Right panel:</p>
 <ul>
 <li><p>Configuration tab, see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a></p></li>
@@ -346,7 +345,7 @@ requirement.</p></td>
 <td></td>
 <td><p>(as per <a class="reference internal" href="#sec-general-description"><span class="std std-numref">Section 3.1</span></a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Diagram editor for Modelica models</p></td>
+<tr class="row-odd"><td><p>Diagram editor for Modelica classes</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
 <td><p>In the first phase, the configuration widget must be integrated into an existing diagram editor for Modelica. Such an editor must be developed in the second phase.</p></td>
@@ -374,9 +373,9 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Load <code class="docutils literal notranslate"><span class="pre">mo</span></code> file</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>Simple Modelica model or full package <code class="docutils literal notranslate"><span class="pre">Package.mo</span></code> with recursive parsing</p>
-<p>If the model contains annotations specific to the configuration widget (see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the corresponding data must be loaded in memory for further configuration.</p>
-<p>If the model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> the corresponding library must be loaded.</p>
+<td><p>Simple Modelica class or full package <code class="docutils literal notranslate"><span class="pre">Package.mo</span></code> with recursive parsing</p>
+<p>If the class contains annotations specific to the configuration widget (see <a class="reference internal" href="#sec-configuration-widget"><span class="std std-numref">Section 3.4</span></a>), the corresponding data must be loaded in memory for further configuration.</p>
+<p>If the class contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> the corresponding library must be loaded.</p>
 <p>If a package is loaded, the structure of the package and sub packages should be checked against <em>Chapter 13 Packages</em>.</p>
 </td>
 </tr>
@@ -390,7 +389,7 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Variable browser</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>Selection of model variables based on regular expression (R)</p>
+<td><p>Selection of variables based on regular expression (R)</p>
 <p>Or Brick/Haystack query <a class="bibtex reference internal" href="bibliography.html#brick" id="id2">[Bri]</a> <a class="bibtex reference internal" href="bibliography.html#haystack4" id="id3">[Hay]</a> (O)</p>
 </td>
 </tr>
@@ -470,12 +469,12 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Documentation view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>Rendering of the documentation section of the model annotation (HTML format)</p></td>
+<td><p>Rendering of the documentation section of the class annotation (HTML format)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Library version management</p></td>
 <td><p>R</p></td>
 <td><p>R</p></td>
-<td><p>If a loaded model contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code>) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.</p></td>
+<td><p>If a loaded class contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code>) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.</p></td>
 </tr>
 <tr class="row-even"><td><p>Path discovery</p></td>
 <td><p>R</p></td>
@@ -500,7 +499,7 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Navigation in object composition</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>Right clicking an icon in the diagram view offers the option to open the model in another tab</p></td>
+<td><p>Right clicking an icon in the diagram view offers the option to open the class in another tab</p></td>
 </tr>
 <tr class="row-odd"><td><p>Multiple objects selection for setting the value of common parameters</p></td>
 <td><p>N</p></td>
@@ -510,7 +509,7 @@ requirement.</p></td>
 <tr class="row-even"><td><p>Avoiding duplicate names</p></td>
 <td><p>R</p></td>
 <td><p>R</p></td>
-<td><p>When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the model the software automatically appends the name with the lowest integer value that would ensure uniqueness.</p>
+<td><p>When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the class the software automatically appends the name with the lowest integer value that would ensure uniqueness.</p>
 <p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
 </td>
 </tr>
@@ -527,7 +526,7 @@ requirement.</p></td>
 <tr class="row-odd"><td><p>Diagram split view</p></td>
 <td><p>N</p></td>
 <td><p>R</p></td>
-<td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.</p></td>
+<td><p>The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same class is open in different views and gets modified, all the views of the class are updated to reflect the modifications.</p></td>
 </tr>
 <tr class="row-even"><td><p>Copy/Paste objects</p></td>
 <td><p>R</p></td>
@@ -700,7 +699,7 @@ The intent is to reduce the complexity to the mere definition of the system layo
 <div class="figure align-default" id="screen-conf-1">
 <img alt="_images/screen_conf_1.svg" src="_images/screen_conf_1.svg" /><p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Configuration widget – Configuring an existing model</span><a class="headerlink" href="#screen-conf-1" title="Permalink to this image">¶</a></p>
 </div>
-<p>Equipment and controller models are connected together by means of a <em>control bus</em>, see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.16</span></a>. The upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget: see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.4</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level model <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.</p>
+<p>Equipment and controller models are connected together by means of a <em>control bus</em>, see <a class="reference internal" href="#screen-schematics-modelica"><span class="std std-numref">Fig. 3.16</span></a>. The upper-level Modelica class including the equipment models and control blocks is the ultimate output of the configuration widget: see <a class="reference internal" href="#screen-conf-1"><span class="std std-numref">Fig. 3.4</span></a> where the component named <code class="docutils literal notranslate"><span class="pre">AHU_1_01_02</span></code> represents an instance of the upper-level class <code class="docutils literal notranslate"><span class="pre">AHU_1</span></code> generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.</p>
 <p>The logic for instantiating classes from the library is straightforward. Each field of the form specifies</p>
 <ul class="simple">
 <li><p>the reference of the class (library path) to be instantiated depending on the user input,</p></li>
@@ -733,7 +732,7 @@ The intent is to reduce the complexity to the mere definition of the system layo
 <p>A robust syntax is a minimum requirement for</p>
 <ul class="simple">
 <li><p>auto-referencing the data structure, for instance <code class="docutils literal notranslate"><span class="pre">#type.value</span></code> refers to the value of the field <code class="docutils literal notranslate"><span class="pre">value</span></code> of the object which <code class="docutils literal notranslate"><span class="pre">$id</span></code> is <code class="docutils literal notranslate"><span class="pre">type</span></code>, and it must be interpreted by the configuration widget and replaced by the actual value when generating the model,</p></li>
-<li><p>conditional statements: potentially every field may require a conditional statement – either data fields (e.g., the model to be instantiated and its placement) or UI fields (e.g., the condition to enable a widget itself or the different options of a menu widget).</p></li>
+<li><p>conditional statements: potentially every field may require a conditional statement – either data fields (e.g., the class to be instantiated and its placement) or UI fields (e.g., the condition to enable a widget itself or the different options of a menu widget).</p></li>
 </ul>
 <p>Ideally the syntax should also allow iteration <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates, for instance a chiller plant with <code class="docutils literal notranslate"><span class="pre">n</span></code> chillers. Backup strategy: define a maximum number of instances and enable only the first <code class="docutils literal notranslate"><span class="pre">n</span></code> ones based on a condition.</p>
 <p>Possible formats:</p>
@@ -965,7 +964,7 @@ The intent is to reduce the complexity to the mere definition of the system layo
 <blockquote>
 <div><div class="line-block">
 <div class="line">Indicates if the declaration should be public or protected.</div>
-<div class="line">All protected declarations must be grouped together at the end of the declaration section in the Modelica model (to avoid multiple <code class="docutils literal notranslate"><span class="pre">protected</span></code> and <code class="docutils literal notranslate"><span class="pre">public</span></code> specifiers in the source file).</div>
+<div class="line">All protected declarations must be grouped together at the end of the declaration section in the Modelica class (to avoid multiple <code class="docutils literal notranslate"><span class="pre">protected</span></code> and <code class="docutils literal notranslate"><span class="pre">public</span></code> specifiers in the source file).</div>
 </div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">symbol_path</span></code> : string (C) : optional</p>
@@ -3424,7 +3423,7 @@ Using the unspecified <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">expand</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]</span> <span class="p">(</span><span class="n">since</span> <span class="n">element</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span> <span class="kr">in</span> <span class="kr">connect</span><span class="p">(</span><span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">],</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">nOcc</span><span class="p">[</span><span class="o">:</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.</p>
+<p>Providing an explicit indices range e.g. <code class="docutils literal notranslate"><span class="pre">[1:numZon]</span></code> like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of <strong>20</strong> to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed since they are not used in the model.</p>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">Warning</span><span class="o">:</span> <span class="n">The</span> <span class="n">bus</span><span class="o">-</span><span class="kr">input</span> <span class="n">conAHU</span><span class="o">.</span><span class="n">ahuSubBusI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">matches</span> <span class="n">multiple</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">connectors</span> <span class="kr">in</span> <span class="n">the</span> <span class="n">connection</span> <span class="n">sets</span><span class="o">.</span>
 
 <span class="n">Bus</span><span class="o">-</span><span class="n">signal</span><span class="o">:</span> <span class="n">ahuI</span><span class="o">.</span><span class="n">VDis_flow</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
@@ -3694,7 +3693,7 @@ A similar view of the connections set must be implemented with the additional re
 <p>LinkageJS must eventually be integrated as a specific <em>tab</em> in the <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/">OpenStudio</a> (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future <a class="reference external" href="https://lbl-srg.github.io/soep/">Spawn of EnergyPlus</a> (SOEP) workflow. (In the current EnergyPlus workflow those capabilities are provided by the <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems">HVAC Systems tab</a>.)</p>
 <p>In SOEP workflow a multi-zone building model (EnergyPlus input file <code class="docutils literal notranslate"><span class="pre">idf</span></code>) is configured within OpenStudio. The OpenStudio model <code class="docutils literal notranslate"><span class="pre">osm</span></code> exposes functions to access <code class="docutils literal notranslate"><span class="pre">idf</span></code> parameters e.g. zone names and characteristics. Modelica classes are created by extending the SOEP zone model and referencing the <code class="docutils literal notranslate"><span class="pre">idf</span></code> file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with LinkageJS.</p>
 <p>The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.</p>
-<p>An API must also be developed to access LinkageJS functionalities and data model in a programmatic way. The preferred language is Python (largely used in the Modelica users’ community) or Ruby (largely used in the OpenStudio users’ community).</p>
+<p>An Python API must also be developed to access LinkageJS functionalities and data model in a programmatic way.</p>
 <p>Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to</p>
 <ul class="simple">
 <li><p>devise the read and write access to the local file system, for instance by means of OS API (functions to be developed by LBL or NREL),</p></li>
@@ -3747,7 +3746,7 @@ A similar view of the connections set must be implemented with the additional re
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on May, 28, 2020.<br/>
+      Last updated on Jun, 01, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.<br/>
     </p>
   </div>

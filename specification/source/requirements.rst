@@ -37,13 +37,11 @@ The following requirements apply to both the configuration widget (first phase o
 
      Those three integration targets are actual deliverables.
 
-     For the first development phase pertaining to the configuration widget, the exact functionalities (configuration only, or configuration plus minimal editing functionalities) of the standalone web app and desktop app versions shall be further discussed with the provider.
+* The diagram editor must consume and return Modelica classes formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
 
-* The diagram editor must consume and return Modelica models formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
+* A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica classes formatted into JSON, see previous item.
 
-* A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica models formatted into JSON, see previous item.
-
-* A Python or Ruby API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
+* A Python API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
 
 
 Software Compatibility
@@ -82,7 +80,7 @@ The minimum requirements are as follows.
 
 * Left panel: library navigator
 
-* Main panel: model editor with diagram, icon, documentation or code view
+* Main panel: editor with diagram, icon, documentation or code view
 
 * Right panel:
 
@@ -124,7 +122,7 @@ Detailed Functionalities
      -
      - (as per :numref:`sec_general_description`)
 
-   * - Diagram editor for Modelica models
+   * - Diagram editor for Modelica classes
      - N
      - R
      - In the first phase, the configuration widget must be integrated into an existing diagram editor for Modelica. Such an editor must be developed in the second phase.
@@ -152,11 +150,11 @@ Detailed Functionalities
    * - Load ``mo`` file
      - N
      - R
-     - Simple Modelica model or full package ``Package.mo`` with recursive parsing
+     - Simple Modelica class or full package ``Package.mo`` with recursive parsing
 
-       If the model contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the corresponding data must be loaded in memory for further configuration.
+       If the class contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the corresponding data must be loaded in memory for further configuration.
 
-       If the model contains the Modelica annotation ``uses`` the corresponding library must be loaded.
+       If the class contains the Modelica annotation ``uses`` the corresponding library must be loaded.
 
        If a package is loaded, the structure of the package and sub packages should be checked against *Chapter 13 Packages*.
 
@@ -170,7 +168,7 @@ Detailed Functionalities
    * - Variable browser
      - N
      - R
-     - Selection of model variables based on regular expression (R)
+     - Selection of variables based on regular expression (R)
 
        Or Brick/Haystack query :cite:`Brick` :cite:`Haystack4` (O)
 
@@ -251,12 +249,12 @@ Detailed Functionalities
    * - Documentation view
      - N
      - R
-     - Rendering of the documentation section of the model annotation (HTML format)
+     - Rendering of the documentation section of the class annotation (HTML format)
 
    * - Library version management
      - R
      - R
-     - If a loaded model contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
+     - If a loaded class contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
 
    * - Path discovery
      - R
@@ -281,7 +279,7 @@ Detailed Functionalities
    * - Navigation in object composition
      - N
      - R
-     - Right clicking an icon in the diagram view offers the option to open the model in another tab
+     - Right clicking an icon in the diagram view offers the option to open the class in another tab
 
    * - Multiple objects selection for setting the value of common parameters
      - N
@@ -291,7 +289,7 @@ Detailed Functionalities
    * - Avoiding duplicate names
      - R
      - R
-     - When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the model the software automatically appends the name with the lowest integer value that would ensure uniqueness.
+     - When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the class the software automatically appends the name with the lowest integer value that would ensure uniqueness.
 
        When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.
 
@@ -308,7 +306,7 @@ Detailed Functionalities
    * - Diagram split view
      - N
      - R
-     - The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same model is open in different views and gets modified, all the views of the model are updated to reflect the modifications.
+     - The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same class is open in different views and gets modified, all the views of the class are updated to reflect the modifications.
 
    * - Copy/Paste objects
      - R
@@ -508,7 +506,7 @@ The user interface logic is illustrated in figures :numref:`screen_conf_0` and :
    Configuration widget -- Configuring an existing model
 
 
-Equipment and controller models are connected together by means of a *control bus*, see :numref:`screen_schematics_modelica`. The upper-level Modelica model including the equipment and controls models is the ultimate output of the configuration widget: see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level model ``AHU_1`` generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
+Equipment and controller models are connected together by means of a *control bus*, see :numref:`screen_schematics_modelica`. The upper-level Modelica class including the equipment models and control blocks is the ultimate output of the configuration widget: see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level class ``AHU_1`` generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
 
 The logic for instantiating classes from the library is straightforward. Each field of the form specifies
 
@@ -549,7 +547,7 @@ A robust syntax is a minimum requirement for
 
 * auto-referencing the data structure, for instance ``#type.value`` refers to the value of the field ``value`` of the object which ``$id`` is ``type``, and it must be interpreted by the configuration widget and replaced by the actual value when generating the model,
 
-* conditional statements: potentially every field may require a conditional statement -- either data fields (e.g., the model to be instantiated and its placement) or UI fields (e.g., the condition to enable a widget itself or the different options of a menu widget).
+* conditional statements: potentially every field may require a conditional statement -- either data fields (e.g., the class to be instantiated and its placement) or UI fields (e.g., the condition to enable a widget itself or the different options of a menu widget).
 
 Ideally the syntax should also allow iteration ``for`` loops to instantiate a given number (as parameter) of objects with an offset applied to the placement coordinates, for instance a chiller plant with ``n`` chillers. Backup strategy: define a maximum number of instances and enable only the first ``n`` ones based on a condition.
 
@@ -790,7 +788,7 @@ In the definitions provided here below
   ``protected`` : boolean : optional, default ``false``
 
     | Indicates if the declaration should be public or protected.
-    | All protected declarations must be grouped together at the end of the declaration section in the Modelica model (to avoid multiple ``protected`` and ``public`` specifiers in the source file).
+    | All protected declarations must be grouped together at the end of the declaration section in the Modelica class (to avoid multiple ``protected`` and ``public`` specifiers in the source file).
 
   ``symbol_path`` : string (C) : optional
 
@@ -1092,7 +1090,7 @@ The use of expandable connectors (control bus) is validated in case of a complex
 
       Failed to expand conAHU.ahuSubBusI.nOcc[:] (since element does not exist) in connect(conAHU.ahuSubBusI.nOcc[:], conAHU.nOcc[:]);
 
-   Providing an explicit indices range e.g. ``[1:numZon]`` like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of **20** to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed from the simulation problem since they are not used in the model.
+   Providing an explicit indices range e.g. ``[1:numZon]`` like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of **20** to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed since they are not used in the model.
 
    .. code:: modelica
 
@@ -1414,7 +1412,7 @@ In SOEP workflow a multi-zone building model (EnergyPlus input file ``idf``) is 
 
 The only requirement to embed in OS app is for LinkageJS to be built down to a single page HTML document.
 
-An API must also be developed to access LinkageJS functionalities and data model in a programmatic way. The preferred language is Python (largely used in the Modelica users' community) or Ruby (largely used in the OpenStudio users' community).
+An Python API must also be developed to access LinkageJS functionalities and data model in a programmatic way.
 
 Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to
 

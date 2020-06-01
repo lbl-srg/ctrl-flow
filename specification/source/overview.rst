@@ -3,7 +3,7 @@ Overview
 
 The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems. It relies on two main components.
 
-#. A graphical user interface for editing Modelica models in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
+#. A graphical user interface for editing Modelica classes in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
 
 #. A configuration widget supporting assisted modeling based on a simple HTML input form, see :numref:`sec_configuration_widget`. This widget is mostly needed for integrating advanced control sequences that can have dozens of I/O variables. The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica.
 
