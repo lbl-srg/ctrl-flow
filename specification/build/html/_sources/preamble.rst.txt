@@ -8,13 +8,14 @@ Preamble and Conventions
 
 This documentation specifies the requirements for LinkageJS software: *a graphical user interface for editing Modelica models of HVAC and control systems*.
 
-It is intended to be mainly used as a discussion basis with the software development team.
-Therefore the proposed design should not be considered finalized and will evolve during the iteration process with the development team.
+* Everything that relates to the software functionalities and the data formats to be consumed and returned must be considered as minimum requirements and implemented in the final deliverables.
 
-Most of the concepts used to develop that specification are defined in the Modelica Language Specification :cite:`Modelica2017`.
+* However, the specification also provides some implementation strategies when it comes to devising the "assisted modeling" mode, enabling to build complex thermo-fluid models and control sequences based on a simple HTML input form. Here the proposed design should only be considered as a possible path. Alternative approaches are welcome but they must at least provide the same level of functionalities as the proposed approach and meet the minimum requirements that are expressed.
 
+.. warning::
 
-.. admonition:: Conventions
-   :class: note
+   To clearly distinguish what constitutes requirements from what constitutes a design proposition open to some alternative approaches, we will use this warning format throughout the specification.
 
-   The words *must, must not, required, shall, shall not, should, should not, recommended, may, optional* in this document must be interpreted as described in `RFC2119 <https://tools.ietf.org/html/rfc2119>`_.
+   Furthermore we use the following **convention**.
+
+   - The words *must, must not, required, shall, shall not, should, should not, recommended, may, optional* in this document must be interpreted as described in `RFC2119 <https://tools.ietf.org/html/rfc2119>`_.

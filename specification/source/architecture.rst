@@ -3,8 +3,11 @@
 Software Architecture
 ---------------------
 
-:numref:`linkage_architecture_legend` to :numref:`linkage_architecture_os` provide architecture diagrams for the three integration targets.
-Those are not hard and fast. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third-party developments.
+:numref:`linkage_architecture_legend` to :numref:`linkage_architecture_os` provide architecture diagrams for the various integration targets.
+
+.. warning::
+
+   These diagrams are informative only and do not constitute requirements. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third-party developments.
 
 The following definitions and conventions are used.
 
