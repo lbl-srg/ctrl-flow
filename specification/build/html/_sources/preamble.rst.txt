@@ -6,7 +6,7 @@
 Preamble and Conventions
 ========================
 
-This documentation specifies the requirements for LinkageJS software: *a graphical user interface for editing Modelica models of HVAC and control systems*.
+This documentation specifies the requirements for Linkage software: *a graphical user interface for editing Modelica models of HVAC and control systems*.
 
 * Everything that relates to the software functionalities and the data formats to be consumed and returned must be considered as minimum requirements and implemented in the final deliverables.
 

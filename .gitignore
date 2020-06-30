@@ -4,4 +4,4 @@ settings.json
 *tmp*
 specification/source/_build
 specification/build/latex/*
-!specification/build/latex/LinkageJS.pdf
+!specification/build/latex/Linkage.pdf
