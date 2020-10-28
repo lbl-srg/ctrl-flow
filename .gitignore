@@ -3,6 +3,6 @@
 settings.json
 *tmp*
 specification/source/_build
-specification/build/latex/*
+specification/build
 !specification/build/latex/Linkage.pdf
 !specification/build/latex/Linkage_Requirements_Document_10-2020_V1.pdf
