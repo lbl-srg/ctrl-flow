@@ -9,10 +9,10 @@ sys.path.append(os.path.abspath('.'))
 
 # General information about the project.
 project = 'Linkage'
-version = '0.1'  # short X.Y version
+version = '1.1'  # short X.Y version
 release = '{}'.format(version)  # full version, including alpha/beta/rc tags
 doc_title = 'Linkage Software Requirements Specification'
-doc_version = 'V{} - First Release for Solicitation'.format(release)
+doc_version = 'V{} - Release for External Review'.format(release)
 copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # Extensions

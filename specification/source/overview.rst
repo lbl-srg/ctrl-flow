@@ -9,9 +9,15 @@ The software to develop is a graphical user interface for editing Modelica model
 
 We plan a phased development where
 
-#. the configuration widget will be first implemented and integrated into an existing graphical editor for Modelica,
+#. the configuration widget will be first implemented as part of Phase 1 and integrated into an existing graphical editor for Modelica,
 
-#. the full-featured editor will be developed in a second phase, providing diagrammatic editing capabilities and integrating the configuration widget natively.
+#. the full-featured editor will be developed in a future phase, providing diagrammatic editing capabilities and integrating the configuration widget natively.
+
+
+.. admonition:: Revision Note (11/2020)
+   :class: danger
+
+   The current version of the specification is limited to Phase 1. Each part related to the full-featured editor is provided for informative purposes only.
 
 
 .. raw:: html
