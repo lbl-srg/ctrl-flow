@@ -2,9 +2,12 @@
 
 ## Output Documentation
 
-The PDF version of the documentation is available at
 
-[https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage_Requirements_Document_10-2020_V1.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage_Requirements_Document_10-2020_V1.pdf)
+The HTML version of the documentation is available at
+[]()
+
+The PDF version of the documentation is available at
+[https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf)
 
 ## How to Build
 

@@ -3,11 +3,16 @@
 Software Architecture
 ---------------------
 
-:numref:`linkage_architecture_legend` to :numref:`linkage_architecture_os` provide architecture diagrams for the various integration targets.
+:numref:`linkage_architecture_legend` to :numref:`linkage_architecture_spa` provide architecture diagrams for the various integration targets.
 
 .. warning::
 
    These diagrams are informative only and do not constitute requirements. They rather aim at illustrating the data workflow and describing the main modules to develop, and how they interface with LBL or third-party developments.
+
+.. admonition:: Revision Note (11/2020)
+   :class: danger
+
+   The diagrams for the desktop app and the third-party application are removed.
 
 The following definitions and conventions are used.
 
@@ -34,19 +39,8 @@ The following definitions and conventions are used.
    Software architecture for the configuration widget integrated into an existing graphical editor for Modelica
 
 
-.. figure:: img/linkage_architecture.*
-   :name: linkage_architecture
-
-   Software architecture for the full-featured graphical editor embedding the configuration widget - Desktop app
-
-
 .. figure:: img/linkage_architecture_spa.*
    :name: linkage_architecture_spa
 
    Software architecture for the full-featured graphical editor embedding the configuration widget - Standalone web app
 
-
-.. figure:: img/linkage_architecture_os.*
-   :name: linkage_architecture_os
-
-   Software architecture for the full-featured graphical editor embedding the configuration widget - Integration in third-party application e.g. `OpenStudio® <https://www.openstudio.net>`_ (OS)

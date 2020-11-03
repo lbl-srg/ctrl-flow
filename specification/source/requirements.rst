@@ -16,7 +16,7 @@ General Description
 Main Requirements
 *****************
 
-The following requirements apply to both the configuration widget (first phase of the development) and the diagram editor (second phase of the development).
+The following requirements apply to both the configuration widget (Phase 1 of the development) and the diagram editor (future phase of the development).
 
 * The software must rely on client side JS code with minimal dependencies and must be built down to a single page HTML document (SPA).
 
@@ -28,20 +28,27 @@ The following requirements apply to both the configuration widget (first phase o
 
   * any third-party application with the suitable framework to serve a single page HTML document executing JS code -- with access to the local file system through the API of the third-party application:
 
-    * For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is the existing graphical editor for Modelica. The widget must be integrated into this editor. That requires for the editor to be able to serve a single page HTML document executing JS code.
+    .. admonition:: Revision Note (10/2020)
+       :class: danger
+
+       This section is modified to require “proof of concept” for third party integration through a demonstration and not through a completed integration.
+
+    * For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is an existing graphical editor for Modelica.
+      To demonstrate the feasibility of this integration, a proof of concept shall be developed, together with the documentation describing how this workflow can be accomplished.
+      This will include the creation of a prototype where the host application may be an actual Modelica editor or a rudimentary emulator of such.
 
     * For the second development phase, the primary integration target is `OpenStudio® <https://www.openstudio.net>`_ (OS) while the widget to be integrated is now the full-featured editor (including the configuration widget).
       An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
-
-  .. note::
-
-     Those three integration targets are actual deliverables.
 
 * The diagram editor must consume and return Modelica classes formatted into JSON. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for these formatting tasks.
 
 * A specific data model must be devised for the configuration widget. The recommended format is JSON but alternative formats may be proposed. A minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain. The configuration widget must return Modelica classes formatted into JSON, see previous item.
 
-* A Python API is required to access the data model and leverage the main functionalities of the software in a programmatic way, e.g., by means of `OpenStudio measures <http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/>`_.
+.. admonition:: Revision Note (10/2020)
+   :class: danger
+
+   The Python API, if required, will be developed in a subsequent phase.
+
 
 
 Software Compatibility
@@ -67,36 +74,20 @@ The software requirements regarding platform and environment compatibility are p
 UI Visual Structure
 *******************
 
+.. admonition:: Revision Note (11/2020)
+   :class: danger
+
+   Only the requirements pertaining to the configuration widget are retained.
+
 A responsive design is required.
 
-A minimal mockup of the UI is presented :numref:`screen_mockup`.
+For the record, a mockup of the UI for the full featured editor is presented :numref:`screen_mockup`.
+For Phase 1, only the graphical features pertaining to the configuration widget in the right panel should be considered.
 
 .. figure:: img/screen_mockup.*
    :name: screen_mockup
 
    UI Visual Structure
-
-The minimum requirements are as follows.
-
-* Left panel: library navigator
-
-* Main panel: editor with diagram, icon, documentation or code view
-
-* Right panel:
-
-  * Configuration tab, see :numref:`sec_configuration_widget`
-  * Connections tab, see :numref:`sec_connect_ui_req`
-  * Parameters tab, see :numref:`sec_parameters`
-
-* Menu bar
-
-* Bottom panel: console
-
-The placement of the different UI elements may differ from the one proposed here above (especially the right panel tabs may be relocated into the left panel) but the user must have access to all those elements.
-
-Ideally a toggle feature should be implemented to show or hide each side panel, either by user click if the panel is pinned or automatically.
-
-Optionally a fully customizable workspace may be implemented.
 
 
 .. _sec_functionalities:
@@ -104,7 +95,14 @@ Optionally a fully customizable workspace may be implemented.
 Detailed Functionalities
 ------------------------
 
-:numref:`tab_gui_func` provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, phase 2 refers to the full-featured editor.
+:numref:`tab_gui_func` provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor.
+
+.. admonition:: Revision Note
+   :class: danger
+
+   * **(10/2020)** The features "Copy/Paste Objects" and "Undo/Redo" are optional and not required for Phase 1.
+
+   * **(11/2020)** :numref:`tab_gui_func` is edited to focus on requirements pertaining to Phase 1.
 
 .. _tab_gui_func:
 
@@ -114,7 +112,7 @@ Detailed Functionalities
 
    * - Feature
      - Phase 1
-     - Phase 2
+     - Future
      - Comment
 
    * - **Main functionalities**
@@ -137,90 +135,20 @@ Detailed Functionalities
      - R
      - See :numref:`sec_documentation_export`.
 
-   * - Variables tagging
-     - N
-     - R
-     - See :numref:`sec_tagged_variables`.
-
    * - **I/O**
      -
      -
      -
-
-   * - Load ``mo`` file
-     - N
-     - R
-     - Simple Modelica class or full package ``Package.mo`` with recursive parsing
-
-       If the class contains annotations specific to the configuration widget (see :numref:`sec_configuration_widget`), the corresponding data must be loaded in memory for further configuration.
-
-       If the class contains the Modelica annotation ``uses`` the corresponding library must be loaded.
-
-       If a package is loaded, the structure of the package and sub packages should be checked against *Chapter 13 Packages*.
-
-   * - Export simulation results
-     - N
-     - R
-     - Export in the following format: ``mat``, ``csv``.
-
-       All variables or selection based on variable browser (see below).
-
-   * - Variable browser
-     - N
-     - R
-     - Selection of variables based on regular expression (R)
-
-       Or Brick/Haystack query :cite:`Brick` :cite:`Haystack4` (O)
-
-   * - Plot simulation results
-     - N
-     - R
-     - HTML plots of variables selected within the variable browser
-
-       Pan, zoom and value display at hover must be available.
-
-       The independent variable on the X-axis must be chosen by the user, with the time variable as default.
 
    * - Export documentation
      - R
      - R
      - Control points, sequence of operation description (based on CDL to Word translator developed by LBL), and equipment schematics see :numref:`sec_documentation_export`
 
-   * - Import/Export data sheet
-     - N
-     - R
-     - Additional module to
-
-       1) generate a file in CSV or JSON format from the configuration data,
-
-       2) populate the configuration data based on a file input in CSV or JSON format.
-
-
    * - **Modelica features**
      -
      -
      -
-
-   * - Checking the compliance with Modelica specification
-     - N
-     - R
-     - Real-time checking of syntax for component names
-
-       Real-time checking of connections
-
-   * - Translate model
-     - N
-     - R
-     - The software settings allow the user to specify a command for translating the model with a third-party Modelica tool e.g. JModelica.
-
-       The output of the translation routine is logged in Linkage console.
-
-   * - Simulate model
-     - N
-     - R
-     - The software settings allow the user to specify a command for simulating the model with a third-party Modelica tool, e.g., JModelica.
-
-       The output of the simulation routine is logged in Linkage console.
 
    * - Automatic medium propagation between connected components
      - R
@@ -229,27 +157,12 @@ Detailed Functionalities
 
        When generating ``connect`` equations manually within the diagram editor, a similar approach as the *fluid path* used by the configuration widget may be developed, see components with four ports and two media.
 
-   * - Support of Modelica graphical annotations
-     - N
-     - R
-     -
-
    * - Modelica code editor
      - N
      - R
      - Raw text editor with linter and Modelica specification checking upon save
 
        Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators are developed by LBL).
-
-   * - Icon editor
-     - N
-     - R
-     - Editing functionalities similar to diagram editor
-
-   * - Documentation view
-     - N
-     - R
-     - Rendering of the documentation section of the class annotation (HTML format)
 
    * - Library version management
      - R
@@ -266,26 +179,6 @@ Detailed Functionalities
      -
      -
 
-   * - Vectorized instances
-     - N
-     - R
-     - An array dimension descriptor appending the name of an object is interpreted as an array declaration. Further  connections to the connectors of that object must comply with the array structure.
-
-   * - Expandable connectors
-     - N
-     - R
-     -
-
-   * - Navigation in object composition
-     - N
-     - R
-     - Right clicking an icon in the diagram view offers the option to open the class in another tab
-
-   * - Multiple objects selection for setting the value of common parameters
-     - N
-     - R
-     - If several objects are selected only their common parameters are listed in the Parameters panel. If a parameter value is modified, all the selected objects will have their parameter value updated.
-
    * - Avoiding duplicate names
      - R
      - R
@@ -296,20 +189,10 @@ Detailed Functionalities
    * - **Graphical features**
      -
      -
-     - A user experience similar to modern web based diagramming applications is expected e.g. `draw.io <https:// w.draw.io>`_.
-
-   * - Tab view
-     - R
-     - R
-     - The UI is organized in tabs that can be manipulated, created and deleted typically as navigation tabs in a web browser.
-
-   * - Diagram split view
-     - N
-     - R
-     - The diagram view can be split (horizontally and vertically) into several views. Each tab can be dragged and dropped from one view to another. The views are synchronized so that if the same class is open in different views and gets modified, all the views of the class are updated to reflect the modifications.
+     - A user experience similar to modern web apps is expected e.g. `tranedesignassist.com <https://tranedesignassist.com/>`_.
 
    * - Copy/Paste objects
-     - R
+     - O
      - R
      - Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.
 
@@ -319,46 +202,14 @@ Detailed Functionalities
      -
 
    * - Undo/Redo
-     - R
+     - O
      - R
      - Available through buttons and standard keyboard shortcuts
-
-   * - Draw shape, text box
-     - N
-     - R
-     -
-
-   * - Start connection line when hovering connectors
-     - N
-     - R
-     -
-
-   * - Connection line jumps
-     - N
-     - R
-     - Gap jump at crossing
-
-   * - Customize connection lines
-     - N
-     - R
-     - Color, width and line can be specified in the annotations panel
 
    * - Hover information
      - R
      - R
      - Class path when hovering an object in the diagram view and tooltip help for each GUI element
-
-   * - Color and style of connection lines
-     - N
-     - R
-     - Allow the user to manually specify (right click menu) the style of the connections lines.
-
-       When generating a ``connect`` equation automatically select a line style based on some heuristic to be further specified.
-
-   * - Drawing guides
-     - N
-     - R
-     - Snap to grid and alignment lines with neighbor objects with the option to enable/disable those guides.
 
    * - **Miscellaneous**
      -
@@ -391,11 +242,17 @@ Detailed Functionalities
 
 .. _sec_modelica_gui:
 
-Modelica Graphical User Interface
----------------------------------
+Requirements Related to the Modelica Language
+---------------------------------------------
 
-Modelica Language
-*****************
+.. admonition:: Revision Note (11/2020)
+   :class: danger
+
+   This paragraph replaces the paragraph "Modelica Graphical User Interface" and only retains the requirements pertaining to the configuration widget.
+
+
+Language Specification
+**********************
 
 The software must comply with the Modelica language specification :cite:`Modelica2017` for every aspect relating to (the chapter numbers refer to :cite:`Modelica2017`):
 
@@ -407,7 +264,6 @@ The software must comply with the Modelica language specification :cite:`Modelic
 
 * the annotations: see *Chapter 18 Annotations*.
 
-
 JSON Representation
 *******************
 
@@ -418,33 +274,7 @@ This development includes the definition of two JSON schemas:
 
 #. `Schema-CDL.json <https://lbl-srg.github.io/modelica-json/CDL.html>`_ validates the JSON files parsed from `CDL <http://obc.lbl.gov/specification/cdl>`_ (subset of Modelica language used for control sequence implementation).
 
-Those developments should be leveraged to define a JSON-based native format for Linkage.
-
-
-Connection Lines
-****************
-
-When drawing a connection line between two connector icons in the diagram view
-
-* a ``connect`` equation with the references to the two connectors must be created,
-
-* with a graphical annotation defining the connection path as an array of points and providing an optional smoothing function e.g. Bezier.
-
-* When no smoothing function is specified the connection path must be rendered graphically as a set of segments.
-
-* The array of points must be either:
-
-  * created fully automatically when the next user's click after having started a connection is made on a connector icon. The function call ``create_new_path(connector1, connector2)`` creates the minimum number of *vertical or horizontal* segments to link the two connector icons with the constraint of avoiding overlaying any instantiated object,
-
-  * created semi automatically based on the input points corresponding to the user clicks outside any connector icon: the function call ``create_new_path(point[i], point[i+1])`` is called to generate the path linking each pair of points together.
-
-* The first and last couple of points must be so that the connection line does not overlap the component icon but rather grows the distance to it, see :numref:`linkage_connect_distance`.
-
-
-.. figure:: img/linkage_connect_distance.*
-   :name: linkage_connect_distance
-
-   Logic for generating a connection line in the neighborhood of a connector
+Linkage should leverage those developments by consuming and outputting Modelica files formatted into JSON, without having to parse the Modelica syntax.
 
 
 .. _sec_configuration_widget:
@@ -1280,41 +1110,20 @@ The example of the configuration file for a VAV system in :numref:`sec_annex_jso
 Parameters Setting
 ------------------
 
-The parameters tab must expose the parameters of the objects selected in the diagram view, except if the parameters are declared as *protected* or have a *final* modifier. The name, unit and comment (description string) from the parameter declaration must be displayed.
+.. admonition:: Revision Note (11/2020)
+   :class: danger
 
-Multiple Selection
-******************
-
-When multiple objects are selected in the diagram view the parameters tab must expose only common parameters (the intersection of the multiple parameters sets). The dimensionality of the parameters is not updated e.g. if the user selects an instance ``comp`` of the class ``Component`` and an instance ``obj`` of the class ``Object`` where both classes declare  a ``Real`` scalar parameter ``par`` (dimensionality 0) then the parameters tab must display an input field for ``par`` (dimensionality 0) and the user input will be used to assign the same value to ``par`` in both instances.
-
-Array Selection
-***************
-
-When an array of instances is selected the parameters tab must update the dimensionality of each parameter e.g. if the user selects an array ``comp[n]`` of instances of the class ``Component`` which declares a ``Real`` scalar parameter ``parSca`` (dimensionality 0) and a ``Real`` array parameter ``parArr[m]`` (dimensionality 1) then the parameters tab must display input fields for ``parSca[n]`` (dimensionality 1) and ``parArr[m][n]`` (dimensionality 2).
-
+   This paragraph is modified to retain only the requirements pertaining to the configuration widget.
 
 Enumeration and Boolean
 ***********************
 
-For parameters of type *enumeration* or *Boolean* a dropdown menu should be displayed in the parameters tab and populated by the enumeration items or ``true`` and ``false``.
-
-
-Record
-******
-
-The parameters tab must allow exploring the inner structure of a parameter *record* and setting the lower level parameters values.
-
-
-Grouped Parameters
-******************
-
-A declaration annotation may be used by the model developer to specify how parameters should be divided up in different *tabs* and *groups* e.g. ``annotation(Dialog(tab="General", group="Nominal condition"))``. The parameters tab must reflect that structure.
-
+For parameters of type *enumeration* or *Boolean* a dropdown menu should be displayed and populated by the enumeration items or ``true`` and ``false``.
 
 Validation
 **********
 
-Values entered by the user must be validated *upon submit* against Modelica language specification :cite:`Modelica2017` and parameter attributes e.g. ``min``, ``max``. (The sizes of array dimensions may be validated at run-time only by the simulation tool.)
+Values entered by the user must be validated *upon submit* against Modelica language specification :cite:`Modelica2017` and parameter attributes e.g. ``min``, ``max``.
 
 A color code is required to identify the fields with incorrect values and the corresponding error message must be displayed on hover.
 
@@ -1385,50 +1194,10 @@ Control Sequence Description
 Generating the control sequence description is done by calling a `module developed by LBL <https://lbl-srg.github.io/modelica-json/>`_ which returns an HTML or Word document.
 
 
-.. _sec_tagged_variables:
+.. admonition:: Revision Note (10/2020)
+   :class: danger
 
-Working with Tagged Variables
------------------------------
-
-The requirements for tagging variables (based on :cite:`Brick` or :cite:`Haystack4`) and performing some queries on the set of tagged variables will be specified by LBL in a later version of this document.
-
-Those additional requirements should at least address the following typical use cases.
-
-* Setting parameters values with OpenStudio measures, for instance e.g. nominal electrical loads or boiler efficiency
-
-* Plotting variables selected by a description string, for instance "indoor air temperature for all zones of the first floor"
-
-* Mapping with equipment characteristics and sizing from data sheets or equipment schedules
-
-An algorithm based on the variable names (similar to the one proposed for generating automatic connections for signal variables, see :numref:`sec_signal_connectors`) is envisioned.
-
-
-OpenStudio Integration
-----------------------
-
-Linkage must eventually be integrated as a specific *tab* in the `OpenStudio <https://nrel.github.io/OpenStudio-user-documentation/>`_ (OS) modeling platform. This will provide editing capabilities of HVAC equipment and control systems models in the future `Spawn of EnergyPlus <https://lbl-srg.github.io/soep/>`_ (SOEP) workflow. (In the current EnergyPlus workflow those capabilities are provided by the `HVAC Systems tab <https://nrel.github.io/OpenStudio-user-documentation/tutorials/creating_your_model/#air-plant-and-zone-hvac-systems>`_.)
-
-In SOEP workflow a multi-zone building model (EnergyPlus input file ``idf``) is configured within OpenStudio. The OpenStudio model ``osm`` exposes functions to access ``idf`` parameters e.g. zone names and characteristics. Modelica classes are created by extending the SOEP zone model and referencing the ``idf`` file and the zone names. Instances of those classes allow the user to select the thermal zone (as an item of an enumeration) and connect its fluid ports to the HVAC system model that is edited with Linkage.
-
-The only requirement to embed in OS app is for Linkage to be built down to a single page HTML document.
-
-An Python API must also be developed to access Linkage functionalities and data model in a programmatic way.
-
-Iterations between the UI developer, NREL (OpenStudio developer) and LBL will be required to
-
-* devise the read and write access to the local file system, for instance by means of OS API (functions to be developed by LBL or NREL),
-
-* specify Linkage API (to be developed by the UI developer).
-
-This is illustrated in :numref:`linkage_architecture_os`.
-
-
-Interface with URBANopt GeoJSON
--------------------------------
-
-A seamless integration of Linkage in `URBANopt <https://www.nrel.gov/buildings/urbanopt.html>`_ modeling workflow is required. To support that feature additional requirements will be specified by LBL in a later version of this document.
-
-The URBANopt-Modelica project has adopted the Modelica language to interface the upstream UI-GeoJSON workflow and the downstream Modelica-Linkage workflow. Therefore the requirements should only relate to the persistence of modeling data and the shared resources between the two processes.
+   The paragraphs "Working with Tagged Variables", "OpenStudio Integration" and "Interface with URBANopt GeoJSON" are removed.
 
 
 Licensing
