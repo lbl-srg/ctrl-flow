@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 NOV 2020 18:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 NOV 2020 18:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1543,7 +1543,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 417.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.54997pt on input line 417.
-<screen_mockup.pdf, id=326, 713.66624pt x 426.59375pt>
+<screen_mockup.pdf, id=328, 713.66624pt x 426.59375pt>
 File: screen_mockup.pdf Graphic file (type pdf)
 <use screen_mockup.pdf>
 Package pdftex.def Info: screen_mockup.pdf  used on input line 465.
@@ -1558,12 +1558,12 @@ Overfull \vbox (332.27968pt too high) has occurred while \output is active []
 
 
 [10] [11]
-<screen_conf_0.pdf, id=427, 963.6pt x 542.025pt>
+<screen_conf_0.pdf, id=429, 963.6pt x 542.025pt>
 File: screen_conf_0.pdf Graphic file (type pdf)
 <use screen_conf_0.pdf>
 Package pdftex.def Info: screen_conf_0.pdf  used on input line 802.
 (pdftex.def)             Requested size: 505.88287pt x 284.56738pt.
-<screen_conf_1.pdf, id=428, 963.6pt x 542.025pt>
+<screen_conf_1.pdf, id=430, 963.6pt x 542.025pt>
 File: screen_conf_1.pdf Graphic file (type pdf)
 <use screen_conf_1.pdf>
 Package pdftex.def Info: screen_conf_1.pdf  used on input line 809.
@@ -1575,7 +1575,7 @@ _default / 3600 *
  []
 
 [15]
-<grid.png, id=528, 1996.45876pt x 983.675pt>
+<grid.png, id=530, 1996.45876pt x 983.675pt>
 File: grid.png Graphic file (type png)
 <use grid.png>
 Package pdftex.def Info: grid.png  used on input line 907.
@@ -1610,7 +1610,7 @@ Underfull \hbox (badness 7256) in paragraph at lines 1320--1321
 T1/pcr/m/n/10 hotwater_supply_bypass \T1/phv/m/n/10 is a
  []
 
-<linkage_connect_3wv.pdf, id=593, 584.1825pt x 304.2567pt>
+<linkage_connect_3wv.pdf, id=595, 584.1825pt x 304.2567pt>
 File: linkage_connect_3wv.pdf Graphic file (type pdf)
 <use linkage_connect_3wv.pdf>
 Package pdftex.def Info: linkage_connect_3wv.pdf  used on input line 1330.
@@ -1622,18 +1622,18 @@ LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
 pdfTeX warning: pdflatex (file ./linkage_connect_3wv.pdf): PDF inclusion: inval
 id other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<linkage_connect_multi.pdf, id=620, 578.16pt x 131.53139pt>
+<linkage_connect_multi.pdf, id=622, 578.16pt x 131.53139pt>
 File: linkage_connect_multi.pdf Graphic file (type pdf)
 <use linkage_connect_multi.pdf>
 Package pdftex.def Info: linkage_connect_multi.pdf  used on input line 1410.
 (pdftex.def)             Requested size: 505.88875pt x 115.09569pt.
-<linkage_connect_multi_exp.pdf, id=621, 496.9767pt x 130.5678pt>
+<linkage_connect_multi_exp.pdf, id=623, 496.9767pt x 130.5678pt>
 File: linkage_connect_multi_exp.pdf Graphic file (type pdf)
 <use linkage_connect_multi_exp.pdf>
 Package pdftex.def Info: linkage_connect_multi_exp.pdf  used on input line 1417
 .
 (pdftex.def)             Requested size: 496.97548pt x 130.56746pt.
-<linkage_connect_duct.pdf, id=622, 379.4175pt x 247.8861pt>
+<linkage_connect_duct.pdf, id=624, 379.4175pt x 247.8861pt>
 File: linkage_connect_duct.pdf Graphic file (type pdf)
 <use linkage_connect_duct.pdf>
 Package pdftex.def Info: linkage_connect_duct.pdf  used on input line 1424.
@@ -1668,13 +1668,13 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.59998pt on input line 1538.
 
 [27]
-<string_match.pdf, id=696, 1054.94125pt x 742.775pt>
+<string_match.pdf, id=698, 1054.94125pt x 742.775pt>
 File: string_match.pdf Graphic file (type pdf)
 <use string_match.pdf>
 Package pdftex.def Info: string_match.pdf  used on input line 1548.
 (pdftex.def)             Requested size: 505.88315pt x 356.19926pt.
  [28] [29 <./string_match.pdf>]
-<dymola_bus.png, id=732, 1355.0625pt x 848.16875pt>
+<dymola_bus.png, id=734, 1355.0625pt x 848.16875pt>
 File: dymola_bus.png Graphic file (type png)
 <use dymola_bus.png>
 Package pdftex.def Info: dymola_bus.png  used on input line 1611.
@@ -1689,35 +1689,35 @@ Underfull \hbox (badness 7504) in paragraph at lines 1716--1717
 []|\T1/pcr/m/n/10 comp2.var1 $\OMS/cmsy/m/n/10 !$
  []
 
-<bus_minimal.pdf, id=762, 2165.08875pt x 1100.11pt>
+<bus_minimal.pdf, id=764, 2165.08875pt x 1100.11pt>
 File: bus_minimal.pdf Graphic file (type pdf)
 <use bus_minimal.pdf>
 Package pdftex.def Info: bus_minimal.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 451.68457pt x 229.50237pt.
-<subbus_outside.png, id=763, 510.90875pt x 112.42pt>
+<subbus_outside.png, id=765, 510.90875pt x 112.42pt>
 File: subbus_outside.png Graphic file (type png)
 <use subbus_outside.png>
 Package pdftex.def Info: subbus_outside.png  used on input line 1787.
 (pdftex.def)             Requested size: 225.84229pt x 49.69308pt.
-<bus_outside.png, id=764, 507.8975pt x 145.54375pt>
+<bus_outside.png, id=766, 507.8975pt x 145.54375pt>
 File: bus_outside.png Graphic file (type png)
 <use bus_outside.png>
 Package pdftex.def Info: bus_outside.png  used on input line 1794.
 (pdftex.def)             Requested size: 225.84229pt x 64.71678pt.
-<bus_inside.png, id=765, 505.89pt x 81.30376pt>
+<bus_inside.png, id=767, 505.89pt x 81.30376pt>
 File: bus_inside.png Graphic file (type png)
 <use bus_inside.png>
 Package pdftex.def Info: bus_inside.png  used on input line 1801.
 (pdftex.def)             Requested size: 225.84229pt x 36.29604pt.
 [32] [33 <./bus_minimal.pdf> <./subbus_outside.png> <./bus_outside.png> <./bus_
 inside.png>] [34]
-<screen_schematics_modelica.pdf, id=803, 2165.08875pt x 1288.815pt>
+<screen_schematics_modelica.pdf, id=805, 2165.08875pt x 1288.815pt>
 File: screen_schematics_modelica.pdf Graphic file (type pdf)
 <use screen_schematics_modelica.pdf>
 Package pdftex.def Info: screen_schematics_modelica.pdf  used on input line 186
 6.
 (pdftex.def)             Requested size: 505.88872pt x 301.14099pt.
-<screen_schematics_output.pdf, id=804, 665.60669pt x 529.01637pt>
+<screen_schematics_output.pdf, id=806, 665.60669pt x 529.01637pt>
 File: screen_schematics_output.pdf Graphic file (type pdf)
 <use screen_schematics_output.pdf>
 Package pdftex.def Info: screen_schematics_output.pdf  used on input line 1873.
@@ -1730,19 +1730,19 @@ invalid other resource which is no dict (key 'ProcSets', type <array>); ignored
 .
 >] [37] [38]
 Chapter 4.
-<linkage_architecture_legend.pdf, id=881, 260.89468pt x 132.495pt>
+<linkage_architecture_legend.pdf, id=883, 260.89468pt x 132.495pt>
 File: linkage_architecture_legend.pdf Graphic file (type pdf)
 <use linkage_architecture_legend.pdf>
 Package pdftex.def Info: linkage_architecture_legend.pdf  used on input line 19
 93.
 (pdftex.def)             Requested size: 260.89403pt x 132.49466pt.
-<linkage_architecture_plugin.pdf, id=882, 672.59276pt x 471.68219pt>
+<linkage_architecture_plugin.pdf, id=884, 672.59276pt x 471.68219pt>
 File: linkage_architecture_plugin.pdf Graphic file (type pdf)
 <use linkage_architecture_plugin.pdf>
 Package pdftex.def Info: linkage_architecture_plugin.pdf  used on input line 20
 00.
 (pdftex.def)             Requested size: 505.91092pt x 354.78998pt.
-<linkage_architecture_spa.pdf, id=883, 1033.94275pt x 608.2725pt>
+<linkage_architecture_spa.pdf, id=885, 1033.94275pt x 608.2725pt>
 File: linkage_architecture_spa.pdf Graphic file (type pdf)
 <use linkage_architecture_spa.pdf>
 Package pdftex.def Info: linkage_architecture_spa.pdf  used on input line 2007.
@@ -1809,23 +1809,23 @@ Underfull \vbox (badness 10000) detected at line 2336
  []
 
 [48]
-<BusTestExp.pdf, id=984, 2777.37625pt x 1151.30125pt>
+<BusTestExp.pdf, id=986, 2777.37625pt x 1151.30125pt>
 File: BusTestExp.pdf Graphic file (type pdf)
 <use BusTestExp.pdf>
 Package pdftex.def Info: BusTestExp.pdf  used on input line 2358.
 (pdftex.def)             Requested size: 252.94499pt x 104.84236pt.
-<BusTestControlledExp.pdf, id=985, 2556.55125pt x 1156.32pt>
+<BusTestControlledExp.pdf, id=987, 2556.55125pt x 1156.32pt>
 File: BusTestControlledExp.pdf Graphic file (type pdf)
 <use BusTestControlledExp.pdf>
 Package pdftex.def Info: BusTestControlledExp.pdf  used on input line 2374.
 (pdftex.def)             Requested size: 252.94499pt x 114.40369pt.
  [49 <./BusTestExp.pdf>]
-<BusTestControllerExp.pdf, id=999, 2712.1325pt x 1225.57875pt>
+<BusTestControllerExp.pdf, id=1001, 2712.1325pt x 1225.57875pt>
 File: BusTestControllerExp.pdf Graphic file (type pdf)
 <use BusTestControllerExp.pdf>
 Package pdftex.def Info: BusTestControllerExp.pdf  used on input line 2402.
 (pdftex.def)             Requested size: 252.94499pt x 114.2993pt.
-<BusTestNonExp.pdf, id=1000, 2771.35374pt x 1145.27875pt>
+<BusTestNonExp.pdf, id=1002, 2771.35374pt x 1145.27875pt>
 File: BusTestNonExp.pdf Graphic file (type pdf)
 <use BusTestNonExp.pdf>
 Package pdftex.def Info: BusTestNonExp.pdf  used on input line 2420.
@@ -1835,12 +1835,12 @@ Package pdftex.def Info: BusTestNonExp.pdf  used on input line 2420.
 pdfTeX warning: pdflatex (file ./BusTestControllerExp.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >]
-<BusTestControlledNonExp.pdf, id=1022, 2853.66125pt x 1182.4175pt>
+<BusTestControlledNonExp.pdf, id=1024, 2853.66125pt x 1182.4175pt>
 File: BusTestControlledNonExp.pdf Graphic file (type pdf)
 <use BusTestControlledNonExp.pdf>
 Package pdftex.def Info: BusTestControlledNonExp.pdf  used on input line 2436.
 (pdftex.def)             Requested size: 252.94499pt x 104.80722pt.
-<BusTestControllerNonExp.pdf, id=1023, 2694.065pt x 1219.55624pt>
+<BusTestControllerNonExp.pdf, id=1025, 2694.065pt x 1219.55624pt>
 File: BusTestControllerNonExp.pdf Graphic file (type pdf)
 <use BusTestControllerNonExp.pdf>
 Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 2463.
@@ -1850,23 +1850,23 @@ Package pdftex.def Info: BusTestControllerNonExp.pdf  used on input line 2463.
 pdfTeX warning: pdflatex (file ./BusTestControlledNonExp.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >]
-<annex_valid_bus.pdf, id=1047, 1448.41125pt x 893.3375pt>
+<annex_valid_bus.pdf, id=1049, 1448.41125pt x 893.3375pt>
 File: annex_valid_bus.pdf Graphic file (type pdf)
 <use annex_valid_bus.pdf>
 Package pdftex.def Info: annex_valid_bus.pdf  used on input line 2504.
 (pdftex.def)             Requested size: 451.68457pt x 278.58113pt.
  [52 <./BusTestControllerNonExp.pdf>] [53 <./annex_valid_bus.pdf>]
-<DummyCentral.png, id=1070, 1125.45468pt x 517.935pt>
+<DummyCentral.png, id=1072, 1125.45468pt x 517.935pt>
 File: DummyCentral.png Graphic file (type png)
 <use DummyCentral.png>
 Package pdftex.def Info: DummyCentral.png  used on input line 2528.
 (pdftex.def)             Requested size: 252.94499pt x 116.40388pt.
-<DummyTerminal.png, id=1071, 1125.45468pt x 517.935pt>
+<DummyTerminal.png, id=1073, 1125.45468pt x 517.935pt>
 File: DummyTerminal.png Graphic file (type png)
 <use DummyTerminal.png>
 Package pdftex.def Info: DummyTerminal.png  used on input line 2534.
 (pdftex.def)             Requested size: 252.94499pt x 116.40388pt.
-<ControlBusArrayManual.png, id=1072, 1125.45468pt x 517.935pt>
+<ControlBusArrayManual.png, id=1074, 1125.45468pt x 517.935pt>
 File: ControlBusArrayManual.png Graphic file (type png)
 <use ControlBusArrayManual.png>
 Package pdftex.def Info: ControlBusArrayManual.png  used on input line 2545.
@@ -1878,19 +1878,19 @@ te-ment \T1/pcr/m/n/10 connect(dummyTerminal.terBus,
  []
 
 [54 <./DummyCentral.png (PNG copy)> <./DummyTerminal.png (PNG copy)>]
-<ControlBusArray.png, id=1079, 1125.45468pt x 517.935pt>
+<ControlBusArray.png, id=1081, 1125.45468pt x 517.935pt>
 File: ControlBusArray.png Graphic file (type png)
 <use ControlBusArray.png>
 Package pdftex.def Info: ControlBusArray.png  used on input line 2561.
 (pdftex.def)             Requested size: 252.94499pt x 116.40388pt.
  [55 <./ControlBusArrayManual.png (PNG copy)> <./ControlBusArray.png (PNG copy)
 >]
-<DummyCentralBug.png, id=1084, 1125.45468pt x 517.935pt>
+<DummyCentralBug.png, id=1086, 1125.45468pt x 517.935pt>
 File: DummyCentralBug.png Graphic file (type png)
 <use DummyCentralBug.png>
 Package pdftex.def Info: DummyCentralBug.png  used on input line 2591.
 (pdftex.def)             Requested size: 252.94499pt x 116.40388pt.
-<ControlBusArrayArray.png, id=1085, 1125.45468pt x 517.935pt>
+<ControlBusArrayArray.png, id=1087, 1125.45468pt x 517.935pt>
 File: ControlBusArrayArray.png Graphic file (type png)
 <use ControlBusArrayArray.png>
 Package pdftex.def Info: ControlBusArrayArray.png  used on input line 2606.
@@ -1936,9 +1936,9 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on Linkage.pdf (63 pages, 4760797 bytes).
+Output written on Linkage.pdf (63 pages, 4763577 bytes).
 PDF statistics:
- 1187 PDF objects out of 1200 (max. 8388607)
+ 1189 PDF objects out of 1200 (max. 8388607)
  841 compressed objects within 9 object streams
  168 named destinations out of 1000 (max. 500000)
  365 words of extra memory for PDF output out of 10000 (max. 10000000)
