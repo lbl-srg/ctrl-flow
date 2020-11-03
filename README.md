@@ -4,10 +4,10 @@
 
 
 The HTML version of the documentation is available at
-[]()
+[lbl-srg.github.io/linkage.js](https://lbl-srg.github.io/linkage.js)
 
 The PDF version of the documentation is available at
-[https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf)
+[github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf)
 
 ## How to Build
 
