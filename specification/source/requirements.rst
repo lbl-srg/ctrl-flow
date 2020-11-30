@@ -206,10 +206,10 @@ Detailed Functionalities
      - R
      - Available through buttons and standard keyboard shortcuts
 
-   * - Hover information
+   * - Help tooltip
      - R
      - R
-     - Class path when hovering an object in the diagram view and tooltip help for each GUI element
+     - Provide contextual help information to the user during each step of the workflow
 
    * - **Miscellaneous**
      -
