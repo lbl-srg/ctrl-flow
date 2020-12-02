@@ -191,20 +191,10 @@ Detailed Functionalities
      -
      - A user experience similar to modern web apps is expected e.g. `tranedesignassist.com <https://tranedesignassist.com/>`_.
 
-   * - Copy/Paste objects
-     - O
-     - R
-     - Copying and pasting a set of objects connected together copies the objects declarations and the corresponding connect  equations.
-
    * - Pan and zoom on mouse actions
      - N
      - R
      -
-
-   * - Undo/Redo
-     - O
-     - R
-     - Available through buttons and standard keyboard shortcuts
 
    * - Help tooltip
      - R
@@ -683,7 +673,7 @@ In certain cases it may be convenient to specify explicitly a one-to-one connect
 
 That logic is activated at the component level by the keyword ``connect.type == "explicit"``.
 
-The user provides for each connector the name of the component instance and connector instance to be connected to e.g. ``"port_1": "component1.connector2``.
+The user provides for each connector the name of the component instance and connector instance to be connected to e.g. ``"port_1": "component1.connector2"``.
 
 
 .. _sec_heuristic:
