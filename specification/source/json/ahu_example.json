@@ -67,18 +67,36 @@
                 "fanSup",
                 "fanSup_pos1"
             ]
+        },
+        {
+            "$id": "coiCoo",
+            "description": "Cooling coil",
+            "widget": {
+                "type": "Dropdown menu",
+                "options": ["None", "Chilled water", "Direct expansion"]
+            },
+            "value": "None",
+            "declaration": [
+                null,
+                "coiCoo",
+                "coiCoo_cla1"
+            ]
         }
     ],
     "controls": [
         {
             "$id": "have_airFloMeaSta",
-            "description": "Set to true if the AHU has Air Flow Measurement Station",
+            "description": "Set to true if the AHU has an Air Flow Measurement Station",
             "enabled": "#eco != 'None'",
             "widget": {
                 "type": "Boolean select"
             },
             "value": false,
-            "declaration": "have_airFloMeaSta"
+            "declaration (with inline dependency)": "None, just overwrite the value of the parameter with the same name",
+            "declaration (w/o inline dependency)": [
+                null,
+                "if #eco == 'Common OA damper' then senVFloOut else senVFloOut_pos1"
+            ]
         }
     ]
 }
