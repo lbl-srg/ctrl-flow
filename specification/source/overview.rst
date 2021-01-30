@@ -1,7 +1,16 @@
+########
 Overview
-========
+########
 
-The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems. It relies on two main components.
+The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems.
+
+The development targets two main categories of end users, also seen as two main use cases.
+
+#. Heating Ventilating and Air Conditioning (HVAC) engineers and designers who will utilize the software to specify the controls of HVAC systems in commercial buildings. In terms of use case, we will refer to this category as the *control specification workflow*.
+
+#. Building Energy Modeling (BEM) engineers who will use it to assess the energy use of HVAC systems based on a detailed representation of the equipment and controls that the tool will enable, and simulations that will be run using third party Modelica tools. In terms of use case, we will refer to this category as the *modeling and simulation workflow*.
+
+The software relies on two main components.
 
 #. A graphical user interface for editing Modelica classes in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
 
@@ -9,9 +18,9 @@ The software to develop is a graphical user interface for editing Modelica model
 
 We plan a phased development where
 
-#. the configuration widget will be first implemented as part of Phase 1 and integrated into an existing graphical editor for Modelica,
+#. the configuration widget will be first implemented as part of Phase 1 and integrated into an existing graphical editor for Modelica—the *control specification workflow* is the prioritized use case,
 
-#. the full-featured editor will be developed in a future phase, providing diagrammatic editing capabilities and integrating the configuration widget natively.
+#. the full-featured editor will be developed in a future phase, providing diagrammatic editing capabilities and integrating the configuration widget natively—the *modeling and simulation workflow* is the prioritized use case.
 
 
 .. admonition:: Revision Note (11/2020)

@@ -1,7 +1,8 @@
 .. _sec_architecture:
 
+#####################
 Software Architecture
----------------------
+#####################
 
 :numref:`linkage_architecture_legend` to :numref:`linkage_architecture_spa` provide architecture diagrams for the various integration targets.
 
@@ -15,8 +16,6 @@ Software Architecture
    The diagrams for the desktop app and the third-party application are removed.
 
 The following definitions and conventions are used.
-
-  Config(uration) data: pieces of data provided as input to the configuration widget, see :numref:`sec_data_model` for definitions and :numref:`sec_annex_json` for an actual example.
 
   Model data: pieces of data used by the graphical editor to allow manipulating a Modelica model. Those correspond to the Modelica code as interpreted by the editor according to its specific data model.
 

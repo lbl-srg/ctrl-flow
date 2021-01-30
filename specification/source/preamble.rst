@@ -2,9 +2,9 @@
 
    \pagestyle{plain}
 
-
+####################################
 Preamble and Conventions
-========================
+####################################
 
 This documentation specifies the requirements for Linkage software: *a graphical user interface for editing Modelica models of HVAC and control systems*.
 
@@ -16,6 +16,6 @@ This documentation specifies the requirements for Linkage software: *a graphical
 
    To clearly distinguish what constitutes requirements from what constitutes a design proposition open to some alternative approaches, we will use this warning format throughout the specification.
 
-   Furthermore we use the following **convention**.
+Furthermore we use the following **convention**.
 
-   - The words *must, must not, required, shall, shall not, should, should not, recommended, may, optional* in this document must be interpreted as described in `RFC2119 <https://tools.ietf.org/html/rfc2119>`_.
+- The words *must, must not, required, shall, shall not, should, should not, recommended, may, optional* in this document must be interpreted as described in `RFC2119 <https://tools.ietf.org/html/rfc2119>`_.

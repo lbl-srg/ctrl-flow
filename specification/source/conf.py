@@ -16,13 +16,13 @@ doc_version = 'V{} - Release after External Review'.format(release)
 copyright = '2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved'
 
 # Extensions
-
 extensions = [
     'sphinxcontrib.bibtex',
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
 ]
+bibtex_bibfiles = ['references.bib']
 
 # Rst_prolog is a string of reStructuredText that will be included at the beginning of every source file that is read.
 rst_prolog = '''
@@ -332,4 +332,4 @@ latex_elements['preamble'] = r'''
 '''
 
 def setup(app):
-    app.add_stylesheet('my-styles.css')
+    app.add_css_file('my-styles.css')

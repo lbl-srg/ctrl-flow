@@ -1,23 +1,14 @@
 .. _sec_annex:
 
+#####
 Annex
-=====
-
-.. _sec_annex_json:
-
-Example of the Configuration Data Structure
--------------------------------------------
-
-.. literalinclude:: json/ahu_example.json
-   :language: json
-   :caption: Partial example of the configuration data structure for an air handling unit (pseudo-code, especially for autoreferencing the data structure and writing conditional statements)
-   :name: code_conf_ahu
-
+#####
 
 .. _sec_annex_bus_example:
 
+******************************************
 Main Features of the Expandable Connectors
-------------------------------------------
+******************************************
 
 The main features of the expandable connectors (as described in :numref:`sec_signal_connectors`) are illustrated with a minimal example described in the figures below where:
 
@@ -149,8 +140,9 @@ The main features of the expandable connectors (as described in :numref:`sec_sig
 
 .. _sec_annex_bus_valid:
 
+*******************************************
 Validating the Use of Expandable Connectors
--------------------------------------------
+*******************************************
 
 The use of expandable connectors (control bus) is validated in case of a complex controller (``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``).
 
@@ -171,8 +163,9 @@ The results comparison to the original test case (without control bus) is presen
 
 .. _sec_annex_bus_array:
 
+*************************************************
 Validating the Use of Expandable Connector Arrays
--------------------------------------------------
+*************************************************
 
 Minimum examples illustrate that arrays of expandable connectors are differentially supported between Dymola and OCT. None of the tested Modelica tools seems to have a fully robust support. However, by reporting those bugs, it seems as a feature we can leverage for Linkage.
 
@@ -199,7 +192,7 @@ We start with the basic definition of an expandable connector ``AhuBus`` contain
 
 
 Connecting One Central System Model to an Array of Terminal System Models
-*************************************************************************
+=========================================================================
 
 The first test is illustrated in the figure below.
 
@@ -246,7 +239,7 @@ Incidentally we observe other bugs in Dymola related to the elaboration process 
 
 
 Connecting an Array of Central System Models to an Array of Terminal System Models
-**********************************************************************************
+==================================================================================
 
 We now try to connect an one-dimensional array of central system models ``DummyCentral dummyCentral[nAhu]`` to a two-dimensional array of terminal system models ``DummyTerminal dummyTerminal[nAhu, nTerAhu]``.
 
@@ -274,7 +267,7 @@ However, when manually adding the connect statement between the two *inside* con
 
 
 Passing on a Scalar Variable to an Array of System Models
-*********************************************************
+=========================================================
 
 The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.
