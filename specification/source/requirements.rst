@@ -4,10 +4,6 @@
 Requirements
 ##################
 
-`TODO`
-
-* Rename specialized class (reserved) by suitable convention.
-
 
 .. _sec_general_description:
 
@@ -276,13 +272,15 @@ Input Fields
 ============
 
 Each input field described in this paragraph must be rendered in the UI with the description string provided at the declaration level.
-Optionally a software setting parameter will enable to hide the instance name—the variable name is not needed in the control specification workflow.
+Optionally a software setting parameter will enable to hide the instance name, which is not needed in the control specification workflow.
+
+`Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?).`
 
 
 Validation
 ----------
 
-Values entered by the user must be validated *upon submit* against the Modelica language specification :cite:`Modelica2017` (type check and dimension check for arrays) and parameter attributes such as ``min`` and ``max``.
+Values entered by the user must be validated *upon submit* against the Modelica language specification :cite:`Modelica2017`—type check, with an additional syntax and dimension check for arrays—and parameter attributes such as ``min`` and ``max``.
 
 A color code may be used to identify the fields with incorrect values and the corresponding error message may be displayed on hover.
 
@@ -290,16 +288,16 @@ A color code may be used to identify the fields with incorrect values and the co
 Variables
 ---------
 
-Each variable (see :cite:`Modelica2017` §4.8) declared as a parameter without a ``final`` modifier must have a corresponding input field in the UI.
+Each variable declared as a parameter without a ``final`` modifier must have a corresponding input field in the UI.
 
-If the variable has the type Boolean a dropdown menu must be used and populated with ``true``, ``false`` and ``Unspecified``. The latter option may be simply left blank.
+If the variable has the type Boolean a dropdown menu must be used and populated with ``true``, ``false`` and ``Unspecified`` (no default). The latter option may be simply left blank.
 
 If the variable has the type of an enumeration a dropdown menu must be used.
-The dropdown menu must display the description string of each enumeration element and fallback to the name of each element.
+The dropdown menu must display the description string of each enumeration element and fallback to the name of each element. In addition an ``Unspecified`` (no default) option must be included, which may be simply left blank.
 
 If the variable is an array, a minimum requirement is that its value can be input using any array constructor syntax specified in :cite:`Modelica2017`.
-Optionally, a tailored input field for arrays may be made available *in addition*, for instance to allow the input of each array element within a cell of a table.
-However the previous, literal input based on the Modelica array syntax must always be available.
+Optionally a tailored input field for arrays may be made available *in addition*, for instance to allow the input of each array element within a cell of a table.
+However, the previous input logic based on a literal array constructor must always be available.
 
 
 Record Type
@@ -313,19 +311,19 @@ Replaceable Keyword
 -------------------
 
 Each declaration with the keyword ``replaceable`` and a choices annotation—either from the Modelica specification or a vendor-specific annotation, see :numref:`sec_vendor_annotations`—must have a corresponding dropdown menu in the UI.
-See :numref:`tab_param_dialog` for additional requirements on how to populate the dropdown menu.
+See :numref:`tab_param_dialog` for additional requirements for how to populate the dropdown menu.
 
 In addition, if the declaration corresponds to the instantiation of a component, the previous logic must be applied recursively at each level of composition.
-`Do we also require parameter setting? Or just redeclaration as specified currently?`.
+`Do we also require parameter setting at each level? Or just redeclaration as specified currently?`.
 An indentation may be used to show the different levels of composition.
 
-Note that each variable or record may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.
+Note that each variable may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.
 
 
 Final Keyword
 -------------
 
-The ``final`` prefix must result in no rendering in the UI.
+The ``final`` prefix must result in no item being rendered in the UI for the corresponding declaration.
 
 
 Parameter Dialog Annotations
@@ -347,10 +345,10 @@ The UI of the configuration widget must comply with the specification of the *pa
      - See :cite:`Modelica2017` §18.7 for reference.
 
    * - ``Dialog(tab|group)``
-     - The UI must render the structure in groups and tabs as specified by this annotation. The groups may be collapsable with a button to expand or collapse all the groups.
+     - The UI must render the structure in groups and tabs as specified by this annotation. The groups may be collapsible with a button to expand or collapse all the groups.
 
    * - ``Dialog(enable)``
-     - ``Dialog(enable=false)`` must result in the input field not being rendered in the UI—as opposed to being only greyed out but still visible in Dymola.
+     - ``Dialog(enable=false)`` must result in no item being rendered in the UI for the corresponding declaration—as opposed to being only greyed out but still visible in Dymola.
 
    * - ``Dialog(showStartAttribute)``
      - The configuration widget should not display the input for the start value of a variable, this is not required in Phase 1.
@@ -381,7 +379,7 @@ Some vendor-specific annotations are required to facilitate the use of the templ
 Those annotations are specified below using the lexical conventions from :cite:`Modelica2017` Appendix B.1.
 
 Note that some annotations require to interpret some redeclare statements prior to compile time, in order to "visit" the redeclared classes and evaluate clauses like ``coiCoo.typHex <> Types.HeatExchanger.None``—which Dymola does not support, see for instance ``annotation(Dialog(enable=typHex<>Types.HeatExchanger.None))`` which has no effect.
-The UI must dynamically evaluate such clauses and update the parameter dialog consequently.
+The UI must dynamically evaluate such clauses and update the parameter dialog accordingly.
 
 
 Declaration Annotation
@@ -409,27 +407,27 @@ Class Annotation
 
 ``"__LinkageTemplate"``
 
-  Description: This annotation identifies either a template or a package containing templates. It is used by the tool to simplify the tree view of the loaded libraries to only display the templates.
+  Description: This annotation identifies either a template or a package containing templates. It is used by the tool to simplify the tree view of the loaded libraries and only display the templates.
 
 
 Class Manipulation and Workflow
 ===============================
 
-From the original Modelica templates, the configuration workflow enables generating models representing various system configurations.
-Those classes must be organized in a package structure complying with the Modelica specification.
+From the original template classes, the configuration workflow enables generating classes representing specific system configurations.
+Those specific classes must be organized in a package structure (the user projects) complying with the Modelica specification.
 Note that according to the specification, a package can be either a single file (for instance ``NameOfPackage.mo``) or a directory containing a ``package.mo`` file, and the package file may itself include definitions of subpackages.
 
-The UI must provide a means to explore both the package containing the templates and the package containing the specialized classes.
+The UI must provide a means to explore both the package containing the template classes and the package containing the specific classes (the user projects).
 
-* A file explorer with a tree view reveals the package structure in a left panel.
+* A file explorer with a tree view should reveal the package structure in a left panel.
 
 * Only the classes defined in the package file, or enumerated in the ``package.order`` file shall be displayed. And they shall be displayed in the same order as the one specified by those two files.
 
 * The left panel is divided vertically in two parts: the upper part for the templates, the lower part for the user projects.
 
-* The description string of each package must be displayed when hovering the package in the file explorer.
+* The description string of each class must be displayed, for instance when hovering a package or a model in the file explorer.
 
-Consider the package structure illustrated in the following example.
+The following example illustrates typical package structures and the way they should be displayed in the UI.
 
 .. code-block:: bash
    :name: code_packages_system
@@ -439,13 +437,12 @@ Consider the package structure illustrated in the following example.
    ├── Templates
    │   ├── AHUs
    │   │   ├── Data
-   │   │   ├── ...
    │   │   ├── package.mo        # Contains __Linkage_Template annotation.
    │   │   ├── package.order
    │   │   └── VAVSingleDuct.mo  # Contains __Linkage_Template annotation.
    │   ├── BoilerPlants
    │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
-   │   ├── ChillerPlants         # Enclosed file package.mo contains __Linkage_Template annotation.
+   │   ├── ChillerPlants
    │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
    │   ├── TerminalUnits
    │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
@@ -456,15 +453,18 @@ Consider the package structure illustrated in the following example.
    └── package.order
 
    UserProjects
-   ├── Project1
+   ├── Project_1
    │   ├── AHUs
    │   │   ├── Data
    │   │   ├── package.mo
    │   │   ├── package.order
    │   │   └── VAV_1.mo
    │   ├── BoilerPlants
+   │   │   └── ...
    │   ├── ChillerPlants
+   │   │   └── ...
    │   ├── TerminalUnits
+   │   │   └── ...
    │   ├── package.mo
    │   └── package.order
    ├── {Project_i}
@@ -480,8 +480,7 @@ This should be rendered in the UI as follows.
 
     Buildings
     ├── AHUs
-    │   ├── VAVSingleDuct
-    │   └── ...
+    │   └── VAVSingleDuct
     ├── BoilerPlants
     │   └── ...
     ├── ChillerPlants
@@ -490,13 +489,16 @@ This should be rendered in the UI as follows.
         └── ...
 
     UserProjects
-    ├── Project1
+    ├── Project_1
     │   ├── AHUs
     │   │   ├── VAV_1
     │   │   └── Data
     │   ├── BoilerPlants
+    │   │   └── ...
     │   ├── ChillerPlants
+    │   │   └── ...
     │   └── TerminalUnits
+    │       └── ...
     └── {Project_i}
         └── ...
 
@@ -505,7 +507,7 @@ The suggested workflow is as follows.
 
 #. The template package of the Modelica Buildings Library is preloaded. The tool provides the option to load additional template packages from third-party libraries. A template package is identified by the class annotation ``__Linkage_Template`` in the package file.
 
-   * Only the classes with the annotation ``__Linkage_Template`` should be displayed.
+   * Only the classes with the annotation ``__Linkage_Template`` should be displayed in the template file explorer.
 
 #. The user can select whether to create a ``UserProjects`` from scratch or to load a package stored locally on the device.
 
@@ -515,35 +517,37 @@ The suggested workflow is as follows.
 
 #. The user can create a new project, for instance by right clicking on ``UserProjects`` which renders a menu with the options *Add New*, etc.
 
-#. The user can select the working project to save the new specialized classes, for instance by right clicking on ``Project1`` which renders a menu with the options *Set as Working Project*, *Rename*, *Delete*, etc.
+#. The user can select the working project to save the new specific classes, for instance by right clicking on ``Project_1`` which renders a menu with the options *Set Working Project*, *Rename*, *Delete*, etc.
 
-   * The current working project must be clearly highlighted in the file explorer.
+   * The current working project must be clearly highlighted in the user projects file explorer.
 
-#. The user select a template to start the configuration workflow, for instance by right clicking on ``VAVSingleDuct`` which renders a menu with the option *Start Configuring*, etc.
+#. The user selects a template to start the configuration workflow, for instance by right clicking on ``VAVSingleDuct`` which renders a menu with the option *Start Configuring*, etc.
 
-#. The parameter dialog of the template class is generated in the configuration panel. In addition, two input fields allows specifying the simple name and the description string of the specialized class.
+#. The parameter dialog of the template class is generated in the configuration panel. In addition, two input fields allows specifying the simple name and the description string of the specific class to be generated.
 
 #. A class is created under the corresponding subpackage (for instance ``AHUs``) of the current working project in the ``UserProjects`` package.
 
    * The tree view of the ``UserProjects`` package is updated dynamically.
    * The class name and its description string correspond to ones previously input by the user.
    * The new class is defined by extending the original template with all the class modifications corresponding to the user inputs.
-   * The full composed name (dot notation starting from the top-level library package, for instance ``Buildings``) is used to reference each class within the specialized class.
+   * The full composed name (dot notation starting from the top-level library package, for instance ``Buildings``) is used to reference each class within the specific class.
 
-#. Optionally, a record class of the same name is created under the corresponding subpackage (for instance ``AHUs.Data``). The record contains the same class modifications as the ones applied to the records of the configured models. This will allow the user to further use this record to propagate the parameters of an instance of the configured model to a top-level simulation model.
+#. Optionally, a record class of the same name is created under the corresponding subpackage, for instance ``AHUs.Data``. The record contains the same class modifications as the ones applied to the records of the specific class. This will allow the user to further use this record to propagate the parameters of an instance of the specific class to a top-level simulation model.
 
 #. At least two action buttons *Save* and *Cancel* are required in the configuration panel. The class within the ``UserProjects`` package is only modified upon *Save*. All the modifications are reset to the last saved state upon *Cancel*.
 
-#. Once created, the user can select each specialized class in the file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Modify*, *Delete*, etc.
+#. Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Modify*, *Delete*, etc.
 
-#. Export functionalities are available both at each level (package or specialized class).
+#. Export functionalities are available from the user projects file explorer, at the level of the  package or at the level of the specific class.
 
 
 ******************
 Exception Handling
 ******************
 
-Two mechanisms for handling exceptions are
+`To be updated.`
+
+Two mechanisms for handling exceptions...
 
 One to validate the user input.
 

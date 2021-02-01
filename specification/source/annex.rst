@@ -10,7 +10,7 @@ Annex
 Main Features of the Expandable Connectors
 ******************************************
 
-The main features of the expandable connectors (as described in :numref:`sec_signal_connectors`) are illustrated with a minimal example described in the figures below where:
+The main features of the expandable connectors are illustrated with a minimal example described in the figures below where
 
 * a controlled system consisting in a sensor (idealized with a real expression) and an actuator (idealized with a simple block passing through the value of the input control signal) is connected with,
 
