@@ -538,7 +538,7 @@ The suggested workflow is as follows.
 
 #. Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Modify*, *Delete*, etc.
 
-#. Export functionalities are available from the user projects file explorer, at the level of the  package or at the level of the specific class.
+#. Export functionalities (Modelica code, see :numref:`sec_modelica_export`, or documentation, see :numref:`sec_documentation_export`) are available from the user projects file explorer, at the level of the package or at the level of the specific class.
 
 
 ******************
@@ -552,6 +552,17 @@ Two mechanisms for handling exceptions...
 One to validate the user input.
 
 Break logged to the web console.
+
+
+.. _sec_modelica_export:
+
+***************
+Modelica Export
+***************
+
+`To be updated.`
+
+Translate JSON to Modelica, compress if package, download.
 
 
 .. _sec_documentation_export:
