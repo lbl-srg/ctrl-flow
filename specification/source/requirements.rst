@@ -4,9 +4,9 @@
 Requirements
 ##################
 
-.. note::
+`TODO`
 
-   Most of the concepts used to develop that specification are defined in the Modelica Language Specification :cite:`Modelica2017`.
+* Rename specialized class (reserved) by suitable convention.
 
 
 .. _sec_general_description:
@@ -31,9 +31,9 @@ The following requirements apply to both the configuration widget (Phase 1 of th
   * any third-party application with the suitable framework to serve a single page HTML document executing JS code—with access to the local file system through the API of the third-party application:
 
     .. admonition:: Revision Note (10/2020)
-       :class: danger
+      :class: danger
 
-       The following bullet point is modified to require “proof of concept” for third party integration through a demonstration and not through a completed integration.
+      The following bullet point is modified to require “proof of concept” for third party integration through a demonstration and not through a completed integration.
 
     * For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is an existing graphical editor for Modelica.
       To demonstrate the feasibility of this integration, a proof of concept shall be developed, together with the documentation describing how this workflow can be accomplished.
@@ -42,12 +42,14 @@ The following requirements apply to both the configuration widget (Phase 1 of th
     * For the second development phase, the primary integration target is `OpenStudio® <https://www.openstudio.net>`_ (OS) while the widget to be integrated is now the full-featured editor (including the configuration widget).
       An example of a JS application embedded in OS is `FloorspaceJS <https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor>`_. The standalone SPA lives here: `https://nrel.github.io/floorspace.js <https://nrel.github.io/floorspace.js>`_. FloorspaceJS may be considered as a reference for the development.
 
-.. admonition:: Revision Note (01/2021)
-   :class: danger
+* The core components parsing and generating Modelica classes must rely on JSON-formatted Modelica.
+  For this purpose, LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_, based on the definition of two JSON schemas:
 
-   The following bullet point is modified to specify Modelica as the language supporting the templating.
+  * `Schema-modelica.json <https://lbl-srg.github.io/modelica-json/modelica.html>`_ validates the JSON files parsed from Modelica.
 
-* The core components parsing and generating Modelica classes must rely on JSON-formatted Modelica. LBL has developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_ that should be used for interfacing those core components with native Modelica code.
+  * `Schema-CDL.json <https://lbl-srg.github.io/modelica-json/CDL.html>`_ validates the JSON files parsed from `CDL <http://obc.lbl.gov/specification/cdl>`_ (subset of Modelica language used for control sequence implementation).
+
+  The software should call the Modelica to JSON translator for interfacing with native Modelica code.
 
 .. admonition:: Revision Note (10/2020)
    :class: danger
@@ -76,16 +78,11 @@ The software requirements regarding platform and environment compatibility are p
 
 
 UI Visual Structure
-===========================
-
-.. admonition:: Revision Note (11/2020)
-   :class: danger
-
-   Only the requirements pertaining to the configuration widget are retained.
+===================
 
 A responsive design is required.
 
-For the record, a mockup of the UI for the full featured editor is presented :numref:`screen_mockup`.
+A mockup of the UI for the full-featured editor is presented :numref:`screen_mockup`.
 For Phase 1, only the graphical features pertaining to the configuration widget in the right panel should be considered.
 
 .. figure:: img/screen_mockup.*
@@ -93,26 +90,34 @@ For Phase 1, only the graphical features pertaining to the configuration widget 
 
    UI Visual Structure
 
-.. admonition:: Revision Note (01/2021)
-   :class: danger
-
-   The paragraph below is added.
-
-Using the Modelica language for the templating implies that the configuration widget must comply with most of the specification of the *parameter dialog* from :cite:`Modelica2017` §18.7.
-However, part of the specification is only optional in Phase 1 because only a subset of all the user inputs of a Modelica model are needed in the control specification workflow. For instance the type of medium, the nominal values of physical quantities, various modeling assumptions, etc. are only needed in the modeling and simulation workflow.
-
-The features of the Modelica specification that are required for Phase 1 are detailed in :numref:`tab_gui_add`.
-
-In addition, the configuration widget must include a mechanism to select the subset of user inputs that must be exposed in the UI. For this purpose a vendor-specific annotation at the declaration level is specified.
-
-Eventually, the core components developed in Phase 1 must be reusable when developing a full featured parameter dialog widget in Phase 2, with the ability to switch between a control specification mode—where only a subset of the user inputs being exposed—and a modeling and simulation workflow—with the complete set of the user inputs being exposed.
-
 
 .. _sec_functionalities:
 
-***************************
-Detailed Functionalities
-***************************
+**************************
+High-Level Functionalities
+**************************
+
+The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
+It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
+The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica :cite:`OBC`.
+
+.. note::
+
+   `CtrlSpecBuilder <https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F>`_ is a tool widely used in the HVAC industry for specifying control systems. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.
+
+
+The implementation of control sequences must comply with OpenBuildingControl requirements, see *§7 Control Description Language* and *§8 Code Generation* in :cite:`OBC`. Especially:
+
+* It is required that the CDL part of the model can be programmatically isolated from the rest of the model in order to be translated into vendor-specific code (by means of a third-party translator).
+
+* The expandable connectors (control bus) are not part of CDL specification. Those are used to connect
+
+  * control blocks and equipment models within a composed sub-system model, e.g., AHU or terminal unit,
+
+  * different sub-system models together to compose a whole system model, e.g., VAV system serving different rooms.
+
+  This is consistent with OpenBuildingControl requirement to provide control sequence specification at the equipment level only (controller programming), not for system level applications (system programming).
+
 
 :numref:`tab_gui_func` provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor.
 
@@ -120,8 +125,8 @@ Detailed Functionalities
    :class: danger
 
    * **(10/2020)** The features "Copy/Paste Objects" and "Undo/Redo" are optional and not required for Phase 1.
-
    * **(11/2020)** :numref:`tab_gui_func` is edited to focus on requirements pertaining to Phase 1.
+   * **(01/2021)** The requirement for automatic medium propagation between connected components is removed. The requirements for executing the conversion scripts is removed for Phase 1.
 
 .. _tab_gui_func:
 
@@ -137,7 +142,7 @@ Detailed Functionalities
    * - **Main functionalities**
      -
      -
-     - (as per :numref:`sec_general_description`)
+     - See :numref:`sec_general_description` for reference.
 
    * - Diagram editor for Modelica classes
      - N
@@ -177,9 +182,9 @@ Detailed Functionalities
        Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators are developed by LBL).
 
    * - Library version management
+     - P
      - R
-     - R
-     - If a loaded class contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library, prompts the user for update if the version number does not match, executes the conversion script per user request.
+     - If a loaded class contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library. In Phase 1, if the version number does not match the tool simply alerts the user of version incompatibility. In future development, if the version number does not match the tool prompts the user for update and executes the conversion script per user request.
 
    * - Path discovery
      - R
@@ -242,487 +247,307 @@ Detailed Functionalities
        At least an HTML version is required, PDF version is optional (may rely on Sphinx or VuePress).
 
 
+*************************
+Modelica-Based Templating
+*************************
 
-.. _tab_gui_add:
+The templates used by the configuration widget will be developed in Modelica.
 
-.. list-table:: Additional functionalities for Modelica-based templating -- R: required, P: required partially, O: optional, N: not required
-   :widths: 30 10 10 50
-   :header-rows: 1
+An prototype of a template for an air handling unit is available in the feature branch ``issue1374_templateVAV`` of `Modelica Buildings Library <https://github.com/lbl-srg/modelica-buildings>`_ within the package ``Buildings.Experimental.Templates.AHUs``.
 
-   * - Feature
-     - Phase 1
-     - Future
-     - Comment
-
-   * - **Modelica annotations for the GUI**
-     -
-     -
-     - (As per :cite:`Modelica2017` §18.7)
-
-   * - ``Dialog(tab|group)``
-     - R
-     - R
-     - The UI must render the structure in groups and tabs as specified by this annotation. The groups may be collapsable with a button to expand or collapse all the groups.
-
-   * - ``Dialog(enable)``
-     - R
-     - R
-     - ``Dialog(enable=false)`` should result in the input field not being rendered in the UI—as opposed to being only greyed out but still visible in Dymola.
-
-   * - ``Dialog(showStartAttribute)``
-     - N
-     - R
-     - The configuration widget should not display the input for the start value of a variable, this is not required in Phase 1.
-
-   * - ``Dialog(colorSelector)``
-     - N
-     - R
-     -
-
-   * - ``Dialog(loadSelector|saveSelector)`` and ``Selector(filter|caption)``
-     - R
-     - R
-     - A mechanism to display a file dialog to select a file is required. The ``filter`` and ``caption`` attributes must also be interpreted as specified in :cite:`Modelica2017`.
-
-
-   * - **Annotation Choices for Modifications and Redeclarations**
-     -
-     -
-     - (As per :cite:`Modelica2017` §18.11 and §7.3.4)
-
-   * - ``choicesAllMatching``
-     - R
-     - R
-     - A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a record constructor, such as ``record A = B(...);``) given a constraining class. The enumeration must display the class description string and default to the class simple name.
-
-   * - ``choices(choice)``
-     - R
-     - R
-     - The enumeration must display the description string provided within each inner ``choice`` and default to the description string of the redeclared class, and ultimately default to the simple name of the redeclared class.
-
-
-.. _sec_modelica_gui:
-
-******************************************************
-Requirements Related to the Modelica Language
-******************************************************
-
-.. admonition:: Revision Note (11/2020)
-   :class: danger
-
-   This paragraph replaces the paragraph "Modelica Graphical User Interface" and only retains the requirements pertaining to the configuration widget.
-
-
-Language Specification
-===========================
-
-The software must comply with the Modelica language specification :cite:`Modelica2017` for every aspect relating to (the chapter numbers refer to :cite:`Modelica2017`):
+To support the use of Modelica, the software must comply with the language specification :cite:`Modelica2017` for every aspect pertaining to (the chapter numbers refer to :cite:`Modelica2017`):
 
 * validating the syntax of the user inputs: see *Chapter 2 Lexical Structure* and *Chapter 3 Operators and Expressions*,
 
-* the connection between objects: see *Chapter 9 Connectors and Connections*,
+* the class names: see *Chapter 5 Scoping, Name Lookup, and Flattening*,
 
 * the structure of packages: see *Chapter 13 Packages*,
 
 * the annotations: see *Chapter 18 Annotations*.
 
-JSON Representation
-===========================
+Furthermore, in a control specification workflow only a subset of all the user inputs of a Modelica model are needed. For instance the type of medium, the nominal values of physical quantities, various modeling assumptions, etc. are only needed in the modeling and simulation workflow.
+Therefore, the configuration widget must include a mechanism to select the subset of user inputs that must be exposed in the UI.
+For this purpose a vendor-specific annotation will be used, see :numref:`sec_vendor_annotations`.
 
-LBL has already developed a `Modelica to JSON translator <https://lbl-srg.github.io/modelica-json/>`_.
-This development includes the definition of two JSON schemas:
+Eventually, the core components developed in Phase 1 must be reusable for the development of a full-featured parameter dialog widget in Phase 2, with the ability to switch between a control specification mode—with only a subset of the user inputs being exposed—and a modeling and simulation workflow—with the complete set of the user inputs being exposed.
 
-#. `Schema-modelica.json <https://lbl-srg.github.io/modelica-json/modelica.html>`_ validates the JSON files parsed from Modelica.
 
-#. `Schema-CDL.json <https://lbl-srg.github.io/modelica-json/CDL.html>`_ validates the JSON files parsed from `CDL <http://obc.lbl.gov/specification/cdl>`_ (subset of Modelica language used for control sequence implementation).
+Input Fields
+============
 
-Linkage should leverage those developments by consuming and outputting Modelica files formatted into JSON, without having to parse the Modelica syntax.
+Each input field described in this paragraph must be rendered in the UI with the description string provided at the declaration level.
+Optionally a software setting parameter will enable to hide the instance name—the variable name is not needed in the control specification workflow.
 
+
+Validation
+----------
+
+Values entered by the user must be validated *upon submit* against the Modelica language specification :cite:`Modelica2017` (type check and dimension check for arrays) and parameter attributes such as ``min`` and ``max``.
+
+A color code may be used to identify the fields with incorrect values and the corresponding error message may be displayed on hover.
+
+
+Variables
+---------
+
+Each variable (see :cite:`Modelica2017` §4.8) declared as a parameter without a ``final`` modifier must have a corresponding input field in the UI.
+
+If the variable has the type Boolean a dropdown menu must be used and populated with ``true``, ``false`` and ``Unspecified``. The latter option may be simply left blank.
+
+If the variable has the type of an enumeration a dropdown menu must be used.
+The dropdown menu must display the description string of each enumeration element and fallback to the name of each element.
+
+If the variable is an array, a minimum requirement is that its value can be input using any array constructor syntax specified in :cite:`Modelica2017`.
+Optionally, a tailored input field for arrays may be made available *in addition*, for instance to allow the input of each array element within a cell of a table.
+However the previous, literal input based on the Modelica array syntax must always be available.
+
+
+Record Type
+-----------
+
+All the declarations within a parameter of type record, and recursively of all the enclosed record parameters, must have a corresponding input field in the UI.
+An indentation may be used to show the different levels of composition.
+
+
+Replaceable Keyword
+-------------------
+
+Each declaration with the keyword ``replaceable`` and a choices annotation—either from the Modelica specification or a vendor-specific annotation, see :numref:`sec_vendor_annotations`—must have a corresponding dropdown menu in the UI.
+See :numref:`tab_param_dialog` for additional requirements on how to populate the dropdown menu.
+
+In addition, if the declaration corresponds to the instantiation of a component, the previous logic must be applied recursively at each level of composition.
+`Do we also require parameter setting? Or just redeclaration as specified currently?`.
+An indentation may be used to show the different levels of composition.
+
+Note that each variable or record may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.
+
+
+Final Keyword
+-------------
+
+The ``final`` prefix must result in no rendering in the UI.
+
+
+Parameter Dialog Annotations
+============================
+
+The UI of the configuration widget must comply with the specification of the *parameter dialog annotations* from :cite:`Modelica2017` §18.7.
+:numref:`tab_param_dialog` specifies how each feature of this part of the Modelica specification must be addressed.
+
+.. _tab_param_dialog:
+
+.. list-table:: Additional functionalities for Modelica-based templating -- R: required, P: required partially, O: optional, N: not required
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Feature
+     - Comment
+
+   * - **Modelica annotations for the GUI**
+     - See :cite:`Modelica2017` §18.7 for reference.
+
+   * - ``Dialog(tab|group)``
+     - The UI must render the structure in groups and tabs as specified by this annotation. The groups may be collapsable with a button to expand or collapse all the groups.
+
+   * - ``Dialog(enable)``
+     - ``Dialog(enable=false)`` must result in the input field not being rendered in the UI—as opposed to being only greyed out but still visible in Dymola.
+
+   * - ``Dialog(showStartAttribute)``
+     - The configuration widget should not display the input for the start value of a variable, this is not required in Phase 1.
+
+   * - ``Dialog(colorSelector)``
+     - This is not required in Phase 1.
+
+   * - ``Dialog(loadSelector|saveSelector)`` and ``Selector(filter|caption)``
+     - A mechanism to display a file dialog to select a file is required. The ``filter`` and ``caption`` attributes must also be interpreted as specified in :cite:`Modelica2017`.
+
+
+   * - **Annotation Choices for Modifications and Redeclarations**
+     - See :cite:`Modelica2017` §18.11 and §7.3.4 for reference.
+
+   * - ``choicesAllMatching``
+     - A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a class constructor, such as ``class A = B(...);``) given a constraining class. The enumeration must display the description string of the class and fallback to the simple name of the class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.
+
+   * - ``choices(choice)``
+     - The enumeration must display the description string provided within each inner ``choice`` and fallback to the description string of the redeclared class, and ultimately fallback to the simple name of the redeclared class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.
+
+
+.. _sec_vendor_annotations:
 
 Vendor-Specific Annotations
 ===========================
 
+Some vendor-specific annotations are required to facilitate the use of the templates.
+Those annotations are specified below using the lexical conventions from :cite:`Modelica2017` Appendix B.1.
 
+Note that some annotations require to interpret some redeclare statements prior to compile time, in order to "visit" the redeclared classes and evaluate clauses like ``coiCoo.typHex <> Types.HeatExchanger.None``—which Dymola does not support, see for instance ``annotation(Dialog(enable=typHex<>Types.HeatExchanger.None))`` which has no effect.
+The UI must dynamically evaluate such clauses and update the parameter dialog consequently.
 
 
-Declaration Level
+Declaration Annotation
+----------------------
 
+Each declaration may have a hierarchical vendor-specific annotation ``"__Linkage" class-modification`` that must be interpreted, with the following possible attributes.
 
+``"choicesConditional" "(" [ "condition" "=" logical-expression "," choices-annotation ] { "," "condition" "=" logical-expression "," choices-annotation } ")"``
 
+  Description: This annotation enables specifying a Modelica choices annotation (see :cite:`Modelica2017` §7.3.4) *conditionally* to any logical expression. Both the logical expression and the class modification specified within the choices annotation must be valid in the variable scope of the class where they are used. This annotation takes precedence on Modelica ``choices`` and ``choicesAllMatching`` annotation. The UI must render the choices corresponding to the condition evaluated as true, with the same logic as the one described for the choices annotation in :numref:`tab_param_dialog`. If no condition is evaluated as true of if ``choices()`` is empty for the condition evaluated as true, no enumeration shall be rendered. If multiple conditions are evaluated as true, no enumeration shall be rendered and an error message shall be logged into the web console.
 
-Class Level
+  Example: See the declaration ``replaceable Economizers.None eco`` in `VAVSingleDuct.mo <https://github.com/lbl-srg/modelica-buildings/blob/issue1374_templateVAV/Buildings/Experimental/Templates/AHUs/VAVSingleDuct.mo>`_.
 
+``"select" "(" [ "condition" "=" logical-expression "," class-modification ] { "," "condition" "=" logical-expression "," class-modification } ")"``
 
+  Description: This annotation enables a programmatic class modification (such as a redeclaration) based on any logical expression. Both the logical expression and the class modification must be valid in the variable scope of the class where they are used. This annotation takes precedence on Modelica ``choices`` and ``choicesAllMatching`` annotation. No enumeration shall be rendered in the UI for any declaration containing this annotation.
 
-``"__Linkage" class-modification``
+``"display" "=" logical-expression``
 
-* TODO: validate that ``class-modification`` is actually valid in the scope of the class where the redeclaration happens (similar issue with ``choices`` annotation).
+  Description: This annotation enables displaying (or hiding) some parameters in the UI. It takes precedence on Modelica ``Dialog(enable)`` annotation, and must be interpreted with the same logic as the one described for the latter in :numref:`tab_param_dialog`. This annotation adds another level of flexibility to the built-in Modelica ``Dialog(enable)`` annotation, typically needed to render only a subset of the user input fields in a control specification workflow.
 
-  Example: The syntax of ``select`` in ``Buildings.Experimental.Templates.AHUs.Main.VAVSingleDuct.datEco`` is valid.
 
-  Check ``datCoi(redeclare parameter Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized datHex)`` in ``Buildings.Experimental.Templates.AHUs.Main.VAVSingleDuct_outer``
+Class Annotation
+----------------
 
-* ``"choicesConditional" "(" [ "condition" "=" logical-expression "," choices-annotation ] { "," "condition" "=" logical-expression "," choices-annotation } ")"``
+``"__LinkageTemplate"``
 
-  Example: see declaration of ``Buildings.Experimental.Templates.AHUs.Main.VAVSingleDuct.eco``.
+  Description: This annotation identifies either a template or a package containing templates. It is used by the tool to simplify the tree view of the loaded libraries to only display the templates.
 
-  Takes precedence on Modelica ``choices`` and ``choicesAllMatching`` annotation. Choices are rendered in Linkage UI based on the vendor-specific annotation. Note that ``choices()`` annotation can be empty in which case no enumeration shall be rendered.
 
-  Solves: Modelica ``choices`` annotation does not allow conditional specification of the choices to be rendered.
+Class Manipulation and Workflow
+===============================
 
-* ``"select" "(" [ "condition" "=" logical-expression "," class-modification ] { "," "condition" "=" logical-expression "," class-modification } ")"``
+From the original Modelica templates, the configuration workflow enables generating models representing various system configurations.
+Those classes must be organized in a package structure complying with the Modelica specification.
+Note that according to the specification, a package can be either a single file (for instance ``NameOfPackage.mo``) or a directory containing a ``package.mo`` file, and the package file may itself include definitions of subpackages.
 
-  Takes precedence on Modelica ``choices`` and ``choicesAllMatching`` annotation. No enumeration is rendered in Linkage UI.
+The UI must provide a means to explore both the package containing the templates and the package containing the specialized classes.
 
-  Solves: Modelica does not allow conditional ``element-redeclaration``.
+* A file explorer with a tree view reveals the package structure in a left panel.
 
-* ``"display" "=" logical-expression``
+* Only the classes defined in the package file, or enumerated in the ``package.order`` file shall be displayed. And they shall be displayed in the same order as the one specified by those two files.
 
-  To display/hide some parameters from the UI in a control configuration mode (TODO: specify how this mode is enabled), for instance the medium, dynamics, etc.
+* The left panel is divided vertically in two parts: the upper part for the templates, the lower part for the user projects.
 
-  Note that Modelica annotation ``Dialog(enable=false)`` should result in the input field not being rendered at all in the UI—as opposed to being only greyed out but still visible in Dymola.
+* The description string of each package must be displayed when hovering the package in the file explorer.
 
-Note that the above requires to interpret the redeclare statements before compile time in order to "visit" the redeclared classes and evaluate clauses like ``coiCoo.typHex <> Types.HeatExchanger.None``—which Dymola does not do for instance with ``annotation(Dialog(enable=typHex<>Types.HeatExchanger.None))``.
+Consider the package structure illustrated in the following example.
 
+.. code-block:: bash
+   :name: code_packages_system
+   :caption: Example of the package structure for the templates and user projects (in the file system)
 
+   Buildings
+   ├── Templates
+   │   ├── AHUs
+   │   │   ├── Data
+   │   │   ├── ...
+   │   │   ├── package.mo        # Contains __Linkage_Template annotation.
+   │   │   ├── package.order
+   │   │   └── VAVSingleDuct.mo  # Contains __Linkage_Template annotation.
+   │   ├── BoilerPlants
+   │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
+   │   ├── ChillerPlants         # Enclosed file package.mo contains __Linkage_Template annotation.
+   │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
+   │   ├── TerminalUnits
+   │   │   └── ...               # Enclosed file package.mo contains __Linkage_Template annotation.
+   │   ├── package.mo
+   │   └── package.order
+   ├── ...
+   ├── package.mo
+   └── package.order
 
-.. _sec_configuration_widget:
+   UserProjects
+   ├── Project1
+   │   ├── AHUs
+   │   │   ├── Data
+   │   │   ├── package.mo
+   │   │   ├── package.order
+   │   │   └── VAV_1.mo
+   │   ├── BoilerPlants
+   │   ├── ChillerPlants
+   │   ├── TerminalUnits
+   │   ├── package.mo
+   │   └── package.order
+   ├── {Project_i}
+   │   └── ...
+   ├── package.mo
+   └── package.order
 
-*****************************************************
-Configuration Widget
-*****************************************************
+This should be rendered in the UI as follows.
 
-Package Structure for the Templates and User Projects
-======================================================
+.. code-block:: bash
+   :name: code_packages_ui
+   :caption: Example of the rendering of the package structure in the UI
 
+    Buildings
+    ├── AHUs
+    │   ├── VAVSingleDuct
+    │   └── ...
+    ├── BoilerPlants
+    │   └── ...
+    ├── ChillerPlants
+    │   └── ...
+    └── TerminalUnits
+        └── ...
 
+    UserProjects
+    ├── Project1
+    │   ├── AHUs
+    │   │   ├── VAV_1
+    │   │   └── Data
+    │   ├── BoilerPlants
+    │   ├── ChillerPlants
+    │   └── TerminalUnits
+    └── {Project_i}
+        └── ...
 
 
+The suggested workflow is as follows.
 
+#. The template package of the Modelica Buildings Library is preloaded. The tool provides the option to load additional template packages from third-party libraries. A template package is identified by the class annotation ``__Linkage_Template`` in the package file.
 
-Functionalities
-===============
+   * Only the classes with the annotation ``__Linkage_Template`` should be displayed.
 
-The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.
-It is mostly needed for integrating advanced control sequences that can have dozens of I/O variables.
-The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica :cite:`OBC`.
+#. The user can select whether to create a ``UserProjects`` from scratch or to load a package stored locally on the device.
 
-.. note::
+   * If a new package is created, it must contain the class annotation ``uses(Buildings(version="..."), ...)`` with the version of all loaded libraries.
 
-   `CtrlSpecBuilder <https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F>`_ is a tool widely used in the HVAC industry for specifying control systems. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.
+   * When loading a package with the class annotation ``uses(Buildings(version="..."), ...)`` refer to :numref:`tab_gui_func` for the library version management.
 
-There are fundamental requirements regarding the Modelica model generated by the configuration widget:
+#. The user can create a new project, for instance by right clicking on ``UserProjects`` which renders a menu with the options *Add New*, etc.
 
-1. It must be "graphically readable" (both within Linkage and within any third-party Modelica GUI e.g. Dymola): this is a strong constraint regarding the placement of the composing objects and the connections that must be generated automatically.
+#. The user can select the working project to save the new specialized classes, for instance by right clicking on ``Project1`` which renders a menu with the options *Set as Working Project*, *Rename*, *Delete*, etc.
 
-2. It must be ready to simulate: no additional modeling work or parameters setting is needed outside the configuration widget.
+   * The current working project must be clearly highlighted in the file explorer.
 
-3. It must contain all annotations needed to regenerate the HTML input form when loaded, with all entries corresponding to the actual state of the model.
+#. The user select a template to start the configuration workflow, for instance by right clicking on ``VAVSingleDuct`` which renders a menu with the option *Start Configuring*, etc.
 
-   * Manual modifications of the Modelica model made by the user are not supported by the configuration widget: an additional annotation should be included in the Modelica file to flag that the model has deviated from the template. In this case the configuration widget is disabled when loading that model.
+#. The parameter dialog of the template class is generated in the configuration panel. In addition, two input fields allows specifying the simple name and the description string of the specialized class.
 
-4. The implementation of control sequences must comply with OpenBuildingControl requirements, see *§7 Control Description Language* and *§8 Code Generation* in :cite:`OBC`. Especially:
+#. A class is created under the corresponding subpackage (for instance ``AHUs``) of the current working project in the ``UserProjects`` package.
 
-   * It is required that the CDL part of the model can be programmatically isolated from the rest of the model in order to be translated into vendor-specific code (by means of a third-party translator).
+   * The tree view of the ``UserProjects`` package is updated dynamically.
+   * The class name and its description string correspond to ones previously input by the user.
+   * The new class is defined by extending the original template with all the class modifications corresponding to the user inputs.
+   * The full composed name (dot notation starting from the top-level library package, for instance ``Buildings``) is used to reference each class within the specialized class.
 
-   * The expandable connectors (control bus) are not part of CDL specification. Those are used by the configuration widget to connect
+#. Optionally, a record class of the same name is created under the corresponding subpackage (for instance ``AHUs.Data``). The record contains the same class modifications as the ones applied to the records of the configured models. This will allow the user to further use this record to propagate the parameters of an instance of the configured model to a top-level simulation model.
 
-     * control blocks and equipment models within a composed sub-system model, e.g., AHU or terminal unit,
+#. At least two action buttons *Save* and *Cancel* are required in the configuration panel. The class within the ``UserProjects`` package is only modified upon *Save*. All the modifications are reset to the last saved state upon *Cancel*.
 
-     * different sub-system models together to compose a whole system model, e.g., VAV system serving different rooms.
+#. Once created, the user can select each specialized class in the file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Modify*, *Delete*, etc.
 
-     This is consistent with OpenBuildingControl requirement to provide control sequence specification at the equipment level only (controller programming), not for system level applications (system programming).
+#. Export functionalities are available both at each level (package or specialized class).
 
-The input form is provided by the template developer (e.g., LBL) in a data model with a format that is to be further specified in collaboration with the software developer. The minimum requirement is the ability to validate the configuration data against a well documented schema that LBL can maintain.
 
-The data model should typically provide for each entry
+******************
+Exception Handling
+******************
 
-* the HTML widget and populating data to be used for requesting user input,
-* the modeling data required to instantiate, position and set the parameters values of the different components,
-* some tags to be used to automatically generate the connections between the different components connectors.
+Two mechanisms for handling exceptions are
 
-The user interface logic is illustrated in figures :numref:`screen_conf_0` and :numref:`screen_conf_1`: the comments in those figures are part of the requirements.
+One to validate the user input.
 
-.. figure:: img/screen_conf_0.*
-   :name: screen_conf_0
-
-   Configuration widget -- Configuring a new model
-
-.. figure:: img/screen_conf_1.*
-   :name: screen_conf_1
-
-   Configuration widget -- Configuring an existing model
-
-
-Equipment and controller models are connected together by means of a *control bus*, see :numref:`screen_schematics_modelica`. The upper-level Modelica class including the equipment models and control blocks is the ultimate output of the configuration widget: see :numref:`screen_conf_1` where the component named ``AHU_1_01_02`` represents an instance of the upper-level class ``AHU_1`` generated by the widget. That component exposes the outside fluid connectors as well as the top level control bus.
-
-The logic for instantiating classes from the library is straightforward. Each field of the form specifies
-
-* the reference of the class (library path) to be instantiated depending on the user input,
-
-* the position of the component in simplified grid coordinates to be converted in diagram view coordinates.
-
-:numref:`sec_fluid_connectors` and :numref:`sec_signal_connectors` address how the connections between the connectors of the different components are generated automatically based on this initial model structure.
-
-.. _sec_data_model:
-
-Data Model
-==========
-
-.. admonition:: Revision Note (01/2021)
-   :class: danger
-
-   The paragraph *Data Model* is removed as the templating is now based on the Modelica language specification.
-
-
-.. _sec_fluid_connectors:
-
-Fluid Connectors
-================
-
-.. admonition:: Revision Note (01/2021)
-   :class: danger
-
-   The paragraph *Fluid Connectors* is removed as the templating is now based on the Modelica language specification. The connect clauses between fluid connectors are fully specified in the templates.
-
-
-.. _sec_signal_connectors:
-
-Signal Connectors
-=================
-
-.. admonition:: Revision Note (01/2021)
-   :class: danger
-
-   The paragraph *Signal Connectors* is removed as the templating is now based on the Modelica language specification. The connect clauses between signal variables are fully specified in the templates.
-
-
-Validation and Additional Requirements
---------------------------------------
-
-The use of expandable connectors (control bus) is validated in case of a complex controller, see :numref:`sec_annex_bus_valid`.
-
-.. note::
-
-   Connectors with conditional instances must be connected to the bus variables with the same conditional statement e.g.
-
-   .. code:: modelica
-
-      if have_occSen then
-          connect(ahuSubBusI.nOcc[1:numZon], nOcc[1:numZon])
-      end if;
-
-   With Dymola, bus variables cannot be connected to array connectors without explicitly specifying the indices range.
-   Using the unspecified ``[:]`` syntax yields the following translation error.
-
-   .. code:: modelica
-
-      Failed to expand conAHU.ahuSubBusI.nOcc[:] (since element does not exist) in connect(conAHU.ahuSubBusI.nOcc[:], conAHU.nOcc[:]);
-
-   Providing an explicit indices range e.g. ``[1:numZon]`` like in the previous code snippet only causes a translation warning: Dymola seems to allocate a default dimension of **20** to the connector, the unused indices (from 3 to 20 in the example hereunder) are then removed since they are not used in the model.
-
-   .. code:: modelica
-
-      Warning: The bus-input conAHU.ahuSubBusI.VDis_flow[3] matches multiple top-level connectors in the connection sets.
-
-      Bus-signal: ahuI.VDis_flow[3]
-
-      Connected bus variables:
-      ahuSubBusI.VDis_flow[3] (connect) "Connector of Real output signal"
-      conAHU.ahuBus.ahuI.VDis_flow[3] (connect) "Primary airflow rate to the ventilation zone from the air handler, including   outdoor air and recirculated air"
-      ahuBus.ahuI.VDis_flow[3] (connect)
-      conAHU.ahuSubBusI.VDis_flow[3] (connect)
-
-   This is a strange behavior in Dymola. On the other hand JModelica:
-
-   * allows the unspecified ``[:]`` syntax and,
-   * does not generate any translation warning when explicitly specifying the indices range.
-
-   JModelica's behavior seems more aligned with :cite:`Modelica2017` *§9.1.3 Expandable Connectors* that states: "A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown."
-   The same logic as JModelica for array variables connections to expandable connectors is required for Linkage.
-
-
-.. _sec_connect_ui_req:
-
-Additional Requirements for the UI
-----------------------------------
-
-Based on the previous validation case, :numref:`dymola_bus` presents the Dymola pop-up window displayed when connecting the sub-bus of input control variables to the main control bus.
-A similar view of the connections set must be implemented with the additional requirements listed below. That view is displayed in the connections tab of the right panel.
-
-
-.. figure:: img/dymola_bus.png
-   :name: dymola_bus
-
-   Dymola pop-up window when connecting the sub-bus of input control variables (left) to the main control bus (right) -- case of outside connectors
-
-
-The variables listed immediately after the bus name are either
-
-* *declared variables* that are not connected, for instance ``ahuBus.yTest`` (declared as ``Real`` in the bus definition): those variables are only *potentially present* and eventually considered as *undefined* when translating the model (treated by Dymola as if they were never declared) or,
-
-* *present variables* i.e. variables that appear in a connect equation, for instance ``ahuSubBusI.TZonHeaSet``: the icon next to each variable then indicates the causality. Those variables can originally be either declared variables or variables elaborated by the augmentation process for *that instance* of the expandable connector i.e. variables that are declared in another component and connected to the connector's instance.
-
-The variables listed under ``Add variable`` are the remaining *potentially present variables* (in addition to the declared but not connected variables). Those variables are elaborated by the augmentation process for *all instances* of the expandable connector, however they are not connected in that instance of the connector.
-
-In addition to Dymola's features for handling the bus connections, Linkage requires the following.
-
-* Color code to distinguish between
-
-  * Variables connected only once (within the entire augmentation set): those variables should be listed first and in red color. This is needed so that the user immediately identify which connections are still required for the model to be complete.
-
-    .. Note::
-
-       Dymola does not throw any exception when a *declared* bus variable is connected to an input (resp. output) variable but not connected to any other non input (resp. non output) variable. It then uses the default value (0 for ``Real``) to feed the connected variable.
-
-       That is not the case if the variable is not declared i.e. elaborated by augmentation: in that case it has to be connected in a consistent way.
-
-       JModelica throws an exception in any case with the message ``The following variable(s) could not be matched to any equation``.
-
-  * Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to :cite:`Modelica2017` *§9.1.3 Expandable Connectors*: "variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. [...] elements that are only potentially present are not seen as declared."
-
-* View the "expanded" connection set of an expandable connector in each level of composition—that covers several topics:
-
-  * The user can view the connection set of a connector simply by selecting it and without having to make an actual connection (as in Dymola).
-
-  * The user can view the name of the component and connector variable to which the expandable connector's variables are connected: similar to Dymola's function ``Find Connection`` accessible by right-clicking on a connection line.
-
-  * | From :cite:`Modelica2017` *§9.1.3 Expandable Connectors*: "When two expandable connectors are connected, each is augmented with the variables that are only declared in the other expandable connector (the new variables are neither input nor output)."
-    | That feature is illustrated in the minimal example :numref:`bus_minimal` where a sub-bus ``subBus`` with declared variables ``yDeclaredPresent`` and ``yDeclaredNotPresent`` is connected to the declared sub-bus ``bus.ahuI`` of a bus. ``yDeclaredPresent`` is connected to another variable so it is considered present. ``yDeclaredNotPresent`` is not connected so it is only considered potentially present. Finally ``yNotDeclaredPresent`` is connected but not declared which makes it a present variable. :numref:`subbus_outside` to :numref:`bus_inside` then show which variables are exposed to the user. In consistency with :cite:`Modelica2017` the declared variables of ``subBus`` are considered declared variables in ``bus.ahuI`` due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable ``yNotDeclaredPresent`` appears in ``bus.ahuI`` under ``Add variable``, i.e., as a potentially present variable whereas it is a present variable in the connected sub-bus ``subBus``.
-
-    * This is an issue for the user who will not have the information at the bus level of the connections which are required by the sub-bus variables e.g. Dymola will allow connecting an output connector to ``bus.ahuI.yDeclaredPresent`` but the translation of the model will fail due to ``Multiple sources for causal signal in the same connection set``.
-    * Directly connecting variables to the bus (without intermediary sub-bus) can solve that issue for outside connectors but not for inside connectors, see below.
-
-  * | Another issue is illustrated :numref:`bus_inside` where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, Linkage requires that the "expanded" connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the *augmentation set* as defined in :cite:`Modelica2017` *9.1.3 Expandable Connectors*. In our example the same information displayed in :numref:`subbus_outside` for the original sub-bus should be accessible when displaying the connection set of ``bus.ahuI`` whatever the current status (inside or outside) of the connector ``bus``. A typical view of the connection set of expandable connectors for Linkage could be:
-
-    .. list-table:: Typical view of the connection set of expandable connectors -- visible from outside component (connector is inside), "Present" and "I/O" columns display the connection status over the full augmentation set
-       :widths: 40 10 10 20 20
-       :header-rows: 1
-
-       * - Variable
-         - Present
-         - Declared
-         - I/O
-         - Description
-
-       * - **bus**
-         -
-         -
-         -
-         -
-
-       * - ``var1`` (present variable connected only once: red color)
-         - x
-         - O
-         - :math:`\rightarrow` ``comp1.var1``
-         - ...
-
-       * - ``var2``  (present variable connected twice: default color)
-         - x
-         - O
-         - ``comp2.var1`` :math:`\rightarrow` ``comp1.var2``
-         - ...
-
-       * - ``var3`` (declared variable not connected: light grey color)
-         - O
-         - x
-         -
-         - ...
-
-       * - *Add variable*
-         -
-         -
-         -
-         -
-
-       * - ``var4`` (variable elaborated by augmentation from *all instances* of the connector: light grey color)
-         - O
-         - O
-         -
-         - ...
-
-       * - **subBus**
-         -
-         -
-         -
-         -
-
-       * - ``var5`` (present variable connected only once: red color)
-         - x
-         - O
-         - ``comp3.var5`` :math:`\rightarrow`
-         - ...
-
-       * - *Add variable*
-         -
-         -
-         -
-         -
-
-       * - ``var6`` (variable elaborated by augmentation from *all instances* of the connector: light grey color)
-         - O
-         - O
-         -
-         - ...
-
-.. figure:: img/bus_minimal.*
-   :name: bus_minimal
-   :width: 800px
-
-   Minimal example of sub-bus to bus connection illustrating how the bus variables are exposed in Dymola -- case of outside connectors
-
-.. figure:: img/subbus_outside.png
-   :name: subbus_outside
-   :width: 400px
-
-   Sub-bus variables being exposed in case the sub-bus is an outside connector
-
-.. figure:: img/bus_outside.png
-   :name: bus_outside
-   :width: 400px
-
-   Bus variables being exposed in case the bus is an outside connector
-
-.. figure:: img/bus_inside.png
-   :name: bus_inside
-   :width: 400px
-
-   Bus variables being exposed in case the bus is an inside connector
-
-
-Control Sequence Configuration
-==============================
-
-In principle the configuration widget as specified previously should allow building custom control sequences based on elementary control blocks (e.g. from the `CDL Library <https://github.com/lbl-srg/modelica-buildings/tree/master/Buildings/Controls/OBC/CDL>`_) and automatically generating connections between those blocks. However
-
-* this would require to distinguish between low-level control blocks (e.g. ``Buildings.Controls.OBC.CDL.Continuous.LimPID``) composing a system controller—which must be connected with direct connect equations and not with expandable connectors variables that are not part of the CDL specification—and high-level control blocks (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller``)—which can be connected to other high-level controllers (e.g. ``Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Controller``) using expandable connectors variables (the CDL translation will be done for each high-level controller individually),
-
-* the complexity of some sequences makes it hard to validate the reliability of such an approach without extensive testing.
-
-Therefore in practice, and at least for the first version of Linkage, it has been decided to rely on pre-assembled high-level control blocks. For each system type (e.g., AHU) one (or a very limited number) of control block(s) should be instantiated by the configuration widget for which the connections can be generated using expandable connectors as described before.
-
-
-.. _sec_parameters:
-
-Parameters Setting
-------------------
-
-.. admonition:: Revision Note (11/2020)
-   :class: danger
-
-   This paragraph is modified to retain only the requirements pertaining to the configuration widget.
-
-Enumeration and Boolean
-=======================
-
-For parameters of type *enumeration* or *Boolean* a dropdown menu should be displayed and populated by the enumeration items or ``true`` and ``false``.
-
-Validation
-==========
-
-Values entered by the user must be validated *upon submit* against Modelica language specification :cite:`Modelica2017` and parameter attributes e.g. ``min``, ``max``.
-
-A color code is required to identify the fields with incorrect values and the corresponding error message must be displayed on hover.
+Break logged to the web console.
 
 
 .. _sec_documentation_export:
@@ -782,11 +607,6 @@ Control Sequence Description
 
 Generating the control sequence description is done by calling a `module developed by LBL <https://lbl-srg.github.io/modelica-json/>`_ which returns an HTML or Word document.
 
-
-.. admonition:: Revision Note (10/2020)
-   :class: danger
-
-   The paragraphs "Working with Tagged Variables", "OpenStudio Integration" and "Interface with URBANopt GeoJSON" are removed.
 
 *********
 Licensing
