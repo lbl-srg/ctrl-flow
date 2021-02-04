@@ -281,6 +281,8 @@ Values entered by the user must be validated *upon submit* against the Modelica 
 
 A color code may be used to identify the fields with incorrect values that will be discarded upon save, and the corresponding error message may be displayed on hover.
 
+`TODO: Specify how manual edits of the control description can be added by the user.` For instance, store them in a ``String`` variable for each part of the controller block, with a specific annotation so that they are highlighted in the generated documentation.
+
 
 Variables
 ---------
