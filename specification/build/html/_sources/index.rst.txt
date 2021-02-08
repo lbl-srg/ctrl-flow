@@ -24,7 +24,6 @@
    preamble
    overview
    requirements
-   architecture
    annex
    acknowledgments
    bibliography
