@@ -114,6 +114,11 @@ The implementation of control sequences must comply with OpenBuildingControl req
 
 :numref:`tab_gui_func` provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor and is provided for informative purposes only.
 
+.. admonition:: Revision Note
+  :class: danger
+
+  The requirement for automatic medium propagation between connected components is removed. The requirements for executing the conversion scripts is removed for Phase 1.
+
 .. _tab_gui_func:
 
 .. list-table:: Functionalities of the software -- R: required, P: required partially, O: optional, N: not required
@@ -269,9 +274,9 @@ Input Fields
 ============
 
 Each input field described in this paragraph must be rendered in the UI with the description string provided at the declaration level.
-Optionally a software setting parameter should enable hiding the instance name, which is not needed in the control specification workflow.
+Optionally a software setting parameter (accessible to the user) should enable hiding the instance name, which is not needed in the control specification workflow.
 
-`TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe hrough a class annotation referencing the instance name?`
+`TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe through a class annotation referencing the instance name?`
 
 
 Validation
@@ -311,8 +316,7 @@ Replaceable Keyword
 Each declaration with the keyword ``replaceable`` and a choices annotation—either from the Modelica specification or a vendor-specific annotation, see :numref:`sec_vendor_annotations`—must have a corresponding dropdown menu in the UI.
 See :numref:`tab_param_dialog` for additional requirements for how to populate the dropdown menu.
 
-In addition, if the declaration corresponds to the instantiation of a component, the previous logic must be applied recursively at each level of composition.
-`Do we also require parameter setting at each level? Or just redeclaration as specified currently?`.
+In addition, if the declaration corresponds to the instantiation of a model, a block, or a record, the previous logic must be applied recursively at each level of composition.
 An indentation may be used to show the different levels of composition.
 
 Note that each variable may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.
@@ -542,7 +546,7 @@ The suggested workflow is as follows.
 
 #. At least two action buttons *Save* and *Cancel* are required in the configuration panel. The class within the ``UserProjects`` package is only modified upon *Save*. All the modifications are reset to the last saved state upon *Cancel*.
 
-#. Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Edit Class*, *Delete*, *Rename*, etc.
+#. Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options *Edit Class*, *Delete*, *Rename*, *Duplicate*, etc.
 
 #. Export functionalities (Modelica code, see :numref:`sec_modelica_export`, or documentation, see :numref:`sec_documentation_export`) are available from the user projects file explorer, at the level of the package and at the level of the specific class.
 

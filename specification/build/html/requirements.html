@@ -297,6 +297,10 @@ For Phase 1, only the graphical features pertaining to the configuration widget 
 </li>
 </ul>
 <p><a class="reference internal" href="#tab-gui-func"><span class="std std-numref">Table 3.2</span></a> provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor and is provided for informative purposes only.</p>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>The requirement for automatic medium propagation between connected components is removed. The requirements for executing the conversion scripts is removed for Phase 1.</p>
+</div>
 <span id="tab-gui-func"></span><table class="colwidths-given longtable docutils align-default" id="id15">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -444,13 +448,13 @@ For this purpose a vendor-specific annotation should be used, see <a class="refe
 <div class="section" id="input-fields">
 <h3><span class="section-number">3.3.1. </span>Input Fields<a class="headerlink" href="#input-fields" title="Permalink to this headline">¶</a></h3>
 <p>Each input field described in this paragraph must be rendered in the UI with the description string provided at the declaration level.
-Optionally a software setting parameter should enable hiding the instance name, which is not needed in the control specification workflow.</p>
-<p><cite>TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe hrough a class annotation referencing the instance name?</cite></p>
+Optionally a software setting parameter (accessible to the user) should enable hiding the instance name, which is not needed in the control specification workflow.</p>
+<p><cite>TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe through a class annotation referencing the instance name?</cite></p>
 <div class="section" id="validation">
 <h4><span class="section-number">3.3.1.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h4>
 <p>Values entered by the user must be validated <em>upon submit</em> against the Modelica language specification <span id="id4">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</p>
 <p>A color code may be used to identify the fields with incorrect values that will be discarded upon save, and the corresponding error message may be displayed on hover.</p>
-<p><cite>TODO: Specify how manual edits of the control description can be added by the user.</cite> For instance, store them in a <code class="docutils literal notranslate"><span class="pre">String</span></code> variable for each part of the controller block, with a specific annotation so that they are highlighted in the generated documentation.</p>
+<p><cite>TODO: Specify how manual edits of the control description can be added by the user.</cite> For instance, store them in a <code class="docutils literal notranslate"><span class="pre">String</span></code> variable for each part (such as supply temperature control, duct pressure control, etc.) of the control block, with a specific annotation so that they are highlighted in the generated documentation.</p>
 </div>
 <div class="section" id="variables">
 <h4><span class="section-number">3.3.1.2. </span>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h4>
@@ -471,8 +475,7 @@ An indentation may be used to show the different levels of composition.</p>
 <h4><span class="section-number">3.3.1.4. </span>Replaceable Keyword<a class="headerlink" href="#replaceable-keyword" title="Permalink to this headline">¶</a></h4>
 <p>Each declaration with the keyword <code class="docutils literal notranslate"><span class="pre">replaceable</span></code> and a choices annotation—either from the Modelica specification or a vendor-specific annotation, see <a class="reference internal" href="#sec-vendor-annotations"><span class="std std-numref">Section 3.3.3</span></a>—must have a corresponding dropdown menu in the UI.
 See <a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a> for additional requirements for how to populate the dropdown menu.</p>
-<p>In addition, if the declaration corresponds to the instantiation of a component, the previous logic must be applied recursively at each level of composition.
-<cite>Do we also require parameter setting at each level? Or just redeclaration as specified currently?</cite>.
+<p>In addition, if the declaration corresponds to the instantiation of a model, a block, or a record, the previous logic must be applied recursively at each level of composition.
 An indentation may be used to show the different levels of composition.</p>
 <p>Note that each variable may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.</p>
 </div>
@@ -679,7 +682,7 @@ UserProjects
 </li>
 <li><p>Optionally, a record class with the same simple name is created under the corresponding subpackage, for instance <code class="docutils literal notranslate"><span class="pre">AHUs.Data</span></code>. The record contains the same class modifications as the ones applied to the records of the specific class. This will allow the user to further use this record to propagate the parameters of an instance of the specific class to a top-level simulation model.</p></li>
 <li><p>At least two action buttons <em>Save</em> and <em>Cancel</em> are required in the configuration panel. The class within the <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> package is only modified upon <em>Save</em>. All the modifications are reset to the last saved state upon <em>Cancel</em>.</p></li>
-<li><p>Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options <em>Edit Class</em>, <em>Delete</em>, <em>Rename</em>, etc.</p></li>
+<li><p>Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options <em>Edit Class</em>, <em>Delete</em>, <em>Rename</em>, <em>Duplicate</em>, etc.</p></li>
 <li><p>Export functionalities (Modelica code, see <a class="reference internal" href="#sec-modelica-export"><span class="std std-numref">Section 3.5</span></a>, or documentation, see <a class="reference internal" href="#sec-documentation-export"><span class="std std-numref">Section 3.6</span></a>) are available from the user projects file explorer, at the level of the package and at the level of the specific class.</p></li>
 </ol>
 </div>
@@ -787,7 +790,7 @@ UserProjects
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Feb, 04, 2021.<br/>
+      Last updated on Feb, 08, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
