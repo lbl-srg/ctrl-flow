@@ -117,7 +117,8 @@ The implementation of control sequences must comply with OpenBuildingControl req
 .. admonition:: Revision Note
   :class: danger
 
-  The requirement for automatic medium propagation between connected components is removed. The requirements for executing the conversion scripts is removed for Phase 1.
+  The requirement for automatic medium propagation between connected components is removed.
+  The requirement for executing the conversion scripts is removed.
 
 .. _tab_gui_func:
 
@@ -176,7 +177,7 @@ The implementation of control sequences must comply with OpenBuildingControl req
   * - Library version management
     - P
     - R
-    - If a loaded class contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library. In Phase 1, if the version number does not match the tool simply alerts the user of version incompatibility. In future development, if the version number does not match the tool prompts the user for update and executes the conversion script per user request.
+    - If a loaded class contains the Modelica annotation ``uses`` (e.g., ``uses(Buildings(version="6.0.0")``) the software checks the version number of the stored library. If the version number does not match, the tool simply alerts the user of version incompatibility.
 
   * - Path discovery
     - R
@@ -257,11 +258,19 @@ To support the use of Modelica, the software must comply with the language speci
 
 * validating the syntax of the user inputs: see *Chapter 2 Lexical Structure* and *Chapter 3 Operators and Expressions*,
 
+  * In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.
+
 * the class names: see *Chapter 5 Scoping, Name Lookup, and Flattening*,
+
+  * In Phase 1, short class names may be used in the templates and must be supported.
 
 * the structure of packages: see *Chapter 13 Packages*,
 
+  * In Phase 1, the tool generates a package ``UserProject`` which structure must comply with the specification.
+
 * the annotations: see *Chapter 18 Annotations*.
+
+  * In Phase 1, this is required since the UI relies on the annotations specified in :numref:`sec_dialog_annotations` and :numref:`sec_vendor_annotations`.
 
 Furthermore, in a control specification workflow only a subset of all the user inputs of a Modelica model are needed. For instance the type of medium, the nominal values of physical quantities, various modeling assumptions, etc. are only needed in the modeling and simulation workflow.
 Therefore, the configuration widget must include a mechanism to select the subset of user inputs that must be exposed in the UI.
@@ -282,7 +291,7 @@ Optionally a software setting parameter (accessible to the user) should enable h
 Validation
 ----------
 
-Values entered by the user must be validated *upon submit* against the Modelica language specification :cite:`Modelica2017`—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as ``min`` and ``max``.
+Values entered by the user must be validated *upon submit* against the Modelica language specification :cite:`Modelica2017`—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as ``min`` and ``max``. In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.
 
 A color code may be used to identify the fields with incorrect values that will be discarded upon save, and the corresponding error message may be displayed on hover.
 
@@ -328,6 +337,8 @@ Final Keyword
 The ``final`` prefix must result in no item being rendered in the UI for the corresponding declaration.
 
 
+.. _sec_dialog_annotations:
+
 Parameter Dialog Annotations
 ============================
 
@@ -367,6 +378,8 @@ The UI of the configuration widget must comply with the specification of the *pa
 
    * - ``choicesAllMatching``
      - A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a class constructor, such as ``class A = B(...);``) given a constraining class. The enumeration must display the description string of the class and fallback to the simple name of the class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.
+
+       In Phase 1, this discovery mechanism will be implemented in the Modelica to JSON translator that will convert the ``choicesAllMatching`` annotation into a ``choices(choice)`` annotation when a specific flag is set to true. (Note that the tool in Phase 1 is an application tool, not a development tool: it works with static libraries that cannot be edited. So the list of allowable classes may be precomputed.)
 
    * - ``choices(choice)``
      - The enumeration must display the description string provided within each inner ``choice`` and fallback to the description string of the redeclared class, and ultimately fallback to the simple name of the redeclared class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.
