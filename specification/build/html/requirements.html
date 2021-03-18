@@ -14,7 +14,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -299,7 +298,8 @@ For Phase 1, only the graphical features pertaining to the configuration widget 
 <p><a class="reference internal" href="#tab-gui-func"><span class="std std-numref">Table 3.2</span></a> provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor and is provided for informative purposes only.</p>
 <div class="danger admonition">
 <p class="admonition-title">Revision Note</p>
-<p>The requirement for automatic medium propagation between connected components is removed. The requirements for executing the conversion scripts is removed for Phase 1.</p>
+<p>The requirement for automatic medium propagation between connected components is removed.
+The requirement for executing the conversion scripts is removed.</p>
 </div>
 <span id="tab-gui-func"></span><table class="colwidths-given longtable docutils align-default" id="id15">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
@@ -362,7 +362,7 @@ For Phase 1, only the graphical features pertaining to the configuration widget 
 <tr class="row-even"><td><p>Library version management</p></td>
 <td><p>P</p></td>
 <td><p>R</p></td>
-<td><p>If a loaded class contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code>) the software checks the version number of the stored library. In Phase 1, if the version number does not match the tool simply alerts the user of version incompatibility. In future development, if the version number does not match the tool prompts the user for update and executes the conversion script per user request.</p></td>
+<td><p>If a loaded class contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code>) the software checks the version number of the stored library. If the version number does not match, the tool simply alerts the user of version incompatibility.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Path discovery</p></td>
 <td><p>R</p></td>
@@ -436,10 +436,26 @@ For Phase 1, only the graphical features pertaining to the configuration widget 
 <p>A prototype of a template for an air handling unit is available in the feature branch <code class="docutils literal notranslate"><span class="pre">issue1374_templateVAV</span></code> of <a class="reference external" href="https://github.com/lbl-srg/modelica-buildings">Modelica Buildings Library</a> within the package <code class="docutils literal notranslate"><span class="pre">Buildings.Experimental.Templates.AHUs</span></code>.</p>
 <p>To support the use of Modelica, the software must comply with the language specification <span id="id2">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> for every aspect pertaining to (the chapter numbers refer to <span id="id3">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>):</p>
 <ul class="simple">
-<li><p>validating the syntax of the user inputs: see <em>Chapter 2 Lexical Structure</em> and <em>Chapter 3 Operators and Expressions</em>,</p></li>
-<li><p>the class names: see <em>Chapter 5 Scoping, Name Lookup, and Flattening</em>,</p></li>
-<li><p>the structure of packages: see <em>Chapter 13 Packages</em>,</p></li>
-<li><p>the annotations: see <em>Chapter 18 Annotations</em>.</p></li>
+<li><p>validating the syntax of the user inputs: see <em>Chapter 2 Lexical Structure</em> and <em>Chapter 3 Operators and Expressions</em>,</p>
+<ul>
+<li><p>In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.</p></li>
+</ul>
+</li>
+<li><p>the class names: see <em>Chapter 5 Scoping, Name Lookup, and Flattening</em>,</p>
+<ul>
+<li><p>In Phase 1, short class names may be used in the templates and must be supported.</p></li>
+</ul>
+</li>
+<li><p>the structure of packages: see <em>Chapter 13 Packages</em>,</p>
+<ul>
+<li><p>In Phase 1, the tool generates a package <code class="docutils literal notranslate"><span class="pre">UserProject</span></code> which structure must comply with the specification.</p></li>
+</ul>
+</li>
+<li><p>the annotations: see <em>Chapter 18 Annotations</em>.</p>
+<ul>
+<li><p>In Phase 1, this is required since the UI relies on the annotations specified in <a class="reference internal" href="#sec-dialog-annotations"><span class="std std-numref">Section 3.3.2</span></a> and <a class="reference internal" href="#sec-vendor-annotations"><span class="std std-numref">Section 3.3.3</span></a>.</p></li>
+</ul>
+</li>
 </ul>
 <p>Furthermore, in a control specification workflow only a subset of all the user inputs of a Modelica model are needed. For instance the type of medium, the nominal values of physical quantities, various modeling assumptions, etc. are only needed in the modeling and simulation workflow.
 Therefore, the configuration widget must include a mechanism to select the subset of user inputs that must be exposed in the UI.
@@ -452,7 +468,7 @@ Optionally a software setting parameter (accessible to the user) should enable h
 <p><cite>TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe through a class annotation referencing the instance name?</cite></p>
 <div class="section" id="validation">
 <h4><span class="section-number">3.3.1.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h4>
-<p>Values entered by the user must be validated <em>upon submit</em> against the Modelica language specification <span id="id4">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</p>
+<p>Values entered by the user must be validated <em>upon submit</em> against the Modelica language specification <span id="id4">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>. In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.</p>
 <p>A color code may be used to identify the fields with incorrect values that will be discarded upon save, and the corresponding error message may be displayed on hover.</p>
 <p><cite>TODO: Specify how manual edits of the control description can be added by the user.</cite> For instance, store them in a <code class="docutils literal notranslate"><span class="pre">String</span></code> variable for each part (such as supply temperature control, duct pressure control, etc.) of the control block, with a specific annotation so that they are highlighted in the generated documentation.</p>
 </div>
@@ -485,7 +501,7 @@ An indentation may be used to show the different levels of composition.</p>
 </div>
 </div>
 <div class="section" id="parameter-dialog-annotations">
-<h3><span class="section-number">3.3.2. </span>Parameter Dialog Annotations<a class="headerlink" href="#parameter-dialog-annotations" title="Permalink to this headline">¶</a></h3>
+<span id="sec-dialog-annotations"></span><h3><span class="section-number">3.3.2. </span>Parameter Dialog Annotations<a class="headerlink" href="#parameter-dialog-annotations" title="Permalink to this headline">¶</a></h3>
 <p>The UI of the configuration widget must comply with the specification of the <em>parameter dialog annotations</em> from <span id="id6">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §18.7.
 <a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a> specifies how each feature of this part of the Modelica specification must be addressed.</p>
 <span id="tab-param-dialog"></span><table class="colwidths-given docutils align-default" id="id16">
@@ -522,7 +538,9 @@ An indentation may be used to show the different levels of composition.</p>
 <td><p>See <span id="id9">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §18.11 and §7.3.4 for reference.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code></p></td>
-<td><p>A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a class constructor, such as <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">A</span> <span class="pre">=</span> <span class="pre">B(...);</span></code>) given a constraining class. The enumeration must display the description string of the class and fallback to the simple name of the class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.</p></td>
+<td><p>A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a class constructor, such as <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">A</span> <span class="pre">=</span> <span class="pre">B(...);</span></code>) given a constraining class. The enumeration must display the description string of the class and fallback to the simple name of the class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.</p>
+<p>In Phase 1, this discovery mechanism will be implemented in the Modelica to JSON translator that will convert the <code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code> annotation into a <code class="docutils literal notranslate"><span class="pre">choices(choice)</span></code> annotation when a specific flag is set to true. (Note that the tool in Phase 1 is an application tool, not a development tool: it works with static libraries that cannot be edited. So the list of allowable classes may be precomputed.)</p>
+</td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">choices(choice)</span></code></p></td>
 <td><p>The enumeration must display the description string provided within each inner <code class="docutils literal notranslate"><span class="pre">choice</span></code> and fallback to the description string of the redeclared class, and ultimately fallback to the simple name of the redeclared class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.</p></td>
@@ -790,8 +808,8 @@ UserProjects
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Feb, 08, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar, 17, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
     </p>
   </div>
 </footer>
