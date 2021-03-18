@@ -23,7 +23,7 @@ or
 make latex
 ```
 
-It requires [Sphinx](http://www.sphinx-doc.org) and a few contributions, which can be installed by running
+It requires [Sphinx](http://www.sphinx-doc.org) (>=3.1) and a few contributions, which can be installed by running
 
 ```
 pip install sphinx sphinx_bootstrap_theme sphinxcontrib.bibtex

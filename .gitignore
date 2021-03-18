@@ -1,5 +1,12 @@
 .vscode
 .DS_Store
+*.pyc
 settings.json
 *tmp*
 specification/source/_build
+specification/source/__pycache__
+specification/build/*
+!specification/build/html
+!specification/build/latex
+specification/build/latex/*
+!specification/build/latex/Linkage.pdf

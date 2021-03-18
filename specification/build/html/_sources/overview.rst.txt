@@ -1,23 +1,37 @@
+########
 Overview
-========
+########
 
-The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems. It relies on two main components.
+The software to develop is a graphical user interface for editing Modelica models of HVAC and control systems.
 
-#. A graphical user interface for editing Modelica classes in a diagrammatic form, see :numref:`sec_functionalities` and :numref:`sec_modelica_gui`.
+The development targets two main categories of end users, associated with two main use cases.
 
-#. A configuration widget supporting assisted modeling based on a simple HTML input form, see :numref:`sec_configuration_widget`. This widget is mostly needed for integrating advanced control sequences that can have dozens of I/O variables. The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica.
+#. Heating Ventilating and Air Conditioning (HVAC) engineers and designers who will utilize the tool to specify the controls of HVAC systems in commercial buildings. In terms of use case, we will refer to this category as the *control specification workflow*.
+
+#. Building Energy Modeling (BEM) engineers who will utilize the tool to assess the energy use of HVAC systems based on a detailed representation of the equipment and controls that the tool will enable, and simulations that will be run using third party Modelica tools. In terms of use case, we will refer to this category as the *modeling and simulation workflow*.
+
+The software relies on two main components.
+
+#. A configuration widget supporting assisted modeling based on a simple HTML input form. This widget is mostly needed for integrating advanced control sequences that can have dozens of I/O variables. The intent is to reduce the complexity to the mere definition of the system layout and the selection of standard control sequences already transcribed in Modelica.
+
+#. A graphical user interface for editing Modelica classes in a diagrammatic form.
 
 We plan a phased development where
 
-#. the configuration widget will be first implemented as part of Phase 1 and integrated into an existing graphical editor for Modelica,
+#. the configuration widget will be first implemented as part of Phase 1 and integrated into an existing graphical editor for Modelica—the *control specification workflow* is the prioritized use case in Phase 1,
 
-#. the full-featured editor will be developed in a future phase, providing diagrammatic editing capabilities and integrating the configuration widget natively.
+#. the full-featured editor will be developed in a future phase, providing diagrammatic editing capabilities and integrating the configuration widget natively—the *modeling and simulation workflow* is the prioritized use case in the future phase.
 
 
-.. admonition:: Revision Note (11/2020)
-   :class: danger
+.. note::
 
    The current version of the specification is limited to Phase 1. Each part related to the full-featured editor is provided for informative purposes only.
+
+
+.. admonition:: Revision Note
+  :class: danger
+
+  The third slide is modified to illustrate the configuration workflow based on Modelica.
 
 
 .. raw:: html
