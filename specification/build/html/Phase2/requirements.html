@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Requirements &#8212; Linkage Software Requirements Specification</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/lbl-icon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Annex" href="annex.html" />
+    <link rel="prev" title="2. Overview" href="overview.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Linkage</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preamble.html">1. Preamble and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">2. Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-description">3.1. General Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-requirements">3.1.1. Main Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-compatibility">3.1.2. Software Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ui-visual-structure">3.1.3. UI Visual Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#high-level-functionalities">3.2. High-Level Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelica-based-templating">3.3. Modelica-Based Templating</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-fields">3.3.1. Input Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-dialog-annotations">3.3.2. Parameter Dialog Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vendor-specific-annotations">3.3.3. Vendor-Specific Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-manipulation-and-workflow">3.3.4. Class Manipulation and Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-streams-and-error-logging">3.4. Standard Streams and Error Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelica-export">3.5. Modelica Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-export">3.6. Documentation Export</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#engineering-schematics">3.6.1. Engineering Schematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-points-list">3.6.2. Control Points List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-sequence-description">3.6.3. Control Sequence Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#licensing">3.7. Licensing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annex.html">4. Annex</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#using-expandable-connectors-in-templates">4.1. Using Expandable Connectors in Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#general-principles">4.1.1. General Principles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#additional-requirements-for-the-ui-in-phase-2">4.1.2. Additional Requirements for the UI in Phase 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#main-features-of-the-expandable-connectors">4.2. Main Features of the Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connectors">4.3. Validating the Use of Expandable Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annex.html#validating-the-use-of-expandable-connector-arrays">4.4. Validating the Use of Expandable Connector Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#connecting-one-central-system-model-to-an-array-of-terminal-system-models">4.4.1. Connecting One Central System Model to an Array of Terminal System Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">4.4.2. Connecting an Array of Central System Models to an Array of Terminal System Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annex.html#passing-on-a-scalar-variable-to-an-array-of-system-models">4.4.3. Passing on a Scalar Variable to an Array of System Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">5. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">6. References</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3. Requirements</a><ul>
+<li><a class="reference internal" href="#general-description">3.1. General Description</a><ul>
+<li><a class="reference internal" href="#main-requirements">3.1.1. Main Requirements</a></li>
+<li><a class="reference internal" href="#software-compatibility">3.1.2. Software Compatibility</a></li>
+<li><a class="reference internal" href="#ui-visual-structure">3.1.3. UI Visual Structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#high-level-functionalities">3.2. High-Level Functionalities</a></li>
+<li><a class="reference internal" href="#modelica-based-templating">3.3. Modelica-Based Templating</a><ul>
+<li><a class="reference internal" href="#input-fields">3.3.1. Input Fields</a><ul>
+<li><a class="reference internal" href="#validation">3.3.1.1. Validation</a></li>
+<li><a class="reference internal" href="#variables">3.3.1.2. Variables</a></li>
+<li><a class="reference internal" href="#record-type">3.3.1.3. Record Type</a></li>
+<li><a class="reference internal" href="#replaceable-keyword">3.3.1.4. Replaceable Keyword</a></li>
+<li><a class="reference internal" href="#final-keyword">3.3.1.5. Final Keyword</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameter-dialog-annotations">3.3.2. Parameter Dialog Annotations</a></li>
+<li><a class="reference internal" href="#vendor-specific-annotations">3.3.3. Vendor-Specific Annotations</a><ul>
+<li><a class="reference internal" href="#declaration-annotation">3.3.3.1. Declaration Annotation</a></li>
+<li><a class="reference internal" href="#class-annotation">3.3.3.2. Class Annotation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-manipulation-and-workflow">3.3.4. Class Manipulation and Workflow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#standard-streams-and-error-logging">3.4. Standard Streams and Error Logging</a></li>
+<li><a class="reference internal" href="#modelica-export">3.5. Modelica Export</a></li>
+<li><a class="reference internal" href="#documentation-export">3.6. Documentation Export</a><ul>
+<li><a class="reference internal" href="#engineering-schematics">3.6.1. Engineering Schematics</a></li>
+<li><a class="reference internal" href="#control-points-list">3.6.2. Control Points List</a></li>
+<li><a class="reference internal" href="#control-sequence-description">3.6.3. Control Sequence Description</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#licensing">3.7. Licensing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="overview.html" title="Previous Chapter: 2. Overview"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Overview</span>
+    </a>
+  </li>
+  <li>
+    <a href="annex.html" title="Next Chapter: 4. Annex"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Annex &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="requirements">
+<span id="sec-requirements"></span><h1><span class="section-number">3. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-description">
+<span id="sec-general-description"></span><h2><span class="section-number">3.1. </span>General Description<a class="headerlink" href="#general-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-requirements">
+<h3><span class="section-number">3.1.1. </span>Main Requirements<a class="headerlink" href="#main-requirements" title="Permalink to this headline">¶</a></h3>
+<p>The following requirements apply to both the configuration widget (Phase 1 of the development) and the diagram editor (future phase of the development).</p>
+<ul class="simple">
+<li><p>The software must rely on client side JS code with minimal dependencies and must be built down to a single page HTML document (SPA).</p></li>
+<li><p>A widget structure is required that allows seamless embedding into:</p>
+<ul>
+<li><p>a desktop app—with standard access to the local file system,</p></li>
+<li><p>a standalone web app—with access to the local file system limited to Download &amp; Upload functions of the web browser (potentially with an additional sandbox file system to secure backup in case the app enters an unknown state),</p></li>
+<li><p>any third-party application with the suitable framework to serve a single page HTML document executing JS code—with access to the local file system through the API of the third-party application:</p>
+<ul>
+<li><p>For the first development phase pertaining to the configuration widget, the third-party application for the widget integration is an existing graphical editor for Modelica.
+To demonstrate the feasibility of this integration, a proof of concept shall be developed, together with the documentation describing how this workflow can be accomplished.
+This will include the creation of a prototype where the host application may be an actual Modelica editor or a rudimentary emulator of such.</p></li>
+<li><p>For the second development phase, the primary integration target is <a class="reference external" href="https://www.openstudio.net">OpenStudio®</a> (OS) while the widget to be integrated is now the full-featured editor (including the configuration widget).
+An example of a JS application embedded in OS is <a class="reference external" href="https://nrel.github.io/OpenStudio-user-documentation/reference/geometry_editor">FloorspaceJS</a>. The standalone SPA lives here: <a class="reference external" href="https://nrel.github.io/floorspace.js">https://nrel.github.io/floorspace.js</a>. FloorspaceJS may be considered as a reference for the development.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>The following part is modified to make it clearer that the execution of the Modelica to JSON translator must be handled by the configuration widget.</p>
+</div>
+<ul>
+<li><p>The core components parsing and generating Modelica classes must rely on JSON-formatted Modelica.
+For this purpose, LBL has developed a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a>, based on the definition of two JSON schemas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lbl-srg.github.io/modelica-json/modelica.html">Schema-modelica.json</a> validates the JSON files parsed from Modelica.</p></li>
+<li><p><a class="reference external" href="https://lbl-srg.github.io/modelica-json/CDL.html">Schema-CDL.json</a> validates the JSON files parsed from <a class="reference external" href="http://obc.lbl.gov/specification/cdl">CDL</a> (subset of Modelica language used for control sequence implementation).</p></li>
+</ul>
+<p>The software should call the Modelica to JSON translator for interfacing with native Modelica code.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="software-compatibility">
+<h3><span class="section-number">3.1.2. </span>Software Compatibility<a class="headerlink" href="#software-compatibility" title="Permalink to this headline">¶</a></h3>
+<p>The software requirements regarding platform and environment compatibility are presented in <a class="reference internal" href="#tab-environment"><span class="std std-numref">Table 3.1</span></a>.</p>
+<span id="tab-environment"></span><table class="docutils align-default" id="id14">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Requirements for software compatibility</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Platform (minimum version)</p></td>
+<td><p>Windows (10), Linux Ubuntu (18.04), OS X (10.10)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mobile device</p></td>
+<td><p>The software may support iOS and Android
+integration though this is not an absolute
+requirement.</p></td>
+</tr>
+<tr class="row-even"><td><p>Web browser</p></td>
+<td><p>Chrome, Firefox, Safari</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ui-visual-structure">
+<h3><span class="section-number">3.1.3. </span>UI Visual Structure<a class="headerlink" href="#ui-visual-structure" title="Permalink to this headline">¶</a></h3>
+<p>A responsive design is required.</p>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>The following part is modified to add the library navigator into the scope. See also <a class="reference internal" href="#sec-class-workflow"><span class="std std-numref">Section 3.3.4</span></a>.</p>
+</div>
+<p>A mockup of the UI for the full-featured editor is presented <a class="reference internal" href="#screen-mockup"><span class="std std-numref">Fig. 3.1</span></a>.
+For Phase 1, only the graphical features pertaining to the configuration widget in the right panel and the library navigator in the left panel (see <a class="reference internal" href="#sec-class-workflow"><span class="std std-numref">Section 3.3.4</span></a>) should be considered.</p>
+<div class="figure align-default" id="screen-mockup">
+<img alt="_images/screen_mockup.svg" src="_images/screen_mockup.svg" /><p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">UI Visual Structure</span><a class="headerlink" href="#screen-mockup" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="high-level-functionalities">
+<span id="sec-functionalities"></span><h2><span class="section-number">3.2. </span>High-Level Functionalities<a class="headerlink" href="#high-level-functionalities" title="Permalink to this headline">¶</a></h2>
+<p>The configuration widget allows the user to generate a Modelica model of an HVAC system and its controls by filling up a simple input form.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://www.ctrlspecbuilder.com/ctrlspecbuilder/home.do;jsessionid=4747144EA3E61E9B82B9E0B463FF2E5F">CtrlSpecBuilder</a> is a tool widely used in the HVAC industry for specifying control systems. It may be used as a reference for the development in terms of user experience minimal functionalities. Note that this software does not provide any Modelica modeling functionality.</p>
+</div>
+<p>The implementation of control sequences must comply with OpenBuildingControl requirements, see <em>§7 Control Description Language</em> and <em>§8 Code Generation</em> in <span id="id1">[<a class="reference internal" href="bibliography.html#id4"><span>LBNL19</span></a>]</span>. Especially:</p>
+<ul>
+<li><p>It is required that the CDL part of the model can be programmatically isolated from the rest of the model in order to be translated into vendor-specific code (by means of a third-party translator).</p></li>
+<li><p>The expandable connectors (control bus) are not part of CDL specification. Those are used to connect</p>
+<ul class="simple">
+<li><p>control blocks and equipment models within a composed sub-system model, e.g., AHU or terminal unit,</p></li>
+<li><p>different sub-system models together to compose a whole system model, e.g., VAV system serving different rooms.</p></li>
+</ul>
+<p>This is consistent with OpenBuildingControl requirement to provide control sequence specification at the equipment level only (controller programming), not for system level applications (system programming).</p>
+</li>
+</ul>
+<p><a class="reference internal" href="#tab-gui-func"><span class="std std-numref">Table 3.2</span></a> provides a list of the functionalities that the software must support. Phase 1 refers to the configuration widget, future work refers to the full-featured editor and is provided for informative purposes only.</p>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>The requirement for automatic medium propagation between connected components is removed.
+The requirement for executing the conversion scripts is removed.</p>
+</div>
+<span id="tab-gui-func"></span><table class="colwidths-given longtable docutils align-default" id="id15">
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Functionalities of the software – R: required, P: required partially, O: optional, N: not required</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Phase 1</p></th>
+<th class="head"><p>Future</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Main functionalities</strong></p></td>
+<td></td>
+<td></td>
+<td><p>See <a class="reference internal" href="#sec-general-description"><span class="std std-numref">Section 3.1</span></a> for reference.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Diagram editor for Modelica classes</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td><p>In the first phase, the configuration widget must be integrated into an existing diagram editor for Modelica, but only as a proof a concept of such an integration. Such an editor must be developed in the second phase.</p></td>
+</tr>
+<tr class="row-even"><td><p>Configuration widget</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>I/O</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Modelica export</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>See <a class="reference internal" href="#sec-modelica-export"><span class="std std-numref">Section 3.5</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Documentation export</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>Control points, sequence of operation description (based on CDL to Word translator developed by LBL), and equipment schematics see <a class="reference internal" href="#sec-documentation-export"><span class="std std-numref">Section 3.6</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Modelica features</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Modelica code editor</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td><p>Raw text editor with linter and Modelica specification checking upon save</p>
+<p>Note that this functionality requires translation and reverse translation of JSON to Modelica (those translators are developed by LBL).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Library version management</p></td>
+<td><p>P</p></td>
+<td><p>R</p></td>
+<td><p>If a loaded class contains the Modelica annotation <code class="docutils literal notranslate"><span class="pre">uses</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;6.0.0&quot;)</span></code>) the software checks the version number of the stored library. If the version number does not match, the tool simply alerts the user of version incompatibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Path discovery</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>A routine to reconstruct the path or URL of a referenced resource within the loaded Modelica libraries is required. Typically a resource can be referenced with the following syntax <code class="docutils literal notranslate"><span class="pre">modelica://Buildings.Air.Systems.SingleZone.VAV</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Object manipulation</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Avoiding duplicate names</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>When instantiating a component or assigning a name through the configuration widget, if the default name is already used in the class the software automatically appends the name with the lowest integer value that would ensure uniqueness.</p>
+<p>When copying and pasting a set of objects connected together, the set of connect equations is updated to ensure  consistency with the appended object names.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Graphical features</strong></p></td>
+<td></td>
+<td></td>
+<td><p>A user experience similar to modern web apps is expected e.g. <a class="reference external" href="https://tranedesignassist.com/">tranedesignassist.com</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pan and zoom on mouse actions</p></td>
+<td><p>N</p></td>
+<td><p>R</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Help tooltip</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>Provide contextual help information to the user during each step of the workflow</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Miscellaneous</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Internationalization</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>The software will be delivered in US English only, but it must be architectured to allow seamless integration of additional languages in the future.</p>
+<p>The choice between I-P and SI units must be possible. The mechanism supporting different units will be specified by LBL in a later version of this document.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>User documentation</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>User manual of the GUI and the corresponding API</p>
+<p>Both an HTML version and a PDF version are required (may rely on Sphinx).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Developer documentation</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>All classes, methods, free functions, and schemas must be documented with an exhaustive description of the functionalities, parameters, return values, etc.</p>
+<p>UML diagrams should also be provided.</p>
+<p>At least an HTML version is required, PDF version is optional (may rely on Sphinx or VuePress).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modelica-based-templating">
+<h2><span class="section-number">3.3. </span>Modelica-Based Templating<a class="headerlink" href="#modelica-based-templating" title="Permalink to this headline">¶</a></h2>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>This paragraph is added. It replaces the former paragraph <em>Configuration Widget</em>.</p>
+</div>
+<p>The templates used by the configuration widget will be developed in Modelica.</p>
+<p>A prototype of a template for an air handling unit is available in the feature branch <code class="docutils literal notranslate"><span class="pre">issue1374_templateVAV</span></code> of <a class="reference external" href="https://github.com/lbl-srg/modelica-buildings">Modelica Buildings Library</a> within the package <code class="docutils literal notranslate"><span class="pre">Buildings.Experimental.Templates.AHUs</span></code>.</p>
+<p>To support the use of Modelica, the software must comply with the language specification <span id="id2">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> for every aspect pertaining to (the chapter numbers refer to <span id="id3">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>):</p>
+<ul class="simple">
+<li><p>validating the syntax of the user inputs: see <em>Chapter 2 Lexical Structure</em> and <em>Chapter 3 Operators and Expressions</em>,</p>
+<ul>
+<li><p>In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.</p></li>
+</ul>
+</li>
+<li><p>the class names: see <em>Chapter 5 Scoping, Name Lookup, and Flattening</em>,</p>
+<ul>
+<li><p>In Phase 1, short class names may be used in the templates and must be supported.</p></li>
+</ul>
+</li>
+<li><p>the structure of packages: see <em>Chapter 13 Packages</em>,</p>
+<ul>
+<li><p>In Phase 1, the tool generates a package <code class="docutils literal notranslate"><span class="pre">UserProject</span></code> which structure must comply with the specification.</p></li>
+</ul>
+</li>
+<li><p>the annotations: see <em>Chapter 18 Annotations</em>.</p>
+<ul>
+<li><p>In Phase 1, this is required since the UI relies on the annotations specified in <a class="reference internal" href="#sec-dialog-annotations"><span class="std std-numref">Section 3.3.2</span></a> and <a class="reference internal" href="#sec-vendor-annotations"><span class="std std-numref">Section 3.3.3</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Furthermore, in a control specification workflow only a subset of all the user inputs of a Modelica model are needed. For instance the type of medium, the nominal values of physical quantities, various modeling assumptions, etc. are only needed in the modeling and simulation workflow.
+Therefore, the configuration widget must include a mechanism to select the subset of user inputs that must be exposed in the UI.
+For this purpose a vendor-specific annotation should be used, see <a class="reference internal" href="#sec-vendor-annotations"><span class="std std-numref">Section 3.3.3</span></a>.</p>
+<p>Eventually, the core components developed in Phase 1 must be reusable for the development of a full-featured parameter dialog widget in Phase 2, with the ability to switch between a control specification mode—with only a subset of the user inputs being exposed—and a modeling and simulation workflow—with the complete set of the user inputs being exposed.</p>
+<div class="section" id="input-fields">
+<h3><span class="section-number">3.3.1. </span>Input Fields<a class="headerlink" href="#input-fields" title="Permalink to this headline">¶</a></h3>
+<p>Each input field described in this paragraph must be rendered in the UI with the description string provided at the declaration level.
+Optionally a software setting parameter (accessible to the user) should enable hiding the instance name, which is not needed in the control specification workflow.</p>
+<p><cite>TODO: Flesh out the requirement for highlighting missing parameter values (no default) or best-guess (or default?) values that need to be further specified (based on user selection?). How the latter is supported since a declaration annotation cannot be added/modified when redeclaring the enclosing class? Maybe through a class annotation referencing the instance name?</cite></p>
+<div class="section" id="validation">
+<h4><span class="section-number">3.3.1.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h4>
+<p>Values entered by the user must be validated <em>upon submit</em> against the Modelica language specification <span id="id4">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>—syntax and type check, with an additional dimension check for arrays—and parameter attributes such as <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>. In Phase 1, only literals, operations with literals and arrays constructors with literals need to be supported.</p>
+<p>A color code may be used to identify the fields with incorrect values that will be discarded upon save, and the corresponding error message may be displayed on hover.</p>
+<p><cite>TODO: Specify how manual edits of the control description can be added by the user.</cite> For instance, store them in a <code class="docutils literal notranslate"><span class="pre">String</span></code> variable for each part (such as supply temperature control, duct pressure control, etc.) of the control block, with a specific annotation so that they are highlighted in the generated documentation.</p>
+</div>
+<div class="section" id="variables">
+<h4><span class="section-number">3.3.1.2. </span>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h4>
+<p>Each variable declared as a parameter without a <code class="docutils literal notranslate"><span class="pre">final</span></code> modifier must have a corresponding input field in the UI.</p>
+<p>If the variable has the type Boolean a dropdown menu must be used and populated with <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code> and <code class="docutils literal notranslate"><span class="pre">Unspecified</span></code> (no default). The latter option may be simply rendered as blank.</p>
+<p>If the variable has the type of an enumeration a dropdown menu must be used.
+The dropdown menu must display the description string of each enumeration element and fallback to the name of each element. In addition an <code class="docutils literal notranslate"><span class="pre">Unspecified</span></code> (no default) option must be included, which may be simply rendered as blank.</p>
+<p>If the variable is an array, a minimum requirement is that its value can be input using any array constructor specified in <span id="id5">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>.
+Optionally a tailored input field for arrays may be made available <em>in addition</em>, for instance to allow the input of each array element within a cell of a table.
+However, the previous input logic based on a literal array constructor must always be available.</p>
+</div>
+<div class="section" id="record-type">
+<h4><span class="section-number">3.3.1.3. </span>Record Type<a class="headerlink" href="#record-type" title="Permalink to this headline">¶</a></h4>
+<p>All the declarations within a parameter of type record, and recursively of all the enclosed record parameters, must have a corresponding input field in the UI.
+An indentation may be used to show the different levels of composition.</p>
+</div>
+<div class="section" id="replaceable-keyword">
+<h4><span class="section-number">3.3.1.4. </span>Replaceable Keyword<a class="headerlink" href="#replaceable-keyword" title="Permalink to this headline">¶</a></h4>
+<p>Each declaration with the keyword <code class="docutils literal notranslate"><span class="pre">replaceable</span></code> and a choices annotation—either from the Modelica specification or a vendor-specific annotation, see <a class="reference internal" href="#sec-vendor-annotations"><span class="std std-numref">Section 3.3.3</span></a>—must have a corresponding dropdown menu in the UI.
+See <a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a> for additional requirements for how to populate the dropdown menu.</p>
+<p>In addition, if the declaration corresponds to the instantiation of a model, a block, or a record, the previous logic must be applied recursively at each level of composition.
+An indentation may be used to show the different levels of composition.</p>
+<p>Note that each variable may potentially be declared as replaceable. So the dropdown menu logic shall be not exclusive of the input field logic. Typically a user may specify the type through the dropdown menu and enter the value through the input field.</p>
+</div>
+<div class="section" id="final-keyword">
+<h4><span class="section-number">3.3.1.5. </span>Final Keyword<a class="headerlink" href="#final-keyword" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">final</span></code> prefix must result in no item being rendered in the UI for the corresponding declaration.</p>
+</div>
+</div>
+<div class="section" id="parameter-dialog-annotations">
+<span id="sec-dialog-annotations"></span><h3><span class="section-number">3.3.2. </span>Parameter Dialog Annotations<a class="headerlink" href="#parameter-dialog-annotations" title="Permalink to this headline">¶</a></h3>
+<p>The UI of the configuration widget must comply with the specification of the <em>parameter dialog annotations</em> from <span id="id6">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §18.7.
+<a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a> specifies how each feature of this part of the Modelica specification must be addressed.</p>
+<span id="tab-param-dialog"></span><table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">Parameter dialog annotations</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Modelica annotations for the GUI</strong></p></td>
+<td><p>See <span id="id7">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §18.7 for reference.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dialog(tab|group)</span></code></p></td>
+<td><p>The UI must render the structure in groups and tabs as specified by this annotation. The groups may be collapsible with a button to expand or collapse all the groups.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Dialog(enable)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Dialog(enable=false)</span></code> must result in no item being rendered in the UI for the corresponding declaration—as opposed to being only greyed out but still visible in Dymola.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dialog(showStartAttribute)</span></code></p></td>
+<td><p>The configuration widget should not display the input for the start value of a variable, this is not required in Phase 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Dialog(colorSelector)</span></code></p></td>
+<td><p>This is not required in Phase 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dialog(loadSelector|saveSelector)</span></code> and <code class="docutils literal notranslate"><span class="pre">Selector(filter|caption)</span></code></p></td>
+<td><p>A mechanism to display a file dialog to select a file is required. The <code class="docutils literal notranslate"><span class="pre">filter</span></code> and <code class="docutils literal notranslate"><span class="pre">caption</span></code> attributes must also be interpreted as specified in <span id="id8">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Annotation Choices for Modifications and Redeclarations</strong></p></td>
+<td><p>See <span id="id9">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §18.11 and §7.3.4 for reference.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code></p></td>
+<td><p>A discovery mechanism is required to enumerate all class subtypes (where subtyping is possible through multiple inheritances or nested function calls to a class constructor, such as <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">A</span> <span class="pre">=</span> <span class="pre">B(...);</span></code>) given a constraining class. The enumeration must display the description string of the class and fallback to the simple name of the class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.</p>
+<p>In Phase 1, this discovery mechanism will be implemented in the Modelica to JSON translator that will convert the <code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code> annotation into a <code class="docutils literal notranslate"><span class="pre">choices(choice)</span></code> annotation when a specific flag is set to true. (Note that the tool in Phase 1 is an application tool, not a development tool: it works with static libraries that cannot be edited. So the list of allowable classes may be precomputed.)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">choices(choice)</span></code></p></td>
+<td><p>The enumeration must display the description string provided within each inner <code class="docutils literal notranslate"><span class="pre">choice</span></code> and fallback to the description string of the redeclared class, and ultimately fallback to the simple name of the redeclared class. Once a selection is made by the user, the UI must display the description string of the redeclared class (as opposed to the literal redeclare statement in Dymola), with the same fallback logic as before.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vendor-specific-annotations">
+<span id="sec-vendor-annotations"></span><h3><span class="section-number">3.3.3. </span>Vendor-Specific Annotations<a class="headerlink" href="#vendor-specific-annotations" title="Permalink to this headline">¶</a></h3>
+<p>Some vendor-specific annotations are required to facilitate the use of the templates.
+Those annotations are specified below using the lexical conventions from <span id="id10">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> Appendix B.1.</p>
+<p>Note that some annotations require to interpret some redeclare statements prior to compile time, in order to “visit” the redeclared classes and evaluate clauses like <code class="docutils literal notranslate"><span class="pre">coiCoo.typHex</span> <span class="pre">&lt;&gt;</span> <span class="pre">Types.HeatExchanger.None</span></code>—which Dymola does not support, see for instance <code class="docutils literal notranslate"><span class="pre">annotation(Dialog(enable=typHex&lt;&gt;Types.HeatExchanger.None))</span></code> which has no effect.
+The UI must dynamically evaluate such clauses and update the parameter dialog accordingly.</p>
+<div class="section" id="declaration-annotation">
+<h4><span class="section-number">3.3.3.1. </span>Declaration Annotation<a class="headerlink" href="#declaration-annotation" title="Permalink to this headline">¶</a></h4>
+<p>Each declaration may have a hierarchical vendor-specific annotation <code class="docutils literal notranslate"><span class="pre">&quot;__Linkage&quot;</span> <span class="pre">class-modification</span></code> that must be interpreted, with the following possible attributes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;choicesConditional&quot;</span> <span class="pre">&quot;(&quot;</span> <span class="pre">[</span> <span class="pre">&quot;condition&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">logical-expression</span> <span class="pre">&quot;,&quot;</span> <span class="pre">choices-annotation</span> <span class="pre">]</span> <span class="pre">{</span> <span class="pre">&quot;,&quot;</span> <span class="pre">&quot;condition&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">logical-expression</span> <span class="pre">&quot;,&quot;</span> <span class="pre">choices-annotation</span> <span class="pre">}</span> <span class="pre">&quot;)&quot;</span></code></p>
+<blockquote>
+<div><p>Description: This annotation enables specifying a Modelica choices annotation (see <span id="id11">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> §7.3.4) <em>conditionally</em> to any logical expression. Both the logical expression and the argument specified within the choices annotation must be valid in the variable scope of the class where they are used. This annotation takes precedence on Modelica <code class="docutils literal notranslate"><span class="pre">choices</span></code> and <code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code> annotation. The UI must render the choices corresponding to the condition evaluated as true, with the same logic as the one described for the choices annotation in <a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a>. If no condition is evaluated as true of if <code class="docutils literal notranslate"><span class="pre">choices()</span></code> is empty for the condition evaluated as true, no enumeration shall be rendered. If multiple conditions are evaluated as true, no enumeration shall be rendered and a message shall be printed to the standard error.</p>
+<p>Example: See the declaration <code class="docutils literal notranslate"><span class="pre">replaceable</span> <span class="pre">Economizers.None</span> <span class="pre">eco</span></code> in <a class="reference external" href="https://github.com/lbl-srg/modelica-buildings/blob/issue1374_templateVAV/Buildings/Experimental/Templates/AHUs/VAVSingleDuct.mo">VAVSingleDuct.mo</a>.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;modification&quot;</span> <span class="pre">&quot;(&quot;</span> <span class="pre">[</span> <span class="pre">&quot;condition&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">logical-expression</span> <span class="pre">&quot;,&quot;</span> <span class="pre">argument</span> <span class="pre">]</span> <span class="pre">{</span> <span class="pre">&quot;,&quot;</span> <span class="pre">&quot;condition&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">logical-expression</span> <span class="pre">&quot;,&quot;</span> <span class="pre">argument</span> <span class="pre">}</span> <span class="pre">&quot;)&quot;</span></code></p>
+<blockquote>
+<div><p>Description: This annotation enables a programmatic element modification or redeclaration based on any logical expression. Both the logical expression and the argument must be valid in the variable scope of the class where they are used. This annotation takes precedence on Modelica <code class="docutils literal notranslate"><span class="pre">choices</span></code> and <code class="docutils literal notranslate"><span class="pre">choicesAllMatching</span></code> annotation. No enumeration shall be rendered in the UI for any declaration containing this annotation.</p>
+<p>Example: See the declaration <code class="docutils literal notranslate"><span class="pre">replaceable</span> <span class="pre">record</span> <span class="pre">RecordEco</span> <span class="pre">=</span> <span class="pre">Economizers.Data.None</span></code> in <a class="reference external" href="https://github.com/lbl-srg/modelica-buildings/blob/issue1374_templateVAV/Buildings/Experimental/Templates/AHUs/VAVSingleDuct.mo">VAVSingleDuct.mo</a>.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;display&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">logical-expression</span></code></p>
+<blockquote>
+<div><p>Description: This annotation enables displaying (or hiding) some input fields in the UI. It takes precedence on Modelica <code class="docutils literal notranslate"><span class="pre">Dialog(enable)</span></code> annotation, and must be interpreted with the same logic as the one described for the latter in <a class="reference internal" href="#tab-param-dialog"><span class="std std-numref">Table 3.3</span></a>. This annotation adds another level of flexibility to the built-in Modelica <code class="docutils literal notranslate"><span class="pre">Dialog(enable)</span></code> annotation, typically needed to render only a subset of the user input fields in a control specification workflow.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;displayOrder&quot;</span> <span class="pre">&quot;=&quot;</span> <span class="pre">UNSIGNED-INTEGER</span></code></p>
+<blockquote>
+<div><p>Description: This annotation enables specifying how to order the input fields in the UI, independently from the declaration order. The input fields of all the declarations with this annotation should be positioned at the top of each group—or at the top of the parameter dialog if no group is specified—and ordered according to the value of <code class="docutils literal notranslate"><span class="pre">UNSIGNED-INTEGER</span></code>.</p>
+<p><cite>Is it really needed? Alternatively, and specifically for the templates, we could allow declaring parameters after instantiating replaceable components (those replaceable components must often appear at the top of a group as they often define the equipment type)</cite>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="class-annotation">
+<h4><span class="section-number">3.3.3.2. </span>Class Annotation<a class="headerlink" href="#class-annotation" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;__LinkageTemplate&quot;</span></code></p>
+<blockquote>
+<div><p>Description: This annotation identifies either a template or a package containing templates. It is used by the tool to simplify the tree view of the loaded libraries and only display the templates, see <a class="reference internal" href="#sec-class-workflow"><span class="std std-numref">Section 3.3.4</span></a>.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="class-manipulation-and-workflow">
+<span id="sec-class-workflow"></span><h3><span class="section-number">3.3.4. </span>Class Manipulation and Workflow<a class="headerlink" href="#class-manipulation-and-workflow" title="Permalink to this headline">¶</a></h3>
+<p>From the original template classes, the configuration workflow enables generating classes representing specific system configurations.
+Those specific classes must be organized in a package structure (the user projects) complying with the Modelica specification.
+Note that according to the specification, a package can be either a single file (for instance <code class="docutils literal notranslate"><span class="pre">NameOfPackage.mo</span></code>) or a directory containing a <code class="docutils literal notranslate"><span class="pre">package.mo</span></code> file, and the package file may itself include some definitions of subpackages.</p>
+<p>The UI must provide a means to explore both the package containing the template classes and the package containing the specific classes (the user projects).</p>
+<ul class="simple">
+<li><p>A file explorer with a tree view should reveal the package structure in a left panel.</p></li>
+<li><p>Only the classes defined in the package file, or enumerated in the <code class="docutils literal notranslate"><span class="pre">package.order</span></code> file shall be displayed. And they shall be displayed in the same order as the one specified by those two files.</p></li>
+<li><p>The left panel is divided vertically in two parts: the upper part for the templates, the lower part for the user projects.</p></li>
+<li><p>The description string of each class must be displayed, for instance when hovering a package or a model in the file explorer.</p></li>
+</ul>
+<p>The following example illustrates typical package structures and the way they should be displayed in the UI.</p>
+<div class="literal-block-wrapper docutils container" id="code-packages-system">
+<div class="code-block-caption"><span class="caption-number">Listing 3.1 </span><span class="caption-text">Example of the package structure for the templates and user projects (in the file system)</span><a class="headerlink" href="#code-packages-system" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Buildings
+├── Templates
+│   ├── AHUs
+│   │   ├── Data
+│   │   ├── package.mo        <span class="c1"># Contains __Linkage_Template annotation.</span>
+│   │   ├── package.order
+│   │   └── VAVSingleDuct.mo  <span class="c1"># Contains __Linkage_Template annotation.</span>
+│   ├── BoilerPlants
+│   │   └── ...               <span class="c1"># Enclosed file package.mo contains __Linkage_Template annotation.</span>
+│   ├── ChillerPlants
+│   │   └── ...               <span class="c1"># Enclosed file package.mo contains __Linkage_Template annotation.</span>
+│   ├── TerminalUnits
+│   │   └── ...               <span class="c1"># Enclosed file package.mo contains __Linkage_Template annotation.</span>
+│   ├── package.mo
+│   └── package.order
+├── ...
+├── package.mo
+└── package.order
+
+UserProjects
+├── Project_1
+│   ├── AHUs
+│   │   ├── Data
+│   │   ├── package.mo
+│   │   ├── package.order
+│   │   └── VAV_1.mo
+│   ├── BoilerPlants
+│   │   └── ...
+│   ├── ChillerPlants
+│   │   └── ...
+│   ├── TerminalUnits
+│   │   └── ...
+│   ├── package.mo
+│   └── package.order
+├── <span class="o">{</span>Project_i<span class="o">}</span>
+│   └── ...
+├── package.mo
+└── package.order
+</pre></div>
+</div>
+</div>
+<p>This should be rendered in the UI as follows.</p>
+<div class="literal-block-wrapper docutils container" id="code-packages-ui">
+<div class="code-block-caption"><span class="caption-number">Listing 3.2 </span><span class="caption-text">Example of the rendering of the package structure in the UI</span><a class="headerlink" href="#code-packages-ui" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Buildings
+├── AHUs
+│   └── VAVSingleDuct
+├── BoilerPlants
+│   └── ...
+├── ChillerPlants
+│   └── ...
+└── TerminalUnits
+    └── ...
+
+UserProjects
+├── Project_1
+│   ├── AHUs
+│   │   ├── VAV_1
+│   │   └── Data
+│   ├── BoilerPlants
+│   │   └── ...
+│   ├── ChillerPlants
+│   │   └── ...
+│   └── TerminalUnits
+│       └── ...
+└── <span class="o">{</span>Project_i<span class="o">}</span>
+    └── ...
+</pre></div>
+</div>
+</div>
+<p>The suggested workflow is as follows.</p>
+<ol class="arabic simple">
+<li><p>The template package of the Modelica Buildings Library is preloaded. The tool provides the option to load additional template packages from third-party libraries. A template package is identified by the class annotation <code class="docutils literal notranslate"><span class="pre">__Linkage_Template</span></code> in the package file.</p>
+<ul class="simple">
+<li><p>Only the classes with the annotation <code class="docutils literal notranslate"><span class="pre">__Linkage_Template</span></code> should be displayed in the template file explorer.</p></li>
+</ul>
+</li>
+<li><p>The user can select whether to create a <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> from scratch or to load a package stored locally on the device.</p>
+<ul class="simple">
+<li><p>If a new package is created, it must contain the class annotation <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;...&quot;),</span> <span class="pre">...)</span></code> with the version of all loaded libraries.</p></li>
+<li><p>When loading a package with the class annotation <code class="docutils literal notranslate"><span class="pre">uses(Buildings(version=&quot;...&quot;),</span> <span class="pre">...)</span></code> refer to <a class="reference internal" href="#tab-gui-func"><span class="std std-numref">Table 3.2</span></a> for the library version management.</p></li>
+</ul>
+</li>
+<li><p>The user can create a new project, for instance by right clicking on <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> which renders a menu with the options <em>Add New</em>, etc.</p></li>
+<li><p>The user can select the working project to save the new specific classes, for instance by right clicking on <code class="docutils literal notranslate"><span class="pre">Project_1</span></code> which renders a menu with the options <em>Set Working Project</em>, <em>Rename</em>, <em>Delete</em>, etc.</p>
+<ul class="simple">
+<li><p>The current working project must be clearly highlighted in the user projects file explorer.</p></li>
+</ul>
+</li>
+<li><p>The user selects a template to start the configuration workflow, for instance by right clicking on <code class="docutils literal notranslate"><span class="pre">VAVSingleDuct</span></code> which renders a menu with the option <em>Start Configuring</em>, etc.</p></li>
+<li><p>A specific class is created under the corresponding subpackage (for instance <code class="docutils literal notranslate"><span class="pre">AHUs</span></code>) of the current working project in the <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> package.</p>
+<ul class="simple">
+<li><p>The new class is constructed by extending the original template <code class="docutils literal notranslate"><span class="pre">extends</span> <span class="pre">type-specifier</span> <span class="pre">[</span> <span class="pre">class-modification</span> <span class="pre">]</span> <span class="pre">[annotation]</span></code>.</p></li>
+<li><p>The parameter dialog of the template class is generated in the configuration panel. In addition, two input fields allows specifying the simple name and the description string of the specific class to be generated.</p></li>
+<li><p>The tree view of the <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> package is updated dynamically, based on the class name and the class description string input by the user.</p></li>
+<li><p>Any user input leads to updating the specific class definition. The full composed name (dot notation starting from the top-level library package, for instance <code class="docutils literal notranslate"><span class="pre">Buildings</span></code>) shall be used to reference each class used in the class definition.</p></li>
+</ul>
+</li>
+<li><p>Optionally, a record class with the same simple name is created under the corresponding subpackage, for instance <code class="docutils literal notranslate"><span class="pre">AHUs.Data</span></code>. The record contains the same class modifications as the ones applied to the records of the specific class. This will allow the user to further use this record to propagate the parameters of an instance of the specific class to a top-level simulation model.</p></li>
+<li><p>At least two action buttons <em>Save</em> and <em>Cancel</em> are required in the configuration panel. The class within the <code class="docutils literal notranslate"><span class="pre">UserProjects</span></code> package is only modified upon <em>Save</em>. All the modifications are reset to the last saved state upon <em>Cancel</em>.</p></li>
+<li><p>Once created, the user can select each specific class from the user projects file explorer and further modify it, for instance by right clicking on the corresponding class which renders a menu with the options <em>Edit Class</em>, <em>Delete</em>, <em>Rename</em>, <em>Duplicate</em>, etc.</p></li>
+<li><p>Export functionalities (Modelica code, see <a class="reference internal" href="#sec-modelica-export"><span class="std std-numref">Section 3.5</span></a>, or documentation, see <a class="reference internal" href="#sec-documentation-export"><span class="std std-numref">Section 3.6</span></a>) are available from the user projects file explorer, at the level of the package and at the level of the specific class.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="standard-streams-and-error-logging">
+<h2><span class="section-number">3.4. </span>Standard Streams and Error Logging<a class="headerlink" href="#standard-streams-and-error-logging" title="Permalink to this headline">¶</a></h2>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>This paragraph is added.</p>
+</div>
+<p>An error logging mechanism is required.</p>
+<p>Standard output and standard error streams must support redirecting to any file descriptor when integrating the widget into a third party application.</p>
+</div>
+<div class="section" id="modelica-export">
+<span id="sec-modelica-export"></span><h2><span class="section-number">3.5. </span>Modelica Export<a class="headerlink" href="#modelica-export" title="Permalink to this headline">¶</a></h2>
+<div class="danger admonition">
+<p class="admonition-title">Revision Note</p>
+<p>This paragraph is added.</p>
+</div>
+<p>Exporting Modelica code requires the following steps.</p>
+<ol class="arabic simple">
+<li><p>Converting the JSON-formatted Modelica into Modelica code. This should be done by calling <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">Modelica to JSON translator</a>.</p></li>
+<li><p>Formatting the generated Modelica code. This should be done by calling <a class="reference external" href="https://github.com/urbanopt/modelica-fmt">https://github.com/urbanopt/modelica-fmt</a>.
+<cite>Implemented in Go: can it run on client side? With WebAssembly?</cite>.</p></li>
+<li><p>Optional compression. File compression is only required for exporting a package. A single class should be exported as a single uncompressed <code class="docutils literal notranslate"><span class="pre">mo</span></code> file.</p></li>
+<li><p>Launch downloading on the client.</p></li>
+</ol>
+</div>
+<div class="section" id="documentation-export">
+<span id="sec-documentation-export"></span><h2><span class="section-number">3.6. </span>Documentation Export<a class="headerlink" href="#documentation-export" title="Permalink to this headline">¶</a></h2>
+<p>The documentation export encompasses three items.</p>
+<ol class="arabic simple">
+<li><p>Engineering schematics of the equipment including the controls points</p></li>
+<li><p>Control points list</p></li>
+<li><p>Control sequence description</p></li>
+</ol>
+<p>The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget, for instance primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.</p>
+<p><a class="reference internal" href="#screen-schematics-output"><span class="std std-numref">Fig. 3.2</span></a> provides an example of the documentation to be generated in case of an air handling unit. The documentation export may consist in three different files but must contain all the material described in the following paragraphs.</p>
+<div class="figure align-default" id="screen-schematics-output">
+<img alt="_images/screen_schematics_output.svg" src="_images/screen_schematics_output.svg" /><p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Mockup of the documentation export</span><a class="headerlink" href="#screen-schematics-output" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="engineering-schematics">
+<h3><span class="section-number">3.6.1. </span>Engineering Schematics<a class="headerlink" href="#engineering-schematics" title="Permalink to this headline">¶</a></h3>
+<p>Objects of the original model to be included in the schematics export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. <code class="docutils literal notranslate"><span class="pre">annotation(__Linkage(symbol_path=&quot;value</span> <span class="pre">of</span> <span class="pre">symbol_path&quot;))</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is expected that Linkage will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares, e.g., AutoCAD®.</p>
+<p>Due to geometry discrepancies between Modelica icons and engineering symbols a perfect alignment of the latter is not expected by simply mapping the diagram coordinates of the former to the SVG layout. A mechanism should be developed to automatically correct small alignment defaults.</p>
+</div>
+<p>For the exported objects</p>
+<ul class="simple">
+<li><p>the connectors connected to the control input and output sub-buses must be split into two groups depending on their type—Boolean or numeric,</p></li>
+<li><p>an index tag is then generated based on the object position, from top to bottom and left to right,</p></li>
+<li><p>eventually connection lines are drawn to link those tags to the four different control points buses (AI, AO, DI, DO). The line must be vertical, with an optional horizontal offset from the index tag to avoid overlapping any other object.</p></li>
+</ul>
+<p>SVG is the required output format.</p>
+<p>See <a class="reference internal" href="#screen-schematics-output"><span class="std std-numref">Fig. 3.2</span></a> for the typical output of the schematics export process.</p>
+</div>
+<div class="section" id="control-points-list">
+<h3><span class="section-number">3.6.2. </span>Control Points List<a class="headerlink" href="#control-points-list" title="Permalink to this headline">¶</a></h3>
+<p>Generating the control points list is done by calling a module developed by LBL (ongoing development) which returns an HTML or Word document.</p>
+</div>
+<div class="section" id="control-sequence-description">
+<h3><span class="section-number">3.6.3. </span>Control Sequence Description<a class="headerlink" href="#control-sequence-description" title="Permalink to this headline">¶</a></h3>
+<p>Generating the control sequence description is done by calling a <a class="reference external" href="https://lbl-srg.github.io/modelica-json/">module developed by LBL</a> which returns an HTML or Word document.</p>
+</div>
+</div>
+<div class="section" id="licensing">
+<h2><span class="section-number">3.7. </span>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
+<p>The software is developed under funding from the U.S. Department of Energy and the U.S. Government consequently retains certain rights. As such, the U.S. Government has been granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, distribute copies to the public, prepare derivative works, and perform publicly and display publicly, and to permit other to do so.</p>
+<p>The main software components built as part of this development project must be open sourced under BSD 3 or 4-clause, with possible additions to make it easy to accept improvements. Licensing under GPL or LGPL will not be accepted.</p>
+<p>Different licensing options are then envisioned depending on the integration target and the engagement of third-party developers and distributors. The minimum requirement is that at least one integration target be made available as a free software.</p>
+<ul>
+<li><p>Desktop app</p>
+<p>Subscription-based</p>
+</li>
+<li><p>Standalone web app</p>
+<ul class="simple">
+<li><p>Free account allowing access to Modelica libraries preloaded by default, for instance Modelica Standard and Buildings: the user can only upload and download single Modelica files (not a package).</p></li>
+<li><p>Pro account allowing access to server storage of Modelica files (packages uploaded and models saved by the user): the user can update the stored libraries and reopen saved models between sessions.</p></li>
+</ul>
+</li>
+<li><p>Third-party application embedding</p>
+<p>Licensing will depend on the application distribution model.</p>
+<p>For OpenStudio there is currently a shift in the <a class="reference external" href="https://www.openstudio.net/new-future-for-openstudio-application">licensing strategy</a>. The specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
+      Last updated on Mar, 17, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

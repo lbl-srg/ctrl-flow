@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 2843.000000 1178.000000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="rgb(235,235,235)" stroke="rgb(0,0,0)" stroke-opacity="1" x="388.167" y="279" width="258.333" height="103.333"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="386.596" y="277.429" width="1.57067" height="104.904"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="386.596" y="382.333" width="259.904" height="1.57067"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="646.5" y="279" width="1.57067" height="104.904"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="388.167" y="277.429" width="259.904" height="1.57067"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="388.167" y="279" width="2.356" height="103.333"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="388.167" y="279" width="258.333" height="2.356"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="644.929" y="279" width="1.57067" height="103.333"/>
+	<rect fill="rgb(113,111,100)" stroke="none" x="388.167" y="380.763" width="258.333" height="1.57067"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="643.359" y="280.571" width="1.57067" height="100.192"/>
+	<rect fill="rgb(172,168,153)" stroke="none" x="389.737" y="379.192" width="255.192" height="1.57067"/>
+	<text fill="rgb(0,0,0)" font-size="28" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="517.333" y="330.667">2 + sin(time*3.14)</text>
+	<text fill="rgb(0,0,255)" font-size="52" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="517.333" y="240.25">sensor</text>
+	<rect fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" x="2196.5" y="201.5" width="258.333" height="258.333"/>
+	<text fill="rgb(0,0,255)" font-size="52" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="2325.67" y="162.75">actuator</text>
+	<polyline fill="none" stroke="rgb(0,0,127)" stroke-opacity="1" points="2196.500000,330.666667 2454.833333,330.666667"/>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="646.500000,317.750000 672.333333,330.666667 646.500000,343.583333 646.500000,317.750000"/>
+	<polygon fill="rgb(0,0,127)" stroke="rgb(0,0,127)" stroke-opacity="1" points="2144.833333,304.833333 2196.500000,330.666667 2144.833333,356.500000 2144.833333,304.833333"/>
+	<polygon fill="rgb(255,255,255)" stroke="rgb(0,0,127)" stroke-opacity="1" points="2454.833333,317.750000 2480.666667,330.666667 2454.833333,343.583333 2454.833333,317.750000"/>
+	<rect fill="rgb(0,0,255)" stroke="rgb(0,0,255)" stroke-opacity="1" x="1292.33" y="847.333" width="258.333" height="258.333"/>
+	<text fill="rgb(255,255,255)" font-size="31" font-family="helvetica" text-anchor="middle" dominant-baseline="central" x="1421.5" y="976.5">nonExpandableBus</text>
+</svg>
