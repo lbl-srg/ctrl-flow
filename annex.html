@@ -5,12 +5,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. Annex &#8212; Linkage Software Requirements Specification</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -78,8 +79,8 @@
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#standard-streams-and-error-logging">3.4. Standard Streams and Error Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#modelica-export">3.5. Modelica Export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#documentation-export">3.6. Documentation Export</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="requirements.html#engineering-schematics">3.6.1. Engineering Schematics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-points-list">3.6.2. Control Points List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#engineering-schematic">3.6.1. Engineering Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#control-point-list">3.6.2. Control Point List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="requirements.html#control-sequence-description">3.6.3. Control Sequence Description</a></li>
 </ul>
 </li>
@@ -174,18 +175,18 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="annex">
+  <section id="annex">
 <span id="sec-annex"></span><h1><span class="section-number">4. </span>Annex<a class="headerlink" href="#annex" title="Permalink to this headline">¶</a></h1>
 <p>This annex is informative only. It presents various validation cases and additional information for the development of the templates in Phase 1 and the future development of a diagram editor in Phase 2.</p>
-<div class="section" id="using-expandable-connectors-in-templates">
+<section id="using-expandable-connectors-in-templates">
 <h2><span class="section-number">4.1. </span>Using Expandable Connectors in Templates<a class="headerlink" href="#using-expandable-connectors-in-templates" title="Permalink to this headline">¶</a></h2>
 <div class="danger admonition">
 <p class="admonition-title">Revision Note</p>
 <p>This paragraph is moved from the <em>Requirements</em> section to the <em>Annex</em> section.</p>
 </div>
-<div class="section" id="general-principles">
+<section id="general-principles">
 <h3><span class="section-number">4.1.1. </span>General Principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations for signal variables in the Modelica templates rely on expandable connectors (also referred to as control bus), see <em>§9.1.3 Expandable Connectors</em> in <span id="id1">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations for signal variables in the Modelica templates rely on expandable connectors (also referred to as control bus), see <em>§9.1.3 Expandable Connectors</em> in <span id="id1">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span>.</p>
 <p>The following features of the expandable connectors are leveraged. They are illustrated with minimal examples in <a class="reference internal" href="#sec-annex-bus-example"><span class="std std-numref">Section 4.2</span></a>.</p>
 <ol class="arabic">
 <li><p>All components in an expandable connector are seen as connector instances even if they are not declared as such. In comparison to a non expandable connector, that means that each variable (even of type <code class="docutils literal notranslate"><span class="pre">Real</span></code>) can be connected i.e. be part of a <code class="docutils literal notranslate"><span class="pre">connect</span></code> equation.</p>
@@ -200,15 +201,17 @@
 <li><p>The variables set of a class of type expandable connector is augmented whenever a new variable gets connected to any <em>instance</em> of the class. Though that feature is not needed by the configuration widget (we will have a predefined control bus with declared variables), it is needed to allow the user further modifying the control sequence. Adding new control variables is simply done by connecting them to the control bus.</p></li>
 <li><p>Expandable connectors can be used in arrays, as any other Modelica type. A typical use case is the connection of control input signals from a set of terminal units to a supervisory controller at the AHU or at the plant level. This use case has been validated on minimal examples in <a class="reference internal" href="#sec-annex-bus-array"><span class="std std-numref">Section 4.4</span></a>.</p></li>
 </ol>
-</div>
-<div class="section" id="additional-requirements-for-the-ui-in-phase-2">
+</section>
+<section id="additional-requirements-for-the-ui-in-phase-2">
 <span id="sec-connect-ui-req"></span><h3><span class="section-number">4.1.2. </span>Additional Requirements for the UI in Phase 2<a class="headerlink" href="#additional-requirements-for-the-ui-in-phase-2" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#dymola-bus"><span class="std std-numref">Fig. 4.1</span></a> presents the Dymola pop-up window displayed when connecting the sub-bus of input control variables to the main control bus (based on the validation case in <a class="reference internal" href="#sec-annex-bus-valid"><span class="std std-numref">Section 4.3</span></a>).
 A similar view of the connections set must be implemented with the additional requirements listed below. That view is displayed in the connections tab of the right panel.</p>
-<div class="figure align-default" id="dymola-bus">
+<figure class="align-default" id="dymola-bus">
 <img alt="_images/dymola_bus.png" src="_images/dymola_bus.png" />
-<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Dymola pop-up window when connecting the sub-bus of input control variables (left) to the main control bus (right) – case of outside connectors</span><a class="headerlink" href="#dymola-bus" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Dymola pop-up window when connecting the sub-bus of input control variables (left) to the main control bus (right) – case of outside connectors</span><a class="headerlink" href="#dymola-bus" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The variables listed immediately after the bus name are either</p>
 <ul class="simple">
 <li><p><em>declared variables</em> that are not connected, for instance <code class="docutils literal notranslate"><span class="pre">ahuBus.yTest</span></code> (declared as <code class="docutils literal notranslate"><span class="pre">Real</span></code> in the bus definition): those variables are only <em>potentially present</em> and eventually considered as <em>undefined</em> when translating the model (treated by Dymola as if they were never declared) or,</p></li>
@@ -227,7 +230,7 @@ A similar view of the connections set must be implemented with the additional re
 <p>JModelica throws an exception in any case with the message <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">following</span> <span class="pre">variable(s)</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">matched</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">equation</span></code>.</p>
 </div>
 </li>
-<li><p>Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to <span id="id2">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> <em>§9.1.3 Expandable Connectors</em>: “variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. […] elements that are only potentially present are not seen as declared.”</p></li>
+<li><p>Declared variables which are only potentially present (not connected): those variables should be listed last (not first as in Dymola) and in light grey color. That behavior is also closer to <span id="id2">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> <em>§9.1.3 Expandable Connectors</em>: “variables and non-parameter array elements declared in expandable connectors are marked as only being potentially present. […] elements that are only potentially present are not seen as declared.”</p></li>
 </ul>
 </li>
 <li><p>View the “expanded” connection set of an expandable connector in each level of composition – that covers several topics:</p>
@@ -235,8 +238,8 @@ A similar view of the connections set must be implemented with the additional re
 <li><p>The user can view the connection set of a connector simply by selecting it and without having to make an actual connection (as in Dymola).</p></li>
 <li><p>The user can view the name of the component and connector variable to which the expandable connector’s variables are connected: similar to Dymola’s function <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Connection</span></code> accessible by right-clicking on a connection line.</p></li>
 <li><div class="line-block">
-<div class="line">From <span id="id3">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> <em>§9.1.3 Expandable Connectors</em>: “When two expandable connectors are connected, each is augmented with the variables that are only declared in the other expandable connector (the new variables are neither input nor output).”</div>
-<div class="line">That feature is illustrated in the minimal example <a class="reference internal" href="#bus-minimal"><span class="std std-numref">Fig. 4.2</span></a> where a sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code> with declared variables <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> and <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is connected to the declared sub-bus <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> of a bus. <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> is connected to another variable so it is considered present. <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is not connected so it is only considered potentially present. Finally <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> is connected but not declared which makes it a present variable. <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 4.3</span></a> to <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 4.5</span></a> then show which variables are exposed to the user. In consistency with <span id="id4">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> the declared variables of <code class="docutils literal notranslate"><span class="pre">subBus</span></code> are considered declared variables in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> appears in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">variable</span></code>, i.e., as a potentially present variable whereas it is a present variable in the connected sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code>.</div>
+<div class="line">From <span id="id3">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> <em>§9.1.3 Expandable Connectors</em>: “When two expandable connectors are connected, each is augmented with the variables that are only declared in the other expandable connector (the new variables are neither input nor output).”</div>
+<div class="line">That feature is illustrated in the minimal example <a class="reference internal" href="#bus-minimal"><span class="std std-numref">Fig. 4.2</span></a> where a sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code> with declared variables <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> and <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is connected to the declared sub-bus <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> of a bus. <code class="docutils literal notranslate"><span class="pre">yDeclaredPresent</span></code> is connected to another variable so it is considered present. <code class="docutils literal notranslate"><span class="pre">yDeclaredNotPresent</span></code> is not connected so it is only considered potentially present. Finally <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> is connected but not declared which makes it a present variable. <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 4.3</span></a> to <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 4.5</span></a> then show which variables are exposed to the user. In consistency with <span id="id4">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> the declared variables of <code class="docutils literal notranslate"><span class="pre">subBus</span></code> are considered declared variables in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> due to the connect equation between those two instances and they are neither input nor output. Furthermore the present variable <code class="docutils literal notranslate"><span class="pre">yNotDeclaredPresent</span></code> appears in <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> under <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">variable</span></code>, i.e., as a potentially present variable whereas it is a present variable in the connected sub-bus <code class="docutils literal notranslate"><span class="pre">subBus</span></code>.</div>
 </div>
 <ul class="simple">
 <li><p>This is an issue for the user who will not have the information at the bus level of the connections which are required by the sub-bus variables e.g. Dymola will allow connecting an output connector to <code class="docutils literal notranslate"><span class="pre">bus.ahuI.yDeclaredPresent</span></code> but the translation of the model will fail due to <code class="docutils literal notranslate"><span class="pre">Multiple</span> <span class="pre">sources</span> <span class="pre">for</span> <span class="pre">causal</span> <span class="pre">signal</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">connection</span> <span class="pre">set</span></code>.</p></li>
@@ -244,7 +247,7 @@ A similar view of the connections set must be implemented with the additional re
 </ul>
 </li>
 <li><div class="line-block">
-<div class="line">Another issue is illustrated <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 4.5</span></a> where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, Linkage requires that the “expanded” connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the <em>augmentation set</em> as defined in <span id="id5">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> <em>9.1.3 Expandable Connectors</em>. In our example the same information displayed in <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 4.3</span></a> for the original sub-bus should be accessible when displaying the connection set of <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> whatever the current status (inside or outside) of the connector <code class="docutils literal notranslate"><span class="pre">bus</span></code>. A typical view of the connection set of expandable connectors for Linkage could be:</div>
+<div class="line">Another issue is illustrated <a class="reference internal" href="#bus-inside"><span class="std std-numref">Fig. 4.5</span></a> where the connection to the bus is now made from an outside component for which the bus is considered as an inside connector. Here Dymola only displays declared variables of the bus (but not of the sub-bus) but without the causality information and even if it is only potentially present (not connected). Present variables of the bus or sub-bus which are not declared are not displayed. Contrary to Dymola, Linkage requires that the “expanded” connection set of an expandable connector be exposed, independently from the level of composition. That means exposing all the variables of the <em>augmentation set</em> as defined in <span id="id5">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> <em>9.1.3 Expandable Connectors</em>. In our example the same information displayed in <a class="reference internal" href="#subbus-outside"><span class="std std-numref">Fig. 4.3</span></a> for the original sub-bus should be accessible when displaying the connection set of <code class="docutils literal notranslate"><span class="pre">bus.ahuI</span></code> whatever the current status (inside or outside) of the connector <code class="docutils literal notranslate"><span class="pre">bus</span></code>. A typical view of the connection set of expandable connectors for Linkage could be:</div>
 </div>
 <table class="colwidths-given docutils align-default" id="id8">
 <caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Typical view of the connection set of expandable connectors – visible from outside component (connector is inside), “Present” and “I/O” columns display the connection status over the full augmentation set</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
@@ -330,25 +333,33 @@ A similar view of the connections set must be implemented with the additional re
 </ul>
 </li>
 </ul>
-<div class="figure align-default" id="bus-minimal">
+<figure class="align-default" id="bus-minimal">
 <a class="reference internal image-reference" href="_images/bus_minimal.svg"><img alt="_images/bus_minimal.svg" src="_images/bus_minimal.svg" width="800px" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Minimal example of sub-bus to bus connection illustrating how the bus variables are exposed in Dymola – case of outside connectors</span><a class="headerlink" href="#bus-minimal" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="subbus-outside">
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Minimal example of sub-bus to bus connection illustrating how the bus variables are exposed in Dymola – case of outside connectors</span><a class="headerlink" href="#bus-minimal" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="subbus-outside">
 <a class="reference internal image-reference" href="_images/subbus_outside.png"><img alt="_images/subbus_outside.png" src="_images/subbus_outside.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Sub-bus variables being exposed in case the sub-bus is an outside connector</span><a class="headerlink" href="#subbus-outside" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="bus-outside">
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Sub-bus variables being exposed in case the sub-bus is an outside connector</span><a class="headerlink" href="#subbus-outside" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="bus-outside">
 <a class="reference internal image-reference" href="_images/bus_outside.png"><img alt="_images/bus_outside.png" src="_images/bus_outside.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Bus variables being exposed in case the bus is an outside connector</span><a class="headerlink" href="#bus-outside" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="bus-inside">
+<figcaption>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Bus variables being exposed in case the bus is an outside connector</span><a class="headerlink" href="#bus-outside" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="bus-inside">
 <a class="reference internal image-reference" href="_images/bus_inside.png"><img alt="_images/bus_inside.png" src="_images/bus_inside.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Bus variables being exposed in case the bus is an inside connector</span><a class="headerlink" href="#bus-inside" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="main-features-of-the-expandable-connectors">
+<figcaption>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Bus variables being exposed in case the bus is an inside connector</span><a class="headerlink" href="#bus-inside" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="main-features-of-the-expandable-connectors">
 <span id="sec-annex-bus-example"></span><h2><span class="section-number">4.2. </span>Main Features of the Expandable Connectors<a class="headerlink" href="#main-features-of-the-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The main features of the expandable connectors are illustrated with a minimal example described in the figures below where</p>
 <ul class="simple">
@@ -356,10 +367,12 @@ A similar view of the connections set must be implemented with the additional re
 <li><p>a controller system which divides the input variable (measurement) by itself and thus outputs a control variable equal to one.</p></li>
 <li><p>The same model is first implemented with an expandable connector and then with a standard connector.</p></li>
 </ul>
-<div class="figure align-default" id="bustestexp">
+<figure class="align-default" id="bustestexp">
 <a class="reference internal image-reference" href="_images/BusTestExp.svg"><img alt="_images/BusTestExp.svg" src="_images/BusTestExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Top level</span><a class="headerlink" href="#bustestexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Top level</span><a class="headerlink" href="#bustestexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestExp</span>
 <span class="n">BusTestControllerExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
 <span class="n">BusTestControlledExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
@@ -368,10 +381,12 @@ A similar view of the connections set must be implemented with the additional re
 <span class="kr">end</span> <span class="nc">BusTestExp</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="bustestcontrolledexp">
+<figure class="align-default" id="bustestcontrolledexp">
 <a class="reference internal image-reference" href="_images/BusTestControlledExp.svg"><img alt="_images/BusTestControlledExp.svg" src="_images/BusTestControlledExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrolledexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrolledexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
 <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
 <span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
@@ -391,10 +406,12 @@ A similar view of the connections set must be implemented with the additional re
 <p class="admonition-title">Note</p>
 <p>The definition of <code class="docutils literal notranslate"><span class="pre">AhuBus</span></code> in the code snippet here above does not include any variable declaration. However the variables <code class="docutils literal notranslate"><span class="pre">ahuBus.yAct</span></code> and <code class="docutils literal notranslate"><span class="pre">ahuBus.yMea</span></code> are used in <code class="docutils literal notranslate"><span class="pre">connect</span></code> equations. That is only possible with an expandable connector.</p>
 </div>
-<div class="figure align-default" id="bustestcontrollerexp">
+<figure class="align-default" id="bustestcontrollerexp">
 <a class="reference internal image-reference" href="_images/BusTestControllerExp.svg"><img alt="_images/BusTestControllerExp.svg" src="_images/BusTestControllerExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollerexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Minimal example illustrating the connection scheme with an expandable connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollerexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledExp</span>
       <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
       <span class="n">Buildings</span><span class="o">.</span><span class="n">Experimental</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">BaseClasses</span><span class="o">.</span><span class="n">AhuBus</span> <span class="n">ahuBus</span><span class="p">;</span>
@@ -405,10 +422,12 @@ A similar view of the connections set must be implemented with the additional re
 <span class="kr">end</span> <span class="nc">BusTestControlledExp</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="bustestnonexp">
+<figure class="align-default" id="bustestnonexp">
 <a class="reference internal image-reference" href="_images/BusTestNonExp.svg"><img alt="_images/BusTestNonExp.svg" src="_images/BusTestNonExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Top level</span><a class="headerlink" href="#bustestnonexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Top level</span><a class="headerlink" href="#bustestnonexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestNonExp</span>
 <span class="n">BusTestControllerNonExp</span> <span class="n">controllerSystem</span><span class="p">;</span>
 <span class="n">BusTestControlledNonExp</span> <span class="n">controlledSystem</span><span class="p">;</span>
@@ -417,10 +436,12 @@ A similar view of the connections set must be implemented with the additional re
 <span class="kr">end</span> <span class="nc">BusTestNonExp</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="bustestcontrollednonexp">
+<figure class="align-default" id="bustestcontrollednonexp">
 <a class="reference internal image-reference" href="_images/BusTestControlledNonExp.svg"><img alt="_images/BusTestControlledNonExp.svg" src="_images/BusTestControlledNonExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrollednonexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controlled component sublevel</span><a class="headerlink" href="#bustestcontrollednonexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControlledNonExp</span>
 <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Sources</span><span class="o">.</span><span class="n">RealExpression</span> <span class="n">sensor</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">sin</span><span class="p">(</span><span class="nb">time</span><span class="o">*</span><span class="mf">3.14</span><span class="p">));</span>
 <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">actuator</span><span class="p">;</span>
@@ -439,10 +460,12 @@ A similar view of the connections set must be implemented with the additional re
 <span class="kr">end</span> <span class="nc">NonExpandableBus</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="bustestcontrollernonexp">
+<figure class="align-default" id="bustestcontrollernonexp">
 <a class="reference internal image-reference" href="_images/BusTestControllerNonExp.svg"><img alt="_images/BusTestControllerNonExp.svg" src="_images/BusTestControllerNonExp.svg" width="50%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.11 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollernonexp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.11 </span><span class="caption-text">Minimal example illustrating the connection scheme with a standard connector – Controller component sublevel</span><a class="headerlink" href="#bustestcontrollernonexp" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">BusTestControllerNonExp</span>
 <span class="n">Controls</span><span class="o">.</span><span class="n">OBC</span><span class="o">.</span><span class="n">CDL</span><span class="o">.</span><span class="n">Continuous</span><span class="o">.</span><span class="n">Division</span> <span class="n">controller</span><span class="p">;</span>
 <span class="n">Modelica</span><span class="o">.</span><span class="n">Blocks</span><span class="o">.</span><span class="n">Routing</span><span class="o">.</span><span class="n">RealPassThrough</span> <span class="n">realPassThrough</span><span class="p">;</span>
@@ -455,8 +478,8 @@ A similar view of the connections set must be implemented with the additional re
 <span class="kr">end</span> <span class="nc">BusTestControllerNonExp</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="validating-the-use-of-expandable-connectors">
+</section>
+<section id="validating-the-use-of-expandable-connectors">
 <span id="sec-annex-bus-valid"></span><h2><span class="section-number">4.3. </span>Validating the Use of Expandable Connectors<a class="headerlink" href="#validating-the-use-of-expandable-connectors" title="Permalink to this headline">¶</a></h2>
 <p>The use of expandable connectors (control bus) is validated in case of a complex controller (<code class="docutils literal notranslate"><span class="pre">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller</span></code>).</p>
 <p>The validation is performed</p>
@@ -467,10 +490,12 @@ A similar view of the connections set must be implemented with the additional re
 </ul>
 <p>Simulation succeeds for the two tests cases with the two simulation tools.
 The results comparison to the original test case (without control bus) is presented in <a class="reference internal" href="#annex-valid-bus"><span class="std std-numref">Fig. 4.12</span></a> for Dymola.</p>
-<div class="figure align-default" id="annex-valid-bus">
+<figure class="align-default" id="annex-valid-bus">
 <a class="reference internal image-reference" href="_images/annex_valid_bus.svg"><img alt="_images/annex_valid_bus.svg" src="_images/annex_valid_bus.svg" width="800px" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.12 </span><span class="caption-text">G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and with (<code class="docutils literal notranslate"><span class="pre">new_bus</span></code>) expandable connectors</span><a class="headerlink" href="#annex-valid-bus" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.12 </span><span class="caption-text">G36 AHU controller model: comparison of simulation results (Dymola) between implementation without (<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and with (<code class="docutils literal notranslate"><span class="pre">new_bus</span></code>) expandable connectors</span><a class="headerlink" href="#annex-valid-bus" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Connectors with conditional instances must be connected to the bus variables with the same conditional statement e.g.</p>
@@ -501,11 +526,11 @@ Using the unspecified <code class="docutils literal notranslate"><span class="pr
 <li><p>allows the unspecified <code class="docutils literal notranslate"><span class="pre">[:]</span></code> syntax and,</p></li>
 <li><p>does not generate any translation warning when explicitly specifying the indices range.</p></li>
 </ul>
-<p>JModelica’s behavior seems more aligned with <span id="id6">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> <em>§9.1.3 Expandable Connectors</em> that states: “A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown.”
+<p>JModelica’s behavior seems more aligned with <span id="id6">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> <em>§9.1.3 Expandable Connectors</em> that states: “A non-parameter array element may be declared with array dimensions “:” indicating that the size is unknown.”
 The same logic as JModelica for array variables connections to expandable connectors is required for Linkage.</p>
 </div>
-</div>
-<div class="section" id="validating-the-use-of-expandable-connector-arrays">
+</section>
+<section id="validating-the-use-of-expandable-connector-arrays">
 <span id="sec-annex-bus-array"></span><h2><span class="section-number">4.4. </span>Validating the Use of Expandable Connector Arrays<a class="headerlink" href="#validating-the-use-of-expandable-connector-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Minimum examples illustrate that arrays of expandable connectors are differentially supported between Dymola and OCT. None of the tested Modelica tools seems to have a fully robust support. However, by reporting those bugs, it seems as a feature we can leverage for Linkage.</p>
 <p>We start with the basic definition of an expandable connector <code class="docutils literal notranslate"><span class="pre">AhuBus</span></code> containing the declaration of an array of expandable connectors <code class="docutils literal notranslate"><span class="pre">ahuTer</span></code> that will be used to connect the signal variables from the terminal unit model. In addition we build dummy models for a central system (e.g. VAV AHU) and a terminal system (e.g. VAV box) as illustrated in the figures hereafter. The input signal <code class="docutils literal notranslate"><span class="pre">inpSig</span></code> is typically generated by a sensor from the terminal system and must be passed on to the central system which, in response, outputs the signal <code class="docutils literal notranslate"><span class="pre">outsig</span></code> typically used to control an actuator position in the terminal unit.</p>
@@ -519,26 +544,26 @@ The same logic as JModelica for array variables connections to expandable connec
 <span class="kr">end</span> <span class="nc">AhuBus</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="dummycentral">
+<figure class="align-default" id="dummycentral">
 <a class="reference internal image-reference" href="_images/DummyCentral.svg"><img alt="_images/DummyCentral.svg" src="_images/DummyCentral.svg" width="50%" /></a>
-</div>
-<div class="figure align-default" id="dummyterminal">
+</figure>
+<figure class="align-default" id="dummyterminal">
 <a class="reference internal image-reference" href="_images/DummyTerminal.svg"><img alt="_images/DummyTerminal.svg" src="_images/DummyTerminal.svg" width="50%" /></a>
-</div>
-<div class="section" id="connecting-one-central-system-model-to-an-array-of-terminal-system-models">
+</figure>
+<section id="connecting-one-central-system-model-to-an-array-of-terminal-system-models">
 <h3><span class="section-number">4.4.1. </span>Connecting One Central System Model to an Array of Terminal System Models<a class="headerlink" href="#connecting-one-central-system-model-to-an-array-of-terminal-system-models" title="Permalink to this headline">¶</a></h3>
 <p>The first test is illustrated in the figure below.</p>
-<div class="figure align-default" id="controlbusarraymanual">
+<figure class="align-default" id="controlbusarraymanual">
 <a class="reference internal image-reference" href="_images/ControlBusArrayManual.svg"><img alt="_images/ControlBusArrayManual.svg" src="_images/ControlBusArrayManual.svg" width="50%" /></a>
-</div>
+</figure>
 <p><cite>Bug in Dymola</cite></p>
 <p>Dymola GUI does not allow graphically generating the statement <code class="docutils literal notranslate"><span class="pre">connect(dummyTerminal.terBus,</span> <span class="pre">dummyCentral.ahuBus.ahuTer)</span></code>. The GUI returns the error message <code class="docutils literal notranslate"><span class="pre">Incompatible</span> <span class="pre">connectors</span></code>.</p>
-<p>However, we cannot find which part of the specification <span id="id7">[<a class="reference internal" href="bibliography.html#id3"><span>Mod17</span></a>]</span> this statement would violate. To the contrary, the specification states that “expandable connectors can be connected even if they do not contain the same components”.</p>
+<p>However, we cannot find which part of the specification <span id="id7">[<a class="reference internal" href="bibliography.html#id3" title="Modelica – A Unified Object-Oriented Language for Physical Systems Modeling, Language Specification, Version 3.4. Modelica Association, April 2017. URL: https://www.modelica.org/documents/ModelicaSpec34.pdf.">Mod17</a>]</span> this statement would violate. To the contrary, the specification states that “expandable connectors can be connected even if they do not contain the same components”.</p>
 <p>Additionally, when manually adding this <code class="docutils literal notranslate"><span class="pre">connect</span></code> statement in the code, the model simulates (with correct results) with OCT. Dymola fails to translate the model and returns the error message <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">argument</span> <span class="pre">was</span> <span class="pre">not</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">valid</span> <span class="pre">forms,</span> <span class="pre">since</span> <span class="pre">dummyCentral</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">connector</span></code>.</p>
 <p>Based on various tests we performed, it seems that Dymola supports connecting <em>inside</em> expandable connectors together only when they are instances of the same class. Again, we cannot find such a requirement in Modelica specification. To allow such a connection in Dymola, we need to rely on an <em>outside</em> expandable connector as illustrated below.</p>
-<div class="figure align-default" id="controlbusarray">
+<figure class="align-default" id="controlbusarray">
 <a class="reference internal image-reference" href="_images/ControlBusArray.svg"><img alt="_images/ControlBusArray.svg" src="_images/ControlBusArray.svg" width="50%" /></a>
-</div>
+</figure>
 <p><cite>Bug in OCT</cite></p>
 <p>With this connection layout, the model simulates with Dymola but no more with OCT which returns the following error message.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">296</span><span class="p">,</span> <span class="n">column</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="n">file</span> <span class="s1">&#39;/opt/oct/ThirdParty/MSL/Modelica/Blocks/Interfaces.mo&#39;</span><span class="p">:</span>
@@ -552,18 +577,18 @@ The same logic as JModelica for array variables connections to expandable connec
 <li><p>When connecting a non declared variable directly to an array of expandable connectors as in the figure below, the dimensionality may be wrong depending on the first connection being established. Indeed, <code class="docutils literal notranslate"><span class="pre">terBus.inpSig</span></code> is considered as an array if <code class="docutils literal notranslate"><span class="pre">terBus[:].inpSig</span></code> is first connected to a one-dimensional array of scalar variables. The code needs to be updated manually to suppress the array index and simulate. If the first connection of <code class="docutils literal notranslate"><span class="pre">inpSig</span></code> variable to the connector is made at the terminal unit level (scalar to scalar) then the dimensionality is correctly established.</p></li>
 <li><p>In several use cases, we noticed similar issues related to the dimensionality of variables in presence of nested expandable connectors. In that respect OCT appears more robust.</p></li>
 </ul>
-<div class="figure align-default" id="dummycentralbug">
+<figure class="align-default" id="dummycentralbug">
 <a class="reference internal image-reference" href="_images/DummyCentralBug.svg"><img alt="_images/DummyCentralBug.svg" src="_images/DummyCentralBug.svg" width="50%" /></a>
-</div>
-</div>
-<div class="section" id="connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">
+</figure>
+</section>
+<section id="connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models">
 <h3><span class="section-number">4.4.2. </span>Connecting an Array of Central System Models to an Array of Terminal System Models<a class="headerlink" href="#connecting-an-array-of-central-system-models-to-an-array-of-terminal-system-models" title="Permalink to this headline">¶</a></h3>
 <p>We now try to connect an one-dimensional array of central system models <code class="docutils literal notranslate"><span class="pre">DummyCentral</span> <span class="pre">dummyCentral[nAhu]</span></code> to a two-dimensional array of terminal system models <code class="docutils literal notranslate"><span class="pre">DummyTerminal</span> <span class="pre">dummyTerminal[nAhu,</span> <span class="pre">nTerAhu]</span></code>.</p>
 <p><cite>Bug in Dymola</cite></p>
 <p>As explained before, in Dymola, we need to rely to an <em>outside</em> expandable connector to connect the two <em>inside</em> expandable connectors.</p>
-<div class="figure align-default" id="controlbusarrayarray">
+<figure class="align-default" id="controlbusarrayarray">
 <a class="reference internal image-reference" href="_images/ControlBusArrayArray.svg"><img alt="_images/ControlBusArrayArray.svg" src="_images/ControlBusArrayArray.svg" width="50%" /></a>
-</div>
+</figure>
 <p>However, despite the connection being made properly through the GUI, the model fails to translate.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unmatched</span> <span class="n">dimension</span> <span class="ow">in</span> <span class="n">connect</span><span class="p">(</span><span class="n">ahuBus</span><span class="o">.</span><span class="n">ahuTer</span><span class="p">,</span> <span class="n">dummyTerminal</span><span class="o">.</span><span class="n">terBus</span><span class="p">);</span>
 
@@ -574,8 +599,8 @@ The same logic as JModelica for array variables connections to expandable connec
 <p>The error message is incorrect as in this case <code class="docutils literal notranslate"><span class="pre">ahuBus.ahuTer</span></code> has two dimensions.</p>
 <p>OCT also fails to translate the model but for a different reason, see error message previously mentioned.
 However, when manually adding the connect statement between the two <em>inside</em> connectors <code class="docutils literal notranslate"><span class="pre">connect(dummyTerminal.terBus,</span> <span class="pre">dummyCentral.ahuBus.ahuTer)</span></code>, the model simulates with OCT.</p>
-</div>
-<div class="section" id="passing-on-a-scalar-variable-to-an-array-of-system-models">
+</section>
+<section id="passing-on-a-scalar-variable-to-an-array-of-system-models">
 <h3><span class="section-number">4.4.3. </span>Passing on a Scalar Variable to an Array of System Models<a class="headerlink" href="#passing-on-a-scalar-variable-to-an-array-of-system-models" title="Permalink to this headline">¶</a></h3>
 <p>The typical use case is a schedule, set point, or central system status value that is used as a common input to a set of terminal units.
 Two programmatic options are obviously available.</p>
@@ -620,9 +645,9 @@ It is indeed equivalent to an equation, and equations are not allowed in an expa
 </pre></div>
 </div>
 <p>However, OCT simulates the model properly.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -641,8 +666,8 @@ It is indeed equivalent to an equation, and equations are not allowed in an expa
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Mar, 17, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+      Last updated on Dec, 02, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.<br/>
     </p>
   </div>
 </footer>
