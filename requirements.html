@@ -751,7 +751,7 @@ UserProjects
 <h3><span class="section-number">3.6.1. </span>Engineering Schematic<a class="headerlink" href="#engineering-schematic" title="Permalink to this headline">¶</a></h3>
 <p>SVG is the required output format, DXF or DWG is optional.</p>
 <p>It is expected that Linkage will eventually be used to generate design documents included in the invitation to tender for HVAC control systems.
-As such, the exported graphics should meet the industry standards and have a pixel perfect precision.
+As such, the exported graphics should meet the industry standards: shape edges, connections between objects, alignment or centering of objects, etc. should be precise at pixel level.
 They should also allow for further editing in CAD softwares, e.g., AutoCAD®.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -796,7 +796,7 @@ That information is attached to the <a class="reference external" href="https://
 </div>
 <p>defined in the parent class <code class="docutils literal notranslate"><span class="pre">Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Interfaces.PartialOutdoorReliefReturnSection</span></code>, where some parameters are assigned within the derived class <code class="docutils literal notranslate"><span class="pre">Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Economizer</span></code> as below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="n">Economizer</span> <span class="s2">&quot;Air economizer&quot;</span>
-  <span class="n">extends</span> <span class="n">Buildings</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">AirHandlersFans</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">OutdoorReliefReturnSection</span><span class="o">.</span><span class="n">Interfaces</span><span class="o">.</span> <span class="n">PartialOutdoorReliefReturnSection</span><span class="p">(</span>
+  <span class="n">extends</span> <span class="n">Buildings</span><span class="o">.</span><span class="n">Templates</span><span class="o">.</span><span class="n">AirHandlersFans</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">OutdoorReliefReturnSection</span><span class="o">.</span><span class="n">Interfaces</span><span class="o">.</span><span class="n">PartialOutdoorReliefReturnSection</span><span class="p">(</span>
     <span class="n">final</span> <span class="n">typDamOutMin</span><span class="o">=</span><span class="n">secOut</span><span class="o">.</span><span class="n">typDamOutMin</span><span class="p">,</span>
     <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -867,8 +867,8 @@ The code should be structured so that potential future developments of such a vi
     </p>
     <p>
         &copy; Copyright 2017-2019 The Regents of the University of California through Lawrence Berkeley National Laboratory. All rights reserved.<br/>
-      Last updated on Dec, 02, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.<br/>
+      Last updated on Jan, 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
 </footer>

@@ -632,7 +632,7 @@ Engineering Schematic
 SVG is the required output format, DXF or DWG is optional.
 
 It is expected that Linkage will eventually be used to generate design documents included in the invitation to tender for HVAC control systems.
-As such, the exported graphics should meet the industry standards and have a pixel perfect precision.
+As such, the exported graphics should meet the industry standards: shape edges, connections between objects, alignment or centering of objects, etc. should be precise at pixel level.
 They should also allow for further editing in CAD softwares, e.g., AutoCAD®.
 
 .. note::
@@ -685,7 +685,7 @@ The process is as follows.
   .. code-block::
 
      model Economizer "Air economizer"
-       extends Buildings.Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Interfaces. PartialOutdoorReliefReturnSection(
+       extends Buildings.Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Interfaces.PartialOutdoorReliefReturnSection(
          final typDamOutMin=secOut.typDamOutMin,
          ...)
 
