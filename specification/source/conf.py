@@ -321,8 +321,9 @@ latex_elements['preamble'] = r'''
 %\hypersetup{hidelinks = true} % Makefile enables this for the 2 page printout
 
 % Set format of table of content. Otherwise, the titles stick to the page numbers in some cases
-\usepackage[tocgraduated]{tocstyle}
-\usetocstyle{nopagecolumn}
+% Removed as tocstyle is now obsolete.
+%\usepackage[tocgraduated]{tocstyle}
+%\usetocstyle{nopagecolumn}
 \usepackage{pdfpages}
 
 \usepackage{tikz}

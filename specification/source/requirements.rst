@@ -160,7 +160,7 @@ The implementation of control sequences must comply with OpenBuildingControl req
   * - Documentation export
     - R
     - R
-    - Control points, sequence of operation description (based on CDL to Word translator developed by LBL), and equipment schematics see :numref:`sec_documentation_export`
+    - Control points, sequence of operation description (based on CDL to Word translator developed by LBL), and equipment schematic see :numref:`sec_documentation_export`
 
   * - **Modelica features**
     -
@@ -610,15 +610,15 @@ Documentation Export
 
 The documentation export encompasses three items.
 
-#. Engineering schematics of the equipment including the controls points
+#. Engineering schematic of the system including all control points
 
-#. Control points list
+#. Control point list
 
 #. Control sequence description
 
 The composition level at which the functionality will typically be used is the same as the one considered for the configuration widget, for instance primary plant, air handling unit, terminal unit, etc. No specific mechanism to guard against an export call at different levels is required.
 
-:numref:`screen_schematics_output` provides an example of the documentation to be generated in case of an air handling unit. The documentation export may consist in three different files but must contain all the material described in the following paragraphs.
+:numref:`screen_schematics_output` provides an example of the documentation to be generated in case of an air handling unit. The documentation may be exported as three different files but must contain all the material described in the following paragraphs.
 
 .. figure:: img/screen_schematics_output.*
    :name: screen_schematics_output
@@ -626,32 +626,96 @@ The composition level at which the functionality will typically be used is the s
    Mockup of the documentation export
 
 
-Engineering Schematics
+Engineering Schematic
 ======================
 
-Objects of the original model to be included in the schematics export must have a declaration annotation providing the SVG file path for the corresponding engineering symbol e.g. ``annotation(__Linkage(symbol_path="value of symbol_path"))``.
+SVG is the required output format, DXF or DWG is optional.
+
+It is expected that Linkage will eventually be used to generate design documents included in the invitation to tender for HVAC control systems.
+As such, the exported graphics should meet the industry standards: shape edges, connections between objects, alignment or centering of objects, etc. should be precise at pixel level.
+They should also allow for further editing in CAD softwares, e.g., AutoCAD®.
 
 .. note::
 
-   It is expected that Linkage will eventually be used to generate design documents included in the invitation to tender for HVAC control systems. The exported schematics should meet the industry standards and they must allow for further editing in CAD softwares, e.g., AutoCAD®.
+   All the examples hereafter are based on the commit |611c2de|_ of MBL.
 
-   Due to geometry discrepancies between Modelica icons and engineering symbols a perfect alignment of the latter is not expected by simply mapping the diagram coordinates of the former to the SVG layout. A mechanism should be developed to automatically correct small alignment defaults.
+.. |611c2de| replace:: ``611c2de``
+.. _611c2de: https://github.com/lbl-srg/modelica-buildings/commit/611c2de06d28b507146f591df50f8b89d594fbab
 
-For the exported objects
+The top-level template class (such as ``Templates.AirHandlersFans.VAVMultiZone``) provides the necessary information to build the system schematic corresponding to a specific configuration.
+That information is attached to the `diagram layer <https://specification.modelica.org/maint/3.5/annotations.html#annotations-for-graphical-objects>`_ of the class, in the form of `Modelica graphical primitives <https://specification.modelica.org/maint/3.5/annotations.html#graphical-primitives>`_, either directly provided in the
+``Diagram`` annotation of the class, or through the icons of the subcomponents.
 
-* the connectors connected to the control input and output sub-buses must be split into two groups depending on their type—Boolean or numeric,
-* an index tag is then generated based on the object position, from top to bottom and left to right,
-* eventually connection lines are drawn to link those tags to the four different control points buses (AI, AO, DI, DO). The line must be vertical, with an optional horizontal offset from the index tag to avoid overlapping any other object.
+To process that information,
 
-SVG is the required output format.
+* the tool must traverse
 
-See :numref:`screen_schematics_output` for the typical output of the schematics export process.
+  * one level of the instance tree to access the graphical primitives of the ``Icon`` annotation of the subcomponents,
+  * the whole inheritance tree as the graphical primitives may be specified in any parent class (of the top-level class and of any class instantiated within),
+
+* the tool must interpret
+
+  * component redeclarations and other class modifications that are used to specify the system configuration,
+  * parameter assignments based on expressions that are typically not literal and involve parameters from any other component (possibly with ``inner`` and ``outer`` references),
+
+* the tool must render
+
+  * SVG files provided as URIs through ``Bitmap`` annotations such as ``Bitmap(fileName="modelica://Buildings/Resources/Images/Templates/**/*.svg", ...)``,
+  * native Modelica graphical primitives using the ``Line``, ``Polygon``, ``Rectangle``, ``Ellipse``, or ``Text`` annotations,
+  * and ultimately the diagram and icon layers of the used classes, which are composed of the two previous types of graphical objects, the position and visibility of the objects being specified with the ``Placement`` annotation.
+
+The process is as follows.
+
+* From the top-level configuration class (such as ``Templates.AirHandlersFans.Validation.UserProject.AHUs.CompleteAHU`` which extends the template class ``Templates.AirHandlersFans.VAVMultiZone``) interpret all ``redeclare`` statements and build the list of all instantiated classes.
+
+* Exclude from that list all classes that do not belong to the ``Templates`` package, all objects with the declaration annotation ``Placement(visible=false)``, and all objects with the vendor specific annotation ``__Linkage_visible=false``. The latter annotation may be either a class annotation or a declaration annotation (which takes precedence over the class annotation).
+
+* Iterate over the resulting list of class names and build the icon view by processing the ``Icon`` annotation of that class and all parent classes. For instance, this may require to evaluate expressions such as
+
+  .. code-block::
+
+     Bitmap(
+       visible=typDamOutMin<>Buildings.Templates.Components.Types.Damper.None and
+         (typCtrEco==Buildings.Templates.AirHandlersFans.Types.ControlEconomizer.FixedEnthalpyWithFixedDryBulb or
+         typCtrEco==Buildings.Templates.AirHandlersFans.Types.ControlEconomizer.DifferentialEnthalpyWithFixedDryBulb,
+        ...)
+
+  defined in the parent class ``Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Interfaces.PartialOutdoorReliefReturnSection``, where some parameters are assigned within the derived class ``Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Economizer`` as below.
+
+  .. code-block::
+
+     model Economizer "Air economizer"
+       extends Buildings.Templates.AirHandlersFans.Components.OutdoorReliefReturnSection.Interfaces.PartialOutdoorReliefReturnSection(
+         final typDamOutMin=secOut.typDamOutMin,
+         ...)
+
+* Build the diagram view by processing the ``Diagram`` annotation of the configuration class and all parent classes (including the original template class). The connection lines specified as annotations of ``connect`` clauses must be disregarded and *not included* in the generated schematic.
+
+* Place the icons of all visible objects and the additional graphical objects from the ``Diagram`` annotation on the diagram canvas, using the ``Placement`` annotation of each object.
+
+  Note that the system schematic may include "standalone" graphical objects that are not related to any component (for instance the AHU casing), and may exclude components that are required in the Modelica model but pruned from the schematic (for instance boundary conditions).
+
+* Optionally: generate an index tag based on the object position, from top to bottom and left to right. Use those tags to order the :ref:`Control Point List`. The expected result is illustrated on :numref:`screen_schematics_output`. The mapping between the graphical objects and the control points may be implemented using a ``__cdl__annotation`` as specified at `https://obc.lbl.gov/specification/cdl.html#tagged-properties <https://obc.lbl.gov/specification/cdl.html#tagged-properties>`_. `TODO: Further specify the annotation mechanism and the placement of the generated tag.`
+
+* Resize the diagram canvas to the minimum and maximum x and y coordinates of the visible graphical objects, output the SVG file.
+
+  As a fallback, the template developer may specify the actual limiting coordinates of the schematic by means of a vendor annotation.
 
 
-Control Points List
+.. note::
+
+   **Graphical feedback involving parameter evaluation**: With Dymola (version 2022), graphical feedback involving parameter evaluation (such as ``visible=typDamOutMin<>Buildings.Templates.Components.Types.Damper.None`` in the example here above) seems to be effective only when using full class names, i.e., when no class name lookup is needed. Therefore, such parameter assignments in the ``Templates`` package should rely on full class names.
+
+   **Code reusability**: The functionalities that are described here above to generate the system schematic basically boil down to the ones needed by a viewer of the icon and diagram layers of Modelica classes.
+   The code should be structured so that potential future developments of such a viewer can easily reuse the implementation within the Linkage tool, or access functions like ``generateIconView`` and ``generateDiagramView`` through the Linkage API (not within the current scope).
+
+
+.. _Control Point List:
+
+Control Point List
 ===================
 
-Generating the control points list is done by calling a module developed by LBL (ongoing development) which returns an HTML or Word document.
+Generating the control point list is done by calling a module developed by LBL (ongoing development) which returns an HTML or Word document.
 
 
 Control Sequence Description
@@ -685,4 +749,3 @@ Different licensing options are then envisioned depending on the integration tar
   Licensing will depend on the application distribution model.
 
   For OpenStudio there is currently a shift in the `licensing strategy <https://www.openstudio.net/new-future-for-openstudio-application>`_. The specification will be updated to comply with the distribution options after the transition period (no entity has yet announced specific plans to continue support for the OS app).
-
