@@ -16,10 +16,10 @@ This repository documents the requirements and design of Linkage.
 
 
 The HTML version of the documentation is available at
-[lbl-srg.github.io/linkage.js](https://lbl-srg.github.io/linkage.js)
+[lbl-srg.github.io/ctrl-flow/](https://lbl-srg.github.io/ctrl-flow/)
 
 The PDF version of the documentation is available at
-[github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf](https://github.com/lbl-srg/linkage.js/blob/master/specification/build/latex/Linkage.pdf)
+[github.com/lbl-srg/ctrl-flow/blob/master/specification/build/latex/Linkage.pdf](https://github.com/lbl-srg/ctrl-flow/blob/master/specification/build/latex/Linkage.pdf)
 
 ## How to Build
 
