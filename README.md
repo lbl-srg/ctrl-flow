@@ -19,24 +19,28 @@ The final edited document consists of an edited version of the ASHRAE Guideline 
 
 This document will require further review and editing prior to use on a project.
 
-Current Coverage of Guideline 36-2021:
+## Current Coverage of Guideline 36-2021:
 
-| Supported     | Not Supported    |
-| ------------- | ---------------- |
-| Unit System: IP, SI | Dual-Fan Dual-Duct Heating VAV Air Handling Unit |
-| Ventilation Code: 62.1, CA Title 24 | Single-Zone VAV Air-Handling Unit |
-| Building Energy Code: 90.1, CA Title 24 | Fan-Powered Terminal Units |
-| ASHRAE and California Title 24 Climate Zones | Dual-Duct VAV Terminal Units |
-| Multiple-Zone VAV Air-Handling Unit <br/>(not including:<br/>barometric relief,<br/>relief fan with barometric damper,<br/>multiple relief fans,<br/>common relief fan inlet plenum, AFDD) | Constant Speed Exhaust Fan |
-| VAV Terminal Unit – Cooling Only | Chilled Water Plant |
-| VAV Terminal Unit with Reheat | Hot Water Plant |
-|                               | Fan Coil Unit   |
-<td colspan=2>Note: Sequences from Guideline 36 that are not currently supported are not included in the software output.
+Supported:
+- [x] Unit System: IP, SI
+- [x] Ventilation Code: 62.1, CA Title 24
+- [x] Building Energy Code: ASHRAE 90.1, CA Title 24
+- [x] ASHRAE and California Title 24 Climate Zones
+- [x] Multiple-Zone VAV Air-Handling Unit (not including: barometric relief, relief fan with barometric damper, multiple relief fans, common relief fan inlet plenum, AFDD)
+- [x] VAV Terminal Unit – Cooling Only
+- [x] VAV Terminal Unit with Reheat
 
+Not Supported:
+- [ ] Dual-Fan Dual-Duct Heating VAV Air Handling Unit
+- [ ] Single-Zone VAV Air-Handling Unit
+- [ ] Fan-Powered Terminal Units
+- [ ] Dual-Duct VAV Terminal Units
+- [ ] Constant Speed Exhaust Fan
+- [ ] Chilled Water Plant
+- [ ] Hot Water Plant
+- [ ] Fan Coil Unit
 
-
-
-
+Note: Sequences from Guideline 36 that are not currently supported are not included in the software output.
 
 # Planned Enhancements
 
