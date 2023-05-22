@@ -62,7 +62,7 @@ Note: Sequences from Guideline 36 that are not currently supported are not inclu
 
 While there has been extensive testing completed for this tool, it is still in what is considered “Beta” version – which means that you may encounter issues with the process or the tool. Your feedback is essential to the project team, and we are anxious to hear about any problems that you encounter as well as feature requests for future enhancements. If you encounter an issue, we would encourage you to report it to the project team.  
 
-Please email the following information on any issues to ctrl-flow@lbl.gov 
+Please email the following information on any issues to ctrl-flow@lbl.gov:
 - Operating system (PC, MAC, Other)
 - Web Browser (Chrome, Firefox, Safari, etc.)
 - Details on problem encountered (feel free to include multiple items in one report)
