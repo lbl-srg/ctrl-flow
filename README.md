@@ -50,13 +50,22 @@ Note: Sequences from Guideline 36 that are not currently supported are not inclu
 - [ ] Additional sequences beyond Guideline 36
 - [ ] Points lists
 - [ ] Control schematics
-- [ ] Control logic in CDL and CXF
+- [ ] Control logic in _CDL_ and _CXF_
 
 # Known Issues
 
 - Multiple MZAHUs with different options. The MZAHU sequences may not be edited correctly if there are multiple MZAHU configurations because of interactions between different portions of the sequences. To work around this, it may be best to run through the tool for each MZAHU one at a time and to manually recombine afterwards.
-- Edit button will wipe out selections
-- Clicking “back” button to start screen will wipe out selections
+- The "edit" button in the upper left corner will clear out all selections and **should not be used**. Instead, use the “back” button in the lower left corner to navigate. 
+- Clicking the “back” button all the way back to the start screen will initialize the project and clear out selections.
+
+# Notes for how to use ctrl-flow
+
+- Zone equipment configurations. Many projects will have multiple zones with varying configurations. For example some VAV reheat zones with CO2 sensors and some without. In that case, the software will only generate a single control sequence for VAV reheat zones with CO2 sensors – the output sequence will be based on the most inclusive configuration. As such, indicating all desired terminal control options in a single configuration is sufficient to generate the corresponding sequence; there generally is not a need to specify multiple configurations for each type of terminal unit for the current software release which only generates control sequences. 
+- Adding configurations. In the current implementation, there is no need to click the “Add Config” button. The tool will only output a single control sequence for each terminal type (cooling only and reheat), and the tool should only be used to define a single MZAHU at a time, both as described above.
+- Paragraph numbering. 
+  - The software will delete sections from Guideline 36 that are not applicable based on user selections. The paragraph numbering and paragraph references within the document are dynamic – paragraph numbering will collapse when preceding paragraphs are deleted and references other remaining paragraphs will remain intact. However, the paragraph references in the output file will need to be manually updated to display the new paragraph numbers. In Microsoft Word, type ctrl-A to select all text, then type F9 to update.
+  - Note that table and figure numbers and references are not dynamic and will not change. The numbering is fixed within the Guideline 36 source file itself. 
+- Saving the project. There is currently no option to save a project. The tool can be used to generate a control sequence in a single session but revising the inputs at a later time may simply require starting over. Fortunately, it only takes minutes to enter the inputs. 
 
 # Reporting Issues
 
