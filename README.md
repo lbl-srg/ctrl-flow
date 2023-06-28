@@ -54,9 +54,7 @@ Note: Sequences from Guideline 36 that are not currently supported are not inclu
 
 # Known Issues
 
-- Multiple MZAHUs with different options. The MZAHU sequences may not be edited correctly if there are multiple MZAHU configurations because of interactions between different portions of the sequences. To work around this, it may be best to run through the tool for each MZAHU one at a time and to manually recombine afterwards.
-- The "edit" button in the upper left corner will clear out all selections and **should not be used**. Instead, use the “back” button in the lower left corner to navigate. 
-- Clicking the “back” button all the way back to the start screen will initialize the project and clear out selections.
+- Once you make configure a project (units, codes, climate zone) and save it you can not make any further changes without exiting the site and re-entering.
 
 # Notes for how to use ctrl-flow
 
