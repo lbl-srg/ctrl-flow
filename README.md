@@ -6,7 +6,7 @@ The design and delivery of high-performance control sequences is a challenge! Wr
 
 The structure of ``ctrl-flow`` is intended to make it readily extensible to support a broad range of systems as well as deliverable options. The tool is supported by a set of “templates” that are defined in an open standard modeling language called [Modelica](https://modelica.org/modelicalanguage.html). The user can select the desired systems and how they should be configured for a project. Based on the user selections, the initial release of the tool will output a properly edited sequence of operation based on ASHRAE Guideline 36 – 2021. The use of the templates allows for expansion (in future releases) of the tool to support new system types as well as for a set of additional outputs. Examples of future outputs include not just the sequence of operation document, but also detailed points lists, system diagrams, and the specific control logic represented in the [“Control Description Language”](https://simulationresearch.lbl.gov/wetter/download/2018-americanModelica-WetterGrahovacHu.pdf)(_CDL_) and the Control eXchange Format (_CXF_) both of which will be defined in the proposed ASHRAE Standard 231P (A Controls Description Language). Finally, the tool will also provide a Modelica model of the desired HVAC system. _CDL_ will be able to be used with additional tools (such as [OpenModelica](https://openmodelica.org)) to test the control system during design. _CXF_ will be able to be used as a format to import the defined logic into tools used for setup and programming of commercial control products which comply with _ASHRAE 231P_. Finally, users will be able to utilize the _CDL_ and the Modelica systems model with tools such as [Spawn of EnergyPlus](https://www.energy.gov/eere/buildings/articles/spawn-energyplus-spawn) to do detailed energy studies of building mechanical and control systems.
 
-# Initial Release
+# Initial Release[^1]
 
 The initial release of the tool has both a limited number of templates supported (multi-zone air handling unit, cooling only VAV terminal, VAV terminal with reheat) and only a single deliverable (edited Guideline 36 sequence in `.docx` format). When you first enter the tool, there is a brief pop-up tutorial which lists the steps needed to use the tool. In summary:
 
@@ -74,3 +74,5 @@ Please email the following information on any issues to ctrl-flow@lbl.gov:
 - Operating system (PC, MAC, Other)
 - Web Browser (Chrome, Firefox, Safari, etc.)
 - Details on problem encountered (feel free to include multiple items in one report)
+
+[^1] Updated README on June 29, 2023.
